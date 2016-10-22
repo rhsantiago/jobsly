@@ -93,7 +93,7 @@
 				<ul class="nav navbar-nav">
 					
 					<li class="menuItem"><a href="#whatis">What is jobsly?</a></li>
-					<li class="menuItem"><a href="#useit">Use It</a></li>
+					<li class="menuItem"><a href="#useit">Features</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
 					<li class="menuItem"><a href="#credits">Credits</a></li>
 					<li class="menuItem"><a href="#contact">Contact</a></li>
@@ -160,44 +160,26 @@
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
 				   <h3>Curated Content</h3>
-				 <p class="lead">We verify each company and each job posting. Applicants are also pre-screened for validity. Quality jobs for qualified applicants.  </p>
+				 <p class="lead">We verify each company and each job posting. Applicants are also pre-screened for validity. Quality jobs for qualified applicants.  </p>                    
+                    
 				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
 				
 			</div><!-- /.row -->
+            
+            <div class="tworow">
+                    <div class="col-sm-12  wow fadeInDown text-center">
+                         <a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Get Started</span></a>
+					
+                                
+                    </div>    
+            </div>
+            
 		</div>
 	</div>
-	
-	<!-- Use it -->
-    <div id ="useit" class="content-section-a">
-
-        <div class="container">
-			
-            <div class="row">
-			
-				<div class="col-sm-6 pull-right wow fadeInRightBig">
-                    <img class="img-responsive " src="img/ipad.png" alt="">
-                </div>
-				
-                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
-                    <h3 class="section-heading">Full Responsive</h3>
-					<div class="sub-title lead3">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
-                    <p class="lead">
-						In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. 
-						Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, 
-						uam non erat mirum sapientiae lorem cupido
-						patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
-					</p>
-
-					 <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
-					 <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
-				</div>   
-            </div>
-        </div>
-        <!-- /.container -->
-    </div>
-
-    <div class="content-section-b"> 
+		
+<!-- Use it -->
+    <div id ="useit" class="content-section-b"> 
 		
 		<div class="container">
             <div class="row">
@@ -222,17 +204,17 @@
                 </div>
 				
                 <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">   
-                    <h3 class="section-heading">Drag Gallery</h3>
-					<div class="sub-title lead3">Lorem ipsum dolor sit atmet sit dolor greand fdanrh<br> sdfs sit atmet sit dolor greand fdanrh sdfs</div>
+                    <h3 class="section-heading">Features</h3>
+					<div class="sub-title lead3">Fully responsive, mobile-ready and made for the modern world.</div>
                     <p class="lead">
-						In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. 
-						Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, 
-						uam non erat mirum sapientiae lorem cupido
-						patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
+						Still using that jobsite from 1999? jobsly is made "mobile-first" for the best possible UX.
+                        Whether on your laptop, desktop or smartphone, users will have the same beautiful interface.
+                        No clunky apps to download.
+                        
 					</p>
 
-					 <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
-					 <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
+					 <p><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Get Started</span></a>
+					</p>
 				</div>  			
 			</div>
         </div>
