@@ -11,7 +11,7 @@
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
-    <title>Flatfy – Free Flat and Responsive HTML5 Template</title>
+    <title>jobsly – jobs for the modern world</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,6 +56,35 @@
 		<div id="status"></div>
 	</div>
 	
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+       
+        <div class="modal-content ">
+          <div class="modal-header mymodalheader">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login or Register</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group ">
+                  <span class="input-group-addon inputgroupaddon" >@</span>
+                  <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+              </div><br>
+            <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+            </div>  
+             
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+</div>
+
+    
 	<!-- FullScreen -->
     <div class="intro-header">
 		<div class="col-xs-12 text-center abcen1">
@@ -64,7 +93,13 @@
 			<ul class="list-inline intro-social-buttons">
                 <li><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50">
 				</li>
-				<li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Get Started</span></a>
+				<li id="download" >
+                    <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>
+                    
+                    <!--<a href="#myModal" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"  data-toggle="modal"><span class="network-name">Get Started</span></a>-->
+                    
+                    
+                    
 				</li>
 			</ul>
 		</div>    
@@ -76,6 +111,8 @@
 		</div>
     </div>
 	
+    
+    
 	<!-- NavBar-->
 	<nav class="navbar-default navbar-color" role="navigation">
 		<div class="container">
@@ -169,9 +206,7 @@
             
             <div class="tworow">
                     <div class="col-sm-12  wow fadeInDown text-center">
-                         <a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Get Started</span></a>
-					
-                                
+                          <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>   
                     </div>    
             </div>
             
@@ -213,7 +248,7 @@
                         
 					</p>
 
-					 <p><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Get Started</span></a>
+					 <p> <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>
 					</p>
 				</div>  			
 			</div>
