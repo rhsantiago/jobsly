@@ -67,11 +67,11 @@
           </div>
           <div class="modal-body">
             <div class="input-group ">
-                  <span class="input-group-addon inputgroupaddon" >@</span>
-                  <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                  <span class="glyphicon glyphicon glyphicon-user input-group-addon " ></span>
+                  <input type="text" class="form-control inputgroupaddon" placeholder="Email" aria-describedby="basic-addon1">
               </div><br>
             <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon" id="basic-addon1"></span>
                   <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
             </div>  
              

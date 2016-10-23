@@ -576,22 +576,23 @@ fieldset[disabled] .btn {
 }
 .btn-default {
   color: #ffffff;
-  background-color: #bdc3c7;
+ /* background-color: #bdc3c7;*/
 }
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
-  color: #ffffff;
+/*  color: #ffffff;
   background-color: #cacfd2;
-  border-color: #cacfd2;
+  border-color: #cacfd2; */
 }
 .btn-default:active,
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
+    /*
   background: #a1a6a9;
-  border-color: #a1a6a9;
+  border-color: #a1a6a9;*/
 }
 .btn-default.disabled,
 .btn-default[disabled],
@@ -608,8 +609,8 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #bdc3c7;
-  border-color: #bdc3c7;
+ /* background-color: #bdc3c7;
+  border-color: #bdc3c7;*/
 }
 .btn-primary {
   color: #ffffff;
@@ -1159,7 +1160,7 @@ label {
   color: #b2bcc5;
 }
 .form-control {
-  border: 2px solid #bdc3c7;
+  border: 1px solid #bdc3c7;
   color: #34495e;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -1521,10 +1522,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 15px;
   color: #ffffff;
   text-align: center;
-    /*
-  background-color: #bdc3c7;
-  border: 1px solid #bdc3c7;
-    */
+    
+  background-color: #4bb777;
+  border: 1px solid #4bb777;
+
   border-radius: 6px;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
   transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -1557,7 +1558,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .form-group.focus .input-group-btn > .btn-default + .btn-default,
 .input-group.focus .input-group-btn > .btn-default + .btn-default {
-  border-left-color: #16a085;
+ /*  border-left-color: #16a085;*/
 }
 .form-group.focus .input-group-btn .btn,
 .input-group.focus .input-group-btn .btn {
@@ -1568,7 +1569,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .form-group.focus .input-group-btn .btn-default,
 .input-group.focus .input-group-btn .btn-default {
   color: #ffffff;
-  background-color: #1abc9c;
+ /*  background-color: #1abc9c;*/
 }
 .form-group.focus .input-group-btn .btn-default:hover,
 .input-group.focus .input-group-btn .btn-default:hover,
@@ -1581,8 +1582,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .open .dropdown-toggle.form-group.focus .input-group-btn .btn-default,
 .open .dropdown-toggle.input-group.focus .input-group-btn .btn-default {
   color: #ffffff;
+    /*
   background-color: #48c9b0;
-  border-color: #48c9b0;
+  border-color: #48c9b0;*/
 }
 .form-group.focus .input-group-btn .btn-default:active,
 .input-group.focus .input-group-btn .btn-default:active,
@@ -1590,8 +1592,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group.focus .input-group-btn .btn-default.active,
 .open .dropdown-toggle.form-group.focus .input-group-btn .btn-default,
 .open .dropdown-toggle.input-group.focus .input-group-btn .btn-default {
+    /*
   background: #16a085;
   border-color: #16a085;
+    */
 }
 .form-group.focus .input-group-btn .btn-default.disabled,
 .input-group.focus .input-group-btn .btn-default.disabled,
@@ -1623,18 +1627,20 @@ fieldset[disabled] .input-group.focus .input-group-btn .btn-default:active,
 .input-group.focus .input-group-btn .btn-default[disabled].active,
 fieldset[disabled] .form-group.focus .input-group-btn .btn-default.active,
 fieldset[disabled] .input-group.focus .input-group-btn .btn-default.active {
-  background-color: #1abc9c;
-  border-color: #1abc9c;
+  /*background-color: #1abc9c;
+  border-color: #1abc9c;*/
 }
 .input-group-btn .btn {
   background-color: #ffffff;
+    /*
   border: 2px solid #bdc3c7;
   color: #bdc3c7;
+    */
   line-height: 18px;
 }
 .input-group-btn .btn-default {
   color: #ffffff;
-  background-color: #bdc3c7;
+  /*background-color: #bdc3c7;*/
 }
 .input-group-btn .btn-default:hover,
 .input-group-btn .btn-default:focus,
@@ -1642,14 +1648,16 @@ fieldset[disabled] .input-group.focus .input-group-btn .btn-default.active {
 .input-group-btn .btn-default.active,
 .open .dropdown-toggle.input-group-btn .btn-default {
   color: #ffffff;
+    /*
   background-color: #cacfd2;
   border-color: #cacfd2;
+    */
 }
 .input-group-btn .btn-default:active,
 .input-group-btn .btn-default.active,
 .open .dropdown-toggle.input-group-btn .btn-default {
-  background: #a1a6a9;
-  border-color: #a1a6a9;
+  /*background: #a1a6a9;
+  border-color: #a1a6a9;*/
 }
 .input-group-btn .btn-default.disabled,
 .input-group-btn .btn-default[disabled],
@@ -1666,8 +1674,8 @@ fieldset[disabled] .input-group-btn .btn-default:active,
 .input-group-btn .btn-default.disabled.active,
 .input-group-btn .btn-default[disabled].active,
 fieldset[disabled] .input-group-btn .btn-default.active {
-  background-color: #bdc3c7;
-  border-color: #bdc3c7;
+ /* background-color: #bdc3c7;
+  border-color: #bdc3c7;*/
 }
 .input-group-hg .input-group-btn .btn {
   line-height: 31px;
@@ -1687,7 +1695,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   margin-left: -2px;
 }
 .input-group-btn > .btn-default + .btn-default {
-  border-left: 2px solid #bdc3c7;
+ /* border-left: 2px solid #bdc3c7;*/
 }
 .input-group-btn > .btn:first-child + .btn .caret {
   margin-left: 0;

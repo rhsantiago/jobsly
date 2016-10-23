@@ -489,3 +489,16 @@ NO MORE TABLES!! ;)
 }
 
 
+
+.btn-default {
+    background-color:  #4bb777 !important;
+     border: none !important;
+}
+
+
+
+.form-control .inputgroupaddon {
+   background-color: #fff !important;
+   color: #fff !important;
+
+}
