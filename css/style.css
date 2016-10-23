@@ -4737,7 +4737,7 @@ footer p {
 			font-size: 20px;
 			text-align:center
 		}
-		.col-sm-4 {margin-bottom: 120px; text-align:center;}
+		.col-sm-4 {margin-bottom: 30px; text-align:center;}
 		.col-sm-4 > i{text-align:center;}
 		.col-sm-5 .img-responsive {display:none}
 		.col-sm-5 {margin-top:120px}

@@ -106,7 +106,7 @@
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
 			<div class="button_down "> 
-				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a>
+				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#latest"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a>
 			</div>
 		</div>
     </div>
@@ -129,7 +129,7 @@
 			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
 					
-					<li class="menuItem"><a href="#whatis">What is jobsly?</a></li>
+					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
 					<li class="menuItem"><a href="#credits">Credits</a></li>
@@ -139,9 +139,44 @@
 		   
 		</div>
 	</nav> 
+    
+    <!-- Latest -->
+    <div id ="latest" class="content-section-b latest"> 
+		
+		<div class="container latestjobs">
+            <div class="row ">
+                <div class="col-sm-6 wow fadeInLeftBig "  data-animation-delay="200">   
+                    <h3 class="section-heading">Latest Jobs</h3>
+					<div class="sub-title lead3">Senior Web Developer, Bootstrap - PHP</div>
+                    <div class="sub-title lead3">Technical Support Specialists - Level 3</div>
+                    <div class="sub-title lead3">Marketing Manager, Six Sigma Certified</div>
+                    <div class="sub-title lead3">Junior Finance Analyst 1 yr. experience</div>
+                    <div class="sub-title lead3">Sales Specialists BPO, Australian account</div>
+                    <div class="sub-title lead3">Java Technical Lead, J2EE Spring hibernate</div>
+				</div>  
+				
+                <div class="col-sm-6 wow fadeInRightBig featured"  data-animation-delay="200">   
+                    <h3 class="section-heading featuredtitle">Featured Companies</h3>
+					<div class="sub-title lead3">Fully responsive, mobile-ready and made for the modern world.</div>
+                    <p class="lead featuredtitle">
+						Still using that jobsite from 1999? jobsly is made "mobile-first" for the best possible UX.
+                        Whether on your laptop, desktop or smartphone, users will have the same beautiful interface.
+                        No clunky apps to download.
+                        
+					</p>
+					 
+				</div>  			
+			</div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
 	
 	<!-- What is -->
-	<div id="whatis" class="content-section-b" style="border-top: 0">
+	<div id="whatis" class="content-section-b whatisjobsly" style="border-top: 0">
 		<div class="container">
 
 			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
