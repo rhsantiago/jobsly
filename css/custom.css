@@ -3,12 +3,14 @@
 /* Header Navigation */
 
 .intro-header .logo{ 
-  color: #E6E6FA;
+  /*color: #E6E6FA;*/
+    color: #fff;
   font-family: "Oleo Script", cursive;
   font-size: 56px;
   text-transform: lowercase; 
   text-decoration: none; 
   text-shadow: 2px 2px #000;
+      float: none;
     
   
 }
@@ -475,9 +477,9 @@ NO MORE TABLES!! ;)
 
 
 .navbar-color {
-   
-    background-color:  #4bb777 !important;
-    opacity: 0.7;
+  
+    background-color: rgba(75, 183, 119, 0.7) !important;
+ 
 }
 
 .getstarted {

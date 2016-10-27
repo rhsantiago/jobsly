@@ -46,7 +46,7 @@
 
 <body class="body" id="body">
     <!-- NavBar-->
-	<nav class="navbar-default navbar-color" role="navigation">
+	<nav class="nav navbar-default navbar-color" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -71,49 +71,34 @@
 		   
 		</div>
 	</nav> 
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-	  Launch demo modal
-	</button>
 	
-	<!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-	      </div>
-	      <div class="modal-body">
-	        ...
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
     
 <div class="container">
-  <h1>Masonry CSS with Bootstrap</h1>
+  <h2>Masonry CSS with Bootstrap</h2>
 <div class="row">
     <div class="item">
-      <div class="well"> 
-        1 blah blah blah
-      </div>
+        <div class="col-md-12">
+      <div class="well wellcustom">  
+          <div class=""></div>
+            <img src="https://unsplash.it/550/400/?random" class="img-responsive cardimages" alt="">      
+          </div>
+             </div>
     </div>
  	<div class="item">
         <div class="well"> 
         2 blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah
+            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
         </div>
     </div>
     <div class="item">
         <div class="well"> 
+            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
         3 blah blah blah blah blah blah blah blah h
         </div>
     </div>
     <div class="item">
         <div class="well">
+            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
         blah blah blah blah 
         </div>
     </div>
@@ -124,6 +109,7 @@
     </div>
  	<div class="item">
         <div class="well"> 
+            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
         blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah
         </div>
     </div>
@@ -140,6 +126,7 @@
     <div class="item">
         <div class="well"> 
         blah blah blah blah blah blah blah blah blah blah blah blah
+            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
         </div>
     </div>
     <div class="item">

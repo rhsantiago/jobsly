@@ -45,3 +45,15 @@
      width: 1170px;
   }
 }
+
+.well .cardimages {
+   max-width: 100% !important;     
+    margin: 0 auto !important; 
+    padding: 0 auto !important; 
+    border: 0px;
+  
+}
+
+.wellcustom {
+    box-shadow: 3px 3px 5px grey;
+}
