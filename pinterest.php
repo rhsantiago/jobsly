@@ -30,7 +30,10 @@
     <link href="css/owl.theme.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/animate.css" rel="stylesheet">
- <!-- Modernizr /-->
+    <script src="js/modernizr-2.8.3.min.js"></script>
+ 
+ <!-- Modernizr /
+       <link href="css/bootstrap.min.css" rel="stylesheet">-->
 	<!--[if IE 9]>
 		<script src="js/PIE_IE9.js"></script>
 	<![endif]-->
@@ -46,7 +49,7 @@
 
 <body class="body" id="body">
     <!-- NavBar-->
-	<nav class="nav navbar-default navbar-color" role="navigation">
+	<nav class="navbar-default navbar-color " role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -74,27 +77,82 @@
 	
     
 <div class="container">
-  <h2>Masonry CSS with Bootstrap</h2>
+  <h2 class="h2custom">Masonry CSS with Bootstrap</h2>
 <div class="row">
     <div class="item">
-       
-      <div class="well wellcustom">  
-         
-            <img src="https://unsplash.it/550/400/?random" class="img-responsive cardimages" alt="">      
-    </div>
-            
+      <div class="panel panel-default panelcustom">
+                <div class="panel-heading">
+                    <h3 class="panel-title paneltitlecustom">Technical Support Specialists - Level 3</h3>
+                </div>
+              
+                <div class="panel-image hide-panel-body">
+                    <img src="https://unsplash.it/350/150/?random" class="panel-image-preview" />
+                </div>
+               
+                <!-- hide panel body
+                <div class="panel-body">
+                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                </div>
+                -->
+                <div class="panel-footer text-left">     
+                    <ul>
+                        <li>Minimum 2 years experience</li><hr class="hrcustom"> 
+                        <li>Great English spoken and written skills</li><hr class="hrcustom">
+                        <li>Amendable to night shift</li>
+                        
+                    </ul>
+                </div>
+            </div>
     </div>
  	<div class="item">
-        <div class="well"> 
-        2 blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah
-            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
-        </div>
+        <div class="panel panel-default panelcustom">
+                <div class="panel-heading">
+                    <h3 class="panel-title paneltitlecustom">Marketing Manager, Six Sigma Certified</h3>
+                </div>
+              
+                <div class="panel-image hide-panel-body">
+                    <img src="https://unsplash.it/350/150/?random" class="panel-image-preview" />
+                </div>
+               
+                <!-- hide panel body
+                <div class="panel-body">
+                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                </div>
+                -->
+                <div class="panel-footer text-left">     
+                    <ul>
+                        <li>Minimum 8 years experience</li><hr class="hrcustom"> 
+                        <li>Managed a team of more than 100 members</li><hr class="hrcustom">
+                        <li>Management experience not less than 4 years</li>
+                        
+                    </ul>
+                </div>
+            </div>
     </div>
     <div class="item">
-        <div class="well"> 
-            <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
-        3 blah blah blah blah blah blah blah blah h
-        </div>
+        <div class="panel panel-default panelcustom">
+                <div class="panel-heading">
+                    <h3 class="panel-title paneltitlecustom">Junior Finance Analyst 1 yr. experience</h3>
+                </div>
+              
+                <div class="panel-image hide-panel-body">
+                    <img src="https://unsplash.it/350/150/?finance" class="panel-image-preview" />
+                </div>
+               
+                <!-- hide panel body
+                <div class="panel-body">
+                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                </div>
+                -->
+                <div class="panel-footer text-left">     
+                    <ul>
+                        <li>Fresh graudates welcome</li><hr class="hrcustom"> 
+                        <li>Motivated and driven</li><hr class="hrcustom">
+                        <li>Must possess a bachelor's degree of any finance course</li>
+                        
+                    </ul>
+                </div>
+            </div>
     </div>
     <div class="item">
         <div class="well">
@@ -117,11 +175,11 @@
     <div class="item">
            <div class="panel panel-default panelcustom">
                 <div class="panel-heading">
-                    <h3 class="panel-title">You can even have a Panel Title</h3>
+                    <h3 class="panel-title paneltitlecustom">Senior Web Developer, Bootstrap - PHP</h3>
                 </div>
               
                 <div class="panel-image hide-panel-body">
-                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                    <img src="https://unsplash.it/350/150/?computers" class="panel-image-preview" />
                 </div>
                
                 <!-- hide panel body
@@ -129,7 +187,13 @@
                     <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
                 </div>
                 -->
-                <div class="panel-footer text-center">             
+                <div class="panel-footer text-left">     
+                    <ul>
+                        <li>Minimum 4 years experience</li><hr class="hrcustom"> 
+                        <li>Agile/Scrum experience</li><hr class="hrcustom">
+                        <li>Angular JS or other frameworks preferred</li>
+                        
+                    </ul>
                 </div>
             </div>
     </div>
@@ -149,10 +213,12 @@
 
     
 </body>
-     <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-  
-    <script src="js/mycustom.js"></script>
+     <!-- JavaScript 
+    <script src="js/jquery-1.10.2.js"></script>  -->
+    <script src="js/mycustom.js"></script> 
+    <script src="js/bootstrap.js"></script>
+	<script src="js/script.js"></script>
+
 
 	
 </html> 

@@ -75,5 +75,19 @@
 
 
 .panelcustom {
-    box-shadow: 1px 1px grey;
+    box-shadow: 2px 2px 1px grey;
+}
+
+
+
+.hrcustom {
+    margin: 0 !important;
+}
+
+.h2custom {
+    color: #34495e;
+}
+
+.paneltitlecustom {
+    color: #34495e !important;
 }

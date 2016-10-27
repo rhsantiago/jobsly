@@ -477,7 +477,7 @@ NO MORE TABLES!! ;)
 
 
 .navbar-color {
-  
+   position: fixed;
     background-color: rgba(75, 183, 119, 0.7) !important;
  
 }
@@ -534,3 +534,5 @@ NO MORE TABLES!! ;)
 .menuItem .menus {
    color: #34495e !important;
 }
+
+
