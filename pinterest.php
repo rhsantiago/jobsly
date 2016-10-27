@@ -77,12 +77,12 @@
   <h2>Masonry CSS with Bootstrap</h2>
 <div class="row">
     <div class="item">
-        <div class="col-md-12">
+       
       <div class="well wellcustom">  
-          <div class=""></div>
+         
             <img src="https://unsplash.it/550/400/?random" class="img-responsive cardimages" alt="">      
-          </div>
-             </div>
+    </div>
+            
     </div>
  	<div class="item">
         <div class="well"> 
@@ -102,11 +102,7 @@
         blah blah blah blah 
         </div>
     </div>
-    <div class="item">
-        <div class="well"> 
-          blah blah blah. The container inside the item must be position:relative
-        </div>
-    </div>
+  
  	<div class="item">
         <div class="well"> 
             <img src="https://unsplash.it/350/200/?random" class="img-responsive cardimages" alt="">
@@ -119,9 +115,23 @@
         </div>
     </div>
     <div class="item">
-        <div class="well"> 
-        blah blah blah blah
-        </div>
+           <div class="panel panel-default panelcustom">
+                <div class="panel-heading">
+                    <h3 class="panel-title">You can even have a Panel Title</h3>
+                </div>
+              
+                <div class="panel-image hide-panel-body">
+                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                </div>
+               
+                <!-- hide panel body
+                <div class="panel-body">
+                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                </div>
+                -->
+                <div class="panel-footer text-center">             
+                </div>
+            </div>
     </div>
     <div class="item">
         <div class="well"> 
