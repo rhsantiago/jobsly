@@ -77,84 +77,163 @@
 	
     
 <div class="container">
-  <h2 class="h2custom">Masonry CSS with Bootstrap</h2>
+  <h1 class="h1custom">Masonry CSS with Bootstrap</h1>
 <div class="row">
-    <div class="item">
-      <div class="panel panel-default panelcustom">
-                <div class="panel-heading">
-                    <h3 class="panel-title paneltitlecustom">Technical Support Specialists - Level 3</h3>
+    
+    <div class="item">       
+        <div class="wrapper">            
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
                 </div>
-              
-                <div class="panel-image hide-panel-body">
-                    <img src="https://unsplash.it/350/150/?random" class="panel-image-preview" />
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+                    <div class="card__meta">
+                        <a href="#" class="industry_meta">BPO/Call Centers</a>
+                        <time>17th March</time>
+                    </div>
+                    <br>
+                    <article class="card__article">
+                        <h2 class="h2custom"><a href="#">Technical Support Specialists - Level 3</a></h2>
+                        <br>
+                        <p>
+                            Minimum 2 years experience<br>
+                            Great English spoken and written skills<br>
+                            Amendable to night shift                       
+                        </p>
+                    </article>
                 </div>
-               
-                <!-- hide panel body
-                <div class="panel-body">
-                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+
+                <div class="card__action">
+                    
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                           <a href="#" class="industry_meta">CHAMP Cargosystems</a>
+                        </div>
+                    </div>
                 </div>
-                -->
-                <div class="panel-footer text-left">     
-                    <ul class="ulcustom">
-                        <li>Minimum 2 years experience</li><hr class="hrcustom"> 
-                        <li>Great English spoken and written skills</li><hr class="hrcustom">
-                        <li>Amendable to night shift</li>
-                        
-                    </ul>
                 </div>
             </div>
-    </div>
+        </div>
+    
+    
  	<div class="item">
-        <div class="panel panel-default panelcustom">
-                <div class="panel-heading">
-                    <h3 class="panel-title paneltitlecustom">Marketing Manager, Six Sigma Certified</h3>
+        <div class="wrapper">            
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
                 </div>
-              
-                <div class="panel-image hide-panel-body">
-                    <img src="https://unsplash.it/350/150/?random" class="panel-image-preview" />
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+                    <div class="card__meta">
+                        <a href="#" class="industry_meta">Finance & Accounting</a>
+                        <time>17th March</time>
+                    </div>
+                    <br>
+                    <article class="card__article">
+                        <h2 class="h2custom"><a href="#">Marketing Manager, Six Sigma Certified</a></h2>
+                        <br>
+                        <p>
+                            Minimum 8 years experience
+                        Managed a team of more than 100 members
+                        Management experience not less than 4 years
+                        Six Sigma Certification is a must                       
+                        </p>
+                    </article>
                 </div>
-               
-                <!-- hide panel body
-                <div class="panel-body">
-                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+
+                <div class="card__action">
+                    
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                           <a href="#" class="industry_meta">Nestle Philippines</a>
+                        </div>
+                    </div>
                 </div>
-                -->
-                <div class="panel-footer text-left">     
-                    <ul class="ulcustom">
-                        <li>Minimum 8 years experience</li><hr class="hrcustom"> 
-                        <li>Managed a team of more than 100 members</li><hr class="hrcustom">
-                        <li>Management experience not less than 4 years</li><hr class="hrcustom">
-                        <li>Six Sigma Certification is a must</li>
-                        
-                    </ul>
                 </div>
-            </div>
+            </div>               
     </div>
+    
     <div class="item">
-        <div class="panel panel-default panelcustom">
-                <div class="panel-heading">
-                    <h3 class="panel-title paneltitlecustom">Junior Finance Analyst 1 yr. experience</h3>
+        <div class="wrapper">            
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
                 </div>
-              
-                <div class="panel-image hide-panel-body">
-                    <img src="https://unsplash.it/350/150/?finance" class="panel-image-preview" />
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+                    <div class="card__meta">
+                        <a href="#" class="industry_meta">Finance & Accounting</a>
+                        <time>17th March</time>
+                    </div>
+                    <br>
+                    <article class="card__article">
+                        <h2 class="h2custom"><a href="#">Junior Finance Analyst 1 yr. experience</a></h2>
+                        <br>
+                        <p>
+                        Fresh graudates welcome
+                        Motivated and driven
+                        Must possess a bachelor's degree of any finance course              
+                        </p>
+                    </article>
                 </div>
-               
-                <!-- hide panel body
-                <div class="panel-body">
-                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+
+                <div class="card__action">
+                    
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                           <a href="#" class="industry_meta">RCBC Corp.</a>
+                        </div>
+                    </div>
                 </div>
-                -->
-                <div class="panel-footer text-left">     
-                    <ul class="ulcustom">
-                        <li>Fresh graudates welcome</li><hr class="hrcustom"> 
-                        <li>Motivated and driven</li><hr class="hrcustom">
-                        <li>Must possess a bachelor's degree of any finance course</li>
-                        
-                    </ul>
                 </div>
-            </div>
+            </div>                
     </div>
+    
+    <div class="item">
+        <div class="well"> 
+            <blockquote>
+              <p>   Choose a job you love, and you will never have to work a day in your life.</p>
+              <footer><cite title="Confucius">Confucius</cite></footer>
+            </blockquote>
+      
+
+        </div>
+    </div>
+    
     <div class="item">
          <div class="panel panel-default panelcustom">
                 <div class="panel-heading">
@@ -190,31 +269,52 @@
     </div>
     <div class="item">
         <div class="well">
-        blah blah blah blah blah blah blah blah h
+        Click on a job title to see the full description. Don't forget to share on facebook!
         </div>
     </div>
     <div class="item">
-           <div class="panel panel-default panelcustom">
-                <div class="panel-heading">
-                    <h3 class="panel-title paneltitlecustom">Senior Web Developer, Bootstrap - PHP</h3>
+           <div class="wrapper">            
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
                 </div>
-              
-                <div class="panel-image hide-panel-body">
-                    <img src="https://unsplash.it/350/150/?computers" class="panel-image-preview" />
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
+                    </div>
+
+                    <div class="card__meta">
+                        <a href="#" class="industry_meta">BPO/Call Centers</a>
+                        <time>17th March</time>
+                    </div>
+                    <br>
+                    <article class="card__article">
+                        <h2 class="h2custom"><a href="#">Technical Support Specialists - Level 3</a></h2>
+                        <br>
+                        <p>
+                            Minimum 2 years experience<br>
+                            Great English spoken and written skills<br>
+                            Amendable to night shift                       
+                        </p>
+                    </article>
                 </div>
-               
-                <!-- hide panel body
-                <div class="panel-body">
-                    <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+
+                <div class="card__action">
+                    
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                           <a href="#" class="industry_meta">CHAMP Cargosystems</a>
+                        </div>
+                    </div>
                 </div>
-                -->
-                <div class="panel-footer text-left">     
-                    <ul class="ulcustom">
-                        <li>Minimum 4 years experience</li><hr class="hrcustom"> 
-                        <li>Agile/Scrum experience</li><hr class="hrcustom">
-                        <li>Angular JS or other frameworks preferred</li>
-                        
-                    </ul>
                 </div>
             </div>
     </div>

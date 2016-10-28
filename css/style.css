@@ -506,11 +506,11 @@ pre {
 .thumbnail {
   display: block;
   padding: 4px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   line-height: 1.72222;
   background-color: #ffffff;
-  border: 2px solid #bdc3c7;
-  border-radius: 6px;
+  /*border: 2px solid #bdc3c7;
+  border-radius: 6px;*/
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
@@ -528,7 +528,9 @@ a.thumbnail.active {
   border-color: #16a085;
 }
 .thumbnail .caption {
-  padding: 9px;
+    margin-bottom: 10;
+    padding-bottom: 20x;
+    padding-left: 10px;
   color: #34495e;
 }
 .btn {
