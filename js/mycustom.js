@@ -15,4 +15,23 @@ $(document).ready(function($) {
     });
   
 });
- 
+
+
+
+$('#job-modal').on('show.bs.modal', function(e) {
+
+        var $modal = $(this),
+              jobid = e.relatedTarget.id,
+              title = e.relatedTarget.title;
+            // jobid= $(this).data('jobid');
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'modal.php',
+            data: 'jobid=' + jobid +
+                  '&title=' + title,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+            }
+        });
+    })

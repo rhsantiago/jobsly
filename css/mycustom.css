@@ -70,10 +70,6 @@
 	padding: 0px;
 }
 
-
-
-
-
 .panelcustom {
     box-shadow: 2px 2px 1px grey;
 }
@@ -97,25 +93,6 @@
     margin-top: -15px !important;
 }
 
-.paneltitlecustom {
-    color: #34495e !important;
-}
-
-
-
-
-
-
-
-.ulcustom li{
-    margin-left: -25px !important;
-    font-size: 14px !important;
-}
-
-.ulcustom hr{
-    margin-left: -25px !important;
-}
-
 .post-content {
     top: 0;
     left:0;
@@ -127,8 +104,6 @@
 
 }
 
-HTML  CSS  JS  Result
-Edit on 
 @import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 @import 'http://fonts.googleapis.com/css?family=Roboto:700,400';
 /*

@@ -74,7 +74,15 @@
 		   
 		</div>
 	</nav> 
-	
+    
+    <!-- Modal -->
+	<div class="modal fullscreen-modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
     
 <div class="container">
   <h1 class="h1custom">Masonry CSS with Bootstrap</h1>
@@ -104,7 +112,7 @@
                     </div>
                     <br>
                     <article class="card__article">
-                        <h2 class="h2custom"><a href="#">Technical Support Specialists - Level 3</a></h2>
+                        <h2 class="h2custom"><a href="#jobModal" data-toggle="modal" title="Technical Support Specialists - Level 3" id="1" data-target="#job-modal">Technical Support Specialists - Level 3</a></h2>
                         <br>
                         <p>
                             Minimum 2 years experience<br>
@@ -267,6 +275,11 @@
         blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah
         </div>
     </div>
+    
+     <div class="item">
+            <div class="alert alert-info" role="alert"> Click on a job title to see the full description. Don't forget to share on facebook!</div>
+     </div>
+    
     <div class="item">
         <div class="well">
         Click on a job title to see the full description. Don't forget to share on facebook!
