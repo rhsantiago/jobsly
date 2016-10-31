@@ -10,30 +10,16 @@
     <meta name="author" content="">
 
     <title>jobsly – jobs for the modern world</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
-    <!-- Bootstrap core CSS 
-    <link href="css/bootstrap.min.css" rel="stylesheet">-->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Custom Google Web Font -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-	
-    <link href="css/mycustom.css" rel="stylesheet">
-  
-	
-	 <!-- Owl-Carousel -->
-    <link href="css/custom.css" rel="stylesheet">
-	<link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<link href="css/animate.css" rel="stylesheet">
-    <script src="js/modernizr-2.8.3.min.js"></script>
+     
+     <?php
+        include 'inc/resources.php';
+    ?>
     
+    
+    
+     
  <!-- Modernizr /
-  <link href="css/general.css" rel="stylesheet">
+   <link href="css/general.css" rel="stylesheet">
        <link href="css/bootstrap.min.css" rel="stylesheet">-->
 	<!--[if IE 9]>
 		<script src="js/PIE_IE9.js"></script>
@@ -49,33 +35,7 @@
 </head>
 
 <body class="body" id="body">
-    <!-- NavBar-->
-	<nav class="navbar-default navbar-color " role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand logo" href="#home">jobsly</a>
-			</div>
-
-			<div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					
-					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
-					<li class="menuItem"><a href="#useit">Features</a></li>
-					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<li class="menuItem"><a href="#credits">Credits</a></li>
-					<li class="menuItem"><a href="#contact">Contact</a></li>
-				</ul>
-			</div>
-		   
-		</div>
-	</nav> 
-    
+        
     <!-- Modal -->
 	<div class="modal fullscreen-modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
@@ -84,6 +44,13 @@
 	    </div>
 	  </div>
 	</div>
+    
+    
+    <?php
+        include 'inc/navbar.php';
+    ?>
+    
+    
     
 <div class="container">
   <h1 class="h1custom">Masonry CSS with Bootstrap</h1>
@@ -358,15 +325,13 @@
     </div>
 
     
-</body>
-    
-     <!-- JavaScript 
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/script.js"></script>-->
+</body>    
+     
     <script src="js/mycustom.js"></script> 
-    <script src="js/bootstrap.js"></script>
-	
-
+   <!-- local
+<script src="js/bootstrap.js"></script>    -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	
 </html> 

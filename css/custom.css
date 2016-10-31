@@ -479,6 +479,9 @@ NO MORE TABLES!! ;)
 .navbar-color {
    position: fixed;
     background-color: rgba(75, 183, 119, 0.7) !important;
+    margin-left: 0;
+    padding-left: 0px;
+    
  
 }
 

@@ -2,6 +2,20 @@
     background-color: #e7e7e7;
  
 }
+
+.navbar-header .logo{ 
+  color: #E6E6FA !important;
+  font-family: "Oleo Script", cursive !important;
+  font-size: 38px;
+  text-transform: lowercase; 
+  text-decoration: none; 
+  text-shadow: 2px 2px #000;  
+  padding: 7px !important;
+
+  
+}
+
+
 *, *:before, *:after {box-sizing:  border-box !important;}
 
 
@@ -22,6 +36,22 @@
 .well {
  position:relative;
  display: block;
+}
+
+@media (max-width: 992px){
+
+    .navbar-fixed-top {
+        position: fixed !important;
+        top: auto;/* Auto position navbar top */
+    }
+
+    .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+        max-height:inherit;/* Clear max-height */
+    }
+
+    body{
+        padding:0px;/* No padding */
+   }
 }
 
 
@@ -330,4 +360,13 @@ h2 {
     }
 .industry_meta {
     color: #3498db;S    
+}
+
+
+
+.logomain {
+    letter-spacing: 0px;
+	font-weight: 200 !important;
+    color: #E6E6FA !important;
+    margin-left: 5px;
 }
