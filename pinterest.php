@@ -7,11 +7,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
     <title>jobsly – jobs for the modern world</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
     <!-- Bootstrap core CSS 
     <link href="css/bootstrap.min.css" rel="stylesheet">-->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 	
     <link href="css/mycustom.css" rel="stylesheet">
-   <link href="css/general.css" rel="stylesheet">
+  
 	
 	 <!-- Owl-Carousel -->
     <link href="css/custom.css" rel="stylesheet">
@@ -31,8 +31,9 @@
 	<link href="css/style.css" rel="stylesheet">
 	<link href="css/animate.css" rel="stylesheet">
     <script src="js/modernizr-2.8.3.min.js"></script>
- 
+    
  <!-- Modernizr /
+  <link href="css/general.css" rel="stylesheet">
        <link href="css/bootstrap.min.css" rel="stylesheet">-->
 	<!--[if IE 9]>
 		<script src="js/PIE_IE9.js"></script>
@@ -342,11 +343,23 @@
           blah blah blah. The container inside the item must be position:relative
         </div>
     </div>
+    
+      
+    
 </div>
 </div>
+    <div class="container">
+  
+        <div class="row">
+             <div class="loadmore" id="loadmore">
+       
+            </div> 
+        </div>
+    </div>
 
     
 </body>
+    
      <!-- JavaScript 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/script.js"></script>-->
