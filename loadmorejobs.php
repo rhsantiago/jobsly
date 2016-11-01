@@ -1,3 +1,8 @@
+
+<div class="item">
+         <img src="https://lh5.ggpht.com/CztHBMfmRKhSv-_up3GCkK5R5M0TCm1czCVkVBwB0urvaHUVCEh6YtpS7DY3mcZuwC2SzX9A3w=w338" 
+                         width='338' height="280" alt="user">   
+    </div>  
 <div class="item">
         <div class="wrapper">            
             <div class="card radius shadowDepth1">
@@ -55,6 +60,7 @@
 
         </div>
     </div>  
+
 
 <div class="item">
         <div class="wrapper">            

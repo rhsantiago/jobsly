@@ -1,129 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
+<html>
+    <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="author" content="">
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
-</head>
 
+    <title>jobsly – jobs for the modern world</title>
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  
+}
+    
+
+</style>
+        <?php
+            include 'inc/resources.php';
+        ?>
+      
+    </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top no-margin">
-    <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header fixed-brand">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><i class="fa fa-rocket fa-4"></i> SEEGATESITE</a>        
-                </div><!-- navbar-header-->
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active" ><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
-                            </ul>
-                </div><!-- bs-example-navbar-collapse-1 -->
-    </nav>
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav nav-pills nav-stacked sidebar navbar-fixed-left" id="menu">
-                
-                 <li>
-                   &nbsp;
-                </li>
-                <li>
-                   &nbsp;
-                </li>
-              
-                <li class="active">
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span> Dashboard</a>
-                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#">link1</a></li>
-                        <li><a href="#">link2</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Shortcut</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a></li>
-                        <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a></li>
-
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cloud-download fa-stack-1x "></i></span>Overview</a>
-                </li>
-                <li>
-                    <a href="#"> <span class="fa-stack fa-lg pull-left"><i class="fa fa-cart-plus fa-stack-1x "></i></span>Events</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-youtube-play fa-stack-1x "></i></span>About</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-wrench fa-stack-1x "></i></span>Services</a>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-server fa-stack-1x "></i></span>Contact</a>
-                </li>
-            </ul>
-        </div><!-- /#sidebar-wrapper -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+    
+  
+<div class="container">
+    <?php
+        $_GET['page'] = 'main';
+        include 'inc/navbar.php';
+    ?>
+        
  
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid xyz">
-                <br><br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
+    
+<div id="main">
+ <div class="row-fluid">
+      
+        <div class="col-md-8 col-centered">            
+                    <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+                         width='728' height="90" alt="user">         
+          
+		</div>
+     <div class="col-md-4 col-centered">    
+     </div>
+	
+    </div>
+
+        <h1 class="h1custom">Masonry CSS with Bootstrap</h1>
+        
+<div class="row">
+
+    <div class="item">       
+        <div class="wrapper">            
+            <div class="card radius shadowDepth1">
+                <div class="card__image border-tlr-radius">
+                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
+                </div>
+
+                <div class="card__content card__padding">
+                    <div class="card__share">
+                        <div class="card__social">  
+                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
+                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
+                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
+                        </div>
+
+                        <a id="share" class="share-toggle share-icon" href="#"></a>
                     </div>
-                    
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
+
+                    <div class="card__meta">
+                        <a href="#" class="industry_meta">BPO/Call Centers</a>
+                        <time>17th March</time>
                     </div>
+                    <br>
+                    <article class="card__article">
+                        <h2 class="h2custom"><a href="#jobModal" data-toggle="modal" title="Technical Support Specialists - Level 3" id="1" data-target="#job-modal">Technical Support Specialists - Level 3</a></h2>
+                        <br>
+                        <p>
+                            Minimum 2 years experience<br>
+                            Great English spoken and written skills<br>
+                            Amendable to night shift                       
+                        </p>
+                    </article>
+                </div>
+
+                <div class="card__action">
                     
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
+                    <div class="card__author">
+                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
+                        <div class="card__author-content">
+                           <a href="#" class="industry_meta">CHAMP Cargosystems</a>
+                        </div>
                     </div>
-                    
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
-                    </div>
-                    
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
-                    </div>
-                    
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar With Bootstrap 3 by <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/" >Seegatesite.com</a></h1>
-                        <p>This sidebar is adopted from start bootstrap simple sidebar startboostrap.com, which I modified slightly to be more cool. For tutorials and how to create it , you can read from my site here <a href="http://seegatesite.com/create-simple-cool-sidebar-menu-with-bootstrap-3/">create cool simple sidebar menu with boostrap 3</a></p>
-                    </div>
-                    
-                    
+                </div>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
-
+            
     </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/sidebar_menu.js"></script>
-</body>
+    
+   
+    </div>
+    
+    <div class="container">
+  
+        <div class="row">
+             <div class="loadmore" id="loadmore">
+       
+            </div> 
+        </div>
+    </div>
 
+<script>
+    var isClosed = true;
+function openNav() {
+    if(isClosed){
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        isClosed = false;
+    } else{
+        closeNav();
+    }
+}
+
+function closeNav() {
+  
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    isClosed = true;
+}
+
+</script>
+     <script src="js/mycustom.js"></script> 
+   <!-- local
+<script src="js/bootstrap.js"></script>    -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 </html>
+

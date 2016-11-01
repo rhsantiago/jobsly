@@ -2814,9 +2814,9 @@ input[type="button"].btn-block {
   color: rgba(255, 255, 255, 0.75);
 }
 .btn-primary {
-  background-color: #3fbf79;
+ background-color: #3fbf79;
   color: #ffffff;
-  *background-color: #3fbf79;
+  *background-color: #3fbf79; 
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
 }

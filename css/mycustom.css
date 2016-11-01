@@ -368,5 +368,50 @@ h2 {
     letter-spacing: 0px;
 	font-weight: 200 !important;
     color: #E6E6FA !important;
-    margin-left: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+
+.btnmenutoggle {
+    background-color: dodgerblue !important;
+    border-color: dodgerblue !important;
+    margin: 7px !important;
+    padding: 7px;
+  
+    
+}
+
+.btn-primary:hover, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #285e8e !important;
+    border-color: #285e8e !important; /*set the color you want here*/
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: dodgerblue !important;
+  border-color: dodgerblue !important;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+    margin-top: 70px !important; 
+
 }

@@ -47,6 +47,7 @@
     
     
     <?php
+        $_GET['page'] = 'jobs';
         include 'inc/navbar.php';
     ?>
     
