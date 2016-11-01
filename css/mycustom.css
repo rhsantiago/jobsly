@@ -3,6 +3,23 @@
  
 }
 
+.btn-custom {
+  background-color: hsl(258, 37%, 13%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#61489d", endColorstr="#1c142d");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#61489d), to(#1c142d));
+  background-image: -moz-linear-gradient(top, #61489d, #1c142d);
+  background-image: -ms-linear-gradient(top, #61489d, #1c142d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #61489d), color-stop(100%, #1c142d));
+  background-image: -webkit-linear-gradient(top, #61489d, #1c142d);
+  background-image: -o-linear-gradient(top, #61489d, #1c142d);
+  background-image: linear-gradient(#61489d, #1c142d);
+  border-color: #1c142d #1c142d hsl(258, 37%, 5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
+  -webkit-font-smoothing: antialiased;
+}
+
 .navbar-header .logo{ 
   color: #E6E6FA !important;
   font-family: "Oleo Script", cursive !important;
@@ -14,6 +31,23 @@
 
   
 }
+
+.navbar-color {
+   position: fixed;
+    background-color: rgba(75, 183, 119, 0.7) !important;
+    margin-left: 0;
+    padding-left: 0px;
+    
+ 
+}
+
+.navbar-isopaque {
+   position: fixed;
+    background-color: rgb(75, 183, 119) !important;
+    margin-left: 0;
+    padding-left: 0px; 
+}
+
 
 
 *, *:before, *:after {box-sizing:  border-box !important;}
@@ -369,25 +403,38 @@ h2 {
 	font-weight: 200 !important;
     color: #E6E6FA !important;
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 30px;
 }
 
 
 
 
-.btnmenutoggle {
-    background-color: dodgerblue !important;
-    border-color: dodgerblue !important;
+ .btnmenutoggle {
+     
+    background-color: #3498db !important;   
+    border-color: #3498db !important;
+    color: #fff !important;
+     
     margin: 7px !important;
     padding: 7px;
   
     
 }
 
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #0A4958;
+  border-color: #0A4958;
+}
+
 .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
     color: #fff;
-    background-color: #285e8e !important;
-    border-color: #285e8e !important; /*set the color you want here*/
+    background-color: #0A4958 !important;
+    border-color: #0A4958 !important; /*set the color you want here*/
 }
 
 .btn-primary.disabled,
@@ -405,8 +452,8 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: dodgerblue !important;
-  border-color: dodgerblue !important;
+  background-color: #0A4958 !important;
+  border-color:#0A4958 !important;
 }
 
 .col-centered{

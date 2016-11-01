@@ -23,7 +23,7 @@
     <?php
     if($isDashboard){
         ?>
-<button onclick="openNav()" class="btn btn-sm btn-primary btnmenutoggle"><span class="glyphicon glyphicon-indent-left"></span> Menu</button>
+<button onclick="openNav()" class="btn btn-sm btn-primary btnmenutoggle btn-custom"><span class="glyphicon glyphicon-indent-left"></span> Menu</button>
     <?php
     }
     ?>
