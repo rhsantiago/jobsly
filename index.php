@@ -29,9 +29,10 @@
     <link href="css/custom.css" rel="stylesheet">
 	<link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	 <link href="css/style.css" rel="stylesheet">
 	<link href="css/animate.css" rel="stylesheet">
-	
+  
+	 
 	<!-- Magnific Popup core CSS file -->
 	<link rel="stylesheet" href="css/magnific-popup.css"> 
 	
@@ -106,7 +107,7 @@
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
 			<div class="button_down "> 
-				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#latest"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a>
+				<a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#latest"> <img class="img_scroll" src="img/icon/circle.png" alt=""> </a> 
 			</div>
 		</div>
     </div>
@@ -420,7 +421,7 @@
 		   href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
 		   Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
 		   
-	   
+              </BR>
           </div> <!-- /col-xs-7 -->
 
           <div class="col-md-5">

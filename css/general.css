@@ -214,6 +214,7 @@ background: #1abc9c !important;
 	min-height: 60px;
 	width: 100%;
 	z-index: 999;
+     background-color: rgba(75, 183, 119, 0.7);
 	
 }
 
