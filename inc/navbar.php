@@ -1,13 +1,13 @@
 <?php
         $isOpaque = 'navbar-color';
         $isDashboard = false;
+        $page = 'none';
         $page = $_GET["page"];
         if($page=='main')
         {
             $isOpaque = 'navbar-isopaque';
             $isDashboard = true;
         }
-   
 ?>
 
 <div class="container-fluid">
@@ -23,26 +23,28 @@
     <?php
     if($isDashboard){
         ?>
-<button onclick="openNav()" class="btn btn-sm btn-primary btnmenutoggle btn-custom"><span class="glyphicon glyphicon-indent-left"></span> Menu</button>
+<button onclick="openNav()" class="btn btn-sm btn-primary btn-custom"><span class="glyphicon glyphicon-indent-left"></span> Menu</button>
     <?php
     }
     ?>
                     
 				</div>
-				
-				<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">Link</a>
-						</li>
-						<li>
-							<a href="#">Link</a>
-						</li>					
-					</ul>
-					
-					
-				</div>
-				
+				 <?php
+                    if($isDashboard){
+                        ?>
+                                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active">
+                                            <a href="#">Link</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Link</a>
+                                        </li>					
+                                    </ul>
+                                </div>
+				 <?php
+                    }
+                    ?>
 			</nav>
 		</div>
 	</div>

@@ -18,7 +18,8 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #61489d;
+    background:url('img/metal2.png') repeat;
+  /*  background-color: #61489d;*/
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -28,9 +29,11 @@ body {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #34495e;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
+    margin-left: 5px;
+    font-weight: 100 !important;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -67,10 +70,11 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+    
+    <div class="sidebar-item"> <a href="#">About</a> </div>
+  <div class="sidebar-item"><a href="#">Services</a></div>
+  <div class="sidebar-item"><a href="#">Clients</a></div>
+  <div class="sidebar-item"><a href="#">Contact</a></div>
 </div>
     
   
@@ -79,7 +83,7 @@ body {
         $_GET['page'] = 'main';
         include 'inc/navbar.php';
     ?>
-        
+       
  
     
 <div id="main">
@@ -87,7 +91,7 @@ body {
       
         <div class="col-md-8 col-centered">            
                     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                         width='728' height="90" alt="user">         
+                         alt="user">         
           
 		</div>
      <div class="col-md-4 col-centered">    
@@ -147,7 +151,7 @@ body {
         </div>
             
     </div>
-    
+    </div>  
    
     </div>
     

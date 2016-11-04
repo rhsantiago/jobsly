@@ -10,5 +10,6 @@
     <link href="css/custom.css" rel="stylesheet">	
 	<link href="css/style.css" rel="stylesheet">	
     <link href="css/mycustom.css" rel="stylesheet">
+    <link href="css/media.css" rel="stylesheet">
 <!-- Bootstrap core CSS 
     <link href="css/bootstrap.min.css" rel="stylesheet">-->

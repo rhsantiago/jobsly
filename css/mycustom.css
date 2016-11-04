@@ -3,22 +3,7 @@
  
 }
 
-.btn-custom {
-  background-color: hsl(258, 37%, 13%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#61489d", endColorstr="#1c142d");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#61489d), to(#1c142d));
-  background-image: -moz-linear-gradient(top, #61489d, #1c142d);
-  background-image: -ms-linear-gradient(top, #61489d, #1c142d);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #61489d), color-stop(100%, #1c142d));
-  background-image: -webkit-linear-gradient(top, #61489d, #1c142d);
-  background-image: -o-linear-gradient(top, #61489d, #1c142d);
-  background-image: linear-gradient(#61489d, #1c142d);
-  border-color: #1c142d #1c142d hsl(258, 37%, 5%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.52);
-  -webkit-font-smoothing: antialiased;
-}
+
 
 .navbar-header .logo{ 
   color: #E6E6FA !important;
@@ -86,6 +71,8 @@
     body{
         padding:0px;/* No padding */
    }
+    
+ 
 }
 
 
@@ -95,10 +82,15 @@
   margin-left: auto;
   width: 100%;
 }
+
+
+
 @media (min-width: 768px) {
   .fullscreen-modal .modal-dialog {
     width: 750px;
   }
+  
+    
 }
 @media (min-width: 992px) {
   .fullscreen-modal .modal-dialog {
@@ -409,32 +401,22 @@ h2 {
 
 
 
- .btnmenutoggle {
-     
-    background-color: #3498db !important;   
-    border-color: #3498db !important;
-    color: #fff !important;
-     
-    margin: 7px !important;
-    padding: 7px;
-  
-    
-}
+
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  color: #ffffff;
-  background-color: #0A4958;
-  border-color: #0A4958;
+  color: #fff;
+  background-color: #589fff;
+  border-color: #589fff;
 }
 
 .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
     color: #fff;
-    background-color: #0A4958 !important;
-    border-color: #0A4958 !important; /*set the color you want here*/
+    background-color: #589fff !important;
+    border-color: #589fff !important; /*set the color you want here*/
 }
 
 .btn-primary.disabled,
@@ -452,13 +434,80 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #0A4958 !important;
-  border-color:#0A4958 !important;
+  background-color: #589fff !important;
+  border-color:#589fff !important;
+     color: #fff;
 }
 
-.col-centered{
+.col-centered-login{
+    /*float: none;
+    margin: 0 auto; */
+    margin-top: 80px !important; 
+   
+
+}
+
+.sidebar-item:hover{
+     background-color: #589fff;
+    
+}
+
+.btn-custom {
+    background-color: #8f8f8f !important;   
+    border-color: #8f8f8f !important;
+    color: #fff !important;
+     
+    margin: 7px !important;
+    padding: 7px;
+}
+
+.login-col {
+   /* border: 1px solid;
+     border-color: red !important; */
+}
+
+.signup-welcome {
+ /* margin: 0 auto;
+  width: auto;*/
+    height: 300px;
+  background-color: #e7e7e7;
+    box-shadow: 3px 3px 3px #000;
+}
+
+.signin-welcome-text {
+    padding-top: 30px;
+    font-size: 28px;
+    color: #34495e;    
+    font-weight: 700 !important;   
+    font-family: "Lato", cursive !important;
+}
+
+.signin-logo {
+   color: #34495e !important;  
+  font-family: "Oleo Script", cursive !important;
+  font-size: 36px;
+  text-transform: lowercase; 
+  text-decoration: none;   
+  font-weight: 300 !important;
+  
+}
+
+
+
+.col-centered {
     float: none;
     margin: 0 auto;
-    margin-top: 70px !important; 
+    margin-top: 50px;
+}
 
+.signin-body {
+    background:url('../img/metal2.png') repeat;
+  /*  background-color: #61489d;*/
+    overflow-x: hidden;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }

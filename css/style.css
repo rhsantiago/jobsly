@@ -9,7 +9,7 @@ http://www.andreagalanti.it
 .navbar-header .logo{ 
   color: #E6E6FA !important;
   font-family: "Oleo Script", cursive !important;
-  font-size: 38px;
+  font-size: 42px;
   text-transform: lowercase; 
   text-decoration: none; 
   text-shadow: 2px 2px #000;  
@@ -636,8 +636,8 @@ fieldset[disabled] .btn-default.active {
   border-color: #bdc3c7;*/
 }
 .btn-primary {
-  color: #ffffff;
-  background-color: #0A4958;
+  color: #34495e;
+  background-color: #589fff;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -645,16 +645,16 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #ffffff;    
-  background-color: #0A4958;
-  border-color: #0A4958;
+  background-color: #589fff;
+  border-color: #589fff;
     
 }
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
     
-  background: #0A4958 !important;
-  border-color: #0A4958 !important;
+  background: #589fff !important;
+  border-color: #589fff !important;
     
 }
 .btn-primary.disabled,
