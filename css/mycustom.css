@@ -468,24 +468,28 @@ fieldset[disabled] .btn-primary.active {
 
 .signup-welcome {
  /* margin: 0 auto;
-  width: auto;*/
-    height: 300px;
+  width: auto;    
   background-color: #e7e7e7;
-    box-shadow: 3px 3px 3px #000;
+    box-shadow: 3px 3px 3px #000;*/
+   width: auto;
+    height: 150px;
+    padding-top: 10px;
 }
 
 .signin-welcome-text {
     padding-top: 30px;
-    font-size: 28px;
-    color: #34495e;    
+    font-size: 26px;
+    color: #fff; 
+    /*color: #34495e;*/
     font-weight: 700 !important;   
     font-family: "Lato", cursive !important;
 }
 
 .signin-logo {
-   color: #34495e !important;  
+   color: #fff !important;  
+    /*color: #34495e !important;*/
   font-family: "Oleo Script", cursive !important;
-  font-size: 36px;
+  font-size: 26px;
   text-transform: lowercase; 
   text-decoration: none;   
   font-weight: 300 !important;
@@ -501,8 +505,11 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .signin-body {
-    background:url('../img/metal2.png') repeat;
-  /*  background-color: #61489d;*/
+    
+     background:url('../img/metal2.png') repeat;
+  /*  background-color: #61489d;
+    
+    */
     overflow-x: hidden;
 }
 
@@ -510,4 +517,29 @@ fieldset[disabled] .btn-primary.active {
     display: inline-block;
     vertical-align: middle;
     float: none;
+}
+
+.signin-paragraph {
+    color: #fff;    
+    font-weight: 400 !important;   
+    font-family: "Lato", cursive !important;
+    font-size: 18px;
+}
+
+.signup-form {
+    display: none;
+    width: auto;
+    height: 500px;
+    background-color: #e7e7e7;
+    box-shadow: 3px 3px 3px #000;
+}
+
+.info-input-group-addon {
+    background-color: #589fff;
+    border: 1px solid #589fff;
+}
+
+.signin-form {
+    margin-top: 20px;
+    padding-top: 20px;
 }

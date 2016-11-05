@@ -7,7 +7,10 @@ $(function() {
 */
 
 $(document).ready(function($) {
-    
+    $('#employerform').hide();
+    $('#jobseekerform').hide();    
+    $('#signupform').html($('#jobseekerform').html());
+    $('#signupform').slideDown(1000);
     $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             $.ajax({
@@ -29,31 +32,36 @@ $(document).ready(function($) {
         $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
         $(this).toggleClass('share-expanded');
     });
- /*  
-     var win = $(window);
-
-	// Each time the user scrolls
-	win.scroll(function() {
-		// End of the document reached?
-		if ($(document).height() - win.height() == win.scrollTop()) {
-			//$('#loading').show();
-
-			$.ajax({
-				url: 'loadmorejobs.php',
-				dataType: 'html',
-                
-				success: function (html) {
-                    console.log(html);
-					$('.loadmore').append(html);
-					//$('#loading').hide();
-				}
-			});
-		}
-	});
     
-    */
+    
+    
+
+    
     
   
+});
+
+
+$('#employerbutton').click(function() {   
+    // replace the contents of the div with the link text  
+   $('#signupform').html($('#employerform').html());    
+   $('#signupform').hide().fadeIn('slow','linear');      
+  
+  
+    // cancel the default action of the link by returning false
+    return false;
+});
+
+$('#jobseekerbutton').click(function() {     
+    // replace the contents of the div with the link text
+    $('#signupform').html($('#jobseekerform').html());
+    $('#signupform').hide().fadeIn('slow','linear');   
+    
+   // $('#signupform').slideDown(1000);    
+        
+
+    // cancel the default action of the link by returning false
+    return false;
 });
 
 
@@ -76,5 +84,3 @@ $('#job-modal').on('show.bs.modal', function(e) {
             }
         });
     });
-
-

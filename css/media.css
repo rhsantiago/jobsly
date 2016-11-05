@@ -1,11 +1,12 @@
-/*
-@media screen and (min-width: 320px) {    
-      
- .login-col{
-    margin-bottom: 15px !important; 
+
+@media screen and (min-width: 320px) {       
+   
+   .login-col{
+    margin-bottom: 70px !important; 
+     text-align:center;
    }        
 }
-
+/*
 @media screen and (min-width: 350px) {    
   .signin-welcome-text{
      margin-left: 30px !important;
@@ -16,12 +17,28 @@
    }        
 }
 */
-@media screen and (min-width: 450px) {    
-
+@media screen and (min-width: 990px) {    
     
-  .col-centered-login{
-   
-      margin-top: 80px !important;
+  .col-centered-login{   
+      margin-top: 180px !important;
       text-align:center;
-   }    
+   } 
+    
+  .signin-welcome-text {   
+    font-size: 56px;
+  }
+ .signin-logo { 
+    font-size: 56px;
+  }
+ .signin-paragraph {  
+    font-size: 28px;
+  }
+    
+  .signin-body {
+      background:url('../img/landing-meeting.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+  }
 }
