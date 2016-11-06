@@ -4,4 +4,4 @@ $password = $_POST["password"];
 $usertype = $_POST["usertype"];
 ?>
 
-<div class="alert alert-success"> <?=$email ?> </div>
+ <div id="msgSubmit" class="h3 text-center">Ajax response!</div>   

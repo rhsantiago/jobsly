@@ -6,6 +6,8 @@ $(function() {
 });
 */
 
+
+
 $(document).ready(function($) {
     $('#employerform').hide();
     $('#jobseekerform').hide();    
@@ -34,15 +36,33 @@ $(document).ready(function($) {
     });
     
     
-    
+    $('#signupform #signup-form').submit(function(event){
+        // cancels the form submission
+      
+        
+            var name = $("#password").val();
+            var email = $("#email").val();
+            var message = $("#usertype").val();
 
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "register-submit.php",
+                data: "password=" + password + "&email=" + email + "&usertype=" + usertype,
+                success : function(data){
+                   
+                  $( "#signupform" ).append(data);
+                    // $( "#signupform .input-group" ).addClass('has-error');
+                
+                },
+                error: function(data) {
+                     $( "#msgSubmit" ).removeClass('hidden');
+                }
+            });
+            event.preventDefault();
+    }); 
     
-    
-  
-});
-
-
-$('#employerbutton').click(function() {   
+    $('#employerbutton').click(function() {   
     // replace the contents of the div with the link text  
    $('#signupform').html($('#employerform').html());    
    $('#signupform').hide().fadeIn('slow','linear');      
@@ -63,6 +83,16 @@ $('#jobseekerbutton').click(function() {
     // cancel the default action of the link by returning false
     return false;
 });
+
+    
+    
+  
+});
+
+
+
+
+
 
 
 

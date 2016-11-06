@@ -6,18 +6,15 @@
     <meta name="author" content="">
 
     <title>jobsly – jobs for the modern world</title>
-<style>
-    
-
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
         <?php
             include 'inc/resources.php';
         ?>
       
     </head>
-  
+ 
 <div id="employerform">
-            <form id="signup-form" name="signup-form" role="form" class="signin-form" action="register-submit.php" method="POST">
+            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
                 <input type="hidden" id="usertype" name="usertype" value="employer">
 				<div class="form-group" id="email-group">
 					 <div> Employer Registration</div>
@@ -88,7 +85,7 @@
             <div><a href=""> I already have an account</a></div>
              
     </div>
-    
+   
     
 <body class="signin-body">
     <!-- Preloader -->
@@ -122,35 +119,8 @@
 		</div>
 		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">
                      
-            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
-                <input type="hidden" id="usertype" name="usertype" value="jobseeker">
-				<div class="form-group" id="email-group">
-					  <div> Jobseeker Registration</div>
-					 <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-					<input type="email" class="form-control" name="email" id="email" placeholder="Email" />
-                    </div>
-				</div>
-				<div class="form-group" id="password-group">					 
-					<div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
-					<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
-                    </div>
-				</div>
-                <div class="form-group">					 
-					<div class="input-group" id="confirm-password-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
-					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password"/>
-                    </div>
-				</div>
-				
-				
-				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
-					Create Account
-				</button>
-			</form>
-            <div><a href=""> I already have an account</a></div>
-                       
+            
+                   
 		</div>
 	</div>    
             
@@ -195,13 +165,12 @@
 	</div>
 </div>
     
-   
-    <script src="js/formsubmit.js"></script> 
-     <script src="js/mycustom.js"></script> 
+  
+     
    <!-- local
 <script src="js/bootstrap.js"></script>    -->
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </body>
 </html>
 
