@@ -40,18 +40,20 @@ $(document).ready(function($) {
         // cancels the form submission
       
         
-            var name = $("#password").val();
-            var email = $("#email").val();
-            var message = $("#usertype").val();
-
+            var password = $("#signupform #password").val();
+            var email = $("#signupform #email").val();       
+            var usertype = $("#signupform #usertype").val();
+           // var formdata = {password:password,email:email,usertype:usertype};
             $.ajax({
                 cache: false,
                 type: "POST",              
                 url: "register-submit.php",
                 data: "password=" + password + "&email=" + email + "&usertype=" + usertype,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
                 success : function(data){
                    
-                  $( "#signupform" ).append(data);
+                  $( "#signupform" ).html(data);
                     // $( "#signupform .input-group" ).addClass('has-error');
                 
                 },
@@ -63,9 +65,10 @@ $(document).ready(function($) {
     }); 
     
     $('#employerbutton').click(function() {   
-    // replace the contents of the div with the link text  
-   $('#signupform').html($('#employerform').html());    
-   $('#signupform').hide().fadeIn('slow','linear');      
+        // replace the contents of the div with the link text  
+        $('#signupform #jobseekerform').remove();
+       $('#signupform').html($('#employerform').html());    
+       $('#signupform').hide().fadeIn('slow','linear');      
   
   
     // cancel the default action of the link by returning false
@@ -74,6 +77,7 @@ $(document).ready(function($) {
 
 $('#jobseekerbutton').click(function() {     
     // replace the contents of the div with the link text
+    $('#signupform #employerform').remove();
     $('#signupform').html($('#jobseekerform').html());
     $('#signupform').hide().fadeIn('slow','linear');   
     
