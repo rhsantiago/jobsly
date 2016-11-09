@@ -543,3 +543,34 @@ fieldset[disabled] .btn-primary.active {
     margin-top: 20px;
     padding-top: 20px;
 }
+
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+    color: #468847;
+    background-color: #F2F9F0 !important;
+    border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+    color: #B94A48 !important;
+    background-color: #F9F0F0 !important;
+    border: 1px solid #f09784 !important;
+}
+
+.parsley-errors-list {
+    list-style-type: none;
+    opacity: 0;
+    transition: all .3s ease-in;
+
+    color: #d16e6c;
+    margin-top: 5px;
+    margin-bottom: 0;
+  padding-left: 0;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+}

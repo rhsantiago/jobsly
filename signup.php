@@ -55,13 +55,13 @@
     </div>
   
     <div id="jobseekerform">
-            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
+            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST" data-parsley-validate="">
                 <input type="hidden" id="usertype" name="usertype" value="jobseeker">
 				<div class="form-group" id="email-group">
 					  <div> Jobseeker Registration</div>
-					 <div class="input-group">
+					 <div class="form-group">
                                 <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-					<input type="email" class="form-control" name="email" id="email" placeholder="Email" />
+					<input type="email" class="form-control" name="email" id="email" placeholder="Email" data-parsley-trigger="change" required=""/>
                     </div>
 				</div>
 				<div class="form-group" id="password-group">					 

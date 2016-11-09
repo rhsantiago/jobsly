@@ -87,6 +87,8 @@ $('#jobseekerbutton').click(function() {
     // cancel the default action of the link by returning false
     return false;
 });
+    
+     $("form[name=myForm]").parsley();  
 
     
     
