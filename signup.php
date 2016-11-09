@@ -13,7 +13,9 @@
       
     </head>
  
-<div id="employerform">
+
+   
+        <div id="employerform">
             <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
                 <input type="hidden" id="usertype" name="usertype" value="employer">
 				<div class="form-group" id="email-group">
@@ -83,10 +85,7 @@
 				</button>
 			</form>
             <div><a href=""> I already have an account</a></div>
-             
     </div>
-   
-    
 <body class="signin-body">
     <!-- Preloader -->
 	<div id="preloader">
@@ -117,53 +116,16 @@
 		<div class="col-md-3 col-sm-6 col-xs-6">
            
 		</div>
-		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">
-                     
-            
+		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">  </div>      
                    
 		</div>
 	</div>    
             
-            
-            
-            
-            
-            
-            
- <!--           
-           <div class="signup-form">
-    <div class="row">           
-            <form>
-                 <div class="col-md-10">
-                      <div class="form-group">
-                          <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                          </div>
-                      </div>
-                </div>
-                <div class="col-md-10">
-                      <div class="form-group">
-                          <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
-
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-
-                          </div>
-                      </div>  
-               </div>
-                <div class="col-md-4">
-              <button id="createbutton" name="createbutton" class="btn btn-primary btn-block">Create Account</button>
-                </div>
-            </form>
-      </div>    
-                 
-         </div>    
-  -->          
+           
           
 		</div>
 	</div>
-</div>
+
     
   
      

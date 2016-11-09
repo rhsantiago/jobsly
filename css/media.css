@@ -34,6 +34,10 @@
     font-size: 28px;
   }
     
+    .signup-form{
+        height: 500px;
+    }    
+    
   .signin-body {
       background:url('../img/landing-meeting.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;

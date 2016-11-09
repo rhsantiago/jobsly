@@ -529,7 +529,7 @@ fieldset[disabled] .btn-primary.active {
 .signup-form {
     display: none;
     width: auto;
-    height: 500px;
+    height: 300px;
     background-color: #e7e7e7;
     box-shadow: 3px 3px 3px #000;
 }

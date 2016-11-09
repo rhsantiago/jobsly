@@ -14,7 +14,13 @@ $database->bind(':email', $email);
 $row = $database->single();
 $verify = $row['email'];
 
-?>
+if($verify){
+  echo 'emailtaken';  
+}else{
+?>   
+    <div id="msgSubmit" class="h3 text-center">Thank you for registering! Please check your <?=$verify ?> inbox for the verification link
+     in order to activate your account. </div>
+<?php
+}
 
- <div id="msgSubmit" class="h3 text-center">Thank you for registering! Please check your <?=$verify ?> inbox for the verification link
-     in order to activate your account. </div>   
+?>
