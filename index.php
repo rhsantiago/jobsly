@@ -11,7 +11,7 @@
     <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
     <meta name="author" content="">
 
-    <title>jobsly – jobs for the modern world</title>
+    <title>jobsly – find your next adventure.</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +90,7 @@
     <div class="intro-header">
 		<div class="col-xs-12 text-center abcen1">
 			<h1 class="h1_home wow fadeIn logo" data-wow-delay="0.4s">jobsly</h1>
-			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">work. life. balance.</h3>
+			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">find your next adventure.</h3>
 			<ul class="list-inline intro-social-buttons">
                 <li><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50">
 				</li>
