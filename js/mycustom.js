@@ -9,10 +9,24 @@ $(function() {
 
 
 $(document).ready(function($) {
-    $('#jobseekerform').hide();
-    $('#employerform').hide();    
+   /// $('#jobseekerform').hide();
+   // $('#employerform').hide();    
   //  $('#signupform').html($('#jobseekerform').html());
-    $('#signupform').slideDown(1000);
+  //  $('#signupform').slideDown(1000);
+     $("#signup-form").parsley();
+    
+    $("#signup-form").parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsWrapper: "<span class='help-block'></span>",
+        errorTemplate: "<span></span>"
+    });
     
     $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -69,40 +83,40 @@ $(document).ready(function($) {
                      $( "#msgSubmit" ).removeClass('hidden');
                 }
             });
-            event.preventDefault();
+            return false;
     }); 
     
     $('#employerbutton').click(function() {  
         
         // replace the contents of the div with the link text
-        $('#signupform #jobseekerform').hide();
+       // $('#signupform #jobseekerform').hide();
        
         $('#signupform #employerform').show();
         $('#signupform').html($('#employerform').html());  
         $('#signupform').hide().fadeIn('slow','linear');
              
     // cancel the default action of the link by returning false
-       // return false;
+        return false;
     });
 
-$('#jobseekerbutton').click(function() {     
-    
-    // replace the contents of the div with the link text
-     $('#signupform #employerform').hide();
-        
-    $('#signupform #jobseekerform').show();
-    $('#signupform').html($('#jobseekerform').html());
-    $('#signupform').hide().fadeIn('slow','linear');
-   
-    
-   // $('#signupform').slideDown(1000);    
-        
+        $('#jobseekerbutton').click(function() {     
 
-    // cancel the default action of the link by returning false
-   // return false;
-});
+            // replace the contents of the div with the link text
+       //      $('#signupform #employerform').hide();
+
+            $('#signupform #jobseekerform').show();
+            $('#signupform').html($('#jobseekerform').html());
+            $('#signupform').hide().fadeIn('slow','linear');
+
+
+           // $('#signupform').slideDown(1000);    
+
+
+            // cancel the default action of the link by returning false
+            return false;
+        });
     
-     $("form[name=myForm]").parsley();  
+    
 
     
     

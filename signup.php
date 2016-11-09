@@ -13,7 +13,7 @@
       
     </head>
  
-
+<!--
    
         <div id="employerform">
             <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
@@ -55,36 +55,9 @@
             <div><a href=""> I already have an account</a></div>
              <div><p>* For Employers, please use your work email address for faster verification.</p></div>
     </div>
-  
+  -->
     <div id="jobseekerform">
-            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST" data-parsley-validate="">
-                <input type="hidden" id="usertype" name="usertype" value="jobseeker">
-				<div class="form-group" id="email-group">
-					  <div> Jobseeker Registration</div>
-					 <div class="form-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-					<input type="email" class="form-control" name="email" id="email" placeholder="Email" data-parsley-trigger="change" required=""/>
-                    </div>
-				</div>
-				<div class="form-group" id="password-group">					 
-					<div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
-					<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
-                    </div>
-				</div>
-                <div class="form-group">					 
-					<div class="input-group" id="confirm-password-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
-					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password"/>
-                    </div>
-				</div>
-				
-				
-				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
-					Create Account
-				</button>
-			</form>
-            <div><a href=""> I already have an account</a></div>
+            
     </div>
 <body class="signin-body">
     <!-- Preloader -->
@@ -116,7 +89,41 @@
 		<div class="col-md-3 col-sm-6 col-xs-6">
            
 		</div>
-		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">  </div>      
+		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">
+            
+            <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST" >
+                <input type="hidden" id="usertype" name="usertype" value="jobseeker">
+				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer">
+					  <div> Jobseeker Registration</div>
+					 <div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+					   	        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-required-message="Email is required."/>
+                                
+                    </div>
+                    <div id="emailerrorcontainer"></div>
+				</div>
+                
+				<div class="form-group" id="password-group">					 
+					<div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+					<input type="password" class="form-control" name="password" id="password" placeholder="Password" required />
+                    </div>
+				</div>
+                <div class="form-group">					 
+					<div class="input-group" id="confirm-password-group">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
+                    </div>
+				</div>
+				
+				
+				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
+					Create Account
+				</button>
+			</form>
+            <div><a href=""> I already have an account</a></div>
+            
+        </div>      
                    
 		</div>
 	</div>    
