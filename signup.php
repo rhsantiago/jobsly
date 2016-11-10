@@ -74,13 +74,15 @@
 		<div class="col-md-6 login-col">
             <div class="signup-welcome"><span class="signin-welcome-text vcenter">Welcome to <span class="signin-logo">jobsly</span></span>
                 <p></p>
-            <p class="signin-paragraph">Are you looking for a job or are you an employer?</p>
+            <p class="signin-paragraph">Let's create your job seeker account!</p>
+                <!--
             <button type="submit" id="jobseekerbutton" class="btn btn-primary">
 					Job Seeker
 				</button>
                 <button type="submit" id="employerbutton" class="btn btn-primary">
 					Employer
 				</button>
+                -->
             </div>
 		</div>
 		<div class="col-md-6 login-col">
@@ -94,7 +96,7 @@
             <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST" >
                 <input type="hidden" id="usertype" name="usertype" value="jobseeker">
 				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer">
-					  <div> Jobseeker Registration</div>
+					  <div class="signup-form-title">Jobseeker Registration</div>
 					 <div class="input-group">
                                 <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
 					   	        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-required-message="Email is required."/>

@@ -133,7 +133,7 @@
 					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<li class="menuItem"><a href="signup.php?page=login">Sign in</a></li>
+					<li class="menuItem"><a href="signup.php?page=login">Sign Up</a></li>
 					<li class="menuItem"><a href="#contact">Contact</a></li>
 				</ul>
 			</div>

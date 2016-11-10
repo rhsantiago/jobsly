@@ -472,7 +472,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #e7e7e7;
     box-shadow: 3px 3px 3px #000;*/
    width: auto;
-    height: 150px;
+    height: 130px;
     padding-top: 10px;
 }
 
@@ -529,7 +529,7 @@ fieldset[disabled] .btn-primary.active {
 .signup-form {
    /* display: none;*/
     width: auto;
-    height: 300px;
+    height: 450px;
     background-color: #e7e7e7;
     box-shadow: 3px 3px 3px #000;
 }
@@ -573,4 +573,27 @@ textarea.parsley-error {
 
 .parsley-errors-list.filled {
     opacity: 1;
+}
+
+.registered-image {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.registered-message {
+    color: #34495e;    
+    font-weight: 400 !important;   
+    font-family: "Lato", cursive !important;
+    font-size: 18px;
+}
+
+.registered-email {
+    color: #3498db;
+}
+
+.signup-form-title {
+    color: #34495e;    
+    font-weight: 500 !important;   
+    font-family: "Lato", cursive !important;
+    font-size: 18px;
 }
