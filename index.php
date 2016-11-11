@@ -133,7 +133,19 @@
 					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<li class="menuItem"><a href="signup.php?page=login">Sign Up</a></li>
+					<!--<li class="menuItem"><a href="signup.php?page=login">Sign Up</a></li>-->
+                    <li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Signup<strong class="caret"></strong></a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>
+									<a href="signup.php?target=jobseeker">Job seeker</a>
+								</li>
+								<li>
+									<a href="signup.php?target=employer">Employers</a>
+								</li>
+								
+							</ul>
+						</li>
 					<li class="menuItem"><a href="#contact">Contact</a></li>
 				</ul>
 			</div>

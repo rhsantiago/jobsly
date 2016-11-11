@@ -4,7 +4,8 @@ if(isset($_POST['email'])){
 }
 
 if(isset($_POST['password'])){ $password = $_POST['password']; } 
-if(isset($_POST['usertype'])){ $usertype = $_POST['usertype']; } 
+if(isset($_POST['usertype'])){ $usertype = $_POST['usertype']; }
+if(isset($_POST['companyname'])){ $companyname = $_POST['companyname']; } 
 
 include 'Database.php';
 $database = new Database();
@@ -22,11 +23,13 @@ if($verify){
     date_default_timezone_set('Asia/Manila');
     $signupdate = date("Y-m-d");
     if($usertype == 'jobseeker'){
-        $usertype = 2;
-    }
-
-    $database->query(' INSERT INTO useraccounts (id, email, password, usertype, verifyhash, signupdate) VALUES (NULL, :email, :password, :usertype, :verifyhash, :signupdate)');
+        $usertype = 2;       
+    }else if($usertype == 'employer'){
+        $usertype = 1;   
+    }    
    
+    $database->query(' INSERT INTO useraccounts (id, email, password, usertype,companyname, verifyhash, signupdate) VALUES (NULL, :email, :password, :usertype, :companyname, :verifyhash, :signupdate)');
+    $database->bind(':companyname', $companyname);
     $database->bind(':email', $email);
     $database->bind(':password', $password);
     $database->bind(':usertype', $usertype);
@@ -37,7 +40,7 @@ if($verify){
     
 
 
-    <div id="msgSubmit" class="">
+    <div id="msgSubmit" class="msgSubmit">
         <div class="row-fluid">
             <div class="col-md-12 registered-image"><img src="img/fireworks.png"></div>
             <div class="col-md-12"><span class="registered-message"> Thank you for registering! Please check your <span class="registered-email"><?=$email ?></span> inbox for the verification link

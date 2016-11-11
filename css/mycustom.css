@@ -596,4 +596,17 @@ textarea.parsley-error {
     font-weight: 500 !important;   
     font-family: "Lato", cursive !important;
     font-size: 18px;
+    margin-top: -30px;
+}
+
+.form-group-margin {
+    margin-bottom: 10px;
+}
+
+.sign-up-form-already {
+    margin-bottom: 20px;
+}
+
+.msgSubmit {
+    height: 450px !important;
 }

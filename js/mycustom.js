@@ -9,10 +9,10 @@ $(function() {
 
 
 $(document).ready(function($) {
-   /// $('#jobseekerform').hide();
-   // $('#employerform').hide();    
-  //  $('#signupform').html($('#jobseekerform').html());
-  //  $('#signupform').slideDown(1000);
+    //$('#jobseekerform').hide();
+   /// $('#employerform').hide();    
+   // $('#signupform').html($('#jobseekerform').html());
+   // $('#signupform').slideDown(1000);
      $("#signup-form").parsley();
     
     $("#signup-form").parsley({
@@ -51,18 +51,19 @@ $(document).ready(function($) {
     });
     
     
-    $('#signupform #signup-form').submit(function(event){
+    $('#signupform #signup-form').on('submit',function(event){
              
             event.preventDefault();
             var password = $("#signupform #password").val();
             var email = $("#signupform #email").val();       
             var usertype = $("#signupform #usertype").val();
+            var companyname = $("#signupform #companyname").val();
            // var formdata = {password:password,email:email,usertype:usertype};
             $.ajax({
                 cache: false,
                 type: "POST",              
                 url: "register-submit.php",
-                data: "password=" + password + "&email=" + email + "&usertype=" + usertype,
+                data: "password=" + password + "&email=" + email + "&usertype=" + usertype + "&companyname=" + companyname,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
@@ -72,7 +73,7 @@ $(document).ready(function($) {
                    }else{
                         $( "#signupform" ).html(data);
                         $( ".signup-welcome" ).hide();
-                        if($(window).width()>750){
+                        if($(window).width()>750){                            
                             $('#signupform').animate({opacity: 1.0, right: '250px'}, 1000);
                         }
                    }

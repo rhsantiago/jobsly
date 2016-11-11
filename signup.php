@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<?php
+   $target = isset($_GET['target']) ? $_GET['target'] : '';
+?>
 <html>
     <head>
     <meta charset="utf-8">
@@ -13,8 +17,8 @@
       
     </head>
  
-<!--
-   
+
+   <!--
         <div id="employerform">
             <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
                 <input type="hidden" id="usertype" name="usertype" value="employer">
@@ -55,10 +59,12 @@
             <div><a href=""> I already have an account</a></div>
              <div><p>* For Employers, please use your work email address for faster verification.</p></div>
     </div>
-  -->
+
     <div id="jobseekerform">
             
     </div>
+
+-->
 <body class="signin-body">
     <!-- Preloader -->
 	<div id="preloader">
@@ -74,7 +80,15 @@
 		<div class="col-md-6 login-col">
             <div class="signup-welcome"><span class="signin-welcome-text vcenter">Welcome to <span class="signin-logo">jobsly</span></span>
                 <p></p>
-            <p class="signin-paragraph">Let's create your job seeker account!</p>
+            <p class="signin-paragraph">Let's create your
+                <?php
+                    if($target=='jobseeker'){
+                        echo 'job seeker ';
+                    }else{
+                        echo 'employer';
+                    }
+                ?>
+                account!</p>
                 <!--
             <button type="submit" id="jobseekerbutton" class="btn btn-primary">
 					Job Seeker
@@ -92,9 +106,11 @@
            
 		</div>
 		<div id="signupform" class="col-md-3 col-sm-6 col-xs-6 signup-form">
-            
+            <?php
+                if($target=='jobseeker'){
+            ?>
             <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST" >
-                <input type="hidden" id="usertype" name="usertype" value="jobseeker">
+                <input type="hidden" id="usertype" name="usertype" value="<?=$target?>">
 				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer">
 					  <div class="signup-form-title">Jobseeker Registration</div>
 					 <div class="input-group">
@@ -116,6 +132,46 @@
                                 <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
 					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
                     </div>
+				</div>			
+				
+				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
+					Create Account
+				</button>
+			</form>
+            <div class="sign-up-form-already"><a href=""> I already have an account</a></div>
+                <?php
+                }else{
+                ?>
+                <form id="signup-form" name="signup-form" role="form" class="signin-form"  method="POST">
+                <input type="hidden" id="usertype" name="usertype" value="<?=$target?>">
+				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer" class="form-group-margin">
+					 <div class="signup-form-title"> Employer Registration</div>
+					 <div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+					<input type="email" class="form-control" name="email" id="email" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-required-message="Email is required."/>
+                    </div>
+                    <div id="emailerrorcontainer"></div>
+				</div>
+				<div class="form-group" id="password-group">
+					 
+					<div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+					<input type="password" class="form-control" name="password" id="password" placeholder="Password" required/>
+                    </div>
+				</div>
+                <div class="form-group" id="confirm-password-group">
+					 
+					<div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
+                    </div>
+				</div>
+                <div class="form-group">
+					 
+					 <div class="input-group">
+                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+					<input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name" required/>
+                    </div>
 				</div>
 				
 				
@@ -124,7 +180,10 @@
 				</button>
 			</form>
             <div><a href=""> I already have an account</a></div>
-            
+             <div><p>* For Employers, please use your work email address for faster verification.</p></div>
+                <?php
+                }
+                ?>    
         </div>      
                    
 		</div>

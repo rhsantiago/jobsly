@@ -10,6 +10,10 @@
       margin-top: 50px !important;
       text-align:center;
    } 
+    
+    .signup-form{
+        height: auto;
+    } 
 }
 /*
 @media screen and (min-width: 350px) {    
@@ -40,11 +44,12 @@
   }
     
     .signup-form{
-        height: 450px;
+        height: auto;
     } 
     
   .signup-form-title {   
     font-size: 28px;
+      
   }
     
   .signin-body {
