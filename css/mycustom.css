@@ -712,3 +712,23 @@ textarea.parsley-error {
 .dropshadow {
     box-shadow: 1px 1px 5px #888888;
 }
+
+.white-background {
+    background-color: #fff;
+}
+
+.margin-generic {
+    padding: 15px;
+}
+
+.margin-generic-3 {
+    padding: 3px;
+}
+
+.blue-generic-bg {
+    background-color: #589fff !important;   
+}
+
+.rounded-panel {
+    border-radius: 5px;
+}

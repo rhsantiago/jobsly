@@ -19,17 +19,9 @@ body {
     </head>
 <body class="body">
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   
-        
-        <div class="sidebar-item"> <a href="#" ><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Start</a> </div>
-   
-         <div class="sidebar-item"><a href="#">  <span class="glyphicon glyphicon-paperclip"></span>&nbsp;&nbsp;Resume</a></div>
-     
-    <div class="sidebar-item"><a href="#"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;Jobs</a></div>
-  <div class="sidebar-item"><a href="#"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Account</a></div>
-</div>
+        <?php
+            include 'inc/sidenav.php';
+        ?>
     
   
 <div class="container-fluid">
@@ -78,38 +70,39 @@ body {
 				</div>
 				
 			</div>
-            
+            </div>
+           </div>
             <div class="row-fluid">
-		<div class="col-md-9 welcomediv">
-			<div class="jumbotron well dropshadow">
-				<h1 class="h1custom">
-					Thank you for starting your next adventure with jobsly!
-				</h1>
-				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-3">
-		</div>
-	</div>
-		</div>
+                    <div class="col-md-9 welcomediv">
+                        <div class="jumbotron well dropshadow">
+                            <h1 class="h1custom">
+                                Thank you for starting your next adventure with jobsly!
+                            </h1>
+                            <p>
+                                This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+                            </p>
+                            <p>
+                                <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+	       </div>
+		
            <!--
 		<div class="col-md-3 red-border">
 			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
 		</div>
             -->
-	</div>
+	
 
     </div>  
+    </div> 
     
     
     
-    
-</div>    
+</div>    <!--main-->
     
 
 <script>

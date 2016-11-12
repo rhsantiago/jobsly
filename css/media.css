@@ -16,7 +16,11 @@
     }
     
     .quickview {
-     display: none;
+        display: none;
+    }
+    
+    .welcomediv {
+        margin-top: 40px;
     }
     
   
