@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="author" content="">
 
-    <title>jobsly – jobs for the modern world</title>
+    <title>jobsly – find your next adventure.</title>
 <style>
 body {
     font-family: "Lato", sans-serif;
@@ -21,11 +21,14 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    
-    <div class="sidebar-item"> <a href="#">About</a> </div>
-  <div class="sidebar-item"><a href="#">Services</a></div>
-  <div class="sidebar-item"><a href="#">Clients</a></div>
-  <div class="sidebar-item"><a href="#">Contact</a></div>
+   
+        
+        <div class="sidebar-item"> <a href="#" ><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Start</a> </div>
+   
+         <div class="sidebar-item"><a href="#">  <span class="glyphicon glyphicon-paperclip"></span>&nbsp;&nbsp;Resume</a></div>
+     
+    <div class="sidebar-item"><a href="#"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;Jobs</a></div>
+  <div class="sidebar-item"><a href="#"><span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Account</a></div>
 </div>
     
   
@@ -52,9 +55,9 @@ body {
                 
 
        <div class="row-fluid">
-		<div class="col-md-12 red-border">
+		<div class="col-md-12 ">
 		
-				<h1 class="h1custom">Masonry CSS with Bootstrap</h1>
+				<h1 class="h1custom">Dashboard</h1>
 			
 			<div class="row-fluid">
                 <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons  quickviewicon" style="font-size:28px;">check </div>
@@ -75,6 +78,24 @@ body {
 				</div>
 				
 			</div>
+            
+            <div class="row-fluid">
+		<div class="col-md-9 welcomediv">
+			<div class="jumbotron well dropshadow">
+				<h1 class="h1custom">
+					Thank you for starting your next adventure with jobsly!
+				</h1>
+				<p>
+					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">Learn more</a>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
 		</div>
            <!--
 		<div class="col-md-3 red-border">
@@ -84,6 +105,10 @@ body {
 	</div>
 
     </div>  
+    
+    
+    
+    
 </div>    
     
 
@@ -91,8 +116,8 @@ body {
     var isClosed = true;
 function openNav() {
     if(isClosed){
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("mySidenav").style.width = "200px";
+        document.getElementById("main").style.marginLeft = "200px";
         isClosed = false;
     } else{
         closeNav();

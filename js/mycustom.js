@@ -117,7 +117,7 @@ $(document).ready(function($) {
             return false;
         });
     
-    
+ /*   
     $('.quickviewdiv').hover(function(){
         $(this).css("background-color", "#589fff");
          $(this).css("box-shadow", "3px 3px 3px #000");
@@ -125,7 +125,7 @@ $(document).ready(function($) {
         $(this).css("background-color", "#e7e7e7");
          $(this).css("box-shadow", "none");
     });
-    
+   */ 
     
   
 });

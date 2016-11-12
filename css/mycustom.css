@@ -138,9 +138,10 @@
 }
 
 .h1custom {
-    color: #34495e;
+    color: #34495e !important;
     font-size: 26px !important;
      margin-top: 50px !important;
+    
 }
 
 .h2custom {
@@ -448,8 +449,8 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .sidebar-item:hover{
-     background-color: #589fff;
-    
+    /* background-color: #589fff; */
+      background-color: #e7e7e7;
 }
 
 .btn-custom {
@@ -623,13 +624,13 @@ textarea.parsley-error {
   /*  background-color: #61489d;*/
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 100px;
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 22px;
     color: #34495e;
     display: block;
     transition: 0.3s;
@@ -638,7 +639,7 @@ textarea.parsley-error {
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+   /* color: #f1f1f1; */
 }
 
 .sidenav .closebtn {
@@ -670,10 +671,44 @@ textarea.parsley-error {
     margin-right: 0 !important;
 }
 .quickview {
-     color: #34495e;
+     color: #34495e !important;
      font-size: 12px !important;
 }
 
 .quickviewicon {
     color: #34495e;     
+}
+
+.quickviewdiv,.quickviewicon,.quickview,.sidebar-item{
+     transition:all 0.3s ease;   
+}
+
+.quickviewdiv:hover{
+    box-shadow: 1px 1px 5px #888888;
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+}
+
+.quickviewdiv:hover .quickviewicon{
+        color: #589fff;   
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+}
+
+.quickviewdiv:hover .quickview{
+        color: #589fff !important;   
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+}
+
+
+.welcomediv {
+    margin-top: 15px;
+}
+
+.dropshadow {
+    box-shadow: 1px 1px 5px #888888;
 }
