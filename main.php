@@ -11,62 +11,13 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background:url('img/metal2.png') repeat;
-  /*  background-color: #61489d;*/
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #34495e;
-    display: block;
-    transition: 0.3s;
-    margin-left: 5px;
-    font-weight: 100 !important;
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-  
-}
-    
-
 </style>
         <?php
             include 'inc/resources.php';
         ?>
-      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
-<body>
+<body class="body">
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -78,7 +29,7 @@ body {
 </div>
     
   
-<div class="container">
+<div class="container-fluid">
     <?php
         $_GET['page'] = 'main';
         include 'inc/navbar.php';
@@ -87,82 +38,54 @@ body {
  
     
 <div id="main">
- <div class="row-fluid">
-      
-        <div class="col-md-8 col-centered">            
-                    <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                         alt="user">         
-          
-		</div>
-     <div class="col-md-4 col-centered">    
-     </div>
-	
-    </div>
+ <div class="row-fluid rowfull">
+      <!--
+        <div class="col-md-12 col-centered red-border rowfull">            
+                            <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+                                 alt="user">         
 
-        <h1 class="h1custom">Masonry CSS with Bootstrap</h1>
-        
-<div class="row">
-
-    <div class="item">       
-        <div class="wrapper">            
-            <div class="card radius shadowDepth1">
-                <div class="card__image border-tlr-radius">
-                    <img src="https://unsplash.it/400/200/?random" alt="image" class="border-tlr-radius">
                 </div>
-
-                <div class="card__content card__padding">
-                    <div class="card__share">
-                        <div class="card__social">  
-                            <a class="share-icon facebook" href="#"><span class="fa fa-facebook"></span></a>
-                            <a class="share-icon twitter" href="#"><span class="fa fa-twitter"></span></a>
-                            <a class="share-icon googleplus" href="#"><span class="fa fa-google-plus"></span></a>
-                        </div>
-
-                        <a id="share" class="share-toggle share-icon" href="#"></a>
-                    </div>
-
-                    <div class="card__meta">
-                        <a href="#" class="industry_meta">BPO/Call Centers</a>
-                        <time>17th March</time>
-                    </div>
-                    <br>
-                    <article class="card__article">
-                        <h2 class="h2custom"><a href="#jobModal" data-toggle="modal" title="Technical Support Specialists - Level 3" id="1" data-target="#job-modal">Technical Support Specialists - Level 3</a></h2>
-                        <br>
-                        <p>
-                            Minimum 2 years experience<br>
-                            Great English spoken and written skills<br>
-                            Amendable to night shift                       
-                        </p>
-                    </article>
-                </div>
-
-                <div class="card__action">
-                    
-                    <div class="card__author">
-                        <img src="http://lorempixel.com/40/40/sports/" alt="user">
-                        <div class="card__author-content">
-                           <a href="#" class="industry_meta">CHAMP Cargosystems</a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
             
-    </div>
+
+            </div>
+        -->
+                
+
+       <div class="row-fluid">
+		<div class="col-md-12 red-border">
+		
+				<h1 class="h1custom">Masonry CSS with Bootstrap</h1>
+			
+			<div class="row-fluid">
+                <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons  quickviewicon" style="font-size:28px;">check </div>
+                   <div> <span class="quickview centerindiv">Active Applications</span></div>
+				</div>
+				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv  "><div class="material-icons quickviewicon " style="font-size:28px;">mail</div>
+                    <div> <span class="quickview centerindiv">Job Invitations</span></div>
+				</div>
+				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons quickviewicon" style="font-size:28px;">assignment_returned</div>       <div> <span class="quickview centerindiv">Saved Applications</span></div>
+				</div>
+                <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons  quickviewicon" style="font-size:28px;">check </div>
+                   <div> <span class="quickview centerindiv">Active Applications</span></div>
+				</div>
+				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons quickviewicon" style="font-size:28px;">mail</div>
+                    <div> <span class="quickview centerindiv">Job Invitations</span></div>
+				</div>
+				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><div class="material-icons quickviewicon" style="font-size:28px;">assignment_returned</div>       <div> <span class="quickview centerindiv">Saved Applications</span></div>
+				</div>
+				
+			</div>
+		</div>
+           <!--
+		<div class="col-md-3 red-border">
+			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
+		</div>
+            -->
+	</div>
+
     </div>  
-   
-    </div>
+</div>    
     
-    <div class="container">
-  
-        <div class="row">
-             <div class="loadmore" id="loadmore">
-       
-            </div> 
-        </div>
-    </div>
 
 <script>
     var isClosed = true;

@@ -169,7 +169,7 @@
                 <div class="form-group">
 					 
 					 <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+                                <span class="glyphicon glyphicon glyphicon-inbox input-group-addon info-input-group-addon" ></span>
 					<input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name" required/>
                     </div>
 				</div>

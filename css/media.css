@@ -13,7 +13,14 @@
     
     .signup-form{
         height: auto;
-    } 
+    }
+    
+    .quickview {
+     display: none;
+    }
+    
+  
+    
 }
 /*
 @media screen and (min-width: 350px) {    
@@ -26,6 +33,12 @@
    }        
 }
 */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  
+}
+
 @media screen and (min-width: 990px) {    
     
   .col-centered-login{   
@@ -51,6 +64,16 @@
     font-size: 28px;
       
   }
+    
+    .quickviewicon{
+        font-size: 42px !important;
+    }
+    
+    .quickview {
+     display: block;
+    }
+    
+    
     
   .signin-body {
       background:url('../img/landing-meeting.jpg') no-repeat center center fixed; 

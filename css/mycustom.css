@@ -140,7 +140,7 @@
 .h1custom {
     color: #34495e;
     font-size: 26px !important;
-     margin-top: 90px !important;
+     margin-top: 50px !important;
 }
 
 .h2custom {
@@ -502,6 +502,7 @@ fieldset[disabled] .btn-primary.active {
     float: none;
     margin: 0 auto;
     margin-top: 50px;
+    text-align:center;
 }
 
 .signin-body {
@@ -609,4 +610,70 @@ textarea.parsley-error {
 
 .msgSubmit {
     height: 450px !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background:url('../img/metal2.png') repeat !important;
+  /*  background-color: #61489d;*/
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #34495e;
+    display: block;
+    transition: 0.3s;
+    margin-left: 5px;
+    font-weight: 100 !important;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.red-border{
+    border: 1px solid;
+     border-color: red !important;
+}
+
+
+
+.centerindiv {
+    text-align: center;    
+}
+
+.rowfull{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.quickview {
+     color: #34495e;
+     font-size: 12px !important;
+}
+
+.quickviewicon {
+    color: #34495e;     
 }

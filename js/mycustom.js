@@ -118,19 +118,17 @@ $(document).ready(function($) {
         });
     
     
-
+    $('.quickviewdiv').hover(function(){
+        $(this).css("background-color", "#589fff");
+         $(this).css("box-shadow", "3px 3px 3px #000");
+        }, function(){
+        $(this).css("background-color", "#e7e7e7");
+         $(this).css("box-shadow", "none");
+    });
     
     
   
 });
-
-
-
-
-
-
-
-
 
 $('#job-modal').on('show.bs.modal', function(e) {
 
@@ -149,3 +147,11 @@ $('#job-modal').on('show.bs.modal', function(e) {
             }
         });
     });
+
+
+
+
+
+
+
+

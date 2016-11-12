@@ -95,13 +95,18 @@
                 <li><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50">
 				</li>
 				<li id="download" >
-                    <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>
-                    
-                    <!--<a href="#myModal" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"  data-toggle="modal"><span class="network-name">Get Started</span></a>-->
-                    
-                    
-                    
-				</li>
+                    <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Login</button>
+                </li>
+                <li id="download" >
+                    <div class="dropdown">
+                      <button class="btn btn-info dropdown-toggle getstarted" type="button" data-toggle="dropdown">Signup
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="signup.php?target=jobseeker">Job seeker</a></li>
+						<li><a href="signup.php?target=employer">Employers</a></li>
+                      </ul>
+                    </div>
+                </li>
 			</ul>
 		</div>    
         <!-- /.container -->
@@ -133,7 +138,7 @@
 					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
 					<li class="menuItem"><a href="#screen">Screenshot</a></li>
-					<!--<li class="menuItem"><a href="signup.php?page=login">Sign Up</a></li>-->
+					<li class="menuItem"><a href="#screen" data-toggle="modal" data-target="#myModal">Login</a></li>
                     <li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Signup<strong class="caret"></strong></a>
 							<ul class="dropdown-menu dropdown-menu-right">
@@ -253,13 +258,7 @@
 				</div><!-- /.col-lg-4 -->
 				
 			</div><!-- /.row -->
-            
-            <div class="tworow">
-                    <div class="col-sm-12  wow fadeInDown text-center">
-                          <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>   
-                    </div>    
-            </div>
-            
+        
 		</div>
 	</div>
 		
@@ -298,7 +297,14 @@
                         
 					</p>
 
-					 <p> <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Get Started</button>
+					 <p> <div class="dropdown">
+                      <button class="btn btn-info dropdown-toggle getstarted" type="button" data-toggle="dropdown">Signup
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="signup.php?target=jobseeker">Job seeker</a></li>
+						<li><a href="signup.php?target=employer">Employers</a></li>
+                      </ul>
+                    </div>
 					</p>
 				</div>  			
 			</div>
