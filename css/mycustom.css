@@ -146,8 +146,7 @@
 
 .h2custom {
     color: #34495e;
-    font-size: 26px !important;
-    margin-top: -15px !important;
+    font-size: 18px !important;   
 }
 
 .post-content {
@@ -663,7 +662,8 @@ textarea.parsley-error {
 
 
 .centerindiv {
-    text-align: center;    
+    text-align: center;   
+    
 }
 
 .rowfull{
@@ -718,7 +718,10 @@ textarea.parsley-error {
 }
 
 .margin-generic {
-    padding: 15px;
+    padding: -15px;
+    
+    margin-left: -15px;
+    
 }
 
 .margin-generic-3 {

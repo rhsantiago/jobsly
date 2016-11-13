@@ -52,12 +52,16 @@ body {
 				<h1 class="h1custom">Resume</h1>
 			
 			<div class="row-fluid">
-                <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-user quickviewicon"></span>
-                   <div> <span class="quickview centerindiv">Personal Information</span></div>
-				</div>
-				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv  "><span class="glyphicon glyphicon-star-empty quickviewicon"></span>
-                    <div> <span class="quickview centerindiv">Job Expectation</span></div>
-				</div>
+                <a href="#" id="pinfo">
+                    <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-user quickviewicon"></span>
+                       <div> <span class="quickview centerindiv">Personal Information</span></div>
+                    </div>
+                </a>
+                <a href="#" id="jobexpec">
+                    <div class="col-md-2 col-xs-2 centerindiv quickviewdiv  "><span class="glyphicon glyphicon-star-empty quickviewicon"></span>
+                        <div> <span class="quickview centerindiv">Job Expectation</span></div>
+                    </div>
+                </a>
 				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-education quickviewicon"></span>       <div> <span class="quickview centerindiv">Education</span></div>
 				</div>
                 <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-briefcase quickviewicon"></span>
@@ -70,60 +74,19 @@ body {
 				</div>
 				
 			</div>
+            
             </div>
            </div>
+      
             <div class="row-fluid">
-                    <div class="col-md-9 welcomediv">
+                <div id="resume-main-body">
+                    <?php
+                            include 'personalinfo-form.php';
                         
-                        <div class="row-fluid">
-                                <div class="col-md-6 welcomediv">
-                                            <div class="margin-generic  rounded-panel">
-                                                    <div class="panel panel-default dropshadow">
-                                                        <div class="panel-heading blue-generic-bg">
-                                                            <h3 class="panel-title ">
-                                                                Name
-                                                            </h3>
-                                                        </div>
-                                                        <div class="panel-body">
-                                                           <div class="input-group margin-generic-3">
-                                                                        <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-                                                                        <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name" />
-                                                            </div>
-                                                            
-                                                            <div class="input-group margin-generic-3">
-                                                                        <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-                                                                        <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name" />
-                                                            </div>
-                                                            
-                                                            <div class="input-group margin-generic-3">
-                                                                        <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
-                                                                        <input type="text" class="form-control" name="mname" id="mname" placeholder="Middle Name" />
-                                                            </div>
-                                                        </div>                          
-                                                    </div>
-                                            </div>
-                                </div>
-                                <div class="col-md-6 welcomediv">
-                                            <div class="margin-generic  rounded-panel">
-                                                <div class="panel panel-default dropshadow">
-                                                    <div class="panel-heading blue-generic-bg">
-                                                        <h3 class="panel-title ">
-                                                            Panel title
-                                                        </h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        Panel content
-                                                    </div>                          
-                                                </div>                            
-                                            </div>
-                                </div>
-                        </div>
-                                    
-
-                                 
-                    </div>
-                    <div class="col-md-3">
-                    </div>
+                        ?>
+                        
+                    
+                </div>    
 	       </div>
 		
            <!--
@@ -161,7 +124,7 @@ function closeNav() {
 }
 
 </script>
-     <script src="js/mycustom.js"></script> 
+     <script src="js/resume.js"></script> 
    <!-- local
 <script src="js/bootstrap.js"></script>    -->
 <!-- Latest compiled and minified JavaScript -->
