@@ -34,16 +34,16 @@ body {
     
 <div id="main">
  <div class="row-fluid rowfull">
-      <!--
+     
         <div class="col-md-12 col-centered red-border rowfull">            
                             <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
 
                 </div>
-            
+          
 
             </div>
-        -->
+       
                 
 
        <div class="row-fluid">
@@ -90,15 +90,15 @@ body {
                     </div>
 	       </div>
 		
-           <!--
+           
 		<div class="col-md-3 red-border">
-			<img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
+			<img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
 		</div>
-            -->
+          
 	
 
     </div>  
-    </div> 
+   
     
     
     

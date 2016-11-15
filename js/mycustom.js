@@ -13,7 +13,7 @@ $(document).ready(function($) {
    /// $('#employerform').hide();    
    // $('#signupform').html($('#jobseekerform').html());
    // $('#signupform').slideDown(1000);
-     $("#signup-form").parsley();
+    // $("#signup-form").parsley();
     
     $("#signup-form").parsley({
         successClass: "has-success",
@@ -28,27 +28,7 @@ $(document).ready(function($) {
         errorTemplate: "<span></span>"
     });
     
-    $(window).scroll(function() {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            $.ajax({
-                    url: 'loadmorejobs.php',
-                    dataType: 'html',
-
-                    success: function (html) {
-                        console.log(html);
-                        $('.loadmore').append(html);
-                        //$('#loading').hide();
-                    }
-                });
-
-      }
-    });
     
-    $('.card__share > a').on('click', function(e){ 
-        e.preventDefault() // prevent default action - hash doesn't appear in url
-        $(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
-        $(this).toggleClass('share-expanded');
-    });
     
     
     $('#signupform #signup-form').on('submit',function(event){

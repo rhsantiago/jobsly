@@ -11,11 +11,13 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-</style>
+</style> 
         <?php
             include 'inc/resources.php';
         ?>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
     </head>
 <body class="body">
 
@@ -57,18 +59,22 @@ body {
                        <div> <span class="quickview centerindiv">Personal Information</span></div>
                     </div>
                 </a>
-                <a href="#" id="jobexpec">
-                    <div class="col-md-2 col-xs-2 centerindiv quickviewdiv  "><span class="glyphicon glyphicon-star-empty quickviewicon"></span>
-                        <div> <span class="quickview centerindiv">Job Expectation</span></div>
-                    </div>
-                </a>
-				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-education quickviewicon"></span>       <div> <span class="quickview centerindiv">Education</span></div>
-				</div>
-                <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-briefcase quickviewicon"></span>
+                <a href="#" id="workexp">
+                 <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-briefcase quickviewicon"></span>
                    <div> <span class="quickview centerindiv">Work Experience</span></div>
 				</div>
+                </a>
+                <div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-education quickviewicon"></span>          <div> <span class="quickview centerindiv">Education and Training</span></div>
+				</div>
+                <a href="#" id="skills">
+                    <div class="col-md-2 col-xs-2 centerindiv quickviewdiv  "><span class="glyphicon glyphicon-star-empty quickviewicon"></span>
+                        <div> <span class="quickview centerindiv">Skills</span></div>
+                    </div>
+                </a>
+				
+               
 				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-asterisk quickviewicon"></span>
-                    <div> <span class="quickview centerindiv">Other Information</span></div>
+                    <div> <span class="quickview centerindiv">Additional Information</span></div>
 				</div>
 				<div class="col-md-2 col-xs-2 centerindiv quickviewdiv "><span class="glyphicon glyphicon-file quickviewicon"></span>       <div> <span class="quickview centerindiv">Preview Resume</span></div>
 				</div>
@@ -125,9 +131,10 @@ function closeNav() {
 
 </script>
      <script src="js/resume.js"></script> 
-   <!-- local
+  <!--  local
 <script src="js/bootstrap.js"></script>    -->
 <!-- Latest compiled and minified JavaScript -->
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
