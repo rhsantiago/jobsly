@@ -60,28 +60,38 @@
     <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-       
+        <form method="POST" id="login-form" action="signin.php" name="login-form">
         <div class="modal-content ">
           <div class="modal-header mymodalheader">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Login or Register</h4>
+            <h4 class="modal-title">Signin to jobsly</h4>
           </div>
           <div class="modal-body">
+              
             <div class="input-group ">
-                  <span class="glyphicon glyphicon glyphicon-user input-group-addon " ></span>
-                  <input type="text" class="form-control inputgroupaddon" placeholder="Email" aria-describedby="basic-addon1">
+                <div class="input-group-addon info-input-group-addon">
+                  <div class="glyphicon glyphicon-user"></div>                  
+                </div>
+                <input type="text" class="form-control inputgroupaddon" id="email" placeholder="Email" aria-describedby="basic-addon1">
               </div><br>
             <div class="input-group">
-                  <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon" id="basic-addon1"></span>
-                  <input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
-            </div>  
+                <div class="input-group-addon info-input-group-addon">
+                  <span class="glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
+                </div>
+                  <input type="text" class="form-control" placeholder="Password" id="password" aria-describedby="basic-addon1">
+            </div>
+              <div class="errormsg">
+                  <div id="unverified" class="loginerror hidden">Unverified account. Please check you email for the verification link</div>
+                  <div id="notfound" class="loginerror hidden">Email not found or password does not match</div>
+              </div>
              
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+              <button class="btn btn-info " name="signin" id="signin" type="submit">Signin</button>
           </div>
         </div>
-
+      </form>      
       </div>
 </div>
 
@@ -464,15 +474,21 @@
     <script src="js/bootstrap.js"></script>
 	<script src="js/owl.carousel.js"></script>
 	<script src="js/script.js"></script>
+    <script src="js/signin.js"></script>
 	<!-- StikyMenu -->
 	<script src="js/stickUp.min.js"></script>
 	<script type="text/javascript">
+       
 	  jQuery(function($) {
 		$(document).ready( function() {
 		  $('.navbar-default').stickUp();
 		  
+           
 		});
 	  });
+        
+        
+        
 	
 	</script>
 	<!-- Smoothscroll -->

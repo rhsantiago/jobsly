@@ -71,6 +71,8 @@ $(document).ready(function() {
 		[].slice.call( document.querySelectorAll( 'form button' ) ).forEach( function( bttn ) { 
 			bttn.addEventListener( 'click', function( ev ) { ev.preventDefault(); } );
 		} );
-
+    
+        
+    
 });
 

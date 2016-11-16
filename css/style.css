@@ -1170,7 +1170,7 @@ label {
   line-height: 2.4;
 }
 .form-control:-moz-placeholder {
-  color: #b2bcc5;
+  color: #589fff;
 }
 .form-control::-moz-placeholder {
   color: #b2bcc5;
@@ -1546,7 +1546,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon {
   padding: 10px 12px;
   font-size: 15px;
-  color: #ffffff;
+  color: #000 !immportant;
   text-align: center;
     /*
   background-color: #4bb777;
@@ -4812,3 +4812,9 @@ footer p {
 		
 	}
 
+
+.errormsg {
+    color: red;
+    margin:  0 auto;
+    text-align: center;
+}
