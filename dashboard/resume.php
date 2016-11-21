@@ -34,31 +34,32 @@
     
     ?>
     
-    <div id="main" class="wrapper">
+    <div id="main" class="wrapper ">
         <div class="header header-filter purple-header">
             <div class="container">
-                <div class="row-fluid">
-					<div class="col-md-12 margin-top-title">
-                        <div class="row-fluid">
-                         <div class="col-md-2 col-xs-2">                           
+                <div class="row">
+					<div class="col-md-12 margin-top-title ">
+                        <div class="row ">
+                            <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
+                         <div class="col-md-1 col-sm-1 col-xs-1">                           
                            <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
                         </div>
-                        <div class="col-md-1 col-xs-1">                           
+                        <div class="col-md-1 col-sm-1 col-xs-1">                           
                            <a class="submenu" id="pinfo" data-toggle="tooltip" data-placement="top" title="Personal Information" data-container="body"><i class="material-icons md-24">fingerprint</i></a>
                         </div> 
-                        <div class="col-md-1 col-xs-1">    
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
                              <a class="submenu" id="workexp" data-toggle="tooltip" data-placement="top" title="Work Experience" data-container="body"><i class="material-icons md-24">work</i></a>   
                         </div>
-                         <div class="col-md-1 col-xs-1">    
+                         <div class="col-md-1 col-sm-1 col-xs-1 ">    
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Education and Training" data-container="body"><i class="material-icons md-24">school</i></a>   
                         </div>    
-                        <div class="col-md-1 col-xs-1">    
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Skills" data-container="body"><i class="material-icons md-24">star</i></a>   
                         </div>
-                        <div class="col-md-1 col-xs-1">    
+                        <div class="col-md-1 col-sm-1 col-xs-1">    
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Additional Information" data-container="body"><i class="material-icons md-24">add_box</i></a>   
                         </div>
-                        <div class="col-md-1 col-xs-1">    
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
                         </div> 
                             

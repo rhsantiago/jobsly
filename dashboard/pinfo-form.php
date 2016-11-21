@@ -15,7 +15,7 @@
 						<div class="row">
 		                    <div class="col-md-6">
                                     <div class="card card-nav-tabs">
-                                            <div class="header tabtitle header-success">
+                                            <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
                                                     <div class="nav-tabs-wrapper">
@@ -52,7 +52,7 @@
                                     </div>
                                 
                                     <div class="card card-nav-tabs">
-                                            <div class="header tabtitle header-info">
+                                            <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
                                                     <div class="nav-tabs-wrapper">
@@ -97,7 +97,7 @@
                             
                             <div class="col-md-6">
                                     <div class="card card-nav-tabs">
-                                            <div class="header tabtitle header-warning">
+                                            <div id="tabtitle" class="header  header-warning">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
                                                     <div class="nav-tabs-wrapper">
@@ -134,7 +134,7 @@
                                     </div>
                                 
                                     <div class="card card-nav-tabs">
-                                            <div class="header tabtitle header-danger">
+                                            <div id="tabtitle" class="header  header-danger">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
                                                     <div class="nav-tabs-wrapper">

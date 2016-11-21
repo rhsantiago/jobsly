@@ -2,17 +2,23 @@
     background-color: #9c27b0;
     color: #ffffff;
     width: auto;
-    height: 130px !important;
+    height: 200px !important;
 }
- 
+ /*
 .landing-page .header {
-  height: 1vh !important;
+  height: 2vh !important;
+  min-height: 1vh !important;
+ 
+}
+*/
+#main .header {
+  height: 30vh !important;
   min-height: 1vh !important;
  
 }
  
 .margin-top-title {
-    margin-top: -80px !important;
+    margin-top: -10px !important;
     text-align: center;
    
 }
@@ -99,11 +105,19 @@
     /* background-color: #589fff; */
       background-color: #CCCCCC !important;      
 }
-.card .header.tabtitle {
-  height: auto !important;
+.card > #tabtitle {
+  height: 100% !important;
+    max-height: 85px !important;
 }
 
 .purplebg {
     background-color: #9c27b0 !important;
     width: auto;
 }
+
+.center {
+    text-align: center !important;
+    margin: 0 auto !important;    
+}
+
+
