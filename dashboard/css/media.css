@@ -1,6 +1,7 @@
-@media screen and (min-width: 320px) {   
-         #main .header {
-          height: 30vh !important;          
+@media screen and (min-width: 300px) {   
+         .landing-page .header {
+          height: 31vh !important;
+          min-height: 20vh;
         }   
         
          .margin-top-title {
@@ -14,8 +15,9 @@
 }
 
 @media screen and (min-width: 370px) {   
-        #main .header {
-          height: 27vh !important;   
+         .landing-page .header {
+              height: 27vh !important;
+              min-height: 20vh;
        }
     
         .margin-top-title {
@@ -26,14 +28,33 @@
     
 }
 
-@media screen and (min-width: 750px) {   
-        #main .header {
-          height: 20vh !important;   
+@media screen and (min-width: 400px) {   
+         .landing-page .header {
+              height: 23vh !important;
+              min-height: 20vh;
        }
     
         .margin-top-title {
-            margin-top: -180px !important;   
+            margin-top: -110px !important;   
         }
+    
+        
+    
+}
+
+@media screen and (min-width: 500px) {   
+         .landing-page .header {
+              height: 54vh !important;
+              min-height: 10vh;
+       }
+    
+        .margin-top-title {
+            margin-top: -5px !important;   
+        }
+    
+}
+
+@media screen and (min-width: 630px) {        
     
         .material-icons.md-24 {
             font-size: 36px !important; 
@@ -41,9 +62,39 @@
     
 }
 
+@media screen and (min-width: 700px) {        
+    
+       .landing-page .header {
+          height: 46vh !important;   
+       }
+        .margin-top-title {
+            margin-top: -25px !important;   
+        }
+    
+}
+
+@media screen and (min-width: 800px) {   
+        .landing-page .header {
+          height: 30vh !important;   
+       }
+    
+        .margin-top-title {
+            margin-top: -130px !important;   
+        }
+    
+        .material-icons.md-24 {
+            font-size: 36px !important; 
+        }
+        
+        .section {
+          padding: 10px 0;
+        }
+    
+}
+
 @media screen and (min-width: 990px) {   
         .landing-page .header {
-          height: 30vh !important;          
+          height: 28vh !important;          
         }   
     
         .margin-top-title {
@@ -51,12 +102,16 @@
         }
 }
 
-@media screen and (min-width: 1400px) {   
-       #main .header {
-          height: 25vh !important;   
+@media screen and (min-width: 1400px){   
+       .landing-page .header {
+          height: 22vh !important;   
        }
     
         .margin-top-title {
-            margin-top: -110px !important;   
+            margin-top: -150px !important;   
+        }
+    
+        .section {
+          padding: 10px 0;
         }
 }

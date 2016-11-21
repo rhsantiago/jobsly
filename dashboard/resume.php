@@ -29,15 +29,13 @@
    
     
     <?php
-        include 'sidebar.php';
+       
         include 'navbar.php';
     
     ?>
-    
-    <div id="main" class="wrapper ">
-        <div class="header header-filter purple-header">
+     <div class="header header-filter purple-header">
             <div class="container">
-                <div class="row">
+                <div class="row-fluid">
 					<div class="col-md-12 margin-top-title ">
                         <div class="row ">
                             <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
@@ -68,6 +66,10 @@
             </div>
             </div>
         </div>
+    <div id="main" class="wrapper ">
+       <?php
+        include 'sidebar.php';
+        ?>
 
 		<div class="main main-raised ">
 			<div class="container">
@@ -262,6 +264,8 @@
     
     <script>
                     $( "#resume-main-body #birthdaydiv" ).append("<input type='text' id='birthday' class='datepicker form-control'>");
+                    $( "#resume-main-body #startdiv" ).append("<input type='text' id='startdate' class='datepicker form-control'>");
+                    $( "#resume-main-body #enddiv" ).append("<input type='text' id='enddate' class='datepicker form-control'>");
         </script>  
     <script>
     var isClosed = true;

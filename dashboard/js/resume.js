@@ -23,6 +23,10 @@ $(document).ready(function($) {
                     success: function (html) {
                         console.log(html);
                         $('#resume-main-body').html(html);
+                        $( "#resume-main-body #startdiv" ).append("<input type='text' id='startdate' class='datepicker form-control'>");
+                        $('#resume-main-body #startdate').datepicker();
+                        $( "#resume-main-body #enddiv" ).append("<input type='text' id='enddate' class='datepicker form-control'>");
+                        $('#resume-main-body #enddate').datepicker();
                         //$('#loading').hide();
                     }
         });

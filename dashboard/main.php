@@ -29,13 +29,11 @@
    
     
     <?php
-        include 'sidebar.php';
+     
         include 'navbar.php';
     
     ?>
-    
-    <div id="main" class="wrapper">
-        <div class="header header-filter purple-header">
+     <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
 					<div class="col-md-12 margin-top-title">
@@ -60,6 +58,10 @@
             </div>
             </div>
         </div>
+    <div id="main" class="wrapper">
+       <?php
+        include 'sidebar.php';
+        ?>
 
 		<div class="main main-raised ">
 			<div class="container">
