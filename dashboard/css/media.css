@@ -102,19 +102,6 @@
         }
 }
 
-@media screen and (min-width: 1400px){   
-       .landing-page .header {
-          height: 22vh !important;   
-       }
-    
-        .margin-top-title {
-            margin-top: -150px !important;   
-        }
-    
-        .section {
-          padding: 10px 0;
-        }
-}
 
 @media screen 
     and (min-device-width: 1536px) 
@@ -133,4 +120,20 @@
           padding: 10px 0;
         }
       
+}
+
+@media screen and (min-device-width: 1920px) 
+    and (min-device-height: 1080px) 
+    and (-webkit-min-device-pixel-ratio: 1) { 
+       .landing-page .header {
+          height: 20vh !important;   
+       }
+    
+        .margin-top-title {
+            margin-top: -160px !important;   
+        }
+    
+        .section {
+          padding: 10px 0;
+        }
 }

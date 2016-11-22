@@ -43,9 +43,9 @@
                                                                         <label class="control-label">Position</label>
                                                                         <input type="text" id="position" class="form-control">
                                                                     </div>
-                                                                    <div id="startdiv" class="form-group label-floating">
+                                                                    <div id="startdiv" class="form-group label-static">
                                                                         <label class="control-label">Start Date</label>
-                                                                       
+                                                                       <input type='text' id='startdate' class='datepicker form-control'>
                                                                     </div>
                                                                       <div class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
@@ -61,9 +61,9 @@
                                                                         <label class="control-label">Position Level</label>
                                                                         <input type="text" id="plevel" class="form-control">
                                                                     </div>
-                                                                    <div id="enddiv" class="form-group label-floating">
+                                                                    <div id="enddiv" class="form-group label-static">
                                                                         <label class="control-label">End Date</label>
-                                                                        
+                                                                        <input type='text' id='enddate' class='datepicker form-control'>
                                                                     </div>
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="checkbox">

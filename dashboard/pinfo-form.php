@@ -91,7 +91,9 @@
                                                     </div>
                                              </div>
                                     </div>
-                                
+                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">
+                                                        Save Personal Information
+                                                       </button>
                                 
 		                    </div>
                             
@@ -158,7 +160,7 @@
                                                             </div>
                                                             <div id="birthdaydiv" class="form-group label-static">
                                                                 <label class="control-label">Birthday</label>
-                                                         
+                                                                <input type='text' id='birthday' class='datepicker form-control'>
                                                             </div>
                                                              <div class="form-group label-floating">
                                                                 <label class="control-label">Gender</label>
@@ -177,9 +179,7 @@
                                                     </div>
                                              </div>
                                     </div>
-                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">
-                                                        Save Personal Information
-                                                       </button>
+                                
 		                    </div>
 		                    
 		                </div>

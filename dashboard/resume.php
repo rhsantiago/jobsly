@@ -264,11 +264,7 @@
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/resume.js" type="text/javascript"></script>
     
-    <script>
-                    $( "#resume-main-body #birthdaydiv" ).append("<input type='text' id='birthday' class='datepicker form-control'>");
-                    $( "#resume-main-body #startdiv" ).append("<input type='text' id='startdate' class='datepicker form-control'>");
-                    $( "#resume-main-body #enddiv" ).append("<input type='text' id='enddate' class='datepicker form-control'>");
-        </script>  
+     
     <script>
     var isClosed = true;
 function openNav() {

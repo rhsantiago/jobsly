@@ -7,11 +7,12 @@ $(document).ready(function($) {
                     dataType: 'html',
 
                     success: function (html) {
-                        console.log(html);
-                        $('#resume-main-body').html(html);
-                        $( "#resume-main-body #birthdaydiv" ).append("<input type='text' id='birthday' class='datepicker form-control'>");
+                       // console.log(html);
+                        $('#resume-main-body').html(html);                    
                         $('#resume-main-body #birthday').datepicker();
-                        //$('#loading').hide();
+                        $(function() {
+                            $.material.init();
+                        });
                     }
         });
         return false;
@@ -24,14 +25,13 @@ $(document).ready(function($) {
 
                     success: function (html) {
                        // console.log(html);
-                        $('#resume-main-body').html(html);
-                        $( "#resume-main-body #startdiv" ).append("<input type='text' id='startdate' class='datepicker form-control'>");
-                        $('#resume-main-body #startdate').datepicker();
-                        $( "#resume-main-body #enddiv" ).append("<input type='text' id='enddate' class='datepicker form-control'>");
+                        $('#resume-main-body').html(html);                   
+                        $('#resume-main-body #startdate').datepicker();                    
                         $('#resume-main-body #enddate').datepicker();
-                        //$('#resume-main-body #currentemp').append("<script src='js/material.min.js'></script>");
-                      
-	                    $(document).on("load", "#currentempcb");
+                     
+                        $(function() {
+                            $.material.init();
+                        });
                     }
         });
         return false;
