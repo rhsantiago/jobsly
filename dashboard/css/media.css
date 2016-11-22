@@ -115,3 +115,22 @@
           padding: 10px 0;
         }
 }
+
+@media screen 
+    and (min-device-width: 1536px) 
+    and (min-device-height: 864px) 
+    and (-webkit-min-device-pixel-ratio: 1) { 
+      
+      .landing-page .header {
+          height: 25vh !important;   
+       }
+    
+        .margin-top-title {
+            margin-top: -110px !important;   
+        }
+    
+        .section {
+          padding: 10px 0;
+        }
+      
+}

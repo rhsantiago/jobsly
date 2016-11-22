@@ -72,9 +72,11 @@
         ?>
 
 		<div class="main main-raised ">
+           
 			<div class="container">
                 <div class="row-fluid">
                     <div id="resume-main-body">
+                       
                 <?php
                   include 'pinfo-form.php';      
                 ?>

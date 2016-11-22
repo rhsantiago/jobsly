@@ -65,11 +65,13 @@
                                                                         <label class="control-label">End Date</label>
                                                                         
                                                                     </div>
-                                                                     <div class="checkbox">
-                                                                        <label>
-                                                                            <input type="checkbox" id="currentemployer" name="currentempcb">
-                                                                            Current Employer
-                                                                        </label>
+                                                                    <div id="currentemp" class="form-group">
+                                                                         <div class="checkbox">
+                                                                            <label>
+                                                                                <input type="checkbox" id="currentempcb" name="optionsCheckboxes">
+                                                                                Unchecked
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -105,4 +107,3 @@
                         <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
 		       </div> 
             </form>
- 

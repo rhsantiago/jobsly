@@ -1,4 +1,6 @@
 $(document).ready(function($) {
+    
+    
     $('#pinfo').click(function() {  
         $.ajax({
                     url: 'pinfo-form.php',
@@ -15,19 +17,21 @@ $(document).ready(function($) {
         return false;
     });
     
-    $('#workexp').click(function() {  
+    $('#workexp').on('click',function() {  
         $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
 
                     success: function (html) {
-                        console.log(html);
+                       // console.log(html);
                         $('#resume-main-body').html(html);
                         $( "#resume-main-body #startdiv" ).append("<input type='text' id='startdate' class='datepicker form-control'>");
                         $('#resume-main-body #startdate').datepicker();
                         $( "#resume-main-body #enddiv" ).append("<input type='text' id='enddate' class='datepicker form-control'>");
                         $('#resume-main-body #enddate').datepicker();
-                        //$('#loading').hide();
+                        //$('#resume-main-body #currentemp').append("<script src='js/material.min.js'></script>");
+                      
+	                    $(document).on("load", "#currentempcb");
                     }
         });
         return false;
