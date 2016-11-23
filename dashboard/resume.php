@@ -38,49 +38,54 @@
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
-                            <div id="resumesb">
+                            
+                            <div id="resumesb">                               
                                 <ul class="nav nav-pills nav-pills-info"  role="tablist">
                                     <li id="p1">
                                         <a href="#pinfo" id="#pinfo" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">fingerprint</i>
-                                            Personal Information
+                                            <span class="submenufont"> Personal Information</span>
                                         </a>
                                     </li>
                                     <li id="w2">
                                         <a href="#workexp" id="#workexp" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">work</i>
-                                            Work Experience
+                                            <span class="submenufont">Work Experience</span>
                                         </a>
                                     </li>
                                     <li id="e3">
                                         <a href="#etrain" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">school</i>
-                                            Education and Training
+                                            <span class="submenufont">Education and Training</span>
                                         </a>
                                     </li>
                                     <li id="s4">
                                         <a href="#skills" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">star</i>
-                                            Skills
+                                            <span class="submenufont">Skills</span>
                                         </a>                                        
                                     </li>
                                     <li id="a5">
                                         <a href="#ainfo" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">add_box</i>
-                                            Additional Information
+                                            <span class="submenufont">Additional Information</span>
                                         </a>                                        
                                     </li>
                                     <li id="p6">
                                         <a href="#pres" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">pageview</i>
-                                            Preview Resume
+                                            <span class="submenufont">Preview Resume</span>
                                         </a>                                        
                                     </li>
                                 </ul>
                             </div>
-                            <!--
+                             
+                            
+                          
+                         <!--   
+                         <div id="submenusmall">   
                             <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
-                         <div class="col-md-1 col-sm-1 col-xs-1">                           
+                         <div  class="col-md-1 col-sm-1 col-xs-1">                           
                            <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
                         </div>
                         <div class="col-md-1 col-sm-1 col-xs-1">                           
@@ -101,7 +106,8 @@
                         <div class="col-md-1 col-sm-1 col-xs-1 ">    
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
                         </div> 
-                            -->
+                            </div>
+        -->
 	                 </div>
                 </div>
             </div>

@@ -1,16 +1,30 @@
 @media screen and (min-width: 300px) {   
          .landing-page .header {
-          height: 31vh !important;
+          height: 35vh !important;
           min-height: 20vh;
         }   
         
          .margin-top-title {
             margin-top: -65px !important;   
         }
+        .submenufont{
+            display: none;
+        }
         
         h2.title {
-          margin-bottom: -140px;
+          margin-bottom: -150px;
+          font-size: 18px;    
         }
+    
+        .nav-pills > li i {  
+          font-size: 20px;
+          padding: 2px 0 !important;
+        }
+        .nav-pills > li > a {
+          min-width: 10px;
+         
+        }
+       
     
 }
 
@@ -92,14 +106,34 @@
     
 }
 
-@media screen and (min-width: 990px) {   
+@media screen 
+    and (min-device-width: 1366px) 
+    and (min-device-height: 768px) 
+    and (-webkit-min-device-pixel-ratio: 1) { 
         .landing-page .header {
-          height: 28vh !important;          
-        }   
+          height: 34vh !important;          
+        }
+        
+        .material-icons.md-24 {
+            font-size: 36px !important; 
+        }
     
         .margin-top-title {
-            margin-top: -85px !important;   
+            margin-top: -90px !important;   
         }
+        .submenufont{          
+            display: block;
+        }
+        h2.title {
+          margin-bottom: -150px;
+          font-size: 36px;    
+        }
+        
+        .nav-pills > li i {  
+          font-size: 28px;
+          padding: 2px 0 !important;
+        }
+     
 }
 
 
@@ -122,15 +156,20 @@
       
 }
 
-@media screen and (min-device-width: 1920px) 
+@media screen 
+    and (min-device-width: 1920px) 
     and (min-device-height: 1080px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
        .landing-page .header {
-          height: 20vh !important;   
+          height: 24vh !important;   
        }
     
         .margin-top-title {
             margin-top: -160px !important;   
+        }
+        
+        .material-icons.md-24 {
+            font-size: 36px !important; 
         }
     
         .section {

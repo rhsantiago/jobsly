@@ -1,26 +1,26 @@
-$(document).ready(function($) {
+$(document).ready(function ($) {
     
-     $("a[href='#pinfo']").on('click',function() {  
+    $("a[href='#pinfo']").on('click', function (){  
         $.ajax({
-                    url: 'pinfo-form.php',
-                    dataType: 'html',
+            url: 'pinfo-form.php',
+            dataType: 'html',
 
-                    success: function (html) {
+            success: function (html) {
                        // console.log(html);
-                        $('#resume-main-body').html(html);                    
-                        $('#resume-main-body #birthday').datepicker();
-                        $('#resumesb li').removeClass('active');
-                        $('#resumesb #p1').addClass('active');
+                $('#resume-main-body').html(html);                    
+                $('#resume-main-body #birthday').datepicker();
+                $('#resumesb li').removeClass('active');
+                $('#resumesb #p1').addClass('active');
                         $(function() {
                             $.material.init();
                         });
-                    }
+                }
         });
         return false;
     });
     
    // $('#workexp').on('click',function() {  
-      $("a[href='#workexp']").on('click',function() {  
+      $("a[href='#workexp']").on('click',function () {  
         $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -40,7 +40,7 @@ $(document).ready(function($) {
         return false;
     });
     
-    $("a[href='#etrain']").on('click',function() {  
+    $("a[href='#etrain']").on('click', function() {  
         $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -60,7 +60,7 @@ $(document).ready(function($) {
         return false;
     });
     
-    $("a[href='#skills']").on('click',function() {  
+    $("a[href='#skills']").on('click', function() {  
         $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -112,6 +112,41 @@ $(document).ready(function($) {
                         $('#resume-main-body #enddate').datepicker();
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #p6').addClass('active');
+                        $(function() {
+                            $.material.init();
+                        });
+                    }
+        });
+        return false;
+    });
+    
+    $('#pinfo').click(function() {  
+        $.ajax({
+                    url: 'pinfo-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body').html(html);                    
+                        $('#resume-main-body #birthday').datepicker();                        
+                        $(function() {
+                            $.material.init();
+                        });
+                    }
+        });
+        return false;
+    });
+    
+    $('#workexp').click(function() {       
+        $.ajax({
+                    url: 'wexp-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body').html(html);                   
+                        $('#resume-main-body #startdate').datepicker();                    
+                        $('#resume-main-body #enddate').datepicker();                       
                         $(function() {
                             $.material.init();
                         });
