@@ -120,4 +120,13 @@
     margin: 0 auto !important;    
 }
 
+.nav-pills > li i {  
+  font-size: 20px;
+  padding: 2px 0 !important;
+    
+}
+
+.nav-pills > li > a {   
+  color: #FFFFFF !important; 
+}
 

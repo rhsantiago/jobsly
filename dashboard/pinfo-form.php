@@ -5,7 +5,7 @@
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
                         -->
-                             <h2 class="title">Personal Information</h2>
+                             <h2 class="title hidden">Personal Information</h2>
                         </div>
                        
                 <div class="section  section-landing">

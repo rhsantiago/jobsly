@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 05:58 PM
+-- Generation Time: Nov 23, 2016 at 11:58 AM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -78,6 +78,25 @@ INSERT INTO `useraccounts` (`id`, `email`, `password`, `usertype`, `companyname`
 (1, 'reg@jobsly.net', 'regsam', 2, NULL, '11111', '2016-11-07', 0),
 (27, 'reggie1@gmail.com', 'r', 2, 'undefined', '222', '2016-11-12', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workexperience`
+--
+
+CREATE TABLE `workexperience` (
+  `id` int(11) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `company` varchar(50) NOT NULL,
+  `position` varchar(40) NOT NULL,
+  `startdate` date NOT NULL DEFAULT '0000-00-00',
+  `msalary` int(10) NOT NULL,
+  `industry` varchar(40) DEFAULT NULL,
+  `plevel` varchar(30) NOT NULL,
+  `enddate` date DEFAULT '0000-00-00',
+  `currentemployer` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -95,6 +114,12 @@ ALTER TABLE `useraccounts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `workexperience`
+--
+ALTER TABLE `workexperience`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -108,6 +133,11 @@ ALTER TABLE `personalinformation`
 --
 ALTER TABLE `useraccounts`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `workexperience`
+--
+ALTER TABLE `workexperience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
