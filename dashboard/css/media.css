@@ -1,6 +1,6 @@
 @media screen and (min-width: 300px) {   
          .landing-page .header {
-          height: 35vh !important;
+          height: 30vh !important;
           min-height: 20vh;
         }   
         
@@ -16,21 +16,17 @@
           font-size: 18px;    
         }
     
-        .nav-pills > li i {  
-          font-size: 20px;
-          padding: 2px 0 !important;
+        #resumesb{
+            display: none;
         }
-        .nav-pills > li > a {
-          min-width: 10px;
-         
-        }
+        
        
     
 }
 
 @media screen and (min-width: 370px) {   
          .landing-page .header {
-              height: 27vh !important;
+              height: 25vh !important;
               min-height: 20vh;
        }
     
@@ -132,6 +128,9 @@
         .nav-pills > li i {  
           font-size: 28px;
           padding: 2px 0 !important;
+        }
+        #resumesb{
+            display: block;
         }
      
 }

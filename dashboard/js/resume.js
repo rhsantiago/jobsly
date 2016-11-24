@@ -2,7 +2,7 @@ $(document).ready(function ($) {
     
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
-       // event.preventDefault()
+        event.preventDefault()
         event.stopPropagation();
         $.ajax({
             url: 'pinfo-form.php',
@@ -123,7 +123,7 @@ $(document).ready(function ($) {
         });
         return false;
     });
-    
+/*    
     $('#pinfo').on('click touchstart', function() {  
         $.ajax({
                     url: 'pinfo-form.php',
@@ -158,10 +158,8 @@ $(document).ready(function ($) {
         });
         return false;
     });
-    
-    
-   
-    
+*/
+       
     $(document).on('submit','#pinfo-form',function(event){
              
             event.preventDefault();

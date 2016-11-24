@@ -21,6 +21,11 @@ if($success == $email && $isverified == 0){
     echo 'unverified';
 }
 if($success == $email && $isverified == 1){
-    echo 'success';
+    session_start();
+    if(!isset($_SESSION['user']))
+        $_SESSION['user'] = $success;
+    if(!isset($_SESSION['password']))
+        $_SESSION['password'] = $password;
+    echo 'success';   
 }
 ?>

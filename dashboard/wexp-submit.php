@@ -19,7 +19,7 @@ if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
 include 'Database.php';
 $database = new Database();
 
-    $database->query(' INSERT INTO workexperience (id, userid, company,position,startdate,msalary,industry,plevel,enddate,currentempcb) VALUES (NULL, :userid, :company, :position,:startdate,:msalary,:industry,:plevel,:enddate,:currentempcb)');
+    $database->query(' INSERT INTO workexperience (id, userid, company,position,startdate,msalary,industry,plevel,enddate,currentemployer) VALUES (NULL, :userid, :company, :position,:startdate,:msalary,:industry,:plevel,:enddate,:currentempcb)');
     $database->bind(':userid', $userid);
     $database->bind(':company', $company);
     $database->bind(':position', $position);  

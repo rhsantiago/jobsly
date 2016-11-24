@@ -1,3 +1,12 @@
+<?php
+        $user = '';
+        session_start();
+        if(isset($_SESSION['user'])){
+            $user = $_SESSION['user'];
+        }
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -72,7 +81,7 @@
                 <div class="section text-center section-landing">
 	                <div class="row-fluid">
 	                    <div class="col-md-12  red-border">
-	                        <h2 class="title">Let's talk product</h2> <span onclick="openNav()">open</span>
+	                        <h2 class="title">Let's talk <?=$user?> </h2> <span onclick="openNav()">open</span>
 	                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
 	                    </div>
                         

@@ -91,9 +91,7 @@
                                                     </div>
                                              </div>
                                     </div>
-                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">
-                                                        Save Personal Information
-                                                       </button>
+                                
                                 
 		                    </div>
                             
@@ -179,7 +177,9 @@
                                                     </div>
                                              </div>
                                     </div>
-                                
+                                    <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">
+                                                        Save Personal Information
+                                                       </button>
 		                    </div>
 		                    
 		                </div>
