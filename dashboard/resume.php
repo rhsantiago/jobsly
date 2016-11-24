@@ -21,7 +21,7 @@
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </head>
 
@@ -39,22 +39,26 @@
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
                             
-                            <div id="resumesb">                               
-                                <ul class="nav nav-pills nav-pills-info"  role="tablist">
+                            <div id="resumesb" class="">                               
+                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
                                     <li id="p1">
-                                        <a href="#pinfo" id="#pinfo" role="tab" data-toggle="tab" data-container="body">
+                                      
+                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
                                             <i class="material-icons">fingerprint</i>
                                             <span class="submenufont"> Personal Information</span>
                                         </a>
+                                        
                                     </li>
                                     <li id="w2">
-                                        <a href="#workexp" id="#workexp" role="tab" data-toggle="tab" data-container="body">
+                                                                     
+                                        <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
                                             <i class="material-icons">work</i>
                                             <span class="submenufont">Work Experience</span>
-                                        </a>
+                                        </a>  
+                                       
                                     </li>
                                     <li id="e3">
-                                        <a href="#etrain" role="tab" data-toggle="tab" data-container="body">
+                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">school</i>
                                             <span class="submenufont">Education and Training</span>
                                         </a>
@@ -79,19 +83,19 @@
                                     </li>
                                 </ul>
                             </div>
-                             
+                            
                             
                           
-                         <!--   
+                      <!--
                          <div id="submenusmall">   
                             <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
                          <div  class="col-md-1 col-sm-1 col-xs-1">                           
                            <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
                         </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1">                           
+                        <div class="col-md-1 col-sm-1 col-xs-1 clickme1">                           
                            <a class="submenu" id="pinfo" data-toggle="tooltip" data-placement="top" title="Personal Information" data-container="body"><i class="material-icons md-24">fingerprint</i></a>
                         </div> 
-                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
+                        <div class="col-md-1 col-sm-1 col-xs-1 clickme2">    
                              <a class="submenu" id="workexp" data-toggle="tooltip" data-placement="top" title="Work Experience" data-container="body"><i class="material-icons md-24">work</i></a>   
                         </div>
                          <div class="col-md-1 col-sm-1 col-xs-1 ">    
@@ -107,7 +111,7 @@
                              <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
                         </div> 
                             </div>
-        -->
+                        -->
 	                 </div>
                 </div>
             </div>
@@ -119,11 +123,11 @@
         ?>
 
 		<div class="main main-raised ">
-           
+         
 			<div class="container">
                 <div class="row-fluid">
-                    <div id="resume-main-body">
-                       
+                    
+                    <div id="resume-main-body">                       
                 <?php
                   include 'pinfo-form.php';      
                 ?>
@@ -296,8 +300,8 @@
     
 </body>
 
-	<!--   Core JS Files   -->
-	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<!--   Core JS Files   
+	<script src="js/jquery.min.js" type="text/javascript"></script>-->
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
 
@@ -331,6 +335,7 @@ function closeNav() {
     isClosed = true;
 }
 
+      
 </script>
 
 </html>

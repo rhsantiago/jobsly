@@ -1,6 +1,9 @@
 $(document).ready(function ($) {
     
+   // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
+       // event.preventDefault()
+        event.stopPropagation();
         $.ajax({
             url: 'pinfo-form.php',
             dataType: 'html',
@@ -19,9 +22,10 @@ $(document).ready(function ($) {
         return false;
     });
     
-   // $('#workexp').on('click',function() {  
+    //$('#workexp').on('click',function() {  
       $("a[href='#workexp']").on('click',function () {  
-        $.ajax({
+           //event.preventDefault()
+                    $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
 
@@ -120,7 +124,7 @@ $(document).ready(function ($) {
         return false;
     });
     
-    $('#pinfo').click(function() {  
+    $('#pinfo').on('click touchstart', function() {  
         $.ajax({
                     url: 'pinfo-form.php',
                     dataType: 'html',
@@ -137,7 +141,7 @@ $(document).ready(function ($) {
         return false;
     });
     
-    $('#workexp').click(function() {       
+    $('#workexp').on('click touchstart', function() {       
         $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -237,4 +241,6 @@ $(document).ready(function ($) {
     
     
     
-});    
+});   
+
+ 

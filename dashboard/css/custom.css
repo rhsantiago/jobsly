@@ -130,3 +130,17 @@
   color: #FFFFFF !important; 
 }
 
+
+
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickme1 {
+         cursor: pointer;
+    }
+
+.clickme2 {
+         cursor: pointer;
+    }
