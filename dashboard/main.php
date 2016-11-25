@@ -1,10 +1,9 @@
 <?php
-        $user = '';
-        session_start();
-        if(isset($_SESSION['user'])){
-            $user = $_SESSION['user'];
-        }
-
+session_start();
+if(isset($_SESSION['user'])){
+   $user = $_SESSION['user'];
+   $password = $_SESSION['password'];
+   $userid = $_SESSION['userid'];
 
 ?>
 <!doctype html>
@@ -35,111 +34,101 @@
 </head>
 
 <body class="landing-page">
-   
-    
-    <?php
-     
-        include 'navbar.php';
-    
+   <?php
+    include 'navbar.php';
     ?>
+
+
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
-					<div class="col-md-12 margin-top-title">
-                        <div class="row">
-                        <div class="col-md-2 col-xs-2">                           
+					<div class="col-md-11 margin-top-title col-md-offset-1">
+                        <div class="row-fluid">
+                            
+                            <div id="resumesb" class="">                               
+                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
+                                    <li id="p1">
+                                      
+                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
+                                            <i class="material-icons">visibility</i>
+                                            <span class="submenufont">Active Applications</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li id="w2">
+                                                                     
+                                        <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
+                                            <i class="material-icons">drafts</i>
+                                            <span class="submenufont">Job Invitations</span>
+                                        </a>  
+                                       
+                                    </li>
+                                    <li id="e3">
+                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
+                                            <i class="material-icons">favorite</i>
+                                            <span class="submenufont">Saved Applications</span>
+                                        </a>
+                                    </li>
+                                    <li id="s4">
+                                        <a href="#skills" role="tab" data-toggle="tab" data-container="body">
+                                            <i class="material-icons">whatshot</i>
+                                            <span class="submenufont">Latest Job Matches</span>
+                                        </a>                                        
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                            
+                            
+                          
+                     <!--
+                         <div id="submenusmall">   
+                            <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
+                         <div  class="col-md-1 col-sm-1 col-xs-1">                           
                            <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
-                        </div>    
-                        <div class="col-md-2 col-xs-2">                           
-                           <a class="submenu" data-toggle="tooltip" data-placement="top" title="Active Applications" data-container="body"><i class="material-icons md-24">create</i></a>
-                        </div> 
-                        <div class="col-md-2 col-xs-2">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Job Invitations" data-container="body"><i class="material-icons md-24">mail</i></a>   
                         </div>
-                         <div class="col-md-2 col-xs-2">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Saved Applications" data-container="body"><i class="material-icons md-24">star_border</i></a>   
+                        <div class="col-md-1 col-sm-1 col-xs-1 clickme1">                           
+                           <a class="submenu" id="pinfo" data-toggle="tooltip" data-placement="top" title="Personal Information" data-container="body"><i class="material-icons md-24">fingerprint</i></a>
+                        </div> 
+                        <div class="col-md-1 col-sm-1 col-xs-1 clickme2">    
+                             <a class="submenu" id="workexp" data-toggle="tooltip" data-placement="top" title="Work Experience" data-container="body"><i class="material-icons md-24">work</i></a>   
+                        </div>
+                         <div class="col-md-1 col-sm-1 col-xs-1 ">    
+                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Education and Training" data-container="body"><i class="material-icons md-24">school</i></a>   
                         </div>    
-                         <div class="col-md-2 col-xs-2">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Latest Job Matches" data-container="body"><i class="material-icons md-24">new_releases</i></a>   
-                        </div>  
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
+                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Skills" data-container="body"><i class="material-icons md-24">star</i></a>   
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1">    
+                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Additional Information" data-container="body"><i class="material-icons md-24">add_box</i></a>   
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
+                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
+                        </div> 
+                            </div>
+                       -->
 	                 </div>
                 </div>
             </div>
             </div>
         </div>
-    <div id="main" class="wrapper">
-       <?php
+    <?php
         include 'sidebar.php';
         ?>
+    <div id="main" class="wrapper ">
+       
 
 		<div class="main main-raised ">
+         
 			<div class="container">
                 <div class="row-fluid">
-                    <div class="col-md-9 welcomediv">
-                        
-                        
-                <div class="section text-center section-landing">
-	                <div class="row-fluid">
-	                    <div class="col-md-12  red-border">
-	                        <h2 class="title">Let's talk <?=$user?> </h2> <span onclick="openNav()">open</span>
-	                        <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
-	                    </div>
-                        
-	                </div>
-
-					<div class="features">
-						<div class="row">
-		                    <div class="col-md-4 col-xs-4">
-								<div class="info">
-									<div class="icon icon-primary">
-										<i class="material-icons">chat</i>
-									</div>
-									<h4 class="info-title">First Feature</h4>
-									<p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-								</div>
-		                    </div>
-		                    <div class="col-md-4 col-xs-4">
-								<div class="info">
-									<div class="icon icon-success">
-										<i class="material-icons">verified_user</i>
-									</div>
-									<h4 class="info-title">Second Feature</h4>
-									<p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-								</div>
-		                    </div>
-		                    <div class="col-md-4 col-xs-4">
-								<div class="info">
-									<div class="icon icon-danger">
-										<i class="material-icons">fingerprint</i>
-									</div>
-									<h4 class="info-title">Third Feature</h4>
-									<p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
-								</div>
-		                    </div>
-		                </div>
-					</div>
-	            </div>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    </div>
                     
-                    
-                <div class="col-md-3 red-border">
-                        <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
-		       </div>    
+                    <div id="resume-main-body">                       
+                <?php
+                  include 'pinfo-form.php';      
+                ?>
+                      
+                </div> <!--resume main body-->        
                 <!--
 		    	<div class="section text-center section-landing">
 	                <div class="row">
@@ -320,7 +309,9 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/resume.js" type="text/javascript"></script>
     
+     
     <script>
     var isClosed = true;
 function openNav() {
@@ -340,6 +331,11 @@ function closeNav() {
     isClosed = true;
 }
 
+      
 </script>
 
 </html>
+<?php
+} else{
+    
+}

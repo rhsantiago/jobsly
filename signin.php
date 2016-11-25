@@ -7,12 +7,14 @@ if(isset($_POST['password'])){ $password = $_POST['password']; }
 include 'Database.php';
 $database = new Database();
 
-$database->query('SELECT email,isverified from useraccounts where email = :email and password = :password');
+$database->query('SELECT id,email,isverified,password from useraccounts where email = :email and password = :password');
 $database->bind(':email', $email);
 $database->bind(':password', $password);
 $row = $database->single();
+$id = $row['id'];
 $success = $row['email'];
 $isverified = $row['isverified'];
+$password = $row['password'];
 
 if(is_null($success)){
     echo 'notfound';
@@ -26,6 +28,8 @@ if($success == $email && $isverified == 1){
         $_SESSION['user'] = $success;
     if(!isset($_SESSION['password']))
         $_SESSION['password'] = $password;
+    if(!isset($_SESSION['userid']))
+        $_SESSION['userid'] = $id;
     echo 'success';   
 }
 ?>
