@@ -142,11 +142,11 @@
     and (-webkit-min-device-pixel-ratio: 1) { 
       
       .landing-page .header {
-          height: 25vh !important;   
+          height: 31vh !important;   
        }
     
         .margin-top-title {
-            margin-top: -150px !important;   
+            margin-top: -110px !important;   
         }
     
         .section {

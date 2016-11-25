@@ -4,7 +4,11 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+    
+   include 'authenticate.php';
+}
 
+if($ok == 1 ){
 ?>
 <!doctype html>
 <html lang="en">
@@ -337,5 +341,6 @@ function closeNav() {
 </html>
 <?php
 } else{
+    include 'logout.php';
     
 }

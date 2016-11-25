@@ -132,15 +132,15 @@
 
 
 
-
-.clickable {
-    cursor: pointer;
+.card .content {
+  padding: 10px !important;
 }
 
-.clickme1 {
-         cursor: pointer;
-    }
 
-.clickme2 {
-         cursor: pointer;
-    }
+h3, .h3 {
+  margin: 5px 10px; 5px;
+}
+
+h6, .h6 {
+  margin: 0px 10px; 0px;
+}
