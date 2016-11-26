@@ -144,3 +144,11 @@ h3, .h3 {
 h6, .h6 {
   margin: 0px 10px; 0px;
 }
+
+.adsright {
+    margin-top: 90px;
+}
+
+#successdivpinfo {
+    display: none;
+}

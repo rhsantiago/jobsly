@@ -9,6 +9,7 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,7 +34,7 @@ if($ok == 1 ){
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-
+    <link href="css/summernote.css" rel="stylesheet"/>
 
 </head>
 
@@ -376,7 +377,8 @@ if($ok == 1 ){
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/resume.js" type="text/javascript"></script>
-    
+     <script src="js/summernote.min.js" type="text/javascript"></script>
+  
      
     <script>
     var isClosed = true;

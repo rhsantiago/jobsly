@@ -1,5 +1,6 @@
 $(document).ready(function ($) {
     
+    
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
         event.preventDefault()
@@ -163,6 +164,9 @@ $(document).ready(function ($) {
     $(document).on('submit','#pinfo-form',function(event){
              
             event.preventDefault();
+            $('#successdivpinfo').hide();
+            var id = $("#pinfo-form #id").val();
+            var mode = $("#pinfo-form #mode").val();
             var userid = $("#pinfo-form #userid").val();  
             var fname = $("#pinfo-form #fname").val();
             var lname = $("#pinfo-form #lname").val();
@@ -187,12 +191,13 @@ $(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "pinfo-submit.php",
-                data: "userid=" + userid + "&fname=" + fname + "&lname=" + lname + "&mname=" + mname + "&street=" + street + "&city=" + city + "&province=" + province + "&country=" + country + "&mnumber=" + mnumber + "&myemail=" + myemail + "&landline=" + landline + "&age=" + age + "&birthday=" + birthday + "&gender=" + gender + "&nationality=" + nationality,
+                data: "mode=" + mode + "&id=" + id + "&userid=" + userid + "&fname=" + fname + "&lname=" + lname + "&mname=" + mname + "&street=" + street + "&city=" + city + "&province=" + province + "&country=" + country + "&mnumber=" + mnumber + "&myemail=" + myemail + "&landline=" + landline + "&age=" + age + "&birthday=" + birthday + "&gender=" + gender + "&nationality=" + nationality,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
                   console.log(data);
-                
+                    $('#successdivpinfo').fadeIn(1500);
+                    $('#mode').val('update');                   
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -215,6 +220,7 @@ $(document).ready(function ($) {
             var enddate = $("#wexp-form #enddate").val();
         
             var currentempcb = $("#wexp-form #currentempcb").val();
+             var jobdesc = $('#summernote').summernote('code');
             
         
            // var formdata = {password:password,email:email,usertype:usertype};
@@ -222,7 +228,7 @@ $(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "wexp-submit.php",
-                data: "userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb,
+                data: "userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){

@@ -13,13 +13,13 @@ if(isset($_POST['enddate'])){ $enddate = $_POST['enddate']; }
 $edate = explode("/", $enddate);
 $enddate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
 if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
-
+if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 
 
 include 'Database.php';
 $database = new Database();
 
-    $database->query(' INSERT INTO workexperience (id, userid, company,position,startdate,msalary,industry,plevel,enddate,currentemployer) VALUES (NULL, :userid, :company, :position,:startdate,:msalary,:industry,:plevel,:enddate,:currentempcb)');
+    $database->query(' INSERT INTO workexperience (id, userid, company,position,startdate,msalary,industry,plevel,enddate,currentemployer,jobdescription) VALUES (NULL, :userid, :company, :position,:startdate,:msalary,:industry,:plevel,:enddate,:currentempcb,:jobdesc)');
     $database->bind(':userid', $userid);
     $database->bind(':company', $company);
     $database->bind(':position', $position);  
@@ -29,6 +29,7 @@ $database = new Database();
     $database->bind(':plevel', $plevel); 
     $database->bind(':enddate', $enddate); 
     $database->bind(':currentempcb', $currentempcb);
+    $database->bind(':jobdesc', $jobdesc);
        
     $database->execute();
 

@@ -1,5 +1,6 @@
 <?php
-
+if(isset($_POST['id'])){ $id = $_POST['id']; }
+if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['fname'])){ $fname = $_POST['fname']; } 
 if(isset($_POST['lname'])){ $lname = $_POST['lname']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -21,8 +22,20 @@ if(isset($_POST['nationality'])){ $nationality = $_POST['nationality']; }
 
 include 'Database.php';
 $database = new Database();
+    
+    if($mode=='insert'){
+         $database->query(' INSERT INTO personalinformation (id, userid, lname,fname,mname,street,city,province,country,mnumber,myemail,landline,age,birthday,gender,nationality) VALUES (NULL, :userid, :lname, :fname,:mname,:street,:city,:province,:country,:mnumber,:myemail,:landline,:age,:birthday,:gender,:nationality)');
+         
+    }
 
-    $database->query(' INSERT INTO personalinformation (id, userid, lname,fname,mname,street,city,province,country,mnumber,myemail,landline,age,birthday,gender,nationality) VALUES (NULL, :userid, :lname, :fname,:mname,:street,:city,:province,:country,:mnumber,:myemail,:landline,:age,:birthday,:gender,:nationality)');
+    if($mode=='update'){
+       $database->query(' UPDATE personalinformation SET userid = :userid, lname = :lname, fname = :fname, mname = :mname, street = :street, city = :city, province = :province, country = :country, mnumber = :mnumber, myemail = :myemail, landline = :landline, age = :age, birthday = :birthday, gender = :gender, nationality = :nationality WHERE personalinformation.id = :pid or userid = :userid'); 
+        $database->bind(':pid', $id);
+        
+    }
+
+   
+    
     $database->bind(':userid', $userid);
     $database->bind(':fname', $fname);
     $database->bind(':lname', $lname);  
@@ -34,12 +47,13 @@ $database = new Database();
     $database->bind(':mnumber', $mnumber);
     $database->bind(':myemail', $myemail);
     $database->bind(':landline', $landline);
-$database->bind(':age', $age);
-$database->bind(':birthday', $birthday);
-$database->bind(':gender', $gender);
-$database->bind(':nationality', $nationality);
-    $database->execute();
+    $database->bind(':age', $age);
+    $database->bind(':birthday', $birthday);
+    $database->bind(':gender', $gender);
+    $database->bind(':nationality', $nationality);
+    
 
-echo $birthday;
+    $database->execute();
+  
 ?> 
   

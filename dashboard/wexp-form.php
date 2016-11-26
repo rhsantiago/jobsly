@@ -1,7 +1,10 @@
 <?php
-
-
-
+session_start();
+if(isset($_SESSION['user'])){
+   $user = $_SESSION['user'];
+   $password = $_SESSION['password'];
+   $userid = $_SESSION['userid'];
+}
 ?>
 
 
@@ -130,6 +133,26 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-12">
+                                                                    <hr>
+                                                                   <h6><label>Job Description</label></h6>
+                                                                    <div id="summernote"><p>Hello Summernote</p></div>
+                                                                          <script>
+                                                                            $(document).ready(function() {
+                                                                               $('#summernote').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']],
+                                                                                        ['height', ['height']]
+                                                                                      ]
+                                                                                    });
+                                                                            });
+                                                                            </script>
+
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -159,7 +182,21 @@
                     </div>
                     
                     
-                <div class="col-md-3 red-border">
-                        <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" /><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" />
+                <div class="col-md-3">
+                    
+                                                    <div class="card adsright">                                            
+                                                             <div class="content">
+                                                                                                                                       
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
+                                                                                </div>
+                                                                               
+                                                                            
+                                                                            </div>
+                                                                      
+                                                             </div>
+                                                    </div>
+                        
 		       </div> 
             </form>
