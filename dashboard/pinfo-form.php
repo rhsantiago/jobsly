@@ -254,6 +254,7 @@ if(isset($_SESSION['user'])){
                                                                 <label class="control-label">Nationality</label>
                                                                 <input type="text" id="nationality" class="form-control" value="<?=$nationality ?>">
                                                             </div>
+                                                           
                                                         </div>
 
                                                     </div>

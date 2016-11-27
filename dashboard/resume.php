@@ -36,9 +36,32 @@ if($ok == 1 ){
     <link href="css/media.css" rel="stylesheet"/>
     <link href="css/summernote.css" rel="stylesheet"/>
 
+    
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/resume.js" type="text/javascript"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
 </head>
 
 <body class="landing-page">
+    <!-- Modal -->
+	<div class="modal fullscreen-modal fade" id="workexp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -192,7 +215,8 @@ if($ok == 1 ){
                     
                     <div id="resume-main-body">                       
                 <?php
-                  include 'pinfo-form.php';      
+                  include 'pinfo-form.php';  
+              //  include 'wexp-form.php';
                 ?>
                       
                 </div> <!--resume main body-->        
@@ -364,20 +388,7 @@ if($ok == 1 ){
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/material.min.js"></script>
-
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/resume.js" type="text/javascript"></script>
-     <script src="js/summernote.min.js" type="text/javascript"></script>
+	
   
      
     <script>

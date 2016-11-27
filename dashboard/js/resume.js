@@ -1,4 +1,4 @@
-$(document).ready(function ($) {
+jQuery(document).ready(function ($) {
     
     
    // $('#pinfo').click(function() {   
@@ -25,7 +25,8 @@ $(document).ready(function ($) {
     
     //$('#workexp').on('click',function() {  
       $("a[href='#workexp']").on('click',function () {  
-           //event.preventDefault()
+           event.preventDefault()
+           event.stopPropagation();
                     $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -37,6 +38,17 @@ $(document).ready(function ($) {
                         $('#resume-main-body #enddate').datepicker();
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #w2').addClass('active');
+                        $('#summernote').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']],
+                                                                                        ['height', ['height']]
+                                                                                      ]
+                                                                                    });
+                                                                           
                         $(function() {
                             $.material.init();
                         });
@@ -244,7 +256,31 @@ $(document).ready(function ($) {
     });
     
     
-    
+    $('#workexp-modal').on('show.bs.modal', function(e) {
+
+        var $modal = $(this),
+            // workexpid = e.relatedTarget.workexpid,
+           //   userid = e.relatedTarget.userid;
+               workexpid =  $(e.relatedTarget).data('workexpid');
+                userid = $(e.relatedTarget).data('userid');
+            // jobid= $(this).data('jobid');
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'modal.php',
+            data: 'workexpid=' + workexpid +
+                  '&userid=' + userid,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $('#successdivworkexp').hide();
+                   // $('#resume-main-body #startdate').datepicker();                    
+                  //  $('#resume-main-body #enddate').datepicker();
+                    $(function() {
+                           $.material.init();
+                    });
+            }
+        });
+    });
     
 });   
 

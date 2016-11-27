@@ -4,24 +4,26 @@ if (session_status() == PHP_SESSION_NONE) {
         include 'Database.php';
 }
 
- $database = new Database();
+ 
 
 $startdate = "";
 $enddate = "";
-
+$sdate = "";
+$edate ="";
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+    
+    
+    $database = new Database();
 }
 ?>
 
 
-
-
-
-                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>">          
+     <form method="post" id="wexp-form" name="wexp-form"> 
+                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">        
                     <div class="col-md-9 ">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
@@ -31,8 +33,7 @@ if(isset($_SESSION['user'])){
                         </div>
                        
                 <div class="section  section-landing">
-	                
-
+	         
 					<div class="features">
 						<div class="row">
 		                    <div class="col-md-12">
@@ -54,15 +55,16 @@ if(isset($_SESSION['user'])){
                                                              <div class="content">                           
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="">
+                                                                                    <div id="workexpcard" class="">
                                                                                         <ul class="list-inline">
                                                                                           <li><h3 class="text-info"><?=$row['position']?></h3></li>
                                                                                             <li><h6 class="text-muted"><i><?=$row['company']?></i></h6> </li>
+                                                                                            <li><a href='#workexpmodal' id="editworkexp" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal">Edit</a></li>
                                                                                         </ul>
                                                                                         <ul class="list-inline">
                                                                                             <li>
                                                                                                 <h6 class="text-muted">
-                                                                                                    <i class="material-icons text-info">business</i><i> <?=$row['industry']?></i>
+                                                                                                    <i class="material-icons text-info">business</i><i id='industryli'> <?=$row['industry']?></i>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -157,8 +159,7 @@ if(isset($_SESSION['user'])){
                                             -->
                                         </div>
                                 
-                             <form method="post" id="wexp-form" name="wexp-form"> 
-                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                            
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -184,7 +185,7 @@ if(isset($_SESSION['user'])){
                                                                         <label class="control-label">Company Name</label>
                                                                         <input type="text" id="company" class="form-control">
                                                                     </div>
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="positiondiv" class="form-group label-floating">
                                                                         <label class="control-label">Position</label>
                                                                         <input type="text" id="position" class="form-control">
                                                                     </div>
@@ -219,10 +220,11 @@ if(isset($_SESSION['user'])){
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-12">
+                                                        <div class="col-md-12 col-xs-12">
                                                                     <hr>
                                                                    <h6><label>Job Description</label></h6>
                                                                     <div id="summernote"><p>Hello Summernote</p></div>
+                                                                    
                                                                           <script>
                                                                             $(document).ready(function() {
                                                                                $('#summernote').summernote({
@@ -261,7 +263,7 @@ if(isset($_SESSION['user'])){
                                                
                                             </div>
                                  
-                                 </form>
+                             
 		                    </div>
                             
                             <div class="col-md-6">
@@ -300,8 +302,10 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
+    </form>
+
            <script>
                $(document).ready(function ($) {
-                    $('#successdivworkexp').hide();
+                //   $('#successdivworkexp').hide();
                });
             </script>
