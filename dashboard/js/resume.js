@@ -209,6 +209,7 @@ $(document).ready(function ($) {
     $(document).on('submit','#wexp-form',function(event){
              
             event.preventDefault();
+            $('#successdivworkexp').hide();
             var userid = $("#wexp-form #userid").val();  
             var company = $("#wexp-form #company").val();
             var position = $("#wexp-form #position").val();
@@ -232,8 +233,8 @@ $(document).ready(function ($) {
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
-                  console.log(data);
-                
+                  //console.log(data);
+                    $('#successdivworkexp').fadeIn(1500);
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');

@@ -1,5 +1,15 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+        include 'Database.php';
+}
+
+ $database = new Database();
+
+$startdate = "";
+$enddate = "";
+
+
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -10,7 +20,7 @@ if(isset($_SESSION['user'])){
 
 
 
-<form method="post" id="wexp-form" name="wexp-form">  
+
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">          
                     <div class="col-md-9 ">
                         <div class="col-md-12">            
@@ -27,9 +37,83 @@ if(isset($_SESSION['user'])){
 						<div class="row">
 		                    <div class="col-md-12">
                                         <div id="workexpcardsdiv">
+                                            <?php
+                                                    $database->query('SELECT * FROM workexperience where userid = :userid');
+                                                    $database->bind(':userid', $userid);  
+                                                    $rows = $database->resultset();
+                                                           // echo $row['name'];
+                                                    foreach($rows as $row){
+                                                        
+                                                        $sdate = explode("-", $row['startdate']);
+                                                        $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+                                                        $edate = explode("-", $row['enddate']);
+                                                        $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                             ?>           
+                                                        
+                                                        <div class="card">                                            
+                                                             <div class="content">                           
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="">
+                                                                                        <ul class="list-inline">
+                                                                                          <li><h3 class="text-info"><?=$row['position']?></h3></li>
+                                                                                            <li><h6 class="text-muted"><i><?=$row['company']?></i></h6> </li>
+                                                                                        </ul>
+                                                                                        <ul class="list-inline">
+                                                                                            <li>
+                                                                                                <h6 class="text-muted">
+                                                                                                    <i class="material-icons text-info">business</i><i> <?=$row['industry']?></i>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 class="text-muted">
+                                                                                                   <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 class="text-muted">
+                                                                                                <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 class="text-muted">
+                                                                                                   <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                        <hr>
+                                                                                        <p>
+                                                                                            <span class="text-muted"><i class="material-icons text-info">description</i> </span>
+                                                                                            <?=$row['jobdescription']?>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                               
+                                                                            
+                                                                            </div>
+                                                                      
+                                                             </div>
+                                                    </div>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                             <?php          
+                                                    }
+                                             ?>
+                                            
+                                            
+                                            <!--
                                                 <div class="card">                                            
-                                                             <div class="content">
-                                                                                                                                       
+                                                             <div class="content">                           
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="">
@@ -70,9 +154,11 @@ if(isset($_SESSION['user'])){
                                                                       
                                                              </div>
                                                     </div>
+                                            -->
                                         </div>
                                 
-                                
+                             <form method="post" id="wexp-form" name="wexp-form"> 
+                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -160,15 +246,30 @@ if(isset($_SESSION['user'])){
                                              </div>
                                     </div>
                                
-                                
-                                
-		                    </div>
-                            
-                            <div class="col-md-6">
-                                    
                                 <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
                                                         Add Work Experience
                                                        </button>
+                                  <div id="successdivworkexp" class="alert alert-success">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> Your work experience has been saved.
+                                               
+                                            </div>
+                                 
+                                 </form>
+		                    </div>
+                            
+                            <div class="col-md-6">
+                             <!--       
+                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
+                                                        Add Work Experience
+                                                       </button>
+                            -->
 		                    </div>
 		                    
 		                </div>
@@ -199,4 +300,8 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
-            </form>
+           <script>
+               $(document).ready(function ($) {
+                    $('#successdivworkexp').hide();
+               });
+            </script>
