@@ -27,6 +27,7 @@ jQuery(document).ready(function ($) {
       $("a[href='#workexp']").on('click',function () {  
            event.preventDefault()
            event.stopPropagation();
+           
                     $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
@@ -38,20 +39,21 @@ jQuery(document).ready(function ($) {
                         $('#resume-main-body #enddate').datepicker();
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #w2').addClass('active');
-                        $('#summernote').summernote({
-                                                                                      toolbar: [
-                                                                                        // [groupName, [list of button]]
-                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
-                                                                                        ['fontsize', ['fontsize']],
-                                                                                        ['color', ['color']],
-                                                                                        ['para', ['ul', 'ol', 'paragraph']],
-                                                                                        ['height', ['height']]
-                                                                                      ]
-                                                                                    });
-                                                                           
+                        $('#resume-main-body #summernote').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
+                        $('#wexp-form #successdivworkexp').hide();                                                   
                         $(function() {
                             $.material.init();
                         });
+                        
                     }
         });
         return false;
@@ -218,10 +220,62 @@ jQuery(document).ready(function ($) {
             return false;
     });
     
+    $(document).on('submit','#wexp-form-modal',function(event){
+            event.preventDefault();
+            $('#wexp-form #workexpcardsdiv').hide();
+            $('#wexp-form-modal #successdivworkexp').hide();
+            var id = $("#wexp-form-modal #id").val();
+            var mode = $("#wexp-form-modal #mode").val();
+            var userid = $("#wexp-form-modal #userid").val();  
+            var company = $("#wexp-form-modal #company").val();
+            var position = $("#wexp-form-modal #position").val();
+            var startdate = $("#wexp-form-modal #startdate").val();
+        
+            var msalary = $("#wexp-form-modal #msalary").val();       
+            var industry = $("#wexp-form-modal #industry").val();
+            var plevel = $("#wexp-form-modal #plevel").val();
+            var enddate = $("#wexp-form-modal #enddate").val();
+        
+            var currentempcb = $("#wexp-form-modal #currentempcb").val();
+             var jobdesc = $('#wexp-form-modal #summernote').summernote('code');
+            
+        
+           // var formdata = {password:password,email:email,usertype:usertype};
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "wexp-submit.php",
+                data: "id=" + id + "&mode=" + mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);               
+                    $('#wexp-form-modal #successdivworkexp').fadeIn(1500);
+                    $('#resume-main-body #summernote').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
+                },
+                error: function(data) {
+                     $( "#msgSubmit" ).removeClass('hidden');
+                }
+            });
+            return false;
+    });
+       
+    
     $(document).on('submit','#wexp-form',function(event){
              
             event.preventDefault();
-            $('#successdivworkexp').hide();
+            $('#wexp-form #workexpcardsdiv').hide();
+            $('#wexp-form #successdivworkexp').hide();
+            var mode = $("#wexp-form #mode").val();
             var userid = $("#wexp-form #userid").val();  
             var company = $("#wexp-form #company").val();
             var position = $("#wexp-form #position").val();
@@ -233,7 +287,7 @@ jQuery(document).ready(function ($) {
             var enddate = $("#wexp-form #enddate").val();
         
             var currentempcb = $("#wexp-form #currentempcb").val();
-             var jobdesc = $('#summernote').summernote('code');
+             var jobdesc = $('#wexp-form #summernote').summernote('code');
             
         
            // var formdata = {password:password,email:email,usertype:usertype};
@@ -241,12 +295,24 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "wexp-submit.php",
-                data: "userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
+                data: "mode=" +mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
-                  //console.log(data);
-                    $('#successdivworkexp').fadeIn(1500);
+                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('#wexp-form #successdivworkexp').fadeIn(1500);
+                    $('#resume-main-body #startdate').datepicker();                    
+                    $('#resume-main-body #enddate').datepicker();
+                    $('#resume-main-body #summernote').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -259,25 +325,25 @@ jQuery(document).ready(function ($) {
     $('#workexp-modal').on('show.bs.modal', function(e) {
 
         var $modal = $(this),
-            // workexpid = e.relatedTarget.workexpid,
-           //   userid = e.relatedTarget.userid;
+          
                workexpid =  $(e.relatedTarget).data('workexpid');
-                userid = $(e.relatedTarget).data('userid');
-            // jobid= $(this).data('jobid');
+               userid = $(e.relatedTarget).data('userid');
+     
         $.ajax({
             cache: false,
             type: 'POST',
-            url: 'modal.php',
+            url: 'wexp-modal.php',
             data: 'workexpid=' + workexpid +
                   '&userid=' + userid,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
-                $('#successdivworkexp').hide();
-                   // $('#resume-main-body #startdate').datepicker();                    
-                  //  $('#resume-main-body #enddate').datepicker();
-                    $(function() {
+                $(function() {
                            $.material.init();
                     });
+                $('#successdivworkexp').hide();
+                  //  $('#modaleditworkexp #startdate').datepicker();                    
+                 //   $('#modaleditworkexp #enddate').datepicker();
+                    
             }
         });
     });

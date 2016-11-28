@@ -23,7 +23,8 @@ if(isset($_SESSION['user'])){
 
 
      <form method="post" id="wexp-form" name="wexp-form"> 
-                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">        
+                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                 <input type="hidden" id="mode" name="mode" value="insert">
                     <div class="col-md-9 ">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
@@ -39,7 +40,7 @@ if(isset($_SESSION['user'])){
 		                    <div class="col-md-12">
                                         <div id="workexpcardsdiv">
                                             <?php
-                                                    $database->query('SELECT * FROM workexperience where userid = :userid');
+                                                    $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
                                                     $database->bind(':userid', $userid);  
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
@@ -59,7 +60,10 @@ if(isset($_SESSION['user'])){
                                                                                         <ul class="list-inline">
                                                                                           <li><h3 class="text-info"><?=$row['position']?></h3></li>
                                                                                             <li><h6 class="text-muted"><i><?=$row['company']?></i></h6> </li>
-                                                                                            <li><a href='#workexpmodal' id="editworkexp" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal">Edit</a></li>
+                                                                                            <li class="editfloatright">
+                                                                                                <a href='#workexpmodal' id="editworkexp" title="Edit" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a>
+                                                                                                <a href='#workexpmodaldel' id="delworkexp" title="Delete" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal-del"><i class="material-icons">delete</i></a>
+                                                                                            </li>
                                                                                         </ul>
                                                                                         <ul class="list-inline">
                                                                                             <li>
@@ -96,67 +100,13 @@ if(isset($_SESSION['user'])){
                                                                       
                                                              </div>
                                                     </div>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        
+                                                                   
                                                         
                                              <?php          
                                                     }
                                              ?>
                                             
-                                            
-                                            <!--
-                                                <div class="card">                                            
-                                                             <div class="content">                           
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div class="">
-                                                                                        <ul class="list-inline">
-                                                                                          <li><h3 class="text-info">Senior Software Engineer</h3></li>
-                                                                                            <li><h6 class="text-muted"><i>CHAMP Cargosystems Inc.</i></h6> </li>
-                                                                                        </ul>
-                                                                                        <ul class="list-inline">
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                    <i class="material-icons text-info">business</i><i> Airline Cargo</i>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                   <i class="material-icons text-info">date_range</i> 03/21/2015 - 11/01/2016
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                    <i class="material-icons text-info">people</i><i> High Senior</i>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                   <i class="material-icons text-info">local_atm</i> Php 85,000
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <hr>
-                                                                                        <p><span class="text-muted"><i class="material-icons text-info">description</i></span>
-	                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
-                                            -->
+                                         
                                         </div>
                                 
                             
@@ -304,8 +254,4 @@ if(isset($_SESSION['user'])){
 		       </div> 
     </form>
 
-           <script>
-               $(document).ready(function ($) {
-                //   $('#successdivworkexp').hide();
-               });
-            </script>
+        
