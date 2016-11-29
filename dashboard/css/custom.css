@@ -156,3 +156,8 @@ h6, .h6 {
 .editfloatright {
     float:right;
 }
+
+.modal-gray {
+    background: #e7e7e7;
+}
+

@@ -1,9 +1,10 @@
 <?php
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if($mode!='del'){    
     
-    if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+    
     if(isset($_POST['company'])){ $company = $_POST['company']; }
     if(isset($_POST['position'])){ $position = $_POST['position']; }
     if(isset($_POST['startdate'])){ $startdate = $_POST['startdate']; }

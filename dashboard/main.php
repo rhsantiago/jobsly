@@ -38,9 +38,60 @@ if($ok == 1 ){
 </head>
 
 <body class="landing-page">
-   <?php
-    include 'navbar.php';
-    ?>
+    
+   <nav class="navbar navbar-fixed-top ">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+        		<a class="navbar-brand logo" href="">jobsly</a>
+        	</div>
+
+        	<div class="collapse navbar-collapse" id="navigation-example">
+        		<ul class="nav navbar-nav navbar-left">
+                     <li>
+                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
+                    </li>
+                    
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="#" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
+                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
+                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
+                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                         </ul> 
+                    </li>
+                    <li><a href="resume.php#pinfo"><i class="material-icons">assessment</i>Resume</a></li>
+    				
+                </ul>
+    				<ul class="nav navbar-nav navbar-right">
+                        <li class="divider"></li>
+		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
+		            <li>
+		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+        		</ul>
+        	</div>
+    	</div>
+    </nav>
+
 
 
      <div class="header header-filter purple-header">

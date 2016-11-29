@@ -63,7 +63,7 @@ if(isset($_SESSION['user'])){
 }
 ?>
 
-<form method="post" id="pinfo-form" name="pinfo-form">
+<form method="post" id="pinfo-form" name="pinfo-form" data-parsley-validate>
                     <input type="hidden" id="id" name="id" value="<?=$id?>">
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">          
@@ -102,11 +102,11 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">First Name</label>
-                                                                <input type="text" id="fname" class="form-control" value="<?=$fname ?>">
+                                                                <input type="text" id="fname" class="form-control" value="<?=$fname ?>" data-parsley-required >  
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Last Name</label>
-                                                                <input type="text" id="lname" class="form-control" value="<?=$lname ?>">
+                                                                <input type="text" id="lname" class="form-control" value="<?=$lname ?>"  data-parsley-required>
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Middle Name</label>
@@ -139,19 +139,19 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Street Address</label>
-                                                                <input type="text" id="street" class="form-control" value="<?=$street ?>">
+                                                                <input type="text" id="street" class="form-control" value="<?=$street ?>" data-parsley-required>
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">City</label>
-                                                                <input type="text" id="city" class="form-control" value="<?=$city ?>">
+                                                                <input type="text" id="city" class="form-control" value="<?=$city ?>"  data-parsley-required>
                                                             </div>
                                                              <div class="form-group label-floating">
                                                                 <label class="control-label">Province</label>
-                                                                <input type="text" id="province" class="form-control" value="<?=$province ?>">
+                                                                <input type="text" id="province" class="form-control" value="<?=$province ?>" data-parsley-pattern="^[a-zA-Z ]+$">
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Country</label>
-                                                                <input type="text" id="country" class="form-control" value="<?=$country ?>">
+                                                                <input type="text" id="country" class="form-control" value="<?=$country ?>"  data-parsley-required data-parsley-pattern="^[a-zA-Z ]+$">
                                                             </div>
                                                         </div>
 
@@ -184,15 +184,15 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Mobile Number</label>
-                                                                <input type="text" id="mnumber" class="form-control" value="<?=$mnumber ?>">
+                                                                <input type="text" id="mnumber" class="form-control" value="<?=$mnumber ?>" required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Email</label>
-                                                                <input type="email" id="myemail" class="form-control" value="<?=$myemail ?>">
+                                                                <input type="email" id="myemail" class="form-control" value="<?=$myemail ?>" required data-parsley-type="email">
                                                             </div>
                                                              <div class="form-group label-floating">
                                                                 <label class="control-label">Landline</label>
-                                                                <input type="text" id="landline" class="form-control" value="<?=$landline ?>">
+                                                                <input type="text" id="landline" class="form-control" value="<?=$landline ?>" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
                                                             </div>
                                                         </div>
 
@@ -221,15 +221,15 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Age</label>
-                                                                <input type="text" id="age" class="form-control" value="<?=$age ?>">
+                                                                <input type="text" id="age" class="form-control" value="<?=$age ?>" data-parsley-required data-parsley-type="number">                                                             
                                                             </div>
                                                             <div id="birthdaydiv" class="form-group label-static">
-                                                                <label class="control-label">Birthday</label>
-                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>">
+                                                                <label class="control-label">Birthday (MM/DD/YYYY)</label>
+                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                              <div class="form-group label-floating">
                                                                 <label class="control-label">Gender</label>
-                                                                <select class="form-control" id="gender" name="gender"  placeholder="Gender">
+                                                                <select class="form-control" id="gender" name="gender"  placeholder="Gender" data-parsley-required>
                                                                     <?php
  
                                                                         if($gender =='male'){
@@ -252,7 +252,7 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                             <div class="form-group label-floating">
                                                                 <label class="control-label">Nationality</label>
-                                                                <input type="text" id="nationality" class="form-control" value="<?=$nationality ?>">
+                                                                <input type="text" id="nationality" class="form-control" value="<?=$nationality ?>" data-parsley-required data-parsley-pattern="^[a-zA-Z ]+$">
                                                             </div>
                                                            
                                                         </div>

@@ -1,5 +1,28 @@
 jQuery(document).ready(function ($) {
     
+    $('#pinfo-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
+    });
+    
+    $('#wexp-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
+    });
     
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
@@ -11,14 +34,19 @@ jQuery(document).ready(function ($) {
 
             success: function (html) {
                        // console.log(html);
-                $('#resume-main-body').html(html);                    
-                $('#resume-main-body #birthday').datepicker();
-                $('#resumesb li').removeClass('active');
-                $('#resumesb #p1').addClass('active');
-                        $(function() {
-                            $.material.init();
-                        });
+                    $('#resume-main-body').html(html);                    
+                    $('#resume-main-body #birthday').datepicker();
+                    $('#resumesb li').removeClass('active');
+                    $('#resumesb #p1').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                     $('#pinfo-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                     });
                 }
+               
         });
         return false;
     });
@@ -53,6 +81,10 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                        $('#wexp-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
                         
                     }
         });
@@ -61,7 +93,7 @@ jQuery(document).ready(function ($) {
     
     $("a[href='#etrain']").on('click', function() {  
         $.ajax({
-                    url: 'wexp-form.php',
+                    url: 'etrain-form.php',
                     dataType: 'html',
 
                     success: function (html) {
@@ -260,7 +292,7 @@ jQuery(document).ready(function ($) {
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
                                     ]
-                          });
+                          });              
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -313,6 +345,7 @@ jQuery(document).ready(function ($) {
                                        ['height', ['height']]
                                     ]
                           });
+                    
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -325,7 +358,7 @@ jQuery(document).ready(function ($) {
     $('#workexp-modal').on('show.bs.modal', function(e) {
 
         var $modal = $(this),
-          
+               mode =  $(e.relatedTarget).data('mode');
                workexpid =  $(e.relatedTarget).data('workexpid');
                userid = $(e.relatedTarget).data('userid');
      
@@ -334,19 +367,24 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: 'wexp-modal.php',
             data: 'workexpid=' + workexpid +
-                  '&userid=' + userid,
+                  '&userid=' + userid +
+                  '&mode=' + mode,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
                 $(function() {
                            $.material.init();
                     });
                 $('#successdivworkexp').hide();
-                  //  $('#modaleditworkexp #startdate').datepicker();                    
-                 //   $('#modaleditworkexp #enddate').datepicker();
+                $('#wexp-form-modal').parsley({
+                       successClass: "has-success",
+                       errorClass: "has-error"
+                });
                     
             }
         });
     });
+    
+  
     
 });   
 

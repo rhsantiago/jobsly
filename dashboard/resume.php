@@ -51,6 +51,7 @@ if($ok == 1 ){
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/resume.js" type="text/javascript"></script>
     <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/parsley.js"></script>
 </head>
 
 <body class="landing-page">
@@ -92,15 +93,11 @@ if($ok == 1 ){
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>       
+                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                         </ul>    
                     </li>
     				
-                        <!--
-						<a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-							<i class="material-icons">unarchive</i> Upgrade to PRO
-						</a>
-                        -->
                 </ul>
     				<ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
@@ -134,7 +131,7 @@ if($ok == 1 ){
                             
                             <div id="resumesb" class="">                               
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="p1">
+                                    <li id="p1" class="active">
                                       
                                         <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
                                             <i class="material-icons">fingerprint</i>
@@ -153,7 +150,7 @@ if($ok == 1 ){
                                     <li id="e3">
                                         <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">school</i>
-                                            <span class="submenufont">Education and Training</span>
+                                            <span class="submenufont">Education &amp; Training</span>
                                         </a>
                                     </li>
                                     <li id="s4">
