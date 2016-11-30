@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
 ?>
 
 
-     <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate> 
+     <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
                                  <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                  <input type="hidden" id="mode" name="mode" value="insert">
                     <div class="col-md-9 ">
@@ -131,9 +131,9 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="companydiv" class="form-group label-floating">
                                                                         <label class="control-label">Company Name</label>
-                                                                        <input type="text" id="company" class="form-control" data-parsley-required>
+                                                                        <input type="text" id="company" class="form-control" data-parsley-required >                                                                      
                                                                     </div>
                                                                     <div id="positiondiv" class="form-group label-floating">
                                                                         <label class="control-label">Position</label>
@@ -253,5 +253,19 @@ if(isset($_SESSION['user'])){
                         
 		       </div> 
     </form>
-
+<script>
+jQuery(document).ready(function ($) {
+    $('#wexp-form #company').parsley().on('field:error', function() {
+           $('#wexp-form #companydiv').addClass('has-error');
+            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });
+    
+    $('#wexp-form #company').parsley().on('field:success', function() {
+            $('#wexp-form #companydiv').addClass('has-success');
+            $('#wexp-form #companydiv').find('span').remove()
+            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+});       
+</script>
         

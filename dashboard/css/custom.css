@@ -107,7 +107,7 @@
 }
 .card > #tabtitle {
   height: 100% !important;
-    max-height: 85px !important;
+    max-height: 150px !important;
 }
 
 .purplebg {
@@ -161,3 +161,16 @@ h6, .h6 {
     background: #e7e7e7;
 }
 
+
+.errortext {
+    color: red !important;
+}
+
+div .parsley-errors-list {
+    list-style-type: none;
+    opacity: 1; 
+    color: red;
+    font-size: 10px;
+    font-weight: 300;
+   
+}

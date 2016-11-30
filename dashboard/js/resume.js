@@ -11,6 +11,7 @@ jQuery(document).ready(function ($) {
         },
        
     });
+        
     
     $('#wexp-form').parsley({
         successClass: "has-success",
@@ -23,7 +24,19 @@ jQuery(document).ready(function ($) {
         },
        
     });
-    
+   
+    $('#etrain-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
+    });
+  
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
         event.preventDefault()
@@ -43,7 +56,13 @@ jQuery(document).ready(function ($) {
                             });
                      $('#pinfo-form').parsley({
                             successClass: "has-success",
-                            errorClass: "has-error"
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
                      });
                 }
                
@@ -86,25 +105,45 @@ jQuery(document).ready(function ($) {
                             errorClass: "has-error"
                         });
                         
+                        
+                        
                     }
         });
         return false;
     });
     
     $("a[href='#etrain']").on('click', function() {  
+        event.preventDefault()
+           event.stopPropagation();
         $.ajax({
                     url: 'etrain-form.php',
                     dataType: 'html',
 
                     success: function (html) {
                        // console.log(html);
-                        $('#resume-main-body').html(html);                   
-                        $('#resume-main-body #startdate').datepicker();                    
-                        $('#resume-main-body #enddate').datepicker();
+                        $('#resume-main-body').html(html);
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #e3').addClass('active');
-                        $(function() {
+                        $('#resume-main-body #hsgraddate').datepicker();                    
+                        $('#resume-main-body #colgraddate').datepicker();
+                        $('#resume-main-body #pgrad1graddate').datepicker();
+                        $('#etrain-form #successdivworkexp').hide();
+                        $('#etrain-form #smhs').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
+                         $(function() {
                             $.material.init();
+                        });
+                        $('#etrain-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
                         });
                     }
         });
@@ -231,6 +270,7 @@ jQuery(document).ready(function ($) {
             var birthday = $("#pinfo-form #birthday").val();
             var gender = $("#pinfo-form #gender").val();
             var nationality = $("#pinfo-form #nationality").val();
+          
         
            // var formdata = {password:password,email:email,usertype:usertype};
             $.ajax({
@@ -321,7 +361,7 @@ jQuery(document).ready(function ($) {
             var currentempcb = $("#wexp-form #currentempcb").val();
              var jobdesc = $('#wexp-form #summernote').summernote('code');
             
-        
+            
            // var formdata = {password:password,email:email,usertype:usertype};
             $.ajax({
                 cache: false,
@@ -349,6 +389,76 @@ jQuery(document).ready(function ($) {
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
+                }
+            });
+            return false;
+    });
+    
+    
+    $(document).on('submit','#etrain-form',function(event){
+             
+            event.preventDefault();      
+            $('#etrain-form #successdivworkexp').hide();
+            var id = $("#etrain-form #id").val();          
+            var mode = $("#etrain-form #mode").val();
+            var userid = $("#etrain-form #userid").val();
+            var hsschool = $("#etrain-form #hsschool").val();
+            var hsadd = $("#etrain-form #hsadd").val();  
+            var hsgraddate = $("#etrain-form #hsgraddate").val();
+            var smhs = $("#etrain-form #smhs").summernote('code');
+        
+            var coluni = $("#etrain-form #coluni").val();
+            var coladd = $("#etrain-form #coladd").val();
+            var colgpa = $("#etrain-form #colgpa").val();
+            var colgraddate = $("#etrain-form #colgraddate").val();
+            var colmajor = $("#etrain-form #colmajor").val();
+            var smcol = $("#etrain-form #smcol").summernote('code');
+        
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "etrain-submit.php",
+                data: "mode=" +mode + "&userid=" + userid + "&hsschool=" + hsschool + "&hsadd=" + hsadd + "&hsgraddate=" + hsgraddate + "&smhs=" + smhs + "&coluni=" + coluni + "&coladd=" + coladd + "&colgpa=" + colgpa + "&colgraddate=" + colgraddate + "&colmajor=" + colmajor + "&smcol=" + smcol,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('#wexp-form #successdivworkexp').fadeIn(1500);
+                    $('#resume-main-body #hsgraddate').datepicker();                    
+                    $('#resume-main-body #colgraddate').datepicker();
+                    $('#resume-main-body #pgrad1graddate').datepicker();
+                    $('#resume-main-body #smhs').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
+                    $('#resume-main-body #smcol').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ]
+                          });
+                    $('#etrain-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                     });
+                    $('#mode').val('update');
+                },
+                error: function(data) {
+                    console.log(data);
+                    $('#wexp-form #successdivworkexp').fadeIn(1500);
+                   
                 }
             });
             return false;
@@ -384,7 +494,9 @@ jQuery(document).ready(function ($) {
         });
     });
     
-  
+    
+    
+   
     
 });   
 
