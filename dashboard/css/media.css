@@ -19,6 +19,10 @@
         #resumesb{
             display: none;
         }
+    
+        .navbar-left{
+            display:inline-block;
+        }
         
        
     
@@ -131,6 +135,10 @@
         }
         #resumesb{
             display: block;
+        }
+        
+        .navbar-left{
+            display:none;
         }
      
 }

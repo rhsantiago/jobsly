@@ -225,7 +225,7 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                             <div id="birthdaydiv" class="form-group label-static">
                                                                 <label class="control-label">Birthday (MM/DD/YYYY)</label>
-                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                              <div id="genderdiv" class="form-group label-floating">
                                                                 <label class="control-label">Gender</label>

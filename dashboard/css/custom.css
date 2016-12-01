@@ -174,3 +174,12 @@ div .parsley-errors-list {
     font-weight: 300;
    
 }
+
+
+.card .header {
+   padding: 10px 0;
+}
+.leftofnavheader {
+    margin-left:  -170px !important;
+    margin-top: 15px;
+}

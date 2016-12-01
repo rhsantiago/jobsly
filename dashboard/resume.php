@@ -74,14 +74,16 @@ if($ok == 1 ){
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
-        	<div class="navbar-header">
-        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                
+        	<div class="navbar-header">                
+        		<button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#navigation-example">
             		<span class="sr-only">Toggle navigation</span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand logo" href="">jobsly</a>
+               <i onclick="openNav()" class="leftofnavheader material-icons">menu</i>
+        		<a class="navbar-brand logo" >jobsly</a>
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">

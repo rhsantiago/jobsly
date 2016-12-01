@@ -283,6 +283,7 @@ jQuery(document).ready(function ($) {
                 success : function(data){
                   console.log(data);
                     $('#successdivpinfo').fadeIn(1500);
+                    $('#pinfo-form').parsley().reset();
                     $('#mode').val('update');                   
                 },
                 error: function(data) {
@@ -385,7 +386,7 @@ jQuery(document).ready(function ($) {
                                        ['height', ['height']]
                                     ]
                           });
-                    
+                    $('#wexp-form').parsley().reset();
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -454,6 +455,7 @@ jQuery(document).ready(function ($) {
                             errorClass: "has-error"
                      });
                     $('#mode').val('update');
+                    $('#etrain-form').parsley().reset();
                 },
                 error: function(data) {
                     console.log(data);

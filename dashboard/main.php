@@ -43,13 +43,15 @@ if($ok == 1 ){
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
+                <i onclick="openNav()" class="material-icons">dashboard</i>
         		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
             		<span class="sr-only">Toggle navigation</span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand logo" href="">jobsly</a>
+        		<a class="navbar-brand logo" >jobsly</a>
+                 
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
