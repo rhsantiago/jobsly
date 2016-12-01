@@ -143,17 +143,17 @@ if(isset($_SESSION['user'])){
                                                                         <label class="control-label">Start Date</label>
                                                                        <input type='text' id='startdate' class='datepicker form-control' data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
-                                                                      <div class="form-group label-floating">
+                                                                      <div id="msalarydiv" class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
                                                                         <input type="text" id="msalary" class="form-control" data-parsley-required data-parsley-type="number">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="industrydiv" class="form-group label-floating">
                                                                         <label class="control-label">Industry</label>
                                                                         <input type="text" id="industry" class="form-control">
                                                                     </div>
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="pleveldiv" class="form-group label-floating">
                                                                         <label class="control-label">Position Level</label>
                                                                         <input type="text" id="plevel" class="form-control">
                                                                     </div>
@@ -257,14 +257,55 @@ if(isset($_SESSION['user'])){
 jQuery(document).ready(function ($) {
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
-            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });
-    
+           $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
     $('#wexp-form #company').parsley().on('field:success', function() {
             $('#wexp-form #companydiv').addClass('has-success');
             $('#wexp-form #companydiv').find('span').remove()
             $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
+    
+    $('#wexp-form #position').parsley().on('field:error', function() {
+           $('#wexp-form #positiondiv').addClass('has-error');
+           $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #position').parsley().on('field:success', function() {
+            $('#wexp-form #positiondiv').addClass('has-success');
+            $('#wexp-form #positiondiv').find('span').remove()
+            $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #startdate').parsley().on('field:error', function() {
+           $('#wexp-form #startdiv').addClass('has-error');
+           $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #startdate').parsley().on('field:success', function() {
+            $('#wexp-form #startdiv').addClass('has-success');
+            $('#wexp-form #startdiv').find('span').remove()
+            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #msalary').parsley().on('field:error', function() {
+           $('#wexp-form #msalarydiv').addClass('has-error');
+           $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #msalary').parsley().on('field:success', function() {
+            $('#wexp-form #msalarydiv').addClass('has-success');
+            $('#wexp-form #msalarydiv').find('span').remove()
+            $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #enddate').parsley().on('field:error', function() {
+           $('#wexp-form #enddiv').addClass('has-error');
+           $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #enddate').parsley().on('field:success', function() {
+            $('#wexp-form #enddiv').addClass('has-success');
+            $('#wexp-form #enddiv').find('span').remove()
+            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+   
     
 });       
 </script>

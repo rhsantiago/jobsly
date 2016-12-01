@@ -91,11 +91,11 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="hs">
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="hsschooldiv" class="form-group label-floating">
                                                                         <label class="control-label">School</label>
                                                                         <input type="text" id="hsschool" class="form-control" value="<?=$hsschool?>" data-parsley-required>
                                                                     </div>
-                                                                    <div id="" class="form-group label-floating">
+                                                                    <div id="hsadddiv" class="form-group label-floating">
                                                                         <label class="control-label">School Address</label>
                                                                         <input type="text" id="hsadd" class="form-control" value="<?=$hsadd?>" data-parsley-required>
                                                                     </div>                                                                  
@@ -133,25 +133,25 @@ if(isset($_SESSION['user'])){
                                                        <div class="tab-pane" id="col">
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="colunidiv" class="form-group label-floating">
                                                                         <label class="control-label">College/University</label>
                                                                         <input type="text" id="coluni" class="form-control" data-parsley-required>
                                                                     </div>
-                                                                    <div id="" class="form-group label-floating">
+                                                                    <div id="coladddiv" class="form-group label-floating">
                                                                         <label class="control-label">College/University Address</label>
                                                                         <input type="text" id="coladd" class="form-control" data-parsley-required>
                                                                     </div>
-                                                                      <div id="" class="form-group label-floating">
+                                                                      <div id="colgpadiv" class="form-group label-floating">
                                                                         <label class="control-label">GPA</label>
                                                                         <input type="text" id="colgpa" class="form-control">
                                                                     </div> 
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   
-                                                                    <div id="enddiv" class="form-group label-static">
+                                                                    <div id="colgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
                                                                         <input type='text' id='colgraddate' class='datepicker form-control' data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>   
-                                                                    <div id="" class="form-group label-floating">
+                                                                    <div id="colmajordiv" class="form-group label-floating">
                                                                         <label class="control-label">Major/Course</label>
                                                                         <input type="text" id="colmajor" class="form-control" data-parsley-required>
                                                                     </div>   
@@ -180,28 +180,28 @@ if(isset($_SESSION['user'])){
                                                                 
                                                             </div>
                                                         </div>
-                                               <!--          <div class="tab-pane" id="pgrad1">
+                                                        <div class="tab-pane" id="pgrad1">
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
-                                                                    <div class="form-group label-floating">
+                                                                    <div id="pgrad1unidiv" class="form-group label-floating">
                                                                         <label class="control-label">Institute/University</label>
                                                                         <input type="text" id="pgrad1uni" class="form-control" data-parsley-required>
                                                                     </div>
-                                                                    <div id="" class="form-group label-floating">
+                                                                    <div id="pgrad1adddiv" class="form-group label-floating">
                                                                         <label class="control-label">Institute/University Address</label>
                                                                         <input type="text" id="pgrad1add" class="form-control" data-parsley-required>
                                                                     </div>
-                                                                      <div id="" class="form-group label-floating">
+                                                                      <div id="pgrad1gpadiv" class="form-group label-floating">
                                                                         <label class="control-label">GPA</label>
                                                                         <input type="text" id="pgrad1gpa" class="form-control">
                                                                     </div> 
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   
-                                                                    <div id="enddiv" class="form-group label-static">
+                                                                    <div id="pgrad1graddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
                                                                         <input type='text' id='pgrad1graddate' class='datepicker form-control' data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>   
-                                                                    <div id="" class="form-group label-floating">
+                                                                    <div id="pgrad1coursediv" class="form-group label-floating">
                                                                         <label class="control-label">Masters/Doctorate Course</label>
                                                                         <input type="text" id="pgrad1course" class="form-control" data-parsley-required>
                                                                     </div>   
@@ -230,7 +230,7 @@ if(isset($_SESSION['user'])){
                                                                 
                                                             </div>
                                                         </div>  
-                                                        -->
+                                                   
                                                     </div>
                                                  
                                                    
@@ -242,7 +242,7 @@ if(isset($_SESSION['user'])){
                                 <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
                                                         Save Education &amp; Training
                                                        </button>
-                                  <div id="successdivworkexp" class="alert alert-success">
+                                  <div id="successdivetrain" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
@@ -250,7 +250,7 @@ if(isset($_SESSION['user'])){
                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                   </button>
-                                                  <b>Alert: </b> Your dducation &amp; training has been saved.
+                                                  <b>Alert: </b> Your education &amp; training has been saved.
                                                
                                             </div>
                                  
