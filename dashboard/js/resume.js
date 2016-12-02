@@ -25,7 +25,19 @@ jQuery(document).ready(function ($) {
        
     });
    
-    $('#etrain-form').parsley({
+    $('#etrain-hs-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
+    });
+    
+    $('#etrain-col-form').parsley({
         successClass: "has-success",
         errorClass: "has-error",
         classHandler: function (el) {
@@ -124,11 +136,11 @@ jQuery(document).ready(function ($) {
                         $('#resume-main-body').html(html);
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #e3').addClass('active');
-                        $('#resume-main-body #hsgraddate').datepicker();                    
+                        $('#etrain-hs-form #hsgraddate').datepicker();                    
                         $('#resume-main-body #colgraddate').datepicker();
-                        $('#resume-main-body #pgrad1graddate').datepicker();
-                        $('#etrain-form #successdivetrain').hide();
-                        $('#etrain-form #smhs').summernote({
+                       // $('#resume-main-body #pgrad1graddate').datepicker();
+                        $('.features #successdivetrain').hide();
+                        $('#etrain-hs-form #smhs').summernote({
                                    toolbar: [
                                      // [groupName, [list of button]]
                                       ['style', ['bold', 'italic', 'underline', 'clear']],                       
@@ -141,7 +153,12 @@ jQuery(document).ready(function ($) {
                          $(function() {
                             $.material.init();
                         });
-                        $('#etrain-form').parsley({
+                        $('#etrain-hs-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
+                        
+                        $('#etrain-col-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
                         });
@@ -395,41 +412,31 @@ jQuery(document).ready(function ($) {
             return false;
     });
     
-    
-    $(document).on('submit','#etrain-form',function(event){
+    $(document).on('submit','#etrain-hs-form',function(event){
              
             event.preventDefault();      
-            $('#etrain-form #successdivetrain').hide();
-            var id = $("#etrain-form #id").val();          
-            var mode = $("#etrain-form #mode").val();
-            var userid = $("#etrain-form #userid").val();
-            var hsschool = $("#etrain-form #hsschool").val();
-            var hsadd = $("#etrain-form #hsadd").val();  
-            var hsgraddate = $("#etrain-form #hsgraddate").val();
-            var smhs = $("#etrain-form #smhs").summernote('code');
-        
-            var coluni = $("#etrain-form #coluni").val();
-            var coladd = $("#etrain-form #coladd").val();
-            var colgpa = $("#etrain-form #colgpa").val();
-            var colgraddate = $("#etrain-form #colgraddate").val();
-            var colmajor = $("#etrain-form #colmajor").val();
-            var smcol = $("#etrain-form #smcol").summernote('code');
-        
+            $('.features #successdivetrain').hide();
+            var id = $("#etrain-hs-form #id").val();
+            var etrain = $("#etrain-hs-form #etrain").val();
+            var mode = $("#etrain-hs-form #mode").val();
+            var userid = $("#etrain-hs-form #userid").val();
+            var hsschool = $("#etrain-hs-form #hsschool").val();
+            var hsadd = $("#etrain-hs-form #hsadd").val();  
+            var hsgraddate = $("#etrain-hs-form #hsgraddate").val();
+            var smhs = $("#etrain-hs-form #smhs").summernote('code');        
         
             $.ajax({
                 cache: false,
                 type: "POST",              
                 url: "etrain-submit.php",
-                data: "mode=" +mode + "&userid=" + userid + "&hsschool=" + hsschool + "&hsadd=" + hsadd + "&hsgraddate=" + hsgraddate + "&smhs=" + smhs + "&coluni=" + coluni + "&coladd=" + coladd + "&colgpa=" + colgpa + "&colgraddate=" + colgraddate + "&colmajor=" + colmajor + "&smcol=" + smcol,
-               // data: {password:password,email:email,usertype:usertype},
+                data: "mode=" + mode + "&etrain=" + etrain + "&userid=" + userid + "&hsschool=" + hsschool + "&hsadd=" + hsadd + "&hsgraddate=" + hsgraddate + "&smhs=" + smhs, 
                 dataType: 'text',
                 success : function(data){
                     console.log(data);
-                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
-                    $('#wexp-form #successdivetrain').fadeIn(1500);
-                    $('#resume-main-body #hsgraddate').datepicker();                    
+                   // $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('.features #successdivetrain').fadeIn(1500);
+                    $('#resume-main-body #hsgraddate').datepicker();
                     $('#resume-main-body #colgraddate').datepicker();
-                    $('#resume-main-body #pgrad1graddate').datepicker();
                     $('#resume-main-body #smhs').summernote({
                                    toolbar: [
                                      // [groupName, [list of button]]
@@ -440,6 +447,55 @@ jQuery(document).ready(function ($) {
                                        ['height', ['height']]
                                     ]
                           });
+                 
+                    $('#etrain-hs-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                     });
+                    $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-hs-form').parsley().reset();
+                },
+                error: function(data) {
+                    console.log(data);
+                   // $('#wexp-form #successdivetrain').fadeIn(1500);
+                   
+                }
+            });
+            return false;
+    });
+    
+    
+    $(document).on('submit','#etrain-col-form',function(event){
+             
+            event.preventDefault();      
+            $('.features #successdivetrain').hide();
+            var id = $("#etrain-col-form #id").val();
+            var etrain = $("#etrain-col-form #etrain").val();
+            var mode = $("#etrain-col-form #mode").val();
+            var userid = $("#etrain-col-form #userid").val();
+                  
+            var coluni = $("#etrain-col-form #coluni").val();
+            var coladd = $("#etrain-col-form #coladd").val();
+            var colgpa = $("#etrain-col-form #colgpa").val();
+            var colgraddate = $("#etrain-col-form #colgraddate").val();
+            var colmajor = $("#etrain-col-form #colmajor").val();
+            var smcol = $("#etrain-col-form #smcol").summernote('code');
+        
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "etrain-submit.php",
+                data: "mode=" +mode + "&etrain=" + etrain + "&userid=" + userid + "&coluni=" + coluni + "&coladd=" + coladd + "&colgpa=" + colgpa + "&colgraddate=" + colgraddate + "&colmajor=" + colmajor + "&smcol=" + smcol,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                   // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('.features #successdivetrain').fadeIn(1500);  
+                    $('#resume-main-body #hsgraddate').datepicker();
+                    $('#resume-main-body #colgraddate').datepicker();                   
+                   
                     $('#resume-main-body #smcol').summernote({
                                    toolbar: [
                                      // [groupName, [list of button]]
@@ -450,21 +506,22 @@ jQuery(document).ready(function ($) {
                                        ['height', ['height']]
                                     ]
                           });
-                    $('#etrain-form').parsley({
+                    $('#etrain-col-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
                      });
-                    $('#mode').val('update');
-                    $('#etrain-form').parsley().reset();
+                    $(' #etrain-col-form #mode').val('update');
+                    $('#etrain-col-form').parsley().reset();
                 },
                 error: function(data) {
-                    console.log(data);
-                    $('#wexp-form #successdivetrain').fadeIn(1500);
+                    console.log(data);                  
                    
                 }
             });
             return false;
     });
+    
+    
     
     
     $('#workexp-modal').on('show.bs.modal', function(e) {

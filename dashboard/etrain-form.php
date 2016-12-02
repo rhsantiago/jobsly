@@ -32,6 +32,9 @@ if(isset($_SESSION['user'])){
         $hsgraddate = $row['hsgraddate'];
         $hsdate = explode("-", $hsgraddate);
         $hsgraddate = $hsdate[1] .'/'.$hsdate[2].'/'.$hsdate[0];
+        if($hsgraddate=='00/00/0000'){
+            $hsgraddate = "";
+        }
         $hsawards = $row['hsawards'];
                
     }else{
@@ -41,9 +44,7 @@ if(isset($_SESSION['user'])){
 ?>
 
 
-     <form method="post" id="etrain-form" name="etrain-form" data-parsley-validate> 
-                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                 <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
+     
                     <div class="col-md-9 ">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
@@ -88,7 +89,12 @@ if(isset($_SESSION['user'])){
                                           </div>
                                              <div class="content">
                                                     <div class="tab-content">
+                                                        
                                                         <div class="tab-pane active" id="hs">
+                                                            <form method="post" id="etrain-hs-form" name="etrain-hs-form" data-parsley-validate> 
+                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                             <input type="hidden" id="etrain" name="mode" value="hs">
+                                                             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="hsschooldiv" class="form-group label-floating">
@@ -101,7 +107,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>                                                                  
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   
-                                                                    <div id="enddiv" class="form-group label-static">
+                                                                    <div id="hsgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
                                                                         <input type='text' id='hsgraddate' class='datepicker form-control' value="<?=$hsgraddate?>" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>                                                                    
@@ -125,12 +131,22 @@ if(isset($_SESSION['user'])){
                                                                                     });
                                                                             });
                                                                             </script>
-
+                                                                    <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
+                                                        Save High School Details
+                                                       </button>
                                                                 </div>
                                                         
                                                             </div>
+                                                        </form>        
                                                         </div>
+                                                        
+                                                        
+                                                   
                                                        <div class="tab-pane" id="col">
+                                                           <form method="post" id="etrain-col-form" name="etrain-col-form" data-parsley-validate> 
+                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                             <input type="hidden" id="etrain" name="mode" value="col">
+                                                             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">     
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="colunidiv" class="form-group label-floating">
@@ -175,12 +191,22 @@ if(isset($_SESSION['user'])){
                                                                                     });
                                                                             });
                                                                             </script>
-
+                                                                   <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
+                                                        Save College Details
+                                                       </button>     
                                                                 </div>
                                                                 
                                                             </div>
+                                                               </form>
                                                         </div>
+                                                        
+                                                        
+                                                    
                                                         <div class="tab-pane" id="pgrad1">
+                                                             <form method="post" id="etrain-pg1-form" name="etrain-pg2-form" data-parsley-validate> 
+                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                             <input type="hidden" id="etrain" name="mode" value="pg1">
+                                                             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">   
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="pgrad1unidiv" class="form-group label-floating">
@@ -225,12 +251,16 @@ if(isset($_SESSION['user'])){
                                                                                     });
                                                                             });
                                                                             </script>
+                                                                     <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
+                                                        Save Post Graduate Details
+                                                       </button>
 
                                                                 </div>
                                                                 
                                                             </div>
+                                                             </form>     
                                                         </div>  
-                                                   
+                                                       
                                                     </div>
                                                  
                                                    
@@ -238,10 +268,11 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                              </div>
                             
-                               
+                               <!--
                                 <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
                                                         Save Education &amp; Training
                                                        </button>
+                                -->
                                   <div id="successdivetrain" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
@@ -293,6 +324,77 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
-    </form>
-
-        
+   
+<script>
+jQuery(document).ready(function ($) {
+    $('#etrain-hs-form #hsschool').parsley().on('field:error', function() {
+           $('#etrain-hs-form #hsschooldiv').addClass('has-error');
+           $('#etrain-hs-form #hsschooldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-hs-form #hsschool').parsley().on('field:success', function() {
+            $('#etrain-hs-form #hsschooldiv').addClass('has-success');
+            $('#etrain-hs-form #hsschooldiv').find('span').remove()
+            $('#etrain-hs-form #hsschooldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-hs-form #hsadd').parsley().on('field:error', function() {
+           $('#etrain-hs-form #hsadddiv').addClass('has-error');
+           $('#etrain-hs-form #hsadddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-hs-form #hsadd').parsley().on('field:success', function() {
+            $('#etrain-hs-form #hsadddiv').addClass('has-success');
+            $('#etrain-hs-form #hsadddiv').find('span').remove()
+            $('#etrain-hs-form #hsadddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-hs-form #hsgraddate').parsley().on('field:error', function() {
+           $('#etrain-hs-form #hsgraddatediv').addClass('has-error');
+           $('#etrain-hs-form #hsgraddatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-hs-form #hsgraddate').parsley().on('field:success', function() {
+            $('#etrain-hs-form #hsgraddatediv').addClass('has-success');
+            $('#etrain-hs-form #hsgraddatediv').find('span').remove()
+            $('#etrain-hs-form #hsgraddatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-col-form #coluni').parsley().on('field:error', function() {
+           $('#etrain-col-form #colunidiv').addClass('has-error');
+           $('#etrain-col-form #colunidiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-col-form #coluni').parsley().on('field:success', function() {
+            $('#etrain-col-form #colunidiv').addClass('has-success');
+            $('#etrain-col-form #colunidiv').find('span').remove()
+            $('#etrain-col-form #colunidiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-col-form #coladd').parsley().on('field:error', function() {
+           $('#etrain-col-form #coladddiv').addClass('has-error');
+           $('#etrain-col-form #coladddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-col-form #coladd').parsley().on('field:success', function() {
+            $('#etrain-col-form #coladddiv').addClass('has-success');
+            $('#etrain-col-form #coladddiv').find('span').remove()
+            $('#etrain-col-form #coladddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-col-form #colgraddate').parsley().on('field:error', function() {
+           $('#etrain-col-form #colgraddatediv').addClass('has-error');
+           $('#etrain-col-form #colgraddatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-col-form #colgraddate').parsley().on('field:success', function() {
+            $('#etrain-col-form #colgraddatediv').addClass('has-success');
+            $('#etrain-col-form #colgraddatediv').find('span').remove()
+            $('#etrain-col-form #colgraddatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#etrain-col-form #colmajor').parsley().on('field:error', function() {
+           $('#etrain-col-form #colmajordiv').addClass('has-error');
+           $('#etrain-col-form #colmajordiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-col-form #colmajor').parsley().on('field:success', function() {
+            $('#etrain-col-form #colmajordiv').addClass('has-success');
+            $('#etrain-col-form #colmajordiv').find('span').remove()
+            $('#etrain-col-form #colmajordiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+       
+});
