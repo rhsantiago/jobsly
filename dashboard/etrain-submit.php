@@ -59,6 +59,47 @@ if($etrain=='col'){
 }
 
 
+if($etrain=='pgrad1'){
+    $pgrad1sdate = "";
+    if(isset($_POST['pgrad1uni'])){ $pgrad1uni = $_POST['pgrad1uni']; } 
+    if(isset($_POST['pgrad1add'])){ $pgrad1add = $_POST['pgrad1add']; } 
+    if(isset($_POST['pgrad1gpa'])){ $pgrad1gpa = $_POST['pgrad1gpa']; } 
+    if(isset($_POST['pgrad1graddate'])){ $pgrad1graddate = $_POST['pgrad1graddate']; } 
+    $pgrad1sdate = explode("/", $pgrad1graddate);
+    $pgrad1graddate = $pgrad1sdate[2] .'-'.$pgrad1sdate[0].'-'.$pgrad1sdate[1];
+    if(isset($_POST['pgrad1course'])){ $pgrad1course = $_POST['pgrad1course']; } 
+    if(isset($_POST['smpgrad1'])){ $smpgrad1 = $_POST['smpgrad1']; } 
+    
+    if($mode=='insert'){
+         $database->query(' INSERT INTO educationandtraining (id, userid, pgrad1uni,pgrad1add,pgrad1gpa,pgrad1graddate,pgrad1course,pgrad1awards) VALUES (NULL, :userid,:pgrad1uni,:pgrad1add,:pgrad1gpa,:pgrad1graddate,:pgrad1course,:smpgrad1)');
+    }
+
+    if($mode=='update'){
+       $database->query(' UPDATE educationandtraining SET pgrad1uni = :pgrad1uni, pgrad1add = :pgrad1add, pgrad1gpa = :pgrad1gpa, pgrad1graddate = :pgrad1graddate, pgrad1course = :pgrad1course, pgrad1awards = :smpgrad1 WHERE userid = :userid'); 
+    }
+    $database->bind(':pgrad1uni', $pgrad1uni);  
+    $database->bind(':pgrad1add', $pgrad1add);  
+    $database->bind(':pgrad1gpa', $pgrad1gpa);  
+    $database->bind(':pgrad1graddate', $pgrad1graddate);  
+    $database->bind(':pgrad1course', $pgrad1course);  
+    $database->bind(':smpgrad1', $smpgrad1);  
+}
+
+
+if($etrain=='others'){   
+    if(isset($_POST['smothers'])){ $smothers = $_POST['smothers']; } 
+    
+    if($mode=='insert'){
+         $database->query(' INSERT INTO educationandtraining (id, userid, smothers) VALUES (NULL, :userid,:smothers)');
+    }
+
+    if($mode=='update'){
+       $database->query(' UPDATE educationandtraining SET othersawards = :smothers WHERE userid = :userid'); 
+    }   
+    $database->bind(':smothers', $smothers);  
+}
+
+
     $database->bind(':userid', $userid);
        
     $database->execute();

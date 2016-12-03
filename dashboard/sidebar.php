@@ -20,9 +20,9 @@
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="resume.php#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="resume.php#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
+                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
