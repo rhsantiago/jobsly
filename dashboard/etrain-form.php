@@ -504,6 +504,8 @@ jQuery(document).ready(function ($) {
             $('#etrain-pgrad1-form #pgrad1coursediv').find('span').remove()
             $('#etrain-pgrad1-form #pgrad1coursediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
+    
+    $('#resume-main-body #successdivetrain').hide();
        
 });
 </script>    

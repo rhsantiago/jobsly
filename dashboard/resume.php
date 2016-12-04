@@ -103,7 +103,8 @@ if($ok == 1 ){
                         <ul class="dropdown-menu">
                             <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>                            
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                         </ul>    
                     </li>
     				
@@ -233,6 +234,7 @@ if($ok == 1 ){
                             <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -271,8 +273,16 @@ if($ok == 1 ){
         <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #e3').addClass('active');});</script>
     <?php                    
     }
+    if($ajax=='skills'){
+         include 'skills-form.php';
     ?>
-             
+          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s4').addClass('active');});</script>   
+    <?php
+    }
+    ?>
+                        
+                        
+                        
                       
                 </div> <!--resume main body-->        
                 <!--

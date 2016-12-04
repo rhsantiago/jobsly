@@ -60,7 +60,13 @@ jQuery(document).ready(function ($) {
         },
        
     });
-  
+    /*
+    $("#skills-skilltag-form #skill").keyup(function(){
+    var trimmed = $("#skills-skilltag-form #skill").val();
+    trimmed = trimmed.replace(/\s+/g, '');
+        $("#skills-skilltag-form #skilltag").val('#' + trimmed);
+    });
+  */
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
         event.preventDefault()
@@ -151,7 +157,7 @@ jQuery(document).ready(function ($) {
                         $('#etrain-hs-form #hsgraddate').datepicker();                    
                         $('#resume-main-body #colgraddate').datepicker();
                         $('#resume-main-body #pgrad1graddate').datepicker();
-                        $('.features #successdivetrain').hide();
+                        $('#resume-main-body #successdivetrain').hide();
                         $('#etrain-hs-form #smhs').summernote({
                                    toolbar: [
                                      // [groupName, [list of button]]
@@ -186,11 +192,12 @@ jQuery(document).ready(function ($) {
     
     $("a[href='#skills']").on('click', function() {  
         $.ajax({
-                    url: 'wexp-form.php',
+                    url: 'skills-form.php',
                     dataType: 'html',
 
                     success: function (html) {
                        // console.log(html);
+                        $('#resume-main-body #successdivskillstag').hide();
                         $('#resume-main-body').html(html);                   
                         $('#resume-main-body #startdate').datepicker();                    
                         $('#resume-main-body #enddate').datepicker();
@@ -634,6 +641,41 @@ jQuery(document).ready(function ($) {
                                     ]
                           });
                    
+                    $(' #etrain-others-form #mode').val('update');                
+                },
+                error: function(data) {
+                    console.log(data);                  
+                   
+                }
+            });
+            return false;
+    });
+    
+    
+    $(document).on('submit','#skills-skilltag-form',function(event){
+             
+            event.preventDefault();      
+            $('.features #successdivskillstag').hide();
+            var id = $("#skills-skilltag-form #id").val();
+            var skills = $("#skills-skilltag-form #skills").val();
+            var mode = $("#skills-skilltag-form #mode").val();
+            var userid = $("#skills-skilltag-form #userid").val();
+            var skill = $("#skills-skilltag-form #skill").val();
+            var skilltag = $("#skills-skilltag-form #skilltag").val();
+        
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "skills-submit.php",
+                data: "mode=" +mode + "&skills=" + skills + "&userid=" + userid + "&skill=" + skill + "&skilltag=" + skilltag,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                   // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('.features #successdivskillstag').fadeIn(1500);  
+                                
                     $(' #etrain-others-form #mode').val('update');                
                 },
                 error: function(data) {

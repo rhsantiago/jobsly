@@ -72,6 +72,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                         </ul>    
                     </li>
     				
@@ -189,7 +190,8 @@ if($ok == 1 ){
     <ul class="dropdown-menu">
                             <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li> 
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

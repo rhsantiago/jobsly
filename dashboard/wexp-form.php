@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
                                                                                                 <a href='#workexpmodal' id="delworkexp" title="Delete" data-mode="del" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">delete</i></a>
                                                                                             </li>
                                                                                         </ul>
-                                                                                        <ul class="list-inline">
+                                                                                        <ul class="list-inline ">
                                                                                             <li>
                                                                                                 <h6 class="text-muted">
                                                                                                     <i class="material-icons text-info">business</i><i id='industryli'> <?=$row['industry']?></i>
@@ -305,6 +305,7 @@ jQuery(document).ready(function ($) {
             $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
+    $('#wexp-form #successdivworkexp').hide();
    
     
 });       

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2016 at 10:31 AM
+-- Generation Time: Dec 04, 2016 at 05:58 PM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,15 +38,22 @@ CREATE TABLE `educationandtraining` (
   `colgpa` varchar(10) DEFAULT NULL,
   `colgraddate` date DEFAULT '0000-00-00',
   `colmajor` varchar(30) DEFAULT NULL,
-  `colawards` text
+  `colawards` text,
+  `pgrad1uni` varchar(50) DEFAULT NULL,
+  `pgrad1add` varchar(50) DEFAULT NULL,
+  `pgrad1gpa` varchar(10) DEFAULT NULL,
+  `pgrad1graddate` date DEFAULT '0000-00-00',
+  `pgrad1course` varchar(40) DEFAULT NULL,
+  `pgrad1awards` text,
+  `othersawards` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `educationandtraining`
 --
 
-INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgraddate`, `hsawards`, `coluni`, `coladd`, `colgpa`, `colgraddate`, `colmajor`, `colawards`) VALUES
-(7, 1, 'schhol', '87 Spain st.', '2016-11-01', '<p>Hello Summernote</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL);
+INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgraddate`, `hsawards`, `coluni`, `coladd`, `colgpa`, `colgraddate`, `colmajor`, `colawards`, `pgrad1uni`, `pgrad1add`, `pgrad1gpa`, `pgrad1graddate`, `pgrad1course`, `pgrad1awards`, `othersawards`) VALUES
+(9, 1, 'Colegio San Agustin', 'Dasma village', '2016-12-27', '<p>Loyalty Awarad</p>', 'dssd', 'dsd', '7', '2016-12-07', 'ffr', '<p>gfgfg</p>', 'ins', 'add', '4', '2016-12-11', 'mster', '<p>fdfsf</p><p>ggh</p><p>j</p>', '<p>gggggggggggg</p><p>rrrrrrrrrrr</p><p>eeeeeeee</p>');
 
 -- --------------------------------------------------------
 
@@ -79,6 +86,33 @@ CREATE TABLE `personalinformation` (
 
 INSERT INTO `personalinformation` (`id`, `userid`, `lname`, `fname`, `mname`, `street`, `city`, `province`, `country`, `mnumber`, `myemail`, `landline`, `age`, `birthday`, `gender`, `nationality`) VALUES
 (7, 1, 'Santiago', 'Regidor', 'Hernandez', '87 Spain st., Better Living Subd', 'Paranaque', 'Metro Manila', 'Philippines', '  (23)3343', 'reggie1@gmail.com', ' 6391770018451', 39, '2016-11-09', 'female', 'Philippines');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skilltags`
+--
+
+CREATE TABLE `skilltags` (
+  `id` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `skill` varchar(40) NOT NULL,
+  `skilltag` varchar(40) NOT NULL,
+  `skilltagdate` date NOT NULL DEFAULT '0000-00-00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `skilltags`
+--
+
+INSERT INTO `skilltags` (`id`, `userid`, `skill`, `skilltag`, `skilltagdate`) VALUES
+(1, 1, 'software engineerf', '#softwareengineerf', '2016-12-05'),
+(2, 1, 'agile scrum', '#agilescrum', '2016-12-05'),
+(3, 1, 'java development', '#javadevelopment', '2016-12-05'),
+(4, 1, 'j2ee', '#j2ee', '2016-12-05'),
+(5, 1, 'bootstrap', '#bootstrap', '2016-12-05'),
+(6, 1, 'responsive', '#responsive', '2016-12-05'),
+(7, 1, 'object oriented programming', '#objectorientedprogramming', '2016-12-05');
 
 -- --------------------------------------------------------
 
@@ -131,8 +165,7 @@ CREATE TABLE `workexperience` (
 
 INSERT INTO `workexperience` (`id`, `userid`, `company`, `position`, `startdate`, `msalary`, `industry`, `plevel`, `enddate`, `currentemployer`, `jobdescription`) VALUES
 (7, 1, 'CHAMP Cargosystems Inc.', 'Senior Software Engineer', '2016-11-07', 85000, 'Airline Cargo', 'Senior', '2016-11-24', 'on', '<p>Accomplishments:</p><ul><li>Architecture Committee reviewer</li><li>Developer for Handling and Airline modules</li><li>Trains new joiners</li><li>Refactoring group</li></ul>'),
-(15, 1, 'Rappler', 'posiiton', '2016-12-09', 3333, 'industry', 'Manager', '2016-11-16', 'on', '<p>Hello Summernote</p>'),
-(16, 1, '', '', '0000-00-00', 0, '', '', '0000-00-00', 'on', '<p>Hello Summernote</p>');
+(15, 1, 'Rappler', 'posiiton', '2016-12-09', 3333, 'industry', 'Manager', '2016-11-16', 'on', '<p>Hello Summernote</p>');
 
 --
 -- Indexes for dumped tables
@@ -148,6 +181,12 @@ ALTER TABLE `educationandtraining`
 -- Indexes for table `personalinformation`
 --
 ALTER TABLE `personalinformation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `skilltags`
+--
+ALTER TABLE `skilltags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -170,12 +209,17 @@ ALTER TABLE `workexperience`
 -- AUTO_INCREMENT for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `personalinformation`
 --
 ALTER TABLE `personalinformation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `skilltags`
+--
+ALTER TABLE `skilltags`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
@@ -185,7 +229,7 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `workexperience`
 --
 ALTER TABLE `workexperience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
