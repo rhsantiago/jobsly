@@ -69,7 +69,7 @@ if(isset($_SESSION['user'])){
                                                                  The skill tags are used by employers to narrow down their candidate search by skills. Make sure to enter all your relevant skills! The system auto creates the tag for you so type with spaces. 
                                                                 </div>
                                                                   <div class="col-md-6 col-xs-6">
-                                                                    <div id="skillsdiv" class="form-group label-floating">
+                                                                    <div id="skilldiv" class="form-group label-floating">
                                                                         <label class="control-label">Skill</label>
                                                                         <input type="text" id="skill" class="form-control" data-parsley-required>
                                                                     </div>
@@ -77,7 +77,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   <div id="skilltagdiv" class="form-group label-floating">
                                                                       
-                                                                        <input type="text" id="skilltag" class="form-control" value="" disabled data-parsley-required>
+                                                                        <input type="text" id="skilltag" class="form-control" value="" disabled >
                                                                     </div>                               
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
@@ -86,8 +86,8 @@ if(isset($_SESSION['user'])){
                                                         Save Skill
                                                        </button>
                                                                     <hr>
-                                                                    Tags:
-                                                                    <div class="text-info">
+                                                                    Skilltags:
+                                                                    <div id="skilltagsdiv" class="text-info">
                                                                      <?php
                                                     $database->query('SELECT * FROM skilltags where userid = :userid');
                                                     $database->bind(':userid', $userid);  
@@ -168,25 +168,39 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
-   
+ 
+<script src="js/jquery.easy-autocomplete.min.js"></script> 
+<link rel="stylesheet" href="css/easy-autocomplete.min.css"> 
 <script>
 jQuery(document).ready(function ($) {
-  /*  $('#etrain-hs-form #hsschool').parsley().on('field:error', function() {
-           $('#etrain-hs-form #hsschooldiv').addClass('has-error');
-           $('#etrain-hs-form #hsschooldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#skills-skilltag-form #skill').parsley().on('field:error', function() {
+           $('#etrain-hs-form #skilldiv').addClass('has-error');
+           $('#etrain-hs-form #skilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#etrain-hs-form #hsschool').parsley().on('field:success', function() {
-            $('#etrain-hs-form #hsschooldiv').addClass('has-success');
-            $('#etrain-hs-form #hsschooldiv').find('span').remove()
-            $('#etrain-hs-form #hsschooldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#skills-skilltag-form #skill').parsley().on('field:success', function() {
+            $('#etrain-hs-form #skilldiv').addClass('has-success');
+            $('#etrain-hs-form #skilldiv').find('span').remove()
+            $('#etrain-hs-form #skilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-   */ 
-     $('#resume-main-body #successdivskillstag').hide();
-     $("#skills-skilltag-form #skill").keyup(function(){
+      $('#resume-main-body #successdivskillstag').hide();
+    /*
+    $("#skills-skilltag-form #skill").keyup(function(){
     var trimmed = $("#skills-skilltag-form #skill").val();
     trimmed = trimmed.replace(/\s+/g, '');
         $("#skills-skilltag-form #skilltag").val('#' + trimmed);
     });
+   */ 
+    var options = {
+	url: "json/skilltags.json",
+	getValue: "name",
+	list: {
+		match: {
+			enabled: true
+		       }
+	       }
+    }
+
+$("#skill").easyAutocomplete(options);
     
 });
 </script>    

@@ -164,7 +164,7 @@ if(isset($_SESSION['user'])){
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                <input type="checkbox" id="currentempcb" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="currentempcb" name="optionsCheckboxes">
                                                                                 Current Employer
                                                                             </label>
                                                                         </div>

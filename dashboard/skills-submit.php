@@ -25,4 +25,12 @@ if($skills=='skilltag'){
        
  $database->execute();
   
+                                                    $database->query('SELECT * FROM skilltags where userid = :userid');
+                                                    $database->bind(':userid', $userid);  
+                                                    $rows = $database->resultset();
+                                                           // echo $row['name'];
+                                                    foreach($rows as $row){
+                                                        echo $row['skilltag'];
+                                                        echo ' ';
+                                                    }
 ?> 

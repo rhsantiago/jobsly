@@ -60,13 +60,19 @@ jQuery(document).ready(function ($) {
         },
        
     });
-    /*
-    $("#skills-skilltag-form #skill").keyup(function(){
-    var trimmed = $("#skills-skilltag-form #skill").val();
-    trimmed = trimmed.replace(/\s+/g, '');
-        $("#skills-skilltag-form #skilltag").val('#' + trimmed);
+   
+    $('#skills-skilltag-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
     });
-  */
+    
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
         event.preventDefault()
@@ -191,6 +197,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("a[href='#skills']").on('click', function() {  
+        event.preventDefault()
+        event.stopPropagation();
         $.ajax({
                     url: 'skills-form.php',
                     dataType: 'html',
@@ -203,6 +211,20 @@ jQuery(document).ready(function ($) {
                         $('#resume-main-body #enddate').datepicker();
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #s4').addClass('active');
+                        
+                        
+                        $('#skills-skilltag-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+
+                        });
+                        
                         $(function() {
                             $.material.init();
                         });
@@ -212,15 +234,15 @@ jQuery(document).ready(function ($) {
     });
     
     $("a[href='#ainfo']").on('click',function() {  
+        event.preventDefault()
+        event.stopPropagation();
         $.ajax({
-                    url: 'wexp-form.php',
+                    url: 'ainfo-form.php',
                     dataType: 'html',
 
                     success: function (html) {
-                       // console.log(html);
-                        $('#resume-main-body').html(html);                   
-                        $('#resume-main-body #startdate').datepicker();                    
-                        $('#resume-main-body #enddate').datepicker();
+                        $('#resume-main-body #successdivainfo').hide();
+                        $('#resume-main-body').html(html);  
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #a5').addClass('active');
                         $(function() {
@@ -250,42 +272,7 @@ jQuery(document).ready(function ($) {
         });
         return false;
     });
-/*    
-    $('#pinfo').on('click touchstart', function() {  
-        $.ajax({
-                    url: 'pinfo-form.php',
-                    dataType: 'html',
 
-                    success: function (html) {
-                       // console.log(html);
-                        $('#resume-main-body').html(html);                    
-                        $('#resume-main-body #birthday').datepicker();                        
-                        $(function() {
-                            $.material.init();
-                        });
-                    }
-        });
-        return false;
-    });
-    
-    $('#workexp').on('click touchstart', function() {       
-        $.ajax({
-                    url: 'wexp-form.php',
-                    dataType: 'html',
-
-                    success: function (html) {
-                       // console.log(html);
-                        $('#resume-main-body').html(html);                   
-                        $('#resume-main-body #startdate').datepicker();                    
-                        $('#resume-main-body #enddate').datepicker();                       
-                        $(function() {
-                            $.material.init();
-                        });
-                    }
-        });
-        return false;
-    });
-*/
        
     $(document).on('submit','#pinfo-form',function(event){
              
@@ -350,7 +337,10 @@ jQuery(document).ready(function ($) {
             var plevel = $("#wexp-form-modal #plevel").val();
             var enddate = $("#wexp-form-modal #enddate").val();
         
-            var currentempcb = $("#wexp-form-modal #currentempcb").val();
+            var currentempcb = 'off';
+            if($("#wexp-form #currentempcb").prop('checked')==true){
+               currentempcb = 'on';
+            }
              var jobdesc = $('#wexp-form-modal #summernote').summernote('code');
             
         
@@ -399,8 +389,11 @@ jQuery(document).ready(function ($) {
             var industry = $("#wexp-form #industry").val();
             var plevel = $("#wexp-form #plevel").val();
             var enddate = $("#wexp-form #enddate").val();
-        
-            var currentempcb = $("#wexp-form #currentempcb").val();
+            var currentempcb = 'off';
+            if($("#wexp-form #currentempcb").prop('checked')==true){
+               currentempcb = 'on';
+            }
+           
              var jobdesc = $('#wexp-form #summernote').summernote('code');
             
             
@@ -661,8 +654,10 @@ jQuery(document).ready(function ($) {
             var mode = $("#skills-skilltag-form #mode").val();
             var userid = $("#skills-skilltag-form #userid").val();
             var skill = $("#skills-skilltag-form #skill").val();
-            var skilltag = $("#skills-skilltag-form #skilltag").val();
-        
+           // var skilltag = $("#skills-skilltag-form #skilltag").val();
+            var trimmed = $("#skills-skilltag-form #skill").val();
+            trimmed = trimmed.replace(/\s+/g, '');          
+            var skilltag = '#' + trimmed;
         
             $.ajax({
                 cache: false,
@@ -673,10 +668,10 @@ jQuery(document).ready(function ($) {
                 dataType: 'text',
                 success : function(data){
                     console.log(data);
-                   // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('.features #skilltagsdiv').html(data).fadeIn(1500);
                     $('.features #successdivskillstag').fadeIn(1500);  
                                 
-                    $(' #etrain-others-form #mode').val('update');                
+                    $(' #skills-skilltag-form #mode').val('insert');                
                 },
                 error: function(data) {
                     console.log(data);                  

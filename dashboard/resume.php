@@ -105,6 +105,7 @@ if($ok == 1 ){
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
                         </ul>    
                     </li>
     				
@@ -165,7 +166,7 @@ if($ok == 1 ){
                                     </li>
                                     <li id="s4">
                                         <a href="#skills" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">star</i>
+                                            <i class="material-icons">build</i>
                                             <span class="submenufont">Skills</span>
                                         </a>                                        
                                     </li>
@@ -235,6 +236,7 @@ if($ok == 1 ){
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -279,8 +281,13 @@ if($ok == 1 ){
           <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s4').addClass('active');});</script>   
     <?php
     }
+    if($ajax=='ainfo'){
+         include 'ainfo-form.php';
     ?>
-                        
+          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a5').addClass('active');});</script>   
+    <?php
+    }
+    ?>
                         
                         
                       

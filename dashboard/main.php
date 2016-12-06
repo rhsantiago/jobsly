@@ -73,6 +73,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
                         </ul>    
                     </li>
     				
@@ -192,6 +193,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
+                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
