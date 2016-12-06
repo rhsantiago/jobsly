@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2016 at 05:58 PM
+-- Generation Time: Dec 06, 2016 at 07:08 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `jobsly`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `additionalinformation`
+--
+
+CREATE TABLE `additionalinformation` (
+  `id` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `dposition` varchar(40) NOT NULL,
+  `specialization` varchar(30) NOT NULL,
+  `plevel` int(10) NOT NULL,
+  `esalary` int(11) NOT NULL,
+  `pworkloc` varchar(40) DEFAULT NULL,
+  `yexp` int(10) NOT NULL DEFAULT '0',
+  `wtravel` varchar(5) NOT NULL DEFAULT '',
+  `wrelocate` varchar(5) NOT NULL,
+  `pholder` varchar(5) NOT NULL,
+  `languages` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -112,7 +133,12 @@ INSERT INTO `skilltags` (`id`, `userid`, `skill`, `skilltag`, `skilltagdate`) VA
 (4, 1, 'j2ee', '#j2ee', '2016-12-05'),
 (5, 1, 'bootstrap', '#bootstrap', '2016-12-05'),
 (6, 1, 'responsive', '#responsive', '2016-12-05'),
-(7, 1, 'object oriented programming', '#objectorientedprogramming', '2016-12-05');
+(7, 1, 'object oriented programming', '#objectorientedprogramming', '2016-12-05'),
+(14, 1, 'American Samoa', '#AmericanSamoa', '2016-12-06'),
+(15, 1, 'Nigeria', '#Nigeria', '2016-12-06'),
+(16, 1, 'British Indian Ocean Territory', '#BritishIndianOceanTerritory', '2016-12-06'),
+(17, 1, 'Cape Verde', '#CapeVerde', '2016-12-06'),
+(18, 1, 'French Southern Territories', '#FrenchSouthernTerritories', '2016-12-06');
 
 -- --------------------------------------------------------
 
@@ -165,11 +191,17 @@ CREATE TABLE `workexperience` (
 
 INSERT INTO `workexperience` (`id`, `userid`, `company`, `position`, `startdate`, `msalary`, `industry`, `plevel`, `enddate`, `currentemployer`, `jobdescription`) VALUES
 (7, 1, 'CHAMP Cargosystems Inc.', 'Senior Software Engineer', '2016-11-07', 85000, 'Airline Cargo', 'Senior', '2016-11-24', 'on', '<p>Accomplishments:</p><ul><li>Architecture Committee reviewer</li><li>Developer for Handling and Airline modules</li><li>Trains new joiners</li><li>Refactoring group</li></ul>'),
-(15, 1, 'Rappler', 'posiiton', '2016-12-09', 3333, 'industry', 'Manager', '2016-11-16', 'on', '<p>Hello Summernote</p>');
+(15, 1, 'Rappler', 'posiiton', '2016-12-09', 3333, 'industry', 'Manager1', '2016-11-16', 'off', '<p>Hello Summernote</p>');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `additionalinformation`
+--
+ALTER TABLE `additionalinformation`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `educationandtraining`
@@ -206,6 +238,11 @@ ALTER TABLE `workexperience`
 --
 
 --
+-- AUTO_INCREMENT for table `additionalinformation`
+--
+ALTER TABLE `additionalinformation`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
@@ -219,7 +256,7 @@ ALTER TABLE `personalinformation`
 -- AUTO_INCREMENT for table `skilltags`
 --
 ALTER TABLE `skilltags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
@@ -229,7 +266,7 @@ ALTER TABLE `useraccounts`
 -- AUTO_INCREMENT for table `workexperience`
 --
 ALTER TABLE `workexperience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
