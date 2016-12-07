@@ -26,9 +26,19 @@ if(isset($_SESSION['user'])){
         $pworkloc = $row['pworkloc'];
         $yexp = $row['yexp'];
         $wtravel = $row['wtravel'];
+        if($wtravel=='on'){
+            $wtravel = 'checked';
+        }
         $wrelocate = $row['wrelocate'];
+        if($wrelocate=='on'){
+            $wrelocate = 'checked';
+        }
         $pholder = $row['pholder'];
+        if($pholder=='on'){
+            $pholder = 'checked';
+        }
         $languages = $row['languages'];
+        
     if(!empty($id)){
         $mode = 'update';               
     }else{
@@ -87,7 +97,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                       <div id="esalarydiv" class="form-group label-floating">
                                                                         <label class="control-label">Expected Salary</label>
-                                                                        <input type="text" id="esalary" class="form-control" value="<?=$esalary?>" data-parsley-required>
+                                                                        <input type="text" id="esalary" class="form-control" value="<?=$esalary?>" data-parsley-required data-parsley-type="number">
                                                                     </div>
                                                                       <div id="pworklocdiv" class="form-group label-floating">
                                                                         <label class="control-label">Work Location</label>
@@ -97,7 +107,19 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   <div id="pleveldiv" class="form-group label-floating">
                                                                         <label class="control-label">Position Level</label>
-                                                                        <input type="text" id="plevel" class="form-control" value="<?=$plevel?>" data-parsley-required>
+                                                                    <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level" data-parsley-required>
+                                                                        <?php
+                                                                            echo'<option disabled></option>';
+                                                                            echo"<option value='1' "; if($plevel==1){echo'selected';} echo">Executive</option>";
+                                                                            echo"<option value='2' "; if($plevel==2){echo'selected';} echo">Manager</option>";
+                                                                            echo"<option value='3' "; if($plevel==3){echo'selected';} echo">Assistant Manager</option>";
+                                                                            echo"<option value='4' "; if($plevel==4){echo'selected';} echo">Supervisor</option>";
+                                                                            echo"<option value='5' "; if($plevel==5){echo'selected';} echo"> 5 Years+ Experienced Employee</option>";
+                                                                            echo"<option value='6' "; if($plevel==6){echo'selected';} echo">1-4 Years Experienced Employee</option>";
+                                                                            echo"<option value='7' "; if($plevel==7){echo'selected';} echo"><1 Year Experienced Employee/Fresh Grad</option>";
+        
+                                                                        ?>
+                                                                    </select>                                                                        
                                                                     </div>
                                                                     <div id="specializationdiv" class="form-group label-floating">
                                                                         <label class="control-label">Specialization</label>
@@ -144,12 +166,12 @@ if(isset($_SESSION['user'])){
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="yexpdiv" class="form-group label-floating">
                                                                         <label class="control-label">Years of Experience</label>
-                                                                        <input type="text" id="yexp" class="form-control" value="<?=$yexp?>" data-parsley-required>
+                                                                        <input type="text" id="yexp" class="form-control" value="<?=$yexp?>" data-parsley-required data-parsley-type="number">
                                                                     </div>
                                                                       <div id="wtraveldiv" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes" <?=$wtravel?>>
                                                                                 Willing to Travel?
                                                                             </label>
                                                                         </div>
@@ -157,7 +179,7 @@ if(isset($_SESSION['user'])){
                                                                         <div id="pholderdiv" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                    <input type="checkbox" id="pholder" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="pholder" name="optionsCheckboxes" <?=$pholder?>>
                                                                                 Do you have a valid passport?
                                                                             </label>
                                                                         </div>                                                                         
@@ -165,12 +187,12 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   <div id="languagesdiv" class="form-group label-floating">
                                                                         <label class="control-label">Languages</label>
-                                                                        <input type="text" id="languages" class="form-control" value="<?=$languages?>" data-parsley-required>
+                                                                        <input type="text" id="languages" class="form-control" value="<?=$languages?>">
                                                                     </div>
                                                                     <div id="wrelocatediv" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes" <?=$wrelocate?>>
                                                                                 Willing to Relocate?
                                                                             </label>
                                                                         </div>
@@ -249,8 +271,50 @@ if(isset($_SESSION['user'])){
    
 <script>
 jQuery(document).ready(function ($) {
-   $('#resume-main-body #successdivainfo').hide();
+    $('#resume-main-body #successdivainfo').hide();
     
+    $('#ainfo-form #dposition').parsley().on('field:error', function() {
+           $('#ainfo-form #dpositiondiv').addClass('has-error');
+           $('#ainfo-form #dpositiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#ainfo-form #dposition').parsley().on('field:success', function() {
+            $('#ainfo-form #dpositiondiv').addClass('has-success');
+            $('#ainfo-form #dpositiondiv').find('span').remove();
+            $('#ainfo-form #dpositiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#ainfo-form #esalary').parsley().on('field:error', function() {
+           $('#ainfo-form #esalarydiv').find('span').remove();
+           $('#ainfo-form #esalarydiv').removeClass('has-success has-error');
+           $('#ainfo-form #esalarydiv').addClass('has-error');           
+           $('#ainfo-form #esalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#ainfo-form #esalary').parsley().on('field:success', function() {
+            $('#ainfo-form #esalarydiv').find('span').remove();
+            $('#ainfo-form #esalarydiv').removeClass('has-success has-error');
+            $('#ainfo-form #esalarydiv').addClass('has-success');            
+            $('#ainfo-form #esalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#ainfo-form #plevel').parsley().on('field:error', function() {
+           $('#ainfo-form #pleveldiv').addClass('has-error');
+           $('#ainfo-form #pleveldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#ainfo-form #plevel').parsley().on('field:success', function() {
+            $('#ainfo-form #pleveldiv').addClass('has-success');
+            $('#ainfo-form #pleveldiv').find('span').remove();
+            $('#ainfo-form #pleveldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#ainfo-form #specialization').parsley().on('field:error', function() {
+           $('#ainfo-form #specializationdiv').addClass('has-error');
+           $('#ainfo-form #specializationdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#ainfo-form #specialization').parsley().on('field:success', function() {
+            $('#ainfo-form #specializationdiv').addClass('has-success');
+            $('#ainfo-form #specializationdiv').find('span').remove();
+            $('#ainfo-form #specializationdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
        
 });
 </script>    

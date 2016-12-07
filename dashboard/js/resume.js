@@ -73,6 +73,18 @@ jQuery(document).ready(function ($) {
        
     });
     
+    $('#ainfo-form').parsley({
+        successClass: "has-success",
+        errorClass: "has-error",
+        classHandler: function (el) {
+            return el.$element.closest(".form-group");
+        },
+        errorsContainer: function (el) {
+            return el.$element.closest(".form-group");
+        },
+       
+    });
+    
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo']").on('click', function (){  
         event.preventDefault()
@@ -247,6 +259,17 @@ jQuery(document).ready(function ($) {
                         $('#resumesb #a5').addClass('active');
                         $(function() {
                             $.material.init();
+                        });
+                        $('#ainfo-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+
                         });
                     }
         });
@@ -676,6 +699,56 @@ jQuery(document).ready(function ($) {
                 error: function(data) {
                     console.log(data);                  
                    
+                }
+            });
+            return false;
+    });
+    
+    $(document).on('submit','#ainfo-form',function(event){
+             
+            event.preventDefault();
+            $('#ainfo-form #successdivainfo').hide();
+            var mode = $("#ainfo-form #mode").val();
+            var userid = $("#ainfo-form #userid").val();  
+            var dposition = $("#ainfo-form #dposition").val();
+            var specialization = $("#ainfo-form #specialization").val();
+            var plevel = $("#ainfo-form #plevel").val();
+        
+            var esalary = $("#ainfo-form #esalary").val();       
+            var pworkloc = $("#ainfo-form #pworkloc").val();
+            var yexp = $("#ainfo-form #yexp").val();
+            var languages = $("#ainfo-form #languages").val();
+            var wtravel = 'off';
+            if($("#ainfo-form #wtravel").prop('checked')==true){
+               wtravel = 'on';
+            }           
+            var wrelocate = 'off';
+            if($("#ainfo-form #wrelocate").prop('checked')==true){
+               wrelocate = 'on';
+            }
+        
+            var pholder = 'off';
+            if($("#ainfo-form #pholder").prop('checked')==true){
+               pholder = 'on';
+            }            
+       
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "ainfo-submit.php",
+                data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){              
+                    $('#ainfo-form #successdivainfo').fadeIn(1500);
+                    $('#ainfo-form #mode').val('update');
+                    $('#ainfo-form').parsley().reset();
+                     $(function() {
+                            $.material.init();
+                        });
+                },
+                error: function(data) {
+                     $( "#msgSubmit" ).removeClass('hidden');
                 }
             });
             return false;
