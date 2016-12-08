@@ -23,6 +23,10 @@
         .navbar-left{
             display:inline-block;
         }
+    
+    .timeline {
+        display: none;
+    }
         
         
     
@@ -84,6 +88,10 @@
         .margin-top-title {
             margin-top: -25px !important;   
         }
+        
+        .timeline {
+             display: block;
+        }   
     
 }
 

@@ -184,4 +184,19 @@ div .parsley-errors-list {
     margin-top: 15px;
 }
 
+.profile-page .profile {
+  text-align: center;
+    margin-top: 90px !important;
+}
 
+.timeline > li > .timeline-panel {
+    background-color: #fff;
+}
+
+.timeline > li > .timeline-badge {  
+  font-size: 2.5em !important;
+}
+
+.timeline:before {  
+  background-color: #9c27b0 !important;  
+}

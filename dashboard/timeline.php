@@ -1,3 +1,4 @@
+ <link href="css/timeline.css" rel="stylesheet"/>
 <div class="container">
     <div class="page-header">
         <h1 id="timeline">Timeline</h1>

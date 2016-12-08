@@ -174,13 +174,13 @@ if(isset($_SESSION['user'])){
 <script>
 jQuery(document).ready(function ($) {
     $('#skills-skilltag-form #skill').parsley().on('field:error', function() {
-           $('#etrain-hs-form #skilldiv').addClass('has-error');
-           $('#etrain-hs-form #skilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+           $('#skills-skilltag-form #skilldiv').addClass('has-error');
+           $('#skills-skilltag-form #skilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
     $('#skills-skilltag-form #skill').parsley().on('field:success', function() {
-            $('#etrain-hs-form #skilldiv').addClass('has-success');
-            $('#etrain-hs-form #skilldiv').find('span').remove()
-            $('#etrain-hs-form #skilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+            $('#skills-skilltag-form #skilldiv').addClass('has-success');
+            $('#skills-skilltag-form #skilldiv').find('span').remove()
+            $('#skills-skilltag-form #skilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
       $('#resume-main-body #successdivskillstag').hide();
     /*
