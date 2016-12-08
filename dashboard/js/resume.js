@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     
-    $('#pinfo-form').parsley({
+    $('#pinfo-form, #wexp-form, #etrain-hs-form, #etrain-col-form, #etrain-pgrad1-form, #skills-skilltag-form, #ainfo-form').parsley({
         successClass: "has-success",
         errorClass: "has-error",
         classHandler: function (el) {
@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
        
     });
         
-    
+   /* 
     $('#wexp-form').parsley({
         successClass: "has-success",
         errorClass: "has-error",
@@ -36,6 +36,7 @@ jQuery(document).ready(function ($) {
         },
        
     });
+  
     
     $('#etrain-col-form').parsley({
         successClass: "has-success",
@@ -84,9 +85,9 @@ jQuery(document).ready(function ($) {
         },
        
     });
-    
+      */
    // $('#pinfo').click(function() {   
-    $("a[href='#pinfo']").on('click', function (){  
+    $("a[href='#pinfo'], a[href='resume.php?ajax=pinfo']").on('click', function (){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -119,7 +120,7 @@ jQuery(document).ready(function ($) {
     });
     
     //$('#workexp').on('click',function() {  
-      $("a[href='#workexp']").on('click',function () {  
+      $("a[href='#workexp'], a[href='resume.php?ajax=workexp']").on('click',function () {  
            event.preventDefault()
            event.stopPropagation();
            
@@ -160,7 +161,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#etrain']").on('click', function() {  
+    $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function() {  
         event.preventDefault()
            event.stopPropagation();
         $.ajax({
@@ -278,7 +279,7 @@ jQuery(document).ready(function ($) {
     
     $("a[href='#pres']").on('click',function() {  
         $.ajax({
-                    url: 'wexp-form.php',
+                    url: 'previewresume.php',
                     dataType: 'html',
 
                     success: function (html) {
