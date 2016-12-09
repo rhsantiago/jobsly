@@ -133,7 +133,7 @@
 
 
 .card .content {
-  padding: 10px !important;
+  padding: 10px !important;  
 }
 
 
@@ -199,4 +199,9 @@ div .parsley-errors-list {
 
 .timeline:before {  
   background-color: #9c27b0 !important;  
+}
+
+.card-ads {
+  width: auto !important;
+    padding-bottom: 10px !important;
 }

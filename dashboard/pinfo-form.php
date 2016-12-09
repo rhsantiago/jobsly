@@ -67,7 +67,7 @@ if(isset($_SESSION['user'])){
                     <input type="hidden" id="id" name="id" value="<?=$id?>">
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">          
-                    <div class="col-md-9 ">
+                    <div class="col-md-offset-1 col-md-7">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
@@ -292,7 +292,7 @@ if(isset($_SESSION['user'])){
                     </div>
                     
                     
-                <div class="col-md-3">
+                <div class="col-md-3 pull-right">
                           <div class="card adsright">                                            
                                                              <div class="content">
                                                                                                                                        

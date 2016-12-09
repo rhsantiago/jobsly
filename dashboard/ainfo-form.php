@@ -49,7 +49,7 @@ if(isset($_SESSION['user'])){
 
 
      
-                    <div class="col-md-offset-1 col-md-8">
+                    <div class="col-md-offset-1 col-md-7">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
@@ -57,7 +57,7 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">Additional Information</h2>
                         </div>
                        
-     <!--           <div class="section  section-landing">    -->
+              <div class="section  section-landing">  
 	         <form method="post" id="ainfo-form" name="ainfo-form" data-parsley-validate> 
                                                              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                                              <input type="hidden" id="etrain" name="mode" value="hs">
@@ -242,7 +242,7 @@ if(isset($_SESSION['user'])){
 		                </div>
 					</div> <!--features-->
                     </form>  
-	       <!--     </div> section -->
+	        </div> 
                         
                         
                     
@@ -251,9 +251,9 @@ if(isset($_SESSION['user'])){
                     </div>
                     
                     
-                <div class="col-md-3">
+                <div class="col-md-3 pull-right">
                     
-                                                    <div class="card adsright">                                            
+                                                    <div class="card card-ads adsright">                                            
                                                              <div class="content">
                                                                                                                                        
                                                                             <div class="row">
