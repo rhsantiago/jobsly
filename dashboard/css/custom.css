@@ -205,3 +205,10 @@ div .parsley-errors-list {
   width: auto !important;
     padding-bottom: 10px !important;
 }
+#vertical-align {
+    display: inline-flex !important; 
+}
+
+.margintop0 {
+    margin-top: 0 !important;
+}

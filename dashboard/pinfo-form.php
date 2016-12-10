@@ -293,7 +293,7 @@ if(isset($_SESSION['user'])){
                     
                     
                 <div class="col-md-3 pull-right">
-                          <div class="card adsright">                                            
+                          <div class="card card-ads adsright">                                            
                                                              <div class="content">
                                                                                                                                        
                                                                             <div class="row">

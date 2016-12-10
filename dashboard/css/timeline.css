@@ -127,7 +127,7 @@ padding-left:90px;
 }
 .timeline-title {
   margin-top: 0;
-  color: inherit;
+  /*color: inherit;*/
 }
 .timeline-body > p,
 .timeline-body > ul {

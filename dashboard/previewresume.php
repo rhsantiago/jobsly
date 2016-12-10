@@ -13,12 +13,6 @@ if(isset($_SESSION['user'])){
     
     $database = new Database();
 
-    $database->query('SELECT * from skilltags where userid = :userid');
-    $database->bind(':userid', $userid);   
-
-    $row = $database->single();
-    $id = $row['id'];
-    $mode = 'insert';
 }
 ?>
 <script>
@@ -30,7 +24,7 @@ jQuery(document).ready(function ($) {
 </script>      
 
      
-  <div class="col-md-12">
+  <div class="col-md-offset-1 col-md-10 col-md-offset-1">
          
         <div class="profile-content">
 	            <div class="container-fluid">
@@ -49,28 +43,78 @@ jQuery(document).ready(function ($) {
 <div class="container-fluid">
    
     <ul class="timeline">
-        <li>          
+        <?php
+             $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
+             $database->bind(':userid', $userid);  
+             $rows = $database->resultset();
+             
+             $isleft = true;    
+             foreach($rows as $row){
+                $sdate = explode("-", $row['startdate']);
+                $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+                $edate = explode("-", $row['enddate']);
+                $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                
+                 if($isleft){
+                    echo '<li>'; 
+                 }else{
+                     echo "<li class='timeline-inverted'>";
+                 }
+        ?>
+                  
           <div class="timeline-badge"><i class="material-icons">work</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
+                <ul class="list-inline">
+                    <li><h4 class="text-info"><?=$row['position']?></h4></li>
+                    <li><h7 class="text-muted"><i><?=$row['company']?></i></h7> </li>
+                    <li class="editfloatright"> <?=$startdate?></li>
+                 </ul>
+            
+             <ul class="list-inline">
+                 <li>
+                     <h6 id="vertical-align" class="text-muted">
+                        <i class="material-icons text-info">business</i><i id='industryli'> <?=$row['industry']?></i>
+                     </h6>
+                 </li>
+                  <li>
+                      <h6 id="vertical-align" class="text-muted">
+                         <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
+                      </h6>
+                  </li>
+                  <li>
+                      <h6 id="vertical-align" class="text-muted">
+                          <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
+                      </h6>
+                  </li>
+                  <li>
+                      <h6 id="vertical-align" class="text-muted">
+                          <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
+                      </h6>
+                   </li>
+               </ul>
+                <hr>
             </div>
-            <div class="timeline-body">
-              <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+            <div class="timeline-body collapse-group collapse" id="viewdetails<?=$row['id']?>">              
+              <?=$row['jobdescription']?>
             </div>
+              <p><a class="btn" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">View details &raquo;</a></p>  
           </div>           
         </li>
-        
+        <?php
+                $isleft = false;
+             }
+        ?>         
         <li class="timeline-inverted">
           <div class="timeline-badge warning"><i class="material-icons">school</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
               <h4 class="timeline-title">Mussum ipsum cacilds</h4>
             </div>
-            <div class="timeline-body">
+            <div class="timeline-body collapse-group">
               <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-              <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.</p>
+              <p class="collapse" id="viewdetails">Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.</p>
+                <p><a class="btn" data-toggle="collapse" data-target="#viewdetails">View details &raquo;</a></p>
             </div>
           </div>
         </li>

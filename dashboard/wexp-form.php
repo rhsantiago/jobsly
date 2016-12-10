@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
      <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
                                  <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                  <input type="hidden" id="mode" name="mode" value="insert">
-                    <div class="col-md-9 ">
+                    <div class="col-md-offset-1 col-md-7">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
@@ -65,24 +65,24 @@ if(isset($_SESSION['user'])){
                                                                                                 <a href='#workexpmodal' id="delworkexp" title="Delete" data-mode="del" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">delete</i></a>
                                                                                             </li>
                                                                                         </ul>
-                                                                                        <ul class="list-inline ">
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                    <i class="material-icons text-info">business</i><i id='industryli'> <?=$row['industry']?></i>
+                                                                                        <ul  class="list-inline ">
+                                                                                            <li >
+                                                                                                <h6 id="vertical-align" class="text-muted">
+                                                                                                    <i class="material-icons text-info">business</i><span><i id='industryli'><?=$row['industry']?></i></span>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
-                                                                                                <h6 class="text-muted">
+                                                                                                <h6 id="vertical-align" class="text-muted">
                                                                                                    <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
-                                                                                                <h6 class="text-muted">
+                                                                                                <h6 id="vertical-align" class="text-muted">
                                                                                                 <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
-                                                                                                <h6 class="text-muted">
+                                                                                                <h6 id="vertical-align" class="text-muted">
                                                                                                    <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
                                                                                                 </h6>
                                                                                             </li>
@@ -235,9 +235,9 @@ if(isset($_SESSION['user'])){
                     </div>
                     
                     
-                <div class="col-md-3">
+                <div class="col-md-3 pull-right">
                     
-                                                    <div class="card adsright">                                            
+                                                    <div class="card card-ads adsright">                                            
                                                              <div class="content">
                                                                                                                                        
                                                                             <div class="row">
