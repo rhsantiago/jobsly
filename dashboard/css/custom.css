@@ -157,6 +157,10 @@ h6, .h6 {
     float:right;
 }
 
+.editfloatleft {
+    float:left;
+}
+
 .modal-gray {
     background: #e7e7e7;
 }
@@ -211,4 +215,8 @@ div .parsley-errors-list {
 
 .margintop0 {
     margin-top: 0 !important;
+}
+
+.resumetextalign {
+    text-align: left !important;
 }
