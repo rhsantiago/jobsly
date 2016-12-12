@@ -219,4 +219,13 @@ div .parsley-errors-list {
 
 .resumetextalign {
     text-align: left !important;
+    
+}
+
+.tlpositionsize {
+    font-size: 22px !important;
+}
+
+.tliconvaluesize {
+    font-size: 14px !important;
 }

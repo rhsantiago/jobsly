@@ -30,6 +30,10 @@ jQuery(document).ready(function ($) {
    
             $('body').addClass('profile-page');
     
+            $('[data-toggle="tooltip"]').tooltip({
+                    placement : 'top'
+                });
+    
 });
 </script>      
 
@@ -151,7 +155,7 @@ jQuery(document).ready(function ($) {
                  }
         ?>
            
-          <div class="timeline-badge"><i class="material-icons">work</i></div>
+          <div class="timeline-badge"><i class="material-icons" data-toggle="tooltip" data-original-title="Work Experience">work</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
                 <ul class="list-inline">                   
@@ -159,31 +163,23 @@ jQuery(document).ready(function ($) {
                     <li></li>
                  </ul>
                 <ul class="list-inline">
-                    <li><h4 class="text-info"><?=$row['position']?></h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['company']?></i></h7> </li>
+                    <li><h4 class="text-info tlpositionsize"><?=$row['position']?></h4></li>
+                    <li id="vertical-align" class="text-muted tliconvaluesize"><i><?=$row['company']?></i></li>
                     
                  </ul>
           
              <ul class="list-inline">
-                 <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['industry']?></i>
-                     </h6>
+                 <li id="vertical-align" class="text-muted tliconvaluesize">                    
+                        <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Industry/Sector">business</i><i> <?=$row['industry']?></i>                     
                  </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
-                      </h6>
+                  <li id="vertical-align" class="text-muted tliconvaluesize">                     
+                         <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Employment Date">date_range</i> <?=$startdate?> - <?=$enddate?>                    
                   </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                          <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
-                      </h6>
+                  <li id="vertical-align" class="text-muted tliconvaluesize">                     
+                          <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Position Level">people</i><i> <?=$row['plevel']?></i>                      
                   </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                          <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
-                      </h6>
+                  <li id="vertical-align" class="text-muted tliconvaluesize">                      
+                          <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Base Salary">local_atm</i> Php <?=$row['msalary']?>                     
                    </li>
                </ul>
                 <hr>
@@ -216,7 +212,7 @@ jQuery(document).ready(function ($) {
                      $datefloat ='editfloatleft';
                  }
         ?>    
-                <div class="timeline-badge warning"><i class="material-icons">school</i></div>
+                <div class="timeline-badge warning"><i class="material-icons" data-toggle="tooltip" data-original-title="Education">school</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
                 <ul class="list-inline">                   
@@ -230,20 +226,14 @@ jQuery(document).ready(function ($) {
                  </ul>
           
              <ul class="list-inline">
-                 <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['pgrad1add']?></i>
-                     </h6>
+                 <li id="vertical-align" class="text-muted tliconvaluesize">
+                        <i class="material-icons text-info md-8" data-toggle="tooltip" data-original-title="Graduate School Address">place</i><i id='industryli'> <?=$row['pgrad1add']?></i>                    
                  </li>
-                 <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
-                     </h6>
+                 <li id="vertical-align" class="text-muted tliconvaluesize">
+                        <i class="material-icons text-info md-8" data-toggle="tooltip" data-original-title="GPA/Grade">assignment_turned_in</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
                  </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$pgrad1graddate?>
-                      </h6>
+                  <li id="vertical-align" class="text-muted tliconvaluesize">
+                         <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Graduation Date">date_range</i> <?=$pgrad1graddate?>                      
                   </li>
                 
                </ul>
@@ -278,7 +268,7 @@ jQuery(document).ready(function ($) {
                  }
                                             
         ?>
-               <div class="timeline-badge warning"><i class="material-icons">school</i></div>
+               <div class="timeline-badge warning"><i class="material-icons" data-toggle="tooltip" data-original-title="Education">school</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
                 <ul class="list-inline">                   
@@ -294,17 +284,17 @@ jQuery(document).ready(function ($) {
              <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['coladd']?></i>
+                        <i class="material-icons text-info md-8" data-toggle="tooltip" data-original-title="College/University Address">place</i><i id='industryli'> <?=$row['coladd']?></i>
                      </h6>
                  </li>
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['colgpa']?></i>
+                        <i class="material-icons text-info md-8" data-toggle="tooltip" data-original-title="GPA/Grade">assignment_turned_in</i><i id='industryli'> <?=$row['colgpa']?></i>
                      </h6>
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$colgraddate?>
+                         <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Graduation Date">date_range</i> <?=$colgraddate?>
                       </h6>
                   </li>
                 
@@ -341,7 +331,7 @@ jQuery(document).ready(function ($) {
                  }                       
         ?>
                             
-             <div class="timeline-badge warning"><i class="material-icons">school</i></div>
+             <div class="timeline-badge warning"><i class="material-icons" data-toggle="tooltip" data-original-title="Education">school</i></div>
           <div class="timeline-panel">
             <div class="timeline-heading">
                 <ul class="list-inline">                   
@@ -357,12 +347,12 @@ jQuery(document).ready(function ($) {
              <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['hsadd']?></i>
+                        <i class="material-icons text-info md-8" data-toggle="tooltip" data-original-title="High School Address">place</i><i id='industryli'> <?=$row['hsadd']?></i>
                      </h6>
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$hsgraddate?>
+                         <i class="material-icons text-info" data-toggle="tooltip" data-original-title="Graduation Date">date_range</i> <?=$hsgraddate?>
                       </h6>
                   </li>
                 
