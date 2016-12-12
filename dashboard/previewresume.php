@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
 });
 </script>      
 
- <div class="col-md-offset-1 col-md-10 col-md-offset-1"> 
+ <div class="col-md-12"> 
     
         <div class="profile-content">
 	            <div class="container-fluid">
@@ -167,7 +167,7 @@ jQuery(document).ready(function ($) {
              <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['industry']?></i>
+                        <i class="material-icons text-info material-icons.md-24" >business</i><i id='industryli'> <?=$row['industry']?></i>
                      </h6>
                  </li>
                   <li>
@@ -186,12 +186,13 @@ jQuery(document).ready(function ($) {
                       </h6>
                    </li>
                </ul>
-                <hr>
+               
             </div>
             <div class="timeline-body collapse-group collapse" id="viewdetails<?=$row['id']?>">              
               <?=$row['jobdescription']?>
             </div>
-              <p><a class="btn" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">View details &raquo;</a></p>  
+             <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
+              
           </div>           
         </li>
         <?php
@@ -372,7 +373,7 @@ jQuery(document).ready(function ($) {
             <div class="timeline-body collapse-group collapse" id="hsviewdetails<?=$row['id']?>">              
               <?=$row['hsawards']?>
             </div>
-              <p><a class="btn" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>">View details &raquo;</a></p>  
+              <a class="btn" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>">View details &raquo;</a> 
           </div>           
         </li>                  
                             

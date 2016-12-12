@@ -195,6 +195,7 @@ div .parsley-errors-list {
 
 .timeline > li > .timeline-panel {
     background-color: #fff;
+    padding: 10px !important;
 }
 
 .timeline > li > .timeline-badge {  
@@ -219,4 +220,14 @@ div .parsley-errors-list {
 
 .resumetextalign {
     text-align: left !important;
+}
+
+.expandmore {
+    padding: 2px !important;
+    background-color: #fff !important;
+    box-shadow: none !important;
+}
+
+.blackicon {
+    color: #9c27b0 !important;
 }
