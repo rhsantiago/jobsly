@@ -48,28 +48,63 @@ jQuery(document).ready(function ($) {
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
+              <?php
+              $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+              $database->bind(':userid', $userid);   
+
+                      $row = $database->single();             
+                      $mnumber = $row['mnumber'];
+                      $myemail = $row['myemail'];
+                      $landline = $row['landline'];                                
+                      $street = $row['street'];
+                      $city = $row['city'];
+                      $province = $row['province'];                                
+                      $nationality = $row['nationality'];          
+                      $birthday = $row['birthday'];                              
+                      $bday = explode("-", $birthday);
+                      $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
+                      
+                      $dposition = $row['dposition'];
+                      $plevel = $row['plevel'];                      
+                      $esalary = $row['esalary'];                      
+                      $languages = $row['languages'];                      
+                      $wtravel = $row['wtravel'];
+                      $wrelocate = $row['wrelocate'];
+                      $pholder = $row['pholder'];                        
+                                            
+                                            
+              ?>
+                                        
                                  <div class="row">                                                               
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Mobile Number: 09175555555</li>
-                                                                        <li> Email: reg@jobsly.net</li>
-                                                                        <li> Landline: 8234827</li>
-                                                                        <li> Street Address: 87 Spain st., Better Living Subd</li>
-                                                                        <li> City: Paranaque, Metro Manila Philippines</li>
-                                                                        <li> Nationality: Filipino</li>
-                                                                        <li> Birthdate: 11/09/2016</li>
+                                                                        <li> Mobile Number: <?=$mnumber?></li>
+                                                                        <li> Email: <?=$myemail?></li>
+                                                                        <li> Landline: <?=$landline?></li>
+                                                                        <li> Street Address: <?=$street?></li>
+                                                                        <li> City: <?=$city?>, <?=$province?></li>
+                                                                        <li> Nationality: <?=$nationality?></li>
+                                                                        <li> Birthdate: <?=$birthday?></li>
                                                                     </ul>
                                                                 </div>
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: Senior Developer</li>     
-                                                                        <li> Position Level: Middle  Manager</li>
-                                                                        <li> Expected Salary: 100000</li> 
-                                                                        <li> Languages: English, Filipino</li> 
-                                                                        <li> Willing to Travel</li>
-                                                                        <li> Willing to Relocate</li>
-                                                                        <li> Valid Passport Holder</li>
-                                                                        </ul>
+                                                                        <li> Desired Position: <?=$dposition?></li>     
+                                                                        <li> Position Level: <?=$plevel?></li>
+                                                                        <li> Expected Salary: <?=$esalary?></li> 
+                                                                        <li> Languages: <?=$languages?></li> 
+                                                                        <?php
+                                                                            if($wtravel=='on'){
+                                                                                echo '<li> Willing to Travel</li>';
+                                                                            }
+                                                                            if($wrelocate=='on'){
+                                                                                echo '<li> Willing to Relocate</li>';
+                                                                            }
+                                                                            if($pholder=='on'){
+                                                                                echo '<li> Valid Passport Holder</li';
+                                                                            }
+                                                                        ?>                                                                     
+                                                                     </ul>
                                                                 </div>
                                                         
                                                             </div>
@@ -158,10 +193,9 @@ jQuery(document).ready(function ($) {
                     <li class="<?=$datefloat?>"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
                     <li></li>
                  </ul>
-                <ul class="list-inline">
+                <ul class="list-inline center">
                     <li><h4 class="text-info"><?=$row['position']?></h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['company']?></i></h7> </li>
-                    
+                    <li><h7 class="text-muted"><i><?=$row['company']?></i></h7> </li>                    
                  </ul>
           
              <ul class="list-inline">
@@ -224,7 +258,7 @@ jQuery(document).ready(function ($) {
                     <li class="<?=$datefloat?>"><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></li>
                     <li></li>
                  </ul>
-                <ul class="list-inline">
+                <ul class="list-inline center">
                     <li><h4 class="text-info"><?=$row['pgrad1course']?></h4></li>
                     <li><h7 class="text-muted"><i><?=$row['pgrad1uni']?></i></h7> </li>
                     
@@ -238,7 +272,7 @@ jQuery(document).ready(function ($) {
                  </li>
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
+                        <i class="material-icons text-info md-8" >grade</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
                      </h6>
                  </li>
                   <li>
@@ -253,7 +287,7 @@ jQuery(document).ready(function ($) {
             <div class="timeline-body collapse-group collapse" id="pgrad1viewdetails<?=$row['id']?>">              
               <?=$row['pgrad1awards']?>
             </div>
-              <p><a class="btn" data-toggle="collapse" data-target="#pgrad1viewdetails<?=$row['id']?>">View details &raquo;</a></p>  
+               <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#pgrad1viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
           </div>           
         </li>            
         <?php             
@@ -286,7 +320,7 @@ jQuery(document).ready(function ($) {
                     <li class="<?=$datefloat?>"><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></li>
                     <li></li>
                  </ul>
-                <ul class="list-inline">
+                <ul class="list-inline center">
                     <li><h4 class="text-info"><?=$row['colmajor']?></h4></li>
                     <li><h7 class="text-muted"><i><?=$row['coluni']?></i></h7> </li>
                     
@@ -300,7 +334,7 @@ jQuery(document).ready(function ($) {
                  </li>
                  <li>
                      <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['colgpa']?></i>
+                        <i class="material-icons text-info md-8" >grade</i><i id='industryli'> <?=$row['colgpa']?></i>
                      </h6>
                  </li>
                   <li>
@@ -315,7 +349,7 @@ jQuery(document).ready(function ($) {
             <div class="timeline-body collapse-group collapse" id="colviewdetails<?=$row['id']?>">              
               <?=$row['colawards']?>
             </div>
-              <p><a class="btn" data-toggle="collapse" data-target="#colviewdetails<?=$row['id']?>">View details &raquo;</a></p>  
+              <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#colviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>              
           </div>           
         </li>                   
         <?php
@@ -349,7 +383,7 @@ jQuery(document).ready(function ($) {
                     <li class="<?=$datefloat?>"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
                     <li></li>
                  </ul>
-                <ul class="list-inline">
+                <ul class="list-inline center">
                     <li><h4 class="text-info">High School</h4></li>
                     <li><h7 class="text-muted"><i><?=$row['hsschool']?></i></h7> </li>
                     
@@ -373,8 +407,8 @@ jQuery(document).ready(function ($) {
             <div class="timeline-body collapse-group collapse" id="hsviewdetails<?=$row['id']?>">              
               <?=$row['hsawards']?>
             </div>
-              <a class="btn" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>">View details &raquo;</a> 
-          </div>           
+               <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
+           </div>           
         </li>                  
                             
                          
