@@ -235,6 +235,8 @@ div .parsley-errors-list {
     padding: 2px !important;
     background-color: #fff !important;
     box-shadow: none !important;
+    
+   
 }
 
 .blackicon {
@@ -243,13 +245,11 @@ div .parsley-errors-list {
 
 .timelinebodybottomborder {
     border-bottom: 1px solid rgba(0,0,0,0.05);
-   /* background-color: #CCCCCC !important; */
-    background:url('../img/work1.jpg');
-    background-size: cover;
+    
     margin: -10px !important;
-
-     border-top-left-radius:  6px !important;
-     border-top-right-radius:  6px !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+     
 }
 
 .whitetext{
@@ -262,9 +262,34 @@ div .parsley-errors-list {
 }
 
 .timelinerounded {
-    border-radius: 6px !important;
+    border-radius: 5px !important;
 }
 
 .margin10{
     margin: 10px !important;
+}
+
+.timelinepos {
+    font-weight: 500;
+}
+
+.tlcompanydiv {
+    background-color: #CCCCCC;
+    width: 100% !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tltextright {
+    text-align: right !important;
+}
+
+
+
+.infocolor {
+    background-color: #5bc0de !important;
+}
+
+.successcolor {
+     background-color: #3f903f !important;
 }

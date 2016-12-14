@@ -168,7 +168,8 @@ jQuery(document).ready(function ($) {
              $rows = $database->resultset();
              
              $isleft = true;
-             $datefloat ='';                               
+             $datefloat ='';
+           
              foreach($rows as $row){
                 $sdate = explode("-", $row['startdate']);
                 $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
@@ -186,18 +187,25 @@ jQuery(document).ready(function ($) {
                  }
         ?>
            
-          <div class="timeline-badge"><i class="material-icons">work</i></div>
+          <div class="timeline-badge infocolor"><i class="material-icons">work</i></div>
           <div class="timeline-panel timelinerounded">
-            <div class="timeline-heading timelinebodybottomborder">
-                <ul class="list-inline">                   
-                    <li class="<?=$datefloat?> whitetext margin10"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
+            <div class="timeline-heading  timelinebodybottomborder infocolor">
+                <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">      
+                    <li class=""><h4 class="timelinepos whitetext margin10 "><?=$row['position']?></h4></li>
+                   
+                    <li class="<?=$datefloat?> margin10"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
+                    
+                 </ul>               
+            </div>
+              <div class="">
+              <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h7 class=""><i><?=$row['company']?></i></h7></li>
                     <li></li>
+                    
                  </ul>
-                <ul class="list-inline center">
-                    <li><h4 class="whitetext"><?=$row['position']?></h4></li>
-                    <li><h7 class="whitetext">&nbsp;@&nbsp;<i><?=$row['company']?></i></h7> </li>                    
-                 </ul>
-          
+              </div>
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="viewdetails<?=$row['id']?>"> 
+                
              <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
@@ -209,20 +217,8 @@ jQuery(document).ready(function ($) {
                          <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
                       </h6>
                   </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                          <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
-                      </h6>
-                  </li>
-                  <li>
-                      <h6 id="vertical-align" class="text-muted">
-                          <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
-                      </h6>
-                   </li>
+                  
                </ul>
-               
-            </div>
-            <div class="timeline-body collapse-group collapse jobdescdiv" id="viewdetails<?=$row['id']?>">              
               <?=$row['jobdescription']?>
             </div>
              <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
@@ -251,20 +247,22 @@ jQuery(document).ready(function ($) {
                      $datefloat ='editfloatleft';
                  }
         ?>    
-                <div class="timeline-badge warning"><i class="material-icons">school</i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading timelinebodybottomborder">
-                <ul class="list-inline">                   
-                    <li class="<?=$datefloat?>"><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></li>
-                    <li></li>
+                <div class="timeline-badge success"><i class="material-icons">school</i></div>
+          <div class="timeline-panel timelinerounded">
+            <div class="timeline-heading timelinebodybottomborder successcolor">
+                <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h4 class="timelinepos whitetext margin10"><?=$row['pgrad1course']?></h4></li>
+                    <li class="<?=$datefloat?> margin10"><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></li>
+                   
+                 </ul>              
+            </div>
+              <div class="">
+              <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h7><i><?=$row['pgrad1uni']?></i></h7></li>                  
                  </ul>
-                <ul class="list-inline center">
-                    <li><h4 class="text-info"><?=$row['pgrad1course']?></h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['pgrad1uni']?></i></h7> </li>
-                    
-                 </ul>
-          
-             <ul class="list-inline">
+              </div>
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="pgrad1viewdetails<?=$row['id']?>"> 
+                 <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
                         <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['pgrad1add']?></i>
@@ -282,9 +280,6 @@ jQuery(document).ready(function ($) {
                   </li>
                 
                </ul>
-            
-            </div>
-            <div class="timeline-body collapse-group collapse" id="pgrad1viewdetails<?=$row['id']?>">              
               <?=$row['pgrad1awards']?>
             </div>
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#pgrad1viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
@@ -313,20 +308,22 @@ jQuery(document).ready(function ($) {
                  }
                                             
         ?>
-               <div class="timeline-badge warning"><i class="material-icons">school</i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading timelinebodybottomborder">
-                <ul class="list-inline">                   
-                    <li class="<?=$datefloat?>"><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></li>
-                    <li></li>
+               <div class="timeline-badge success"><i class="material-icons">school</i></div>
+          <div class="timeline-panel timelinerounded">
+            <div class="timeline-heading timelinebodybottomborder successcolor">
+                <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h4 class="timelinepos whitetext margin10"><?=$row['colmajor']?></h4></li>
+                    <li class="<?=$datefloat?> margin10"><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></li>
+                </ul>
+                        
+            </div>
+              <div class="">
+              <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h7><i><?=$row['coluni']?></i></h7> </li>             
                  </ul>
-                <ul class="list-inline center">
-                    <li><h4 class="text-info"><?=$row['colmajor']?></h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['coluni']?></i></h7> </li>
-                    
-                 </ul>
-          
-             <ul class="list-inline">
+              </div>
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="colviewdetails<?=$row['id']?>"> 
+                <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
                         <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['coladd']?></i>
@@ -344,9 +341,6 @@ jQuery(document).ready(function ($) {
                   </li>
                 
                </ul>
-             
-            </div>
-            <div class="timeline-body collapse-group collapse" id="colviewdetails<?=$row['id']?>">              
               <?=$row['colawards']?>
             </div>
               <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#colviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>              
@@ -376,20 +370,22 @@ jQuery(document).ready(function ($) {
                  }                       
         ?>
                             
-             <div class="timeline-badge warning"><i class="material-icons">school</i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading timelinebodybottomborder">
-                <ul class="list-inline">                   
-                    <li class="<?=$datefloat?>"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
+             <div class="timeline-badge success"><i class="material-icons">school</i></div>
+          <div class="timeline-panel timelinerounded">
+            <div class="timeline-heading timelinebodybottomborder successcolor">
+                <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h4 class="timelinepos whitetext margin10">High School</h4></li>
+                    <li class="<?=$datefloat?> margin10"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
                     <li></li>
+                 </ul>             
+            </div>
+               <div class="">
+              <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                    <li><h7><i><?=$row['hsschool']?></i></h7> </li>             
                  </ul>
-                <ul class="list-inline center">
-                    <li><h4 class="text-info">High School</h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['hsschool']?></i></h7> </li>
-                    
-                 </ul>
-          
-             <ul class="list-inline">
+              </div>
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="hsviewdetails<?=$row['id']?>"> 
+               <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted">
                         <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['hsadd']?></i>
@@ -401,9 +397,7 @@ jQuery(document).ready(function ($) {
                       </h6>
                   </li>
                 
-               </ul>          
-            </div>
-            <div class="timeline-body collapse-group collapse" id="hsviewdetails<?=$row['id']?>">              
+               </ul>   
               <?=$row['hsawards']?>
             </div>
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
