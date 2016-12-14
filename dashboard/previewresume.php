@@ -187,15 +187,15 @@ jQuery(document).ready(function ($) {
         ?>
            
           <div class="timeline-badge"><i class="material-icons">work</i></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
+          <div class="timeline-panel timelinerounded">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline">                   
-                    <li class="<?=$datefloat?>"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
+                    <li class="<?=$datefloat?> whitetext margin10"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
                     <li></li>
                  </ul>
                 <ul class="list-inline center">
-                    <li><h4 class="text-info"><?=$row['position']?></h4></li>
-                    <li><h7 class="text-muted"><i><?=$row['company']?></i></h7> </li>                    
+                    <li><h4 class="whitetext"><?=$row['position']?></h4></li>
+                    <li><h7 class="whitetext">&nbsp;@&nbsp;<i><?=$row['company']?></i></h7> </li>                    
                  </ul>
           
              <ul class="list-inline">
@@ -222,7 +222,7 @@ jQuery(document).ready(function ($) {
                </ul>
                
             </div>
-            <div class="timeline-body collapse-group collapse" id="viewdetails<?=$row['id']?>">              
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="viewdetails<?=$row['id']?>">              
               <?=$row['jobdescription']?>
             </div>
              <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
@@ -253,7 +253,7 @@ jQuery(document).ready(function ($) {
         ?>    
                 <div class="timeline-badge warning"><i class="material-icons">school</i></div>
           <div class="timeline-panel">
-            <div class="timeline-heading">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline">                   
                     <li class="<?=$datefloat?>"><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></li>
                     <li></li>
@@ -282,7 +282,7 @@ jQuery(document).ready(function ($) {
                   </li>
                 
                </ul>
-                <hr>
+            
             </div>
             <div class="timeline-body collapse-group collapse" id="pgrad1viewdetails<?=$row['id']?>">              
               <?=$row['pgrad1awards']?>
@@ -315,7 +315,7 @@ jQuery(document).ready(function ($) {
         ?>
                <div class="timeline-badge warning"><i class="material-icons">school</i></div>
           <div class="timeline-panel">
-            <div class="timeline-heading">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline">                   
                     <li class="<?=$datefloat?>"><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></li>
                     <li></li>
@@ -344,7 +344,7 @@ jQuery(document).ready(function ($) {
                   </li>
                 
                </ul>
-                <hr>
+             
             </div>
             <div class="timeline-body collapse-group collapse" id="colviewdetails<?=$row['id']?>">              
               <?=$row['colawards']?>
@@ -378,7 +378,7 @@ jQuery(document).ready(function ($) {
                             
              <div class="timeline-badge warning"><i class="material-icons">school</i></div>
           <div class="timeline-panel">
-            <div class="timeline-heading">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline">                   
                     <li class="<?=$datefloat?>"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
                     <li></li>
@@ -401,8 +401,7 @@ jQuery(document).ready(function ($) {
                       </h6>
                   </li>
                 
-               </ul>
-                <hr>
+               </ul>          
             </div>
             <div class="timeline-body collapse-group collapse" id="hsviewdetails<?=$row['id']?>">              
               <?=$row['hsawards']?>

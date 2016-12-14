@@ -289,7 +289,14 @@ if($ok == 1 ){
           <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a5').addClass('active');});</script>   
     <?php
     }
+    if($ajax=='pres'){
+         include 'previewresume.php';
     ?>
+          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p6').addClass('active');});</script>   
+    <?php
+    }
+    ?>
+   
                         
                         
                       

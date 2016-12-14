@@ -284,9 +284,7 @@ jQuery(document).ready(function ($) {
 
                     success: function (html) {
                        // console.log(html);
-                        $('#resume-main-body').html(html);                   
-                        $('#resume-main-body #startdate').datepicker();                    
-                        $('#resume-main-body #enddate').datepicker();
+                        $('#resume-main-body').html(html); 
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #p6').addClass('active');
                         $(function() {

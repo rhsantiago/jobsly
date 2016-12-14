@@ -74,6 +74,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                             <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
+                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
                         </ul>    
                     </li>
     				
@@ -194,6 +195,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                             <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
+                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

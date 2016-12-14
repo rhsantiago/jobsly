@@ -240,3 +240,31 @@ div .parsley-errors-list {
 .blackicon {
     color: #9c27b0 !important;
 }
+
+.timelinebodybottomborder {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+   /* background-color: #CCCCCC !important; */
+    background:url('../img/work1.jpg');
+    background-size: cover;
+    margin: -10px !important;
+
+     border-top-left-radius:  6px !important;
+     border-top-right-radius:  6px !important;
+}
+
+.whitetext{
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.jobdescdiv {
+    margin-top: 20px !important;
+}
+
+.timelinerounded {
+    border-radius: 6px !important;
+}
+
+.margin10{
+    margin: 10px !important;
+}
