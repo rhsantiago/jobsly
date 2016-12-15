@@ -4,6 +4,7 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+   $usertype = $_SESSION['usertype'];
     
    include 'authenticate.php';
 }
@@ -14,8 +15,8 @@ if($ok == 1 ){
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>jobsly - find your next adventure</title>
@@ -209,8 +210,8 @@ if($ok == 1 ){
 
 		<div class="main main-raised ">
          
-			<div class="container">
-                <div class="row-fluid">
+			<div class="container-fluid"> <!-- with fluid for full width -->
+                <div class="row-fluid">   <!-- with fluid for full width -->
                     
                     <div id="resume-main-body">                       
                 <?php

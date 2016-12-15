@@ -10,7 +10,6 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-    $ajax = $_GET['ajax'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,43 +34,12 @@ if($ok == 1 ){
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-    <link href="css/summernote.css" rel="stylesheet"/>
 
-    
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/material.min.js"></script>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
-
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/resume.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
-    <script src="js/parsley.js"></script>
 </head>
 
 <body class="landing-page">
-    <!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="workexp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
     
-    <div class="modal fullscreen-modal fade" id="workexp-modal-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -102,9 +70,9 @@ if($ok == 1 ){
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
+                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
                             <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
                             <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
@@ -136,6 +104,7 @@ if($ok == 1 ){
     </nav>
 
 
+
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
@@ -144,102 +113,70 @@ if($ok == 1 ){
                             
                             <div id="resumesb" class="">                               
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="p1" class="active">
+                                    <li id="a1">
                                       
-                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">fingerprint</i>
-                                            <span class="submenufont"> Personal Information</span>
+                                        <a href="#ashort"  role="tab"  data-toggle="tab" data-container="body">
+                                            <i class="material-icons">visibility</i>
+                                            <span class="submenufont">Active Shortlist</span>
                                         </a>
                                         
                                     </li>
-                                    <li id="w2">
+                                    <li id="a2">
                                                                      
-                                        <a href="#workexp" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">work</i>
-                                            <span class="submenufont">Work Experience</span>
+                                        <a href="#ajposts" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
+                                            <i class="material-icons">drafts</i>
+                                            <span class="submenufont">Active Job Posts</span>
                                         </a>  
                                        
                                     </li>
-                                    <li id="e3">
-                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">school</i>
-                                            <span class="submenufont">Education &amp; Training</span>
+                                    <li id="n3">
+                                        <a href="#napp"  role="tab" data-toggle="tab" data-container="body">
+                                            <i class="material-icons">favorite</i>
+                                            <span class="submenufont">New Applicants</span>
                                         </a>
                                     </li>
                                     <li id="s4">
-                                        <a href="#skills" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">build</i>
-                                            <span class="submenufont">Skills</span>
+                                        <a href="#search" role="tab" data-toggle="tab" data-container="body">
+                                            <i class="material-icons">whatshot</i>
+                                            <span class="submenufont">Search</span>
                                         </a>                                        
                                     </li>
-                                    <li id="a5">
-                                        <a href="#ainfo" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">add_box</i>
-                                            <span class="submenufont">Additional Information</span>
+                                    <li id="c5">
+                                        <a href="#cinfo" role="tab" data-toggle="tab" data-container="body">
+                                            <i class="material-icons">whatshot</i>
+                                            <span class="submenufont">Company Information</span>
                                         </a>                                        
                                     </li>
-                                    <li id="p6">
-                                        <a href="#pres" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">pageview</i>
-                                            <span class="submenufont">Preview Resume</span>
-                                        </a>                                        
-                                    </li>
+                                   
                                 </ul>
                             </div>
                             
-                            
                           
-                     <!--
-                         <div id="submenusmall">   
-                            <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
-                         <div  class="col-md-1 col-sm-1 col-xs-1">                           
-                           <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1 clickme1">                           
-                           <a class="submenu" id="pinfo" data-toggle="tooltip" data-placement="top" title="Personal Information" data-container="body"><i class="material-icons md-24">fingerprint</i></a>
-                        </div> 
-                        <div class="col-md-1 col-sm-1 col-xs-1 clickme2">    
-                             <a class="submenu" id="workexp" data-toggle="tooltip" data-placement="top" title="Work Experience" data-container="body"><i class="material-icons md-24">work</i></a>   
-                        </div>
-                         <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Education and Training" data-container="body"><i class="material-icons md-24">school</i></a>   
-                        </div>    
-                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Skills" data-container="body"><i class="material-icons md-24">star</i></a>   
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Additional Information" data-container="body"><i class="material-icons md-24">add_box</i></a>   
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
-                        </div> 
-                            </div>
-                       -->
 	                 </div>
                 </div>
             </div>
             </div>
         </div>
-    
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#" id="ashort"><i class="material-icons">visibility</i>Active Shortlist</a></li>
+                                    <li><a href="#" id="ajposts"><i class="material-icons">drafts</i>Active Job Posts</a></li> 
+                                    <li><a href="#" id="napp"><i class="material-icons">favorite</i>New Applicants</a></li>
+                                    <li><a href="#" id="search"><i class="material-icons">whatshot</i>Search</a></li>
+                                    <li><a href="#" id="cinfo"><i class="material-icons">whatshot</i>Company Information</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                             <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
+                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
+                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
+                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
+                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -256,50 +193,10 @@ if($ok == 1 ){
 			<div class="container-fluid"> <!-- with fluid for full width -->
                 <div class="row-fluid">   <!-- with fluid for full width -->
                     
-                    <div id="resume-main-body">    
-                        
-                        
-    <?php
-    if($ajax=='pinfo'){
-         include 'pinfo-form.php';
-    ?>
-    <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p1').addClass('active');});</script>
-    <?php
-    }
-    if($ajax=='workexp'){
-         include 'wexp-form.php';
-    ?>    
-        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #w2').addClass('active');});</script>
-    <?php        
-    }
-    if($ajax=='etrain'){
-         include 'etrain-form.php'; 
-    ?>    
-        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #e3').addClass('active');});</script>
-    <?php                    
-    }
-    if($ajax=='skills'){
-         include 'skills-form.php';
-    ?>
-          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s4').addClass('active');});</script>   
-    <?php
-    }
-    if($ajax=='ainfo'){
-         include 'ainfo-form.php';
-    ?>
-          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a5').addClass('active');});</script>   
-    <?php
-    }
-    if($ajax=='pres'){
-         include 'previewresume.php';
-    ?>
-          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p6').addClass('active');});</script>   
-    <?php
-    }
-    ?>
-   
-                        
-                        
+                    <div id="resume-main-body">                       
+                <?php
+                  include 'pinfo-form.php';      
+                ?>
                       
                 </div> <!--resume main body-->        
                 <!--
@@ -470,8 +367,20 @@ if($ok == 1 ){
 </body>
 
 	<!--   Core JS Files   -->
-	
-  
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/resume.js" type="text/javascript"></script>
+    
      
     <script>
     var isClosed = true;
@@ -491,7 +400,7 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     isClosed = true;
 }
-        
+
       
 </script>
 

@@ -19,6 +19,8 @@ $(document).ready(function($) {
                     $( "#unverified" ).addClass('hidden');
                            if(data == 'success'){
                                window.location.href = 'dashboard/main.php';
+                           }else if(data == 'successemployer'){
+                               window.location.href = 'dashboard/employer-main.php';                           
                            }else if(data == 'notfound'){
                                 $( "#notfound" ).removeClass('hidden');
                            }else if(data == 'unverified'){
