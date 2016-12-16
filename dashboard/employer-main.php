@@ -116,7 +116,7 @@ if($ok == 1 ){
                                     <li id="a1">
                                       
                                         <a href="#ashort"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">visibility</i>
+                                            <i class="material-icons">people</i>
                                             <span class="submenufont">Active Shortlist</span>
                                         </a>
                                         
@@ -124,27 +124,27 @@ if($ok == 1 ){
                                     <li id="a2">
                                                                      
                                         <a href="#ajposts" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">drafts</i>
+                                            <i class="material-icons">flag</i>
                                             <span class="submenufont">Active Job Posts</span>
                                         </a>  
                                        
                                     </li>
                                     <li id="n3">
                                         <a href="#napp"  role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">favorite</i>
+                                            <i class="material-icons">new_releases</i>
                                             <span class="submenufont">New Applicants</span>
                                         </a>
                                     </li>
                                     <li id="s4">
                                         <a href="#search" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">whatshot</i>
+                                            <i class="material-icons">find_in_page</i>
                                             <span class="submenufont">Search</span>
                                         </a>                                        
                                     </li>
                                     <li id="c5">
                                         <a href="#cinfo" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">whatshot</i>
-                                            <span class="submenufont">Company Information</span>
+                                            <span class="submenufont">Company Info</span>
                                         </a>                                        
                                     </li>
                                    
@@ -162,22 +162,19 @@ if($ok == 1 ){
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#" id="ashort"><i class="material-icons">visibility</i>Active Shortlist</a></li>
-                                    <li><a href="#" id="ajposts"><i class="material-icons">drafts</i>Active Job Posts</a></li> 
-                                    <li><a href="#" id="napp"><i class="material-icons">favorite</i>New Applicants</a></li>
-                                    <li><a href="#" id="search"><i class="material-icons">whatshot</i>Search</a></li>
-                                    <li><a href="#" id="cinfo"><i class="material-icons">whatshot</i>Company Information</a></li>
+                                    <li><a href="#" id="ashort"><i class="material-icons">people</i>Active Shortlist</a></li>
+                                    <li><a href="#" id="ajposts"><i class="material-icons">flag</i>Active Job Posts</a></li> 
+                                    <li><a href="#" id="napp"><i class="material-icons">new_releases</i>New Applicants</a></li>
+                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>Search</a></li>
+                                    <li><a href="#" id="cinfo"><i class="material-icons">whatshot</i>Company Info</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
-                        </ul>
+                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">list</i>All Job Ads</a></li>
+                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Post a Job Ad</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">mode_edit</i>Essays</a></li>
+    </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
    <div class="sidebar-item"><a href="#">Settings</a></div>
