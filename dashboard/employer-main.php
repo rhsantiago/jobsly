@@ -115,9 +115,9 @@ if($ok == 1 ){
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
                                     <li id="a1">
                                       
-                                        <a href="#ashort"  role="tab"  data-toggle="tab" data-container="body">
+                                        <a href="#short"  role="tab"  data-toggle="tab" data-container="body">
                                             <i class="material-icons">people</i>
-                                            <span class="submenufont">Active Shortlist</span>
+                                            <span class="submenufont">Shortlist</span>
                                         </a>
                                         
                                     </li>
@@ -143,7 +143,7 @@ if($ok == 1 ){
                                     </li>
                                     <li id="c5">
                                         <a href="#cinfo" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">whatshot</i>
+                                            <i class="material-icons">info</i>
                                             <span class="submenufont">Company Info</span>
                                         </a>                                        
                                     </li>
@@ -160,20 +160,21 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Home<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>&nbsp;Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#" id="ashort"><i class="material-icons">people</i>Active Shortlist</a></li>
-                                    <li><a href="#" id="ajposts"><i class="material-icons">flag</i>Active Job Posts</a></li> 
-                                    <li><a href="#" id="napp"><i class="material-icons">new_releases</i>New Applicants</a></li>
-                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>Search</a></li>
-                                    <li><a href="#" id="cinfo"><i class="material-icons">whatshot</i>Company Info</a></li>
+                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>
+                                    <li><a href="#" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Posts</a></li> 
+                                    <li><a href="#" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
+                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
+                                    <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>Job Ads<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">list</i>All Job Ads</a></li>
-                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Post a Job Ad</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">mode_edit</i>Essays</a></li>
+                            <li><a href="employer-jobads.php?ajax=ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
+                            <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">work</i>&nbsp;Post a Job Ad</a></li>
+                            <li><a href="employer-jobads.php?ajax=jtemp" id="jtemp"><i class="material-icons">content_copy</i>&nbsp;Job Templates</a></li>
+                            <li><a href="employer-jobads.php?ajax=essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
     </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -376,7 +377,7 @@ if($ok == 1 ){
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/resume.js" type="text/javascript"></script>
+    <script src="js/employer-jobads.js" type="text/javascript"></script>
     
      
     <script>

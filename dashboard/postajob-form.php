@@ -5,24 +5,8 @@
         session_start();
         include 'Database.php';
     }
-    $user = "";
-    $password = "";
-    $userid= "";
-    $id=0;
-    $fname = "";
-    $lname = "";
-    $mname = "";
-    $street = "";
-    $city = "";
-    $province = "";
-    $country = "";
-    $mnumber = "";
-    $myemail = "";
-    $landline = "";
-    $age = "";
-    $birthday ="";
-    $nationality ="";
-    $mode = "";
+/*
+
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -32,58 +16,46 @@ if(isset($_SESSION['user'])){
   
     $database = new Database();
 
-    $database->query('SELECT * from personalinformation where userid = :userid');
+    $database->query('SELECT * from jobads where userid = :userid');
     $database->bind(':userid', $userid);   
 
     $row = $database->single();
-    $id = $row['id'];
-    
-    if(!empty($id)){
-        $mode = 'update';
-        $fname = $row['fname'];
-        $lname = $row['lname'];
-        $mname = $row['mname'];
-        $street = $row['street'];
-        $city = $row['city'];
-        $province = $row['province'];
-        $country = $row['country'];
-        $mnumber = $row['mnumber'];
-        $myemail = $row['myemail'];
-        $landline = $row['landline'];
-        $age = $row['age'];
-        $birthday = $row['birthday'];
-        $bday = explode("-", $birthday);
-        $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
-        $gender = $row['gender'];
-        $nationality = $row['nationality'];
-    }else{
+ 
+
         $mode = 'insert';
-    }
+   
     
 }
+*/
 ?>
 
-<form method="post" id="pinfo-form" name="pinfo-form" data-parsley-validate>
+<form method="post" id="postajob-form" name="postajob-form" data-parsley-validate>
                     <input type="hidden" id="id" name="id" value="<?=$id?>">
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>"> 
-   
-    <div class="col-md-12">
-                             <h2 class="title">Personal Information</h2>
-       </div>
-                    <div class="col-md-offset-1 col-md-7">
-                        <div class="col-md-12">            
-                          <!-- <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+    
+    
+    <div class="col-md-12 center">            
+                          <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">  
-                            -->
-                        </div>
+                           
+     </div>
+    <div class="col-md-12">
+                             <h2 class="title">Post a Job Ad</h2>
+       </div>
+    
+    
+    <div class="col-md-offset-1 col-md-7">
+                        
+   
+                    
                        
                 <div class="section  section-landing">
 	                
 
 					<div class="features">
 						<div class="row">
-		                    <div class="col-md-6">
+		                    <div class="col-md-8">
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -92,8 +64,8 @@ if(isset($_SESSION['user'])){
                                                         <ul class="nav nav-tabs" data-tabs="tabs">
                                                             <li class="active">
                                                                 <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">fingerprint</i>
-                                                                   Personal Information
+                                                                    <i class="material-icons">assignment_turned_in</i>
+                                                                   Job Details
                                                                 </a>
                                                             </li>										
                                                         </ul>
@@ -103,18 +75,54 @@ if(isset($_SESSION['user'])){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
-                                                            <div id="fnamediv" class="form-group label-floating">
-                                                                <label class="control-label">First Name</label>
-                                                                <input type="text" id="fname" class="form-control" value="<?=$fname ?>" data-parsley-required >  
+                                                            <div id="jobtitlediv" class="form-group label-floating">
+                                                                <label class="control-label">Job Title</label>
+                                                                <input type="text" id="jobtitle" class="form-control" data-parsley-required >  
                                                             </div>
-                                                            <div id="lnamediv" class="form-group label-floating">
-                                                                <label class="control-label">Last Name</label>
-                                                                <input type="text" id="lname" class="form-control" value="<?=$lname ?>"  data-parsley-required>
+                                                   <div class="row">
+                                                       <div class="col-md-6">  
+                                                            <div id="specializationdiv" class="form-group label-floating">
+                                                                <label class="control-label">Specialization</label>
+                                                                <input type="text" id="specialization" class="form-control" data-parsley-required>
                                                             </div>
-                                                            <div class="form-group label-floating">
-                                                                <label class="control-label">Middle Name</label>
-                                                                <input type="text" id="mname" class="form-control" value="<?=$mname ?>">
+                                                            <div id="jobtypediv" class="form-group label-floating">
+                                                                <label class="control-label">Employment Type</label>
+                                                                <select class="form-control" id="jobtype" name="jobtype"  placeholder="Employment Type" data-parsley-required>                                                                      
+                                                                           <option disabled></option>
+                                                                           <option value='full'>Full-time</option>
+                                                                           <option value='part'>Part-time</option>
+                                                                           <option value=project>Project</option>  
+                                                                </select>
                                                             </div>
+                                                           <div id="startappdatediv" class="form-group label-static">
+                                                                <label class="control-label">Application Start Date (MM/DD/YYYY)</label>
+                                                                <input type='text' id='startappdate' class='datepicker form-control'  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6"> 
+                                                            <div id="pleveldiv" class="form-group label-floating">
+                                                                <label class="control-label">Position Level</label>
+                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level" data-parsley-required>                                                                      
+                                                                           <option disabled></option>
+                                                                           <option value='1'>Executive</option>
+                                                                           <option value='2'>Manager</option>
+                                                                           <option value='3'>Assistant Manager</option>
+                                                                           <option value='4'>Supervisor</option>
+                                                                           <option value='5'> 5 Years+ Experienced Employee</option>
+                                                                           <option value='6'>1-4 Years Experienced Employee</option>
+                                                                           <option value='7'>1 Year Experienced Employee/Fresh Grad</option>
+                                                                </select>
+                                                            </div>
+                                                            <div id="msalarydiv" class="form-group label-floating">
+                                                                <label class="control-label">Salary</label>
+                                                                <input type="text" id="msalary" class="form-control" data-parsley-required data-parsley-type="number">
+                                                            </div>
+                                                            <div id="endappdatediv" class="form-group label-static">
+                                                                <label class="control-label">Application Deadline (MM/DD/YYYY)</label>
+                                                                <input type='text' id='endappdate' class='datepicker form-control'  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                            </div>
+                                                          </div>
+                                                    </div>
                                                         </div>
 
                                                     </div>
@@ -130,7 +138,7 @@ if(isset($_SESSION['user'])){
                                                             <li class="active">
                                                                 <a href="#profile" data-toggle="tab">
                                                                     <i class="material-icons">place</i>
-                                                                    Location
+                                                                    Job Description
                                                                 </a>
                                                             </li>										
                                                         </ul>
@@ -140,22 +148,22 @@ if(isset($_SESSION['user'])){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
-                                                            <div id="streetdiv" class="form-group label-floating">
-                                                                <label class="control-label">Street Address</label>
-                                                                <input type="text" id="street" class="form-control" value="<?=$street ?>" data-parsley-required>
-                                                            </div>
-                                                            <div id="citydiv" class="form-group label-floating">
-                                                                <label class="control-label">City</label>
-                                                                <input type="text" id="city" class="form-control" value="<?=$city ?>"  data-parsley-required>
-                                                            </div>
-                                                             <div id="provincediv" class="form-group label-floating">
-                                                                <label class="control-label">Province</label>
-                                                                <input type="text" id="province" class="form-control" value="<?=$province ?>" data-parsley-pattern="^[a-zA-Z ]+$">
-                                                            </div>
-                                                            <div id="countrydiv" class="form-group label-floating">
-                                                                <label class="control-label">Country</label>
-                                                                <input type="text" id="country" class="form-control" value="<?=$country ?>"  data-parsley-required data-parsley-pattern="^[a-zA-Z ]+$">
-                                                            </div>
+                                                            Describe applicant requirements, responsibilities and relevant information
+                                                                    <div id="jobdesc"></div>
+                                                                    
+                                                                          <script>
+                                                                            $(document).ready(function() {
+                                                                               $('#jobdesc').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']], 
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
+                                                                                      ]
+                                                                                    });
+                                                                            });
+                                                                            </script>
                                                         </div>
 
                                                     </div>
@@ -165,7 +173,7 @@ if(isset($_SESSION['user'])){
                                 
 		                    </div>
                             
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-warning">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -175,7 +183,7 @@ if(isset($_SESSION['user'])){
                                                             <li class="active">
                                                                 <a href="#profile" data-toggle="tab">
                                                                     <i class="material-icons">phonelink_ring</i>
-                                                                    Contact Information
+                                                                    Optional Details
                                                                 </a>
                                                             </li>										
                                                         </ul>
@@ -185,91 +193,54 @@ if(isset($_SESSION['user'])){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
-                                                            <div id="mnumberdiv" class="form-group label-floating">
-                                                                <label class="control-label">Mobile Number</label>
-                                                                <input type="text" id="mnumber" class="form-control" value="<?=$mnumber ?>" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                            <div id="yrsexpdiv" class="form-group label-floating">
+                                                                <label class="control-label">Years of Experience</label>
+                                                                <input type="text" id="yrsexp" class="form-control" data-parsley-type="number">
                                                             </div>
-                                                            <div id="myemaildiv" class="form-group label-floating">
-                                                                <label class="control-label">Email</label>
-                                                                <input type="email" id="myemail" class="form-control" value="<?=$myemail ?>" data-parsley-required data-parsley-type="email">
+                                                            <div id="mineducdiv" class="form-group label-floating">
+                                                                <label class="control-label">Educational Attainment</label>
+                                                                <input type="text" id="mineduc" class="form-control">
                                                             </div>
-                                                             <div id="landlinediv" class="form-group label-floating">
-                                                                <label class="control-label">Landline</label>
-                                                                <input type="text" id="landline" class="form-control" value="<?=$landline ?>" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                            <div id="prefcoursediv" class="form-group label-floating">
+                                                                <label class="control-label">Preferred Course</label>
+                                                                <input type="text" id="prefcourse" class="form-control">
                                                             </div>
+                                                            <div id="languagesdiv" class="form-group label-floating">
+                                                                <label class="control-label">Languages</label>
+                                                                <input type="text" id="languages" class="form-control">
+                                                            </div>
+                                                            <div id="licensesdiv" class="form-group label-floating">
+                                                                <label class="control-label">Licenses</label>
+                                                                <input type="text" id="licenses" class="form-control">
+                                                            </div>
+                                                            <div id="wtraveldiv" class="form-group">
+                                                                         <div class="checkbox">
+                                                                            <label>
+                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes">
+                                                                                Show Willing to Travel?
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                            <div id="wrelocatediv" class="form-group">
+                                                                         <div class="checkbox">
+                                                                            <label>
+                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes">
+                                                                                Show Willing to Relocate?
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
                                                         </div>
 
                                                     </div>
                                              </div>
                                     </div>
                                 
-                                    <div class="card card-nav-tabs">
-                                            <div id="tabtitle" class="header  header-danger">
-                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                                <div class="nav-tabs-navigation">
-                                                    <div class="nav-tabs-wrapper">
-                                                        <ul class="nav nav-tabs" data-tabs="tabs">
-                                                            <li class="active">
-                                                                <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">person</i>
-                                                                    Other Personal Details
-                                                                </a>
-                                                            </li>										
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                          </div>
-                                             <div class="content">
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane active" id="profile">
-                                                            <div id="agediv" class="form-group label-floating">
-                                                                <label class="control-label">Age</label>
-                                                                <input type="text" id="age" class="form-control" value="<?=$age ?>" data-parsley-required data-parsley-type="number">                                                             
-                                                            </div>
-                                                            <div id="birthdaydiv" class="form-group label-static">
-                                                                <label class="control-label">Birthday (MM/DD/YYYY)</label>
-                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
-                                                            </div>
-                                                             <div id="genderdiv" class="form-group label-floating">
-                                                                <label class="control-label">Gender</label>
-                                                                <select class="form-control" id="gender" name="gender"  placeholder="Gender" data-parsley-required>
-                                                                    <?php
- 
-                                                                        if($gender =='male'){
-                                                                            echo"<option value='' disabled></option>";
-                                                                            echo"<option value='male' selected>Male</option>";
-                                                                            echo"<option value='female'>Female</option>";
-                                                                        }else if($gender =='female'){
-                                                                            echo"<option value='' disabled></option>";
-                                                                            echo"<option value='male'>Male</option>";
-                                                                            echo"<option value='female' selected>Female</option>";
-                                                                        }else{
-                                                                            echo"<option value='' selected disabled></option>";
-                                                                            echo"<option value='male'>Male</option>";
-                                                                            echo"<option value='female'>Female</option>";
-                                                                        }
-                                                            
-                                                                    ?>
-                                                                                                         
-                                                                </select>
-                                                            </div>
-                                                            <div id="nationalitydiv" class="form-group label-floating">
-                                                                <label class="control-label">Nationality</label>
-                                                                <input type="text" id="nationality" class="form-control" value="<?=$nationality ?>" data-parsley-required data-parsley-pattern="^[a-zA-Z ]+$">
-                                                            </div>
-                                                           
-                                                        </div>
-
-                                                    </div>
-                                             </div>
-                                    </div>
-                                   
                                 
 		                    </div>
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Job Details</button>
                                             </div>       
                                              <div id="successdivpinfo" class="alert alert-success">
                                                
@@ -279,7 +250,7 @@ if(isset($_SESSION['user'])){
                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                   </button>
-                                                  <b>Alert: </b> Your personal information has been saved.
+                                                  <b>Alert: </b> Your Job Details has been saved.
                                                
                                             </div>
                                    
@@ -314,6 +285,7 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
+    /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');
            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
@@ -444,7 +416,7 @@ jQuery(document).ready(function ($) {
             $('#pinfo-form #nationalitydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    
+    */
     
 });       
 </script>
