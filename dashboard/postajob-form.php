@@ -27,7 +27,13 @@ if(isset($_SESSION['user'])){
     
 }
 */
+$template = $_POST['template'];
+$mode = $_POST['mode'];
+if($mode==''){
+    $mode = 'update';
+}
 ?>
+
 
 <form method="post" id="postajob-form" name="postajob-form" data-parsley-validate>
                     <input type="hidden" id="id" name="id" value="<?=$id?>">
@@ -36,26 +42,51 @@ if(isset($_SESSION['user'])){
     
     
     <div class="col-md-12 center">            
-                          <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
+            <div class="adstop">
+                <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+                                 alt="user">
+            </div>    
                            
      </div>
     <div class="col-md-12">
                              <h2 class="title">Post a Job Ad</h2>
        </div>
     
-    
     <div class="col-md-offset-1 col-md-7">
-                        
-   
-                    
                        
                 <div class="section  section-landing">
-	                
+	                 
 
 					<div class="features">
 						<div class="row">
-		                    <div class="col-md-8">
+                            
+                <div class="col-md-12">
+                      <div class="stepwizard ">
+                            <div class="stepwizard-row setup-panel">
+                              <div class="stepwizard-step">
+                                <a href="#step-1" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
+                               <br>Select Template
+                              </div>
+                              <div class="stepwizard-step">
+                                <a href="#step-2" type="button" class="btn btn-primary btn-circle">2</a>
+                                <br><b>Job Details</b>
+                              </div>
+                              <div class="stepwizard-step">
+                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <br>Job Skills
+                              </div>
+                                <div class="stepwizard-step">
+                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <br>Preview
+                              </div>
+                            </div>
+                        </div>
+                </div>
+                            
+                            
+                            
+                            
+		                    <div class="col-md-12">
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -77,7 +108,7 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">
                                                             <div id="jobtitlediv" class="form-group label-floating">
                                                                 <label class="control-label">Job Title</label>
-                                                                <input type="text" id="jobtitle" class="form-control" data-parsley-required >  
+                                                                <input type="text" id="jobtitle" class="form-control" data-parsley-required>  
                                                             </div>
                                                    <div class="row">
                                                        <div class="col-md-6">  
@@ -137,7 +168,7 @@ if(isset($_SESSION['user'])){
                                                         <ul class="nav nav-tabs" data-tabs="tabs">
                                                             <li class="active">
                                                                 <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">place</i>
+                                                                    <i class="material-icons">description</i>
                                                                     Job Description
                                                                 </a>
                                                             </li>										
@@ -170,10 +201,6 @@ if(isset($_SESSION['user'])){
                                              </div>
                                     </div>
                                 
-                                
-		                    </div>
-                            
-                            <div class="col-md-4">
                                     <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-warning">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -182,7 +209,7 @@ if(isset($_SESSION['user'])){
                                                         <ul class="nav nav-tabs" data-tabs="tabs">
                                                             <li class="active">
                                                                 <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">phonelink_ring</i>
+                                                                    <i class="material-icons">note_add</i>
                                                                     Optional Details
                                                                 </a>
                                                             </li>										
@@ -193,14 +220,33 @@ if(isset($_SESSION['user'])){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
-                                                            <div id="yrsexpdiv" class="form-group label-floating">
-                                                                <label class="control-label">Years of Experience</label>
-                                                                <input type="text" id="yrsexp" class="form-control" data-parsley-type="number">
+                                                            <div class="col-md-6">
+                                                                <div id="nvacanciesdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Number of Vancancies</label>
+                                                                    <input type="text" id="nvacancies" class="form-control" data-parsley-type="number">
+                                                                </div>
+                                                                <div id="citydiv" class="form-group label-floating">
+                                                                    <label class="control-label">City</label>
+                                                                    <input type="text" id="city" class="form-control">
+                                                                </div>
+                                                                <div id="provincediv" class="form-group label-floating">
+                                                                    <label class="control-label">Province</label>
+                                                                    <input type="text" id="province" class="form-control">
+                                                                </div>
+                                                                <div id="countrydiv" class="form-group label-floating">
+                                                                    <label class="control-label">Country</label>
+                                                                    <input type="text" id="country" class="form-control">
+                                                                </div>
+                                                                <div id="yrsexpdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Years of Experience</label>
+                                                                    <input type="text" id="yrsexp" class="form-control" data-parsley-type="number">
+                                                                </div>
+                                                                <div id="mineducdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Educational Attainment</label>
+                                                                    <input type="text" id="mineduc" class="form-control">
+                                                                </div>
                                                             </div>
-                                                            <div id="mineducdiv" class="form-group label-floating">
-                                                                <label class="control-label">Educational Attainment</label>
-                                                                <input type="text" id="mineduc" class="form-control">
-                                                            </div>
+                                                            <div class="col-md-6">
                                                             <div id="prefcoursediv" class="form-group label-floating">
                                                                 <label class="control-label">Preferred Course</label>
                                                                 <input type="text" id="prefcourse" class="form-control">
@@ -229,14 +275,19 @@ if(isset($_SESSION['user'])){
                                                                             </label>
                                                                         </div>
                                                                     </div>
+                                                            </div>    
                                                         </div>
 
                                                     </div>
                                              </div>
                                     </div>
                                 
-                                
 		                    </div>
+                         
+                                    
+                                
+                                
+		               
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">

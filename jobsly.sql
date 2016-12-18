@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2016 at 07:08 PM
+-- Generation Time: Dec 18, 2016 at 08:08 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -41,6 +41,13 @@ CREATE TABLE `additionalinformation` (
   `languages` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `additionalinformation`
+--
+
+INSERT INTO `additionalinformation` (`id`, `userid`, `dposition`, `specialization`, `plevel`, `esalary`, `pworkloc`, `yexp`, `wtravel`, `wrelocate`, `pholder`, `languages`) VALUES
+(1, 1, 'Senior programmer', 'information technology', 6, 100000, 'makati', 9, 'on', 'on', 'off', 'filipino, english');
+
 -- --------------------------------------------------------
 
 --
@@ -74,7 +81,77 @@ CREATE TABLE `educationandtraining` (
 --
 
 INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgraddate`, `hsawards`, `coluni`, `coladd`, `colgpa`, `colgraddate`, `colmajor`, `colawards`, `pgrad1uni`, `pgrad1add`, `pgrad1gpa`, `pgrad1graddate`, `pgrad1course`, `pgrad1awards`, `othersawards`) VALUES
-(9, 1, 'Colegio San Agustin', 'Dasma village', '2016-12-27', '<p>Loyalty Awarad</p>', 'dssd', 'dsd', '7', '2016-12-07', 'ffr', '<p>gfgfg</p>', 'ins', 'add', '4', '2016-12-11', 'mster', '<p>fdfsf</p><p>ggh</p><p>j</p>', '<p>gggggggggggg</p><p>rrrrrrrrrrr</p><p>eeeeeeee</p>');
+(9, 1, 'Colegio San Agustin', 'Dasma village', '2016-08-27', '<p>Loyalty Awarad</p>', 'Del La Salle University', 'Taft Ave Manila', '4', '2016-11-07', 'Bachelor in Political Science', '<p>gfgfg</p>', 'AITI', 'Salcedo vill Makati', '4', '2016-12-11', 'Master in Information Technology', '<p>fdfsf</p><p>ggh</p><p>j</p>', '<p>gggggggggggg</p><p>rrrrrrrrrrr</p><p>eeeeeeee</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobads`
+--
+
+CREATE TABLE `jobads` (
+  `id` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `jobtitle` varchar(40) NOT NULL,
+  `specialization` varchar(30) NOT NULL,
+  `plevel` int(10) NOT NULL,
+  `jobtype` varchar(20) NOT NULL,
+  `msalary` int(11) NOT NULL,
+  `startappdate` date NOT NULL DEFAULT '0000-00-00',
+  `endappdate` date NOT NULL DEFAULT '0000-00-00',
+  `nvacancies` int(5) NOT NULL,
+  `jobdesc` text,
+  `city` varchar(30) NOT NULL,
+  `province` varchar(30) DEFAULT NULL,
+  `country` varchar(30) NOT NULL,
+  `yrsexp` int(5) NOT NULL DEFAULT '0',
+  `mineduc` varchar(10) DEFAULT NULL,
+  `prefcourse` varchar(30) DEFAULT NULL,
+  `languages` varchar(40) DEFAULT NULL,
+  `skills` varchar(40) DEFAULT NULL,
+  `licenses` varchar(50) DEFAULT NULL,
+  `wtravel` varchar(5) DEFAULT NULL,
+  `wrelocate` varchar(5) DEFAULT NULL,
+  `dateadded` date NOT NULL DEFAULT '0000-00-00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobads`
+--
+
+INSERT INTO `jobads` (`id`, `userid`, `jobtitle`, `specialization`, `plevel`, `jobtype`, `msalary`, `startappdate`, `endappdate`, `nvacancies`, `jobdesc`, `city`, `province`, `country`, `yrsexp`, `mineduc`, `prefcourse`, `languages`, `skills`, `licenses`, `wtravel`, `wrelocate`, `dateadded`) VALUES
+(1, 28, 'title', 'specail', 1, 'full', 233333, '2016-11-29', '2016-12-30', 1, '<p>asd</p><p>as</p><p>d</p><p>asd</p><p>g</p><p>fgth</p>', 'Paranaque', 'Metro Manila', 'Philippines', 1, 'col', 'pref', 'filipino, english', NULL, '', 'on', 'on', '2016-12-18'),
+(10, 28, 'title', 'sds', 1, 'full', 33, '2016-11-29', '2016-12-03', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(11, 28, 'title', 'specail33', 1, 'full', 33, '2016-11-29', '2016-12-15', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(12, 28, 'title', 'dsd', 1, 'full', 333, '2016-11-28', '2016-12-10', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(13, 28, 'title', 'specail', 1, 'full', 3333, '2016-11-30', '2016-12-29', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(14, 28, 'title', 'specail', 1, 'full', 3333, '2016-11-30', '2016-12-30', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(15, 28, 'title', 'specail', 1, 'full', 3333, '2016-11-28', '2016-11-30', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(16, 28, 'title', 'specail', 1, 'full', 3333, '2016-11-28', '2016-12-29', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19'),
+(17, 28, 'title', 'specail', 1, 'full', 3333, '2016-11-29', '2016-12-10', 0, '<p><br></p>', '', '', '', 0, '', '', '', NULL, '', 'on', 'on', '2016-12-19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobskills`
+--
+
+CREATE TABLE `jobskills` (
+  `id` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `jobid` int(10) NOT NULL,
+  `jobskill` varchar(40) NOT NULL,
+  `jobskilltag` varchar(40) NOT NULL,
+  `jobskilltagdate` date NOT NULL DEFAULT '0000-00-00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobskills`
+--
+
+INSERT INTO `jobskills` (`id`, `userid`, `jobid`, `jobskill`, `jobskilltag`, `jobskilltagdate`) VALUES
+(12, 28, 16, 'Central African Republic', '#CentralAfricanRepublic', '2016-12-19'),
+(13, 28, 17, 'Guadeloupe', '#Guadeloupe', '2016-12-19');
 
 -- --------------------------------------------------------
 
@@ -163,7 +240,7 @@ CREATE TABLE `useraccounts` (
 
 INSERT INTO `useraccounts` (`id`, `email`, `password`, `usertype`, `companyname`, `verifyhash`, `signupdate`, `isverified`) VALUES
 (1, 'reg@jobsly.net', 'regsam', 2, NULL, '11111', '2016-11-07', 1),
-(27, 'reggie1@gmail.com', 'r', 2, 'undefined', '222', '2016-11-12', 0);
+(28, 'reggie1@gmail.com', 'samreece', 1, 'T4K', '222', '2016-12-16', 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +268,8 @@ CREATE TABLE `workexperience` (
 
 INSERT INTO `workexperience` (`id`, `userid`, `company`, `position`, `startdate`, `msalary`, `industry`, `plevel`, `enddate`, `currentemployer`, `jobdescription`) VALUES
 (7, 1, 'CHAMP Cargosystems Inc.', 'Senior Software Engineer', '2016-11-07', 85000, 'Airline Cargo', 'Senior', '2016-11-24', 'on', '<p>Accomplishments:</p><ul><li>Architecture Committee reviewer</li><li>Developer for Handling and Airline modules</li><li>Trains new joiners</li><li>Refactoring group</li></ul>'),
-(15, 1, 'Rappler', 'posiiton', '2016-12-09', 3333, 'industry', 'Manager1', '2016-11-16', 'off', '<p>Hello Summernote</p>');
+(15, 1, 'Rappler', 'Metrics Manager', '2016-12-09', 3333, 'industry', 'Manager1', '2016-11-16', 'off', '<p>Hello Summernote</p>'),
+(16, 1, 'ASTI', 'System Engineer', '2016-11-25', 30000, 'IT', 'Mid level programmer', '2016-12-23', 'off', '<p>fsdf</p><p>sd</p><p>f</p><p>sdf</p><p>sd</p><p>fsdfsdf</p>');
 
 --
 -- Indexes for dumped tables
@@ -207,6 +285,18 @@ ALTER TABLE `additionalinformation`
 -- Indexes for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jobads`
+--
+ALTER TABLE `jobads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jobskills`
+--
+ALTER TABLE `jobskills`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -241,12 +331,22 @@ ALTER TABLE `workexperience`
 -- AUTO_INCREMENT for table `additionalinformation`
 --
 ALTER TABLE `additionalinformation`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `jobads`
+--
+ALTER TABLE `jobads`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `jobskills`
+--
+ALTER TABLE `jobskills`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `personalinformation`
 --
@@ -256,12 +356,12 @@ ALTER TABLE `personalinformation`
 -- AUTO_INCREMENT for table `skilltags`
 --
 ALTER TABLE `skilltags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `workexperience`
 --

@@ -224,7 +224,7 @@ if($ok == 1 ){
     <?php
     }
     if($ajax=='pjobad'){
-         include 'postajob-form.php';
+         include 'selecttemplate-form.php';
     ?>    
         <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p2').addClass('active');});</script>
     <?php        
