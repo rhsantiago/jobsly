@@ -5,7 +5,33 @@
         session_start();
         include 'Database.php';
     }
-/*
+
+
+$jobid = 0;
+$template = '';
+$mode = '';
+$jobtitle='';
+$specialization='';
+$plevel='';
+$jobtype='';
+$msalary ='';
+$startappdate='';
+$endappdate='';
+$nvacancies='';
+$jobdesc ='';
+$city ='';
+$province ='';
+$country='';
+$yrsexp ='';
+$mineduc ='';
+$prefcourse ='';
+$languages ='';
+$licenses ='';
+$wtravel ='';
+$wrelocate ='';
+$dateadded ='';
+            
+if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 
 
 if(isset($_SESSION['user'])){
@@ -13,32 +39,68 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
-    $database = new Database();
+   if($jobid <= 0){
+            $template = $_POST['template'];
+            $mode = $_POST['mode'];
+            if($mode==''){
+                $mode = 'update';
+            }
+   }else{
+            $database = new Database();
 
-    $database->query('SELECT * from jobads where userid = :userid');
-    $database->bind(':userid', $userid);   
+            $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
+            $database->bind(':userid', $userid);   
+            $database->bind(':jobid', $jobid); 
+            $row = $database->single();
 
-    $row = $database->single();
- 
-
-        $mode = 'insert';
-   
-    
+             $jobtitle = $row['jobtitle'];
+             $specialization = $row['specialization'];
+             $plevel = $row['plevel'];
+             $jobtype = $row['jobtype'];
+             $msalary = $row['msalary'];
+             $startappdate = $row['startappdate'];
+             $sdate = explode("-", $startappdate);
+             $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             $endappdate = $row['endappdate'];
+             $edate = explode("-", $endappdate);
+             $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             $nvacancies = $row['nvacancies'];
+             $jobdesc = $row['jobdesc'];
+             $city = $row['city'];
+             $province = $row['province'];
+             $country = $row['country'];
+             $yrsexp = $row['yrsexp'];
+             $mineduc = $row['mineduc'];
+             $prefcourse = $row['prefcourse'];
+             $languages = $row['languages'];
+             $licenses = $row['licenses'];
+             $wtravel = $row['wtravel'];
+             if($wtravel=='on'){
+                $wtravel = 'checked';
+             }
+             $wrelocate = $row['wrelocate'];
+             if($wrelocate=='on'){
+                $wrelocate = 'checked';
+             }
+             $dateadded = $row['dateadded'];
+             $dadd = explode("-", $dateadded);
+             $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+   }
 }
-*/
-$template = $_POST['template'];
-$mode = $_POST['mode'];
+
+
+
+
 if($mode==''){
     $mode = 'update';
 }
 ?>
 
 
-<form method="post" id="postajob-form" name="postajob-form" data-parsley-validate>
-                    <input type="hidden" id="id" name="id" value="<?=$id?>">
+<form method="post" id="postajob-form" name="postajob-form" data-parsley-validate>                    
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
-                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>"> 
+                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                    <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
     
     
     <div class="col-md-12 center">            
@@ -49,7 +111,7 @@ if($mode==''){
                            
      </div>
     <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Post a Job Ad<?=$jobid?></h2>
        </div>
     
     <div class="col-md-offset-1 col-md-7">
@@ -72,7 +134,15 @@ if($mode==''){
                                 <br><b>Job Details</b>
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <a href="#step-3" id="step-3" type="button" class="btn btn-default btn-circle"
+                                   <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                   >3</a>
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
@@ -108,49 +178,47 @@ if($mode==''){
                                                         <div class="tab-pane active" id="profile">
                                                             <div id="jobtitlediv" class="form-group label-floating">
                                                                 <label class="control-label">Job Title</label>
-                                                                <input type="text" id="jobtitle" class="form-control" data-parsley-required>  
+                                                                <input type="text" id="jobtitle" class="form-control" value="<?=$jobtitle?>" data-parsley-required>  
                                                             </div>
                                                    <div class="row">
                                                        <div class="col-md-6">  
                                                             <div id="specializationdiv" class="form-group label-floating">
                                                                 <label class="control-label">Specialization</label>
-                                                                <input type="text" id="specialization" class="form-control" data-parsley-required>
+                                                                <input type="text" id="specialization" class="form-control" value="<?=$specialization?>" data-parsley-required>
                                                             </div>
                                                             <div id="jobtypediv" class="form-group label-floating">
                                                                 <label class="control-label">Employment Type</label>
-                                                                <select class="form-control" id="jobtype" name="jobtype"  placeholder="Employment Type" data-parsley-required>                                                                      
-                                                                           <option disabled></option>
-                                                                           <option value='full'>Full-time</option>
-                                                                           <option value='part'>Part-time</option>
-                                                                           <option value=project>Project</option>  
+                                                                <select class="form-control" id="jobtype" name="jobtype"  placeholder="Employment Type" data-parsley-required>     
+                                                                           <option value='full' <?php if($jobtype=='full'){echo' selected';}?>>Full-time</option>
+                                                                           <option value='part' <?php if($jobtype=='part'){echo' selected';}?>>Part-time</option>
+                                                                           <option value=project <?php if($jobtype=='project'){echo' selected';}?>>Project</option>  
                                                                 </select>
                                                             </div>
                                                            <div id="startappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Start Date (MM/DD/YYYY)</label>
-                                                                <input type='text' id='startappdate' class='datepicker form-control'  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6"> 
                                                             <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
-                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level" data-parsley-required>                                                                      
-                                                                           <option disabled></option>
-                                                                           <option value='1'>Executive</option>
-                                                                           <option value='2'>Manager</option>
-                                                                           <option value='3'>Assistant Manager</option>
-                                                                           <option value='4'>Supervisor</option>
-                                                                           <option value='5'> 5 Years+ Experienced Employee</option>
-                                                                           <option value='6'>1-4 Years Experienced Employee</option>
-                                                                           <option value='7'>1 Year Experienced Employee/Fresh Grad</option>
+                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level" data-parsley-required>       
+                                                                           <option value='1' <?php if($plevel==1){echo' selected';}?>>Executive</option>
+                                                                           <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option>
+                                                                           <option value='3' <?php if($plevel==3){echo' selected';}?>>Assistant Manager</option>
+                                                                           <option value='4' <?php if($plevel==4){echo' selected';}?>>Supervisor</option>
+                                                                           <option value='5' <?php if($plevel==5){echo' selected';}?>> 5 Years+ Experienced Employee</option>
+                                                                           <option value='6' <?php if($plevel==6){echo' selected';}?>>1-4 Years Experienced Employee</option>
+                                                                           <option value='7' <?php if($plevel==7){echo' selected';}?>>1 Year Experienced Employee/Fresh Grad</option>
                                                                 </select>
                                                             </div>
                                                             <div id="msalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Salary</label>
-                                                                <input type="text" id="msalary" class="form-control" data-parsley-required data-parsley-type="number">
+                                                                <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-required data-parsley-type="number">
                                                             </div>
                                                             <div id="endappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Deadline (MM/DD/YYYY)</label>
-                                                                <input type='text' id='endappdate' class='datepicker form-control'  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='endappdate' class='datepicker form-control'  value="<?=$endappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                           </div>
                                                     </div>
@@ -180,7 +248,7 @@ if($mode==''){
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
                                                             Describe applicant requirements, responsibilities and relevant information
-                                                                    <div id="jobdesc"></div>
+                                                                    <div id="jobdesc"><?=$jobdesc?></div>
                                                                     
                                                                           <script>
                                                                             $(document).ready(function() {
@@ -223,46 +291,46 @@ if($mode==''){
                                                             <div class="col-md-6">
                                                                 <div id="nvacanciesdiv" class="form-group label-floating">
                                                                     <label class="control-label">Number of Vancancies</label>
-                                                                    <input type="text" id="nvacancies" class="form-control" data-parsley-type="number">
+                                                                    <input type="text" id="nvacancies" class="form-control" value="<?=$nvacancies?>" data-parsley-type="number">
                                                                 </div>
                                                                 <div id="citydiv" class="form-group label-floating">
                                                                     <label class="control-label">City</label>
-                                                                    <input type="text" id="city" class="form-control">
+                                                                    <input type="text" id="city" value="<?=$city?>" class="form-control">
                                                                 </div>
                                                                 <div id="provincediv" class="form-group label-floating">
                                                                     <label class="control-label">Province</label>
-                                                                    <input type="text" id="province" class="form-control">
+                                                                    <input type="text" id="province" value="<?=$province?>" class="form-control">
                                                                 </div>
                                                                 <div id="countrydiv" class="form-group label-floating">
                                                                     <label class="control-label">Country</label>
-                                                                    <input type="text" id="country" class="form-control">
+                                                                    <input type="text" id="country" value="<?=$country?>" class="form-control">
                                                                 </div>
                                                                 <div id="yrsexpdiv" class="form-group label-floating">
                                                                     <label class="control-label">Years of Experience</label>
-                                                                    <input type="text" id="yrsexp" class="form-control" data-parsley-type="number">
+                                                                    <input type="text" id="yrsexp" class="form-control" value="<?=$yrsexp?>"  data-parsley-type="number">
                                                                 </div>
                                                                 <div id="mineducdiv" class="form-group label-floating">
                                                                     <label class="control-label">Educational Attainment</label>
-                                                                    <input type="text" id="mineduc" class="form-control">
+                                                                    <input type="text" id="mineduc" value="<?=$mineduc?>" class="form-control">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                             <div id="prefcoursediv" class="form-group label-floating">
                                                                 <label class="control-label">Preferred Course</label>
-                                                                <input type="text" id="prefcourse" class="form-control">
+                                                                <input type="text" id="prefcourse" value="<?=$prefcourse?>" class="form-control">
                                                             </div>
                                                             <div id="languagesdiv" class="form-group label-floating">
                                                                 <label class="control-label">Languages</label>
-                                                                <input type="text" id="languages" class="form-control">
+                                                                <input type="text" id="languages" value="<?=$languages?>" class="form-control">
                                                             </div>
                                                             <div id="licensesdiv" class="form-group label-floating">
                                                                 <label class="control-label">Licenses</label>
-                                                                <input type="text" id="licenses" class="form-control">
+                                                                <input type="text" id="licenses" value="<?=$licenses?>" class="form-control">
                                                             </div>
                                                             <div id="wtraveldiv" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes" <?=$wtravel?>>
                                                                                 Show Willing to Travel?
                                                                             </label>
                                                                         </div>
@@ -270,7 +338,7 @@ if($mode==''){
                                                             <div id="wrelocatediv" class="form-group">
                                                                          <div class="checkbox">
                                                                             <label>
-                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes">
+                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes" <?=$wrelocate?>>
                                                                                 Show Willing to Relocate?
                                                                             </label>
                                                                         </div>

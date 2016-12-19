@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['id'])){ $id = $_POST['id']; }
+if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['jobtitle'])){ $jobtitle = $_POST['jobtitle']; }
@@ -38,8 +38,8 @@ $database = new Database();
     }
 
     if($mode=='update'){
-       $database->query(' UPDATE personalinformation SET userid = :userid, lname = :lname, fname = :fname, mname = :mname, street = :street, city = :city, province = :province, country = :country, mnumber = :mnumber, myemail = :myemail, landline = :landline, age = :age, birthday = :birthday, gender = :gender, nationality = :nationality WHERE personalinformation.id = :pid or userid = :userid'); 
-        $database->bind(':pid', $id);
+       $database->query(' UPDATE jobads SET userid = :userid, jobtitle = :jobtitle, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate, dateadded = :dateadded WHERE jobads.id = :jobid and userid = :userid'); 
+        $database->bind(':jobid', $jobid);
         
     }
 

@@ -1,7 +1,10 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
-       
+        if (!isset($database)){
+            include 'Database.php';
+            $database = new Database();
+        }
 }
 
 
@@ -10,9 +13,9 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     if (isset($jobid)){
-  /*  
+   /*
     $database = new Database();
-
+ 
     $database->query('SELECT * from skilltags where userid = :userid');
     $database->bind(':userid', $userid);   
 
@@ -21,6 +24,8 @@ if(isset($_SESSION['user'])){
   */
     
         
+    }else{
+        if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
     }
     $mode = 'insert';
 }
@@ -35,7 +40,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Post a Job Ad<?=$userid?></h2>
                </div>
      </div>     
                    
@@ -55,7 +60,16 @@ if(isset($_SESSION['user'])){
                                            <br>Select Template
                                           </div>
                                           <div class="stepwizard-step">
-                                            <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                            <a href="#step-2" id="step-2" type="button" class="btn btn-default btn-circle" 
+                                               <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                                >2</a>
+                                              
                                             <br>Job Details
                                           </div>
                                           <div class="stepwizard-step">
@@ -121,8 +135,7 @@ if(isset($_SESSION['user'])){
                                                                     <div id="jobskilltagsdiv" class="text-info">
                                                                      <?php
                                                       
-                                                    $database->query('SELECT * FROM jobskills where userid = :userid and id = :jobid');
-                                                    $database->bind(':userid', $userid);  
+                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
@@ -207,17 +220,17 @@ if(isset($_SESSION['user'])){
 <link rel="stylesheet" href="css/easy-autocomplete.min.css"> 
 <script>
 jQuery(document).ready(function ($) {
-    /*
-    $('#jobskills-form #skill').parsley().on('field:error', function() {
+   
+    $('#jobskills-form #jobskill').parsley().on('field:error', function() {
            $('#jobskills-form #jobskilldiv').addClass('has-error');
            $('#jobskills-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#jobskills-form #skill').parsley().on('field:success', function() {
+    $('#jobskills-form #jobskill').parsley().on('field:success', function() {
             $('#jobskills-form #jobskilldiv').addClass('has-success');
             $('#jobskills-form #jobskilldiv').find('span').remove()
             $('#jobskills-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-    */
+   
    $('#resume-main-body #successdivjobskillstag').hide();
   
     var options = {

@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
              
             event.preventDefault();      
       
-            var id = $("#postajob-form #id").val();
+            var jobid = $("#postajob-form #jobid").val();
             var jobtitle = $("#postajob-form #jobtitle").val();
             var mode = $("#postajob-form #mode").val();
             var userid = $("#postajob-form #userid").val();
@@ -114,7 +114,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "postajob-submit.php",
-                data: "mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate,
+                data: "jobid=" + jobid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -123,6 +123,10 @@ jQuery(document).ready(function ($) {
                     $(function() {
                          $.material.init();
                     });
+                    $('#jobskills-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                     });
                      var options = {
                         url: "json/skilltags.json",
                         getValue: "name",
@@ -132,7 +136,6 @@ jQuery(document).ready(function ($) {
                                    }
                                }
                     }
-
                     $("#jobskill").easyAutocomplete(options);
                 },
                 error: function(data) {
@@ -175,6 +178,59 @@ jQuery(document).ready(function ($) {
                 }
             });
             return false;
+    });
+    
+    
+    $("#resume-main-body").on('click','#step-2',function() {
+        event.preventDefault(); 
+        var jobid = $(this).data('jobid');
+        
+        
+            $.ajax({    
+                        type: "POST",
+                        url: 'postajob-form.php',
+                        data:"jobid=" + jobid,
+                        dataType: 'html',
+                        success: function (html) {
+                           // console.log(url);
+                            $('#resume-main-body').html(html); 
+                            $('#resumesb li').removeClass('active');
+                            $('#resumesb #p2').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                        }
+            });
+      
+        return false;
+    });
+    
+    $("#resume-main-body").on('click','#step-3',function() {
+        event.preventDefault(); 
+        var jobid = $(this).data('jobid');
+        if(jobid > 0){
+            $.ajax({    
+                        type: "POST",
+                        url: 'jobskills-form.php',
+                        data:"jobid=" + jobid,
+                        dataType: 'html',
+                        success: function (html) {
+                           // console.log(url);
+                            
+                            $('#resume-main-body').html(html); 
+                            $('#resumesb li').removeClass('active');
+                            $('#resumesb #p2').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                            $('#jobskills-form').parsley({
+                                successClass: "has-success",
+                                errorClass: "has-error"
+                            });
+                        }
+            });
+        }
+        return false;
     });
 
 
