@@ -103,17 +103,17 @@ if(isset($_SESSION['user'])){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">date_range</i> Specialization
+                                                                                                   <i class="material-icons text-info jobadheadericon">date_range</i> &nbsp;Specialization
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">people</i>Managerial
+                                                                                                <i class="material-icons text-info jobadheadericon">people</i>&nbsp;Managerial
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> Php 100000
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php 100000
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>

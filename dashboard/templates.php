@@ -5,7 +5,6 @@
         session_start();
         include 'Database.php';
     }
-/*
 
 
 if(isset($_SESSION['user'])){
@@ -16,22 +15,16 @@ if(isset($_SESSION['user'])){
   
     $database = new Database();
 
-    $database->query('SELECT * from jobads where userid = :userid');
-    $database->bind(':userid', $userid);   
-
-    $row = $database->single();
- 
-
-        $mode = 'insert';
+    $mode = 'insert';
    
     
 }
-*/
+
 ?>
 
 
-<form method="post" id="selecttemplate-form" name="selecttemplate-form" data-parsley-validate>
-                    <input type="hidden" id="id" name="id" value="<?=$id?>">
+<form method="post" id="templates-form" name="templates-form" data-parsley-validate>
+                    
                     <input type="hidden" id="mode" name="mode" value="insert">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>"> 
     
@@ -44,7 +37,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Job Templates / Select</h2>
        </div>
      </div>
     <div class="col-md-offset-1 col-md-7">
@@ -108,10 +101,21 @@ if(isset($_SESSION['user'])){
                                                        <div class="col-md-6"> 
                                                             <div id="templatediv" class="form-group label-floating">
                                                                 <label class="control-label">Select Template</label>
-                                                                <select class="form-control" id="template" name="template"  placeholder="Select Template" data-parsley-required>     
-                                                                           <option value='blank'>Blank</option>
-                                                                           <option value='part'>Part-time</option>
-                                                                           <option value=project>Project</option>  
+                                                                <select class="form-control" id="template" name="template"  placeholder="Select Template" data-parsley-required>
+                                                                <option value='0'>New Template</option>    
+                                                   <?php                     
+                                                    $database->query('SELECT id,jobtitle FROM jobtemplates where userid = :userid');
+                                                    $database->bind(':userid', $userid);  
+                                                    $rows = $database->resultset();
+                                                           
+                                                    foreach($rows as $row){
+                                                        $templateid=$row['id'];
+                                                        $jobtitle=$row['jobtitle'];
+                                                        echo  "<option value='$templateid'>$jobtitle</option>";
+                                                    
+                                                      
+                                                    }
+                                                    ?>                                                                  
                                                                 </select>
                                                             </div>
                                                         
@@ -132,17 +136,7 @@ if(isset($_SESSION['user'])){
                                             <div class="savebutton">
                                                 <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save and Go to Next Step</button>
                                             </div>       
-                                             <div id="successdivpinfo" class="alert alert-success">
-                                               
-                                                  <div class="alert-icon">
-                                                    <i class="material-icons">check</i>
-                                                  </div>
-                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                                  </button>
-                                                  <b>Alert: </b> Your Job Details has been saved.
-                                               
-                                            </div>
+                                            
                                    
                             </div>
 		                </div>

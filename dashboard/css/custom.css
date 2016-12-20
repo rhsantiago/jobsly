@@ -400,3 +400,7 @@ div .parsley-errors-list {
     border: 1px solid;
      border-color: red !important;
 }
+
+.blog-post {
+    margin-top: 10px !important;
+}

@@ -31,27 +31,31 @@ $licenses ='';
 $wtravel ='';
 $wrelocate ='';
 $dateadded ='';
-            
-if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+$sdate='';
+$edate='';
+$dadd='';
 
-
+$templateid = 0;
+if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
+if(isset($_POST['template'])){ $template = $_POST['template']; }
+if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
-   if($jobid <= 0){
-            $template = $_POST['template'];
-            $mode = $_POST['mode'];
-            if($mode==''){
-                $mode = 'update';
-            }
-   }else{
+   
+  
+
             $database = new Database();
 
-            $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
+   if($templateid > 0){
+        $template = $templateid;
+        $mode = 'update';
+   }
+            $database->query('SELECT * from jobtemplates where userid = :userid and id = :template');
             $database->bind(':userid', $userid);   
-            $database->bind(':jobid', $jobid); 
+            $database->bind(':template', $template); 
+     
             $row = $database->single();
 
              $jobtitle = $row['jobtitle'];
@@ -61,11 +65,15 @@ if(isset($_SESSION['user'])){
              $msalary = $row['msalary'];
              $maxsalary = $row['maxsalary'];
              $startappdate = $row['startappdate'];
-             $sdate = explode("-", $startappdate);
-             $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             if($templateid > 0 || $template > 0){
+                 $sdate = explode("-", $startappdate);
+                 $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             }
              $endappdate = $row['endappdate'];
-             $edate = explode("-", $endappdate);
-             $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             if($templateid > 0 || $template > 0){
+                 $edate = explode("-", $endappdate);
+                 $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             }
              $nvacancies = $row['nvacancies'];
              $jobdesc = $row['jobdesc'];
              $city = $row['city'];
@@ -85,12 +93,12 @@ if(isset($_SESSION['user'])){
                 $wrelocate = 'checked';
              }
              $dateadded = $row['dateadded'];
-             $dadd = explode("-", $dateadded);
-             $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
-   }
+             if($templateid > 0 || $template > 0){
+                 $dadd = explode("-", $dateadded);
+                 $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+             }
+ 
 }
-
-
 
 
 if($mode==''){
@@ -99,10 +107,10 @@ if($mode==''){
 ?>
 
 
-<form method="post" id="postajob-form" name="postajob-form" data-parsley-trigger="keyup" data-parsley-validate>                    
+<form method="post" id="templatejobdetail-form" name="templatejobdetail-form" data-parsley-trigger="keyup" data-parsley-validate>                    
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                    <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                    <input type="hidden" id="templateid" name="templateid" value="<?=$templateid?>">
     
     
     <div class="col-md-12 center">            
@@ -113,7 +121,7 @@ if($mode==''){
                            
      </div>
     <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad<?=$jobid?></h2>
+                             <h2 class="title">Job Template / Job Details</h2>
        </div>
     
     <div class="col-md-offset-1 col-md-7">
@@ -128,18 +136,18 @@ if($mode==''){
                       <div class="stepwizard ">
                             <div class="stepwizard-row setup-panel">
                               <div class="stepwizard-step">
-                                <a href="#step-1" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
+                                <a href="#step-1-template" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
                                <br>Select Template
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn-primary btn-circle">2</a>
+                                <a href="#step-2-template" type="button" class="btn btn-primary btn-circle">2</a>
                                 <br><b>Job Details</b>
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-3" id="step-3" type="button" class="btn btn-default btn-circle"
+                                <a href="#step-3-template" id="step-3-template" type="button" class="btn btn-default btn-circle"
                                    <?php
-                                                    if($jobid > 0){
-                                                        echo " data-jobid='".$jobid."'";
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
                                                     }else{
                                                         echo" disabled='disabled'";
                                                     }
@@ -148,7 +156,7 @@ if($mode==''){
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <a href="#step-4-template" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
                                 <br>Preview
                               </div>
                             </div>
@@ -187,22 +195,22 @@ if($mode==''){
                                                      
                                                             <div id="specializationdiv" class="form-group label-floating">
                                                                 <label class="control-label">Specialization</label>
-                                                                <input type="text" id="specialization" class="form-control" value="<?=$specialization?>" data-parsley-required>
+                                                                <input type="text" id="specialization" class="form-control" value="<?=$specialization?>">
                                                             </div>
                                                             <div id="msalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Min Salary</label>
-                                                                <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-required data-parsley-type="number">
+                                                                <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-type="number">
                                                             </div>        
                                                             
                                                            <div id="startappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Start Date (MM/DD/YYYY)</label>
-                                                                <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>"  data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6"> 
                                                             <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
-                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level" data-parsley-required>       
+                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
                                                                            <option value='1' <?php if($plevel==1){echo' selected';}?>>Executive</option>
                                                                            <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option>
                                                                            <option value='3' <?php if($plevel==3){echo' selected';}?>>Assistant Manager</option>
@@ -214,7 +222,7 @@ if($mode==''){
                                                             </div>
                                                             <div id="jobtypediv" class="form-group label-floating">
                                                                 <label class="control-label">Employment Type</label>
-                                                                <select class="form-control" id="jobtype" name="jobtype"  placeholder="Employment Type" data-parsley-required>     
+                                                                <select class="form-control" id="jobtype" name="jobtype"  placeholder="Employment Type">     
                                                                            <option value='full' <?php if($jobtype=='full'){echo' selected';}?>>Full-time</option>
                                                                            <option value='part' <?php if($jobtype=='part'){echo' selected';}?>>Part-time</option>
                                                                            <option value=project <?php if($jobtype=='project'){echo' selected';}?>>Project</option>  
@@ -222,11 +230,11 @@ if($mode==''){
                                                             </div>
                                                             <div id="maxsalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Max Salary</label>
-                                                                <input type="text" id="maxsalary" class="form-control" value="<?=$maxsalary?>" data-parsley-required data-parsley-type="number">
+                                                                <input type="text" id="maxsalary" class="form-control" value="<?=$maxsalary?>" data-parsley-type="number">
                                                             </div>
                                                             <div id="endappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Deadline (MM/DD/YYYY)</label>
-                                                                <input type='text' id='endappdate' class='datepicker form-control'  value="<?=$endappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='endappdate' class='datepicker form-control'  value="<?=$endappdate?>" data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                           </div>
                                                     </div>
@@ -412,8 +420,8 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
-   
-    $('#postajob-form #jobtitle').parsley().on('field:error', function() {
+   /*
+    $('#templates-form #jobtitle').parsley().on('field:error', function() {
            $('#postajob-form #jobtitlediv').addClass('has-error');
            $('#postajob-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
@@ -502,7 +510,7 @@ jQuery(document).ready(function ($) {
             $('#postajob-form #nvacanciesdiv').find('span').remove()
             $('#postajob-form #nvacanciesdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-    
+    */
          
     
 });       

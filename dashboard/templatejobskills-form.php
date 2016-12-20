@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    if (isset($jobid)){
+    if (isset($templateid)){
    /*
     $database = new Database();
  
@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
     
         
     }else{
-        if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+        if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
     }
     $mode = 'insert';
 }
@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad<?=$userid?></h2>
+                             <h2 class="title">Job Template / Required Skills<?=$templateid?></h2>
                </div>
      </div>     
                    
@@ -60,10 +60,10 @@ if(isset($_SESSION['user'])){
                                            <br>Select Template
                                           </div>
                                           <div class="stepwizard-step">
-                                            <a href="#step-2" id="step-2" type="button" class="btn btn-default btn-circle" 
+                                            <a href="#step-2-template" id="step-2-template" type="button" class="btn btn-default btn-circle" 
                                                <?php
-                                                    if($jobid > 0){
-                                                        echo " data-jobid='".$jobid."'";
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
                                                     }else{
                                                         echo" disabled='disabled'";
                                                     }
@@ -77,7 +77,7 @@ if(isset($_SESSION['user'])){
                                             <br><b>Job Skills</b>
                                           </div>
                                             <div class="stepwizard-step">
-                                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                            <a href="#step-4-template" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
                                             <br>Preview
                                           </div>
                                         </div>
@@ -105,10 +105,10 @@ if(isset($_SESSION['user'])){
                                                     <div class="tab-content">
                                                         
                                                         <div class="tab-pane active" id="jobskills">
-                                                            <form method="post" id="jobskills-form" name="jobskills-form" data-parsley-validate> 
+                                                            <form method="post" id="jobskillstemplate-form" name="jobskillstemplate-form" data-parsley-validate> 
                                                              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">   
                                                              <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
-                                                                <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                                                                <input type="hidden" id="templateid" name="templateid" value="<?=$templateid?>">
                                                             <div class="row">
                                                                 <div class="col-md-12 col-xs-12">
                                                                  The skill tags are used by jobseekers to narrow down their job search by skills. Make sure to enter all required skills for this job. The system auto creates the tag for you so type with spaces. (ex. java, web development, Microsoft Excel)
@@ -135,8 +135,8 @@ if(isset($_SESSION['user'])){
                                                                     <div id="jobskilltagsdiv" class="text-info">
                                                                      <?php
                                                       
-                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
-                                                    $database->bind(':jobid', $jobid);
+                                                    $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
+                                                    $database->bind(':templateid', $templateid);
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
                                                     foreach($rows as $row){
@@ -221,14 +221,14 @@ if(isset($_SESSION['user'])){
 <script>
 jQuery(document).ready(function ($) {
    
-    $('#jobskills-form #jobskill').parsley().on('field:error', function() {
-           $('#jobskills-form #jobskilldiv').addClass('has-error');
-           $('#jobskills-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#jobskillstemplate-form #jobskill').parsley().on('field:error', function() {
+           $('#jobskillstemplate-form #jobskilldiv').addClass('has-error');
+           $('#jobskillstemplate-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#jobskills-form #jobskill').parsley().on('field:success', function() {
-            $('#jobskills-form #jobskilldiv').addClass('has-success');
-            $('#jobskills-form #jobskilldiv').find('span').remove()
-            $('#jobskills-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#jobskillstemplate-form #jobskill').parsley().on('field:success', function() {
+            $('#jobskillstemplate-form #jobskilldiv').addClass('has-success');
+            $('#jobskillstemplate-form #jobskilldiv').find('span').remove()
+            $('#jobskillstemplate-form #jobskilldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
    
    $('#resume-main-body #successdivjobskillstag').hide();

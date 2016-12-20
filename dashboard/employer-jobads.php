@@ -158,8 +158,8 @@ if($ok == 1 ){
                                             <span class="submenufont">Post a Job Ad</span>
                                         </a>
                                     </li>
-                                    <li id="e3">
-                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
+                                    <li id="j3">
+                                        <a href="#jtemp"  role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">content_copy</i>
                                             <span class="submenufont">Job Templates</span>
                                         </a>
@@ -230,9 +230,9 @@ if($ok == 1 ){
     <?php        
     }
     if($ajax=='jtemp'){
-         include 'etrain-form.php'; 
+         include 'templates.php'; 
     ?>    
-        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #e3').addClass('active');});</script>
+        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #j3').addClass('active');});</script>
     <?php                    
     }
     if($ajax=='essays'){
