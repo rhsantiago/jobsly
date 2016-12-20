@@ -159,11 +159,11 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                              </div>
                             
-                               <!--
-                                <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
-                                                        Save Education &amp; Training
+                               
+                                <button class="btn btn-primary " name="previewjobad" id="previewjobad" data-jobid='<?=$jobid?>' type="button">
+                                                        Preview Job Ad
                                                        </button>
-                                -->
+                               
                                   <div id="successdivjobskillstag" class="alert alert-success">
                                                
                                                   <div class="alert-icon">

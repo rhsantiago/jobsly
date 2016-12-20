@@ -71,7 +71,7 @@ if(isset($_SESSION['user'])){
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle" >4</a>
                                 <br>Preview
                               </div>
                             </div>

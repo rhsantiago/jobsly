@@ -232,6 +232,62 @@ jQuery(document).ready(function ($) {
         }
         return false;
     });
+    
+    $("#resume-main-body").on('click','#step-4',function() {
+        event.preventDefault(); 
+        var jobid = $(this).data('jobid');
+       
+            $.ajax({    
+                        type: "POST",
+                        url: 'previewjobad.php',
+                        data:"jobid=" + jobid,
+                        dataType: 'html',
+                        success: function (html) {
+                           // console.log(url);
+                            
+                            $('#resume-main-body').html(html); 
+                            $('#resumesb li').removeClass('active');
+                            $('#resumesb #p2').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                            $('#jobskills-form').parsley({
+                                successClass: "has-success",
+                                errorClass: "has-error"
+                            });
+                        }
+            });
+       
+        return false;
+    });
+    
+    $("#resume-main-body").on('click','#previewjobad',function() {
+        event.preventDefault(); 
+        var jobid = $(this).data('jobid');
+        if(jobid > 0){
+            $.ajax({    
+                        type: "POST",
+                        url: 'previewjobad.php',
+                        data:"jobid=" + jobid,
+                        dataType: 'html',
+                        success: function (html) {
+                           // console.log(url);
+                            
+                            $('#resume-main-body').html(html); 
+                            $('#resumesb li').removeClass('active');
+                            $('#resumesb #p2').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                            $('#jobskills-form').parsley({
+                                successClass: "has-success",
+                                errorClass: "has-error"
+                            });
+                        }
+            });
+        }
+        return false;
+    });
 
 
 });  
