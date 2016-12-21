@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad<?=$userid?></h2>
+                             <h2 class="title">Post a Job Ad / Required Skills</h2>
                </div>
      </div>     
                    
@@ -73,11 +73,26 @@ if(isset($_SESSION['user'])){
                                             <br>Job Details
                                           </div>
                                           <div class="stepwizard-step">
-                                            <a href="#step-3" type="button" class="btn btn-primary btn-circle" >3</a>
+                                            <a href="#step-3" id="step-3" type="button" class="btn btn-primary btn-circle" 
+                                               <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                               >3</a>
                                             <br><b>Job Skills</b>
                                           </div>
                                             <div class="stepwizard-step">
-                                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                            <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle" 
+                                               <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>>4</a>
                                             <br>Preview
                                           </div>
                                         </div>

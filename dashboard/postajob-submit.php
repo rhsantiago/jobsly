@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['jobtitle'])){ $jobtitle = $_POST['jobtitle']; }
@@ -77,6 +78,28 @@ $database = new Database();
         $database->bind(':jobtitle', $jobtitle);    
         $row = $database->single();
         $jobid = $row['id'];
+        
+        if($templateid > 0){
+            $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
+            $database->bind(':templateid', $templateid);
+            $rows = $database->resultset();
+            date_default_timezone_set('Asia/Manila');
+            $jobskilltagdate = date("Y-m-d");
+
+            foreach($rows as $row){
+                $jobskill = $row['jobskill'];
+                $jobskilltag = $row['jobskilltag'];
+
+                $database->query(' INSERT INTO jobskills (id, userid,jobid, jobskill,jobskilltag,jobskilltagdate) VALUES (NULL, :userid,:jobid,:jobskill,:jobskilltag,:jobskilltagdate)');
+
+                $database->bind(':userid', $userid);
+                $database->bind(':jobid', $jobid); 
+                $database->bind(':jobskill', $jobskill);  
+                $database->bind(':jobskilltag', $jobskilltag);
+                $database->bind(':jobskilltagdate', $jobskilltagdate);
+                $database->execute();
+            }
+        }
     
     }
 

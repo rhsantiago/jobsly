@@ -7,18 +7,17 @@ if (session_status() == PHP_SESSION_NONE) {
         }
 }
 
-if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+if(isset($_POST['templateid'])){ $templateid= $_POST['templateid']; }
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-   
-   
+    
     $database = new Database();
  
-    $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
+    $database->query('SELECT * from jobtemplates where userid = :userid and id = :templateid');
     $database->bind(':userid', $userid);
-    $database->bind(':jobid', $jobid);
+    $database->bind(':templateid', $templateid);
     
     $row = $database->single();
     $id = $row['id'];
@@ -71,7 +70,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Job Template / Preview</h2>
                </div>
      </div>     
                    
@@ -87,14 +86,14 @@ if(isset($_SESSION['user'])){
                                   <div class="stepwizard ">
                                         <div class="stepwizard-row setup-panel">
                                           <div class="stepwizard-step">
-                                            <a href="#step-1" id="step-1" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
+                                            <a href="#step-1-template" id="step-1-template" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
                                            <br>Select Template
                                           </div>
                                           <div class="stepwizard-step">
-                                            <a href="#step-2" id="step-2" type="button" class="btn btn-default btn-circle" 
+                                            <a href="#step-2-template" id="step-2-template" type="button" class="btn btn-default btn-circle" 
                                                <?php
-                                                    if($jobid > 0){
-                                                        echo " data-jobid='".$jobid."'";
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
                                                     }else{
                                                         echo" disabled='disabled'";
                                                     }
@@ -104,10 +103,10 @@ if(isset($_SESSION['user'])){
                                             <br>Job Details
                                           </div>
                                           <div class="stepwizard-step">
-                                            <a href="#step-3" id="step-3" type="button" class="btn btn-default btn-circle" 
+                                            <a href="#step-3-template" id="step-3-template" type="button" class="btn btn-default btn-circle" 
                                                <?php
-                                                    if($jobid > 0){
-                                                        echo " data-jobid='".$jobid."'";
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
                                                     }else{
                                                         echo" disabled='disabled'";
                                                     }
@@ -116,10 +115,10 @@ if(isset($_SESSION['user'])){
                                             <br>Job Skills
                                           </div>
                                             <div class="stepwizard-step">
-                                            <a href="#step-4" id="step-4" type="button" class="btn btn-primary btn-circle" 
+                                            <a href="#step-4-template" id="step-4-template" type="button" class="btn btn-primary btn-circle" 
                                                <?php
-                                                    if($jobid > 0){
-                                                        echo " data-jobid='".$jobid."'";
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
                                                     }else{
                                                         echo" disabled='disabled'";
                                                     }
@@ -201,8 +200,8 @@ if(isset($_SESSION['user'])){
                                             Skilltags: <span class="text-info">
                                             <?php
                                                       
-                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
-                                                    $database->bind(':jobid', $jobid);
+                                                    $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
+                                                    $database->bind(':templateid', $templateid);
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
                                                     foreach($rows as $row){
@@ -210,8 +209,7 @@ if(isset($_SESSION['user'])){
                                                         echo ' ';
                                                     }
                                                        
-                                             ?>   
-                                            
+                                             ?>
                                             </span>
                                         </div>    
                                     </div>
@@ -254,4 +252,4 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
- 
+

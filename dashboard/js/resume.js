@@ -143,7 +143,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                         $('#wexp-form #successdivworkexp').hide();                                                   
                         $(function() {
@@ -185,7 +197,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                          $(function() {
                             $.material.init();
@@ -385,7 +409,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });              
                 },
                 error: function(data) {
@@ -440,7 +476,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                     $('#wexp-form').parsley().reset();
                 },
@@ -485,7 +533,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                  
                     $('#etrain-hs-form').parsley({
@@ -544,7 +604,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                     $('#etrain-col-form').parsley({
                             successClass: "has-success",
@@ -601,7 +673,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                     $('#etrain-pgrad1-form').parsley({
                             successClass: "has-success",
@@ -653,7 +737,19 @@ jQuery(document).ready(function ($) {
                                       ['color', ['color']],
                                        ['para', ['ul', 'ol', 'paragraph']],
                                        ['height', ['height']]
-                                    ]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                           });
                    
                     $(' #etrain-others-form #mode').val('update');                

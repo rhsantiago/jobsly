@@ -185,7 +185,19 @@ if(isset($_SESSION['user'])){
                                                                                         ['color', ['color']],
                                                                                         ['para', ['ul', 'ol', 'paragraph']],
                                                                                         ['height', ['height']]
-                                                                                      ]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    }
                                                                                     });
                                                                             });
                                                                             </script>

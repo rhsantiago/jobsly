@@ -5,8 +5,6 @@
         session_start();
         include 'Database.php';
     }
-/*
-
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -22,11 +20,11 @@ if(isset($_SESSION['user'])){
     $row = $database->single();
  
 
-        $mode = 'insert';
+    $mode = 'insert';
    
     
 }
-*/
+
 ?>
 
 
@@ -59,19 +57,19 @@ if(isset($_SESSION['user'])){
                       <div class="stepwizard ">
                             <div class="stepwizard-row setup-panel">
                               <div class="stepwizard-step">
-                                <a href="#step-1" type="button" class="btn btn-primary btn-circle" >1</a>
+                                <a href="#step-1" type="button" id="step-2" class="btn btn-primary btn-circle" >1</a>
                                <br><b>Select Template</b>
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                <a href="#step-2" type="button" id="step-2" class="btn btn-default btn-circle" disabled="disabled">2</a>
                                 <br>Job Details
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <a href="#step-3" type="button" id="step-3" class="btn btn-default btn-circle" disabled="disabled">3</a>
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle" >4</a>
+                                <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle" disabled="disabled">4</a>
                                 <br>Preview
                               </div>
                             </div>
@@ -109,9 +107,20 @@ if(isset($_SESSION['user'])){
                                                             <div id="templatediv" class="form-group label-floating">
                                                                 <label class="control-label">Select Template</label>
                                                                 <select class="form-control" id="template" name="template"  placeholder="Select Template" data-parsley-required>     
-                                                                           <option value='blank'>Blank</option>
-                                                                           <option value='part'>Part-time</option>
-                                                                           <option value=project>Project</option>  
+                                                                          <option value='0'>New Template</option>    
+                                                   <?php                     
+                                                    $database->query('SELECT id,jobtitle FROM jobtemplates where userid = :userid');
+                                                    $database->bind(':userid', $userid);  
+                                                    $rows = $database->resultset();
+                                                           
+                                                    foreach($rows as $row){
+                                                        $templateid=$row['id'];
+                                                        $jobtitle=$row['jobtitle'];
+                                                        echo  "<option value='$templateid'>$jobtitle</option>";
+                                                    
+                                                      
+                                                    }
+                                                    ?>                           
                                                                 </select>
                                                             </div>
                                                         

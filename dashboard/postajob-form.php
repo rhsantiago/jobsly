@@ -9,6 +9,7 @@
 
 $jobid = 0;
 $template = '';
+$templateid = '';
 $mode = '';
 $jobtitle='';
 $specialization='';
@@ -33,26 +34,69 @@ $wrelocate ='';
 $dateadded ='';
             
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
-
+if(isset($_POST['template'])){ $template = $_POST['template']; }
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+   
+   $database = new Database();    
    if($jobid <= 0){
             $template = $_POST['template'];
             $mode = $_POST['mode'];
             if($mode==''){
                 $mode = 'update';
             }
-   }else{
-            $database = new Database();
+            if($template > 0){
+                $database->query('SELECT * from jobtemplates where userid = :userid and id = :template');
+                $database->bind(':template', $template);
+                
+                $templateid = $template;
+                $database->bind(':userid', $userid);   
+            
+             $row = $database->single();
 
-            $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
-            $database->bind(':userid', $userid);   
-            $database->bind(':jobid', $jobid); 
-            $row = $database->single();
+             $jobtitle = $row['jobtitle'];
+             $specialization = $row['specialization'];
+             $plevel = $row['plevel'];
+             $jobtype = $row['jobtype'];
+             $msalary = $row['msalary'];
+             $maxsalary = $row['maxsalary'];
+             $startappdate = $row['startappdate'];
+             $sdate = explode("-", $startappdate);
+             $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             $endappdate = $row['endappdate'];
+             $edate = explode("-", $endappdate);
+             $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             $nvacancies = $row['nvacancies'];
+             $jobdesc = $row['jobdesc'];
+             $city = $row['city'];
+             $province = $row['province'];
+             $country = $row['country'];
+             $yrsexp = $row['yrsexp'];
+             $mineduc = $row['mineduc'];
+             $prefcourse = $row['prefcourse'];
+             $languages = $row['languages'];
+             $licenses = $row['licenses'];
+             $wtravel = $row['wtravel'];
+             if($wtravel=='on'){
+                $wtravel = 'checked';
+             }
+             $wrelocate = $row['wrelocate'];
+             if($wrelocate=='on'){
+                $wrelocate = 'checked';
+             }
+             $dateadded = $row['dateadded'];
+             $dadd = explode("-", $dateadded);
+             $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+            }
+   }else{      
+             $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
+             $database->bind(':jobid', $jobid);
+             $database->bind(':userid', $userid);   
+            
+             $row = $database->single();
 
              $jobtitle = $row['jobtitle'];
              $specialization = $row['specialization'];
@@ -88,6 +132,8 @@ if(isset($_SESSION['user'])){
              $dadd = explode("-", $dateadded);
              $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
    }
+    
+             
 }
 
 
@@ -103,6 +149,7 @@ if($mode==''){
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                     <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                    <input type="hidden" id="templateid" name="templateid" value="<?=$templateid?>">
     
     
     <div class="col-md-12 center">            
@@ -113,7 +160,7 @@ if($mode==''){
                            
      </div>
     <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad<?=$jobid?></h2>
+                             <h2 class="title">Post a Job Ad</h2>
        </div>
     
     <div class="col-md-offset-1 col-md-7">
@@ -132,7 +179,15 @@ if($mode==''){
                                <br>Select Template
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn-primary btn-circle">2</a>
+                                <a href="#step-2" type="button" class="btn btn-primary btn-circle"
+                                   <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                   >2</a>
                                 <br><b>Job Details</b>
                               </div>
                               <div class="stepwizard-step">
@@ -148,7 +203,15 @@ if($mode==''){
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle"  
+                                   <?php
+                                                    if($jobid > 0){
+                                                        echo " data-jobid='".$jobid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                   >4</a>
                                 <br>Preview
                               </div>
                             </div>
@@ -207,7 +270,7 @@ if($mode==''){
                                                                            <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option>
                                                                            <option value='3' <?php if($plevel==3){echo' selected';}?>>Assistant Manager</option>
                                                                            <option value='4' <?php if($plevel==4){echo' selected';}?>>Supervisor</option>
-                                                                           <option value='5' <?php if($plevel==5){echo' selected';}?>> 5 Years+ Experienced Employee</option>
+                                                                           <option value='5' <?php if($plevel==5){echo' selected';}?>>5 Years+ Experienced Employee</option>
                                                                            <option value='6' <?php if($plevel==6){echo' selected';}?>>1-4 Years Experienced Employee</option>
                                                                            <option value='7' <?php if($plevel==7){echo' selected';}?>>1 Year Experienced Employee/Fresh Grad</option>
                                                                 </select>
@@ -267,7 +330,19 @@ if($mode==''){
                                                                                         ['fontsize', ['fontsize']],
                                                                                         ['color', ['color']],
                                                                                         ['para', ['ul', 'ol', 'paragraph']]
-                                                                                      ]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    }  
                                                                                     });
                                                                             });
                                                                             </script>

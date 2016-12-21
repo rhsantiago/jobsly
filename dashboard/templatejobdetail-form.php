@@ -46,8 +46,10 @@ if(isset($_SESSION['user'])){
    
   
 
-            $database = new Database();
-
+   $database = new Database();
+   if($template > 0){
+       $templateid = $template;
+   }    
    if($templateid > 0){
         $template = $templateid;
         $mode = 'update';
@@ -136,11 +138,19 @@ if($mode==''){
                       <div class="stepwizard ">
                             <div class="stepwizard-row setup-panel">
                               <div class="stepwizard-step">
-                                <a href="#step-1-template" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
+                                <a href="#step-1-template" id="step-1-template" type="button" class="btn btn-default btn-circle" disabled="disabled">1</a>
                                <br>Select Template
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-2-template" type="button" class="btn btn-primary btn-circle">2</a>
+                                <a href="#step-2-template" id="step-2-template" type="button" class="btn btn-primary btn-circle"
+                                   <?php
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                   >2</a>
                                 <br><b>Job Details</b>
                               </div>
                               <div class="stepwizard-step">
@@ -156,7 +166,15 @@ if($mode==''){
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4-template" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                                <a href="#step-4-template" id="step-4-template" type="button" class="btn btn-default btn-circle" 
+                                   <?php
+                                                    if($templateid > 0){
+                                                        echo " data-templateid='".$templateid."'";
+                                                    }else{
+                                                        echo" disabled='disabled'";
+                                                    }
+                                               ?>
+                                   >4</a>
                                 <br>Preview
                               </div>
                             </div>
@@ -275,7 +293,19 @@ if($mode==''){
                                                                                         ['fontsize', ['fontsize']],
                                                                                         ['color', ['color']],
                                                                                         ['para', ['ul', 'ol', 'paragraph']]
-                                                                                      ]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    }    
                                                                                     });
                                                                             });
                                                                             </script>

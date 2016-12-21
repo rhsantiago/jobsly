@@ -52,19 +52,19 @@ if(isset($_SESSION['user'])){
                       <div class="stepwizard ">
                             <div class="stepwizard-row setup-panel">
                               <div class="stepwizard-step">
-                                <a href="#step-1" type="button" class="btn btn-primary btn-circle" >1</a>
+                                <a href="#step-1-template" id="step-1-template" type="button" class="btn btn-primary btn-circle" >1</a>
                                <br><b>Select Template</b>
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                                <a href="#step-2-template" id="step-2-template" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
                                 <br>Job Details
                               </div>
                               <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                <a href="#step-3-template" id=""step-3-template type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
                                 <br>Job Skills
                               </div>
                                 <div class="stepwizard-step">
-                                <a href="#step-4" type="button" id="step-4" class="btn btn-default btn-circle" >4</a>
+                                <a href="#step-4-template" id="step-4-template" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
                                 <br>Preview
                               </div>
                             </div>
