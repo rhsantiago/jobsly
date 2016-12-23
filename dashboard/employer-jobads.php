@@ -146,10 +146,10 @@ if($ok == 1 ){
                             
                             <div id="resumesb" class="">                               
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="p1" class="active">
+                                    <li id="a1" class="active">
                                       
-                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">fingerprint</i>
+                                        <a href="#ajads"  role="tab"  data-toggle="tab" data-container="body">
+                                            <i class="material-icons">list</i>
                                             <span class="submenufont">My Job Ads</span>
                                         </a>
                                         
@@ -220,9 +220,9 @@ if($ok == 1 ){
                         
     <?php
     if($ajax=='ajads'){
-         include 'alljobads-form.php';
+         include 'alljobads.php';
     ?>
-    <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p1').addClass('active');});</script>
+    <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
     <?php
     }
     if($ajax=='pjobad'){

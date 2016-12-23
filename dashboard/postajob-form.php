@@ -31,6 +31,7 @@ $languages ='';
 $licenses ='';
 $wtravel ='';
 $wrelocate ='';
+$essay ='';
 $dateadded ='';
             
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
@@ -87,6 +88,7 @@ if(isset($_SESSION['user'])){
              if($wrelocate=='on'){
                 $wrelocate = 'checked';
              }
+             $essay = $row['essay'];  
              $dateadded = $row['dateadded'];
              $dadd = explode("-", $dateadded);
              $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
@@ -128,6 +130,7 @@ if(isset($_SESSION['user'])){
              if($wrelocate=='on'){
                 $wrelocate = 'checked';
              }
+             $essay = $row['essay'];
              $dateadded = $row['dateadded'];
              $dadd = explode("-", $dateadded);
              $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
@@ -426,7 +429,32 @@ if($mode==''){
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                            </div>    
+                                                            </div> 
+                                                            <div class="col-md-12">
+                                                                 
+                                                                <div id="essaydiv" class="form-group label-floating">
+                                                                   
+                                                                <label class="control-label">Select a pre-made essay question or create a new one below</label>
+                                                                    <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" data-parsley-required>
+                                                                            <?php                     
+                                                                                  $database->query('SELECT id,question FROM jobessays where userid = :userid');
+                                                                                  $database->bind(':userid', $userid);  
+                                                                                  $rows = $database->resultset();
+
+                                                                                  foreach($rows as $row){
+                                                                                       $id=$row['id'];
+                                                                                       $question=$row['question'];
+                                                                            ?>
+                                                                               <option value='<?=$question?>'><?=$question?></option>
+                                                                            <?php
+                                                                                  }
+                                                                            ?>
+                                                                    </select>
+                                                                </div>
+                                                                    <div id="essaydiv" class="form-group label-floating">                                                                   
+                                                                        <input type="text" id="essay" value="<?=$essay?>" class="form-control">
+                                                                    </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -487,6 +515,10 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
+    
+    $('#postajob-form #essayselect').on('change', function() {
+       $("#postajob-form #essay").val($('#postajob-form #essayselect').val());
+    });
    
     $('#postajob-form #jobtitle').parsley().on('field:error', function() {
            $('#postajob-form #jobtitlediv').addClass('has-error');

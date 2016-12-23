@@ -1,5 +1,28 @@
 jQuery(document).ready(function ($) {
     
+    $("a[href='#ajads']").on('click', function (){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'alljobads.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);                    
+                    
+                    $('#resumesb li').removeClass('active');
+                    $('#resumesb #a1').addClass('active');
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                            });
+                     
+                }
+               
+        });
+        return false;
+    });
     
     
     $("a[href='#pjobad']").on('click', function (){  
@@ -93,7 +116,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-     $(document).on('submit','#selecttemplate-form',function(event){
+    $(document).on('submit','#selecttemplate-form',function(event){
              
             event.preventDefault();      
       
@@ -181,7 +204,8 @@ jQuery(document).ready(function ($) {
             var mineduc = $("#postajob-form #mineduc").val();
             var prefcourse = $("#postajob-form #prefcourse").val();
             var languages = $("#postajob-form #languages").val();
-            var licenses = $("#postajob-form #licenses").val();                     
+            var licenses = $("#postajob-form #licenses").val();
+            var essay = $("#postajob-form #essay").val();
             var wtravel = 'off';
             if($("#postajob-form #wtravel").prop('checked')==true){
                wtravel = 'on';
@@ -195,7 +219,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "postajob-submit.php",
-                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate,
+                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -225,8 +249,7 @@ jQuery(document).ready(function ($) {
             });
             return false;
     });
-    
-    
+   
     $(document).on('submit','#jobskills-form',function(event){
              
             event.preventDefault();      
@@ -283,6 +306,29 @@ jQuery(document).ready(function ($) {
                             $('#resumesb #p2').addClass('active');
                             $(function() {
                                 $.material.init();
+                            });
+                            $('#resume-main-body #startappdate').datepicker();
+                            $('#resume-main-body #endappdate').datepicker();
+                            $('#resume-main-body #jobdesc').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                      ['para', ['ul', 'ol', 'paragraph']]                                     
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
                             });
                             $('#postajob-form').parsley({
                                 successClass: "has-success",
@@ -480,7 +526,8 @@ jQuery(document).ready(function ($) {
             var mineduc = $("#templatejobdetail-form #mineduc").val();
             var prefcourse = $("#templatejobdetail-form #prefcourse").val();
             var languages = $("#templatejobdetail-form #languages").val();
-            var licenses = $("#templatejobdetail-form #licenses").val();           
+            var licenses = $("#templatejobdetail-form #licenses").val();
+            var essay = $("#templatejobdetail-form #essay").val();
             var wtravel = 'off';
             if($("#templatejobdetail-form #wtravel").prop('checked')==true){
                wtravel = 'on';
@@ -494,7 +541,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "templatejobdetail-submit.php",
-                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate,
+                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -619,6 +666,29 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
+                             $('#resume-main-body #startappdate').datepicker();
+                            $('#resume-main-body #endappdate').datepicker();
+                            $('#resume-main-body #jobdesc').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                      ['para', ['ul', 'ol', 'paragraph']]                                     
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                          });
                             $('#templatejobdetail-form').parsley({
                                 successClass: "has-success",
                                 errorClass: "has-error",
@@ -766,6 +836,63 @@ jQuery(document).ready(function ($) {
                     
             }
         });
+    });
+    
+     $("#resume-main-body").on('click','#editjob',function() {
+        event.preventDefault(); 
+        var jobid = $(this).data('jobid');
+        
+        if(jobid > 0){
+            $.ajax({    
+                        type: "POST",
+                        url: 'postajob-form.php',
+                        data:"jobid=" + jobid,
+                        dataType: 'html',
+                        success: function (html) {
+                           // console.log(url);
+                            $('#resume-main-body').html(html); 
+                            $('#resumesb li').removeClass('active');
+                            $('#resumesb #p2').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                            $('#resume-main-body #startappdate').datepicker();
+                            $('#resume-main-body #endappdate').datepicker();
+                            $('#resume-main-body #jobdesc').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                      ['para', ['ul', 'ol', 'paragraph']]                                     
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                            });
+                            $('#postajob-form').parsley({
+                                successClass: "has-success",
+                                errorClass: "has-error",
+                                classHandler: function (el) {
+                                    return el.$element.closest(".form-group");
+                                },
+                                errorsContainer: function (el) {
+                                    return el.$element.closest(".form-group");
+                                },
+                            });
+                        }
+            });
+        }
+        return false;
     });
 
 

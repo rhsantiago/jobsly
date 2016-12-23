@@ -30,6 +30,7 @@ $languages ='';
 $licenses ='';
 $wtravel ='';
 $wrelocate ='';
+$essay ='';
 $dateadded ='';
 $sdate='';
 $edate='';
@@ -87,6 +88,7 @@ if(isset($_SESSION['user'])){
              $languages = $row['languages'];
              $licenses = $row['licenses'];
              $wtravel = $row['wtravel'];
+             $essay = $row['essay'];
              if($wtravel=='on'){
                 $wtravel = 'checked';
              }
@@ -389,7 +391,33 @@ if($mode==''){
                                                                             </label>
                                                                         </div>
                                                                     </div>
-                                                            </div>    
+                                                            </div> 
+                                                            
+                                                            <div class="col-md-12">
+                                                                 
+                                                                <div id="essaydiv" class="form-group label-floating">
+                                                                   
+                                                                <label class="control-label">Select a pre-made essay question or create a new one below</label>
+                                                                    <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" data-parsley-required>
+                                                                            <?php                     
+                                                                                  $database->query('SELECT id,question FROM jobessays where userid = :userid');
+                                                                                  $database->bind(':userid', $userid);  
+                                                                                  $rows = $database->resultset();
+
+                                                                                  foreach($rows as $row){
+                                                                                       $id=$row['id'];
+                                                                                       $question=$row['question'];
+                                                                            ?>
+                                                                               <option value='<?=$question?>'><?=$question?></option>
+                                                                            <?php
+                                                                                  }
+                                                                            ?>
+                                                                    </select>
+                                                                </div>
+                                                                    <div id="essaydiv" class="form-group label-floating">                                                                   
+                                                                        <input type="text" id="essay" value="<?=$essay?>" class="form-control">
+                                                                    </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -450,6 +478,10 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
+    
+    $('#templatejobdetail-form #essayselect').on('change', function() {
+       $("#templatejobdetail-form #essay").val($('#templatejobdetail-form #essayselect').val());
+    });
   
     $('#templatejobdetail-form #jobtitle').parsley().on('field:error', function() {
            $('#templatejobdetail-form #jobtitlediv').addClass('has-error');

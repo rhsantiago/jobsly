@@ -27,6 +27,7 @@ if(isset($_POST['languages'])){ $languages = $_POST['languages']; }
 if(isset($_POST['licenses'])){ $licenses = $_POST['licenses']; }
 if(isset($_POST['wtravel'])){ $wtravel = $_POST['wtravel']; }
 if(isset($_POST['wrelocate'])){ $wrelocate = $_POST['wrelocate']; }
+if(isset($_POST['essay'])){ $essay = $_POST['essay']; }
 
 date_default_timezone_set('Asia/Manila');
 $dateadded = date("Y-m-d");
@@ -35,12 +36,12 @@ include 'Database.php';
 $database = new Database();
     
     if($mode=='insert'){
-         $database->query(' INSERT INTO jobads (id, userid, jobtitle,specialization,plevel,jobtype,msalary,maxsalary,startappdate,endappdate,nvacancies,jobdesc,city,province,country,yrsexp,mineduc,prefcourse,languages,licenses,wtravel,wrelocate,dateadded) VALUES (NULL, :userid, :jobtitle, :specialization,:plevel,:jobtype,:msalary,:maxsalary,:startappdate,:endappdate,:nvacancies,:jobdesc,:city,:province,:country,:yrsexp,:mineduc,:prefcourse,:languages,:licenses,:wtravel,:wrelocate,:dateadded)');
+         $database->query(' INSERT INTO jobads (id, userid, jobtitle,specialization,plevel,jobtype,msalary,maxsalary,startappdate,endappdate,nvacancies,jobdesc,city,province,country,yrsexp,mineduc,prefcourse,languages,licenses,wtravel,wrelocate,essay,dateadded) VALUES (NULL, :userid, :jobtitle, :specialization,:plevel,:jobtype,:msalary,:maxsalary,:startappdate,:endappdate,:nvacancies,:jobdesc,:city,:province,:country,:yrsexp,:mineduc,:prefcourse,:languages,:licenses,:wtravel,:wrelocate,:essay,:dateadded)');
          
     }
 
     if($mode=='update'){
-       $database->query(' UPDATE jobads SET userid = :userid, jobtitle = :jobtitle, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate, dateadded = :dateadded WHERE jobads.id = :jobid and userid = :userid'); 
+       $database->query(' UPDATE jobads SET userid = :userid, jobtitle = :jobtitle, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate,essay=:essay, dateadded = :dateadded WHERE jobads.id = :jobid and userid = :userid'); 
         $database->bind(':jobid', $jobid);
         
     }
@@ -68,6 +69,7 @@ $database = new Database();
     $database->bind(':licenses', $licenses);
     $database->bind(':wtravel', $wtravel);
     $database->bind(':wrelocate', $wrelocate);
+    $database->bind(':essay', $essay);
     $database->bind(':dateadded', $dateadded);
 
     $database->execute();
