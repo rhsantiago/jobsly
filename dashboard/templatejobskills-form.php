@@ -40,7 +40,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Job Template / Required Skills</h2>
+                             <h2 class="title">Job Templates / Required Skills</h2>
                </div>
      </div>     
                    
@@ -127,7 +127,7 @@ if(isset($_SESSION['user'])){
                                                                 <input type="hidden" id="templateid" name="templateid" value="<?=$templateid?>">
                                                             <div class="row">
                                                                 <div class="col-md-12 col-xs-12">
-                                                                 The skill tags are used by jobseekers to narrow down their job search by skills. Make sure to enter all required skills for this job. The system auto creates the tag for you so type with spaces. (ex. java, web development, Microsoft Excel)
+                                                                 The skill tags are used by jobseekers to narrow down their job search by skills. Make sure to enter all required technical/job-specific skills for this job. This section is not for minimum qualifications. The system auto creates the tag for you so type with spaces. (ex. Java, Web Development, Microsoft Excel)
                                                                 </div>
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="jobskilldiv" class="form-group label-floating">
@@ -151,16 +151,16 @@ if(isset($_SESSION['user'])){
                                                                     <div id="jobskilltagsdiv" class="text-info">
                                                                      <?php
                                                       
-                                                    $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
-                                                    $database->bind(':templateid', $templateid);
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
-                                                    foreach($rows as $row){
-                                                        echo $row['jobskilltag'];
-                                                        echo ' ';
-                                                    }
-                                                       
-                                             ?>      
+                                                                            $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
+                                                                            $database->bind(':templateid', $templateid);
+                                                                            $rows = $database->resultset();
+                                                                                   // echo $row['name'];
+                                                                            foreach($rows as $row){
+                                                                                echo $row['jobskilltag'];
+                                                                                echo ' ';
+                                                                            }
+
+                                                                     ?>      
                                                                      </div>
                                                                 </div>
                                                         

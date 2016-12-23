@@ -155,7 +155,7 @@ h6, .h6 {
 }
 
 .editfloatright {
-    float:right;
+    float:right !important;
 }
 
 .editfloatleft {
@@ -402,5 +402,9 @@ div .parsley-errors-list {
 }
 
 .blog-post {
+    margin-top: 10px !important;
+}
+
+.essaymargintop{
     margin-top: 10px !important;
 }

@@ -55,6 +55,10 @@ if(isset($_SESSION['user'])){
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];   
+    
+    $teaser = strip_tags($jobdesc, '<p>');
+    $teaser = substr($teaser, 0, 200);
+    $teaser = strip_tags($teaser, '<p>');
         
     $mode = 'insert';
     $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
@@ -71,7 +75,7 @@ if(isset($_SESSION['user'])){
           </div>
        
                <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Post a Job Ad / Preview</h2>
                </div>
      </div>     
                    
@@ -142,12 +146,12 @@ if(isset($_SESSION['user'])){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">date_range</i> &nbsp;<?=$specialization?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specialization?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">people</i>&nbsp;<?=$positionlevels[$plevel-1]?>
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$positionlevels[$plevel-1]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -175,10 +179,74 @@ if(isset($_SESSION['user'])){
                                             </div>    
                                          
                                           <div class="row-fluid">
+                                                 <div class="col-md-12">  
+                                                      <?=$teaser?>...<br>
+                                                 </div>
                                                 <div class="col-md-12">   
                                                
                                                     <div class="collapse-group collapse" id="viewdetails">
                                                   <?=$jobdesc?>
+                                                        
+                                                    <div><b>Requirements</b></div>
+                                                        <ul>
+                                                            <?php
+                                                            if($yrsexp > 0){
+                                                            ?>    
+                                                                <li><?=$yrsexp?> years work experience</li>
+                                                            <?php
+                                                            }
+                                          
+                                                            if(!empty($mineduc)){
+                                                            ?>                                                            
+                                                                <li><?=$mineduc?></li>
+                                                            <?php
+                                                            }
+                                          
+                                                            if(!empty($languages)){
+                                                            ?>
+                                                                <li><?=$languages?></li>
+                                                            <?php
+                                                            }
+                                          
+                                                            if(!empty($licenses)){
+                                                            ?>
+                                                                <li><?=$licenses?></li>
+                                                            <?php
+                                                            }
+                                          
+                                                            if($wtravel == 'on'){
+                                                            ?>
+                                                                <li>Willing to travel</li>
+                                                            <?php
+                                                            }
+                                          
+                                                             if($wrelocate == 'on'){
+                                                            ?>
+                                                                <li>Willing to relocate</li>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                            
+                                                        </ul>
+                                                        <p><b>Technical / Job-specific skills</b></p>
+                                                        <ul>
+                                                            <?php
+                                                      
+                                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
+                                                                    $database->bind(':jobid', $jobid);
+                                                                    $rows = $database->resultset();
+                                                                           // echo $row['name'];
+                                                                    foreach($rows as $row){
+                                                                        echo '<li>';
+                                                                        echo $row['jobskill'];
+                                                                        echo '</li>';
+                                                                    }
+
+                                                             ?>                                                              
+                                                        </ul>
+                                                        <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
+                                                        <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
+                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>     
                                                     </div>    
                                                 </div>
                                             </div>
@@ -189,7 +257,9 @@ if(isset($_SESSION['user'])){
                                                         <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>
                                                 <div class="col-md-6 actionicon">
-                                                        <a class="blog-post-share " href="#"><i class="material-icons"></i></a>
+                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a>
+                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a>
+                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
                                                 </div>
                                           </div>      
                                           

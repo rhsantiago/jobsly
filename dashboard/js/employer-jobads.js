@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
     
+    
+    
     $("a[href='#pjobad']").on('click', function (){  
         event.preventDefault()
         event.stopPropagation();
@@ -58,6 +60,29 @@ jQuery(document).ready(function ($) {
                     
                     $('#resumesb li').removeClass('active');
                     $('#resumesb #j3').addClass('active');
+                            $(function() {
+                                $.material.init();
+                            });
+                     
+                }
+               
+        });
+        return false;
+    });
+    
+    $("a[href='#essays']").on('click', function (){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'jobessays-form.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);                    
+                    
+                    $('#resumesb li').removeClass('active');
+                    $('#resumesb #e4').addClass('active');
                             $(function() {
                                 $.material.init();
                             });
@@ -225,7 +250,7 @@ jQuery(document).ready(function ($) {
                     console.log(data);
                     $('.features #jobskilltagsdiv').html(data).fadeIn(1500);
                     $('.features #successdivjobskillstag').fadeIn(1500);  
-                                
+                    $('[data-toggle="tooltip"]').tooltip();            
                     $(' #jobskills-form #mode').val('insert');
                     $(function() {
                          $.material.init();
@@ -334,7 +359,7 @@ jQuery(document).ready(function ($) {
                             $('#resume-main-body').html(html); 
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #p2').addClass('active');
-                            
+                            $('[data-toggle="tooltip"]').tooltip();
                             
                         }
             });
@@ -357,7 +382,7 @@ jQuery(document).ready(function ($) {
                             $('#resume-main-body').html(html); 
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #p2').addClass('active');
-                            
+                            $('[data-toggle="tooltip"]').tooltip();
                         }
             });
         }
@@ -531,6 +556,7 @@ jQuery(document).ready(function ($) {
                     $('.features #successdivjobskillstag').fadeIn(1500);  
                                 
                     $(' #jobskillstemplate-form #mode').val('insert');
+                    $('[data-toggle="tooltip"]').tooltip();
                     $(function() {
                              $.material.init();
                     });
@@ -568,7 +594,7 @@ jQuery(document).ready(function ($) {
                             $('#resume-main-body').html(html); 
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #j3').addClass('active');
-                                                      
+                            $('[data-toggle="tooltip"]').tooltip();                       
                         }
             });
         }
@@ -658,6 +684,7 @@ jQuery(document).ready(function ($) {
                             $('#resume-main-body').html(html); 
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #j3').addClass('active');
+                            $('[data-toggle="tooltip"]').tooltip();
                             $(function() {
                                 $.material.init();
                             });
@@ -666,6 +693,79 @@ jQuery(document).ready(function ($) {
             });
         }
         return false;
+    });
+    
+    $(document).on('submit','#jobessays-form',function(event){
+             
+            event.preventDefault();      
+            $('#resume-main-body #successdivessay').hide();
+            var id = $("#jobessays-form #id").val();           
+            var mode = $("#jobessays-form #mode").val();
+            var userid = $("#jobessays-form #userid").val();          
+            var question = $("#jobessays-form #question").val();         
+         
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "jobessays-submit.php",
+                data: "mode=" +mode + "&userid=" + userid + "&id=" + id +"&question=" + question,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    //console.log(data);
+                    $('.features #essaysdiv').html(data).fadeIn(1500);
+                    if(mode=='del'){
+                        $('.features #successdivessay #essaydeldiv').html("Your Essay question has been deleted");
+                    }
+                    $('.features #successdivessay').fadeIn(1500);
+                    if(mode=='del' || mode=='update'){
+                        $(function () {
+                           $('#jobessay-modal').modal('toggle');
+                        });
+                    }
+                   // $(' #jobskills-form #mode').val('insert');
+                    $(function() {
+                         $.material.init();
+                    });
+                 
+                },
+                error: function(data) {
+                    console.log(data);                  
+                   
+                }
+            });
+            return false;
+    });
+    
+    $('#jobessay-modal').on('show.bs.modal', function(e) {
+              
+               var $modal = $(this);
+               $modal.find('#modaleditessay #successdivessaymodal').hide();        
+               mode =  $(e.relatedTarget).data('mode');
+               essayid =  $(e.relatedTarget).data('essayid');
+               userid = $(e.relatedTarget).data('userid');
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'jobessay-modal.php',
+            data: 'essayid=' + essayid +
+                  '&userid=' + userid +
+                  '&mode=' + mode,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);     
+                $(function() {
+                           $.material.init();
+                    });
+               
+                $('#jobessay-modal').parsley({
+                       successClass: "has-success",
+                       errorClass: "has-error"
+                });
+                    
+            }
+        });
     });
 
 

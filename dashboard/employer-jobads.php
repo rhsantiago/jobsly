@@ -57,7 +57,7 @@ if($ok == 1 ){
 
 <body class="landing-page">
     <!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="workexp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fullscreen-modal fade" id="jobessay-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content modalcontent">
 	      
@@ -65,13 +65,15 @@ if($ok == 1 ){
 	  </div>
 	</div>
     
-    <div class="modal fullscreen-modal fade" id="workexp-modal-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fullscreen-modal fade" id="jobessay-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content modalcontent">
 	      
 	    </div>
 	  </div>
 	</div>
+
+  
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -164,8 +166,8 @@ if($ok == 1 ){
                                             <span class="submenufont">Job Templates</span>
                                         </a>
                                     </li>
-                                    <li id="s4">
-                                        <a href="#skills" role="tab" data-toggle="tab" data-container="body">
+                                    <li id="e4">
+                                        <a href="#essays" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">mode_edit</i>
                                             <span class="submenufont">Essays</span>
                                         </a>                                        
@@ -218,7 +220,7 @@ if($ok == 1 ){
                         
     <?php
     if($ajax=='ajads'){
-         include 'postajob-form.php';
+         include 'alljobads-form.php';
     ?>
     <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p1').addClass('active');});</script>
     <?php
@@ -236,9 +238,9 @@ if($ok == 1 ){
     <?php                    
     }
     if($ajax=='essays'){
-         include 'skills-form.php';
+         include 'jobessays-form.php';
     ?>
-          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s4').addClass('active');});</script>   
+          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #e4').addClass('active');});</script>   
     <?php
     }   
     ?>

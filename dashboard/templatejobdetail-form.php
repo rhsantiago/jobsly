@@ -123,7 +123,7 @@ if($mode==''){
                            
      </div>
     <div class="col-md-12">
-                             <h2 class="title">Job Template / Job Details</h2>
+                             <h2 class="title">Job Templates / Job Details</h2>
        </div>
     
     <div class="col-md-offset-1 col-md-7">
@@ -221,7 +221,7 @@ if($mode==''){
                                                             </div>        
                                                             
                                                            <div id="startappdatediv" class="form-group label-static">
-                                                                <label class="control-label">Application Start Date (MM/DD/YYYY)</label>
+                                                                <label class="control-label">Position Start Date (MM/DD/YYYY)</label>
                                                                 <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>"  data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                         </div>
@@ -450,97 +450,97 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
-   /*
-    $('#templates-form #jobtitle').parsley().on('field:error', function() {
-           $('#postajob-form #jobtitlediv').addClass('has-error');
-           $('#postajob-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+  
+    $('#templatejobdetail-form #jobtitle').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #jobtitlediv').addClass('has-error');
+           $('#templatejobdetail-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #jobtitle').parsley().on('field:success', function() {
-            $('#postajob-form #jobtitlediv').addClass('has-success');
-            $('#postajob-form #jobtitlediv').find('span').remove()
-            $('#postajob-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #jobtitle').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #jobtitlediv').addClass('has-success');
+            $('#templatejobdetail-form #jobtitlediv').find('span').remove()
+            $('#templatejobdetail-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
    
-    $('#postajob-form #specialization').parsley().on('field:error', function() {
-           $('#postajob-form #specializationdiv').addClass('has-error');
-           $('#postajob-form #specializationdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #specialization').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #specializationdiv').addClass('has-error');
+           $('#templatejobdetail-form #specializationdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #specialization').parsley().on('field:success', function() {
-            $('#postajob-form #specializationdiv').addClass('has-success');
-            $('#postajob-form #specializationdiv').find('span').remove()
-            $('#postajob-form #specializationdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #specialization').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #specializationdiv').addClass('has-success');
+            $('#templatejobdetail-form #specializationdiv').find('span').remove()
+            $('#templatejobdetail-form #specializationdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #plevel').parsley().on('field:error', function() {
-           $('#postajob-form #pleveldiv').addClass('has-error');
-           $('#postajob-form #pleveldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #plevel').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #pleveldiv').addClass('has-error');
+           $('#templatejobdetail-form #pleveldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #plevel').parsley().on('field:success', function() {
-            $('#postajob-form #pleveldiv').addClass('has-success');
-            $('#postajob-form #pleveldiv').find('span').remove()
-            $('#postajob-form #pleveldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #plevel').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #pleveldiv').addClass('has-success');
+            $('#templatejobdetail-form #pleveldiv').find('span').remove()
+            $('#templatejobdetail-form #pleveldiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #jobtype').parsley().on('field:error', function() {
-           $('#postajob-form #jobtypediv').addClass('has-error');
-           $('#postajob-form #jobtypediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #jobtype').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #jobtypediv').addClass('has-error');
+           $('#templatejobdetail-form #jobtypediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #jobtype').parsley().on('field:success', function() {
-            $('#postajob-form #jobtypediv').addClass('has-success');
-            $('#postajob-form #jobtypediv').find('span').remove()
-            $('#postajob-form #jobtypediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #jobtype').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #jobtypediv').addClass('has-success');
+            $('#templatejobdetail-form #jobtypediv').find('span').remove()
+            $('#templatejobdetail-form #jobtypediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #msalary').parsley().on('field:error', function() {
-           $('#postajob-form #msalarydiv').addClass('has-error');
-           $('#postajob-form #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #msalary').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #msalarydiv').addClass('has-error');
+           $('#templatejobdetail-form #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #msalary').parsley().on('field:success', function() {
-            $('#postajob-form #msalarydiv').addClass('has-success');
-            $('#postajob-form #msalarydiv').find('span').remove()
-            $('#postajob-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #msalary').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #msalarydiv').addClass('has-success');
+            $('#templatejobdetail-form #msalarydiv').find('span').remove()
+            $('#templatejobdetail-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #maxsalary').parsley().on('field:error', function() {
-           $('#postajob-form #maxsalarydiv').addClass('has-error');
-           $('#postajob-form #maxsalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #maxsalary').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #maxsalarydiv').addClass('has-error');
+           $('#templatejobdetail-form #maxsalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #maxsalary').parsley().on('field:success', function() {
-            $('#postajob-form #maxsalarydiv').addClass('has-success');
-            $('#postajob-form #maxsalarydiv').find('span').remove()
-            $('#postajob-form #maxsalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #maxsalary').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #maxsalarydiv').addClass('has-success');
+            $('#templatejobdetail-form #maxsalarydiv').find('span').remove()
+            $('#templatejobdetail-form #maxsalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #startappdate').parsley().on('field:error', function() {
-           $('#postajob-form #startappdatediv').addClass('has-error');
-           $('#postajob-form #startappdatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #startappdate').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #startappdatediv').addClass('has-error');
+           $('#templatejobdetail-form #startappdatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #startappdate').parsley().on('field:success', function() {
-            $('#postajob-form #startappdatediv').addClass('has-success');
-            $('#postajob-form #startappdatediv').find('span').remove()
-            $('#postajob-form #startappdatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #startappdate').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #startappdatediv').addClass('has-success');
+            $('#templatejobdetail-form #startappdatediv').find('span').remove()
+            $('#templatejobdetail-form #startappdatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#postajob-form #endappdate').parsley().on('field:error', function() {
-           $('#postajob-form #endappdatediv').addClass('has-error');
-           $('#postajob-form #endappdatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#templatejobdetail-form #endappdate').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #endappdatediv').addClass('has-error');
+           $('#templatejobdetail-form #endappdatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #endappdate').parsley().on('field:success', function() {
-            $('#postajob-form #endappdatediv').addClass('has-success');
-            $('#postajob-form #endappdatediv').find('span').remove()
-            $('#postajob-form #endappdatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #endappdate').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #endappdatediv').addClass('has-success');
+            $('#templatejobdetail-form #endappdatediv').find('span').remove()
+            $('#templatejobdetail-form #endappdatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-     $('#postajob-form #nvacancies').parsley().on('field:error', function() {
-           $('#postajob-form #nvacanciesdiv').addClass('has-error');
-           $('#postajob-form #nvacanciesdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+     $('#templatejobdetail-form #nvacancies').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #nvacanciesdiv').addClass('has-error');
+           $('#templatejobdetail-form #nvacanciesdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#postajob-form #nvacancies').parsley().on('field:success', function() {
-            $('#postajob-form #nvacanciesdiv').addClass('has-success');
-            $('#postajob-form #nvacanciesdiv').find('span').remove()
-            $('#postajob-form #nvacanciesdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#templatejobdetail-form #nvacancies').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #nvacanciesdiv').addClass('has-success');
+            $('#templatejobdetail-form #nvacanciesdiv').find('span').remove()
+            $('#templatejobdetail-form #nvacanciesdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-    */
+    
          
     
 });       

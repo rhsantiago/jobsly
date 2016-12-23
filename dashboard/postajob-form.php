@@ -160,7 +160,7 @@ if($mode==''){
                            
      </div>
     <div class="col-md-12">
-                             <h2 class="title">Post a Job Ad</h2>
+                             <h2 class="title">Post a Job Ad / Job Details</h2>
        </div>
     
     <div class="col-md-offset-1 col-md-7">
@@ -258,7 +258,7 @@ if($mode==''){
                                                             </div>        
                                                             
                                                            <div id="startappdatediv" class="form-group label-static">
-                                                                <label class="control-label">Application Start Date (MM/DD/YYYY)</label>
+                                                                <label class="control-label">Position Start Date (MM/DD/YYYY)</label>
                                                                 <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                         </div>
