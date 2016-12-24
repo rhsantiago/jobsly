@@ -10,6 +10,10 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
+     if(isset($_GET['ajax'])){ $ajax = $_GET['ajax']; }
+     if(empty($ajax)){
+         $ajax = 'aapp';
+     }
 ?>
 <!doctype html>
 <html lang="en">
@@ -113,9 +117,9 @@ if($ok == 1 ){
                             
                             <div id="resumesb" class="">                               
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="p1">
+                                    <li id="a1">
                                       
-                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
+                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="body">
                                             <i class="material-icons">visibility</i>
                                             <span class="submenufont">Active Applications</span>
                                         </a>
@@ -135,10 +139,10 @@ if($ok == 1 ){
                                             <span class="submenufont">Saved Applications</span>
                                         </a>
                                     </li>
-                                    <li id="s4">
-                                        <a href="#skills" role="tab" data-toggle="tab" data-container="body">
+                                    <li id="l4">
+                                        <a href="#ljobs" role="tab" data-toggle="tab" data-container="body">
                                             <i class="material-icons">whatshot</i>
-                                            <span class="submenufont">Latest Job Matches</span>
+                                            <span class="submenufont">Latest Jobs</span>
                                         </a>                                        
                                     </li>
                                    
@@ -186,7 +190,7 @@ if($ok == 1 ){
                                     <li><a href="#" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
                                     <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
                                     <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#" id="ljobs"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
@@ -214,10 +218,21 @@ if($ok == 1 ){
                 <div class="row-fluid">   <!-- with fluid for full width -->
                     
                     <div id="resume-main-body">                       
-                <?php
-                  include 'pinfo-form.php';      
-                ?>
-                      
+              
+                        <?php
+                        if($ajax=='aapp'){
+                             include 'jobseeker-activeapp.php';
+                        ?>
+                             <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
+                        <?php
+                        }
+                        if($ajax=='ljobs'){
+                             include 'jobseeker-latestjobs.php';
+                        ?>
+                             <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #l4').addClass('active');});</script>
+                        <?php
+                        }
+                        ?>
                 </div> <!--resume main body-->        
                 <!--
 		    	<div class="section text-center section-landing">
@@ -399,7 +414,7 @@ if($ok == 1 ){
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/resume.js" type="text/javascript"></script>
+    <script src="js/jobseeker-main.js" type="text/javascript"></script>
     
      
     <script>

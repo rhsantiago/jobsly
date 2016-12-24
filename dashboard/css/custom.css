@@ -408,3 +408,35 @@ div .parsley-errors-list {
 .essaymargintop{
     margin-top: 5px !important;
 }
+
+.jobcardcompany {
+    font-size: 12px !important;
+}
+
+.jobcardtitle {
+    font-size: 16px !important;
+    font-weight: 400;
+}
+
+.jobcardothers {
+    font-size: 12px !important;
+    text-transform: none !important;
+}
+
+.jobcarddesc {
+    font-size: 12px !important;
+    text-transform: none !important;
+}
+
+.jobcardreadmore {
+   
+    padding: 10px !important;
+}
+
+.jobcardreadmorelink {
+     font-size: 12px !important;
+}
+
+.jobcardbuttons {
+    font-size: 12px !important;
+}
