@@ -11,6 +11,7 @@ $jobid = 0;
 $template = '';
 $mode = '';
 $jobtitle='';
+$company='';
 $specialization='';
 $plevel='';
 $jobtype='';
@@ -62,6 +63,7 @@ if(isset($_SESSION['user'])){
             $row = $database->single();
 
              $jobtitle = $row['jobtitle'];
+             $company = $row['company'];
              $specialization = $row['specialization'];
              $plevel = $row['plevel'];
              $jobtype = $row['jobtype'];
@@ -226,8 +228,6 @@ if($mode==''){
                                                                 <label class="control-label">Position Start Date (MM/DD/YYYY)</label>
                                                                 <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>"  data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
-                                                        </div>
-                                                        <div class="col-md-6"> 
                                                             <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
                                                                 <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
@@ -239,6 +239,12 @@ if($mode==''){
                                                                            <option value='6' <?php if($plevel==6){echo' selected';}?>>1-4 Years Experienced Employee</option>
                                                                            <option value='7' <?php if($plevel==7){echo' selected';}?>>1 Year Experienced Employee/Fresh Grad</option>
                                                                 </select>
+                                                            </div>        
+                                                        </div>
+                                                        <div class="col-md-6"> 
+                                                            <div id="companydiv" class="form-group label-floating">
+                                                                <label class="control-label">Company</label>
+                                                                <input type="text" id="company" class="form-control" value="<?=$company?>" data-parsley-required>  
                                                             </div>
                                                             <div id="jobtypediv" class="form-group label-floating">
                                                                 <label class="control-label">Employment Type</label>
@@ -491,6 +497,16 @@ jQuery(document).ready(function ($) {
             $('#templatejobdetail-form #jobtitlediv').addClass('has-success');
             $('#templatejobdetail-form #jobtitlediv').find('span').remove()
             $('#templatejobdetail-form #jobtitlediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#templatejobdetail-form #company').parsley().on('field:error', function() {
+           $('#templatejobdetail-form #companydiv').addClass('has-error');
+           $('#templatejobdetail-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#templatejobdetail-form #company').parsley().on('field:success', function() {
+            $('#templatejobdetail-form #companydiv').addClass('has-success');
+            $('#templatejobdetail-form #companydiv').find('span').remove()
+            $('#templatejobdetail-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
    
     $('#templatejobdetail-form #specialization').parsley().on('field:error', function() {

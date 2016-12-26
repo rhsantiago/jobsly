@@ -22,6 +22,7 @@ if(isset($_SESSION['user'])){
     $row = $database->single();
     $id = $row['id'];
     $jobtitle = $row['jobtitle'];
+    $company = $row['company'];
     $specialization = $row['specialization'];
     $plevel = $row['plevel'];
     $jobtype = $row['jobtype'];
@@ -167,7 +168,7 @@ if(isset($_SESSION['user'])){
                                                 <div class="col-md-6">
                                                          <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
-                                                            <h6 class="text-muted"><i>CHAMP Cargosystems Phils</i></h6>
+                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-6">

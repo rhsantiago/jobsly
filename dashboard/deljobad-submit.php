@@ -1,58 +1,32 @@
+
 <?php
+if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 
-
-    if (session_status() == PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
         session_start();
-         if (!isset($database)){
+        if (!isset($database)){
             include 'Database.php';
-         }
-    }
+        }
+}
+
+$database = new Database();
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
-    $database = new Database();
-
-    
-        
-    $mode = 'insert';
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
-    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
-   
-    
-}
+        $database->query('Delete from jobads where id = :jobid');
+        $database->bind(':jobid', $jobid);
+        $database->execute();
 
 ?>
 
-
-
-    
-    <div class="row">
-    <div class="col-md-12 center">            
-                    <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
-                     </div>    
-                           
-     </div>
-   
-    <div class="col-md-12">
-                             <h2 class="title">My Job Ads</h2>
-       </div>
-     </div>
-    <div class="col-md-offset-1 col-md-7">
-                       
-                <div class="section  section-landing">
-	                 
-
-					<div class="features">
-						<div class="row">
-                                                     
-                            <div class="col-md-12">
-                           <div class="alljobsdiv">
-                          <?php
+ <?php
+        $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+        $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
                                 $database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
 
@@ -142,75 +116,6 @@ if(isset($_SESSION['user'])){
                                   </section>
                                     <?php
                                 }
+    
+}
                                     ?>
-                                
-                                </div> 
-                                
-                                
-                                
-                            </div>  
-                                        <div class="col-md-12">
-                                
-                                                  
-                                             <div id="successdivdeljob" class="alert alert-success">
-                                               
-                                                  <div class="alert-icon">
-                                                    <i class="material-icons">check</i>
-                                                  </div>
-                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                                  </button>
-                                                 <b>Alert: </b>Your Job ad has been deleted.
-                                               
-                                            </div>
-                                   
-                            </div>
-		                     
-		                </div>
-					</div>
-	            </div>
-                        
-                        
-                    
-                        
-                        
-                    </div>
-                    
-                    
-                <div class="col-md-3 pull-right">
-                          <div class="card card-ads adsright">                                            
-                                                             <div class="content">
-                                                                                                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
-		       </div> 
-            
-
-<script>
-jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-    */
-    
-});       
-</script>

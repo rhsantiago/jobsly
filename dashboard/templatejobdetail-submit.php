@@ -3,6 +3,7 @@ if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['jobtitle'])){ $jobtitle = $_POST['jobtitle']; }
+if(isset($_POST['company'])){ $company = $_POST['company']; }
 if(isset($_POST['specialization'])){ $specialization = $_POST['specialization']; }
 if(isset($_POST['plevel'])){ $plevel = $_POST['plevel']; }
 if(isset($_POST['jobtype'])){ $jobtype = $_POST['jobtype']; }
@@ -35,12 +36,12 @@ include 'Database.php';
 $database = new Database();
     
     if($mode=='insert'){
-         $database->query(' INSERT INTO jobtemplates (id, userid, jobtitle,specialization,plevel,jobtype,msalary,maxsalary,startappdate,endappdate,nvacancies,jobdesc,city,province,country,yrsexp,mineduc,prefcourse,languages,licenses,wtravel,wrelocate,essay,dateadded) VALUES (NULL, :userid, :jobtitle, :specialization,:plevel,:jobtype,:msalary,:maxsalary,:startappdate,:endappdate,:nvacancies,:jobdesc,:city,:province,:country,:yrsexp,:mineduc,:prefcourse,:languages,:licenses,:wtravel,:wrelocate,:essay,:dateadded)');
+         $database->query(' INSERT INTO jobtemplates (id, userid, jobtitle,company,specialization,plevel,jobtype,msalary,maxsalary,startappdate,endappdate,nvacancies,jobdesc,city,province,country,yrsexp,mineduc,prefcourse,languages,licenses,wtravel,wrelocate,essay,dateadded) VALUES (NULL, :userid, :jobtitle,:company, :specialization,:plevel,:jobtype,:msalary,:maxsalary,:startappdate,:endappdate,:nvacancies,:jobdesc,:city,:province,:country,:yrsexp,:mineduc,:prefcourse,:languages,:licenses,:wtravel,:wrelocate,:essay,:dateadded)');
          $database->bind(':dateadded', $dateadded);
     }
 
     if($mode=='update'){
-       $database->query(' UPDATE jobtemplates SET userid = :userid, jobtitle = :jobtitle, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate,essay=:essay WHERE jobtemplates.id = :templateid and userid = :userid'); 
+       $database->query(' UPDATE jobtemplates SET userid = :userid, jobtitle = :jobtitle, company = :company, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate,essay=:essay WHERE jobtemplates.id = :templateid and userid = :userid'); 
         $database->bind(':templateid', $templateid);
         
     }
@@ -49,6 +50,7 @@ $database = new Database();
     
     $database->bind(':userid', $userid);
     $database->bind(':jobtitle', $jobtitle);
+    $database->bind(':company', $company);
     $database->bind(':specialization', $specialization);  
     $database->bind(':plevel', $plevel);
     $database->bind(':jobtype', $jobtype); 

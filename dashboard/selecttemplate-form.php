@@ -101,13 +101,13 @@ if(isset($_SESSION['user'])){
                                                         <div class="tab-pane active" id="profile">                                                            
                                                    <div class="row">
                                                        <div class="col-md-12">
-                                                           Create job ads faster using templates. Frequently posted job ads can be quickly created with pre-filled values by selecting the appropriate template you created in the templates submenu above. After step 2, you can traverse the steps freely by clicking on the step number above.
+                                                           Start with a blank job ad or select a pre-filled template. Frequently posted job ads can be quickly created with pre-filled values by selecting the appropriate template you created in the templates submenu above. After step 2, you can traverse the steps freely by clicking on the step number above.
                                                        </div>
                                                        <div class="col-md-6"> 
                                                             <div id="templatediv" class="form-group label-floating">
                                                                 <label class="control-label">Select Template</label>
                                                                 <select class="form-control" id="template" name="template"  placeholder="Select Template" data-parsley-required>     
-                                                                          <option value='0'>New Template</option>    
+                                                                          <option value='0'>Blank Job Ad</option>    
                                                    <?php                     
                                                     $database->query('SELECT id,jobtitle FROM jobtemplates where userid = :userid');
                                                     $database->bind(':userid', $userid);  

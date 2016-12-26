@@ -9,8 +9,7 @@ jQuery(document).ready(function ($) {
 
             success: function (html) {
                        // console.log(html);
-                    $('#resume-main-body').html(html);                    
-                    
+                    $('#resume-main-body').html(html);  
                     $('#resumesb li').removeClass('active');
                     $('#resumesb #a1').addClass('active');
                     $('[data-toggle="tooltip"]').tooltip(); 
@@ -186,6 +185,7 @@ jQuery(document).ready(function ($) {
             var jobid = $("#postajob-form #jobid").val();
             var templateid = $("#postajob-form #templateid").val();
             var jobtitle = $("#postajob-form #jobtitle").val();
+            var company = $("#postajob-form #company").val();
             var mode = $("#postajob-form #mode").val();
             var userid = $("#postajob-form #userid").val();
             var specialization = $("#postajob-form #specialization").val();
@@ -219,7 +219,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "postajob-submit.php",
-                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
+                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -508,6 +508,7 @@ jQuery(document).ready(function ($) {
       
             var templateid = $("#templatejobdetail-form #templateid").val();
             var jobtitle = $("#templatejobdetail-form #jobtitle").val();
+            var company = $("#templatejobdetail-form #company").val();
             var mode = $("#templatejobdetail-form #mode").val();
             var userid = $("#templatejobdetail-form #userid").val();
             var specialization = $("#templatejobdetail-form #specialization").val();
@@ -541,7 +542,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "templatejobdetail-submit.php",
-                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
+                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -893,6 +894,73 @@ jQuery(document).ready(function ($) {
             });
         }
         return false;
+    });
+    
+    $('#jobpost-modal').on('show.bs.modal', function(e) {
+              
+               var $modal = $(this);
+               //$modal.find('#modaleditessay #successdivessaymodal').hide();        
+               mode =  $(e.relatedTarget).data('mode');
+               jobid =  $(e.relatedTarget).data('jobid');
+             
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'jobpost-modal.php',
+            data: 'jobid=' + jobid +               
+                  '&mode=' + mode,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);     
+                $(function() {
+                           $.material.init();
+                    });
+               
+                $('#jobpost-modal').parsley({
+                       successClass: "has-success",
+                       errorClass: "has-error"
+                });
+                    
+            }
+        });
+    });
+    
+    $(document).on('submit','#deljobad-form',function(event){
+             
+            event.preventDefault();      
+            $('#resume-main-body #successdivdeljob').hide();          
+            var mode = $("#deljobad-form #mode").val();
+            var userid = $("#deljobad-form #userid").val();          
+            var jobid = $("#deljobad-form #jobid").val();         
+         
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "deljobad-submit.php",
+                data: "mode=" +mode + "&userid=" + userid + "&jobid=" + jobid,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                    $('.alljobsdiv').html(data).fadeIn(1500);
+                    $('.features #successdivdeljob').fadeIn(1500);
+                    if(mode=='del' || mode=='update'){
+                        $(function () {
+                           $('#jobpost-modal').modal('toggle');
+                        });
+                    }             
+                    $(function() {
+                         $.material.init();
+                    });
+                 
+                },
+                error: function(data) {
+                    console.log(data);                  
+                   
+                }
+            });
+            return false;
     });
 
 
