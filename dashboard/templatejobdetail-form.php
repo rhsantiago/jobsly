@@ -414,7 +414,7 @@ if($mode==''){
                                                                                        $id=$row['id'];
                                                                                        $question=$row['question'];
                                                                             ?>
-                                                                               <option value='<?=$question?>'><?=$question?></option>
+                                                                               <option value="<?=$question?>"><?=$question?></option>
                                                                             <?php
                                                                                   }
                                                                             ?>

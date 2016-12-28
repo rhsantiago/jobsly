@@ -278,6 +278,15 @@ jQuery(document).ready(function ($) {
                     $(function() {
                          $.material.init();
                     });
+                    var options = {
+                        url: "json/skilltags.json",
+                        getValue: "name",
+                        list: {
+                            match: {
+                                enabled: true
+                                   }
+                               }
+                    }
                     $("#jobskill").easyAutocomplete(options);
                 },
                 error: function(data) {
