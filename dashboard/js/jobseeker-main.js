@@ -48,7 +48,32 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
+     $(window).scroll(function() {
+      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            $('#loadmorejobs-form').submit();
+
+      }
+    });
     
+     $(document).on('submit','#loadmorejobs-form',function(event){
+             
+            event.preventDefault();                  
+            var next = $("#loadmorejobs-form #next").val();
+            
+            $.ajax({
+                    type: "POST",
+                    url: 'loadmorejobs.php',
+                    data: "next=" +next,
+                    dataType: 'html',
+
+                    success: function (html) {
+                        console.log(html);
+                        $(".loadmoreform").remove();
+                        $('.loadmore').append(html);
+                        //$('#loading').hide();
+                    }
+           });
+    });     
     
     
     

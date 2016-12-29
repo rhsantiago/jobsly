@@ -10,14 +10,14 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+   if(isset($_POST['next'])){ $next = $_POST['next']; } 
   $database = new Database();
   include "Jobad.php";
     
   $jobadsarray = array();    
     
-   $database->query('SELECT * from jobads order by dateadded desc limit 0,12');
-                               
+   $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
+  // $database->bind(':next', $next);                            
    $rows = $database->resultset();
    foreach($rows as $row){
       $jobid = $row['id'];
@@ -61,16 +61,9 @@ if(isset($_SESSION['user'])){
 
     
     <div class="row">
-    <div class="col-md-12 center">            
-                    <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
-                     </div>    
-                           
-     </div>
+  
    
-    <div class="col-md-12">
-                             <h2 class="title">Latest Jobs</h2>
-       </div>
+    
      </div>
     <div class="col-md-1">
     </div>
@@ -408,7 +401,8 @@ if(isset($_SESSION['user'])){
                                     <?php
                                      $index = $index+3;
                                 }
-                                 $next = $arrlength+1;
+                                 $next = $next + 12;
+                                 echo $next."reg";
                                     ?>
                                    
                             </div>
@@ -420,44 +414,11 @@ if(isset($_SESSION['user'])){
                   
     </div><!--right-->
        <div class="col-md-2">
-     </div> 
-    <div class="loadmore">
-         <div class="loadmoreform">
+     </div>
+    <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
                    
              </form>
         </div>
-    </div>
-<script>
-jQuery(document).ready(function ($) {
-    /*
-     $(window).scroll(function() {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            $('#loadmorejobs-form').submit();
-
-      }
-    });
-    
-     $(document).on('submit','#loadmorejobs-form',function(event){
-             
-            event.preventDefault();                  
-            var next = $("#loadmorejobs-form #next").val();
-            
-            $.ajax({
-                    type: "POST",
-                    url: 'loadmorejobs.php',
-                    data: "next=" +next,
-                    dataType: 'html',
-
-                    success: function (html) {
-                        console.log(html);
-                        $(".loadmoreform").remove();
-                        $('.loadmore').append(html);
-                        //$('#loading').hide();
-                    }
-           });
-    });  
-    */
-});       
-</script>
+   
