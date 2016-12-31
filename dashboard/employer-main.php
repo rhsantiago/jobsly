@@ -181,7 +181,7 @@ if($ok == 1 ){
    <div class="sidebar-item"><a href="#">Settings</a></div>
    
 </div>
-    
+  
      <!--sidebar-->
     <div id="main" class="wrapper ">
        

@@ -73,17 +73,30 @@ jQuery(document).ready(function ($) {
                         //$('#loading').hide();
                     }
            });
-    });     
+    }); 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    $('#showjob-modal').on('show.bs.modal', function(e) {
+              
+               var $modal = $(this);
+              // $modal.find('#modaleditessay #successdivessaymodal').hide();  
+               var jobid =  $(e.relatedTarget).data('jobid');               
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'showjob-modal.php',
+            data: 'jobid=' + jobid,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);     
+                $(function() {
+                           $.material.init();
+                    });
+               
+                    
+            }
+        });
+    });
     
     
     

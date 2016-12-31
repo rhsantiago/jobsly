@@ -378,7 +378,7 @@ div .parsley-errors-list {
 .jobadheader {
     font-size: 12px !important;
     text-transform: none !important;
-    margin-bottom: -10px !important;
+   /* margin-bottom: -5px !important; */
 }
 
 .jobadheadericon {
@@ -387,13 +387,14 @@ div .parsley-errors-list {
 
 .companylogo {
     margin-top: 10px !important;
-    float: right;
+   /* float: right; */
 
 }
 
 .actionicon {
     text-align: right !important;
     margin-top: 20px !important;
+   
 }
 
 .redborder{
@@ -440,3 +441,17 @@ div .parsley-errors-list {
 .jobcardbuttons {
     font-size: 12px !important;
 }
+
+.notopmargin {
+    margin-top: -100px !important;
+  
+}
+
+.jobad-titletopmargin {
+    margin-top: 5px !important;
+}
+
+.leftmargin10 {
+    margin-left: -15px !important;
+}
+

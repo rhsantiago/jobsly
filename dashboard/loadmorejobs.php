@@ -69,7 +69,7 @@ if(isset($_SESSION['user'])){
     </div>
     <div class="col-md-3"> <!--left-->
                        
-                <div class="section  section-landing">
+                <div class="section  section-landing notopmargin">
 	                 
 
 					<div class="features">
@@ -89,18 +89,21 @@ if(isset($_SESSION['user'])){
                                     <div class="panel panel-default">
                                      <img src="img/fjord.jpg" class="img-responsive">
                                       <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta ">
+                                          <div class="jobad-meta">
                                       
                                           <div class="row-fluid ">
-                                                <div class="col-md-9 jobad-bottomborder">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                        <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                                    <div class="companylogo"> 
+                                                    
+                                                    <div class="companylogo "> 
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
@@ -113,7 +116,7 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">
-                                                     <ul  class="list-inline ">
+                                                     <ul  class="list-inline leftmargin10">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -185,7 +188,7 @@ if(isset($_SESSION['user'])){
     </div><!--left-->
                      
     <div class="col-md-3"> <!--middle-->
-        <div class="section  section-landing">
+        <div class="section  section-landing notopmargin">
 	                 
 
 					<div class="features">
@@ -205,9 +208,34 @@ if(isset($_SESSION['user'])){
                                     <div class="panel panel-default">
                                      <img src="img/fjord.jpg" class="img-responsive">
                                       <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta jobad-bottomborder">
-                                      <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                          <ul  class="list-inline ">
+                                          <div class="jobad-meta">
+                                      
+                                          <div class="row-fluid ">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
+                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    
+                                                    <div class="companylogo "> 
+                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                             
+                                         
+                                          <div class="row-fluid">
+                                                 <div class="col-md-12">
+                                                     <ul  class="list-inline leftmargin10">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -225,26 +253,6 @@ if(isset($_SESSION['user'])){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                          
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            <div class="row-fluid">
-                                                <div class="col-md-9">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="companylogo"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                         
-                                          <div class="row-fluid">
-                                                 <div class="col-md-12">  
                                                      <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
                                                  </div>
                                                 
@@ -294,11 +302,11 @@ if(isset($_SESSION['user'])){
 		                </div>
                         </div>    
 					</div>
-	            </div>           
+	            </div>
     </div><!--middle-->                
           
     <div class="col-md-3"> <!--right-->
-         <div class="section  section-landing">
+         <div class="section  section-landing notopmargin">
 	                 
 
 					<div class="features">
@@ -318,9 +326,34 @@ if(isset($_SESSION['user'])){
                                     <div class="panel panel-default">
                                      <img src="img/fjord.jpg" class="img-responsive">
                                       <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta jobad-bottomborder">
-                                      <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                          <ul  class="list-inline ">
+                                          <div class="jobad-meta">
+                                      
+                                          <div class="row-fluid ">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                        <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
+                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    
+                                                    <div class="companylogo "> 
+                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                             
+                                         
+                                          <div class="row-fluid">
+                                                 <div class="col-md-12">
+                                                     <ul  class="list-inline leftmargin10">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -338,26 +371,6 @@ if(isset($_SESSION['user'])){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                          
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            <div class="row-fluid">
-                                                <div class="col-md-9">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="companylogo"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                         
-                                          <div class="row-fluid">
-                                                 <div class="col-md-12">  
                                                      <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
                                                  </div>
                                                 
@@ -402,14 +415,13 @@ if(isset($_SESSION['user'])){
                                      $index = $index+3;
                                 }
                                  $next = $next + 12;
-                                 echo $next."reg";
                                     ?>
                                    
                             </div>
 		                </div>
                         </div>    
 					</div>
-	            </div>              
+	            </div>   
                
                   
     </div><!--right-->

@@ -54,7 +54,7 @@ if(isset($_SESSION['user'])){
    }
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
 }
 
 ?>
@@ -76,14 +76,14 @@ if(isset($_SESSION['user'])){
     </div>
     <div class="col-md-3"> <!--left-->
                        
-                <div class="section  section-landing">
+                <div class="section  section-landing ">
 	                 
 
 					<div class="features">
                         
                         <div class="row">                  
                          <div class="jobs">
-		                     <div class="col-md-12">
+		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
                                  for($index = 0; $index < $arrlength;) {
@@ -96,18 +96,21 @@ if(isset($_SESSION['user'])){
                                     <div class="panel panel-default">
                                      <img src="img/fjord.jpg" class="img-responsive">
                                       <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta ">
+                                          <div class="jobad-meta">
                                       
                                           <div class="row-fluid ">
-                                                <div class="col-md-9 jobad-bottomborder">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                                    <div class="companylogo"> 
+                                                    
+                                                    <div class="companylogo "> 
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
@@ -120,7 +123,127 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">
-                                                     <ul  class="list-inline ">
+                                                     <ul  class="list-inline leftmargin10 jobad-bottomborder">
+                                                                                           
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$jobad->getspecialization()?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$positionlevels[$jobad->getplevel()-1]?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmsalary()?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                        </ul>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                 </div>
+                                                
+                                            </div>
+                                          
+                                        </div>
+                                          <div class="row-fluid">
+                                                <div class="col-md-6  ">
+                                                   <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
+                                                   -->
+                                                </div>
+                                                <div class="col-md-6 actionicon pull-right">
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
+                                                </div>
+                                          </div>      
+                                          
+                                              
+                                         
+                                      </div>
+                                        
+                                        <div class="skilltags jobcardothers">
+                                            Skilltags: <span class="text-info jobcardothers">
+                                            <?php
+                                                      
+                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
+                                                    $database->bind(':jobid', $jobad->getjobid());
+                                                    $rows = $database->resultset();
+                                                           // echo $row['name'];
+                                                    foreach($rows as $row){
+                                                        echo $row['jobskilltag'];
+                                                        echo ' ';
+                                                    }
+                                                       
+                                             ?>   
+                                            
+                                            </span>
+                                        </div>    
+                                    </div>
+                                  </section>
+                                    <?php
+                                     $index = $index+3;
+                                }
+                                    ?>
+                                   
+                            </div>
+		                </div>
+                        </div>    
+					</div>
+	            </div>
+                  
+    </div><!--left-->
+                     
+    <div class="col-md-3"> <!--middle-->
+        <div class="section  section-landing">
+	                 
+
+					<div class="features">
+                        
+                        <div class="row">                  
+                         <div class="jobs">
+		                     <div class="col-md-12">
+                                  <?php
+                                 $arrlength = count($jobadsarray);
+                                 for($index = 1; $index < $arrlength;) {
+                                     $jobad = $jobadsarray[$index];
+                               
+                                
+                             ?>
+                                
+                                <section class="blog-post">
+                                    <div class="panel panel-default">
+                                     <img src="img/fjord.jpg" class="img-responsive">
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div class="jobad-meta">
+                                      
+                                          <div class="row-fluid ">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
+                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    
+                                                    <div class="companylogo "> 
+                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                             
+                                         
+                                          <div class="row-fluid">
+                                                 <div class="col-md-12">
+                                                     <ul  class="list-inline leftmargin10">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -188,120 +311,6 @@ if(isset($_SESSION['user'])){
                         </div>    
 					</div>
 	            </div>
-                  
-    </div><!--left-->
-                     
-    <div class="col-md-3"> <!--middle-->
-        <div class="section  section-landing">
-	                 
-
-					<div class="features">
-                        
-                        <div class="row">                  
-                         <div class="jobs">
-		                     <div class="col-md-12">
-                                  <?php
-                                 $arrlength = count($jobadsarray);
-                                 for($index = 1; $index < $arrlength;) {
-                                     $jobad = $jobadsarray[$index];
-                               
-                                
-                             ?>
-                                
-                                <section class="blog-post">
-                                    <div class="panel panel-default">
-                                     <img src="img/fjord.jpg" class="img-responsive">
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta jobad-bottomborder">
-                                      <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                          <ul  class="list-inline ">
-                                                                                           
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$jobad->getspecialization()?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$positionlevels[$jobad->getplevel()-1]?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmsalary()?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                        </ul>
-                                          
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            <div class="row-fluid">
-                                                <div class="col-md-9">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="companylogo"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                         
-                                          <div class="row-fluid">
-                                                 <div class="col-md-12">  
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
-                                                 </div>
-                                                
-                                            </div>
-                                          
-                                        </div>
-                                          <div class="row-fluid">
-                                                <div class="col-md-6">
-                                                    <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" data-toggle="modal" data-target="#viewdetails<?=$jobad->getjobid()?>">Read more</a></span>
-                                                </div>
-                                                <div class="col-md-6 actionicon">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
-                                                </div>
-                                          </div>      
-                                          
-                                              
-                                         
-                                      </div>
-                                        
-                                        <div class="skilltags jobcardothers">
-                                            Skilltags: <span class="text-info jobcardothers">
-                                            <?php
-                                                      
-                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
-                                                    $database->bind(':jobid', $jobad->getjobid());
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
-                                                    foreach($rows as $row){
-                                                        echo $row['jobskilltag'];
-                                                        echo ' ';
-                                                    }
-                                                       
-                                             ?>   
-                                            
-                                            </span>
-                                        </div>    
-                                    </div>
-                                  </section>
-                                    <?php
-                                     $index = $index+3;
-                                }
-                                    ?>
-                                   
-                            </div>
-		                </div>
-                        </div>    
-					</div>
-	            </div>           
     </div><!--middle-->                
           
     <div class="col-md-3"> <!--right-->
@@ -325,9 +334,34 @@ if(isset($_SESSION['user'])){
                                     <div class="panel panel-default">
                                      <img src="img/fjord.jpg" class="img-responsive">
                                       <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta jobad-bottomborder">
-                                      <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                          <ul  class="list-inline ">
+                                          <div class="jobad-meta">
+                                      
+                                          <div class="row-fluid ">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
+                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    
+                                                    <div class="companylogo "> 
+                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                             
+                                         
+                                          <div class="row-fluid">
+                                                 <div class="col-md-12">
+                                                     <ul  class="list-inline leftmargin10">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -345,26 +379,6 @@ if(isset($_SESSION['user'])){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                          
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            <div class="row-fluid">
-                                                <div class="col-md-9">
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="companylogo"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                         
-                                          <div class="row-fluid">
-                                                 <div class="col-md-12">  
                                                      <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
                                                  </div>
                                                 
@@ -408,16 +422,14 @@ if(isset($_SESSION['user'])){
                                     <?php
                                      $index = $index+3;
                                 }
-                                 $next = $arrlength+1;
+                                 $next = $arrlength + 1;
                                     ?>
                                    
                             </div>
 		                </div>
                         </div>    
 					</div>
-	            </div>              
-               
-                  
+	            </div>
     </div><!--right-->
        <div class="col-md-2">
      </div> 

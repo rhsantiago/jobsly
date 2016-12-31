@@ -38,11 +38,19 @@ if($ok == 1 ){
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-
+<script src="js/jquery.min.js" type="text/javascript"></script>
 
 </head>
 
 <body class="landing-page">
+   <!-- Modal -->
+	<div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
     
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
@@ -223,13 +231,13 @@ if($ok == 1 ){
                         if($ajax=='aapp'){
                              include 'jobseeker-activeapp.php';
                         ?>
-                             <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
+                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
                         <?php
                         }
                         if($ajax=='ljobs'){
                              include 'jobseeker-latestjobs.php';
                         ?>
-                             <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #l4').addClass('active');});</script>
+                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #l4').addClass('active');});</script>
                         <?php
                         }
                         ?>
@@ -435,6 +443,7 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     isClosed = true;
 }
+  
 
       
 </script>
