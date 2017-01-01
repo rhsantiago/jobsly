@@ -67,7 +67,7 @@ jQuery(document).ready(function ($) {
                     dataType: 'html',
 
                     success: function (html) {
-                        console.log(html);
+                       // console.log(html);
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
                         //$('#loading').hide();
@@ -76,9 +76,10 @@ jQuery(document).ready(function ($) {
     }); 
     
     $('#showjob-modal').on('show.bs.modal', function(e) {
-              
+             
                var $modal = $(this);
-              // $modal.find('#modaleditessay #successdivessaymodal').hide();  
+              // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
+               
                var jobid =  $(e.relatedTarget).data('jobid');               
      
         $.ajax({
@@ -88,14 +89,49 @@ jQuery(document).ready(function ($) {
             data: 'jobid=' + jobid,
                   
             success: function(data) {
-                $modal.find('.modalcontent').html(data);     
+                $modal.find('.modalcontent').html(data);
+                $modal.find('#successdivquickapply').hide();
+               // $('#quickapplydiv #successdivquickapply').hide();
                 $(function() {
                            $.material.init();
-                    });
+                });
+                $('#quickapply-form-modal').parsley({
+                       successClass: "has-success",
+                       errorClass: "has-error"
+                });
                
                     
             }
         });
+    });
+    
+    $(document).on('submit','#quickapply-form-modal',function(event){
+            event.preventDefault();
+            $('#successdivquickapply').hide();
+           
+            var esalary = $("#quickapply-form-modal #esalary").val();
+            var jobid = $("#quickapply-form-modal #jobid").val();
+            var userid = $("#quickapply-form-modal #userid").val();
+            var essay = $("#quickapply-form-modal #essay").val();
+        
+        
+           // var formdata = {password:password,email:email,usertype:usertype};
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "quickapply-submit.php",
+                data: "jobid=" + jobid + "&userid=" + userid + "&esalary=" + esalary + "&essay=" + essay,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){                    
+                    $('#successdivquickapply').fadeIn(1500);
+                                
+                },
+                error: function(data) {
+                     $( "#msgSubmit" ).removeClass('hidden');
+                }
+            });
+            return false;
     });
     
     

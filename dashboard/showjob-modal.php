@@ -2,8 +2,13 @@
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
         include 'Database.php';
-    }    
-if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+    }
+if(isset($_SESSION['user'])){
+   $user = $_SESSION['user'];
+   $password = $_SESSION['password'];
+   $userid = $_SESSION['userid'];
+}
+
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 
@@ -39,6 +44,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     $prefcourse = $row['prefcourse'];
     $languages = $row['languages'];
     $licenses = $row['licenses'];
+    $essay = $row['essay'];
     $wtravel = $row['wtravel'];
     if($wtravel=='on'){
        $wtravel = 'checked';
@@ -194,11 +200,63 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                 <div class="col-md-6">
                                                         <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>
-                                                <div class="col-md-6 actionicon">
-                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a>
+                                                <div class="col-md-6 actionicon ">
+                                                        
                                                         <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a>
-                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
+                                                        <a class="blog-post-share " href="#" datah4-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
                                                 </div>
+                                                <div class="col-md-12 jobad-bottomborder">
+                                                   
+                                                </div>
+                                          </div>
+                                          
+                                          <div class="quickapplydiv">
+                                              <form method="post" id="quickapply-form-modal" name="quickapply-form-modal" data-parsley-validate> 
+                                                  <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                  <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                                                  <div class="row-fluid">
+                                                        <div class="col-md-12">
+                                                            <div class="center">
+                                                                <h6 class="text-primary quickapplytitle"> Quick Apply</h6>
+                                                            </div>    
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                             <div id="esalarydiv" class="form-group label-floating">
+                                                                        <label class="control-label">Expected Salary</label>
+                                                                        <input type="text" id="esalary" class="form-control" value="" data-parsley-required data-parsley-type="number">
+                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            
+                                                        </div>
+                                                       
+                                                        <div class="col-md-12">
+                                                            <?php
+                                                                if(!empty($essay)){ 
+                                                            ?>
+                                                                <div id="essaydiv" class="form-group label-floating">
+                                                                    <label class="control-label"><?=$essay?></label>
+                                                                    <input class="form-control" id="essay" name="essay"  data-parsley-required>  
+                                                                </div>
+                                                             <?php
+                                                             }
+                                                             ?> 
+                                                            <button type="submit" class="btn btn-primary" >Apply Now</button>
+                                                            <div id="successdivquickapply" name="successdivquickapply" class="alert alert-success">
+                                               
+                                                                  <div class="alert-icon">
+                                                                    <i class="material-icons">check</i>
+                                                                  </div>
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                                  </button>
+                                                                  <b>Alert: </b> Congratulations! Your application was submitted.
+
+                                                            </div>
+                                                        </div>
+                                                          
+                                                  </div>
+                                              </form>  
                                           </div>      
                                           
                                               
@@ -226,7 +284,40 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                   </section>          
                            
 	      </div>
-	      <div class="modal-footer blog-post">
+	      <div class="modal-footer blog-post modal-gray">
               
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>
+<script>
+jQuery(document).ready(function ($) {
+
+   
+    $('#quickapply-form-modal #esalary').parsley().on('field:error', function() {
+           $('#quickapply-form-modal #esalarydiv').addClass('has-error');
+           $('#quickapply-form-modal #esalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#quickapply-form-modal #esalary').parsley().on('field:success', function() {
+            $('#quickapply-form-modal #esalarydiv').addClass('has-success');
+            $('#quickapply-form-modal #esalarydiv').find('span').remove()
+            $('#quickapply-form-modal #esalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    <?php
+      if(!empty($essay)){ 
+    ?>
+         $('#quickapply-form-modal #essay').parsley().on('field:error', function() {
+               $('#quickapply-form-modal #essaydiv').addClass('has-error');
+               $('#quickapply-form-modal #essaydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+        });    
+        $('#quickapply-form-modal #essay').parsley().on('field:success', function() {
+                $('#quickapply-form-modal #essaydiv').addClass('has-success');
+                $('#quickapply-form-modal #essaydiv').find('span').remove()
+                $('#quickapply-form-modal #essaydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+        });
+   
+    <?php
+      }
+    ?> 
+   
+    
+});       
+</script>

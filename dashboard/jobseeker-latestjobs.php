@@ -196,14 +196,14 @@ if(isset($_SESSION['user'])){
     </div><!--left-->
                      
     <div class="col-md-3"> <!--middle-->
-        <div class="section  section-landing">
+        <div class="section  section-landing ">
 	                 
 
 					<div class="features">
                         
                         <div class="row">                  
                          <div class="jobs">
-		                     <div class="col-md-12">
+		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
                                  for($index = 1; $index < $arrlength;) {
@@ -243,7 +243,7 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">
-                                                     <ul  class="list-inline leftmargin10">
+                                                     <ul  class="list-inline leftmargin10 jobad-bottomborder">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -268,10 +268,11 @@ if(isset($_SESSION['user'])){
                                           
                                         </div>
                                           <div class="row-fluid">
-                                                <div class="col-md-6">
-                                                    <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" data-toggle="modal" data-target="#viewdetails<?=$jobad->getjobid()?>">Read more</a></span>
+                                                <div class="col-md-6  ">
+                                                   <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
+                                                   -->
                                                 </div>
-                                                <div class="col-md-6 actionicon">
+                                                <div class="col-md-6 actionicon pull-right">
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
@@ -314,14 +315,14 @@ if(isset($_SESSION['user'])){
     </div><!--middle-->                
           
     <div class="col-md-3"> <!--right-->
-         <div class="section  section-landing">
+         <div class="section  section-landing ">
 	                 
 
 					<div class="features">
                         
                         <div class="row">                  
                          <div class="jobs">
-		                     <div class="col-md-12">
+		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
                                  for($index = 2; $index < $arrlength;) {
@@ -361,7 +362,7 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">
-                                                     <ul  class="list-inline leftmargin10">
+                                                     <ul  class="list-inline leftmargin10 jobad-bottomborder">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -386,10 +387,11 @@ if(isset($_SESSION['user'])){
                                           
                                         </div>
                                           <div class="row-fluid">
-                                                <div class="col-md-6">
-                                                    <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" data-toggle="modal" data-target="#viewdetails<?=$jobad->getjobid()?>">Read more</a></span>
+                                                <div class="col-md-6  ">
+                                                   <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
+                                                   -->
                                                 </div>
-                                                <div class="col-md-6 actionicon">
+                                                <div class="col-md-6 actionicon pull-right">
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
@@ -422,7 +424,7 @@ if(isset($_SESSION['user'])){
                                     <?php
                                      $index = $index+3;
                                 }
-                                 $next = $arrlength + 1;
+                                    $next = $arrlength +1;
                                     ?>
                                    
                             </div>
