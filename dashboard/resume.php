@@ -95,9 +95,9 @@ if($ok == 1 ){
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="main.php" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
+                                    <li><a href="main.php" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
+                                    <li><a href="main.php" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
@@ -226,10 +226,10 @@ if($ok == 1 ){
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
    <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>

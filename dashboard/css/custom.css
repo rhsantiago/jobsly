@@ -459,3 +459,7 @@ div .parsley-errors-list {
 .quickapplytitle {
     font-weight: 400 !important;
 }
+
+.text-primary {
+  color: #9c27b0;
+}

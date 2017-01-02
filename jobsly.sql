@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2016 at 01:27 PM
+-- Generation Time: Jan 02, 2017 at 06:37 PM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -158,6 +158,28 @@ INSERT INTO `jobads` (`id`, `userid`, `jobtitle`, `company`, `specialization`, `
 (115, 28, 'Project Manager', 'ASTI', 'Management', 5, 'full', 50000, 65000, '2017-02-08', '2016-12-28', 1, '<p>Project managers ensure that a project is completed on time and within budget, that the project''s objectives are met and that everyone else is doing their job properly. Projects are usually separate to usual day-to-day business activities and require a group of people to work together to achieve a set of specific objectives. Project managers oversee the project to ensure the desired result is achieved, the most efficient resources are used and the different interests involved are satisfied.\n</p><p>\n</p><p>Typical responsibilities include:\n</p><p>agreeing project objectives\n</p><p>representing the client''s or organisation''s interests\n</p><p>providing advice on the management of projects\n</p><p>organising the various professional people working on a project\n</p><p>carrying out risk assessment\n</p><p>making sure that all the aims of the project are met\n</p><p>making sure the quality standards are met\n</p><p>using IT systems to keep track of people and progress\n</p><p>recruiting specialists and sub-contractors\n</p><p>monitoring sub-contractors to ensure guidelines are maintained\n</p><p>overseeing the accounting, costing and billing\n</p><p>Depending on the project, responsibilities can cover all aspects of a project from the beginning stages through to completion. Project managers typically lead by example, so expect to be working at least the same hours as your staff. Wages for this role can be lucrative.\n</p><p>\n</p><p><b>Typical employers of project managers\n</b></p><p>\n</p><p>Construction companies\n</p><p>Architects\n</p><p>Software producers\n</p><p>Commercial retailers\n</p><p>Engineering firms\n</p><p>Manufacturers\n</p><p>Public sector organisations\n</p><p>Qualifications and training required\n</p><p>\n</p><p>You often need a significant body of experience in the appropriate field, although some graduate schemes start you off in an ''assistant PM'' role. You may also be required to be part of a professional or chartered body. Some professional bodies such as the Association of Project Management offer industry recognised qualifications â€“ these are not essential but would be advantageous. It is also likely that you will need a full, clean driving licence.\n</p><p>\n</p><p>As mentioned, some employers run graduate schemes and internship programmes in project management. While some specify degree subjects, others don''t. Entry requirements depend on which industry you want to work in. You can find such opportunities online at TARGETjobs, The Association for Project Management and through university careers services.\n</p><p>\n</p><p><b>Key skills for project managers\n</b></p><p>\n</p><p>Organisational skills\n</p><p>Analytical skills\n</p><p>Well developed interpersonal skills\n</p><p>Numeracy skills\n</p><p>Commercial awareness\n</p><p>Communication skills\n</p><p>Teamworking skills\n</p><p>Diplomacy\n</p><p>Ability to motivate people\n</p><p>Management and leadership skills</p>', 'Makati', 'Metro Manila', 'Philippines', 5, '', 'BS Management', 'English, Filipino', '', 'on', 'off', 'What''s a time you disagreed with a decision that was made at work?', '2016-12-28'),
 (116, 28, 'Scrum Master', 'Maersk Sealand', 'Management', 6, 'full', 60000, 80000, '2017-01-06', '2016-12-12', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28'),
 (117, 28, 'Senior Scrum Master', 'CHAMP Cargosystems Inc.', 'Management', 5, 'full', 80000, 100000, '2017-02-15', '2016-12-31', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobapplications`
+--
+
+CREATE TABLE `jobapplications` (
+  `id` int(10) NOT NULL,
+  `jobid` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `esalary` int(11) NOT NULL,
+  `essayanswer` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jobapplications`
+--
+
+INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`) VALUES
+(13, 86, 1, 3434, NULL),
+(14, 116, 1, 45000, NULL);
 
 -- --------------------------------------------------------
 
@@ -527,6 +549,26 @@ INSERT INTO `personalinformation` (`id`, `userid`, `lname`, `fname`, `mname`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `savedapplications`
+--
+
+CREATE TABLE `savedapplications` (
+  `id` int(10) NOT NULL,
+  `jobid` int(10) NOT NULL,
+  `userid` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `savedapplications`
+--
+
+INSERT INTO `savedapplications` (`id`, `jobid`, `userid`) VALUES
+(6, 86, 1),
+(7, 89, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `skilltags`
 --
 
@@ -633,6 +675,12 @@ ALTER TABLE `jobads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `jobapplications`
+--
+ALTER TABLE `jobapplications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jobessays`
 --
 ALTER TABLE `jobessays`
@@ -660,6 +708,12 @@ ALTER TABLE `jobtemplates`
 -- Indexes for table `personalinformation`
 --
 ALTER TABLE `personalinformation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `savedapplications`
+--
+ALTER TABLE `savedapplications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -700,6 +754,11 @@ ALTER TABLE `educationandtraining`
 ALTER TABLE `jobads`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 --
+-- AUTO_INCREMENT for table `jobapplications`
+--
+ALTER TABLE `jobapplications`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
 -- AUTO_INCREMENT for table `jobessays`
 --
 ALTER TABLE `jobessays`
@@ -724,6 +783,11 @@ ALTER TABLE `jobtemplates`
 --
 ALTER TABLE `personalinformation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `savedapplications`
+--
+ALTER TABLE `savedapplications`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `skilltags`
 --

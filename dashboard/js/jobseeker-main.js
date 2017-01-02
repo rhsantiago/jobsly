@@ -24,7 +24,31 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
-    $("a[href='#ljobs']").on('click', function (){  
+    $("a[href='#sapp']").on('click', function (){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'jobseeker-savedapp.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);                    
+                    
+                    $('#resumesb li').removeClass('active');
+                    $('#resumesb #s3').addClass('active');
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                            });
+                     
+                }
+               
+        });
+        return false;
+     });
+    
+    $("a[href='main.php?ajax=ljob']").on('click', function (){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -51,7 +75,7 @@ jQuery(document).ready(function ($) {
      $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             $('#loadmorejobs-form').submit();
-
+            
       }
     });
     
@@ -70,6 +94,7 @@ jQuery(document).ready(function ($) {
                        // console.log(html);
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
+                        $('[data-toggle="tooltip"]').tooltip();
                         //$('#loading').hide();
                     }
            });
@@ -80,17 +105,19 @@ jQuery(document).ready(function ($) {
                var $modal = $(this);
               // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
                
-               var jobid =  $(e.relatedTarget).data('jobid');               
+               var jobid =  $(e.relatedTarget).data('jobid');
+               var mode =  $(e.relatedTarget).data('mode');
      
         $.ajax({
             cache: false,
             type: 'POST',
             url: 'showjob-modal.php',
-            data: 'jobid=' + jobid,
+            data: 'jobid=' + jobid + "&mode=" + mode,
                   
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
                 $modal.find('#successdivquickapply').hide();
+                $modal.find('#warningdivquickapply').hide();
                // $('#quickapplydiv #successdivquickapply').hide();
                 $(function() {
                            $.material.init();
@@ -108,7 +135,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#quickapply-form-modal',function(event){
             event.preventDefault();
             $('#successdivquickapply').hide();
-           
+            $('#warningdivquickapply').hide();
             var esalary = $("#quickapply-form-modal #esalary").val();
             var jobid = $("#quickapply-form-modal #jobid").val();
             var userid = $("#quickapply-form-modal #userid").val();
@@ -122,9 +149,14 @@ jQuery(document).ready(function ($) {
                 url: "quickapply-submit.php",
                 data: "jobid=" + jobid + "&userid=" + userid + "&esalary=" + esalary + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
-                dataType: 'text',
-                success : function(data){                    
-                    $('#successdivquickapply').fadeIn(1500);
+                dataType: 'html',
+                success : function(data){
+                    console.log(data);
+                    if(data=='applied'){
+                        $('#warningdivquickapply').fadeIn(1500);
+                    }else{
+                        $('#successdivquickapply').fadeIn(1500);
+                    }
                                 
                 },
                 error: function(data) {
@@ -133,6 +165,35 @@ jQuery(document).ready(function ($) {
             });
             return false;
     });
+    
+   $('#savejob-modal').on('show.bs.modal', function(e) {
+        event.preventDefault();
+        event.stopPropagation();
+        var $modal = $(this);
+        var jobid =  $(e.relatedTarget).data('jobid');
+        var userid =  $(e.relatedTarget).data('userid');
+        
+        $.ajax({
+            type: "POST",
+             data: "jobid=" + jobid + "&userid=" + userid,
+            url: 'savedapplications-submit.php',
+            dataType: 'html',
+
+            success: function (html) {
+                     $modal.find('.modalcontent').html(html);
+                   
+                    $('#resumesb li').removeClass('active');
+                    $('#resumesb #s3').addClass('active');
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                            });
+                     
+                }
+               
+        });
+   
+     });
     
     
     

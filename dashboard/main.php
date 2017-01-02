@@ -52,6 +52,14 @@ if($ok == 1 ){
 	  </div>
 	</div>
     
+    <div class="modal fullscreen-modal fade" id="savejob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
+    
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -74,7 +82,7 @@ if($ok == 1 ){
                     </li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
+                                    <li><a href="#" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
                                     <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
                                     <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
                                     <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
@@ -121,15 +129,15 @@ if($ok == 1 ){
             <div class="container">
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
-                        <div class="row-fluid">
+                     
                             
                             <div id="resumesb" class="">                               
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
+                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tab" role="tablist">
                                     <li id="a1">
                                       
-                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="body">
+                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="#mynav">
                                             <i class="material-icons">visibility</i>
-                                            <span class="submenufont">Active Applications</span>
+                                            <span class="">Active Applications</span>
                                         </a>
                                         
                                     </li>
@@ -137,55 +145,27 @@ if($ok == 1 ){
                                                                      
                                         <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
                                             <i class="material-icons">drafts</i>
-                                            <span class="submenufont">Job Invitations</span>
+                                            <span class="">Job Invitations</span>
                                         </a>  
                                        
                                     </li>
-                                    <li id="e3">
-                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
+                                    <li id="s3">
+                                        <a href="#sapp"  role="tab" data-toggle="tab" data-container="#mynav">
                                             <i class="material-icons">favorite</i>
-                                            <span class="submenufont">Saved Applications</span>
+                                            <span class="">Saved Applications</span>
                                         </a>
                                     </li>
                                     <li id="l4">
-                                        <a href="#ljobs" role="tab" data-toggle="tab" data-container="body">
+                                        <a href="#ljob" role="tab" data-toggle="tab" data-container="#mynav">
                                             <i class="material-icons">whatshot</i>
-                                            <span class="submenufont">Latest Jobs</span>
+                                            <span class="">Latest Jobs</span>
                                         </a>                                        
                                     </li>
                                    
                                 </ul>
                             </div>
                             
-                            
-                          
-                     <!--
-                         <div id="submenusmall">   
-                            <div class="col-md-1 col-sm-1 col-xs-1"> </div>                     
-                         <div  class="col-md-1 col-sm-1 col-xs-1">                           
-                           <a class="submenu" onclick="openNav()" data-toggle="tooltip" data-placement="top" title="Open Main Menu" data-container="body"><i class="material-icons md-24">dashboard</i></a>
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1 clickme1">                           
-                           <a class="submenu" id="pinfo" data-toggle="tooltip" data-placement="top" title="Personal Information" data-container="body"><i class="material-icons md-24">fingerprint</i></a>
-                        </div> 
-                        <div class="col-md-1 col-sm-1 col-xs-1 clickme2">    
-                             <a class="submenu" id="workexp" data-toggle="tooltip" data-placement="top" title="Work Experience" data-container="body"><i class="material-icons md-24">work</i></a>   
-                        </div>
-                         <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Education and Training" data-container="body"><i class="material-icons md-24">school</i></a>   
-                        </div>    
-                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Skills" data-container="body"><i class="material-icons md-24">star</i></a>   
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Additional Information" data-container="body"><i class="material-icons md-24">add_box</i></a>   
-                        </div>
-                        <div class="col-md-1 col-sm-1 col-xs-1 ">    
-                             <a class="submenu" data-toggle="tooltip" data-placement="top" title="Preview Resume" data-container="body"><i class="material-icons md-24">pageview</i></a>   
-                        </div> 
-                            </div>
-                       -->
-	                 </div>
+                  
                 </div>
             </div>
             </div>
@@ -195,10 +175,10 @@ if($ok == 1 ){
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
    <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljobs"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
+                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
+                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
@@ -234,7 +214,15 @@ if($ok == 1 ){
                              <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
                         <?php
                         }
-                        if($ajax=='ljobs'){
+    
+                        if($ajax=='sapp'){
+                             include 'jobseeker-savedapp.php';
+                        ?>
+                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s3').addClass('active');});</script>
+                        <?php
+                        }                       
+    
+                        if($ajax=='ljob'){
                              include 'jobseeker-latestjobs.php';
                         ?>
                              <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #l4').addClass('active');});</script>

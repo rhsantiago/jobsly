@@ -89,7 +89,22 @@ if(isset($_SESSION['user'])){
                                  for($index = 0; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                
-                                
+                                     $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                     $database->bind(':userid', $userid);
+                                     $database->bind(':jobid', $jobad->getjobid());
+                                     $applyrow = $database->single();                                     
+                                     if(!empty($applyrow)){
+                                         $datamode = "view";
+                                     }else{
+                                         $datamode = "apply";
+                                     }
+                                     
+                                     $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
+                                     $database->bind(':userid', $userid);
+                                     $database->bind(':jobid', $jobad->getjobid());
+                                     $savedrow = $database->single();                                     
+                                     
+                                         
                              ?>
                                 
                                 <section class="blog-post">
@@ -103,7 +118,7 @@ if(isset($_SESSION['user'])){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -151,10 +166,32 @@ if(isset($_SESSION['user'])){
                                                 <div class="col-md-6  ">
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
-                                                </div>
+                                                </div>                                              
+                                              
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    
+                                                    if(empty($savedrow)){
+                                                    ?>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" data-placement="top" title="You already saved this job ad"><i class="material-icons text-success">favorite</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>
                                           </div>      
@@ -184,6 +221,7 @@ if(isset($_SESSION['user'])){
                                   </section>
                                     <?php
                                      $index = $index+3;
+                                     $datamode='';
                                 }
                                     ?>
                                    
@@ -209,6 +247,16 @@ if(isset($_SESSION['user'])){
                                  for($index = 1; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                
+                                     
+                                     $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                     $database->bind(':userid', $userid);
+                                     $database->bind(':jobid', $jobad->getjobid());
+                                     $applyrow = $database->single();                                     
+                                     if(!empty($applyrow)){
+                                         $datamode = "view";
+                                     }else{
+                                         $datamode = "apply";
+                                     }
                                 
                              ?>
                                 
@@ -223,7 +271,7 @@ if(isset($_SESSION['user'])){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -234,7 +282,7 @@ if(isset($_SESSION['user'])){
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div>    
                                           
                                         </div>
                                      
@@ -272,8 +320,19 @@ if(isset($_SESSION['user'])){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
+                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>
@@ -304,6 +363,7 @@ if(isset($_SESSION['user'])){
                                   </section>
                                     <?php
                                      $index = $index+3;
+                                     $datamode='';
                                 }
                                     ?>
                                    
@@ -328,7 +388,15 @@ if(isset($_SESSION['user'])){
                                  for($index = 2; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                
-                                
+                                     $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                     $database->bind(':userid', $userid);
+                                     $database->bind(':jobid', $jobad->getjobid());
+                                     $applyrow = $database->single();                                     
+                                     if(!empty($applyrow)){
+                                         $datamode = "view";
+                                     }else{
+                                         $datamode = "apply";
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -342,7 +410,7 @@ if(isset($_SESSION['user'])){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -391,8 +459,24 @@ if(isset($_SESSION['user'])){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
+                                                <?php
+                                                        $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                                        $database->bind(':userid', $userid);
+                                                        $database->bind(':jobid', $jobad->getjobid());
+                                                        $applyrow = $database->single();                                     
+                                                ?>
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>

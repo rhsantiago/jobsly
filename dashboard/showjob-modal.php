@@ -61,7 +61,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     $teaser = substr($teaser, 0, 200);
     $teaser = strip_tags($teaser, '<p>');
         
-    $mode = 'insert';
+ 
     $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 
@@ -74,7 +74,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     
 <div class="modal-header infocolor">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Job Ad</h4>
+	        <h4 class="modal-title" id="myModalLabel">Job Ad<?=$mode?></h4>
 	      </div>
               
 	      <div id="modaldeljobad" class="modal-body modal-gray">
@@ -209,7 +209,15 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                    
                                                 </div>
                                           </div>
+                                          <?php
+                                           $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                            $database->bind(':userid', $userid);
+                                            $database->bind(':jobid', $jobid);
+                                            $checkrow = $database->single();
                                           
+    
+                                          if(empty($checkrow)){
+                                          ?>      
                                           <div class="quickapplydiv">
                                               <form method="post" id="quickapply-form-modal" name="quickapply-form-modal" data-parsley-validate> 
                                                   <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
@@ -234,8 +242,9 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                             <?php
                                                                 if(!empty($essay)){ 
                                                             ?>
-                                                                <div id="essaydiv" class="form-group label-floating">
-                                                                    <label class="control-label"><?=$essay?></label>
+                                                                <p>The employer requires you to answer the following question: <b><?=$essay?></b></p>
+                                                                <div id="essaydiv" class="form-group label-floating">   
+                                                                    <label class="control-label">Essay Answer</label>
                                                                     <input class="form-control" id="essay" name="essay"  data-parsley-required>  
                                                                 </div>
                                                              <?php
@@ -253,12 +262,49 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                                   <b>Alert: </b> Congratulations! Your application was submitted.
 
                                                             </div>
+                                                            <div id="warningdivquickapply" name="warningdivquickapply" class="alert alert-warning">
+                                               
+                                                                  <div class="alert-icon">
+                                                                    <i class="material-icons">check</i>
+                                                                  </div>
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                                  </button>
+                                                                  <b>Alert: </b> You already applied for this job.
+
+                                                            </div>
+                                                            
+                                                            
+                                                            
                                                         </div>
                                                           
                                                   </div>
                                               </form>  
                                           </div>      
-                                          
+                                          <?php
+                                          }
+                                         if(!empty($checkrow)){
+                                          ?>
+                                          <div class="quickapplydiv2">
+                                                <div class="row-fluid">
+                                                        <div class="col-md-12">
+                                                            <div id="warningdivquickapply2" name="warningdivquickapply" class="alert alert-warning">
+                                               
+                                                                  <div class="alert-icon">
+                                                                    <i class="material-icons">check</i>
+                                                                  </div>
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                                  </button>
+                                                                  <b>Alert: </b> You already applied for this job.
+
+                                                            </div>
+                                                    </div>    
+                                              </div>    
+                                          </div>      
+                                          <?php
+                                          }
+                                          ?>                    
                                               
                                          
                                       </div>

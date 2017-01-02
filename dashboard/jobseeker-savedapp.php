@@ -29,48 +29,8 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Active Applications</h2>
+                             <h2 class="title">Saved Applications</h2>
        </div>
-        
-        <div class="col-md-11 col-md-offset-1">
-                     
-                            
-                                                       
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tab" role="tablist">
-                                    <li id="a1">
-                                      
-                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">visibility</i>
-                                            <span class="">Active Applications</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="w2">
-                                                                     
-                                        <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">drafts</i>
-                                            <span class="">Job Invitations</span>
-                                        </a>  
-                                       
-                                    </li>
-                                    <li id="s3">
-                                        <a href="#sapp"  role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">favorite</i>
-                                            <span class="">Saved Applications</span>
-                                        </a>
-                                    </li>
-                                    <li id="l4">
-                                        <a href="#ljob" role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">whatshot</i>
-                                            <span class="">Latest Jobs</span>
-                                        </a>                                        
-                                    </li>
-                                   
-                                </ul>
-                            
-                            
-                  
-                </div>
      </div>
     <div class="col-md-offset-1 col-md-7">
                        
@@ -83,7 +43,7 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded from jobads,jobapplications where jobapplications.userid = :userid and jobads.id = jobapplications.jobid order by dateadded desc');
+                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded from jobads,savedapplications where savedapplications.userid = :userid and jobads.id = savedapplications.jobid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();

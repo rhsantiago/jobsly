@@ -147,8 +147,24 @@ if(!empty($rows)){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
+                                                <?php
+                                                        $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                                        $database->bind(':userid', $userid);
+                                                        $database->bind(':jobid', $jobad->getjobid());
+                                                        $applyrow = $database->single();                                     
+                                                ?>
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>
@@ -267,8 +283,24 @@ if(!empty($rows)){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
+                                                <?php
+                                                        $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                                        $database->bind(':userid', $userid);
+                                                        $database->bind(':jobid', $jobad->getjobid());
+                                                        $applyrow = $database->single();                                     
+                                                ?>
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>
@@ -386,8 +418,24 @@ if(!empty($rows)){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
+                                                <?php
+                                                        $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                                        $database->bind(':userid', $userid);
+                                                        $database->bind(':jobid', $jobad->getjobid());
+                                                        $applyrow = $database->single();                                     
+                                                ?>
                                                 <div class="col-md-6 actionicon pull-right">
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
                                                 </div>

@@ -22,15 +22,16 @@ if(isset($_SESSION['user'])){
 }
 ?>
 
-
-     
+<div class="row"> 
+<div class="col-md-12 center">            
+    <div class="adstop"><img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" alt="user">   </div>
+</div> 
+<div class="col-md-12">  
+     <h2 class="title">Skills</h2>
+</div>     
+</div>
                     <div class="col-md-offset-1 col-md-7">
-                        <div class="col-md-12">            
-                       <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">         
-                        -->
-                             <h2 class="title">Skills</h2>
-                        </div>
+                        
                        
                 <div class="section  section-landing">
 	         
