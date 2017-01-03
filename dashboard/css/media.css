@@ -1,6 +1,6 @@
 @media screen and (min-width: 300px) {   
          .landing-page .header {
-          height: 30vh !important;
+          height: 22vh !important;
           min-height: 20vh;
         }   
         
@@ -24,19 +24,21 @@
             display:inline-block;
         }
     
-    .timeline {
-        display: none;
-    }
-        
+        .timeline {
+            display: none;
+        }
+    
+        .section {
+          padding: 10px 0;
+        }
+    
+      
         
     
 }
 
 @media screen and (min-width: 370px) {   
-         .landing-page .header {
-              height: 25vh !important;
-              min-height: 20vh;
-       }
+       
     
         .margin-top-title {
             margin-top: -90px !important;   
@@ -47,10 +49,7 @@
 }
 
 @media screen and (min-width: 400px) {   
-         .landing-page .header {
-              height: 23vh !important;
-              min-height: 20vh;
-       }
+     
     
         .margin-top-title {
             margin-top: -110px !important;   
@@ -70,11 +69,7 @@
 }
 
 @media screen and (min-width: 500px) {   
-         .landing-page .header {
-              height: 54vh !important;
-              min-height: 10vh;
-       }
-    
+          
         .margin-top-title {
             margin-top: -5px !important;   
         }
@@ -91,9 +86,6 @@
 
 @media screen and (min-width: 700px) {        
     
-       .landing-page .header {
-          height: 46vh !important;   
-       }
         .margin-top-title {
             margin-top: -25px !important;   
         }
@@ -105,9 +97,7 @@
 }
 
 @media screen and (min-width: 800px) {   
-        .landing-page .header {
-          height: 30vh !important;   
-       }
+       
     
         .margin-top-title {
             margin-top: -130px !important;   
@@ -128,7 +118,7 @@
     and (min-device-height: 768px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
         .landing-page .header {
-          height: 34vh !important;          
+        /*  height: 35vh !important;       */   
         }
         
         .material-icons.md-24 {
@@ -136,13 +126,13 @@
         }
     
         .margin-top-title {
-            margin-top: -90px !important;   
+            margin-top: -50px !important; 
         }
         .submenufont{          
             display: block;
         }
         h2.title {
-          margin-bottom: -150px;
+       /*   margin-bottom: -50px; */
           font-size: 36px;    
         }
         
@@ -165,7 +155,12 @@
         .jobad-titletopmargin {
             margin-top: -20px !important;
         }
-            
+        
+        .section {
+          padding: 10px 0;
+        }
+      
+                  
 }
 
 
@@ -174,17 +169,12 @@
     and (min-device-height: 864px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
       
-      .landing-page .header {
-          height: 32vh !important;   
-       }
     
         .margin-top-title {
             margin-top: -110px !important;   
         }
     
-        .section {
-          padding: 10px 0;
-        }
+      
       
 }
 
@@ -192,9 +182,9 @@
     and (min-device-width: 1920px) 
     and (min-device-height: 1080px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
-       .landing-page .header {
-          height: 24vh !important;   
-       }
+        .landing-page .header {
+       /*   height: 26vh !important;          */
+        }
     
         .margin-top-title {
             margin-top: -160px !important;   
@@ -203,8 +193,5 @@
         .material-icons.md-24 {
             font-size: 36px !important; 
         }
-    
-        .section {
-          padding: 10px 0;
-        }
+   
 }

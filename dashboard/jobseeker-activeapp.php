@@ -22,62 +22,23 @@ if(isset($_SESSION['user'])){
     
     <div class="row">
     <div class="col-md-12 center">            
-                    <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
-                     </div>    
-                           
+       <div class="adstop"> <img src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+                                 alt="user">   </div>    
      </div>
-   
+   </div>
+        
+   <div class="row">
     <div class="col-md-12">
                              <h2 class="title">Active Applications</h2>
        </div>
         
-        <div class="col-md-11 col-md-offset-1">
-                     
-                            
-                                                       
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tab" role="tablist">
-                                    <li id="a1">
-                                      
-                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">visibility</i>
-                                            <span class="">Active Applications</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="w2">
-                                                                     
-                                        <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">drafts</i>
-                                            <span class="">Job Invitations</span>
-                                        </a>  
-                                       
-                                    </li>
-                                    <li id="s3">
-                                        <a href="#sapp"  role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">favorite</i>
-                                            <span class="">Saved Applications</span>
-                                        </a>
-                                    </li>
-                                    <li id="l4">
-                                        <a href="#ljob" role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">whatshot</i>
-                                            <span class="">Latest Jobs</span>
-                                        </a>                                        
-                                    </li>
-                                   
-                                </ul>
-                            
-                            
-                  
-                </div>
      </div>
     <div class="col-md-offset-1 col-md-7">
                        
               <div class="section  section-landing">
 	                 
 
-					<div class="features">
+					<div class="features"> 
 						<div class="row">
                                                      
                             <div class="col-md-12">
@@ -194,7 +155,7 @@ if(isset($_SESSION['user'])){
                             </div>
 		                     
 		                </div>
-					</div>
+					</div>        <!--   features -->
 	            </div>
                         
                         

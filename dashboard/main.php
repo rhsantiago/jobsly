@@ -130,7 +130,7 @@ if($ok == 1 ){
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                      
-                            
+                     <!--       
                             <div id="resumesb" class="">                               
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tab" role="tablist">
                                     <li id="a1">
@@ -164,7 +164,7 @@ if($ok == 1 ){
                                    
                                 </ul>
                             </div>
-                            
+                         -->   
                   
                 </div>
             </div>
@@ -432,9 +432,11 @@ function closeNav() {
     isClosed = true;
 }
   
-
-     openNav(); 
+    if(window.screen.width > 768){    
+        openNav();
+    }
 </script>
+
 
 </html>
 <?php

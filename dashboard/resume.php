@@ -141,10 +141,7 @@ if($ok == 1 ){
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
-                            
-                            <div id="resumesb" class="">       
-                       
-                            
+                     <!-- 
                          <div id="resumesb" class="">                         
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
                                     <li id="p1" class="active">
@@ -189,9 +186,9 @@ if($ok == 1 ){
                                     </li>
                                 </ul>
                                 </div>  
-                            
+                             -->  
                            
-                            </div>
+                          
                         </div>
                         
                 </div>
