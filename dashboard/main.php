@@ -178,7 +178,7 @@ if($ok == 1 ){
                                     <li><a href="#aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
                                     <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
                                     <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
@@ -433,7 +433,7 @@ function closeNav() {
 }
   
 
-      
+     openNav(); 
 </script>
 
 </html>

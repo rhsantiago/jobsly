@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     
-     $("a[href='#aapp']").on('click', function (){  
+     $("a[href='#aapp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
-    $("a[href='#sapp']").on('click', function (){  
+    $("a[href='#sapp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
-    $("a[href='main.php?ajax=ljob']").on('click', function (){  
+    $("a[href='#ljob']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({

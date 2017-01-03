@@ -87,7 +87,7 @@ jQuery(document).ready(function ($) {
     });
       */
    // $('#pinfo').click(function() {   
-    $("a[href='#pinfo'], a[href='resume.php?ajax=pinfo']").on('click', function (){  
+    $("a[href='#pinfo'], a[href='resume.php?ajax=pinfo']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -120,7 +120,7 @@ jQuery(document).ready(function ($) {
     });
     
     //$('#workexp').on('click',function() {  
-      $("a[href='#workexp'], a[href='resume.php?ajax=workexp']").on('click',function () {  
+      $("a[href='#workexp'], a[href='resume.php?ajax=workexp']").on('click',function (event) {  
            event.preventDefault()
            event.stopPropagation();
            
@@ -173,7 +173,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function() {  
+    $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function(event) {  
         event.preventDefault()
            event.stopPropagation();
         $.ajax({
@@ -233,7 +233,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#skills']").on('click', function() {  
+    $("a[href='#skills']").on('click', function(event) {  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -270,7 +270,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#ainfo']").on('click',function() {  
+    $("a[href='#ainfo']").on('click',function(event) {  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -301,7 +301,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#pres']").on('click',function() {  
+    $("a[href='#pres']").on('click',function(event) {  
         $.ajax({
                     url: 'previewresume.php',
                     dataType: 'html',

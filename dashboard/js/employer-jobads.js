@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     
-    $("a[href='#ajads']").on('click', function (){  
+    $("a[href='#ajads']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
     });
     
     
-    $("a[href='#pjobad']").on('click', function (){  
+    $("a[href='#pjobad']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -69,7 +69,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#jtemp']").on('click', function (){  
+    $("a[href='#jtemp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -92,7 +92,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#essays']").on('click', function (){  
+    $("a[href='#essays']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -298,7 +298,7 @@ jQuery(document).ready(function ($) {
     });
     
     
-    $("#resume-main-body").on('click','#step-2',function() {
+    $("#resume-main-body").on('click','#step-2',function(event) {
         event.preventDefault(); 
         var jobid = $(this).data('jobid');
         
@@ -355,7 +355,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#resume-main-body").on('click','#step-3',function() {
+    $("#resume-main-body").on('click','#step-3',function(event) {
         event.preventDefault(); 
         var jobid = $(this).data('jobid');
         if(jobid > 0){
@@ -399,7 +399,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#resume-main-body").on('click','#step-4',function() {
+    $("#resume-main-body").on('click','#step-4',function(event) {
         event.preventDefault(); 
         var jobid = $(this).data('jobid');
          if(jobid > 0){
@@ -636,7 +636,7 @@ jQuery(document).ready(function ($) {
             return false;
     });
     
-    $("#resume-main-body").on('click','#previewjobtemplate',function() {
+    $("#resume-main-body").on('click','#previewjobtemplate',function(event) {
         event.preventDefault(); 
         var templateid = $(this).data('templateid');
         if(templateid > 0){
@@ -658,7 +658,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#resume-main-body").on('click','#step-2-template',function() {
+    $("#resume-main-body").on('click','#step-2-template',function(event) {
         event.preventDefault(); 
         var templateid = $(this).data('templateid');
         
@@ -715,7 +715,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#resume-main-body").on('click','#step-3-template',function() {
+    $("#resume-main-body").on('click','#step-3-template',function(event) {
         event.preventDefault(); 
         var templateid = $(this).data('templateid');
         if(templateid > 0){
@@ -749,7 +749,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#resume-main-body").on('click','#step-4-template',function() {
+    $("#resume-main-body").on('click','#step-4-template',function(event) {
         event.preventDefault(); 
         var templateid = $(this).data('templateid');
         if(templateid > 0){
@@ -848,7 +848,7 @@ jQuery(document).ready(function ($) {
         });
     });
     
-     $("#resume-main-body").on('click','#editjob',function() {
+     $("#resume-main-body").on('click','#editjob',function(event) {
         event.preventDefault(); 
         var jobid = $(this).data('jobid');
         
