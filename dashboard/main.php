@@ -432,9 +432,9 @@ function closeNav() {
     isClosed = true;
 }
   
-    if(window.screen.width > 768){    
-        openNav();
-    }
+   // if(window.screen.width > 768){    
+        //openNav();
+   // }
 </script>
 
 
