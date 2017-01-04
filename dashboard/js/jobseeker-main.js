@@ -71,14 +71,16 @@ jQuery(document).ready(function ($) {
         });
         return false;
      });
-    
+   
      $(window).scroll(function() {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+              
+     // if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+         if (($(document).height() - $(window).height() - $(window).scrollTop()) < 0.5 ) {
             $('#loadmorejobs-form').submit();
             
       }
     });
-    
+   
      $(document).on('submit','#loadmorejobs-form',function(event){
              
             event.preventDefault();                  
@@ -99,7 +101,7 @@ jQuery(document).ready(function ($) {
                     }
            });
     }); 
-    
+     
     $('#showjob-modal').on('show.bs.modal', function(e) {
              
                var $modal = $(this);
