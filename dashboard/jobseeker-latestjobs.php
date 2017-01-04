@@ -69,7 +69,7 @@ if(isset($_SESSION['user'])){
      </div>
   
     <div class="col-md-12">
-               <!--              <h2 class="title">Latest Jobs</h2>  -->
+                 <h2 class="title">Latest Jobs</h2>  
        </div>
      </div>
     <div class="col-md-1">

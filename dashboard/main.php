@@ -402,8 +402,8 @@ if($ok == 1 ){
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/
+	<script src="js/nouislider.min.js" type="text/javascript"></script>  -->
 
 	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
 	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
@@ -432,9 +432,9 @@ function closeNav() {
     isClosed = true;
 }
   
-   // if(window.screen.width > 768){    
-        //openNav();
-   // }
+    if(window.screen.width > 768){    
+        openNav();
+    }
 </script>
 
 

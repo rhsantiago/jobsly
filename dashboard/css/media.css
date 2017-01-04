@@ -12,7 +12,8 @@
         }
         
         h2.title {
-          margin-bottom: -150px;
+            margin-top: 50px;
+          margin-bottom: -10px;
           font-size: 18px;    
         }
     
@@ -118,7 +119,7 @@
     and (min-device-height: 768px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
         .landing-page .header {
-        /*  height: 35vh !important;       */   
+            height: 30vh !important;        
         }
         
         .material-icons.md-24 {
@@ -126,14 +127,14 @@
         }
     
         .margin-top-title {
-            margin-top: -50px !important; 
+            margin-top: -10px !important; 
         }
         .submenufont{          
             display: block;
         }
         h2.title {
-       /*   margin-bottom: -50px; */
-          font-size: 36px;    
+          margin-bottom: -10px; 
+          font-size: 32px;    
         }
         
         .nav-pills > li i {  
@@ -158,6 +159,10 @@
         
         .section {
           padding: 10px 0;
+        }
+        
+        .adstop {
+            margin-top: 10px !important;
         }
       
                   

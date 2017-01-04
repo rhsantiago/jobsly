@@ -341,7 +341,7 @@ div .parsley-errors-list {
 
 /*end post job steps*/
 .adstop {
-    margin-top: 10px !important;
+    margin-top: -60px !important;
 }
 
 .jobad-meta {
@@ -462,8 +462,13 @@ div .parsley-errors-list {
 
 .quickapplytitle {
     font-weight: 400 !important;
+    margin-top: 10px;
 }
 
 .text-primary {
   color: #9c27b0;
+}
+
+.section{
+    margin-top: -80px !important;
 }
