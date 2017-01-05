@@ -11,6 +11,12 @@ jQuery(document).ready(function ($) {
         },
        
     });
+    
+    $("#add").on('click', function (event){  
+    $('html, body').animate({
+        scrollTop: $("#tabtitle").offset().top
+        }, 2000);
+    });
         
    /* 
     $('#wexp-form').parsley({

@@ -189,32 +189,32 @@ jQuery(document).ready(function ($) {
            
           <div class="timeline-badge infocolor"><i class="material-icons">work</i></div>
           <div class="timeline-panel timelinerounded">
-            <div class="timeline-heading  timelinebodybottomborder infocolor">
+            <div class="timeline-heading  timelinebodybottomborder">
                 <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">      
-                    <li class=""><h4 class="timelinepos whitetext margin10 "><?=$row['position']?></h4></li>
+                    <li class=""><h4 class="timelinepos text-info resumecard margin10 "><?=$row['position']?></h4></li>
                    
                     <li class="<?=$datefloat?> margin10"><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?></li>
-                    
-                 </ul>               
-            </div>
-              <div class="">
+                 </ul>
+                <div class="margin-10 text-muted">
               <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
                     <li><h7 class=""><i><?=$row['company']?></i></h7></li>
                     <li></li>
                     
                  </ul>
-              </div>
+              </div>         
+            </div>
+            
             <div class="timeline-body collapse-group collapse jobdescdiv" id="viewdetails<?=$row['id']?>"> 
                 
              <ul class="list-inline">
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info material-icons.md-24" >business</i><i id='industryli'> <?=$row['industry']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info material-icons.md-24 jobadheadericon" >business</i><i id='industryli'> <?=$row['industry']?></i>
                      </h6>
                  </li>
                   <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
+                      <h6 id="vertical-align" class="text-muted jobadheader">
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$startdate?> - <?=$enddate?>
                       </h6>
                   </li>
                   
@@ -249,33 +249,34 @@ jQuery(document).ready(function ($) {
         ?>    
                 <div class="timeline-badge success"><i class="material-icons">school</i></div>
           <div class="timeline-panel timelinerounded">
-            <div class="timeline-heading timelinebodybottomborder successcolor">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                    <li><h4 class="timelinepos whitetext margin10"><?=$row['pgrad1course']?></h4></li>
+                    <li><h4 class="timelinepos text-success resumecard margin10"><?=$row['pgrad1course']?></h4></li>
                     <li class="<?=$datefloat?> margin10"><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></li>
                    
-                 </ul>              
-            </div>
-              <div class="">
+                 </ul> 
+                <div class="margin-10 text-muted">
               <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
                     <li><h7><i><?=$row['pgrad1uni']?></i></h7></li>                  
                  </ul>
               </div>
+            </div>
+              
             <div class="timeline-body collapse-group collapse jobdescdiv" id="pgrad1viewdetails<?=$row['id']?>"> 
                  <ul class="list-inline">
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['pgrad1add']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info md-8 jobadheadericon" >business</i><i id='industryli'> <?=$row['pgrad1add']?></i>
                      </h6>
                  </li>
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >grade</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info md-8 jobadheadericon" >grade</i><i id='industryli'> <?=$row['pgrad1gpa']?></i>
                      </h6>
                  </li>
                   <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$pgrad1graddate?>
+                      <h6 id="vertical-align" class="text-muted jobadheader">
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$pgrad1graddate?>
                       </h6>
                   </li>
                 
@@ -310,33 +311,33 @@ jQuery(document).ready(function ($) {
         ?>
                <div class="timeline-badge success"><i class="material-icons">school</i></div>
           <div class="timeline-panel timelinerounded">
-            <div class="timeline-heading timelinebodybottomborder successcolor">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                    <li><h4 class="timelinepos whitetext margin10"><?=$row['colmajor']?></h4></li>
+                    <li><h4 class="timelinepos text-success resumecard margin10"><?=$row['colmajor']?></h4></li>
                     <li class="<?=$datefloat?> margin10"><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></li>
                 </ul>
-                        
-            </div>
-              <div class="">
+                 <div class="margin-10 text-muted">
               <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
                     <li><h7><i><?=$row['coluni']?></i></h7> </li>             
                  </ul>
-              </div>
+              </div>       
+            </div>
+              
             <div class="timeline-body collapse-group collapse jobdescdiv" id="colviewdetails<?=$row['id']?>"> 
                 <ul class="list-inline">
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['coladd']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info md-8 jobadheadericon" >business</i><i id='industryli'> <?=$row['coladd']?></i>
                      </h6>
                  </li>
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >grade</i><i id='industryli'> <?=$row['colgpa']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info md-8 jobadheadericon" >grade</i><i id='industryli'> <?=$row['colgpa']?></i>
                      </h6>
                  </li>
                   <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$colgraddate?>
+                      <h6 id="vertical-align" class="text-muted jobadheader">
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$colgraddate?>
                       </h6>
                   </li>
                 
@@ -372,28 +373,29 @@ jQuery(document).ready(function ($) {
                             
              <div class="timeline-badge success"><i class="material-icons">school</i></div>
           <div class="timeline-panel timelinerounded">
-            <div class="timeline-heading timelinebodybottomborder successcolor">
+            <div class="timeline-heading timelinebodybottomborder">
                 <ul class="list-inline <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                    <li><h4 class="timelinepos whitetext margin10">High School</h4></li>
+                    <li><h4 class="timelinepos text-success resumecard margin10">High School</h4></li>
                     <li class="<?=$datefloat?> margin10"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
                     <li></li>
-                 </ul>             
+                 </ul> 
+                <div class="margin-10 text-muted">
+                  <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
+                        <li><h7><i><?=$row['hsschool']?></i></h7> </li>             
+                     </ul>
+                  </div>
             </div>
-               <div class="">
-              <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                    <li><h7><i><?=$row['hsschool']?></i></h7> </li>             
-                 </ul>
-              </div>
+               
             <div class="timeline-body collapse-group collapse jobdescdiv" id="hsviewdetails<?=$row['id']?>"> 
                <ul class="list-inline">
                  <li>
-                     <h6 id="vertical-align" class="text-muted">
-                        <i class="material-icons text-info md-8" >business</i><i id='industryli'> <?=$row['hsadd']?></i>
+                     <h6 id="vertical-align" class="text-muted jobadheader">
+                        <i class="material-icons text-info md-8 jobadheadericon" >business</i><i id='industryli'> <?=$row['hsadd']?></i>
                      </h6>
                  </li>
                   <li>
-                      <h6 id="vertical-align" class="text-muted">
-                         <i class="material-icons text-info">date_range</i> <?=$hsgraddate?>
+                      <h6 id="vertical-align" class="text-muted jobadheader">
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$hsgraddate?>
                       </h6>
                   </li>
                 

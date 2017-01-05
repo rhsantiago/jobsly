@@ -59,9 +59,81 @@ $database = new Database();
                                                         $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
                                                         $edate = explode("-", $row['enddate']);
                                                         $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                                        $jobdesc = $row['jobdescription'];
+                                                        $teaser = strip_tags($jobdesc, '<p>');
+                                                        $teaser = substr($teaser, 0, 200);
+                                                        $teaser = strip_tags($teaser, '<p>');
 ?> 
-     
-                                                        
+                               <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div class="jobad-meta jobad-bottomborder">
+                                     
+                                          <ul  class="list-inline ">
+                                                                                           
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">business</i> &nbsp;<?=$row['industry']?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$startdate?> - <?=$enddate?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$row['msalary']?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                        </ul>
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                            
+                                            <div class="row-fluid">
+                                                    
+                                                <div class="col-md-6  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$row['position']?></h2></a>
+                                                        <div class="companypos">
+                                                            <h6 class="text-muted"><i><?=$row['company']?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row-fluid">
+                                                 <div class="col-md-12">  
+                                                      <?=$teaser?>...<br>
+                                                 </div>
+                                                <div class="col-md-12">   
+                                               
+                                                    <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">
+                                                  <?=$jobdesc?>
+                                                   >     
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                               <div class="col-md-6">
+                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">Read more</a>
+                                                </div>
+                                                <div class="col-md-6 actionicon">                                                   
+                                                        <span class="jobcardbuttons"><a href='#workexpmodal' id="editworkexp" title="Edit" data-mode="update" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a></span>
+                                                        <span class="jobcardbuttons"><a href='#workexpmodal' id="delworkexp" title="Delete" data-mode="del" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">delete</i></a></span>
+                                                </div>
+                                          </div> 
+                                          
+                                          
+                                        </div>                                  
+                                         
+                                      </div>
+                                        
+                                        
+                                    </div>
+                                  </section>
+                                                       <!-- 
                                                         <div class="card">                                            
                                                              <div class="content">                           
                                                                             <div class="row">
@@ -110,7 +182,7 @@ $database = new Database();
                                                                       
                                                              </div>
                                                     </div>
-                                                                   
+                                               -->                    
                                                         
                                              <?php          
                                                     }
