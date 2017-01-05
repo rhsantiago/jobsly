@@ -102,15 +102,15 @@ if(isset($_SESSION['user'])){
                                             
                                             <div class="row-fluid">
                                                     
-                                                <div class="col-md-11  jobad-titletopmargin">
+                                                <div class="col-md-6  jobad-titletopmargin">
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
                                                 </div>
-                                                <div class="col-md-1">
+                                                <div class="col-md-6">
                                                     
-                                                    <div class="companylogo"> 
+                                                    <div class="companylogo" align='right'> 
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>

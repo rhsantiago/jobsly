@@ -92,7 +92,7 @@ if($ok == 1 ){
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
                                     <li><a href="main.php" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
@@ -100,7 +100,7 @@ if($ok == 1 ){
                                     <li><a href="main.php" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
@@ -199,7 +199,7 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
                                     <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
@@ -207,7 +207,7 @@ if($ok == 1 ){
                                     <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
