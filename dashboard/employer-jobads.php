@@ -186,8 +186,8 @@ if($ok == 1 ){
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>&nbsp;Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>
-                                    <li><a href="#" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Posts</a></li> 
+                                    <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li> 
+                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                    
                                     <li><a href="#" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>

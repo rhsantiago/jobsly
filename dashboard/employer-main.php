@@ -10,6 +10,10 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
+    if(isset($_GET['ajax'])){ $ajax = $_GET['ajax']; }
+     if(empty($ajax)){
+         $ajax = 'ajposts';
+     }
 ?>
 <!doctype html>
 <html lang="en">
@@ -111,7 +115,8 @@ if($ok == 1 ){
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
                             
-                            <div id="resumesb" class="">                               
+                            <div id="resumesb" class="">  
+                                <!--
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
                                     <li id="a1">
                                       
@@ -149,6 +154,7 @@ if($ok == 1 ){
                                     </li>
                                    
                                 </ul>
+                                -->
                             </div>
                             
                           
@@ -162,8 +168,8 @@ if($ok == 1 ){
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>&nbsp;Home<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>
-                                    <li><a href="#" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Posts</a></li> 
+                                    <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
+                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                     
                                     <li><a href="#" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
@@ -192,9 +198,14 @@ if($ok == 1 ){
                 <div class="row-fluid">   <!-- with fluid for full width -->
                     
                     <div id="resume-main-body">                       
-                <?php
-                  include 'pinfo-form.php';      
-                ?>
+    <?php
+        if($ajax=='ajposts'){
+             include 'employer-activejobposts.php';
+    ?>
+                        <script>$(document).ready(function ($) {$('#resume-main-body #successdivdeljob').hide();</script>
+    <?php
+        }   
+    ?>
                       
                 </div> <!--resume main body-->        
                 <!--
@@ -377,7 +388,7 @@ if($ok == 1 ){
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/employer-jobads.js" type="text/javascript"></script>
+    <script src="js/employer-main.js" type="text/javascript"></script>
     
      
     <script>
@@ -399,7 +410,9 @@ function closeNav() {
     isClosed = true;
 }
 
-      
+      if(window.screen.width > 768){    
+        openNav();
+      }
 </script>
 
 </html>

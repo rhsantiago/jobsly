@@ -39,7 +39,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">My Job Ads</h2>
+                             <h2 class="title">Active Job Ads</h2>
        </div>
      </div>
     <div class="col-md-offset-1 col-md-7">
@@ -53,7 +53,7 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
+                                $database->query('SELECT * from jobads where userid = :userid and isactive=1 order by dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
@@ -152,7 +152,7 @@ if(isset($_SESSION['user'])){
                                         <div class="col-md-12">
                                 
                                                   
-                                             <div id="successdivdeljob" class="alert alert-success">
+                                             <div id="successdivdeljob" name="successdivdeljob" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
@@ -195,8 +195,8 @@ if(isset($_SESSION['user'])){
             
 
 <script>
-jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
+$(document).ready(function ($) {
+  $('#successdivdeljob').hide();
     /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');
