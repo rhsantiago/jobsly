@@ -119,7 +119,7 @@
     and (min-device-height: 768px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
         .landing-page .header {
-            height: 30vh !important;        
+            height: 27vh !important;        
         }
         
         .material-icons.md-24 {
@@ -188,7 +188,7 @@
     and (min-device-height: 1080px) 
     and (-webkit-min-device-pixel-ratio: 1) { 
         .landing-page .header {
-       /*   height: 26vh !important;          */
+          height: 22vh !important;   
         }
     
         .margin-top-title {

@@ -10,7 +10,20 @@ $hsschool = "";
 $hsadd = "";
 $hsgraddate = "";
 $hsawards ="";
-
+$coluni="";
+$coladd="";
+$colgpa="";
+$colgraddate="";
+$colmajor="";    
+$smcol="";   
+$pgrad1uni ="";    
+$pgrad1add ="";    
+$pgrad1gpa ="";    
+$pgrad1graddate  ="";   
+$pgrad1course ="";    
+$smpgrad1=""; 
+$smothers ="";    
+    
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];

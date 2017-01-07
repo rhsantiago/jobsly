@@ -43,6 +43,14 @@ if($ok == 1 ){
 </head>
 
 <body class="landing-page">
+     <!-- Modal -->
+	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
     
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
@@ -170,7 +178,7 @@ if($ok == 1 ){
             <ul class="dropdown-menu">
                                     <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
                                     <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                     
-                                    <li><a href="#" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
+                                    <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
@@ -204,7 +212,10 @@ if($ok == 1 ){
     ?>
                         <script>$(document).ready(function ($) {$('#resume-main-body #successdivdeljob').hide();</script>
     <?php
-        }   
+        }  
+         if($ajax=='napp'){
+             include 'employer-newapps.php';
+         }
     ?>
                       
                 </div> <!--resume main body-->        

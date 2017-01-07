@@ -144,7 +144,8 @@ if($ok == 1 ){
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
                             
-                            <div id="resumesb" class="">                               
+                            <div id="resumesb" class="">
+                                <!--
                                 <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
                                     <li id="a1" class="active">
                                       
@@ -173,6 +174,7 @@ if($ok == 1 ){
                                         </a>                                        
                                     </li>                                   
                                 </ul>
+                            -->
                             </div>
                                                 
 	                 </div>
@@ -188,7 +190,7 @@ if($ok == 1 ){
             <ul class="dropdown-menu">
                                     <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li> 
                                     <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                    
-                                    <li><a href="#" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
+                                    <li><a href="employer-main.php?ajax=napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 

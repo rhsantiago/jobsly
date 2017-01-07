@@ -231,9 +231,12 @@ jQuery(document).ready(function ($) {
             $database->query('SELECT * FROM educationandtraining where userid = :userid order by pgrad1graddate desc');
              $database->bind(':userid', $userid);  
              $rows = $database->resultset();
-                         
+                  
              $datefloat ='';                               
              foreach($rows as $row){
+             $pgrad1uni = $row['pgrad1uni'];
+             $pgrad1course = $row['pgrad1course'];
+             if(!empty($pgrad1uni) || !empty($pgrad1course)){        
                 $pgrad1date = explode("-", $row['pgrad1graddate']);
                 $pgrad1graddate = $pgrad1date[1] .'/'.$pgrad1date[2].'/'.$pgrad1date[0];  
                 
@@ -287,6 +290,7 @@ jQuery(document).ready(function ($) {
           </div>           
         </li>            
         <?php             
+             }
              }
                                             
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by colgraddate desc');

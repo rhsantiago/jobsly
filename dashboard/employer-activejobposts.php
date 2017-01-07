@@ -152,17 +152,7 @@ if(isset($_SESSION['user'])){
                                         <div class="col-md-12">
                                 
                                                   
-                                             <div id="successdivdeljob" name="successdivdeljob" class="alert alert-success">
-                                               
-                                                  <div class="alert-icon">
-                                                    <i class="material-icons">check</i>
-                                                  </div>
-                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
-                                                  </button>
-                                                 <b>Alert: </b>Your Job ad has been deleted.
-                                               
-                                            </div>
+                                             
                                    
                             </div>
 		                     
@@ -195,9 +185,10 @@ if(isset($_SESSION['user'])){
             
 
 <script>
-$(document).ready(function ($) {
-  $('#successdivdeljob').hide();
     /*
+jquery(document).ready(function ($) {
+  $('#successdivdeljob').hide();
+    
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');
            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
@@ -210,7 +201,7 @@ $(document).ready(function ($) {
     
    
     
-    */
+  
     
-});       
+});       */  
 </script>

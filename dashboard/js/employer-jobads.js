@@ -861,8 +861,8 @@ jQuery(document).ready(function ($) {
                         success: function (html) {
                            // console.log(url);
                             $('#resume-main-body').html(html); 
-                            $('#resumesb li').removeClass('active');
-                            $('#resumesb #p2').addClass('active');
+                           // $('#resumesb li').removeClass('active');
+                          //  $('#resumesb #p2').addClass('active');
                             $(function() {
                                 $.material.init();
                             });
