@@ -7,7 +7,7 @@
             include 'Database.php';
          }
     }
-
+if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -16,13 +16,8 @@ if(isset($_SESSION['user'])){
   
     $database = new Database();
 
-    
-        
-    $mode = 'insert';
     $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
-   
-    
 }
 
 ?>
@@ -39,10 +34,10 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Active Job Ads</h2>
+                             <h2 class="title">Job Details</h2>
        </div>
      </div>
-    <div class="col-md-offset-1 col-md-7">
+    <div class="col-md-9">
                        
                 <div class="section  section-landing">
 	                 
@@ -53,11 +48,10 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT * from jobads where userid = :userid and isactive=1 order by dateadded desc');
-                                $database->bind(':userid', $userid);   
-
-                                $rows = $database->resultset();
-                                foreach($rows as $row){
+                                $database->query('SELECT * from jobads where id = :jobid and isactive=1 order by dateadded desc');
+                                $database->bind(':jobid', $jobid);   
+                                
+                                $row = $database->single();
                                     $id = $row['id'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
@@ -75,16 +69,19 @@ if(isset($_SESSION['user'])){
 
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
-                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];         
+                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
+                               
+                                     $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
+                                     $database->bind(':jobid', $id);   
 
-                               $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
-                               $database->bind(':jobid', $id);   
-
-                               $row = $database->single();       
-                               $aapps = $row['aapps'];
-                               $napps = $row['napps'];        
-                                 
-                         ?>                                
+                                     $row = $database->single();       
+                                     $aapps = $row['aapps'];
+                                     $napps = $row['napps'];
+                                    
+                         ?>
+                                <form method="post" id="jobdetails" name="jobdetails">                    
+                                    <input type="hidden" id="jobid" name="jobid" value="<?=$id?>">
+                                </form>
                                 <section class="blog-post">
                                     <div class="panel panel-default">
                                     
@@ -128,44 +125,81 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row-fluid">
-                                                <div class="col-md-12" align="center">
-                                                    <ul class="list-inline">
-                                                        <li><div align="center"><a href="#jobdetails" id="jobdetails" data-jobid="<?=$id?>"><span class="activejobstotals"><?=$aapps?></span><br>Active Applications</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals"><?=$napps?></span><br>New Applications</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals">5</span><br>Shorlisted</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals">57</span><br>Resume Matches</a></div></li>
-                                                    </ul>  
-                                                </div>  
-                                            </div>   
+                                              
                                             </div>                                  
-                                         <div class="row-fluid">
-                                               
-                                                <div class="col-md-6 actionicon pull-right">                                                   
-                                                        <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
-                                                        <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
-                                                </div>
-                                          </div> 
+                                       
                                       </div>
                                         
                                         
                                     </div>
                                   </section>
-                                    <?php
-                                }
-                                    ?>
-                                
+                             
                                 </div> 
                                 
                                 
                                 
                             </div>  
-                                        <div class="col-md-12">
-                                
-                                                  
-                                             
-                                   
-                            </div>
+                        
+                          <!--    <div class="col-lg-3 col-md-6 col-sm-6"> -->
+                            <div class="row-fluid">
+                            <div class="col-lg-3 col-md-3"> 
+							<div class="card card-stats ">
+								<div class="card-header cardmargin" data-background-color="purple">
+                                    <h3 class="center"><?=$aapps?></h3>
+								</div>
+								<div class="card-content">
+									<p class="category">Active<br>Applications</p>								
+								</div>
+								<div class="card-footer">
+									
+								</div>
+							</div>
+                                  
+						</div>
+                            <div class="col-lg-3 col-md-3"> 
+							<div class="card card-stats ">
+								<div class="card-header cardmargin" data-background-color="orange">
+                                    <h3 class="center">1164</h3>
+								</div>
+								<div class="card-content">
+									<p class="category">Shortlisted</p>								
+								</div>
+								<div class="card-footer">
+									
+								</div>
+							</div>
+                                  
+						</div>
+                                <div class="col-lg-3 col-md-3"> 
+							<div class="card card-stats ">
+								<div class="card-header cardmargin" data-background-color="blue">
+                                    <h3 class="center"><?=$napps?></h3>
+								</div>
+								<div class="card-content">
+									<p class="category">New<br>Applications</p>								
+								</div>
+								<div class="card-footer">
+									
+								</div>
+							</div>
+                                  
+						</div>
+                                <div class="col-lg-3 col-md-3"> 
+							<div class="card card-stats ">
+								<div class="card-header cardmargin" data-background-color="blue">
+                                    <h3 class="center">4126</h3>
+								</div>
+								<div class="card-content">
+									<p class="category">New<br>Applications</p>								
+								</div>
+								<div class="card-footer">
+									
+								</div>
+							</div>
+                                  
+						</div>
+                            </div>                     
+                           
 		                     
 		                </div>
 					</div>
@@ -194,3 +228,25 @@ if(isset($_SESSION['user'])){
                                                     </div>
 		       </div> 
             
+
+<script>
+    /*
+jquery(document).ready(function ($) {
+  $('#successdivdeljob').hide();
+    
+    $('#pinfo-form #fname').parsley().on('field:error', function() {
+           $('#pinfo-form #fnamediv').addClass('has-error');
+           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#pinfo-form #fname').parsley().on('field:success', function() {
+            $('#pinfo-form #fnamediv').addClass('has-success');
+            $('#pinfo-form #fnamediv').find('span').remove()
+            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+   
+    
+  
+    
+});       */  
+</script>

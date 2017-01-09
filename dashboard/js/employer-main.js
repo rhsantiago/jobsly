@@ -7,9 +7,8 @@ jQuery(document).ready(function ($) {
         $.ajax({
             url: 'employer-activejobposts.php',
             dataType: 'html',
-
             success: function (html) {
-                       // console.log(html);
+                    // console.log(html);
                     $('#resume-main-body').html(html);
                 $('#successdivdeljob').hide();
                     $('[data-toggle="tooltip"]').tooltip(); 
@@ -135,6 +134,26 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+    
+    $("#resume-main-body").on('click','#jobdetails',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-jobdetails.php',
+                data: 'jobid=' + jobid,
+                success: function(html) {
+                    console.log(html);
+                    $('#resume-main-body').html(html);   
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
     
     
 });       

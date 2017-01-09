@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
     $lname = $row['lname'];
     
     $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
-    
+    $bday = array('0000','00','00');
 }
 ?>
 <script>
@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
                                         <img src="img/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title"><?=$userid?><?=$fname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
@@ -60,8 +60,10 @@ jQuery(document).ready(function ($) {
                       $city = $row['city'];
                       $province = $row['province'];                                
                       $nationality = $row['nationality'];          
-                      $birthday = $row['birthday'];                              
-                      $bday = explode("-", $birthday);
+                      $birthday = $row['birthday'];
+                      if(!empty($birthday)){                        
+                        $bday = explode("-", $birthday);
+                      }
                       $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
                       
                       $dposition = $row['dposition'];
