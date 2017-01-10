@@ -117,7 +117,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                 <div class="col-md-6 jobad-titletopmargin">
                                                     
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a href="#jobdetails" id="jobdetails" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -131,21 +131,43 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                 <div class="col-md-12" align="center">
                                                     <ul class="list-inline">
-                                                        <li><div align="center"><a href="#jobdetails" id="jobdetails" data-jobid="<?=$id?>"><span class="activejobstotals"><?=$aapps?></span><br>Active Applications</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals"><?=$napps?></span><br>New Applications</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals">5</span><br>Shorlisted</a></div></li>
-                                                        <li class="activejobstotals-left"><div align="center"><a href="#" data-jobid="<?=$id?>"><span class="activejobstotals">57</span><br>Resume Matches</a></div></li>
+                                                        <li>                                                            
+                                                            <div class="card">
+                                                                <div class="card-header cardmargin" data-background-color="purple">
+                                                                    <h3 class="center"><?=$aapps?></h3>
+                                                                </div>
+                                                                <span class="text-primary"><br>Active<br>Applications</span>                                                               
+                                                            </div>
+                                                        </li>
+                                                        <li class="activejobstotals-left">                                                            
+                                                            <div class="card">
+                                                                <div class="card-header cardmargin" data-background-color="blue">
+                                                                    <h3 class="center"><?=$napps?></h3>
+                                                                </div>
+                                                                 <span class="text-info"><br>New<br>Applications</span>                                                                
+                                                            </div>
+                                                        </li>
+                                                        <li class="activejobstotals-left">
+                                                             <div class="card ">
+                                                                <div class="card-header cardmargin" data-background-color="orange">
+                                                                    <h3 class="center"><?=$napps?></h3>
+                                                                </div>
+                                                                 <span class="text-warning"><br>Shortlisted<br>Applicants</span>                                                           
+                                                            </div>
+                                                        </li>
+                                                        <li class="activejobstotals-left">
+                                                             <div class="card ">
+                                                                <div class="card-header cardmargin" data-background-color="green">
+                                                                    <h3 class="center"><?=$napps?></h3>
+                                                                </div>
+                                                                 <span class="text-success"><br>Shortlisted<br>Applicants</span>                                                           
+                                                            </div>
+                                                        </li>
                                                     </ul>  
                                                 </div>  
                                             </div>   
                                             </div>                                  
-                                         <div class="row-fluid">
-                                               
-                                                <div class="col-md-6 actionicon pull-right">                                                   
-                                                        <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
-                                                        <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
-                                                </div>
-                                          </div> 
+                                       
                                       </div>
                                         
                                         

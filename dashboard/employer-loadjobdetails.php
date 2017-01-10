@@ -7,7 +7,7 @@
             include 'Database.php';
          }
     }
-
+if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -31,18 +31,9 @@ if(isset($_SESSION['user'])){
 
     
     <div class="row">
-    <div class="col-md-12 center">            
-                    <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
-                     </div>    
-                           
+ 
      </div>
-   
-    <div class="col-md-12">
-                             <h2 class="title">New Applicants</h2>
-       </div>
-     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
                        
                 <div class="section  section-landing">
 	                 
@@ -53,11 +44,12 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT id,jobtitle,company from jobads where userid = :userid and isactive=1 order by dateadded desc');
-                                $database->bind(':userid', $userid);   
+                                $database->query('SELECT id,jobtitle,company from jobads where id =:jobid and userid = :userid and isactive=1 order by dateadded desc');
+                                $database->bind(':userid', $userid);
+                                $database->bind(':jobid', $jobid);
 
-                                $rows = $database->resultset();
-                                foreach($rows as $row){
+                                $row = $database->single(); 
+                               
                                     $jobid = $row['id'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
@@ -68,7 +60,7 @@ if(isset($_SESSION['user'])){
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                               <div><span class="text-info jobad-title"><?=$jobtitle?></span><span class="text-muted"><i>&nbsp;<?=$company?></i></span></div>
+                                          <div><h4 class="text-info">New Applicants</h4></div>
                                     <div class="table-responsive">      
                                      <table class="table table-hover table-condensed">
                                             <thead>
@@ -138,13 +130,7 @@ if(isset($_SESSION['user'])){
                                         </div>  
                                     </div>
                                   </section>
-                               
-                               
-                               
-                         <?php
-                                }
-                          ?>
-                                
+                            
                                 </div> 
                                 
                                 
@@ -184,25 +170,3 @@ if(isset($_SESSION['user'])){
                                                     </div>
 		       </div> 
             
-
-<script>
-    /*
-jquery(document).ready(function ($) {
-  $('#successdivdeljob').hide();
-    
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-  
-    
-});       */  
-</script>

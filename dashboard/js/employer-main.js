@@ -144,8 +144,29 @@ jQuery(document).ready(function ($) {
                 url: 'employer-jobdetails.php',
                 data: 'jobid=' + jobid,
                 success: function(html) {
-                    console.log(html);
+                   // console.log(html);
                     $('#resume-main-body').html(html);   
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
+    
+    $("#resume-main-body").on('click','#newapps',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-loadjobdetails.php',
+                data: 'jobid=' + jobid,
+                success: function(html) {
+                    //console.log(html);
+                    $('#showjobdetail').html(html); 
+                    $("#jobdetailads").hide();
                     $(function() {
                                $.material.init();
                     });
