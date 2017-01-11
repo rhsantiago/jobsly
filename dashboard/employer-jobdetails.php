@@ -143,12 +143,12 @@ if(isset($_SESSION['user'])){
                           <!--    <div class="col-lg-3 col-md-6 col-sm-6"> -->
                             <div class="row-fluid">
                             <div class="col-lg-3 col-md-3"> 
-                                    <div class="card card-stats ">
+                                    <div id="aappsdiv" class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="purple">
                                             <h3 class="center"><?=$aapps?></h3>
                                         </div>
                                         <div class="card-content">
-                                            <p class="category text-primary">Active<br>Applications</p>								
+                                           <a href="#activeapps" id="activeapps" class="text-primary" data-jobid="<?=$id?>">Active<br>Applications</a>							
                                         </div>
                                         <div class="card-footer">
 
@@ -161,7 +161,7 @@ if(isset($_SESSION['user'])){
                                             <h3 class="center"><?=$napps?></h3>
                                         </div>
                                         <div class="card-content">
-                                            <p class="category"><a href="#newapps" id="newapps" class="text-info" data-jobid="<?=$id?>">New</a><br><a href="#newapps" id="newapps" class="text-info" data-jobid="<?=$id?>">Applications</a></p>								
+                                            <a href="#newapps" id="newapps" class="text-info" data-jobid="<?=$id?>">New<br>Applications</a>							
                                         </div>
                                         <div class="card-footer">
 
@@ -169,35 +169,35 @@ if(isset($_SESSION['user'])){
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
-                                    <div class="card card-stats ">
-                                        <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center">1164</h3>
+                                     <div  class="card card-stats ">
+                                        <div class="card-header cardmargin" data-background-color="blue">
+                                            <h3 class="center"><?=$napps?></h3>
                                         </div>
                                         <div class="card-content">
-                                            <p class="category text-warning">Shortlisted</p>								
+                                            <a href="#newapps" id="newapps" class="text-info" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>							
                                         </div>
                                         <div class="card-footer">
 
                                         </div>
-                                    </div>
+                                    </div>   
 						      </div>
                                 <div class="col-lg-3 col-md-3"> 
-							<div class="card card-stats ">
-								<div class="card-header cardmargin" data-background-color="green">
-                                    <h3 class="center">4126</h3>
-								</div>
-								<div class="card-content">
-									<p class="category text-success">Matched<br>Resumes</p>								
-								</div>
-								<div class="card-footer">
-									
-								</div>
-							</div>
+							            <div  class="card card-stats ">
+                                        <div class="card-header cardmargin" data-background-color="blue">
+                                            <h3 class="center"><?=$napps?></h3>
+                                        </div>
+                                        <div class="card-content">
+                                            <a href="#newapps" id="newapps" class="text-info" data-jobid="<?=$id?>">Matched<br>Resumes</a>							
+                                        </div>
+                                        <div class="card-footer">
+
+                                        </div>
+                                    </div>   
                                   
 						</div>
-                            </div>                     
-                           
-		                     
+                                
+                            </div>
+                            </div>
 		                </div>
 					</div>
 	            </div>
@@ -205,9 +205,7 @@ if(isset($_SESSION['user'])){
                         
                     
                         
-                        
-                    </div>
-                    
+                     
                     
                 <div id="jobdetailads" class="col-md-3 pull-right">
                           <div class="card card-ads adsright">                                            

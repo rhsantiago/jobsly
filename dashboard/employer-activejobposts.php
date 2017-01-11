@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     
         
     $mode = 'insert';
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
    
     
@@ -117,7 +117,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                 <div class="col-md-6 jobad-titletopmargin">
                                                     
-                                                         <a href="#jobdetails" id="jobdetails" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a href="#jobdetails" id="jobdetails" class="nodecor" data-jobid="<?=$id?>"><h2 class="text-info  jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -158,7 +158,7 @@ if(isset($_SESSION['user'])){
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="green">
-                                                                    <h3 class="center"><?=$napps?></h3>
+                                                                    <h3 class="center">447</h3>
                                                                 </div>
                                                                  <span class="text-success"><br>Shortlisted<br>Applicants</span>                                                           
                                                             </div>

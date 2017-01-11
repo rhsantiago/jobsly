@@ -474,6 +474,10 @@ div .parsley-errors-list {
     margin-top: -10px !important;
 }
 
+.margin-30 {
+    margin-top: -30px !important;
+}
+
 .resumecard {
     font-size: 20px;
     font-weight: 400;
@@ -502,7 +506,7 @@ div .parsley-errors-list {
   display: inline-block;
   position: relative;
   width: 100%;
-  margin: 25px 0;
+  margin: 15px 0;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
   border-radius: 3px;
   color: rgba(0,0,0, 0.87);
@@ -706,7 +710,7 @@ div .parsley-errors-list {
 }
 .card-stats .card-content {
   text-align: right;
-  padding-top: 10px;
+ /* padding-top: 10px;*/
 }
 
 .card-nav-tabs .header-raised {
@@ -786,4 +790,8 @@ div .parsley-errors-list {
 .cardmargin {
  
     padding: -15px -15px !important;
+}
+
+.cardheight {
+    max-height: 100px !important;
 }

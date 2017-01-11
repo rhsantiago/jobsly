@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     
         
     $mode = 'insert';
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
    
     
