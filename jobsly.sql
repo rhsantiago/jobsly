@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2017 at 06:06 PM
+-- Generation Time: Jan 12, 2017 at 05:23 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -177,18 +177,20 @@ CREATE TABLE `jobapplications` (
   `userid` int(10) NOT NULL,
   `esalary` int(11) NOT NULL,
   `essayanswer` text,
-  `isnew` int(5) NOT NULL DEFAULT '0'
+  `isnew` int(5) NOT NULL DEFAULT '0',
+  `isshortlisted` int(5) NOT NULL DEFAULT '0',
+  `isreject` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jobapplications`
 --
 
-INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `isnew`) VALUES
-(13, 86, 1, 3434, NULL, 1),
-(14, 116, 1, 45000, NULL, 1),
-(15, 86, 29, 100000, 'NA', 0),
-(16, 86, 30, 60000, 'Not', 0);
+INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `isnew`, `isshortlisted`, `isreject`) VALUES
+(13, 86, 1, 3434, NULL, 1, 0, 0),
+(14, 116, 1, 45000, NULL, 1, 0, 0),
+(15, 86, 29, 100000, 'NA', 0, 0, 0),
+(16, 86, 30, 60000, 'Not', 0, 0, 0);
 
 -- --------------------------------------------------------
 

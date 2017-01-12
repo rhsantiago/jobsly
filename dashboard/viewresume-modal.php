@@ -23,7 +23,7 @@ if(isset($_SESSION['user'])){
     $fname = $row['fname'];
     $lname = $row['lname'];
     
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     
 }
 ?>
@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
 </script>   
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary" id="myModalLabel">View Resume</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">View Resume</h4>
 	      </div>
 	      <div id="modaleditessay" class="modal-body modal-gray ">
 

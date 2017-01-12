@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info">Active Applications</h4></div>
+                                          <div><h4 class="text-primary h4weight">Active Applications</h4></div>
                                     <div class="table-responsive">      
                                      <table class="table table-hover table-condensed">
                                             <thead>
@@ -85,6 +85,7 @@ if(isset($_SESSION['user'])){
                                             $database->bind(':jobid', $jobid);                                             
 
                                             $rows2 = $database->resultset();
+                                                $i=1;
                                             foreach($rows2 as $row2){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
@@ -96,7 +97,7 @@ if(isset($_SESSION['user'])){
                                        ?>
                                    
                                                 <tr>
-                                                    <td class="text-center">1</td>
+                                                    <td class="text-center"><?=$i?></td>
                                                     <td><?=$fname?> <?=$lname?></td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
@@ -120,6 +121,7 @@ if(isset($_SESSION['user'])){
                                                     </td>
                                                 </tr>
                                             <?php
+                                                 $i=$i+1;
                                             }
                                             ?>
                                                 

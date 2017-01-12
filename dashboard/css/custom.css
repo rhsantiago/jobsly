@@ -795,3 +795,7 @@ div .parsley-errors-list {
 .cardheight {
     max-height: 100px !important;
 }
+
+.h4weight {
+    font-weight: 400 !important;
+}

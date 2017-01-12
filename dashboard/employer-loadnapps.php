@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info">New Applicants</h4></div>
+                                          <div><h4 class="text-info h4weight">New Applicants</h4></div>
                                     <div class="table-responsive">      
                                      <table class="table table-hover table-condensed">
                                             <thead>
