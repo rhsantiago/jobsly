@@ -62,7 +62,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     $teaser = strip_tags($teaser, '<p>');
         
  
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 
 
@@ -72,9 +72,9 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 ?>
 
     
-<div class="modal-header infocolor">
+<div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Job Ad<?=$mode?></h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Job Ad</h4>
 	      </div>
               
 	      <div id="modaldeljobad" class="modal-body modal-gray">
@@ -330,7 +330,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                   </section>          
                            
 	      </div>
-	      <div class="modal-footer blog-post modal-gray">
+	      <div class="modal-footer blog-post">
               
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	      </div>

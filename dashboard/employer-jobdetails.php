@@ -71,12 +71,15 @@ if(isset($_SESSION['user'])){
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                
-                                     $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
+                                     $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1) as shortlisted from jobapplications');
                                      $database->bind(':jobid', $id);   
 
                                      $row = $database->single();       
                                      $aapps = $row['aapps'];
                                      $napps = $row['napps'];
+                                     $shortlisted = $row['shortlisted'];
+                               
+                               
                                     
                          ?>
                                 <form method="post" id="jobdetails" name="jobdetails">                    
@@ -149,28 +152,28 @@ if(isset($_SESSION['user'])){
                           <!--    <div class="col-lg-3 col-md-6 col-sm-6"> -->
                             <div class="row-fluid">
                             <div class="col-lg-3 col-md-3"> 
-                                    <div id="aappsdiv" class="card card-stats ">
+                                    <div  class="card card-stats" >
                                         <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center"><?=$aapps?></h3>
-                                        </div>                                       
-                                           <a href="#activeapps" id="activeapps" class="text-primary" data-jobid="<?=$id?>">Active<br>Applications</a>
-                                     
+                                          <h3 class="center marginjobdetaillink"><a href="#activeapps" id="activeapps" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><?=$aapps?></a></h3>
+                                        </div>
+                                      <a href="#activeapps" id="activeapps" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Active<br>Applications</a>
+                                        
                                     </div>
 						      </div>
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center"><?=$napps?></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#newapps" id="newapps" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><?=$napps?></a></h3>
                                         </div>                                        
-                                            <a href="#newapps" id="newapps" class="text-info zindex" data-jobid="<?=$id?>">New<br>Applications</a>
+                                            <a href="#newapps" id="newapps" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">New<br>Applications</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center"><?=$napps?></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#shortlisted" id="shortlisted" class="text-warning h4weight pull-right" data-jobid="<?=$id?>"><?=$shortlisted?></a></h3>
                                         </div>
-                                            <a href="#newapps" id="newapps" class="text-warning" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>		
+                                            <a href="#shortlisted" id="shortlisted" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>		
                                     </div>   
 						      </div>
                                 <div class="col-lg-3 col-md-3"> 
@@ -178,7 +181,7 @@ if(isset($_SESSION['user'])){
                                         <div class="card-header cardmargin" data-background-color="green">
                                             <h3 class="center">4352</h3>
                                         </div>
-                                            <a href="#newapps" id="newapps" class="text-success" data-jobid="<?=$id?>">Matched<br>Resumes</a>  
+                                            <a href="#newapps" id="newapps" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Matched<br>Resumes</a>  
                                     </div>   
                                   
 						</div>

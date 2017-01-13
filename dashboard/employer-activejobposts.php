@@ -77,13 +77,13 @@ if(isset($_SESSION['user'])){
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];         
 
-                               $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
+                              $database->query('select (select count(id) from jobapplications where jobid=:jobid) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1) as shortlisted from jobapplications');
                                $database->bind(':jobid', $id);   
 
                                $row = $database->single();       
                                $aapps = $row['aapps'];
                                $napps = $row['napps'];        
-                                 
+                               $shortlisted = $row['shortlisted']; 
                          ?>                                
                                 <section class="blog-post">
                                     <div class="panel panel-default">
@@ -136,7 +136,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="card-header cardmargin" data-background-color="purple">
                                                                     <h3 class="center"><?=$aapps?></h3>
                                                                 </div>
-                                                                <span class="text-primary"><br>Active<br>Applications</span>                                                               
+                                                                <span class="text-primary h4weight"><br>Active<br>Applications</span>                                                               
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">                                                            
@@ -144,15 +144,15 @@ if(isset($_SESSION['user'])){
                                                                 <div class="card-header cardmargin" data-background-color="blue">
                                                                     <h3 class="center"><?=$napps?></h3>
                                                                 </div>
-                                                                 <span class="text-info"><br>New<br>Applications</span>                                                                
+                                                                 <span class="text-info h4weight"><br>New<br>Applications</span>                                                                
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="orange">
-                                                                    <h3 class="center"><?=$napps?></h3>
+                                                                    <h3 class="center"><?=$shortlisted?></h3>
                                                                 </div>
-                                                                 <span class="text-warning"><br>Shortlisted<br>Applicants</span>                                                           
+                                                                 <span class="text-warning h4weight"><br>Shortlisted<br>Applicants</span>                                                           
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">
@@ -160,7 +160,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="card-header cardmargin" data-background-color="green">
                                                                     <h3 class="center">447</h3>
                                                                 </div>
-                                                                 <span class="text-success"><br>Shortlisted<br>Applicants</span>                                                           
+                                                                 <span class="text-success h4weight"><br>Shortlisted<br>Applicants</span>                                                           
                                                             </div>
                                                         </li>
                                                     </ul>  

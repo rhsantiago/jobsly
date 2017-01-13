@@ -106,9 +106,6 @@ jQuery(document).ready(function ($) {
              $('#viewresume-form').submit();
      });
     
-     $('#viewresume-form').on('submit', function(event){  
-         
-     });     
     
      $('#viewresume-modal').on('show.bs.modal', function(e) {
               
@@ -117,6 +114,7 @@ jQuery(document).ready(function ($) {
               var mode =  $(e.relatedTarget).data('mode');
               var applicantid =  $(e.relatedTarget).data('applicantid');
               var userid = $(e.relatedTarget).data('userid');
+              var jobid = $(e.relatedTarget).data('jobid');
      
         $.ajax({
             cache: false,
@@ -124,6 +122,7 @@ jQuery(document).ready(function ($) {
             url: 'viewresume-modal.php',
             data: 'applicantid=' + applicantid +
                   '&userid=' + userid +
+                  '&jobid=' + jobid +
                   '&mode=' + mode,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);     
@@ -155,6 +154,29 @@ jQuery(document).ready(function ($) {
       //  return false;
      });
     
+    
+    
+    $("#resume-main-body").on('click','#activeapps',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-loadaapps.php',
+                data: 'jobid=' + jobid,
+                success: function(html) {
+                    //console.log(html);
+                    $('#showjobdetail').html(html); 
+                    $("#jobdetailads").hide();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
+    
     $("#resume-main-body").on('click','#newapps',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
@@ -176,18 +198,40 @@ jQuery(document).ready(function ($) {
       //  return false;
      });
     
-    $("#resume-main-body").on('click','#activeapps',function(event) {
+    $("#resume-main-body").on('click','#shortlisted',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
             $.ajax({
                 cache: false,
                 type: 'POST',
-                url: 'employer-loadaapps.php',
+                url: 'employer-loadshortlist.php',
                 data: 'jobid=' + jobid,
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
                     $("#jobdetailads").hide();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
+    
+    $("#resume-main-body").on('click','#addshortlist',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            var applicantid =  $(this).data('applicantid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-shortlistsubmit.php',
+                data: 'jobid=' + jobid + '&applicantid' + applicantid,
+                success: function(html) {
+                    //console.log(html);
+                   // $('#showjobdetail').html(html); 
+                  //  $("#jobdetailads").hide();
                     $(function() {
                                $.material.init();
                     });

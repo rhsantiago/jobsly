@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
   
    if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
    if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
-    
+   if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
     $database = new Database();
     
     $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
@@ -440,7 +440,8 @@ jQuery(document).ready(function ($) {
                            
 	    
 
-	      <div class="modal-footer">              
+	      <div class="modal-footer blog-post">
+            <button type="button" id="addshortlist" class="btn btn-primary" data-jobid="<?=$jobid?>" data-applicantid="<?=$applicantid?>">Add to Shortlist</button>  
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	     
 	      </div>
 

@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-primary h4weight">Active Applications</h4></div>
+                                          <div><h4 class="text-warning h4weight">Shortlisted Applicants</h4></div>
                                     <div class="table-responsive">      
                                      <table class="table table-hover table-condensed">
                                             <thead>
@@ -81,11 +81,11 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid order by jobapplications.id desc');
+                                            and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.isshortlisted=1');
                                             $database->bind(':jobid', $jobid);                                             
 
                                             $rows2 = $database->resultset();
-                                                $i=1;
                                             foreach($rows2 as $row2){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
@@ -97,7 +97,7 @@ if(isset($_SESSION['user'])){
                                        ?>
                                    
                                                 <tr>
-                                                    <td class="text-center"><?=$i?></td>
+                                                    <td class="text-center">1</td>
                                                     <td><?=$fname?> <?=$lname?></td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
@@ -109,7 +109,7 @@ if(isset($_SESSION['user'])){
                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                                         </form>    
                                                     -->
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
                                                         </a>
                                                         <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
@@ -121,7 +121,6 @@ if(isset($_SESSION['user'])){
                                                     </td>
                                                 </tr>
                                             <?php
-                                                 $i=$i+1;
                                             }
                                             ?>
                                                 

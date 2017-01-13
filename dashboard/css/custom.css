@@ -799,3 +799,8 @@ div .parsley-errors-list {
 .h4weight {
     font-weight: 400 !important;
 }
+
+.marginjobdetaillink {
+    margin-top: 10px;
+    margin-right: 15px;
+}
