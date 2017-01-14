@@ -12,7 +12,7 @@ $database = new Database();
     $database->bind(':jobid', $jobid);
     $checkrow = $database->single();
     if(empty($checkrow)){
-        $database->query(' INSERT INTO jobapplications (id, jobid, userid,esalary,essayanswer) VALUES (NULL, :jobid,:userid,:esalary,:essay)');
+        $database->query(' INSERT INTO jobapplications (id, jobid, userid,esalary,essayanswer,isnew) VALUES (NULL, :jobid,:userid,:esalary,:essay,1)');
         $database->bind(':jobid', $jobid);  
         $database->bind(':userid', $userid);
         $database->bind(':esalary', $esalary);

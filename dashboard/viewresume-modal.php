@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
         include 'Database.php';
 }
 
-
+$isshortlisted = 0;
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -13,6 +13,7 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
    if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
    if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+   if(isset($_POST['view'])){ $view = $_POST['view']; }    
     $database = new Database();
     
     $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
@@ -22,9 +23,13 @@ if(isset($_SESSION['user'])){
     $maxposition = $row['maxposition'];
     $fname = $row['fname'];
     $lname = $row['lname'];
-    
+        
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     
+     $database->query(' UPDATE jobapplications SET isnew = 0 where jobid= :jobid and userid = :userid');
+     $database->bind(':jobid', $jobid);  
+     $database->bind(':userid', $applicantid);
+     $database->execute();
 }
 ?>
 <script>
@@ -114,52 +119,7 @@ jQuery(document).ready(function ($) {
                                                         
                                                             </div>
                                     </div>    
-                                <!--    
-                                    <div class="card card-nav-tabs">
-                                            
-                                             <div class="content">
-                                                    <div class="tab-content">
-                                                        
-                                                        <div class="tab-pane active" id="hs">
-                                                            
-                                                            <div class="row">
-                                                               
-                                                                <div class="col-md-6 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
-                                                                        <li> Mobile Number: 09175555555</li>
-                                                                        <li> Email: reg@jobsly.net</li>
-                                                                        <li> Landline: 8234827</li>
-                                                                        <li> Street Address: 87 Spain st., Better Living Subd</li>
-                                                                        <li> City: Paranaque, Metro Manila Philippines</li>
-                                                                        <li> Nationality: Filipino</li>
-                                                                        <li> Birthdate: 11/09/2016</li>
-                                                                    </ul>
-                                                                </div>
-                                                                 <div class="col-md-6 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: Senior Developer</li>     
-                                                                        <li> Position Level: Middle  Manager</li>
-                                                                        <li> Expected Salary: 100000</li> 
-                                                                        <li> Work Location: Makati</li>
-                                                                        <li> Specialization: IT</li>
-                                                                        <li> Years of Experience: 15</li>  
-                                                                        <li> Languages: English, Filipino</li> 
-                                                                        <li> Willing to Travel</li>
-                                                                        <li> Willing to Relocate</li>
-                                                                        <li> Valid Passport Holder</li>
-                                                                        </ul>
-                                                                </div>
-                                                        
-                                                            </div>
-                                                              
-                                                        </div>
-                                                        
-                                                    </div>
-                                                 
-                                                    </div>
-                                             </div>
-                                    
-                                    -->
+                               
                                     
                                 </div>
                             
@@ -437,17 +397,28 @@ jQuery(document).ready(function ($) {
 
 	                              
                                
-                           
-	    
+         
 
 	      <div class="modal-footer blog-post">
-            <button type="button" id="addshortlist" class="btn btn-primary" data-jobid="<?=$jobid?>" data-applicantid="<?=$applicantid?>">Add to Shortlist</button>  
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	     
+              <ul class="list-inline">
+               <li>
+                   
+                </li> 
+                <li> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	</li>  
+              </ul>  
 	      </div>
 
+
+<?php
+$database->query('select (select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
+$database->bind(':jobid', $jobid);
+$row = $database->single();   
+$napps = $row['napps'];
+?>
 <script>
 jQuery(document).ready(function ($) {
-
+    $('#nappsdiv').html(<?=$napps?>);
+    $('#newbadgediv<?=$applicantid?>').html('');
     /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');

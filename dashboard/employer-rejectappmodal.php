@@ -3,22 +3,22 @@ if (session_status() == PHP_SESSION_NONE) {
         session_start();
         include 'Database.php';
     }    
-if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 
-if($mode=='del'){
+if($mode=='reject'){
 ?>    
     
-   <form method="post" id="deljobad-form" name="deljobad-form"> 
-             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+   <form method="post" id="rejectapp-form" name="rejectapp-form"> 
+             <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
              <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
-             <input type="hidden" id="mode" name="mode" value="del">
+             <input type="hidden" id="mode" name="mode" value="reject">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Delete Job Ad</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Reject Application</h4>
 	      </div>
-	      <div id="modaldeljobad" class="modal-body modal-gray">
+	      <div id="modalrejectapp" class="modal-body modal-gray">
 	                              
                                     <div class="card card-nav-tabs">
                                            
@@ -30,7 +30,7 @@ if($mode=='del'){
                                                                
                                                                 <div class="col-md-12 col-xs-12 text-center">
                                                                 
-                                                                   <h3><label class="text-danger">Are you sure you want to delete this Job Ad?</label></h3>
+                                                                   <h3><label class="text-danger">Are you sure you want to Reject this Applicant? This cannot be recovered.</label></h3>
                                                                     
 
                                                                 </div>

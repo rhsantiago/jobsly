@@ -65,11 +65,10 @@ if(isset($_SESSION['user'])){
                                      <table class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Specialization</th>
                                                     <th>Job Position</th>                                                   
-                                                    <th class="text-right">Salary</th>
+                                                    <th>Salary</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -97,11 +96,10 @@ if(isset($_SESSION['user'])){
                                        ?>
                                    
                                                 <tr>
-                                                    <td class="text-center">1</td>
                                                     <td><?=$fname?> <?=$lname?></td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
-                                                    <td class="text-right">Php <?=$esalary?></td>
+                                                    <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
                                                      <!--   <form method="post" id="viewresume-form" name="viewresume-form">                    
                                                             <input type="hidden" id="mode" name="view" value="view">
@@ -109,15 +107,9 @@ if(isset($_SESSION['user'])){
                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                                         </form>    
                                                     -->
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
-                                                        </a>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>                                                       
                                                     </td>
                                                 </tr>
                                             <?php

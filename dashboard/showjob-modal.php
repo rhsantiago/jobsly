@@ -9,8 +9,10 @@ if(isset($_SESSION['user'])){
    $userid = $_SESSION['userid'];
 }
 
+$employer = '';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
 
 
  $database = new Database();
@@ -200,17 +202,27 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                 <div class="col-md-6">
                                                         <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>
+                                             
                                                 <div class="col-md-6 actionicon ">
-                                                        
+                                                    <?php
+                                                        if(!strcmp($employer,'émployer')){
+                                                     ?>     
                                                         <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a>
                                                         <a class="blog-post-share " href="#" datah4-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
+                                                    <?php
+                                                        }
+                                                    ?> 
                                                 </div>
+                                                       
                                                 <div class="col-md-12 jobad-bottomborder">
                                                    
                                                 </div>
                                           </div>
                                           <?php
-                                           $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
+                                          
+                                           if(!strcmp($employer,'émployer')){
+                                                 
+                                            $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                             $database->bind(':userid', $userid);
                                             $database->bind(':jobid', $jobid);
                                             $checkrow = $database->single();
@@ -281,8 +293,8 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                   </div>
                                               </form>  
                                           </div>      
-                                          <?php
-                                          }
+                                          <?php                                          
+                                           }
                                          if(!empty($checkrow)){
                                           ?>
                                           <div class="quickapplydiv2">
@@ -304,6 +316,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                           </div>      
                                           <?php
                                           }
+                                           }
                                           ?>                    
                                               
                                          
@@ -336,7 +349,9 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 	      </div>
 <script>
 jQuery(document).ready(function ($) {
-
+<?php
+if(!strcmp($employer,'émployer')){
+ ?>  
    
     $('#quickapply-form-modal #esalary').parsley().on('field:error', function() {
            $('#quickapply-form-modal #esalarydiv').addClass('has-error');
@@ -363,7 +378,9 @@ jQuery(document).ready(function ($) {
     <?php
       }
     ?> 
-   
+<?php
+}
+?>    
     
 });       
 </script>

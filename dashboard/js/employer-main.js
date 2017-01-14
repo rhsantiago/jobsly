@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
-    
+   /* 
     $("#resume-main-body").on('click','#editjob',function(event) {
         event.preventDefault(); 
         var jobid = $(this).data('jobid');
@@ -101,7 +101,7 @@ jQuery(document).ready(function ($) {
         }
         return false;
     });
-    
+    */
      $('#applicantview').on('click', function(event){  
              $('#viewresume-form').submit();
      });
@@ -115,6 +115,7 @@ jQuery(document).ready(function ($) {
               var applicantid =  $(e.relatedTarget).data('applicantid');
               var userid = $(e.relatedTarget).data('userid');
               var jobid = $(e.relatedTarget).data('jobid');
+              var view = $(e.relatedTarget).data('view');
      
         $.ajax({
             cache: false,
@@ -123,7 +124,8 @@ jQuery(document).ready(function ($) {
             data: 'applicantid=' + applicantid +
                   '&userid=' + userid +
                   '&jobid=' + jobid +
-                  '&mode=' + mode,
+                  '&mode=' + mode +
+                  '&view=' + view,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);     
                 $(function() {
@@ -137,6 +139,7 @@ jQuery(document).ready(function ($) {
     $("#resume-main-body").on('click','#jobdetails',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
             $.ajax({
                 cache: false,
                 type: 'POST',
@@ -144,7 +147,8 @@ jQuery(document).ready(function ($) {
                 data: 'jobid=' + jobid,
                 success: function(html) {
                    // console.log(html);
-                    $('#resume-main-body').html(html);   
+                    $('#resume-main-body').html(html);                    
+                    $('#'+page).click();
                     $(function() {
                                $.material.init();
                     });
@@ -219,17 +223,38 @@ jQuery(document).ready(function ($) {
       //  return false;
      });
     
-    $("#resume-main-body").on('click','#addshortlist',function(event) {
-            event.preventDefault();           
-            var jobid =  $(this).data('jobid');
+    $(document).on('click','#shortlistbutton',function(event) {
             var applicantid =  $(this).data('applicantid');
+            var jobid =  $(this).data('jobid');
+            var mode =  $(this).data('mode');
+            $('#shortlist-form #applicantid').val(applicantid);
+            $('#shortlist-form #jobid').val(jobid);
+            $('#shortlist-form #mode').val(mode);
+            $('#shortlist-form').submit();
+    });  
+    
+    $(document).on('submit','#shortlist-form',function(event) {
+            event.preventDefault();           
+        
+            var jobid = $("#shortlist-form #jobid").val(); 
+            var applicantid = $("#shortlist-form #applicantid").val();
+            var mode = $("#shortlist-form #mode").val();
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-shortlistsubmit.php',
-                data: 'jobid=' + jobid + '&applicantid' + applicantid,
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
                 success: function(html) {
                     //console.log(html);
+                    $('#shortlistdiv').html(html);
+                    if(mode=='remove'){
+                        var tr = '#line' + applicantid;
+                        $("#shortlisttable " + tr).fadeOut('slow').delay(1000).hide(0);
+                    }
+                    if(mode=='add'){
+                        var li = '#line' + applicantid;
+                        $("#activeappstable " + li).html("<button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple btn-xs'><i class='fa fa-check'></i></button>").fadeIn('slow').delay(1000);
+                    }
                    // $('#showjobdetail').html(html); 
                   //  $("#jobdetailads").hide();
                     $(function() {
@@ -238,8 +263,109 @@ jQuery(document).ready(function ($) {
 
                 }
             });
-      //  return false;
+        return false;
      });
     
+    $('#showjob-modal').on('show.bs.modal', function(e) {
+             
+               var $modal = $(this);
+              // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
+               
+               var jobid =  $(e.relatedTarget).data('jobid');
+               var mode =  $(e.relatedTarget).data('mode');
+               var employer =  $(e.relatedTarget).data('employer');    
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'showjob-modal.php',
+            data: 'jobid=' + jobid + "&mode=" + mode + "&employer=" + employer,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $modal.find('#successdivquickapply').hide();
+                $modal.find('#warningdivquickapply').hide();
+               // $('#quickapplydiv #successdivquickapply').hide();
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+    $('#rejectapp-modal').on('show.bs.modal', function(e) {
+             
+               var $modal = $(this);
+              // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
+               
+               var jobid =  $(e.relatedTarget).data('jobid');
+               var mode =  $(e.relatedTarget).data('mode');
+               var applicantid =  $(e.relatedTarget).data('applicantid');    
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'employer-rejectappmodal.php',
+            data: 'jobid=' + jobid + "&mode=" + mode + "&applicantid=" + applicantid,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+        
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+     $(document).on('click','#aappsloadmore',function(event) {
+            
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'employer-loadmoreaapps.php',
+            data: '',
+                  
+            success: function(html) {
+                $('#activeappstable').append(html).fadeIn('slow').delay(1000);
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });  
+    
+     $(document).on('submit','#rejectapp-form',function(event) {
+            event.preventDefault();           
+        
+            var jobid = $("#rejectapp-form #jobid").val(); 
+            var applicantid = $("#rejectapp-form #applicantid").val();
+            var mode = $("#rejectapp-form #mode").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-rejectformsubmit.php',
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                success: function(html) {
+                    $('#rejectapp-modal').modal('toggle');
+                    $('#aappsdiv').html(html);
+                    if(mode=='reject'){
+                        var tr = '#line' + applicantid;
+                        $("#activeappstable " + tr).fadeOut('slow').delay(1000).hide(0);
+                    }
+                   
+                   // $('#showjobdetail').html(html); 
+                  //  $("#jobdetailads").hide();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
     
 });       

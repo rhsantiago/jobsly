@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
   
     $database = new Database();
 
-    
+  
         
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -56,28 +56,33 @@ if(isset($_SESSION['user'])){
                                   
                                 
                          ?> 
-                               
+                               <form method="post" id="shortlist-form" name="shortlist-form"> 
+                                                             <input type="hidden" id="applicantid" name="applicantid" value="">
+                                                             <input type="hidden" id="jobid" name="jobid" value="">
+                                                             <input type="hidden" id="mode" name="mode" value="remove">   
+                                                       </form> 
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
                                           <div><h4 class="text-primary h4weight">Active Applications</h4></div>
                                     <div class="table-responsive">      
-                                     <table class="table table-hover table-condensed">
+                                     <table id="activeappstable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
+                                                   
                                                     <th>Name</th>
                                                     <th>Specialization</th>
                                                     <th>Job Position</th>                                                   
-                                                    <th class="text-right">Salary</th>
+                                                    <th>Salary</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
+                                            and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
@@ -85,7 +90,7 @@ if(isset($_SESSION['user'])){
                                             $database->bind(':jobid', $jobid);                                             
 
                                             $rows2 = $database->resultset();
-                                                $i=1;
+                                             
                                             foreach($rows2 as $row2){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
@@ -93,40 +98,64 @@ if(isset($_SESSION['user'])){
                                                 $esalary = $row2['esalary'];
                                                 $position = $row2['position'];
                                                 $specialization = $row2['specialization'];
-                                                
+                                                $isshortlisted = $row2['isshortlisted'];
+                                                $isnew = $row2['isnew'];
                                        ?>
                                    
-                                                <tr>
-                                                    <td class="text-center"><?=$i?></td>
-                                                    <td><?=$fname?> <?=$lname?></td>
+                                                <tr id="line<?=$applicantid?>">                                                   
+                                                    <td>
+                                                    <ul class="list-inline"> 
+                                                        <li>
+                                                            <span class="h4weight"><?=$fname?> <?=$lname?></span>
+                                                        </li>
+                                                        <li id="newbadgediv<?=$applicantid?>">                                                   
+                                                            <?php
+                                                                if($isnew==1){
+                                                                    echo "<span class='badge'>New</span>";
+                                                                }
+                                                            ?>
+                                                        </li>
+                                                    </ul>    
+                                                    </td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
-                                                    <td class="text-right">Php <?=$esalary?></td>
+                                                    <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
-                                                     <!--   <form method="post" id="viewresume-form" name="viewresume-form">                    
-                                                            <input type="hidden" id="mode" name="view" value="view">
-                                                            <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
-                                                            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                                        </form>    
-                                                    -->
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
-                                                            <i class="fa fa-user text-info"></i>
-                                                        </a>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                  <ul class="list-inline">
+                                                        <li>
+                                                            <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
+                                                        </li>      
+                                                     
+                                                        <li id="line<?=$applicantid?>">   
+                                                            <?php
+                                                                if($isshortlisted==0){
+                                                            ?>      
+                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus"></i></button>                                                          
+                                                            <?php
+                                                                }else{
+                                                            ?>        
+                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple'><i class='fa fa-check'></i></button>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times"></i></a>
+                                                       
+                                                        </li>
+                                                  </ul>
                                                     </td>
                                                 </tr>
-                                            <?php
-                                                 $i=$i+1;
+                                            <?php                                               
                                             }
                                             ?>
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12 center">
+                                                        <a id="aappsloadmore" class="btn btn-primary" data-target="">Load More</a>
+                                                </div>
+                                        
                                       </div>    
                                         </div>  
                                     </div>

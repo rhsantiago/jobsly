@@ -442,7 +442,7 @@ if($mode==''){
                                                                 <div id="essaydiv" class="form-group label-floating">
                                                                    
                                                                 <label class="control-label">Select a pre-made essay question or create a new one below</label>
-                                                                    <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" data-parsley-required>
+                                                                    <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" >
                                                                             <?php                     
                                                                                   $database->query('SELECT id,question FROM jobessays where userid = :userid');
                                                                                   $database->bind(':userid', $userid);  
