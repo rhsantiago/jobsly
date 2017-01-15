@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2017 at 05:23 PM
+-- Generation Time: Jan 15, 2017 at 05:01 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -48,7 +48,10 @@ CREATE TABLE `additionalinformation` (
 INSERT INTO `additionalinformation` (`id`, `userid`, `dposition`, `specialization`, `plevel`, `esalary`, `pworkloc`, `yexp`, `wtravel`, `wrelocate`, `pholder`, `languages`) VALUES
 (1, 1, 'Senior programmer', 'information technology', 6, 100000, 'makati', 9, 'on', 'on', 'off', 'filipino, english'),
 (2, 29, 'Web Developer', 'Programming', 5, 100000, '', 10, 'off', 'off', 'off', ''),
-(3, 30, 'Web Developer', 'Information Technology', 5, 70000, 'Makati', 16, 'on', 'off', 'on', 'English, Filipino');
+(3, 30, 'Web Developer', 'Information Technology', 5, 70000, 'Makati', 16, 'on', 'off', 'on', 'English, Filipino'),
+(4, 31, 'Senior Vice President', 'Healthcare', 1, 70000, 'makati', 1, 'on', 'on', 'on', 'Doggie Talk, Barking'),
+(5, 32, 'IT Manager', 'information technology', 2, 80000, 'makati', 5, 'on', 'off', 'on', 'Doggie Talk'),
+(6, 33, 'Web Analytics Manager', 'Data Science', 2, 90000, 'Pasig', 12, 'on', 'off', 'on', 'English, Filipino');
 
 -- --------------------------------------------------------
 
@@ -86,7 +89,13 @@ INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgrad
 (9, 1, 'Colegio San Agustin', 'Dasma village', '2016-08-27', '<p>Loyalty Awarad</p>', 'Del La Salle University', 'Taft Ave Manila', '4', '2016-11-07', 'Bachelor in Political Science', '<p>gfgfg</p>', 'AITI', 'Salcedo vill Makati', '4', '2016-12-11', 'Master in Information Technology', '<p>fdfsf</p><p>ggh</p><p>j</p>', '<p>gggggggggggg</p><p>rrrrrrrrrrr</p><p>eeeeeeee</p>'),
 (10, 29, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'UST', 'Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
 (12, 30, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'University of Santo Tomas', 'Espana, Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', 'AGSB', 'Makati', '3.72', '2008-08-01', 'MBA', '<p>Silver Medalist<br></p>', NULL),
-(13, 30, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'University of Santo Tomas', 'Espana, Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL);
+(13, 30, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'University of Santo Tomas', 'Espana, Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(14, 31, 'Doggie High School', 'Doggie World', '2012-03-31', '<p>Suma Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(15, 31, NULL, NULL, '0000-00-00', NULL, 'Doggie University', 'Doggie World', '4.0', '2016-03-31', 'Veterinary Medicine', '<p>Suma Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(16, 32, 'Doggie Science High School', 'Doggie World', '2007-03-25', 'Magna Cum Laude', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(17, 32, NULL, NULL, '0000-00-00', NULL, 'Doggie University', 'Doggie World', '4.0', '2011-03-25', 'Computer Science', '<p>Suma Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(18, 33, 'Colegio San Agustin', 'Makati', '2005-03-27', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(19, 33, NULL, NULL, '0000-00-00', NULL, 'Harvard University', 'USA', '3.5', '2005-03-20', 'Business Administration', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,7 +172,8 @@ INSERT INTO `jobads` (`id`, `userid`, `jobtitle`, `company`, `specialization`, `
 (114, 28, 'Scrum Master', 'CHAMP Cargosystems Inc.', 'Management', 5, 'full', 40000, 60000, '2017-02-14', '2016-12-28', 2, '<p>Project managers ensure that a project is completed on time and within budget, that the project''s objectives are met and that everyone else is doing their job properly. Projects are usually separate to usual day-to-day business activities and require a group of people to work together to achieve a set of specific objectives. Project managers oversee the project to ensure the desired result is achieved, the most efficient resources are used and the different interests involved are satisfied.\n</p><p>\n</p><p>Typical responsibilities include:\n</p><p>agreeing project objectives\n</p><p>representing the client''s or organisation''s interests\n</p><p>providing advice on the management of projects\n</p><p>organising the various professional people working on a project\n</p><p>carrying out risk assessment\n</p><p>making sure that all the aims of the project are met\n</p><p>making sure the quality standards are met\n</p><p>using IT systems to keep track of people and progress\n</p><p>recruiting specialists and sub-contractors\n</p><p>monitoring sub-contractors to ensure guidelines are maintained\n</p><p>overseeing the accounting, costing and billing\n</p><p>Depending on the project, responsibilities can cover all aspects of a project from the beginning stages through to completion. Project managers typically lead by example, so expect to be working at least the same hours as your staff. Wages for this role can be lucrative.\n</p><p>\n</p><p><b>Typical employers of project managers\n</b></p><p>\n</p><p>Construction companies\n</p><p>Architects\n</p><p>Software producers\n</p><p>Commercial retailers\n</p><p>Engineering firms\n</p><p>Manufacturers\n</p><p>Public sector organisations\n</p><p>Qualifications and training required\n</p><p>\n</p><p>You often need a significant body of experience in the appropriate field, although some graduate schemes start you off in an ''assistant PM'' role. You may also be required to be part of a professional or chartered body. Some professional bodies such as the Association of Project Management offer industry recognised qualifications â€“ these are not essential but would be advantageous. It is also likely that you will need a full, clean driving licence.\n</p><p>\n</p><p>As mentioned, some employers run graduate schemes and internship programmes in project management. While some specify degree subjects, others don''t. Entry requirements depend on which industry you want to work in. You can find such opportunities online at TARGETjobs, The Association for Project Management and through university careers services.\n</p><p>\n</p><p><b>Key skills for project managers\n</b></p><p>\n</p><p>Organisational skills\n</p><p>Analytical skills\n</p><p>Well developed interpersonal skills\n</p><p>Numeracy skills\n</p><p>Commercial awareness\n</p><p>Communication skills\n</p><p>Teamworking skills\n</p><p>Diplomacy\n</p><p>Ability to motivate people\n</p><p>Management and leadership skills</p>', 'Makati', 'Metro Manila', 'Philippines', 5, '', 'BS Management', 'English, Filipino', '', 'on', 'off', 'What''s a time you disagreed with a decision that was made at work?', '2016-12-28', 0),
 (115, 28, 'Project Manager', 'ASTI', 'Management', 5, 'full', 50000, 65000, '2017-02-08', '2016-12-28', 1, '<p>Project managers ensure that a project is completed on time and within budget, that the project''s objectives are met and that everyone else is doing their job properly. Projects are usually separate to usual day-to-day business activities and require a group of people to work together to achieve a set of specific objectives. Project managers oversee the project to ensure the desired result is achieved, the most efficient resources are used and the different interests involved are satisfied.\n</p><p>\n</p><p>Typical responsibilities include:\n</p><p>agreeing project objectives\n</p><p>representing the client''s or organisation''s interests\n</p><p>providing advice on the management of projects\n</p><p>organising the various professional people working on a project\n</p><p>carrying out risk assessment\n</p><p>making sure that all the aims of the project are met\n</p><p>making sure the quality standards are met\n</p><p>using IT systems to keep track of people and progress\n</p><p>recruiting specialists and sub-contractors\n</p><p>monitoring sub-contractors to ensure guidelines are maintained\n</p><p>overseeing the accounting, costing and billing\n</p><p>Depending on the project, responsibilities can cover all aspects of a project from the beginning stages through to completion. Project managers typically lead by example, so expect to be working at least the same hours as your staff. Wages for this role can be lucrative.\n</p><p>\n</p><p><b>Typical employers of project managers\n</b></p><p>\n</p><p>Construction companies\n</p><p>Architects\n</p><p>Software producers\n</p><p>Commercial retailers\n</p><p>Engineering firms\n</p><p>Manufacturers\n</p><p>Public sector organisations\n</p><p>Qualifications and training required\n</p><p>\n</p><p>You often need a significant body of experience in the appropriate field, although some graduate schemes start you off in an ''assistant PM'' role. You may also be required to be part of a professional or chartered body. Some professional bodies such as the Association of Project Management offer industry recognised qualifications â€“ these are not essential but would be advantageous. It is also likely that you will need a full, clean driving licence.\n</p><p>\n</p><p>As mentioned, some employers run graduate schemes and internship programmes in project management. While some specify degree subjects, others don''t. Entry requirements depend on which industry you want to work in. You can find such opportunities online at TARGETjobs, The Association for Project Management and through university careers services.\n</p><p>\n</p><p><b>Key skills for project managers\n</b></p><p>\n</p><p>Organisational skills\n</p><p>Analytical skills\n</p><p>Well developed interpersonal skills\n</p><p>Numeracy skills\n</p><p>Commercial awareness\n</p><p>Communication skills\n</p><p>Teamworking skills\n</p><p>Diplomacy\n</p><p>Ability to motivate people\n</p><p>Management and leadership skills</p>', 'Makati', 'Metro Manila', 'Philippines', 5, '', 'BS Management', 'English, Filipino', '', 'on', 'off', 'What''s a time you disagreed with a decision that was made at work?', '2016-12-28', 0),
 (116, 28, 'Scrum Master', 'Maersk Sealand', 'Management', 6, 'full', 60000, 80000, '2017-01-06', '2016-12-12', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28', 1),
-(117, 28, 'Senior Scrum Master', 'CHAMP Cargosystems Inc.', 'Management', 5, 'full', 80000, 100000, '2017-02-15', '2016-12-31', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28', 0);
+(117, 28, 'Senior Scrum Master', 'CHAMP Cargosystems Inc.', 'Management', 5, 'full', 80000, 100000, '2017-02-15', '2016-12-31', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28', 0),
+(118, 34, 'Web Analytics Manager', 'Google', 'Data Science', 2, 'full', 90000, 120000, '2017-02-01', '2017-01-25', 1, '<p>As Web Analytics Manager your key responsibilities include:\n</p><p>Â·Managing the web analytics agency and ensure all agreed work is successfully completed.\n</p><p>Â·Leading thought process on how to improve customer journeys.\n</p><p>Â·Analysing and implementing A/B and Multivariate testing on the brand website across all devices to improve user experience and conversions.\n</p><p>Â·Reviewing current on-site/on-page optimisation and identify areas of improvement\n</p><p><br></p><p></p>', 'Pasig', '', 'Philippines', 5, 'College De', 'Statistics', 'English', '', 'on', 'on', '', '2017-01-14', 1);
 
 -- --------------------------------------------------------
 
@@ -187,10 +197,18 @@ CREATE TABLE `jobapplications` (
 --
 
 INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `isnew`, `isshortlisted`, `isreject`) VALUES
-(13, 86, 1, 3434, NULL, 1, 0, 0),
-(14, 116, 1, 45000, NULL, 1, 0, 0),
+(13, 86, 1, 3434, NULL, 0, 1, 1),
+(14, 116, 1, 45000, NULL, 0, 0, 0),
 (15, 86, 29, 100000, 'NA', 0, 0, 0),
-(16, 86, 30, 60000, 'Not', 0, 0, 0);
+(16, 86, 30, 60000, 'Not', 0, 1, 1),
+(17, 90, 32, 75000, 'Pimezone na!', 1, 0, 0),
+(18, 100, 32, 100000, 'The quick brown fox jumped over the lazy dog', 1, 0, 0),
+(19, 118, 33, 110000, 'undefined', 0, 1, 0),
+(20, 104, 33, 100000, 'Abbit choo choo chain', 1, 0, 0),
+(21, 118, 29, 80000, 'undefined', 0, 1, 0),
+(22, 86, 31, 30000, 'NA', 0, 1, 0),
+(23, 86, 32, 20000, 'dada dada', 0, 1, 1),
+(24, 86, 33, 40000, 'mama na', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -408,7 +426,9 @@ INSERT INTO `jobskills` (`id`, `userid`, `jobid`, `jobskill`, `jobskilltag`, `jo
 (190, 28, 117, 'New Zealand', '#NewZealand', '2016-12-28'),
 (191, 28, 117, 'Christmas Island', '#ChristmasIsland', '2016-12-28'),
 (192, 28, 117, 'British Indian Ocean Territory', '#BritishIndianOceanTerritory', '2016-12-28'),
-(193, 28, 117, 'Cape Verde', '#CapeVerde', '2016-12-28');
+(193, 28, 117, 'Cape Verde', '#CapeVerde', '2016-12-28'),
+(194, 34, 118, 'Microsoft Office', '#MicrosoftOffice', '2017-01-14'),
+(195, 34, 118, 'Data Modelling', '#DataModelling', '2017-01-14');
 
 -- --------------------------------------------------------
 
@@ -471,7 +491,9 @@ INSERT INTO `jobskillstemplate` (`id`, `userid`, `templateid`, `jobskill`, `jobs
 (39, 28, 81, 'New Zealand', '#NewZealand', '2016-12-28'),
 (40, 28, 81, 'Christmas Island', '#ChristmasIsland', '2016-12-28'),
 (41, 28, 81, 'British Indian Ocean Territory', '#BritishIndianOceanTerritory', '2016-12-28'),
-(42, 28, 81, 'Cape Verde', '#CapeVerde', '2016-12-28');
+(42, 28, 81, 'Cape Verde', '#CapeVerde', '2016-12-28'),
+(43, 34, 82, 'Microsoft Office', '#MicrosoftOffice', '2017-01-14'),
+(44, 34, 82, 'Data Modelling', '#DataModelling', '2017-01-14');
 
 -- --------------------------------------------------------
 
@@ -523,7 +545,8 @@ INSERT INTO `jobtemplates` (`id`, `userid`, `jobtitle`, `company`, `specializati
 (78, 28, 'Data Entry Specialists', 'Athena', 'BPO', 7, 'full', 12000, 23000, '2017-04-12', '2017-02-22', 12, '<p>Data Entry Operator I Job Responsibilities:\r</p><p>\r</p><p>Maintains database by entering data.\r</p><p>', 'Paranaque', 'Metro Manila', 'Philippines', 1, 'College', 'Any 4-year course', 'English', '', 'off', 'off', 'Why should we hire you?', '2016-12-28'),
 (79, 28, 'Office Manager', 'jobsly', 'Management', 6, 'full', 20000, 30000, '2017-03-15', '2017-02-15', 1, '<p>Maintains office services by organizing office operations and procedures; preparing payroll; controlling correspondence; designing filing systems; reviewing and approving supply requisitions; assigning and monitoring clerical functions.\r</p><p>Provides historical reference by defining procedures for retention, protection, retrieval, transfer, and disposal of records.\r</p><p>Maintains office efficiency by planning and implementing office systems, layouts, and equipment procurement.\r</p><p>Designs and implements office policies by establishing standards and procedures; measuring results against standards; making necessary adjustments.\r</p><p>Completes operational requirements by scheduling and assigning employees; following up on work results.\r</p><p>Keeps management informed by reviewing and analyzing special reports; summarizing information; identifying trends.\r</p><p>Maintains office staff by recruiting, selecting, orienting, and training employees.\r</p><p>Maintains office staff job results by coaching, counseling, and disciplining employees; planning, monitoring, and appraising job results.\r</p><p>Maintains professional and technical knowledge by attending educational workshops; reviewing professional publications; establishing personal networks; participating in professional societies.\r</p><p>Achieves financial objectives by preparing an annual budget; scheduling expenditures; analyzing variances; initiating corrective actions.\r</p><p>Contributes to team effort by accomplishing related results as needed.\r</p><p>Office Manager Skills and Qualifications:\r</p><p>\r</p><p>Supply Management, Informing Others, Tracking Budget Expenses, Delegation, Staffing, Managing Processes, Supervision, Developing Standards, Promoting Process Improvement, Inventory Control, Reporting Skills</p>', 'Paranaque', 'Metro Manila', 'Philippines', 2, 'college', 'Business', 'English, Filipino', '', 'on', 'off', 'Why should we hire you?', '2016-12-28'),
 (80, 28, 'Project Manager', 'Accenture', 'Management', 5, 'full', 40000, 60000, '2017-02-14', '2016-12-28', 2, '<p>Project managers ensure that a project is completed on time and within budget, that the project''s objectives are met and that everyone else is doing their job properly. Projects are usually separate to usual day-to-day business activities and require a group of people to work together to achieve a set of specific objectives. Project managers oversee the project to ensure the desired result is achieved, the most efficient resources are used and the different interests involved are satisfied.\n</p><p>\n</p><p>Typical responsibilities include:\n</p><p>agreeing project objectives\n</p><p>representing the client''s or organisation''s interests\n</p><p>providing advice on the management of projects\n</p><p>organising the various professional people working on a project\n</p><p>carrying out risk assessment\n</p><p>making sure that all the aims of the project are met\n</p><p>making sure the quality standards are met\n</p><p>using IT systems to keep track of people and progress\n</p><p>recruiting specialists and sub-contractors\n</p><p>monitoring sub-contractors to ensure guidelines are maintained\n</p><p>overseeing the accounting, costing and billing\n</p><p>Depending on the project, responsibilities can cover all aspects of a project from the beginning stages through to completion. Project managers typically lead by example, so expect to be working at least the same hours as your staff. Wages for this role can be lucrative.\n</p><p>\n</p><p><b>Typical employers of project managers\n</b></p><p>\n</p><p>Construction companies\n</p><p>Architects\n</p><p>Software producers\n</p><p>Commercial retailers\n</p><p>Engineering firms\n</p><p>Manufacturers\n</p><p>Public sector organisations\n</p><p>Qualifications and training required\n</p><p>\n</p><p>You often need a significant body of experience in the appropriate field, although some graduate schemes start you off in an ''assistant PM'' role. You may also be required to be part of a professional or chartered body. Some professional bodies such as the Association of Project Management offer industry recognised qualifications â€“ these are not essential but would be advantageous. It is also likely that you will need a full, clean driving licence.\n</p><p>\n</p><p>As mentioned, some employers run graduate schemes and internship programmes in project management. While some specify degree subjects, others don''t. Entry requirements depend on which industry you want to work in. You can find such opportunities online at TARGETjobs, The Association for Project Management and through university careers services.\n</p><p>\n</p><p><b>Key skills for project managers\n</b></p><p>\n</p><p>Organisational skills\n</p><p>Analytical skills\n</p><p>Well developed interpersonal skills\n</p><p>Numeracy skills\n</p><p>Commercial awareness\n</p><p>Communication skills\n</p><p>Teamworking skills\n</p><p>Diplomacy\n</p><p>Ability to motivate people\n</p><p>Management and leadership skills</p>', 'Makati', 'Metro Manila', 'Philippines', 5, '', 'BS Management', 'English, Filipino', '', 'on', 'off', 'What''s a time you disagreed with a decision that was made at work?', '2016-12-28'),
-(81, 28, 'Scrum Master', 'Maersk Sealand', 'Management', 6, 'full', 60000, 80000, '2017-01-06', '2016-12-12', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28');
+(81, 28, 'Scrum Master', 'Maersk Sealand', 'Management', 6, 'full', 60000, 80000, '2017-01-06', '2016-12-12', 1, '<p><b>Top 10 Personal Skills for a ScrumMaster:\n</b></p><p>\n</p><p>Servant Leader â€“ Must be able to garner respect from his/her team and be willing to get their hands dirty to get the job done\n</p><p>Communicative and social â€“ Must be able to communicate well with teams\n</p><p>Facilitative â€“ Must be able to lead and demonstrate value-add principles to a team\n</p><p>Assertive â€“ Must be able to ensure Agile/Scrum concepts and principles are adhered to, must be able to be a voice of reason and authority, make the tough calls.\n</p><p>Situationally Aware â€“ Must be the first to notice differences and issues as they arise and elevate them to management\n</p><p>Enthusiastic â€“ Must be high-energy\n</p><p>Continual improvement â€“ Must continually be growing ones craft learning new tools and techniques to manage oneself and a team\n</p><p>Conflict resolution â€“ Must be able to facilitate discussion and facilitate alternatives or different approaches\n</p><p>Attitude of empowerment â€“ Must be able to lead a team to self-organization\n</p><p>Attitude of transparency â€“ Must desire to bring disclosure and transparency to the business about development and grow business trust\n</p><p><b>Technical Skills:\n</b></p><p>\n</p><p>Understand basic fundamentals of iterative development\n</p><p>Understand other processes and methodologies and can speak intelligently about them and leverage other techniques to provide value to a team/enterprise\n</p><p>Understand basic fundamentals of software development processes and procedures\n</p><p>Understand the value of commitments to delivery made by a development team\n</p><p>Understand incremental delivery and the value of metrics\n</p><p>Understand backlog tracking, burndown metrics, velocity, and task definition\n</p><p>Familiarity with common Agile practices, service-oriented environments, and better development practices</p>', 'Makati', 'Metro Manila', 'Philippines', 4, 'College', 'BS Computer Science', 'English, Filipino', '', 'off', 'off', 'Tell me about a challenge or conflict you''ve faced at work, and how you dealt with it.', '2016-12-28'),
+(82, 34, 'Web Analytics Manager', 'Google', 'Data Science', 2, 'full', 90000, 120000, '2017-02-01', '2017-01-25', 1, '<p>As Web Analytics Manager your key responsibilities include:\n</p><p>Â·Managing the web analytics agency and ensure all agreed work is successfully completed.\n</p><p>Â·Leading thought process on how to improve customer journeys.\n</p><p>Â·Analysing and implementing A/B and Multivariate testing on the brand website across all devices to improve user experience and conversions.\n</p><p>Â·Reviewing current on-site/on-page optimisation and identify areas of improvement\n</p><p><br></p><p></p>', 'Pasig', '', 'Philippines', 5, 'College De', 'Statistics', 'English', '', 'on', 'on', 'Essay Not Required', '2017-01-14');
 
 -- --------------------------------------------------------
 
@@ -557,7 +580,10 @@ CREATE TABLE `personalinformation` (
 INSERT INTO `personalinformation` (`id`, `userid`, `lname`, `fname`, `mname`, `street`, `city`, `province`, `country`, `mnumber`, `myemail`, `landline`, `age`, `birthday`, `gender`, `nationality`) VALUES
 (7, 1, 'Santiago', 'Regidor', 'Hernandez', '87 Spain st., Better Living Subd', 'Paranaque', 'Metro Manila', 'Philippines', '  (23)3343', 'reggie1@gmail.com', ' 6391770018451', 39, '2016-11-09', 'female', 'Philippines'),
 (8, 29, 'Cat', 'Goldie', '', 'Spain', 'Paranaque City', '', 'Philippines', '09171110000', 'goldie@gmail.com', '', 8, '2009-01-01', 'male', 'Filipino'),
-(9, 30, 'Santiago', 'Moytisha', '', '87', 'Paranaque', '', 'Philippines', '09170000000', 'moytisha@gmail.com', '', 20, '1996-12-31', 'female', 'Filipino');
+(9, 30, 'Santiago', 'Moytisha', '', '87', 'Paranaque', '', 'Philippines', '09170000000', 'moytisha@gmail.com', '', 20, '1996-12-31', 'female', 'Filipino'),
+(10, 31, 'Girl', 'Tisha', '', '111 Espana', 'Makati', 'Metro Manila', 'Philippines', '09171101001', 'tisha@gmail.com', ' 639175010845', 20, '1997-01-14', 'female', 'Filipino'),
+(11, 32, 'Pinon', 'Toya', '', '2 Sta Clara', 'San Pedro', 'Laguna', 'Philippines', '09479999999', 'toya@gmail.com', '', 16, '2000-12-05', 'female', 'Filipino'),
+(12, 33, 'Santiago', 'Rico', '', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '9175010845', 'rico@gmail.com', '', 32, '1984-03-01', 'male', 'Filipino');
 
 -- --------------------------------------------------------
 
@@ -577,7 +603,10 @@ CREATE TABLE `savedapplications` (
 
 INSERT INTO `savedapplications` (`id`, `jobid`, `userid`) VALUES
 (6, 86, 1),
-(7, 89, 1);
+(7, 89, 1),
+(8, 89, 32),
+(9, 88, 33),
+(10, 91, 33);
 
 -- --------------------------------------------------------
 
@@ -615,7 +644,21 @@ INSERT INTO `skilltags` (`id`, `userid`, `skill`, `skilltag`, `skilltagdate`) VA
 (21, 29, 'programming', '#programming', '2017-01-07'),
 (22, 29, 'Microsoft Office', '#MicrosoftOffice', '2017-01-07'),
 (23, 30, 'PHP', '#PHP', '2017-01-08'),
-(24, 30, 'JAVA', '#JAVA', '2017-01-08');
+(24, 30, 'JAVA', '#JAVA', '2017-01-08'),
+(25, 31, 'Sit', '#Sit', '2017-01-14'),
+(26, 31, 'catch', '#catch', '2017-01-14'),
+(27, 31, 'play dead', '#playdead', '2017-01-14'),
+(28, 32, 'bootstrap', '#bootstrap', '2017-01-14'),
+(29, 32, 'html', '#html', '2017-01-14'),
+(30, 32, 'css', '#css', '2017-01-14'),
+(31, 32, 'javascript', '#javascript', '2017-01-14'),
+(32, 32, 'php', '#php', '2017-01-14'),
+(33, 33, 'microsoft office', '#microsoftoffice', '2017-01-14'),
+(34, 33, 'google analytics', '#googleanalytics', '2017-01-14'),
+(35, 33, 'data analysis', '#dataanalysis', '2017-01-14'),
+(36, 33, 'R', '#R', '2017-01-14'),
+(37, 33, 'data modelling', '#datamodelling', '2017-01-14'),
+(38, 33, 'charting', '#charting', '2017-01-14');
 
 -- --------------------------------------------------------
 
@@ -645,7 +688,8 @@ INSERT INTO `useraccounts` (`id`, `email`, `password`, `usertype`, `companyname`
 (30, 'moytisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
 (31, 'tisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
 (32, 'toya@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(33, 'rico@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1);
+(33, 'rico@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
+(34, 'bambam@gmail.com', 'truck', 1, 'Google', '222', '2017-01-14', 1);
 
 -- --------------------------------------------------------
 
@@ -679,7 +723,13 @@ INSERT INTO `workexperience` (`id`, `userid`, `company`, `position`, `startdate`
 (19, 29, 'Thomson Financial Corp.', 'Financial Data Analyst', '2001-09-01', 12000, 'Finance', '1-4 Years Experienced Employee', '2002-08-28', 'off', '<p>Responsibilities:<br>â€¢ Update and analyze information of publicly held companies that form part of DataStream United Kingdom<br>coverage in compliance with UK Format policies for timeliness, quality and consistency.<br>â€¢ Coordinates with fundamental group and/or other departments to ensure editorial needs are addressed.<br>â€¢ Performs other duties that may be assigned from time to time by the team manager.</p>'),
 (20, 30, 'Tech4kids Inc.', 'Finance Director', '2006-01-01', 40000, 'IT', 'Executive', '2015-02-01', 'on', 'Responsibilities:<br>â€¢ Develop and manage financial practices, accounting process, and internal<br>controls<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Direct the organizationâ€™s financial goals, objectives, and budgets.<br>â€¢ Financial Decision-making including Capital Budgeting and Ratio Analysis<br>â€¢ Strategic Planning and Business Development<br>â€¢ Ensure compliance with BIR, SEC, and other government agencies<br>â€¢ Develop Technology Curriculum for grade school students'),
 (21, 30, 'Cogmotion Inc.', 'BPO Accountant / Project Manager', '2005-08-01', 35000, 'IT', 'Manager', '2008-03-01', 'off', '<p>Responsibilities:<br>â€¢ Design the accounting process and Books of Accounts using QuickBooks<br>Online for US clients<br>â€¢ Provide accounting services for US clients including the ff:<br>â€¢ Bookkeeping and maintaining of General Ledgers<br>â€¢ Accounts payable recording, monitoring, processing, preparation of<br>reports, and preparation of printable checks<br>â€¢ Accounts receivable recording, monitoring, preparation of aging reports,<br>and preparation of printable invoices<br>â€¢ Payroll processing<br>â€¢ Bank Reconciliation<br>â€¢ Preparation of financial reports including Profit and Loss Statement,<br>Balance Sheet '),
-(22, 30, 'Ayala Property Management Corp.', 'Operations Accountant', '2002-09-01', 24000, 'Real Estate', '1-4 Years Experienced Employee', '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation ');
+(22, 30, 'Ayala Property Management Corp.', 'Operations Accountant', '2002-09-01', 24000, 'Real Estate', '1-4 Years Experienced Employee', '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation '),
+(23, 31, 'Goldie Veterinary Services', 'Vice President', '2016-01-01', 50000, 'Healthcare', 'Executive', '2017-01-21', 'on', '<p>Examine animals to diagnose their health problems\r</p><p>Diagnose and treat animals for medical conditions\r</p><p>Treat and dress wounds\r</p><p>Perform surgery on animals\r</p><p>Test for and vaccinate against diseases\r</p><p>Operate medical equipment, such as x-ray machines\r</p><p>Advise animal owners about general care, medical conditions, and treatments\r</p><p>Prescribe medication</p>'),
+(24, 32, 'Bamsoywandro Inc.', 'Web Developer', '2011-10-01', 45000, 'Retail', 'Manager', '2017-01-13', 'off', '<p>Accomplishes information technology staff results by communicating job expectations; planning, monitoring, and appraising job results; coaching, counseling, and disciplining employees; initiating, coordinating, and enforcing systems, policies, and procedures.\n</p><p>Maintains staff by recruiting, selecting, orienting, and training employees; maintaining a safe and secure work environment; developing personal growth opportunities.\n</p><p>Maintains organization''s effectiveness and efficiency by defining, delivering, and supporting strategic plans for implementing information technologies.\n</p><p>Directs technological research by studying organization goals, strategies, practices, and user projects.\n</p><p>Completes projects by coordinating resources and timetables with user departments and data center.\n</p><p>Verifies application results by conducting system audits of technologies implemented.\n</p><p>Preserves assets by implementing disaster recovery and back-up procedures and information security and control structures.\n</p><p>Recommends information technology strategies, policies, and procedures by evaluating organization outcomes; identifying problems; evaluating trends; anticipating requirements.\n</p><p>Accomplishes financial objectives by forecasting requirements; preparing an annual budget; scheduling expenditures; analyzing variances; initiating corrective action.\n</p><p>Maintains quality service by establishing and enforcing organization standards.\n</p><p>Maintains professional and technical knowledge by attending educational workshops; reviewing professional publications; establishing personal networks; benchmarking state-of-the-art practices; participating in professional societies.\n</p><p>Contributes to team effort by accomplishing related results as needed.</p>'),
+(25, 32, 'Doggie Co.', 'Web Designer', '2011-06-01', 20000, 'Information Technology', 'Fresh Graduate', '2011-09-30', 'off', '<p>Regular exposure to business stakeholders and executive management, as well as the authority and scope to apply your expertise to many interesting technical problems.\r</p><p>Candidate must have a strong understanding of UI, cross-browser compatibility, general web functions and standards.\r</p><p>The position requires constant communication with colleagues.\r</p><p><br></p>'),
+(27, 33, 'Oracle', 'Web Analytics Manager', '2015-01-23', 55000, 'Information Technology', 'Manager', '2017-12-31', 'on', '<p>-Provide marketing intelligence and offer recommendations to support business decisions.\r</p><p>- Recommend, achieve buy in for and develop new analytical reports and methods that will enhance marketersâ€™ knowledge and understanding of their performance vs. business goals, and enable them to â€œturn the dialsâ€ for business performance\r</p><p>-Prepare scheduled and ad-hoc reports that highlight key metrics and trends and be able to articulate those trends and recommend ways marketers can respond to them.\r</p><p>-Manage website analytics tools (primarily Adobe Site Catalyst) and leverage automation to the maximum extent possible.\r</p><p>-Train marketing and other lines of business on web analytics tools and techniques with a goal of transferring knowledge for maximum analytical expertise.\r</p><p>-Write functional requirements and QA test plans for site tracking and configuring Web Analytics'),
+(28, 33, 'Amazon', 'Web Analyst', '2013-02-01', 45000, 'Retail', '1-4 Years Experienced Employee', '2015-01-10', 'off', '<p>Prepares useful information that drives effective decisions from the mass of data\n</p><p>Presents information well in all formats â€“ written, verbal and using new media tools\n</p><p>Uses their analytical and mathematical approach to a problem to ensure rigour and accuracy (e.g. comfortable with concepts of significance, mathematical trending, modelling)\n</p><p>Knows how to use the best base tools (e.g. advanced Excel, use of relational databases such as mysql) as well as packaged tools such as Google analytics , Omniture etc\n</p><p>Enthusiastically researches the Analytics discipline, reading, networking, researching in order to stay at the top of their game.</p>'),
+(29, 33, 'Alexa', 'Data Analyst', '2005-04-01', 25000, 'Information Technology', 'Fresh Graduate', '2011-01-02', 'off', '<p>Interpret data, analyze results using statistical techniques and provide ongoing reports\n</p><p>Develop and implement databases, data collection systems, data analytics and other strategies that optimize statistical efficiency and quality\n</p><p>Acquire data from primary or secondary data sources and maintain databases/data systems\n</p><p>Identify, analyze, and interpret trends or patterns in complex data sets\n</p><p>Filter and â€œcleanâ€ data by reviewing computer reports, printouts, and performance indicators to locate and correct code problems\n</p><p>Work with management to prioritize business and information needs\n</p><p>Locate and define new process improvement opportunities\n</p><p>Requirements</p>');
 
 --
 -- Indexes for dumped tables
@@ -771,22 +821,22 @@ ALTER TABLE `workexperience`
 -- AUTO_INCREMENT for table `additionalinformation`
 --
 ALTER TABLE `additionalinformation`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `jobads`
 --
 ALTER TABLE `jobads`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT for table `jobapplications`
 --
 ALTER TABLE `jobapplications`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `jobessays`
 --
@@ -796,42 +846,42 @@ ALTER TABLE `jobessays`
 -- AUTO_INCREMENT for table `jobskills`
 --
 ALTER TABLE `jobskills`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 --
 -- AUTO_INCREMENT for table `jobskillstemplate`
 --
 ALTER TABLE `jobskillstemplate`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `jobtemplates`
 --
 ALTER TABLE `jobtemplates`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 --
 -- AUTO_INCREMENT for table `personalinformation`
 --
 ALTER TABLE `personalinformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `savedapplications`
 --
 ALTER TABLE `savedapplications`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `skilltags`
 --
 ALTER TABLE `skilltags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `workexperience`
 --
 ALTER TABLE `workexperience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

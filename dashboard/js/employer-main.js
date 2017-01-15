@@ -349,9 +349,13 @@ jQuery(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-rejectformsubmit.php',
                 data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
-                success: function(html) {
+               // dataType: 'application/json; charset=utf-8',
+                success: function(data) {
+                    console.log(data);
                     $('#rejectapp-modal').modal('toggle');
-                    $('#aappsdiv').html(html);
+                    var myObj = JSON.parse(data);
+                    $('#aappsdiv').html(myObj[0]);
+                    $('#shortlistdiv').html(myObj[1]);
                     if(mode=='reject'){
                         var tr = '#line' + applicantid;
                         $("#activeappstable " + tr).fadeOut('slow').delay(1000).hide(0);
