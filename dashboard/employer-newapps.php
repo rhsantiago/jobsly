@@ -42,7 +42,7 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">New Applicants</h2>
        </div>
      </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
                        
                 <div class="section  section-landing">
 	                 
@@ -73,7 +73,6 @@ if(isset($_SESSION['user'])){
                                      <table class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Specialization</th>
                                                     <th>Job Position</th>                                                   
@@ -84,8 +83,9 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
+                                            and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
@@ -101,31 +101,31 @@ if(isset($_SESSION['user'])){
                                                 $esalary = $row2['esalary'];
                                                 $position = $row2['position'];
                                                 $specialization = $row2['specialization'];
-                                                
+                                                $isnew = $row2['isnew'];
                                        ?>
                                    
                                                 <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td><?=$fname?> <?=$lname?></td>
+                                                    <td>
+                                                        <ul class="list-inline"> 
+                                                            <li>
+                                                                <span class="h4weight"><?=$fname?> <?=$lname?></span>
+                                                            </li>
+                                                            <li id="newbadgediv<?=$applicantid?>">                                                   
+                                                                <?php
+                                                                    if($isnew==1){
+                                                                        echo "<span class='badge'>New</span>";
+                                                                    }
+                                                                ?>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
-                                                    <td class="td-actions text-right">
-                                                     <!--   <form method="post" id="viewresume-form" name="viewresume-form">                    
-                                                            <input type="hidden" id="mode" name="view" value="view">
-                                                            <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
-                                                            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                                        </form>    
-                                                    -->
+                                                    <td class="td-actions text-right">                                                 
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
-                                                        </a>
-                                                        <button type="button" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
+                                                        </a>       
                                                     </td>
                                                 </tr>
                                             <?php

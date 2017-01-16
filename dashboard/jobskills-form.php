@@ -100,7 +100,7 @@ if(isset($_SESSION['user'])){
                             </div>
 		                    <div class="col-md-12">
                               
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">

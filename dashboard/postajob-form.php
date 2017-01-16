@@ -228,7 +228,7 @@ if($mode==''){
                             
                             
 		                    <div class="col-md-12">
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -246,7 +246,7 @@ if($mode==''){
                                           </div>
                                              <div class="content">
                                                     <div class="tab-content">
-                                                        <div class="tab-pane active" id="profile">
+                                                        <div class="tab-pane" id="profile">
                                                           <div class="row">
                                                                 <div class="col-md-6">
                                                             <div id="jobtitlediv" class="form-group label-floating">

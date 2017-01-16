@@ -75,8 +75,9 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
+                                            and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
@@ -92,11 +93,24 @@ if(isset($_SESSION['user'])){
                                                 $esalary = $row2['esalary'];
                                                 $position = $row2['position'];
                                                 $specialization = $row2['specialization'];
-                                                
+                                                $isnew = $row2['isnew'];
                                        ?>
                                    
                                                 <tr>
-                                                    <td><?=$fname?> <?=$lname?></td>
+                                                    <td>
+                                                        <ul class="list-inline"> 
+                                                            <li>
+                                                                <span class="h4weight"><?=$fname?> <?=$lname?></span>
+                                                            </li>
+                                                            <li id="newbadgediv<?=$applicantid?>">                                                   
+                                                                <?php
+                                                                    if($isnew==1){
+                                                                        echo "<span class='badge'>New</span>";
+                                                                    }
+                                                                ?>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
                                                     <td><?=$specialization?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
