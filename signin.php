@@ -24,16 +24,34 @@ if($success == $email && $isverified == 0){
     echo 'unverified';
 }
 if($success == $email && $isverified == 1 && $usertype == 1){
-    session_start();
-    if(!isset($_SESSION['user']))
-        $_SESSION['user'] = $success;
-    if(!isset($_SESSION['password']))
-        $_SESSION['password'] = $password;
-    if(!isset($_SESSION['userid']))
-        $_SESSION['userid'] = $id;
-     if(!isset($_SESSION['usertype']))
-        $_SESSION['usertype'] = $usertype;
-    echo 'successemployer';   
+    $database->query('SELECT companyname,companyaddress from companyinfo where userid=:userid');
+    $database->bind(':userid', $id);
+    $row = $database->single();
+    $companyname = $row['companyname'];
+    $companyaddress = $row['companyaddress'];
+    if(empty($companyname) || empty($companyaddress) && $isverified == 0){
+        session_start();
+        if(!isset($_SESSION['user']))
+            $_SESSION['user'] = $success;
+        if(!isset($_SESSION['password']))
+            $_SESSION['password'] = $password;
+        if(!isset($_SESSION['userid']))
+            $_SESSION['userid'] = $id;
+         if(!isset($_SESSION['usertype']))
+            $_SESSION['usertype'] = $usertype;
+        echo 'incompleteemployer';
+    }else{    
+        session_start();
+        if(!isset($_SESSION['user']))
+            $_SESSION['user'] = $success;
+        if(!isset($_SESSION['password']))
+            $_SESSION['password'] = $password;
+        if(!isset($_SESSION['userid']))
+            $_SESSION['userid'] = $id;
+         if(!isset($_SESSION['usertype']))
+            $_SESSION['usertype'] = $usertype;
+        echo 'successemployer';
+    }
 }
 
 if($success == $email && $isverified == 1 && $usertype == 2){

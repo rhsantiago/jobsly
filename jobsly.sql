@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2017 at 05:01 PM
+-- Generation Time: Jan 17, 2017 at 06:51 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -52,6 +52,19 @@ INSERT INTO `additionalinformation` (`id`, `userid`, `dposition`, `specializatio
 (4, 31, 'Senior Vice President', 'Healthcare', 1, 70000, 'makati', 1, 'on', 'on', 'on', 'Doggie Talk, Barking'),
 (5, 32, 'IT Manager', 'information technology', 2, 80000, 'makati', 5, 'on', 'off', 'on', 'Doggie Talk'),
 (6, 33, 'Web Analytics Manager', 'Data Science', 2, 90000, 'Pasig', 12, 'on', 'off', 'on', 'English, Filipino');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companyinfo`
+--
+
+CREATE TABLE `companyinfo` (
+  `id` int(10) NOT NULL,
+  `userid` int(10) NOT NULL,
+  `companyname` varchar(50) NOT NULL,
+  `companyaddress` int(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -197,8 +210,8 @@ CREATE TABLE `jobapplications` (
 --
 
 INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `isnew`, `isshortlisted`, `isreject`) VALUES
-(13, 86, 1, 3434, NULL, 0, 1, 1),
-(14, 116, 1, 45000, NULL, 0, 0, 0),
+(13, 86, 1, 3434, NULL, 0, 1, 0),
+(14, 116, 1, 45000, NULL, 1, 0, 0),
 (15, 86, 29, 100000, 'NA', 0, 0, 0),
 (16, 86, 30, 60000, 'Not', 0, 1, 1),
 (17, 90, 32, 75000, 'Pimezone na!', 1, 0, 0),
@@ -742,6 +755,12 @@ ALTER TABLE `additionalinformation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `companyinfo`
+--
+ALTER TABLE `companyinfo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
@@ -822,6 +841,11 @@ ALTER TABLE `workexperience`
 --
 ALTER TABLE `additionalinformation`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `companyinfo`
+--
+ALTER TABLE `companyinfo`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `educationandtraining`
 --

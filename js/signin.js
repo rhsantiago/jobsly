@@ -20,7 +20,9 @@ $(document).ready(function($) {
                            if(data == 'success'){
                                window.location.href = 'dashboard/main.php';
                            }else if(data == 'successemployer'){
-                               window.location.href = 'dashboard/employer-main.php';                           
+                               window.location.href = 'dashboard/employer-main.php';
+                           }else if(data == 'incompleteemployer'){
+                               window.location.href = 'dashboard/employer-registrationfull.php';       
                            }else if(data == 'notfound'){
                                 $( "#notfound" ).removeClass('hidden');
                            }else if(data == 'unverified'){
