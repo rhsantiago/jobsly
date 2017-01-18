@@ -29,7 +29,7 @@ if($success == $email && $isverified == 1 && $usertype == 1){
     $row = $database->single();
     $companyname = $row['companyname'];
     $companyaddress = $row['companyaddress'];
-    if(empty($companyname) || empty($companyaddress) && $isverified == 0){
+    if(empty($companyname) || empty($companyaddress) && $isverified == 0 && $usertype == 1){
         session_start();
         if(!isset($_SESSION['user']))
             $_SESSION['user'] = $success;

@@ -210,6 +210,10 @@ if($ok == 1 ){
                                                                 <label class="control-label">Company Website</label>
                                                                 <input type="text" id="companywebsite" class="form-control" value="<?=$companywebsite?>">
                                                             </div> 
+                                                            <div id="companywebsitediv" class="">
+                                                                <label class="control-label">Company Website</label>
+                                                                <input type="file" id="companywebsite" class="" value="<?=$companywebsite?>">
+                                                            </div>         
                                                         
                                                             <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
@@ -227,7 +231,7 @@ if($ok == 1 ){
                                              </div>
                                     </div>
                                 
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -280,7 +284,7 @@ if($ok == 1 ){
                                              </div>
                                     </div>
                                 
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-warning">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
