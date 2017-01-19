@@ -142,13 +142,20 @@ if($ok == 1 ){
     $companyaddress='';
     $companytin='';
     $companywebsite='';
+    $cperson='';
+    $designation='';
+    $cpersonemail='';
+    $cpersontelno='';
+    $industry='';
+    $numemp='';
+    $cdesc='';
 ?>
 
 
 <form method="post" id="companyregistration-form" name="companyregistration-form" data-parsley-trigger="keyup" data-parsley-validate>                    
                     <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                    <input type="hidden" id="templateid" name="templateid" value="<?=$templateid?>">
+                 
     
     
     <div class="col-md-12 center">            
@@ -198,35 +205,34 @@ if($ok == 1 ){
                                                                 <label class="control-label">Name of Company</label>
                                                                 <input type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
                                                             </div>
-                                                     
-                                                            <div id="telnodiv" class="form-group label-floating">
-                                                                <label class="control-label">Tel No.</label>
-                                                                <input type="text" id="telno" class="form-control" value="<?=$telno?>" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
-                                                            </div>
                                                             <div id="companyaddressdiv" class="form-group label-floating">
                                                                 <label class="control-label">Company Address</label>
                                                                 <input type="text" id="companyaddress" class="form-control" value="<?=$companyaddress?>" data-parsley-required>
                                                             </div>
-                                                            <div id="companytindiv" class="form-group label-floating">
+                                                             <div id="companywebsitediv" class="form-group label-floating">
+                                                                <label class="control-label">Company Website</label>
+                                                                <input type="text" id="companywebsite" class="form-control" value="<?=$companywebsite?>">
+                                                            </div>       
+                                                            
+                                                            
+                                                        </div>
+                                                         <div class="col-md-6">
+                                                                <div id="telnodiv" class="form-group label-floating">
+                                                                <label class="control-label">Tel No.</label>
+                                                                <input type="text" id="telno" class="form-control" value="<?=$telno?>" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                             </div>
+                                                             <div >
+                                                                 <a href="#logoupload-modal" data-toggle="modal">Upload Company Logo</a>
+                                                              </div>
+                                                         </div>
+                                                         <div class="col-md-6">
+                                                             <div id="companytindiv" class="form-group label-floating">
                                                                 <label class="control-label">Company TIN</label>
                                                                 <input type="text" id="companytin" class="form-control" value="<?=$companytin?>" data-parsley-required>
                                                             </div>
-                                                            <div id="companywebsitediv" class="form-group label-floating">
-                                                                <label class="control-label">Company Website</label>
-                                                                <input type="text" id="companywebsite" class="form-control" value="<?=$companywebsite?>">
-                                                            </div> 
-                                                                    <div >
-                                                                        <a href="#logoupload-modal" data-toggle="modal">show modal</a>
-                                                                    </div>
-                                                           
-                                                            <div id="pleveldiv" class="form-group label-floating">
-                                                                <label class="control-label">Position Level</label>
-                                                                <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
-                                                                           <option value='1' <?php if($plevel==1){echo' selected';}?>>Executive</option>
-                                                                           <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option> 
-                                                                </select>
-                                                            </div>        
-                                                        </div>
+                                                         </div>      
+                                                              
+                                                                
                                                        
                                                     </div>
                                                         </div>
@@ -254,8 +260,79 @@ if($ok == 1 ){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
-                                                            Describe applicant requirements, responsibilities and relevant information
-                                                                    <div id="jobdesc"><?=$jobdesc?></div>
+                                                            <div class="row">
+                                                            <div class="col-md-12">    
+                                                                <div id="cpersondiv" class="form-group label-floating">
+                                                                    <label class="control-label">Contact Person</label>
+                                                                    <input type="text" id="cperson" class="form-control" value="<?=$cperson?>" data-parsley-required>
+                                                                </div>
+                                                                <div id="designationdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Designation</label>
+                                                                    <input type="text" id="designation" class="form-control" value="<?=$designation?>" data-parsley-required>
+                                                                </div>
+                                                             </div>   
+                                                                <div class="col-md-6">
+                                                                    <div id="cpersonemaildiv" class="form-group label-floating">
+                                                                        <label class="control-label">Email</label>
+                                                                        <input type="text" id="cpersonemail" value="<?=$cpersonemail?>" class="form-control" data-parsley-type="email">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div id="cpersontelnodiv" class="form-group label-floating">
+                                                                        <label class="control-label">Tel No</label>
+                                                                        <input type="text" id="cpersontelno" value="<?=$cpersontelno?>" class="form-control" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                                    </div>
+                                                                </div>    
+                                                               
+                                                        </div>
+                                                        </div>       
+                                                    </div>
+                                             </div>
+                                    </div>
+                                
+                                    <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-warning">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">note_add</i>
+                                                                    Other Information
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                            
+                                                            <div class="col-md-6">
+                                                               
+                                                                <div id="industrydiv" class="form-group label-floating">
+                                                                    <label class="control-label">Industry</label>
+                                                                    <input type="text" id="industry" value="<?=$industry?>" class="form-control">
+                                                                </div>
+                                                                <div id="numempdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Number of Employees</label>
+                                                                    <input type="text" id="numemp" class="form-control" value="<?=$numemp?>"  data-parsley-type="number">
+                                                                </div>
+                                                               
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                             <div id="typediv" class="form-group label-floating">
+                                                                <label class="control-label">Type of Company</label>
+                                                                <select class="form-control" id="ctype" name="ctype"  placeholder="Position Level">       
+                                                                           <option value='1' <?php if($ctype==1){echo' selected';}?>>Direct Employer</option>
+                                                                           <option value='2' <?php if($ctype==2){echo' selected';}?>>Recruitment Agency</option> 
+                                                                </select>
+                                                            </div> 
+                                                            </div>    
+                                                            <div class="col-md-12">
+                                                            <div id="cdesc"><?=$cdesc?></div>
                                                                     
                                                                           <script>
                                                                             $(document).ready(function() {
@@ -282,113 +359,9 @@ if($ok == 1 ){
                                                                                     });
                                                                             });
                                                                             </script>
-                                                        </div>
-
-                                                    </div>
-                                             </div>
-                                    </div>
-                                
-                                    <div class="card card-nav-tabs cardtopmargin">
-                                            <div id="tabtitle" class="header  header-warning">
-                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                                <div class="nav-tabs-navigation">
-                                                    <div class="nav-tabs-wrapper">
-                                                        <ul class="nav nav-tabs" data-tabs="tabs">
-                                                            <li class="active">
-                                                                <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">note_add</i>
-                                                                    Optional Details
-                                                                </a>
-                                                            </li>										
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                          </div>
-                                             <div class="content">
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane active" id="profile">
-                                                            <div class="col-md-6">
-                                                                <div id="nvacanciesdiv" class="form-group label-floating">
-                                                                    <label class="control-label">Number of Vancancies</label>
-                                                                    <input type="text" id="nvacancies" class="form-control" value="<?=$nvacancies?>" data-parsley-type="number">
-                                                                </div>
-                                                                <div id="citydiv" class="form-group label-floating">
-                                                                    <label class="control-label">City</label>
-                                                                    <input type="text" id="city" value="<?=$city?>" class="form-control">
-                                                                </div>
-                                                                <div id="provincediv" class="form-group label-floating">
-                                                                    <label class="control-label">Province</label>
-                                                                    <input type="text" id="province" value="<?=$province?>" class="form-control">
-                                                                </div>
-                                                                <div id="countrydiv" class="form-group label-floating">
-                                                                    <label class="control-label">Country</label>
-                                                                    <input type="text" id="country" value="<?=$country?>" class="form-control">
-                                                                </div>
-                                                                <div id="yrsexpdiv" class="form-group label-floating">
-                                                                    <label class="control-label">Years of Experience</label>
-                                                                    <input type="text" id="yrsexp" class="form-control" value="<?=$yrsexp?>"  data-parsley-type="number">
-                                                                </div>
-                                                                <div id="mineducdiv" class="form-group label-floating">
-                                                                    <label class="control-label">Educational Attainment</label>
-                                                                    <input type="text" id="mineduc" value="<?=$mineduc?>" class="form-control">
-                                                                </div>
+                                                             
                                                             </div>
-                                                            <div class="col-md-6">
-                                                            <div id="prefcoursediv" class="form-group label-floating">
-                                                                <label class="control-label">Preferred Course</label>
-                                                                <input type="text" id="prefcourse" value="<?=$prefcourse?>" class="form-control">
-                                                            </div>
-                                                            <div id="languagesdiv" class="form-group label-floating">
-                                                                <label class="control-label">Languages</label>
-                                                                <input type="text" id="languages" value="<?=$languages?>" class="form-control">
-                                                            </div>
-                                                            <div id="licensesdiv" class="form-group label-floating">
-                                                                <label class="control-label">Licenses</label>
-                                                                <input type="text" id="licenses" value="<?=$licenses?>" class="form-control">
-                                                            </div>
-                                                            <div id="wtraveldiv" class="form-group">
-                                                                         <div class="checkbox">
-                                                                            <label>
-                                                                                    <input type="checkbox" id="wtravel" name="optionsCheckboxes" <?=$wtravel?>>
-                                                                                Show Willing to Travel?
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                            <div id="wrelocatediv" class="form-group">
-                                                                         <div class="checkbox">
-                                                                            <label>
-                                                                                    <input type="checkbox" id="wrelocate" name="optionsCheckboxes" <?=$wrelocate?>>
-                                                                                Show Willing to Relocate?
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                            </div> 
                                                             
-                                                            <div class="col-md-12">
-                                                                 
-                                                                <div id="essaydiv" class="form-group label-floating">
-                                                                   
-                                                                <label class="control-label">Select a pre-made essay question or create a new one below</label>
-                                                                    <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" data-parsley-required>
-                                                                            <?php                     
-                                                                                  $database->query('SELECT id,question FROM jobessays where userid = :userid');
-                                                                                  $database->bind(':userid', $userid);  
-                                                                                  $rows = $database->resultset();
-
-                                                                                  foreach($rows as $row){
-                                                                                       $id=$row['id'];
-                                                                                       $question=$row['question'];
-                                                                            ?>
-                                                                               <option value="<?=$question?>"><?=$question?></option>
-                                                                            <?php
-                                                                                  }
-                                                                            ?>
-                                                                    </select>
-                                                                </div>
-                                                                    <div id="essaydiv" class="form-group label-floating">                                                                   
-                                                                        <input type="text" id="essay" value="<?=$essay?>" class="form-control">
-                                                                    </div>
-                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -404,7 +377,7 @@ if($ok == 1 ){
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save and Go to Next Step</button>
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Company Information</button>
                                             </div>       
                                              <div id="successdivpinfo" class="alert alert-success">
                                                
@@ -414,7 +387,7 @@ if($ok == 1 ){
                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                   </button>
-                                                  <b>Alert: </b> Your Job Details has been saved.
+                                                  <b>Alert: </b> Your Company Information has been saved.
                                                
                                             </div>
                                    
@@ -447,18 +420,7 @@ if($ok == 1 ){
 		       </div> 
             </form>
 
-<script>
-jQuery(document).ready(function ($) {
-    
-    $('#templatejobdetail-form #essayselect').on('change', function() {
-       $("#templatejobdetail-form #essay").val($('#templatejobdetail-form #essayselect').val());
-    });
-  
-    
-         
-    
-});       
-</script>
+
                       
                     </div> <!--resume main body-->        
                 
@@ -508,16 +470,41 @@ jQuery(document).ready(function ($) {
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function ($) {
+    $('#companyregistration-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+    });
+     $('#successdivpinfo').hide();
+    $('#companyregistration-form #companyname').parsley().on('field:error', function() {
+           $('#companyregistration-form #companynamediv').addClass('has-error');
+           $('#companyregistration-form #companynamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#companyregistration-form #companyname').parsley().on('field:success', function() {
+            $('#companyregistration-form #companynamediv').addClass('has-success');
+            $('#companyregistration-form #companynamediv').find('span').remove()
+            $('#companyregistration-form #companynamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    $('#companyregistration-form #companyaddress').parsley().on('field:error', function() {
+           $('#companyregistration-form #companyaddressdiv').addClass('has-error');
+           $('#companyregistration-form #companyaddressdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#companyregistration-form #companyaddress').parsley().on('field:success', function() {
+            $('#companyregistration-form #companyaddressdiv').addClass('has-success');
+            $('#companyregistration-form #companyaddressdiv').find('span').remove()
+            $('#companyregistration-form #companynamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+  
     
+         
+    
+});       
+</script>
      
  
 
