@@ -41,27 +41,32 @@ if($ok == 1 ){
 
 <body class="landing-page">
      <!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
+
+    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
+            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+	  <div class="modal-dialog" role="document">
 	    <div class="modal-content modalcontent">
-	      
+	        <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
+	      </div>
+            <div id="modalrejectapp" class="modal-body">
+            
+            <div id="fileuploaddiv" class="">                 
+                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                 </div> 
+           </div>
+            <div class="modal-footer blog-post">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
+	      </div>
 	    </div>
+           
 	  </div>
+        </form>    
 	</div>
-    <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="rejectapp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
+  
     
     
    <nav class="navbar navbar-fixed-top ">
@@ -210,11 +215,10 @@ if($ok == 1 ){
                                                                 <label class="control-label">Company Website</label>
                                                                 <input type="text" id="companywebsite" class="form-control" value="<?=$companywebsite?>">
                                                             </div> 
-                                                            <div id="companywebsitediv" class="">
-                                                                <label class="control-label">Company Website</label>
-                                                                <input type="file" id="companywebsite" class="" value="<?=$companywebsite?>">
-                                                            </div>         
-                                                        
+                                                                    <div >
+                                                                        <a href="#logoupload-modal" data-toggle="modal">show modal</a>
+                                                                    </div>
+                                                           
                                                             <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
                                                                 <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
@@ -495,7 +499,7 @@ jQuery(document).ready(function ($) {
 	        </div>
 	    </footer>
 
-	</div>
+	
     
 </body>
 
@@ -515,29 +519,7 @@ jQuery(document).ready(function ($) {
     <script src="js/employer-main.js" type="text/javascript"></script>
     
      
-    <script>
-    var isClosed = true;
-function openNav() {
-    if(isClosed){
-        document.getElementById("mySidenav").style.width = "200px";
-        document.getElementById("main").style.marginLeft = "200px";
-        isClosed = false;
-    } else{
-        closeNav();
-    }
-}
-
-function closeNav() {
-  
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    isClosed = true;
-}
-
-      if(window.screen.width > 768){    
-        openNav();
-      }
-</script>
+ 
 
 </html>
 <?php

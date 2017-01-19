@@ -372,4 +372,14 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
+    $(document).on('click','#logoupload-modal',function(event) {
+            var applicantid =  $(this).data('applicantid');
+            var jobid =  $(this).data('jobid');
+            var mode =  $(this).data('mode');
+            $('#shortlist-form #applicantid').val(applicantid);
+            $('#shortlist-form #jobid').val(jobid);
+            $('#shortlist-form #mode').val(mode);
+            $('#shortlist-form').submit();
+    });
+    
 });       
