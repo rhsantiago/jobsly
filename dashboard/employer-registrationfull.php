@@ -10,7 +10,42 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-  
+ 
+    $companyname='';
+    $telno='';
+    $companyaddress='';
+    $companytin='';
+    $companywebsite='';
+    $cperson='';
+    $designation='';
+    $cpersonemail='';
+    $cpersontelno='';
+    $industry='';
+    $numemp='';
+    $cdesc='';
+    $logo='';
+    
+     $database->query('SELECT * from companyinfo where userid = :userid');
+     $database->bind(':userid', $userid);   
+     $row = $database->single();
+    
+     $id = $row['id'];
+    // $userid = $row['userid'];
+     $companyname = $row['companyname'];
+     $companyaddress = $row['companyaddress'];
+     $companywebsite = $row['companywebsite'];
+     $telno = $row['telno'];
+     $companytin = $row['companytin'];
+     $cperson = $row['cperson'];
+     $designation = $row['designation'];
+     $cpersonemail = $row['cpersonemail'];
+     $cpersontelno = $row['cpersontelno'];
+     $industry = $row['industry'];
+     $numemp = $row['numemp'];
+     $cdesc = $row['cdesc'];
+     $ctype = $row['ctype'];
+     $logo = $row['logo'];
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,7 +70,7 @@ if($ok == 1 ){
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-  
+    <link href="css/summernote.css" rel="stylesheet"/>
 
 </head>
 
@@ -136,24 +171,11 @@ if($ok == 1 ){
 			<div class="container-fluid"> <!-- with fluid for full width -->
                 <div class="row-fluid">   <!-- with fluid for full width -->
                     
-<?php
-    $companyname='';
-    $telno='';
-    $companyaddress='';
-    $companytin='';
-    $companywebsite='';
-    $cperson='';
-    $designation='';
-    $cpersonemail='';
-    $cpersontelno='';
-    $industry='';
-    $numemp='';
-    $cdesc='';
-?>
+
 
 
 <form method="post" id="companyregistration-form" name="companyregistration-form" data-parsley-trigger="keyup" data-parsley-validate>                    
-                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
+                    <input type="hidden" id="mode" name="mode" value="insert">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                  
     
@@ -221,15 +243,32 @@ if($ok == 1 ){
                                                                 <label class="control-label">Tel No.</label>
                                                                 <input type="text" id="telno" class="form-control" value="<?=$telno?>" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
                                                              </div>
+                                                             <?php
+                                                                    if($id > 0){
+                                                             ?>
                                                              <div >
-                                                                 <a href="#logoupload-modal" data-toggle="modal">Upload Company Logo</a>
+                                                                 <a href="#logoupload-modal" data-userid="<?=$userid?>" data-toggle="modal">Upload Company Logo</a>
                                                               </div>
+                                                             <?php
+                                                                    }
+                                                             ?>
                                                          </div>
                                                          <div class="col-md-6">
                                                              <div id="companytindiv" class="form-group label-floating">
                                                                 <label class="control-label">Company TIN</label>
                                                                 <input type="text" id="companytin" class="form-control" value="<?=$companytin?>" data-parsley-required>
                                                             </div>
+                                                             <?php
+                                                                    if(!empty($logo)){
+                                                             ?>
+                                                             <div class="container"><div class="col-md-1" style="padding-left: 0px;  padding-right: 0px;">
+                                                                    <img src="<?=$logo?>" class="img-responsive">
+                                                                </div>
+                                                            </div>
+                                                           
+                                                             <?php
+                                                                    }
+                                                             ?>
                                                          </div>      
                                                               
                                                                 
@@ -334,31 +373,6 @@ if($ok == 1 ){
                                                             <div class="col-md-12">
                                                             <div id="cdesc"><?=$cdesc?></div>
                                                                     
-                                                                          <script>
-                                                                            $(document).ready(function() {
-                                                                               $('#jobdesc').summernote({
-                                                                                      toolbar: [
-                                                                                        // [groupName, [list of button]]
-                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']], 
-                                                                                        ['fontsize', ['fontsize']],
-                                                                                        ['color', ['color']],
-                                                                                        ['para', ['ul', 'ol', 'paragraph']]
-                                                                                      ],
-                                                                                      callbacks: {
-                                                                                        onPaste: function (e) {
-                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-
-                                                                                            e.preventDefault();
-
-                                                                                            // Firefox fix
-                                                                                            setTimeout(function () {
-                                                                                                document.execCommand('insertText', false, bufferText);
-                                                                                            }, 10);
-                                                                                        }
-                                                                                    }    
-                                                                                    });
-                                                                            });
-                                                                            </script>
                                                              
                                                             </div>
                                                             
@@ -367,10 +381,58 @@ if($ok == 1 ){
                                                     </div>
                                              </div>
                                     </div>
-                                
+                                    <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-primary">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">description</i>
+                                                                    Terms &amp; Conditions
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                            <div class="row">
+                                                            <div class="col-md-12">    
+                                                                <div id="cpersondiv" class="form-group label-floating">
+                                                                   <p> This Service Agreement is binding between Jobsly.net and the Company, hereafter referred to as “Advertiser”.</p>  
+
+ <p>Each job post is provided 90 days exposure.<br>
+
+ <p>All job advertisements ordered by the Advertiser will be posted through the Advertiser’s account and
+will be stored for 6 months from posting date.</p>
+
+ <p>Posting another job advertisement with the same ad creation parameters is allowed only after 14 days to avoid spamming. </p>
+
+ <p>Jobsly.net reserves the right to delete job posts and suspend access to any and all aspects of its service at any time should the Advertiser violate the Terms of Use. </p>
+
+ <p>All job advertisements are not to be used for applicant solicitation for purchase of products / services, compilation of database information for any unauthorized use or sale, disclosure to any third party, contact with the user for any purpose other than potential employment, or for any other purpose which is not consistent with Jobsly.net's Privacy Policy and these Terms of Use.</p>
+
+ <p>All the resumes will be stored in the advertiser’s account for 6 months from the posting date of the advertisement or the retrieval / request date from the Resume Search database, whichever date is earlier.</p>
+
+ <p>Advertiser agrees that Jobsly.net can use its name in all of Jobsly.net's advertisements and campaigns.</p>
+
+I / We understand and agree to the terms and conditions of this agreement.
+
+                                                                </div>
+                                                              
+                                                             </div>  
+                                                        </div>
+                                                        </div>       
+                                                    </div>
+                                             </div>
+                                    </div>  
 		                    </div>
                          
-                                    
+                                  
                                 
                                 
 		               
@@ -379,7 +441,7 @@ if($ok == 1 ){
                                             <div class="savebutton">
                                                 <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Company Information</button>
                                             </div>       
-                                             <div id="successdivpinfo" class="alert alert-success">
+                                             <div id="successdivcreg" name="successdivcreg" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
@@ -469,26 +531,49 @@ if($ok == 1 ){
 	<script src="js/jquery.min.js" type="text/javascript"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
-
-
+    <script src="js/parsley.js"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
 <script>
-jQuery(document).ready(function ($) {
+$(document).ready(function() {
     $('#companyregistration-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
     });
-     $('#successdivpinfo').hide();
+    
+    $('#cdesc').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']], 
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    }    
+                                                                                    });
+   
     $('#companyregistration-form #companyname').parsley().on('field:error', function() {
-           $('#companyregistration-form #companynamediv').addClass('has-error');
-           $('#companyregistration-form #companynamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+           $('#companyregistration-form #companynameediv').addClass('has-error');
+           $('#companyregistration-form #companynameediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
     $('#companyregistration-form #companyname').parsley().on('field:success', function() {
-            $('#companyregistration-form #companynamediv').addClass('has-success');
-            $('#companyregistration-form #companynamediv').find('span').remove()
-            $('#companyregistration-form #companynamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+            $('#companyregistration-form #companynameediv').addClass('has-success');
+            $('#companyregistration-form #companynameediv').find('span').remove()
+            $('#companyregistration-form #companynameediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     $('#companyregistration-form #companyaddress').parsley().on('field:error', function() {
            $('#companyregistration-form #companyaddressdiv').addClass('has-error');

@@ -1,6 +1,8 @@
 <?php
 $target_dir = "logo/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+//$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$myfile = pathinfo($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir.date("YmdHms").'.'.$myfile['extension'];
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
@@ -27,6 +29,7 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
     echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+    echo $target_file;
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -36,8 +39,16 @@ if ($uploadOk == 0) {
 } else {
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-       // echo "The file ". basename( $_FILES["fileToUpload"][date("YmdHms")]). " has been uploaded.";
-        
+        include 'Database.php';
+        $database = new Database();
+        if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+               // echo "The file ". basename( $_FILES["fileToUpload"][date("YmdHms")]). " has been uploaded.";
+            $database->query(' update companyinfo set logo=:logo where userid=:userid');
+          
+            $database->bind(':logo', $target_file); 
+            $database->bind(':userid', $userid);
+
+            $database->execute();
         header('Location: employer-registrationfull.php');
     } else {
         echo "Sorry, there was an error uploading your file.";
