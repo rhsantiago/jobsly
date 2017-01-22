@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2017 at 06:51 PM
+-- Generation Time: Jan 22, 2017 at 05:55 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -63,8 +63,27 @@ CREATE TABLE `companyinfo` (
   `id` int(10) NOT NULL,
   `userid` int(10) NOT NULL,
   `companyname` varchar(50) NOT NULL,
-  `companyaddress` int(150) NOT NULL
+  `companyaddress` varchar(150) NOT NULL,
+  `companywebsite` varchar(70) NOT NULL,
+  `telno` varchar(20) NOT NULL,
+  `companytin` varchar(30) NOT NULL,
+  `cperson` varchar(50) NOT NULL,
+  `designation` varchar(50) NOT NULL,
+  `cpersonemail` varchar(50) NOT NULL,
+  `cpersontelno` varchar(20) NOT NULL,
+  `industry` varchar(50) NOT NULL,
+  `numemp` int(10) NOT NULL,
+  `ctype` int(5) NOT NULL,
+  `cdesc` text NOT NULL,
+  `logo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `companyinfo`
+--
+
+INSERT INTO `companyinfo` (`id`, `userid`, `companyname`, `companyaddress`, `companywebsite`, `telno`, `companytin`, `cperson`, `designation`, `cpersonemail`, `cpersontelno`, `industry`, `numemp`, `ctype`, `cdesc`, `logo`) VALUES
+(5, 28, 'T4K', '87 Spain St. Better Living Subd.', 'http://www.champ.aero', '343434', '5678', 'Reggie Santiago', 'HR', 'reggie1@gmail.com', '436567', 'IT', 5, 2, '<p>descfghg</p>', 'logo/20170121180147.jpg');
 
 -- --------------------------------------------------------
 
@@ -845,7 +864,7 @@ ALTER TABLE `additionalinformation`
 -- AUTO_INCREMENT for table `companyinfo`
 --
 ALTER TABLE `companyinfo`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `educationandtraining`
 --

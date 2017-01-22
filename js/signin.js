@@ -21,7 +21,7 @@ $(document).ready(function($) {
                                window.location.href = 'dashboard/main.php';
                            }else if(data == 'successemployer'){
                                window.location.href = 'dashboard/employer-main.php';
-                           }else if(data == 'incompleteemployer'){
+                           }else if(data == 'unverifiedemployer'){
                                window.location.href = 'dashboard/employer-registrationfull.php';       
                            }else if(data == 'notfound'){
                                 $( "#notfound" ).removeClass('hidden');

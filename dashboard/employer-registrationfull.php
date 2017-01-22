@@ -6,7 +6,16 @@ if(isset($_SESSION['user'])){
    $userid = $_SESSION['userid'];
    $usertype = $_SESSION['usertype'];
     
-   include 'authenticate.php';
+    include 'Database.php';
+    $database = new Database();
+
+    $database->query('SELECT count(id) as ok from useraccounts where email = :email and password = :password and usertype = :usertype and isverified = 0');
+    $database->bind(':email', $user);
+    $database->bind(':password', $password);
+    $database->bind(':usertype', $usertype);
+
+    $row = $database->single();
+    $ok = $row['ok'];
 }
 
 if($ok == 1 ){
@@ -170,7 +179,7 @@ if($ok == 1 ){
          
 			<div class="container-fluid"> <!-- with fluid for full width -->
                 <div class="row-fluid">   <!-- with fluid for full width -->
-                    
+                    <div id="resume-main-body">
 
 
 
@@ -371,6 +380,7 @@ if($ok == 1 ){
                                                             </div> 
                                                             </div>    
                                                             <div class="col-md-12">
+                                                                Company Description
                                                             <div id="cdesc"><?=$cdesc?></div>
                                                                     
                                                              
@@ -483,7 +493,7 @@ I / We understand and agree to the terms and conditions of this agreement.
             </form>
 
 
-                      
+                </div>  
                     </div> <!--resume main body-->        
                 
 	        </div>
