@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     
         
     $mode = 'insert';
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
    
     
@@ -42,7 +42,7 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">My Job Ads</h2>
        </div>
      </div>
-    <div class="col-md-offset-1 col-md-7">
+    <div class="col-md-9">
                        
                 <div class="section  section-landing">
 	                 
@@ -53,7 +53,8 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
+                                //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
+                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
@@ -75,7 +76,8 @@ if(isset($_SESSION['user'])){
 
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
-                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];         
+                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
+                                    $logo = $row['logo'];
 
                                
                                 
@@ -84,10 +86,31 @@ if(isset($_SESSION['user'])){
                                 <section class="blog-post">
                                     <div class="panel panel-default">
                                     
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div class="jobad-meta jobad-bottomborder">
+                                      <div class="panel-body">
+                                          <div class="jobad-meta">
                                       <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                          <ul  class="list-inline ">
+                                         
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                            
+                                            <div class="row-fluid">
+                                                <div class="col-md-6 jobad-titletopmargin">
+                                                    
+                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                        <div class="companypos">
+                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="companylogo"  align='right'> 
+                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-12" align="left">
+                                                    <ul  class="list-inline ">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -105,32 +128,15 @@ if(isset($_SESSION['user'])){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
+                                                        </div>
                                           
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            
-                                            <div class="row-fluid">
-                                                <div class="col-md-6 jobad-titletopmargin">
-                                                    
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="companylogo"  align='right'> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                            </div>    
-                                         
-                                          
-                                          
+                                          </div> 
                                         </div>                                  
                                          <div class="row-fluid">
                                                
-                                                <div class="col-md-6 actionicon pull-right">                                                   
+                                                <div class="col-md-6 actionicon pull-right">
+                                                                                                                
+                                                         <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i></a></span>
                                                         <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
                                                         <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
                                                 </div>

@@ -971,6 +971,34 @@ jQuery(document).ready(function ($) {
             });
             return false;
     });
+    
+    $('#showjob-modal').on('show.bs.modal', function(e) {
+             
+               var $modal = $(this);
+              // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
+               
+               var jobid =  $(e.relatedTarget).data('jobid');
+               var mode =  $(e.relatedTarget).data('mode');
+               var employer =  $(e.relatedTarget).data('employer');    
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'showjob-modal.php',
+            data: 'jobid=' + jobid + "&mode=" + mode + "&employer=" + employer,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $modal.find('#successdivquickapply').hide();
+                $modal.find('#warningdivquickapply').hide();
+               // $('#quickapplydiv #successdivquickapply').hide();
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
 
 
 });  

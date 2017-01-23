@@ -62,7 +62,12 @@ if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
     $teaser = strip_tags($jobdesc, '<p>');
     $teaser = substr($teaser, 0, 200);
     $teaser = strip_tags($teaser, '<p>');
-        
+
+
+    $database->query('SELECT logo from companyinfo where userid = :userid');   
+    $database->bind(':userid', $userid);
+    $logorow = $database->single();
+    $logo = $logorow['logo'];
  
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
@@ -119,7 +124,7 @@ if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    

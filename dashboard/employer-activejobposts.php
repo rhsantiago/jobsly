@@ -53,7 +53,8 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT * from jobads where userid = :userid and isactive=1 order by dateadded desc');
+                                //$database->query('SELECT * from jobads where userid = :userid and isactive=1 order by dateadded desc');
+                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization, jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid and isactive=1 order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
@@ -75,7 +76,8 @@ if(isset($_SESSION['user'])){
 
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
-                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];         
+                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+                                    $logo = $row['logo'];
 
                               $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
                                $database->bind(':jobid', $id);   
@@ -124,7 +126,7 @@ if(isset($_SESSION['user'])){
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo"  align='right'> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>
