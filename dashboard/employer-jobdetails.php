@@ -184,15 +184,14 @@ if(isset($_SESSION['user'])){
                                             <a href="#shortlisted" id="shortlisted" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>		
                                     </div>   
 						      </div>
-                                <div class="col-lg-3 col-md-3"> 
-							            <div  class="card card-stats ">
+                               <div class="col-lg-3 col-md-3"> 
+                                     <div  class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center">4352</h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#shortlisted" id="shortlisted" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$shortlisted?></span></a></h3>
                                         </div>
-                                            <a href="#newapps" id="newapps" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Matched<br>Resumes</a>  
+                                            <a href="#shortlisted" id="shortlisted" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Matched<br>Resumes</a>		
                                     </div>   
-                                  
-						</div>
+						      </div>
                                 
                             </div>
                             </div>

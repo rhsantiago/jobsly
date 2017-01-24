@@ -253,7 +253,7 @@ jQuery(document).ready(function ($) {
                         $("#shortlisttable " + tr).fadeOut('slow').delay(1000).hide(0);
                     }
                     if(mode=='add'){
-                        var li = '#line' + applicantid;
+                        var li = '#slline' + applicantid;
                         $("#activeappstable " + li).html("<button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple btn-xs'><i class='fa fa-check'></i></button>").fadeIn('slow').delay(1000);
                     }
                    // $('#showjobdetail').html(html); 

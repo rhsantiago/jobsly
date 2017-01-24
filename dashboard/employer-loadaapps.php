@@ -126,7 +126,7 @@ if(isset($_SESSION['user'])){
                                                             <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
                                                         </li>      
                                                      
-                                                        <li id="line<?=$applicantid?>">   
+                                                        <li id="slline<?=$applicantid?>">   
                                                             <?php
                                                                 if($isshortlisted==0){
                                                             ?>      

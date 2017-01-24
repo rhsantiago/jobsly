@@ -160,9 +160,9 @@ if(isset($_SESSION['user'])){
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="orange">
-                                                                    <h3 class="center">447</h3>
+                                                                    <h3 class="center"><a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="shortlisted">458</a></h3>
                                                                 </div>
-                                                                 <span class="text-warning h4weight"><br>Matched<br>Resumes</span>                                                           
+                                                                 <a href="#jobdetails" id="jobdetails" class="text-warning h4weight" data-jobid="<?=$id?>" data-page="shortlisted">Matched<br>Resumes</a>                                                           
                                                             </div>
                                                         </li>
                                                     </ul>  

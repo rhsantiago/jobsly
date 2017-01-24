@@ -123,7 +123,7 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">                                                 
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
                                                         </a>       
                                                     </td>
