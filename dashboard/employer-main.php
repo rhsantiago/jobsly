@@ -38,7 +38,7 @@ if($ok == 1 ){
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-  
+    <link href="css/summernote.css" rel="stylesheet"/>
 
 </head>
 
@@ -64,6 +64,30 @@ if($ok == 1 ){
 	      
 	    </div>
 	  </div>
+	</div>
+    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
+            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	        <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
+	      </div>
+            <div id="modalrejectapp" class="modal-body">
+            
+            <div id="fileuploaddiv" class="">                 
+                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                 </div> 
+           </div>
+            <div class="modal-footer blog-post">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
+	      </div>
+	    </div>
+           
+	  </div>
+        </form>    
 	</div>
     
     
@@ -139,45 +163,7 @@ if($ok == 1 ){
                         <div class="row-fluid">
                             
                             <div id="resumesb" class="">  
-                                <!--
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="a1">
-                                      
-                                        <a href="#short"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">people</i>
-                                            <span class="submenufont">Shortlist</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="a2">
-                                                                     
-                                        <a href="#ajposts" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">flag</i>
-                                            <span class="submenufont">Active Job Posts</span>
-                                        </a>  
-                                       
-                                    </li>
-                                    <li id="n3">
-                                        <a href="#napp"  role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">new_releases</i>
-                                            <span class="submenufont">New Applicants</span>
-                                        </a>
-                                    </li>
-                                    <li id="s4">
-                                        <a href="#search" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">find_in_page</i>
-                                            <span class="submenufont">Search</span>
-                                        </a>                                        
-                                    </li>
-                                    <li id="c5">
-                                        <a href="#cinfo" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">info</i>
-                                            <span class="submenufont">Company Info</span>
-                                        </a>                                        
-                                    </li>
-                                   
-                                </ul>
-                                -->
+                               
                             </div>
                             
                           
@@ -195,7 +181,7 @@ if($ok == 1 ){
                                     <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                     
                                     <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
-                                    <li><a href="#" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
+                                    <li><a href="#cinfo" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>&nbsp;Job Ads<b class="caret"></b></a>
@@ -224,13 +210,13 @@ if($ok == 1 ){
     <?php
         if($ajax=='ajposts'){
              include 'employer-activejobposts.php';
-    ?>
-                    
-    <?php
         }  
-         if($ajax=='napp'){
+        if($ajax=='napp'){
              include 'employer-newapps.php';
-         }
+        }
+        if($ajax=='cinfo'){
+             include 'employer-companyinfo.php';
+        }
     ?>
                       
                 </div> <!--resume main body-->        
@@ -290,8 +276,8 @@ if($ok == 1 ){
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
-    
-     
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/parsley.js"></script>
     <script>
     var isClosed = true;
 function openNav() {

@@ -21,6 +21,9 @@ $database = new Database();
     if($mode=='insert'){
          $database->query(' INSERT INTO companyinfo (id, userid,companyname, companyaddress,companywebsite,telno,companytin, cperson,designation,cpersonemail,cpersontelno,industry,numemp,ctype,cdesc) VALUES (NULL, :userid,:companyname,:companyaddress,:companywebsite, :telno,:companytin,:cperson,:designation,:cpersonemail,:cpersontelno,:industry,:numemp,:ctype,:cdesc)');
     }
+    if(strcmp($mode,'update')==0){
+         $database->query('Update companyinfo set  companyname=:companyname, companyaddress=:companyaddress,companywebsite=:companywebsite ,telno=:telno,companytin=:companytin, cperson=:cperson,designation=:designation,cpersonemail=:cpersonemail, cpersontelno=:cpersontelno,industry=:industry,numemp=:numemp,ctype=:ctype,cdesc=:cdesc where userid=:userid');
+    }
     $database->bind(':companyname', $companyname); 
     $database->bind(':companyaddress', $companyaddress);
     $database->bind(':companywebsite', $companywebsite);

@@ -1,6 +1,5 @@
-jQuery(document).ready(function ($) {
-    $('#successdivcreg').hide();
-    
+$(document).ready(function ($) {
+        
     $("a[href='#ajposts']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
@@ -38,6 +37,52 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                     });
+                     
+                }
+               
+        });
+        return false;
+     });
+    
+     $("a[href='#cinfo']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+        
+        $.ajax({
+            url: 'employer-companyinfo.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);
+                    $('#successdivcreg').hide();
+                 
+                    $('#companyregistration-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                    });
+    
+                    $('#cdesc').summernote({
+                           toolbar: [
+                             // [groupName, [list of button]]
+                             ['style', ['bold', 'italic', 'underline', 'clear']], 
+                             ['fontsize', ['fontsize']],
+                             ['color', ['color']],
+                             ['para', ['ul', 'ol', 'paragraph']]
+                           ],
+                           callbacks: {
+                             onPaste: function (e) {
+                                 var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                 e.preventDefault();
+
+                                 // Firefox fix
+                                 setTimeout(function () {
+                                     document.execCommand('insertText', false, bufferText);
+                                 }, 10);
+                             }
+                         }    
+                     });
                      
                 }
                
@@ -404,7 +449,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: 'POST',
                 url: 'employer-registrationsubmit.php',
-                data: 'companyname=' + companyname + '&companyaddress=' + companyaddress + '&mode=' + mode +'&userid=' + userid +'&companywebsite=' + companywebsite +'&telno=' + telno +'&companytin=' + companytin +'&cperson=' + cperson +'&designation=' + designation +'&cpersonemail=' + cpersonemail +'&cpersontelno=' + cpersontelno +'&industry=' + industry +'&numemp=' + numemp +'&ctype=' + ctype +'&cdesc=' + cdesc,
+                data: 'mode=' + mode + '&companyname=' + companyname + '&companyaddress=' + companyaddress + '&mode=' + mode +'&userid=' + userid +'&companywebsite=' + companywebsite +'&telno=' + telno +'&companytin=' + companytin +'&cperson=' + cperson +'&designation=' + designation +'&cpersonemail=' + cpersonemail +'&cpersontelno=' + cpersontelno +'&industry=' + industry +'&numemp=' + numemp +'&ctype=' + ctype +'&cdesc=' + cdesc,
                 success: function(html) {
                     //console.log(html);             
                     $('#successdivcreg').fadeIn(1500);
