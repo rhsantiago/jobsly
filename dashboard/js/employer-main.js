@@ -22,6 +22,28 @@ $(document).ready(function ($) {
         return false;
      });
     
+    $("a[href='#short']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+ 
+        $.ajax({
+            url: 'employer-shortlist.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);               
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                    });
+                     
+                }
+               
+        });
+        return false;
+     });
+    
     $("a[href='#napp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();

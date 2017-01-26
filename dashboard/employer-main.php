@@ -39,7 +39,23 @@ if($ok == 1 ){
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
     <link href="css/summernote.css" rel="stylesheet"/>
+    
+    <!--   Core JS Files   -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
 
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/employer-main.js" type="text/javascript"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/parsley.js"></script>
 </head>
 
 <body class="landing-page">
@@ -107,32 +123,30 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
-        		<ul class="nav navbar-nav navbar-left">
+        		<ul class="nav navbar-nav navbar-right">
+                    <!--
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
+                    -->
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
+                                    <li><a href="#short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
+                                    <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
+                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
+                                    <li><a href="#cinfo" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
+                            <li><a href="employer-jobads.php?ajax=ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
+                            <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
+                            <li><a href="employer-jobads.php?ajax=jtemp" id="jtemp"><i class="material-icons">content_copy</i>&nbsp;Job Templates</a></li>
+                            <li><a href="employer-jobads.php?ajax=essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
                         </ul>    
                     </li>
-    				
-                </ul>
-    				<ul class="nav navbar-nav navbar-right">
-                        <li class="divider"></li>
+                    <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
 		            <li>
 		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
@@ -149,7 +163,8 @@ if($ok == 1 ){
 							<i class="fa fa-instagram"></i>
 						</a>
 		            </li>
-        		</ul>
+    				
+                </ul>    				
         	</div>
     	</div>
     </nav>
@@ -175,19 +190,19 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>&nbsp;Home<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
-                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                     
+                                    <li><a href="#short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="#cinfo" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>&nbsp;Job Ads<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="employer-jobads.php?ajax=ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
-                            <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">work</i>&nbsp;Post a Job Ad</a></li>
+                            <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
                             <li><a href="employer-jobads.php?ajax=jtemp" id="jtemp"><i class="material-icons">content_copy</i>&nbsp;Job Templates</a></li>
                             <li><a href="employer-jobads.php?ajax=essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
     </ul>
@@ -210,7 +225,10 @@ if($ok == 1 ){
     <?php
         if($ajax=='ajposts'){
              include 'employer-activejobposts.php';
-        }  
+        }
+         if($ajax=='short'){
+             include 'employer-shortlist.php';
+        }
         if($ajax=='napp'){
              include 'employer-newapps.php';
         }
@@ -262,22 +280,7 @@ if($ok == 1 ){
     
 </body>
 
-	<!--   Core JS Files   -->
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/material.min.js"></script>
-
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/employer-main.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
-    <script src="js/parsley.js"></script>
+	
     <script>
     var isClosed = true;
 function openNav() {

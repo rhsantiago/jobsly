@@ -76,31 +76,7 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
-        		<ul class="nav navbar-nav navbar-left">
-                     <li>
-                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
-                    </li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                                    <li><a href="#aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
-                         </ul> 
-                    </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                           <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
-                        </ul>    
-                    </li>
-    				
-                </ul>
-    				<ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
 		            <li>
@@ -119,6 +95,31 @@ if($ok == 1 ){
 						</a>
 		            </li>
         		</ul>
+        		<ul class="nav navbar-nav navbar-right">
+                     <li>
+                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
+                    </li>
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                         </ul> 
+                    </li>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
+                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                        </ul>    
+                    </li>
+    				
+                </ul>
+    				
         	</div>
     	</div>
     </nav>
@@ -129,43 +130,7 @@ if($ok == 1 ){
             <div class="container">
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
-                     
-                     <!--       
-                            <div id="resumesb" class="">                               
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tab" role="tablist">
-                                    <li id="a1">
-                                      
-                                        <a href="#aapp"  role="tab"  data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">visibility</i>
-                                            <span class="">Active Applications</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="w2">
-                                                                     
-                                        <a href="#workexp" role="tab"  onClick="" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">drafts</i>
-                                            <span class="">Job Invitations</span>
-                                        </a>  
-                                       
-                                    </li>
-                                    <li id="s3">
-                                        <a href="#sapp"  role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">favorite</i>
-                                            <span class="">Saved Applications</span>
-                                        </a>
-                                    </li>
-                                    <li id="l4">
-                                        <a href="#ljob" role="tab" data-toggle="tab" data-container="#mynav">
-                                            <i class="material-icons">whatshot</i>
-                                            <span class="">Latest Jobs</span>
-                                        </a>                                        
-                                    </li>
-                                   
-                                </ul>
-                            </div>
-                         -->   
-                  
+               
                 </div>
             </div>
             </div>
@@ -173,22 +138,22 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
+                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
+                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

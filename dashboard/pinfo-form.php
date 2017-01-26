@@ -84,7 +84,7 @@ if(isset($_SESSION['user'])){
 					<div class="features">
 						<div class="row">
 		                    <div class="col-md-6">
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -121,7 +121,7 @@ if(isset($_SESSION['user'])){
                                              </div>
                                     </div>
                                 
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -166,7 +166,7 @@ if(isset($_SESSION['user'])){
 		                    </div>
                             
                             <div class="col-md-6">
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-warning">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -203,7 +203,7 @@ if(isset($_SESSION['user'])){
                                              </div>
                                     </div>
                                 
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-danger">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">

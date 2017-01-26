@@ -20,7 +20,8 @@ if(isset($_SESSION['user'])){
         
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-    $dateapplied = '';
+ 
+   
     
 }
 
@@ -38,7 +39,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">New Applicants</h2>
+                             <h2 class="title">Shortlisted Applicants</h2>
        </div>
      </div>
     <div class="col-md-9">
@@ -74,8 +75,7 @@ if(isset($_SESSION['user'])){
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Specialization</th>
-                                                    <th>Job Position</th>
-                                                    <th>Date Applied</th>    
+                                                    <th>Job Position</th>                                                   
                                                     <th class="text-right">Salary</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
@@ -83,14 +83,14 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, jobapplications.dateapplied, jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
-                                            and jobapplications.isnew=1');
+                                            and jobapplications.isshortlisted=1');
                                             $database->bind(':jobid', $jobid);                                             
 
                                             $rows2 = $database->resultset();
@@ -101,10 +101,7 @@ if(isset($_SESSION['user'])){
                                                 $esalary = $row2['esalary'];
                                                 $position = $row2['position'];
                                                 $specialization = $row2['specialization'];
-                                                $isnew = $row2['isnew'];
-                                                $dateapplied = $row2['dateapplied'];
-                                                $dapp = explode("-", $dateapplied);
-                                                $dateapplied = $dapp[1] .'/'.$dapp[2].'/'.$dapp[0];
+                                                $isshortlisted = $row2['isshortlisted'];
                                        ?>
                                    
                                                 <tr>
@@ -112,19 +109,11 @@ if(isset($_SESSION['user'])){
                                                         <ul class="list-inline"> 
                                                             <li>
                                                                 <span class="h4weight"><?=$fname?> <?=$lname?></span>
-                                                            </li>
-                                                            <li id="newbadgediv<?=$applicantid?>">                                                   
-                                                                <?php
-                                                                    if($isnew==1){
-                                                                        echo "<span class='badge'>New</span>";
-                                                                    }
-                                                                ?>
-                                                            </li>
+                                                            </li>                                                          
                                                         </ul>
                                                     </td>
                                                     <td><?=$specialization?></td>       
-                                                    <td><?=$position?></td> 
-                                                    <td><?=$months[$dapp[1]-1]?>&nbsp;<?=$dapp[2]?></td>
+                                                    <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">                                                 
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >

@@ -52,7 +52,7 @@ if(isset($_SESSION['user'])){
                             
                     
 		                    <div class="col-md-12">
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -195,20 +195,17 @@ if(isset($_SESSION['user'])){
 <script>
 jQuery(document).ready(function ($) {
     $('#successdivessay').hide();
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+
+    $('#jobessays-form #question').parsley().on('field:error', function() {
+           $('#jobessays-form #questiondiv').addClass('has-error');
+           $('#jobessays-form #questiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#jobessays-form #question').parsley().on('field:success', function() {
+            $('#jobessays-form #questiondiv').addClass('has-success');
+            $('#jobessays-form #questiondiv').find('span').remove()
+            $('#jobessays-form #questiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-   
-    
-    */
     
 });       
 </script>

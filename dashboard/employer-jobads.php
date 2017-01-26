@@ -97,30 +97,7 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
-        		<ul class="nav navbar-nav navbar-left">
-                     <li>
-                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
-                    </li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>Start<b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="#" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="#" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="#" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
-                         </ul> 
-                    </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i>Resume<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
-                        </ul>    
-                    </li>
-    				
-                </ul>
+        		
     				<ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
@@ -140,6 +117,29 @@ if($ok == 1 ){
 						</a>
 		            </li>
         		</ul>
+                <ul class="nav navbar-nav navbar-right">
+                     <li>
+                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
+                    </li>
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
+                                    <li><a href="employer-main.php?ajax=short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
+                                    <li><a href="employer-main.php?ajax=napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
+                                    <li><a href="employer-main.php?ajax=" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
+                                    <li><a href="employer-main.php?ajax=cinfo" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
+                         </ul> 
+                    </li>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
+                            <li><a href="#pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
+                            <li><a href="#jtemp" id="jtemp"><i class="material-icons">content_copy</i>&nbsp;Job Templates</a></li>
+                            <li><a href="#essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
+                        </ul>    
+                    </li>
+    				
+                </ul>
         	</div>
     	</div>
     </nav>
@@ -152,36 +152,7 @@ if($ok == 1 ){
                         <div class="row-fluid">
                             
                             <div id="resumesb" class="">
-                                <!--
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="a1" class="active">
-                                      
-                                        <a href="#ajads"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">list</i>
-                                            <span class="submenufont">My Job Ads</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="p2">                                                                     
-                                        <a href="#pjobad" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">work</i>
-                                            <span class="submenufont">Post a Job Ad</span>
-                                        </a>
-                                    </li>
-                                    <li id="j3">
-                                        <a href="#jtemp"  role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">content_copy</i>
-                                            <span class="submenufont">Job Templates</span>
-                                        </a>
-                                    </li>
-                                    <li id="e4">
-                                        <a href="#essays" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">mode_edit</i>
-                                            <span class="submenufont">Essays</span>
-                                        </a>                                        
-                                    </li>                                   
-                                </ul>
-                            -->
+                         
                             </div>
                                                 
 	                 </div>
@@ -193,19 +164,19 @@ if($ok == 1 ){
     <!--sidebar-->
  <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i>&nbsp;Home<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li> 
-                                    <li><a href="#" id="short"><i class="material-icons">people</i>&nbsp;Shortlist</a></li>                                    
+                                    <li><a href="employer-main.php?ajax=short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>                                    
                                     <li><a href="employer-main.php?ajax=napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <li><a href="employer-main.php?ajax=cinfo" id="cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">assessment</i>&nbsp;Job Ads<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="#ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
-                            <li><a href="#pjobad" id="pjobad"><i class="material-icons">work</i>&nbsp;Post a Job Ad</a></li>
+                            <li><a href="#pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
                             <li><a href="#jtemp" id="jtemp"><i class="material-icons">content_copy</i>&nbsp;Job Templates</a></li>
                             <li><a href="#essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
     </ul>
@@ -322,7 +293,9 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     isClosed = true;
 }
-        
+if(window.screen.width > 768){    
+        openNav();
+      }        
       
 </script>
 

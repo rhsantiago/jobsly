@@ -88,26 +88,26 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
-        		<ul class="nav navbar-nav navbar-left">
+        		<ul class="nav navbar-nav navbar-right">
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="main.php" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="main.php" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="main.php" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="main.php" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li> 
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
+                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>    
                     </li>
     				
@@ -141,53 +141,7 @@ if($ok == 1 ){
                 <div class="row-fluid">
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
-                     <!-- 
-                         <div id="resumesb" class="">                         
-                                <ul class="nav nav-pills nav-pills-info" id="mynav" data-tabs="tabs" role="tablist">
-                                    <li id="p1" class="active">
-                                      
-                                        <a href="#pinfo"  role="tab"  data-toggle="tab" data-container="body">
-                                            <i class="material-icons">fingerprint</i>
-                                            <span class=""> Personal Information</span>
-                                        </a>
-                                        
-                                    </li>
-                                    <li id="w2">
-                                                                     
-                                        <a href="#workexp" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">work</i>
-                                            <span class="">Work Experience</span>
-                                        </a>  
-                                       
-                                    </li>
-                                    <li id="e3">
-                                        <a href="#etrain"  role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">school</i>
-                                            <span class="">Education &amp; Training</span>
-                                        </a>
-                                    </li>
-                                    <li id="s4">
-                                        <a href="#skills" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">build</i>
-                                            <span class="">Skills</span>
-                                        </a>                                        
-                                    </li>
-                                    <li id="a5">
-                                        <a href="#ainfo" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">add_box</i>
-                                            <span class="">Additional Information</span>
-                                        </a>                                        
-                                    </li>
-                                    <li id="p6">
-                                        <a href="#pres" role="tab" data-toggle="tab" data-container="body">
-                                            <i class="material-icons">pageview</i>
-                                            <span class="">Preview Resume</span>
-                                        </a>                                        
-                                    </li>
-                                </ul>
-                                </div>  
-                             -->  
-                           
+                    
                           
                         </div>
                         
@@ -199,22 +153,22 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">details</i> Home<b class="caret"></b></a>
+   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">visibility</i>Active Applications</a></li>
-                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>Job Invitations</a></li> 
-                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>  
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">assessment</i> Resume<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>Additional Information</a></li>
-                             <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>Preview Resume</a></li>
+                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

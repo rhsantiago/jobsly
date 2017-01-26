@@ -43,7 +43,7 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded from jobads,jobapplications where jobapplications.userid = :userid and jobads.id = jobapplications.jobid order by dateadded desc');
+                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobapplications.isnew,jobapplications.isshortlisted from jobads,jobapplications where jobapplications.userid = :userid and jobads.id = jobapplications.jobid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
@@ -65,7 +65,10 @@ if(isset($_SESSION['user'])){
 
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
-                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];         
+                                    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+                                    $isnew = $row['isnew'];
+                                    $isshortlisted = $row['isshortlisted'];
+                                    
 
                                
                                 
@@ -116,12 +119,24 @@ if(isset($_SESSION['user'])){
                                                 </div>
                                             </div>    
                                             <div class="row-fluid">
-                                               <div class="col-md-6  ">
-                                                   <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
-                                                   -->
-                                                </div>
-                                                <div class="col-md-6 actionicon">                                                   
-                                                        <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                  
+                                                <div class="col-md-12">
+                                                    <div>
+                                                        Status:
+                                                   <?php
+                                                        if($isnew==1 && $isshortlisted==0){
+                                                            echo "<span class='text-warning h4weight'>Submitted, waiting for evaluation</span>";
+                                                        }
+                                                        if($isnew==0 && $isshortlisted==0){
+                                                            echo "<span class='text-primary h4weight'>Viewed by employer, evaluating</span>";
+                                                        }
+                                                        if($isshortlisted==1){
+                                                            echo "<span class='text-success h4weight'>Shortlisted</span>";
+                                                        }
+                                                    ?>
+                                                        <span class="jobcardbuttons actionicon pull-right"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                    </div>
+                                                        
                                                 </div>
                                           </div> 
                                           

@@ -86,7 +86,8 @@ if(isset($_SESSION['user'])){
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                 
                             
-		                    <div class="col-md-12">
+		                   
+                                <div class="col-md-6">
                                     <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -163,9 +164,10 @@ if(isset($_SESSION['user'])){
 
                                                     </div>
                                              </div>
+                                        </div>
                                     </div>
-                                
-                                    <div class="card card-nav-tabs cardtopmargin">
+                                    <div class="col-md-6">
+                                            <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -213,6 +215,10 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                              </div>
                                     </div>
+                                    </div>    
+                                    
+                                
+                                     <div class="col-md-12">
                                 
                                     <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-warning">
@@ -322,34 +328,34 @@ if(isset($_SESSION['user'])){
  <script>
 $(document).ready(function() {
     $('#resume-main-body #successdivcreg').hide();
-    /*
+   
     $('#companyregistration-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
     });
     
     $('#cdesc').summernote({
-                                                                                      toolbar: [
-                                                                                        // [groupName, [list of button]]
-                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']], 
-                                                                                        ['fontsize', ['fontsize']],
-                                                                                        ['color', ['color']],
-                                                                                        ['para', ['ul', 'ol', 'paragraph']]
-                                                                                      ],
-                                                                                      callbacks: {
-                                                                                        onPaste: function (e) {
-                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+              toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']], 
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']]
+              ],
+              callbacks: {
+                onPaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
 
-                                                                                            e.preventDefault();
+                    e.preventDefault();
 
-                                                                                            // Firefox fix
-                                                                                            setTimeout(function () {
-                                                                                                document.execCommand('insertText', false, bufferText);
-                                                                                            }, 10);
-                                                                                        }
-                                                                                    }    
-                                                                                    });
-   */
+                    // Firefox fix
+                    setTimeout(function () {
+                        document.execCommand('insertText', false, bufferText);
+                    }, 10);
+                }
+            }    
+            });
+  
     $('#companyregistration-form #companyname').parsley().on('field:error', function() {
            $('#companyregistration-form #companynameediv').addClass('has-error');
            $('#companyregistration-form #companynameediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
