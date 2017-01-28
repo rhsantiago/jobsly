@@ -136,7 +136,7 @@ if(isset($_SESSION['user'])){
                                                
                                                 <div class="col-md-6 actionicon pull-right">
                                                                                                                 
-                                                         <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                         <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job"><i class="material-icons" >visibility</i></a></span>
                                                         <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
                                                         <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
                                                 </div>

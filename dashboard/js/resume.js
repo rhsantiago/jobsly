@@ -496,6 +496,13 @@ jQuery(document).ready(function ($) {
                                       }
                                     }
                           });
+                    $("#wexp-form #company").val('');
+                    $("#wexp-form #position").val('');
+                    $("#wexp-form #startdate").val('');
+                    $("#wexp-form #msalary").val('');       
+                    $("#wexp-form #industry").val('');
+                    $("#wexp-form #plevel").val('');
+                    $("#wexp-form #enddate").val('');
                     $('#wexp-form').parsley().reset();
                 },
                 error: function(data) {
@@ -559,6 +566,9 @@ jQuery(document).ready(function ($) {
                             errorClass: "has-error"
                      });
                     $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-col-form #mode').val('update');
+                    $('#etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-others-form #mode').val('update'); 
                     $('#etrain-hs-form').parsley().reset();
                 },
                 error: function(data) {
@@ -628,7 +638,10 @@ jQuery(document).ready(function ($) {
                             successClass: "has-success",
                             errorClass: "has-error"
                      });
-                    $(' #etrain-col-form #mode').val('update');
+                    $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-col-form #mode').val('update');
+                    $('#etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-others-form #mode').val('update');
                     $('#etrain-col-form').parsley().reset();
                 },
                 error: function(data) {
@@ -697,7 +710,10 @@ jQuery(document).ready(function ($) {
                             successClass: "has-success",
                             errorClass: "has-error"
                      });
-                    $(' #etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-col-form #mode').val('update');
+                    $('#etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-others-form #mode').val('update');
                     $('#etrain-pgrad1-form').parsley().reset();
                 },
                 error: function(data) {
@@ -758,7 +774,10 @@ jQuery(document).ready(function ($) {
                                     }
                           });
                    
-                    $(' #etrain-others-form #mode').val('update');                
+                    $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-col-form #mode').val('update');
+                    $('#etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-others-form #mode').val('update');                
                 },
                 error: function(data) {
                     console.log(data);                  

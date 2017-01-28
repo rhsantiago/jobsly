@@ -9,10 +9,10 @@ if(isset($_SESSION['user'])){
    $userid = $_SESSION['userid'];
 }
 
-$employer = '';
+$isjobseeker = '';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
-if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
+if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
 
 
  $database = new Database();
@@ -210,7 +210,7 @@ if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
                                              
                                                 <div class="col-md-6 actionicon ">
                                                     <?php
-                                                        if(!strcmp($employer,'émployer')){
+                                                        if(strcmp($isjobseeker,'jobseeker')==0){
                                                      ?>     
                                                         <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a>
                                                         <a class="blog-post-share " href="#" datah4-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
@@ -225,7 +225,7 @@ if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
                                           </div>
                                           <?php
                                           
-                                           if(!strcmp($employer,'émployer')){
+                                           if(strcmp($isjobseeker,'jobseeker')==0){
                                                  
                                             $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                             $database->bind(':userid', $userid);
@@ -355,7 +355,7 @@ if(isset($_POST['employer'])){ $employer = $_POST['employer']; }
 <script>
 jQuery(document).ready(function ($) {
 <?php
-if(!strcmp($employer,'émployer')){
+if(strcmp($isjobseeker,'jobseeker')==0){
  ?>  
    
     $('#quickapply-form-modal #esalary').parsley().on('field:error', function() {

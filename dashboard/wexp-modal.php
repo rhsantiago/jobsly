@@ -87,26 +87,12 @@ if($mode=='del'){
              <input type="hidden" id="mode" name="mode" value="update">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Edit Work Experience</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Edit Work Experience</h4>
 	      </div>
-	      <div id="modaleditworkexp" class="modal-body">
+	      <div id="modaleditworkexp" class="modal-body modal-gray">
 	                              
-                                    <div class="card card-nav-tabs">
-                                            <div id="tabtitle" class="header  header-success">
-                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                                                <div class="nav-tabs-navigation">
-                                                    <div class="nav-tabs-wrapper">
-                                                        <ul class="nav nav-tabs" data-tabs="tabs">
-                                                            <li class="active">
-                                                                <a href="#profile" data-toggle="tab">
-                                                                    <i class="material-icons">location_city</i>
-                                                                    Work Experience
-                                                                </a>
-                                                            </li>										
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                          </div>
+                                    <div class="card card-nav-tabs cardtopmargin">
+                                          
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
@@ -204,7 +190,7 @@ if($mode=='del'){
                                             </div>
                            
 	      </div>
-	      <div class="modal-footer">
+	      <div class="modal-footer blog-post">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="submit" class="btn btn-primary" >Save changes</button>
 	      </div>

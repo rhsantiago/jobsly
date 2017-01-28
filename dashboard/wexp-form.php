@@ -35,13 +35,13 @@ if(isset($_SESSION['user'])){
              <span class="jobcardbuttons"><a href='#profile' id="add"><i class="material-icons">edit</i> Add</a></span>
           </div> 
     </div>   
-                    <div class="col-md-offset-1 col-md-7">
+                    <div class="col-md-9">
                         
                 <div class="section  section-landing">
 	         
 					<div class="features">
 						<div class="row">
-		                    <div class="col-md-12">
+		                    
                                         <div id="workexpcardsdiv">
                                             <?php
                                                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
@@ -59,56 +59,7 @@ if(isset($_SESSION['user'])){
                                                         $teaser = substr($teaser, 0, 200);
                                                         $teaser = strip_tags($teaser, '<p>');
                                              ?>           
-                                                  <!--      
-                                                        <div class="card">                                            
-                                                             <div class="content">                           
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div id="workexpcard" class="">
-                                                                                        <ul class="list-inline">
-                                                                                          <li><h3 class="text-info"><?=$row['position']?></h3></li>
-                                                                                            <li><h6 class="text-muted"><i><?=$row['company']?></i></h6> </li>
-                                                                                            <li class="editfloatright">
-                                                                                                <a href='#workexpmodal' id="editworkexp" title="Edit" data-mode="update" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a>
-                                                                                                <a href='#workexpmodal' id="delworkexp" title="Delete" data-mode="del" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">delete</i></a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <ul  class="list-inline ">
-                                                                                            <li >
-                                                                                                <h6 id="vertical-align" class="text-muted">
-                                                                                                    <i class="material-icons text-info">business</i><span><i id='industryli'><?=$row['industry']?></i></span>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted">
-                                                                                                   <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted">
-                                                                                                <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 id="vertical-align" class="text-muted">
-                                                                                                   <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <hr>
-                                                                                        <p>
-                                                                                            <span class="text-muted"><i class="material-icons text-info">description</i> </span>
-                                                                                            <?=$row['jobdescription']?>
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
-                                                     -->
+                                            <div class="col-md-6"> 
                                             <section class="blog-post">
                                     <div class="panel panel-default">
                                     
@@ -178,15 +129,15 @@ if(isset($_SESSION['user'])){
                                         
                                     </div>
                                   </section>
-                                      
+                                      </div>
                                              <?php          
                                                     }
                                              ?>
                                             
                                          
-                                        </div>
-                                
-                            
+                                        
+                            </div>
+                            <div class="col-md-12">
                                     <div id="card" class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -250,7 +201,7 @@ if(isset($_SESSION['user'])){
                                                         <div class="col-md-12 col-xs-12">
                                                                     <hr>
                                                                    <h6><label>Job Description</label></h6>
-                                                                    <div id="summernote"><p>Hello Summernote</p></div>
+                                                                    <div id="summernote"></div>
                                                                     
                                                                           <script>
                                                                             $(document).ready(function() {

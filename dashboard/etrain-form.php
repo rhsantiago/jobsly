@@ -88,7 +88,8 @@ if(isset($_SESSION['user'])){
  <div class="col-md-12">      
         <h2 class="title">Education &amp; Training</h2>
   </div>
-</div>     
+</div>  
+<div class="row">
                     <div class="col-md-offset-1 col-md-7">
                         
                        
@@ -100,7 +101,7 @@ if(isset($_SESSION['user'])){
                                       
                                 
                             
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -158,7 +159,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                   <h6><label>Awards/Recognition</label></h6>
+                                                                   <h6>Awards/Recognition</h6>
                                                                     <div id="smhs"><?=$hsawards?></div>
                                                                     
                                                                           <script>
@@ -230,7 +231,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                  <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                   <h6><label>Awards/Recognition</label></h6>
+                                                                   <h6>Awards/Recognition</h6>
                                                                     <div id="smcol"><?=$smcol?></div>
                                                                     
                                                                           <script>
@@ -302,7 +303,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                  <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                   <h6><label>Awards/Recognition</label></h6>
+                                                                   <h6>Awards/Recognition</h6>
                                                                     <div id="smpgrad1"><?=$smpgrad1?></div>
                                                                     
                                                                           <script>
@@ -349,7 +350,7 @@ if(isset($_SESSION['user'])){
                                                              <input type="hidden" id="mode" name="mode" value="<?=$mode?>">   
                                                             <div class="row">                                                                  
                                                                  <div class="col-md-12 col-xs-12">       
-                                                                   <h6><label>Vocational / Trainings / Seminars Attended</label></h6>
+                                                                   <h6>Short Courses / Trainings / Seminars Attended</h6>
                                                                     <div id="smothers"><?=$smothers?></div>
                                                                     
                                                                           <script>
@@ -452,7 +453,7 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
-   
+</div>
 <script>
 jQuery(document).ready(function ($) {
     $('#etrain-hs-form #hsschool').parsley().on('field:error', function() {

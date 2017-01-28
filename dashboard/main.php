@@ -76,6 +76,7 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
+                
                 <ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>

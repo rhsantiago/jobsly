@@ -172,7 +172,7 @@ if(isset($_SESSION['user'])){
                                                     <?php
                                                         if(empty($applyrow)){
                                                     ?>    
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
                                                     <?php
                                                     }else{
                                                     ?>

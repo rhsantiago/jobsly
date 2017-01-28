@@ -109,12 +109,13 @@ jQuery(document).ready(function ($) {
                
                var jobid =  $(e.relatedTarget).data('jobid');
                var mode =  $(e.relatedTarget).data('mode');
+               var isjobseeker =  $(e.relatedTarget).data('isjobseeker');
      
         $.ajax({
             cache: false,
             type: 'POST',
             url: 'showjob-modal.php',
-            data: 'jobid=' + jobid + "&mode=" + mode,
+            data: 'jobid=' + jobid + "&mode=" + mode + "&isjobseeker=" + isjobseeker,
                   
             success: function(data) {
                 $modal.find('.modalcontent').html(data);

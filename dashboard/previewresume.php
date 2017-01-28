@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
                                         <img src="img/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$userid?><?=$fname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
@@ -302,8 +302,9 @@ jQuery(document).ready(function ($) {
              $datefloat ='';                               
              foreach($rows as $row){
                 $coldate = explode("-", $row['colgraddate']);
-                $colgraddate = $coldate[1] .'/'.$coldate[2].'/'.$coldate[0];  
-                
+                $colgraddate = $coldate[1] .'/'.$coldate[2].'/'.$coldate[0]; 
+                 $coluni = $row['coluni'];
+                if(!empty($coluni) && $coldate[0] > 0){
                  if($isleft){
                     echo '<li>';
                     $isleft = false;
@@ -324,7 +325,7 @@ jQuery(document).ready(function ($) {
                 </ul>
                  <div class="margin-10 text-muted">
               <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                    <li><h7><i><?=$row['coluni']?></i></h7> </li>             
+                    <li><h7><i><?=$coluni?></i></h7> </li>             
                  </ul>
               </div>       
             </div>
@@ -355,17 +356,21 @@ jQuery(document).ready(function ($) {
         </li>                   
         <?php
              }
+             }
             
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by hsgraddate desc');
              $database->bind(':userid', $userid);  
              $rows = $database->resultset();
-                         
+             
              $datefloat ='';                               
              foreach($rows as $row){
-                 $hsdate = explode("-", $row['hsgraddate']);
-                $hsgraddate = $hsdate[1] .'/'.$hsdate[2].'/'.$hsdate[0];    
-                    
-                
+                 $hsgraddate= $row['hsgraddate'];
+                 $hsdate = explode("-",$hsgraddate);
+                 $hsgraddate = $hsdate[1] .'/'.$hsdate[2].'/'.$hsdate[0];
+                 $hsscchool = $row['hsschool'];                   
+                if(!empty($hsscchool) && $hsdate[0] > 0){
+                 
+                         
                  if($isleft){
                     echo '<li>';
                     $isleft = false;
@@ -387,7 +392,7 @@ jQuery(document).ready(function ($) {
                  </ul> 
                 <div class="margin-10 text-muted">
                   <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
-                        <li><h7><i><?=$row['hsschool']?></i></h7> </li>             
+                        <li><h7><i><?=$hsscchool?></i></h7> </li>             
                      </ul>
                   </div>
             </div>
@@ -411,11 +416,10 @@ jQuery(document).ready(function ($) {
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
            </div>           
         </li>                  
-                            
-                         
-        
+                    
         <?php
              }
+        }
         ?>                                    
     
             

@@ -58,7 +58,7 @@ if($ok == 1 ){
 <body class="landing-page">
     <!-- Modal -->
 	<div class="modal fullscreen-modal fade" id="workexp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content modalcontent">
 	      
 	    </div>
@@ -88,7 +88,27 @@ if($ok == 1 ){
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
-        		<ul class="nav navbar-nav navbar-right">
+        		
+    				<ul class="nav navbar-nav navbar-right">
+                        <li class="divider"></li>
+		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
+		            <li>
+		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+        		</ul>
+                <ul class="nav navbar-nav navbar-right">
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
@@ -112,25 +132,6 @@ if($ok == 1 ){
                     </li>
     				
                 </ul>
-    				<ul class="nav navbar-nav navbar-right">
-                        <li class="divider"></li>
-		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
-        		</ul>
         	</div>
     	</div>
     </nav>
