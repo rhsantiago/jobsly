@@ -75,6 +75,8 @@ if($mode=='del'){
     if($cecb=='on'){
         $cecb = 'checked';
     }
+    
+    $plevel = $row['plevel'];
 ?>
 
 <style>
@@ -122,7 +124,15 @@ if($mode=='del'){
                                                                     </div>
                                                                     <div class="form-group label-floating">
                                                                         <label class="control-label">Position Level</label>
-                                                                        <input type="text" id="plevel" class="form-control"  value="<?=$row['plevel']?>">
+                                                                        <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
+                                                                           <option value='1' <?php if($plevel==1){echo' selected';}?>>Executive</option>
+                                                                           <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option>
+                                                                           <option value='3' <?php if($plevel==3){echo' selected';}?>>Assistant Manager</option>
+                                                                           <option value='4' <?php if($plevel==4){echo' selected';}?>>Supervisor</option>
+                                                                           <option value='5' <?php if($plevel==5){echo' selected';}?>> 5 Years+ Experienced Employee</option>
+                                                                           <option value='6' <?php if($plevel==6){echo' selected';}?>>1-4 Years Experienced Employee</option>
+                                                                           <option value='7' <?php if($plevel==7){echo' selected';}?>>1 Year Experienced Employee/Fresh Grad</option>
+                                                                </select>
                                                                     </div>
                                                                     <div id="enddiv" class="form-group label-static">
                                                                         <label class="control-label">End Date</label>
@@ -139,7 +149,7 @@ if($mode=='del'){
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                   <h6><label>Job Description</label></h6>
+                                                                   Responsibilities / Accomplishments
                                                                     <div id="summernote"><?=$row['jobdescription']?></div>
                                                                           <script>
                                                                             $(document).ready(function() {

@@ -269,7 +269,7 @@ if(isset($_SESSION['user'])){
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save and go to Next Step</button>
                                             </div>       
                                              <div id="successdivpinfo" class="alert alert-success">
                                                

@@ -239,7 +239,11 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#skills']").on('click', function(event) {  
+    $("#wexpnext").on('click',function(event) {
+        $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").trigger('click');
+    });    
+    
+    $("a[href='#skills'], a[href='resume.php?ajax=skills']").on('click', function(event) {  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -276,7 +280,11 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#ainfo']").on('click',function(event) {  
+    $("#skillsnext").on('click',function(event) {
+        $("a[href='#ainfo'],a[href='resume.php?ajax=ainfo").trigger('click');
+    });
+    
+    $("a[href='#ainfo'],a[href='resume.php?ajax=ainfo']").on('click',function(event) {  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
@@ -361,10 +369,11 @@ jQuery(document).ready(function ($) {
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
-                  console.log(data);
+                 // console.log(data);
                     $('#successdivpinfo').fadeIn(1500);
                     $('#pinfo-form').parsley().reset();
-                    $('#mode').val('update');                   
+                    $('#mode').val('update');
+                    $("a[href='#workexp']").trigger('click');
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -905,8 +914,7 @@ jQuery(document).ready(function ($) {
             }
         });
     });
-    
-    
+  
     
    
     

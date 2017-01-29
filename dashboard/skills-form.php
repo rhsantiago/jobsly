@@ -108,16 +108,12 @@ if(isset($_SESSION['user'])){
                                                         
                                                     </div>
                                                  
-                                                   
-
                                                     </div>
                                              </div>
                             
-                               <!--
-                                <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
-                                                        Save Education &amp; Training
+                              <button class="btn btn-primary " name="skillsnext" id="skillsnext" type="button">
+                                                        Go To Next Step
                                                        </button>
-                                -->
                                   <div id="successdivskillstag" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
@@ -130,15 +126,12 @@ if(isset($_SESSION['user'])){
                                                
                                             </div>
                                  
-                             
 		                    </div>
                             
                             <div class="col-md-6">
-                             <!--       
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
-                                                        Add Work Experience
-                                                       </button>
-                            -->
+                                
+                                
+                          
 		                    </div>
 		                    
 		                </div>

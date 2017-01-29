@@ -21,8 +21,9 @@ if(isset($_SESSION['user'])){
     $fname = $row['fname'];
     $lname = $row['lname'];
     
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $bday = array('0000','00','00');
+    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 }
 ?>
 <script>
@@ -92,7 +93,7 @@ jQuery(document).ready(function ($) {
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
                                                                         <li> Desired Position: <?=$dposition?></li>     
-                                                                        <li> Position Level: <?=$plevel?></li>
+                                                                        <li> Position Level: <?=$positionlevels[$plevel-1]?></li>
                                                                         <li> Expected Salary: <?=$esalary?></li> 
                                                                         <li> Languages: <?=$languages?></li> 
                                                                         <?php
@@ -111,53 +112,7 @@ jQuery(document).ready(function ($) {
                                                         
                                                             </div>
                                     </div>    
-                                <!--    
-                                    <div class="card card-nav-tabs">
-                                            
-                                             <div class="content">
-                                                    <div class="tab-content">
-                                                        
-                                                        <div class="tab-pane active" id="hs">
-                                                            
-                                                            <div class="row">
-                                                               
-                                                                <div class="col-md-6 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
-                                                                        <li> Mobile Number: 09175555555</li>
-                                                                        <li> Email: reg@jobsly.net</li>
-                                                                        <li> Landline: 8234827</li>
-                                                                        <li> Street Address: 87 Spain st., Better Living Subd</li>
-                                                                        <li> City: Paranaque, Metro Manila Philippines</li>
-                                                                        <li> Nationality: Filipino</li>
-                                                                        <li> Birthdate: 11/09/2016</li>
-                                                                    </ul>
-                                                                </div>
-                                                                 <div class="col-md-6 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: Senior Developer</li>     
-                                                                        <li> Position Level: Middle  Manager</li>
-                                                                        <li> Expected Salary: 100000</li> 
-                                                                        <li> Work Location: Makati</li>
-                                                                        <li> Specialization: IT</li>
-                                                                        <li> Years of Experience: 15</li>  
-                                                                        <li> Languages: English, Filipino</li> 
-                                                                        <li> Willing to Travel</li>
-                                                                        <li> Willing to Relocate</li>
-                                                                        <li> Valid Passport Holder</li>
-                                                                        </ul>
-                                                                </div>
-                                                        
-                                                            </div>
-                                                              
-                                                        </div>
-                                                        
-                                                    </div>
-                                                 
-                                                    </div>
-                                             </div>
-                                    
-                                    -->
-                                    
+                              
                                 </div>
                             
                              <link href="css/timeline.css" rel="stylesheet"/>

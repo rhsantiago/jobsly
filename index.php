@@ -78,7 +78,7 @@
                 <div class="input-group-addon info-input-group-addon">
                   <span class="glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
                 </div>
-                  <input type="text" class="form-control" placeholder="Password" id="password" aria-describedby="basic-addon1">
+                  <input type="password" class="form-control" placeholder="Password" id="password" aria-describedby="basic-addon1">
             </div>
               <div class="errormsg">
                   <div id="unverified" class="loginerror hidden">Unverified account. Please check you email for the verification link</div>

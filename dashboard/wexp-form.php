@@ -10,7 +10,7 @@ $startdate = "";
 $enddate = "";
 $sdate = "";
 $edate ="";
-
+$plevel = 7;
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -169,7 +169,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="startdiv" class="form-group label-static">
                                                                         <label class="control-label">Start Date</label>
-                                                                       <input type='text' id='startdate' class='datepicker form-control' data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                       <input type='text' id='startdate' class='datepicker form-control' data-parsley-required data-parsley-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                       <div id="msalarydiv" class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
@@ -183,11 +183,19 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="pleveldiv" class="form-group label-floating">
                                                                         <label class="control-label">Position Level</label>
-                                                                        <input type="text" id="plevel" class="form-control">
+                                                                        <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">       
+                                                                           <option value='1' <?php if($plevel==1){echo' selected';}?>>Executive</option>
+                                                                           <option value='2' <?php if($plevel==2){echo' selected';}?>>Manager</option>
+                                                                           <option value='3' <?php if($plevel==3){echo' selected';}?>>Assistant Manager</option>
+                                                                           <option value='4' <?php if($plevel==4){echo' selected';}?>>Supervisor</option>
+                                                                           <option value='5' <?php if($plevel==5){echo' selected';}?>> 5 Years+ Experienced Employee</option>
+                                                                           <option value='6' <?php if($plevel==6){echo' selected';}?>>1-4 Years Experienced Employee</option>
+                                                                           <option value='7' <?php if($plevel==7){echo' selected';}?>>1 Year Experienced Employee/Fresh Grad</option>
+                                                                </select>
                                                                     </div>
                                                                     <div id="enddiv" class="form-group label-static">
                                                                         <label class="control-label">End Date</label>
-                                                                        <input type='text' id='enddate' class='datepicker form-control' data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                        <input type='text' id='enddate' name="enddate" class='datepicker form-control' data-parsley-required data-parsley-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="checkbox">
@@ -200,7 +208,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                         <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                   <h6><label>Job Description</label></h6>
+                                                                 Responsibilities / Accomplishments
                                                                     <div id="summernote"></div>
                                                                     
                                                                           <script>
@@ -240,6 +248,9 @@ if(isset($_SESSION['user'])){
                                
                                 <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
                                                         Add Work Experience
+                                                       </button>
+                                <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="button">
+                                                        Go to Next Step
                                                        </button>
                                   <div id="successdivworkexp" class="alert alert-success">
                                                
@@ -295,6 +306,18 @@ if(isset($_SESSION['user'])){
     </form>
 <script>
 jQuery(document).ready(function ($) {
+  /*  
+     $("#enddate").datepicker({
+      onSelect: function() {
+        $("#wexp-form").validate();
+      }
+    });
+    
+    $("#enddate").datepicker()
+    .on("input change", function (e) {
+        $("#wexp-form").validate();
+    });
+*/    
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   

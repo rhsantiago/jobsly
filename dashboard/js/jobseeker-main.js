@@ -129,6 +129,7 @@ jQuery(document).ready(function ($) {
                        successClass: "has-success",
                        errorClass: "has-error"
                 });
+                
                
                     
             }

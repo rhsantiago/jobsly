@@ -224,15 +224,12 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                 </div>
                                           </div>
                                           <?php
-                                          
-                                           if(strcmp($isjobseeker,'jobseeker')==0){
-                                                 
                                             $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                             $database->bind(':userid', $userid);
                                             $database->bind(':jobid', $jobid);
                                             $checkrow = $database->single();
-                                          
-    
+                                           if(strcmp($isjobseeker,'jobseeker')==0){
+                                                 
                                           if(empty($checkrow)){
                                           ?>      
                                           <div class="quickapplydiv">
@@ -242,7 +239,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                   <div class="row-fluid">
                                                         <div class="col-md-12">
                                                             <div class="center">
-                                                                <h6 class="text-primary quickapplytitle"> Quick Apply</h6>
+                                                                <h6 class="text-primary quickapplytitle h4weight"> Quick Apply</h6>
                                                             </div>    
                                                         </div>
                                                         <div class="col-md-6">
@@ -299,8 +296,11 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                               </form>  
                                           </div>      
                                           <?php                                          
+                                           }                                        
+                                        
                                            }
-                                         if(!empty($checkrow)){
+                                                                          
+                                          if(!empty($checkrow)){
                                           ?>
                                           <div class="quickapplydiv2">
                                                 <div class="row-fluid">
@@ -318,12 +318,10 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                             </div>
                                                     </div>    
                                               </div>    
-                                          </div>      
-                                          <?php
+                                          </div>   
+                                         <?php
                                           }
-                                           }
-                                          ?>                    
-                                              
+                                          ?>
                                          
                                       </div>
                                         
@@ -354,6 +352,9 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
 	      </div>
 <script>
 jQuery(document).ready(function ($) {
+    $(function() {
+       $.material.init();
+    });
 <?php
 if(strcmp($isjobseeker,'jobseeker')==0){
  ?>  
