@@ -67,7 +67,7 @@ if(isset($_SESSION['user'])){
                                                              <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                                                             <div class="row">
                                                                 <div class="col-md-12 col-xs-12">
-                                                                 The skill tags are used by employers to narrow down their candidate search by skills. Make sure to enter all your relevant skills! The system auto creates the tag for you so type with spaces. 
+                                                                 The skill tags are used by employers to narrow down their candidate search by skills. Make sure to enter all your relevant skills! The system auto creates the tag for you so type with spaces. Click on a skill to delete.
                                                                 </div>
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="skilldiv" class="form-group label-floating">
@@ -95,8 +95,11 @@ if(isset($_SESSION['user'])){
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
                                                     foreach($rows as $row){
-                                                        echo $row['skilltag'];
-                                                        echo ' ';
+                                                        $skillid = $row['id'];
+                                                        $skilltag = $row['skilltag'];
+                                                        
+                                                        echo "<span id='$skillid'><a href='#skills-modal-del' class='text-info' data-userid='$userid' data-skillid='$skillid' data-skilltag='$skilltag' data-toggle='modal' data-target='#skills-modal-del'>$skilltag</a></span> ";
+                                               
                                                     }
                                              ?>      
                                                                      </div>

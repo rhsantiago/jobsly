@@ -268,11 +268,9 @@ if(isset($_SESSION['user'])){
 		                    </div>
                             
                             <div class="col-md-6">
-                             <!--       
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
-                                                        Add Work Experience
+                             <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="button">
+                                                        Go to Next Step
                                                        </button>
-                            -->
 		                    </div>
 		                    
 		                </div>

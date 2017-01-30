@@ -30,7 +30,9 @@ if($skills=='skilltag'){
                                                     $rows = $database->resultset();
                                                            // echo $row['name'];
                                                     foreach($rows as $row){
-                                                        echo $row['skilltag'];
-                                                        echo ' ';
+                                                        $skillid = $row['id'];
+                                                        $skilltag = $row['skilltag'];
+                                                        
+                                                        echo "<span id='$skillid'><a href='#skills-modal-del' class='text-info' data-userid='$userid' data-skillid='$skillid' data-skilltag='$skilltag' data-toggle='modal' data-target='#skills-modal-del'>$skilltag</a></span> ";
                                                     }
 ?> 

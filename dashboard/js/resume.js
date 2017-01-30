@@ -179,6 +179,10 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
+     $("#wexpnext").on('click',function(event) {
+        $("a[href='#etrain']").trigger('click');
+    }); 
+    
     $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function(event) {  
         event.preventDefault()
            event.stopPropagation();
@@ -239,9 +243,7 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#wexpnext").on('click',function(event) {
-        $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").trigger('click');
-    });    
+      
     
     $("a[href='#skills'], a[href='resume.php?ajax=skills']").on('click', function(event) {  
         event.preventDefault()
@@ -819,11 +821,12 @@ jQuery(document).ready(function ($) {
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){
-                    console.log(data);
+                    
                     $('.features #skilltagsdiv').html(data).fadeIn(1500);
                     $('.features #successdivskillstag').fadeIn(1500);  
-                                
-                    $(' #skills-skilltag-form #mode').val('insert');                
+                    $("#skills-skilltag-form #skill").val('');           
+                    $(' #skills-skilltag-form #mode').val('insert'); 
+                    $("#skills-skilltag-form").parsley().reset();
                 },
                 error: function(data) {
                     console.log(data);                  
@@ -913,6 +916,61 @@ jQuery(document).ready(function ($) {
                     
             }
         });
+    });
+    
+    $('#skills-modal-del').on('show.bs.modal', function(e) {
+               $('.features #successdivskillstag').hide();
+               var $modal = $(this);
+               var skilltag =  $(e.relatedTarget).data('skilltag');
+               var skillid =  $(e.relatedTarget).data('skillid');
+               var userid = $(e.relatedTarget).data('userid');
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'skills-modal-del.php',
+            data: 'skillid=' + skillid +
+                  '&userid=' + userid +
+                  '&skilltag=' + skilltag,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $(function() {
+                           $.material.init();
+                    });          
+            }
+        });
+    });
+    
+    $(document).on('submit','#delskill-form',function(event){
+             
+            event.preventDefault();      
+            $('#resume-main-body #successdivdeljob').hide();   
+            var userid = $("#delskill-form #userid").val();          
+            var skillid = $("#delskill-form #skillid").val();         
+         
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "delskill-submit.php",
+                data: "userid=" + userid + "&skillid=" + skillid,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                success : function(data){
+                    
+                    $('#skills-modal-del').modal('toggle');
+                    $("#skilltagsdiv #"+data).remove();
+                    $(function() {
+                         $.material.init();
+                    });
+                 
+                },
+                error: function(data) {
+                    console.log(data);                  
+                   
+                }
+            });
+            return false;
     });
   
     

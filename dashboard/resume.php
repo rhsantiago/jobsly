@@ -72,6 +72,14 @@ if($ok == 1 ){
 	    </div>
 	  </div>
 	</div>
+    
+    <div class="modal fullscreen-modal fade" id="skills-modal-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
