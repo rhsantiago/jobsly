@@ -60,6 +60,7 @@
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y:hidden;
     padding-top:250px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
@@ -813,4 +814,19 @@ div .parsley-errors-list {
 
 .cardtopmargin {
     margin: 35px 0 !important;
+}
+
+.sidenavmargin {
+    margin-top: -170px !important;
+    margin-bottom: 50px !important;
+}
+
+.sidenavname {
+    color:  #fff;
+    font-size: 15px;
+}
+
+.sidenavposition {
+    color:  #fff;
+    font-size: 12px;
 }

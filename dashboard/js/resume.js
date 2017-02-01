@@ -179,9 +179,63 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-     $("#wexpnext").on('click',function(event) {
-        $("a[href='#etrain']").trigger('click');
-    }); 
+    $(document).on('submit','#wexpnext-form',function(event){
+        $.ajax({
+                    url: 'etrain-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body').html(html);
+                        $('#resumesb li').removeClass('active');
+                        $('#resumesb #e3').addClass('active');
+                        $('#etrain-hs-form #hsgraddate').datepicker();                    
+                        $('#resume-main-body #colgraddate').datepicker();
+                        $('#resume-main-body #pgrad1graddate').datepicker();
+                        $('#resume-main-body #successdivetrain').hide();
+                        $('#etrain-hs-form #smhs').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                          });
+                         $(function() {
+                            $.material.init();
+                        });
+                        $('#etrain-hs-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
+                        
+                        $('#etrain-col-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
+                        
+                        $('#etrain-pgrad1-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        })
+                    }
+        });
+        return false;
+    });
     
     $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function(event) {  
         event.preventDefault()
@@ -243,7 +297,42 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-      
+    $(document).on('submit','#etrainnext-form',function(event){
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+                    url: 'skills-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body #successdivskillstag').hide();
+                        $('#resume-main-body').html(html);                   
+                        $('#resume-main-body #startdate').datepicker();                    
+                        $('#resume-main-body #enddate').datepicker();
+                        $('#resumesb li').removeClass('active');
+                        $('#resumesb #s4').addClass('active');
+                        
+                        
+                        $('#skills-skilltag-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+
+                        });
+                        
+                        $(function() {
+                            $.material.init();
+                        });
+                    }
+        });
+        return false;
+      }); 
     
     $("a[href='#skills'], a[href='resume.php?ajax=skills']").on('click', function(event) {  
         event.preventDefault()
@@ -282,9 +371,36 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $("#skillsnext").on('click',function(event) {
-        $("a[href='#ainfo'],a[href='resume.php?ajax=ainfo").trigger('click');
-    });
+    $(document).on('submit','#skillsnext-form',function(event){
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+                    url: 'ainfo-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                        $('#resume-main-body #successdivainfo').hide();
+                        $('#resume-main-body').html(html);  
+                        $('#resumesb li').removeClass('active');
+                        $('#resumesb #a5').addClass('active');
+                        $(function() {
+                            $.material.init();
+                        });
+                        $('#ainfo-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+
+                        });
+                    }
+        });
+        return false;
+    });    
     
     $("a[href='#ainfo'],a[href='resume.php?ajax=ainfo']").on('click',function(event) {  
         event.preventDefault()
@@ -316,6 +432,24 @@ jQuery(document).ready(function ($) {
         });
         return false;
     });
+    
+    $(document).on('submit','#ainfonext-form',function(event){
+        $.ajax({
+                    url: 'previewresume.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body').html(html); 
+                        $('#resumesb li').removeClass('active');
+                        $('#resumesb #p6').addClass('active');
+                        $(function() {
+                            $.material.init();
+                        });
+                    }
+        });
+        return false;
+    });    
     
     $("a[href='#pres']").on('click',function(event) {  
         $.ajax({
@@ -972,9 +1106,17 @@ jQuery(document).ready(function ($) {
             });
             return false;
     });
-  
-    
-   
+  /*
+    $(document).on('click','#photo-modal',function(event) {
+            var applicantid =  $(this).data('applicantid');
+            var jobid =  $(this).data('jobid');
+            var mode =  $(this).data('mode');
+            $('#shortlist-form #applicantid').val(applicantid);
+            $('#shortlist-form #jobid').val(jobid);
+            $('#shortlist-form #mode').val(mode);
+            $('#shortlist-form').submit();
+    });
+   */
     
 });   
 

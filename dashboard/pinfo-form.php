@@ -60,6 +60,12 @@ if(isset($_SESSION['user'])){
         $mode = 'insert';
     }
     
+    $database->query('SELECT photo from useraccounts where id = :userid');
+    $database->bind(':userid', $userid);   
+
+    $row = $database->single();
+    $photo = $row['photo'];
+    
 }
 ?>
 
@@ -115,6 +121,20 @@ if(isset($_SESSION['user'])){
                                                                 <label class="control-label">Middle Name</label>
                                                                 <input type="text" id="mname" class="form-control" value="<?=$mname ?>">
                                                             </div>
+                                                            <div >
+                                                                 <a href="#photo-modal" data-userid="<?=$userid?>" data-toggle="modal">Upload Photo</a>
+                                                              </div>
+                                                            <?php
+                                                                    if(!empty($photo)){
+                                                             ?>
+                                                             <div class="container"><div class="col-md-1" style="padding-left: 0px;  padding-right: 0px;">
+                                                                    <img src="<?=$photo?>" class="img-responsive">
+                                                                </div>
+                                                            </div>
+                                                           
+                                                             <?php
+                                                                    }
+                                                             ?>
                                                         </div>
 
                                                     </div>

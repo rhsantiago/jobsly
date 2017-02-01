@@ -61,17 +61,17 @@ if(isset($_SESSION['user'])){
                         </div>
                        
               <div class="section  section-landing">  
-	         <form method="post" id="ainfo-form" name="ainfo-form" data-parsley-validate> 
-                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                                             <input type="hidden" id="etrain" name="mode" value="hs">
-                                                             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
+	         
 					<div class="features">
 						<div class="row">
 		                    <div class="col-md-12">
-                                      
+                                   <form method="post" id="ainfo-form" name="ainfo-form" data-parsley-validate> 
+                                                             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                             <input type="hidden" id="etrain" name="mode" value="hs">
+                                                             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">   
                                 
                             
-                                    <div class="card card-nav-tabs">
+                                    <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                                                 <div class="nav-tabs-navigation">
@@ -230,25 +230,24 @@ if(isset($_SESSION['user'])){
                                                   <b>Alert: </b> Your additional information has been saved.
                                                
                                             </div>
-                                 
-                             
+                                       </form>
 		                    </div>
                             
-                            <div class="col-md-6">
-                             <!--       
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
-                                                        Add Work Experience
-                                                       </button>
-                            -->
-		                    </div>
+                            
 		                    
 		                </div>
 					</div> <!--features-->
-                    </form>  
+                      
 	        </div> 
                         
                         
-                    
+                    <div class="col-md-6">
+                             <form method="post" id="ainfonext-form" name="ainfonext-form"> 
+                             <button class="btn btn-primary " name="ainfonext" id="ainfonext" type="submit">
+                                                        Preview Resume
+                                                       </button>
+                                </form>
+		                    </div>
                      
                         
                     </div>
@@ -271,6 +270,7 @@ if(isset($_SESSION['user'])){
                                                     </div>
                         
 		       </div> 
+                
    
 <script>
 jQuery(document).ready(function ($) {

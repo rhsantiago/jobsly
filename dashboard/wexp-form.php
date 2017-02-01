@@ -22,9 +22,7 @@ if(isset($_SESSION['user'])){
 ?>
 
 
-     <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
-                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                 <input type="hidden" id="mode" name="mode" value="insert">
+     
    <div class="row">       
          <div class="col-md-12 center">            
                 <div class="adstop"><img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
@@ -36,7 +34,9 @@ if(isset($_SESSION['user'])){
           </div> 
     </div>   
                     <div class="col-md-9">
-                        
+                        <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
+                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                 <input type="hidden" id="mode" name="mode" value="insert">
                 <div class="section  section-landing">
 	         
 					<div class="features">
@@ -249,9 +249,7 @@ if(isset($_SESSION['user'])){
                                 <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
                                                         Add Work Experience
                                                        </button>
-                                <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="button">
-                                                        Go to Next Step
-                                                       </button>
+                                
                                   <div id="successdivworkexp" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
@@ -267,22 +265,13 @@ if(isset($_SESSION['user'])){
                              
 		                    </div>
                             
-                            <div class="col-md-6">
-                             <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="button">
-                                                        Go to Next Step
-                                                       </button>
-		                    </div>
+                            
 		                    
 		                </div>
 					</div>
 	            </div>
-                        
-                        
-                    
-                        
-                        
+                   </form>                          
                     </div>
-                    
                     
                 <div class="col-md-3 pull-right">
                     
@@ -298,10 +287,16 @@ if(isset($_SESSION['user'])){
                                                                             </div>
                                                                       
                                                              </div>
-                                                    </div>
-                        
+                                                    </div>                        
 		       </div> 
-    </form>
+<div class="col-md-6">
+                                 <form method="post" id="wexpnext-form" name="wexpnext-form"> 
+                             <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
+                                                        Go to Next Step
+                                                       </button>
+                                </form>
+		                    </div>
+
 <script>
 jQuery(document).ready(function ($) {
   /*  
@@ -316,6 +311,8 @@ jQuery(document).ready(function ($) {
         $("#wexp-form").validate();
     });
 */    
+    
+    
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   

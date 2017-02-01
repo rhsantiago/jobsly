@@ -137,9 +137,30 @@ if($ok == 1 ){
             </div>
         </div>
     <!--sidebar-->
+   <?php
+            $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+            $database->bind(':userid', $userid);   
+
+            $row = $database->single();
+            $maxposition = $row['maxposition'];
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $photo = $row['photo'];
+      
+    ?>
+    <!--sidebar-->
    <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
+  <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+       <div class="center sidenavmargin">
+                                <div class="avatar center">
+                                        <img src="<?=$photo?>" alt="Circle Image" width="100" height="100" class="img-circle img-responsive img-raised center">
+                                    </div>
+                                    <div class="name">
+                                        <h4 class="sidenavname"><?=$fname?>&nbsp;<?=$lname?></h4>
+                                        <h5 class="sidenavposition"><?=$maxposition?></h5>
+                                    </div>  
+       </div>
+   <div class="sidebar-item dropdown"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
@@ -149,11 +170,11 @@ if($ok == 1 ){
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Info</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
-                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education</a></li>
                             <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
-                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Info</a></li>
                             <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>

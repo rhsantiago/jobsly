@@ -80,6 +80,31 @@ if($ok == 1 ){
 	    </div>
 	  </div>
 	</div>
+    
+    <div class="modal fullscreen-modal fade" id="photo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form role="form"  action="uploadphoto-submit.php" method="post" enctype="multipart/form-data">         
+            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	        <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Picture</h4>
+	      </div>
+            <div id="modalrejectapp" class="modal-body">
+            
+            <div id="fileuploaddiv" class="">                 
+                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                 </div> 
+           </div>
+            <div class="modal-footer blog-post">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
+	      </div>
+	    </div>
+           
+	  </div>
+        </form>    
+	</div>
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -158,25 +183,45 @@ if($ok == 1 ){
             </div>
             </div>
         </div>
+    <?php
+            $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+            $database->bind(':userid', $userid);   
 
+            $row = $database->single();
+            $maxposition = $row['maxposition'];
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $photo = $row['photo'];
+      
+    ?>
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+       <div class="center sidenavmargin">
+                                <div class="avatar center">
+                                        <img src="<?=$photo?>" alt="Circle Image" width="100" height="100" class="img-circle img-responsive img-raised center">
+                                    </div>
+                                    <div class="name">
+                                        <h4 class="sidenavname"><?=$fname?>&nbsp;<?=$lname?></h4>
+                                        <h5 class="sidenavposition"><?=$maxposition?></h5>
+                                    </div>  
+       </div>
    <div class="sidebar-item dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
                                     <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>  
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                <li><a href="#photo-modal" data-userid="<?=$userid?>" data-toggle="modal">Upload Photo</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Info</a></li>
                             <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Info</a></li>
                             <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>

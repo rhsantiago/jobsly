@@ -13,13 +13,14 @@ if(isset($_SESSION['user'])){
     
     $database = new Database();
     
-    $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+    $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
     $database->bind(':userid', $userid);   
 
     $row = $database->single();
     $maxposition = $row['maxposition'];
     $fname = $row['fname'];
     $lname = $row['lname'];
+    $photo = $row['photo'];
     
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $bday = array('0000','00','00');
@@ -42,7 +43,7 @@ jQuery(document).ready(function ($) {
                             
                                 <div class="profile">                               
                                     <div class="avatar">
-                                        <img src="img/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                        <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
                                         <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>

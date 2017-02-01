@@ -98,9 +98,6 @@ if(isset($_SESSION['user'])){
 					<div class="features">
 						<div class="row">
 		                    <div class="col-md-12">
-                                      
-                                
-                            
                                     <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -418,11 +415,11 @@ if(isset($_SESSION['user'])){
 		                    </div>
                             
                             <div class="col-md-6">
-                             <!--       
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
-                                                        Add Work Experience
+                             <form method="post" id="etrainnext-form" name="etrainnext-form"> 
+                             <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
+                                                        Go to Next Step
                                                        </button>
-                            -->
+                                </form>
 		                    </div>
 		                    
 		                </div>

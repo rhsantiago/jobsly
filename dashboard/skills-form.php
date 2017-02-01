@@ -114,9 +114,11 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                              </div>
                             
-                              <button class="btn btn-primary " name="skillsnext" id="skillsnext" type="button">
-                                                        Go To Next Step
+                              <form method="post" id="skillsnext-form" name="skillsnext-form"> 
+                             <button class="btn btn-primary " name="skillsnext" id="skillsnext" type="submit">
+                                                        Go to Next Step
                                                        </button>
+                                </form>
                                   <div id="successdivskillstag" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
