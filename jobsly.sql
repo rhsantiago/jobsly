@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2017 at 05:55 PM
+-- Generation Time: Feb 02, 2017 at 06:28 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -46,12 +46,21 @@ CREATE TABLE `additionalinformation` (
 --
 
 INSERT INTO `additionalinformation` (`id`, `userid`, `dposition`, `specialization`, `plevel`, `esalary`, `pworkloc`, `yexp`, `wtravel`, `wrelocate`, `pholder`, `languages`) VALUES
-(1, 1, 'Senior programmer', 'information technology', 6, 100000, 'makati', 9, 'on', 'on', 'off', 'filipino, english'),
+(1, 1, 'Senior programmer', 'information technology', 6, 100000, 'makati', 8, 'off', 'off', 'off', 'filipino, english'),
 (2, 29, 'Web Developer', 'Programming', 5, 100000, '', 10, 'off', 'off', 'off', ''),
 (3, 30, 'Web Developer', 'Information Technology', 5, 70000, 'Makati', 16, 'on', 'off', 'on', 'English, Filipino'),
 (4, 31, 'Senior Vice President', 'Healthcare', 1, 70000, 'makati', 1, 'on', 'on', 'on', 'Doggie Talk, Barking'),
 (5, 32, 'IT Manager', 'information technology', 2, 80000, 'makati', 5, 'on', 'off', 'on', 'Doggie Talk'),
-(6, 33, 'Web Analytics Manager', 'Data Science', 2, 90000, 'Pasig', 12, 'on', 'off', 'on', 'English, Filipino');
+(6, 33, 'Web Analytics Manager', 'Data Science', 2, 90000, 'Pasig', 12, 'on', 'off', 'on', 'English, Filipino'),
+(7, 35, 'Senior Police Officer', 'Law', 6, 25000, 'Zootopia', 1, 'on', 'on', 'off', 'English'),
+(8, 36, 'Ice Cream Salesman', 'Sales', 5, 50000, 'Zootopia', 5, 'off', 'off', 'off', 'English'),
+(9, 37, 'Web Designer', 'information technology', 5, 50000, 'Zootopia', 15, 'off', 'off', 'on', 'English'),
+(10, 38, 'CFO', 'Finance', 1, 100000, 'Makati', 7, 'on', 'off', 'on', 'English, Filipino'),
+(11, 39, 'Web Analytics Manager', 'Data Science', 2, 100000, 'Makati', 18, 'off', 'off', 'on', 'English, Filipino'),
+(12, 40, 'Senior Software Engineer', 'information technology', 4, 90000, 'Pasig', 10, 'on', 'on', 'on', 'English, Filipino'),
+(13, 41, 'CEO', 'Business, Consulting and Manag', 1, 500000, 'California', 25, 'on', 'on', 'on', 'English'),
+(14, 42, 'Web Developer', 'information technology', 7, 20000, '', 0, 'off', 'off', 'off', 'English'),
+(15, 43, 'Web Developer', 'information technology', 6, 30000, '', 3, 'on', 'on', 'on', 'English, Filipino');
 
 -- --------------------------------------------------------
 
@@ -83,7 +92,7 @@ CREATE TABLE `companyinfo` (
 --
 
 INSERT INTO `companyinfo` (`id`, `userid`, `companyname`, `companyaddress`, `companywebsite`, `telno`, `companytin`, `cperson`, `designation`, `cpersonemail`, `cpersontelno`, `industry`, `numemp`, `ctype`, `cdesc`, `logo`) VALUES
-(5, 28, 'T4K', '87 Spain St. Better Living Subd.', 'http://www.champ.aero', '343434', '5678', 'Reggie Santiago', 'HR', 'reggie1@gmail.com', '436567', 'IT', 5, 2, '<p>descfghg</p>', 'logo/20170121180147.jpg');
+(5, 28, 'T4K1', '87 Spain St. Better Living Subd.', 'http://www.champ.aero', '343434', '5678', 'Reggie Santiago', 'HR', 'reggie1@gmail.com', '436567', 'IT', 5, 1, '<p>descfghgfdf</p><p>df</p><p>sdf</p>', 'logo/20170121180147.jpg');
 
 -- --------------------------------------------------------
 
@@ -118,7 +127,6 @@ CREATE TABLE `educationandtraining` (
 --
 
 INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgraddate`, `hsawards`, `coluni`, `coladd`, `colgpa`, `colgraddate`, `colmajor`, `colawards`, `pgrad1uni`, `pgrad1add`, `pgrad1gpa`, `pgrad1graddate`, `pgrad1course`, `pgrad1awards`, `othersawards`) VALUES
-(9, 1, 'Colegio San Agustin', 'Dasma village', '2016-08-27', '<p>Loyalty Awarad</p>', 'Del La Salle University', 'Taft Ave Manila', '4', '2016-11-07', 'Bachelor in Political Science', '<p>gfgfg</p>', 'AITI', 'Salcedo vill Makati', '4', '2016-12-11', 'Master in Information Technology', '<p>fdfsf</p><p>ggh</p><p>j</p>', '<p>gggggggggggg</p><p>rrrrrrrrrrr</p><p>eeeeeeee</p>'),
 (10, 29, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'UST', 'Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
 (12, 30, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'University of Santo Tomas', 'Espana, Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', 'AGSB', 'Makati', '3.72', '2008-08-01', 'MBA', '<p>Silver Medalist<br></p>', NULL),
 (13, 30, 'CSA', 'Laguna', '1996-03-23', '<p><br></p>', 'University of Santo Tomas', 'Espana, Manila', '', '2000-03-25', 'BS Accountancy', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
@@ -127,7 +135,25 @@ INSERT INTO `educationandtraining` (`id`, `userid`, `hsschool`, `hsadd`, `hsgrad
 (16, 32, 'Doggie Science High School', 'Doggie World', '2007-03-25', 'Magna Cum Laude', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
 (17, 32, NULL, NULL, '0000-00-00', NULL, 'Doggie University', 'Doggie World', '4.0', '2011-03-25', 'Computer Science', '<p>Suma Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
 (18, 33, 'Colegio San Agustin', 'Makati', '2005-03-27', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
-(19, 33, NULL, NULL, '0000-00-00', NULL, 'Harvard University', 'USA', '3.5', '2005-03-20', 'Business Administration', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL);
+(19, 33, NULL, NULL, '0000-00-00', NULL, 'Harvard University', 'USA', '3.5', '2005-03-20', 'Business Administration', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(20, 35, 'Zootopia High', 'Bunny Burrows', '2012-03-01', '<p><br></p>', 'Police Academy', 'Zootopia', '', '2016-03-01', 'BS Police ', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(21, 35, NULL, NULL, '0000-00-00', NULL, 'Police Academy', 'Zootopia', '', '2016-03-01', 'BS Police ', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(22, 36, 'Zootopia High', 'Fox Land', '2008-03-01', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(23, 36, NULL, NULL, '0000-00-00', NULL, 'Zootopia University', 'Zootopia', '4.0', '2012-03-01', 'BS Marketing', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(24, 37, 'Zootopia High', 'Zootopia', '1998-03-01', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, '<p>Criminal Investigation</p><p>HTML</p><p>Web Development</p>'),
+(25, 37, 'Zootopia High', 'Zootopia', '1998-03-01', '<p><br></p>', 'Police Academy', 'Zootopia', '3.0', '2000-03-01', 'BS Criminal Justice', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, '<p>Criminal Investigation</p><p>HTML</p><p>Web Development</p>'),
+(26, 38, 'Dino University', 'Dino Land', '1996-03-01', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(27, 38, 'Dino University', 'Dino Land', '1996-03-01', '<p>Cum Laude</p>', 'Dino University', 'Dino Land', '3.5', '2010-03-01', 'BS Accounting', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(28, 38, 'Dino University', 'Dino Land', '1996-03-01', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, 'AGSB', 'Rockwell, Makati', '3.75', '2014-08-01', 'MBA', '<p>Silver Medalist</p>', NULL),
+(29, 39, 'Dino University', 'Dino Land', '1995-03-31', '<p><br></p>', 'Dino University', 'Dino Land', '3.0', '2009-03-31', 'BS Accountancy', '<p><br></p>', 'AGSB', 'Rockwell, Makati', '3.73', '2008-08-02', 'MBA', '<p><br></p>', NULL),
+(30, 40, 'Cars University', 'Makati City', '2002-03-01', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(31, 40, NULL, NULL, '0000-00-00', NULL, 'Cars University', 'Makati City', '3.4', '2006-03-31', 'BS Statistics', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(32, 42, 'Colegio San Agustin', 'Makati City', '2013-03-23', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(33, 42, NULL, NULL, '0000-00-00', NULL, 'Del La Salle University', 'Taft Ave Manila', '', '2017-03-01', 'BS Computer Science', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(34, 43, 'Cars University', 'Car City', '2010-03-01', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(35, 43, NULL, NULL, '0000-00-00', NULL, 'Dino University', 'Dino Land', '', '2014-03-31', 'BS Information Systems', '<p><br></p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(43, 1, 'hs', 'add', '2017-01-03', '<p>fdsfd</p>', 'col', 'add', '2', '2017-01-13', 'major', '<p>fsdfsdf</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL),
+(44, 44, 'Cars University', 'Car City', '2007-03-25', '<p><br></p>', 'Cars University', 'Car City', '3.6', '2011-03-28', 'BS Math', '<p>Cum Laude</p>', NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -219,6 +245,7 @@ CREATE TABLE `jobapplications` (
   `userid` int(10) NOT NULL,
   `esalary` int(11) NOT NULL,
   `essayanswer` text,
+  `dateapplied` date NOT NULL DEFAULT '0000-00-00',
   `isnew` int(5) NOT NULL DEFAULT '0',
   `isshortlisted` int(5) NOT NULL DEFAULT '0',
   `isreject` int(5) NOT NULL DEFAULT '0'
@@ -228,19 +255,24 @@ CREATE TABLE `jobapplications` (
 -- Dumping data for table `jobapplications`
 --
 
-INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `isnew`, `isshortlisted`, `isreject`) VALUES
-(13, 86, 1, 3434, NULL, 0, 1, 0),
-(14, 116, 1, 45000, NULL, 1, 0, 0),
-(15, 86, 29, 100000, 'NA', 0, 0, 0),
-(16, 86, 30, 60000, 'Not', 0, 1, 1),
-(17, 90, 32, 75000, 'Pimezone na!', 1, 0, 0),
-(18, 100, 32, 100000, 'The quick brown fox jumped over the lazy dog', 1, 0, 0),
-(19, 118, 33, 110000, 'undefined', 0, 1, 0),
-(20, 104, 33, 100000, 'Abbit choo choo chain', 1, 0, 0),
-(21, 118, 29, 80000, 'undefined', 0, 1, 0),
-(22, 86, 31, 30000, 'NA', 0, 1, 0),
-(23, 86, 32, 20000, 'dada dada', 0, 1, 1),
-(24, 86, 33, 40000, 'mama na', 0, 0, 0);
+INSERT INTO `jobapplications` (`id`, `jobid`, `userid`, `esalary`, `essayanswer`, `dateapplied`, `isnew`, `isshortlisted`, `isreject`) VALUES
+(13, 86, 1, 3434, NULL, '2016-12-21', 0, 0, 0),
+(14, 116, 1, 45000, NULL, '2016-11-22', 1, 0, 0),
+(15, 86, 29, 100000, 'NA', '2016-12-08', 0, 1, 0),
+(16, 86, 30, 60000, 'Not', '2016-12-15', 0, 0, 1),
+(17, 90, 32, 75000, 'Pimezone na!', '2016-11-12', 1, 0, 0),
+(18, 100, 32, 100000, 'The quick brown fox jumped over the lazy dog', '2016-12-05', 1, 0, 0),
+(19, 118, 33, 110000, 'undefined', '2016-12-07', 1, 1, 0),
+(20, 104, 33, 100000, 'Abbit choo choo chain', '2016-12-20', 1, 0, 0),
+(21, 118, 29, 80000, 'undefined', '2016-12-14', 1, 1, 0),
+(22, 86, 31, 30000, 'NA', '2017-01-04', 1, 0, 0),
+(23, 86, 32, 20000, 'dada dada', '2017-01-06', 0, 1, 0),
+(24, 86, 33, 40000, 'mama na', '2017-01-11', 0, 0, 0),
+(26, 118, 1, 3333, 'undefined', '2017-01-29', 1, 0, 0),
+(27, 118, 37, 50000, 'undefined', '2017-01-29', 1, 0, 0),
+(28, 86, 37, 60000, 'aaaa', '2017-01-29', 1, 0, 0),
+(29, 89, 37, 40000, 'asdf', '2017-01-29', 1, 0, 0),
+(30, 90, 37, 10000, 'awaw', '2017-01-29', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -615,7 +647,17 @@ INSERT INTO `personalinformation` (`id`, `userid`, `lname`, `fname`, `mname`, `s
 (9, 30, 'Santiago', 'Moytisha', '', '87', 'Paranaque', '', 'Philippines', '09170000000', 'moytisha@gmail.com', '', 20, '1996-12-31', 'female', 'Filipino'),
 (10, 31, 'Girl', 'Tisha', '', '111 Espana', 'Makati', 'Metro Manila', 'Philippines', '09171101001', 'tisha@gmail.com', ' 639175010845', 20, '1997-01-14', 'female', 'Filipino'),
 (11, 32, 'Pinon', 'Toya', '', '2 Sta Clara', 'San Pedro', 'Laguna', 'Philippines', '09479999999', 'toya@gmail.com', '', 16, '2000-12-05', 'female', 'Filipino'),
-(12, 33, 'Santiago', 'Rico', '', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '9175010845', 'rico@gmail.com', '', 32, '1984-03-01', 'male', 'Filipino');
+(12, 33, 'Santiago', 'Rico', '', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '9175010845', 'rico@gmail.com', '', 32, '1984-03-01', 'male', 'Filipino'),
+(13, 35, 'Hopps', 'Judy', '', '1 ', 'Bunny Burrows', '', 'Zootopia', '09479962172', 'judy@gmail.com', '', 20, '1997-01-01', 'female', 'Zootopian'),
+(14, 36, 'Wilde', 'Nick', '', '2', 'Fox Land', '', 'Zootopia', '09479962172', 'nick@gmail.com', '', 25, '1992-01-01', 'male', 'Zootopian'),
+(15, 37, 'Bogo', 'Chief', '', '3 Buffalo Drive', 'Buffalo City', '', 'Zootopia', '09171110000', 'bogo@gmail.com', '', 35, '1981-07-01', 'male', 'Zootopian'),
+(16, 38, 'Aur', 'Dino', 'S', '4 Dino Drive', 'Forest City', 'Dino Land', 'Philippines', '09171101001', 'dino@gmail.com', '028210119', 27, '1990-01-01', 'male', 'Filipino'),
+(17, 39, 'Cavebaby', 'Spot', 'Doggie', '5 Cave Road', 'Dino City', 'Dino Land', 'Philippines', '09479999999', 'spot@gmail.com', '82101111', 39, '1978-06-01', 'male', 'Filipino'),
+(18, 40, 'McQueen', 'Lighting', '', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '09171101001', 'lightning@gmail.com', '', 32, '1985-05-01', 'male', 'Filipino'),
+(19, 41, 'Truck', 'Mater', 'Tow', '10 Garage St', 'Car City', '', 'USA', '09479999999', 'mater@gmail.com', '', 46, '1970-03-19', 'male', 'American'),
+(20, 42, 'Truck', 'Dusty', '', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '09180000001', 'dusty@gmail.com', ' 639175010845', 21, '1995-06-01', 'male', 'Filipino'),
+(21, 43, 'Jet', 'Skipper', 'Fighter', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '028210119', 'skipper@gmail.com', ' 639175010845', 25, '1992-01-28', 'male', 'Filipino'),
+(22, 44, 'Ington', 'Chug', 'G', '87 Spain St. Better Living Subd.', 'Paranaque', 'Metro Manila', 'Philippines', '9177001845', 'chug@gmail.com', '028210119', 27, '1990-01-28', 'male', 'Filipino');
 
 -- --------------------------------------------------------
 
@@ -638,7 +680,18 @@ INSERT INTO `savedapplications` (`id`, `jobid`, `userid`) VALUES
 (7, 89, 1),
 (8, 89, 32),
 (9, 88, 33),
-(10, 91, 33);
+(10, 91, 33),
+(11, 118, 37),
+(12, 88, 37),
+(13, 94, 37),
+(14, 88, 38),
+(15, 118, 43),
+(16, 91, 43),
+(17, 87, 1),
+(18, 86, 37),
+(19, 90, 37),
+(20, 106, 1),
+(21, 112, 1);
 
 -- --------------------------------------------------------
 
@@ -661,16 +714,12 @@ CREATE TABLE `skilltags` (
 INSERT INTO `skilltags` (`id`, `userid`, `skill`, `skilltag`, `skilltagdate`) VALUES
 (1, 1, 'software engineerf', '#softwareengineerf', '2016-12-05'),
 (2, 1, 'agile scrum', '#agilescrum', '2016-12-05'),
-(3, 1, 'java development', '#javadevelopment', '2016-12-05'),
 (4, 1, 'j2ee', '#j2ee', '2016-12-05'),
 (5, 1, 'bootstrap', '#bootstrap', '2016-12-05'),
 (6, 1, 'responsive', '#responsive', '2016-12-05'),
-(7, 1, 'object oriented programming', '#objectorientedprogramming', '2016-12-05'),
 (14, 1, 'American Samoa', '#AmericanSamoa', '2016-12-06'),
 (15, 1, 'Nigeria', '#Nigeria', '2016-12-06'),
-(16, 1, 'British Indian Ocean Territory', '#BritishIndianOceanTerritory', '2016-12-06'),
 (17, 1, 'Cape Verde', '#CapeVerde', '2016-12-06'),
-(18, 1, 'French Southern Territories', '#FrenchSouthernTerritories', '2016-12-06'),
 (19, 29, 'accounting', '#accounting', '2017-01-07'),
 (20, 29, 'web design', '#webdesign', '2017-01-07'),
 (21, 29, 'programming', '#programming', '2017-01-07'),
@@ -690,7 +739,35 @@ INSERT INTO `skilltags` (`id`, `userid`, `skill`, `skilltag`, `skilltagdate`) VA
 (35, 33, 'data analysis', '#dataanalysis', '2017-01-14'),
 (36, 33, 'R', '#R', '2017-01-14'),
 (37, 33, 'data modelling', '#datamodelling', '2017-01-14'),
-(38, 33, 'charting', '#charting', '2017-01-14');
+(38, 33, 'charting', '#charting', '2017-01-14'),
+(39, 35, 'catchbadguys', '#catchbadguys', '2017-01-26'),
+(40, 36, 'selling', '#selling', '2017-01-26'),
+(41, 37, 'criminal investigation', '#criminalinvestigation', '2017-01-28'),
+(42, 37, 'criminal investigation', '#criminalinvestigation', '2017-01-28'),
+(43, 37, 'html', '#html', '2017-01-28'),
+(44, 37, ' CSS', '#CSS', '2017-01-28'),
+(45, 38, 'financial analyssis', '#financialanalyssis', '2017-01-28'),
+(46, 38, 'dataanalysis', '#dataanalysis', '2017-01-28'),
+(47, 38, 'finncial engineering', '#finncialengineering', '2017-01-28'),
+(48, 39, 'data analysis', '#dataanalysis', '2017-01-28'),
+(49, 39, 'financial analysis', '#financialanalysis', '2017-01-28'),
+(50, 39, 'microsoft office', '#microsoftoffice', '2017-01-28'),
+(51, 39, 'capital budgeting', '#capitalbudgeting', '2017-01-28'),
+(52, 39, 'strategic management', '#strategicmanagement', '2017-01-28'),
+(53, 40, 'linear regression', '#linearregression', '2017-01-28'),
+(54, 40, 'html', '#html', '2017-01-28'),
+(55, 40, 'php', '#php', '2017-01-28'),
+(56, 40, 'java', '#java', '2017-01-28'),
+(57, 41, 'towing', '#towing', '2017-01-28'),
+(58, 42, 'java', '#java', '2017-01-28'),
+(59, 42, 'html', '#html', '2017-01-28'),
+(60, 42, 'css', '#css', '2017-01-28'),
+(61, 43, 'web design', '#webdesign', '2017-01-28'),
+(62, 43, 'css', '#css', '2017-01-28'),
+(64, 1, 'Antigua and Barbuda', '#AntiguaandBarbuda', '2017-01-31'),
+(66, 1, 'Australia', '#Australia', '2017-01-31'),
+(69, 1, 'Bahamas', '#Bahamas', '2017-01-31'),
+(70, 1, 'Aruba', '#Aruba', '2017-01-31');
 
 -- --------------------------------------------------------
 
@@ -706,22 +783,35 @@ CREATE TABLE `useraccounts` (
   `companyname` varchar(50) DEFAULT NULL,
   `verifyhash` varchar(40) NOT NULL,
   `signupdate` date NOT NULL DEFAULT '0000-00-00',
-  `isverified` int(5) NOT NULL DEFAULT '0'
+  `isverified` int(5) NOT NULL DEFAULT '0',
+  `photo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `useraccounts`
 --
 
-INSERT INTO `useraccounts` (`id`, `email`, `password`, `usertype`, `companyname`, `verifyhash`, `signupdate`, `isverified`) VALUES
-(1, 'reg@jobsly.net', 'regsam', 2, NULL, '11111', '2016-11-07', 1),
-(28, 'reggie1@gmail.com', 'samreece', 1, 'T4K', '222', '2016-12-16', 1),
-(29, 'goldie@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(30, 'moytisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(31, 'tisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(32, 'toya@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(33, 'rico@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1),
-(34, 'bambam@gmail.com', 'truck', 1, 'Google', '222', '2017-01-14', 1);
+INSERT INTO `useraccounts` (`id`, `email`, `password`, `usertype`, `companyname`, `verifyhash`, `signupdate`, `isverified`, `photo`) VALUES
+(1, 'reg@jobsly.net', 'regsam', 2, NULL, '11111', '2016-11-07', 1, 'photo/20170201150215.jpg'),
+(28, 'reggie1@gmail.com', 'samreece', 1, 'T4K', '222', '2016-12-16', 1, ''),
+(29, 'goldie@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1, ''),
+(30, 'moytisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1, ''),
+(31, 'tisha@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1, ''),
+(32, 'toya@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1, ''),
+(33, 'rico@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-07', 1, ''),
+(34, 'bambam@gmail.com', 'truck', 1, 'Google', '222', '2017-01-14', 1, ''),
+(35, 'judy@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(36, 'nick@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(37, 'bogo@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(38, 'dino@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(39, 'spot@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(40, 'lightning@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(41, 'mater@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(42, 'dusty@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(43, 'skipper@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(44, 'chug@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(45, 'dottie@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, ''),
+(46, 'riley@gmail.com', 'truck', 2, 'undefined', '222', '2017-01-26', 1, '');
 
 -- --------------------------------------------------------
 
@@ -737,7 +827,7 @@ CREATE TABLE `workexperience` (
   `startdate` date NOT NULL DEFAULT '0000-00-00',
   `msalary` int(10) NOT NULL,
   `industry` varchar(40) DEFAULT NULL,
-  `plevel` varchar(30) NOT NULL,
+  `plevel` int(10) NOT NULL,
   `enddate` date DEFAULT '0000-00-00',
   `currentemployer` varchar(5) DEFAULT NULL,
   `jobdescription` text
@@ -748,20 +838,42 @@ CREATE TABLE `workexperience` (
 --
 
 INSERT INTO `workexperience` (`id`, `userid`, `company`, `position`, `startdate`, `msalary`, `industry`, `plevel`, `enddate`, `currentemployer`, `jobdescription`) VALUES
-(7, 1, 'CHAMP Cargosystems Inc.', 'Senior Software Engineer', '2016-11-07', 85000, 'Airline Cargo', 'Senior', '2016-11-24', 'on', '<p>Accomplishments:</p><ul><li>Architecture Committee reviewer</li><li>Developer for Handling and Airline modules</li><li>Trains new joiners</li><li>Refactoring group</li></ul>'),
-(15, 1, 'Rappler', 'Metrics Manager', '2016-12-09', 33331, 'industry', 'Manager', '2016-11-16', 'off', '<p>Hello Summernote</p>'),
-(16, 1, 'ASTI', 'System Engineer', '2016-11-25', 30000, 'IT', 'Mid level programmer', '2016-12-23', 'off', '<p>fsdf</p><p>sd</p><p>f</p><p>sdf</p><p>sd</p><p>fsdfsdf</p>'),
-(17, 29, 'APMC', 'Operations Accountant', '2002-09-01', 20000, 'Real Estate', '1-4 Years Experienced Employee', '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation '),
-(19, 29, 'Thomson Financial Corp.', 'Financial Data Analyst', '2001-09-01', 12000, 'Finance', '1-4 Years Experienced Employee', '2002-08-28', 'off', '<p>Responsibilities:<br>â€¢ Update and analyze information of publicly held companies that form part of DataStream United Kingdom<br>coverage in compliance with UK Format policies for timeliness, quality and consistency.<br>â€¢ Coordinates with fundamental group and/or other departments to ensure editorial needs are addressed.<br>â€¢ Performs other duties that may be assigned from time to time by the team manager.</p>'),
-(20, 30, 'Tech4kids Inc.', 'Finance Director', '2006-01-01', 40000, 'IT', 'Executive', '2015-02-01', 'on', 'Responsibilities:<br>â€¢ Develop and manage financial practices, accounting process, and internal<br>controls<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Direct the organizationâ€™s financial goals, objectives, and budgets.<br>â€¢ Financial Decision-making including Capital Budgeting and Ratio Analysis<br>â€¢ Strategic Planning and Business Development<br>â€¢ Ensure compliance with BIR, SEC, and other government agencies<br>â€¢ Develop Technology Curriculum for grade school students'),
-(21, 30, 'Cogmotion Inc.', 'BPO Accountant / Project Manager', '2005-08-01', 35000, 'IT', 'Manager', '2008-03-01', 'off', '<p>Responsibilities:<br>â€¢ Design the accounting process and Books of Accounts using QuickBooks<br>Online for US clients<br>â€¢ Provide accounting services for US clients including the ff:<br>â€¢ Bookkeeping and maintaining of General Ledgers<br>â€¢ Accounts payable recording, monitoring, processing, preparation of<br>reports, and preparation of printable checks<br>â€¢ Accounts receivable recording, monitoring, preparation of aging reports,<br>and preparation of printable invoices<br>â€¢ Payroll processing<br>â€¢ Bank Reconciliation<br>â€¢ Preparation of financial reports including Profit and Loss Statement,<br>Balance Sheet '),
-(22, 30, 'Ayala Property Management Corp.', 'Operations Accountant', '2002-09-01', 24000, 'Real Estate', '1-4 Years Experienced Employee', '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation '),
-(23, 31, 'Goldie Veterinary Services', 'Vice President', '2016-01-01', 50000, 'Healthcare', 'Executive', '2017-01-21', 'on', '<p>Examine animals to diagnose their health problems\r</p><p>Diagnose and treat animals for medical conditions\r</p><p>Treat and dress wounds\r</p><p>Perform surgery on animals\r</p><p>Test for and vaccinate against diseases\r</p><p>Operate medical equipment, such as x-ray machines\r</p><p>Advise animal owners about general care, medical conditions, and treatments\r</p><p>Prescribe medication</p>'),
-(24, 32, 'Bamsoywandro Inc.', 'Web Developer', '2011-10-01', 45000, 'Retail', 'Manager', '2017-01-13', 'off', '<p>Accomplishes information technology staff results by communicating job expectations; planning, monitoring, and appraising job results; coaching, counseling, and disciplining employees; initiating, coordinating, and enforcing systems, policies, and procedures.\n</p><p>Maintains staff by recruiting, selecting, orienting, and training employees; maintaining a safe and secure work environment; developing personal growth opportunities.\n</p><p>Maintains organization''s effectiveness and efficiency by defining, delivering, and supporting strategic plans for implementing information technologies.\n</p><p>Directs technological research by studying organization goals, strategies, practices, and user projects.\n</p><p>Completes projects by coordinating resources and timetables with user departments and data center.\n</p><p>Verifies application results by conducting system audits of technologies implemented.\n</p><p>Preserves assets by implementing disaster recovery and back-up procedures and information security and control structures.\n</p><p>Recommends information technology strategies, policies, and procedures by evaluating organization outcomes; identifying problems; evaluating trends; anticipating requirements.\n</p><p>Accomplishes financial objectives by forecasting requirements; preparing an annual budget; scheduling expenditures; analyzing variances; initiating corrective action.\n</p><p>Maintains quality service by establishing and enforcing organization standards.\n</p><p>Maintains professional and technical knowledge by attending educational workshops; reviewing professional publications; establishing personal networks; benchmarking state-of-the-art practices; participating in professional societies.\n</p><p>Contributes to team effort by accomplishing related results as needed.</p>'),
-(25, 32, 'Doggie Co.', 'Web Designer', '2011-06-01', 20000, 'Information Technology', 'Fresh Graduate', '2011-09-30', 'off', '<p>Regular exposure to business stakeholders and executive management, as well as the authority and scope to apply your expertise to many interesting technical problems.\r</p><p>Candidate must have a strong understanding of UI, cross-browser compatibility, general web functions and standards.\r</p><p>The position requires constant communication with colleagues.\r</p><p><br></p>'),
-(27, 33, 'Oracle', 'Web Analytics Manager', '2015-01-23', 55000, 'Information Technology', 'Manager', '2017-12-31', 'on', '<p>-Provide marketing intelligence and offer recommendations to support business decisions.\r</p><p>- Recommend, achieve buy in for and develop new analytical reports and methods that will enhance marketersâ€™ knowledge and understanding of their performance vs. business goals, and enable them to â€œturn the dialsâ€ for business performance\r</p><p>-Prepare scheduled and ad-hoc reports that highlight key metrics and trends and be able to articulate those trends and recommend ways marketers can respond to them.\r</p><p>-Manage website analytics tools (primarily Adobe Site Catalyst) and leverage automation to the maximum extent possible.\r</p><p>-Train marketing and other lines of business on web analytics tools and techniques with a goal of transferring knowledge for maximum analytical expertise.\r</p><p>-Write functional requirements and QA test plans for site tracking and configuring Web Analytics'),
-(28, 33, 'Amazon', 'Web Analyst', '2013-02-01', 45000, 'Retail', '1-4 Years Experienced Employee', '2015-01-10', 'off', '<p>Prepares useful information that drives effective decisions from the mass of data\n</p><p>Presents information well in all formats â€“ written, verbal and using new media tools\n</p><p>Uses their analytical and mathematical approach to a problem to ensure rigour and accuracy (e.g. comfortable with concepts of significance, mathematical trending, modelling)\n</p><p>Knows how to use the best base tools (e.g. advanced Excel, use of relational databases such as mysql) as well as packaged tools such as Google analytics , Omniture etc\n</p><p>Enthusiastically researches the Analytics discipline, reading, networking, researching in order to stay at the top of their game.</p>'),
-(29, 33, 'Alexa', 'Data Analyst', '2005-04-01', 25000, 'Information Technology', 'Fresh Graduate', '2011-01-02', 'off', '<p>Interpret data, analyze results using statistical techniques and provide ongoing reports\n</p><p>Develop and implement databases, data collection systems, data analytics and other strategies that optimize statistical efficiency and quality\n</p><p>Acquire data from primary or secondary data sources and maintain databases/data systems\n</p><p>Identify, analyze, and interpret trends or patterns in complex data sets\n</p><p>Filter and â€œcleanâ€ data by reviewing computer reports, printouts, and performance indicators to locate and correct code problems\n</p><p>Work with management to prioritize business and information needs\n</p><p>Locate and define new process improvement opportunities\n</p><p>Requirements</p>');
+(7, 1, 'CHAMP Cargosystems Inc.', 'Senior Software Engineer', '2016-11-07', 85000, 'Airline Cargo', 5, '2016-11-24', 'on', '<p>Accomplishments:</p><ul><li>Architecture Committee reviewer</li><li>Developer for Handling and Airline modules</li><li>Trains new joiners</li><li>Refactoring group</li></ul>'),
+(15, 1, 'Rappler', 'Metrics Manager', '2016-12-09', 33331, 'industry', 2, '2016-11-16', 'off', '<p>Hello Summernote</p>'),
+(16, 1, 'ASTI', 'System Engineer', '2016-11-25', 30000, 'IT', 6, '2016-12-23', 'off', '<p>fsdf</p><p>sd</p><p>f</p><p>sdf</p><p>sd</p><p>fsdfsdf</p>'),
+(17, 29, 'APMC', 'Operations Accountant', '2002-09-01', 20000, 'Real Estate', 6, '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation '),
+(19, 29, 'Thomson Financial Corp.', 'Financial Data Analyst', '2001-09-01', 12000, 'Finance', 6, '2002-08-28', 'off', '<p>Responsibilities:<br>â€¢ Update and analyze information of publicly held companies that form part of DataStream United Kingdom<br>coverage in compliance with UK Format policies for timeliness, quality and consistency.<br>â€¢ Coordinates with fundamental group and/or other departments to ensure editorial needs are addressed.<br>â€¢ Performs other duties that may be assigned from time to time by the team manager.</p>'),
+(20, 30, 'Tech4kids Inc.', 'Finance Director', '2006-01-01', 40000, 'IT', 1, '2015-02-01', 'on', 'Responsibilities:<br>â€¢ Develop and manage financial practices, accounting process, and internal<br>controls<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Direct the organizationâ€™s financial goals, objectives, and budgets.<br>â€¢ Financial Decision-making including Capital Budgeting and Ratio Analysis<br>â€¢ Strategic Planning and Business Development<br>â€¢ Ensure compliance with BIR, SEC, and other government agencies<br>â€¢ Develop Technology Curriculum for grade school students'),
+(21, 30, 'Cogmotion Inc.', 'BPO Accountant / Project Manager', '2005-08-01', 35000, 'IT', 2, '2008-03-01', 'off', '<p>Responsibilities:<br>â€¢ Design the accounting process and Books of Accounts using QuickBooks<br>Online for US clients<br>â€¢ Provide accounting services for US clients including the ff:<br>â€¢ Bookkeeping and maintaining of General Ledgers<br>â€¢ Accounts payable recording, monitoring, processing, preparation of<br>reports, and preparation of printable checks<br>â€¢ Accounts receivable recording, monitoring, preparation of aging reports,<br>and preparation of printable invoices<br>â€¢ Payroll processing<br>â€¢ Bank Reconciliation<br>â€¢ Preparation of financial reports including Profit and Loss Statement,<br>Balance Sheet '),
+(22, 30, 'Ayala Property Management Corp.', 'Operations Accountant', '2002-09-01', 24000, 'Real Estate', 6, '2005-06-30', 'off', '<p>Responsibilities:<br>â€¢ Preparation and Analysis of Monthly and Annual Financial Statements<br>â€¢ Preparation '),
+(23, 31, 'Goldie Veterinary Services', 'Vice President', '2016-01-01', 50000, 'Healthcare', 1, '2017-01-21', 'on', '<p>Examine animals to diagnose their health problems\r</p><p>Diagnose and treat animals for medical conditions\r</p><p>Treat and dress wounds\r</p><p>Perform surgery on animals\r</p><p>Test for and vaccinate against diseases\r</p><p>Operate medical equipment, such as x-ray machines\r</p><p>Advise animal owners about general care, medical conditions, and treatments\r</p><p>Prescribe medication</p>'),
+(24, 32, 'Bamsoywandro Inc.', 'Web Developer', '2011-10-01', 45000, 'Retail', 2, '2017-01-13', 'off', '<p>Accomplishes information technology staff results by communicating job expectations; planning, monitoring, and appraising job results; coaching, counseling, and disciplining employees; initiating, coordinating, and enforcing systems, policies, and procedures.\n</p><p>Maintains staff by recruiting, selecting, orienting, and training employees; maintaining a safe and secure work environment; developing personal growth opportunities.\n</p><p>Maintains organization''s effectiveness and efficiency by defining, delivering, and supporting strategic plans for implementing information technologies.\n</p><p>Directs technological research by studying organization goals, strategies, practices, and user projects.\n</p><p>Completes projects by coordinating resources and timetables with user departments and data center.\n</p><p>Verifies application results by conducting system audits of technologies implemented.\n</p><p>Preserves assets by implementing disaster recovery and back-up procedures and information security and control structures.\n</p><p>Recommends information technology strategies, policies, and procedures by evaluating organization outcomes; identifying problems; evaluating trends; anticipating requirements.\n</p><p>Accomplishes financial objectives by forecasting requirements; preparing an annual budget; scheduling expenditures; analyzing variances; initiating corrective action.\n</p><p>Maintains quality service by establishing and enforcing organization standards.\n</p><p>Maintains professional and technical knowledge by attending educational workshops; reviewing professional publications; establishing personal networks; benchmarking state-of-the-art practices; participating in professional societies.\n</p><p>Contributes to team effort by accomplishing related results as needed.</p>'),
+(25, 32, 'Doggie Co.', 'Web Designer', '2011-06-01', 20000, 'Information Technology', 7, '2011-09-30', 'off', '<p>Regular exposure to business stakeholders and executive management, as well as the authority and scope to apply your expertise to many interesting technical problems.\r</p><p>Candidate must have a strong understanding of UI, cross-browser compatibility, general web functions and standards.\r</p><p>The position requires constant communication with colleagues.\r</p><p><br></p>'),
+(27, 33, 'Oracle', 'Web Analytics Manager', '2015-01-23', 55000, 'Information Technology', 2, '2017-12-31', 'on', '<p>-Provide marketing intelligence and offer recommendations to support business decisions.\r</p><p>- Recommend, achieve buy in for and develop new analytical reports and methods that will enhance marketersâ€™ knowledge and understanding of their performance vs. business goals, and enable them to â€œturn the dialsâ€ for business performance\r</p><p>-Prepare scheduled and ad-hoc reports that highlight key metrics and trends and be able to articulate those trends and recommend ways marketers can respond to them.\r</p><p>-Manage website analytics tools (primarily Adobe Site Catalyst) and leverage automation to the maximum extent possible.\r</p><p>-Train marketing and other lines of business on web analytics tools and techniques with a goal of transferring knowledge for maximum analytical expertise.\r</p><p>-Write functional requirements and QA test plans for site tracking and configuring Web Analytics'),
+(28, 33, 'Amazon', 'Web Analyst', '2013-02-01', 45000, 'Retail', 6, '2015-01-10', 'off', '<p>Prepares useful information that drives effective decisions from the mass of data\n</p><p>Presents information well in all formats â€“ written, verbal and using new media tools\n</p><p>Uses their analytical and mathematical approach to a problem to ensure rigour and accuracy (e.g. comfortable with concepts of significance, mathematical trending, modelling)\n</p><p>Knows how to use the best base tools (e.g. advanced Excel, use of relational databases such as mysql) as well as packaged tools such as Google analytics , Omniture etc\n</p><p>Enthusiastically researches the Analytics discipline, reading, networking, researching in order to stay at the top of their game.</p>'),
+(29, 33, 'Alexa', 'Data Analyst', '2005-04-01', 25000, 'Information Technology', 7, '2011-01-02', 'off', '<p>Interpret data, analyze results using statistical techniques and provide ongoing reports\n</p><p>Develop and implement databases, data collection systems, data analytics and other strategies that optimize statistical efficiency and quality\n</p><p>Acquire data from primary or secondary data sources and maintain databases/data systems\n</p><p>Identify, analyze, and interpret trends or patterns in complex data sets\n</p><p>Filter and â€œcleanâ€ data by reviewing computer reports, printouts, and performance indicators to locate and correct code problems\n</p><p>Work with management to prioritize business and information needs\n</p><p>Locate and define new process improvement opportunities\n</p><p>Requirements</p>'),
+(30, 35, 'District 1', 'Police Officer', '2016-01-01', 20000, '', 0, '2017-01-26', 'off', '<p>Responsibilities<br><br>As a police officer youâ€™ll need to work alongside communities, liaising with community groups and individuals</p><p><br>AAAA</p><p>BBBB<br></p>'),
+(32, 36, 'Popsicle Corp.', 'CEO', '2012-04-01', 40000, 'Retail', 1, '2017-01-25', 'off', '<p>CEO Responsibilities</p><p>Develop high quality business strategies and plans ensuring their alignment with short-term and long-term objectives<br>Lead and motivate subordinates to advance employee engagement develop a high performing managerial team<br>Oversee all operations and business activities to ensure they produce the desired results and are consistent with the overall strategy and mission<br>Make high-quality investing decisions to advance the business and increase profits<br>Enforce adherence to legal guidelines and in-house policies to maintain the companyâ€™s legality and business ethics<br>Review financial and non-financial reports to devise solutions or improvements<br>Build trust relations with key partners and stakeholders and act as a point of contact for important shareholders<br>Analyze problematic situations and occurrences and provide solutions to ensure company survival and growth<br>Maintain a deep knowledge of the markets and industry of the company<br></p>'),
+(33, 37, 'Precint 1', 'Chief of Police', '2003-01-01', 50000, 'Law Enforcement', 2, '2017-01-25', 'on', '<ul><li>Prevents crime by explaining and enforcing applicable federal, state, and local laws and ordinances; teaching preventive, protective, and defensive tactics; mediating disputes; patrolling assigned area; responding to notices of disturbances; conducting searches; observing suspicious activities; detaining suspects.</li><li>Apprehends suspects by responding to complaints and calls for help; observing violations; making arrests.</li><li>Conducts criminal investigations by gathering evidence; interviewing victims and witnesses; interrogating suspects</li><li>Documents observations and actions by radioing information; completing reports.</li><li>Reports observations and actions by testifying in court.</li><li>Fulfills court orders by serving warrants and commitments.</li><li>Maintains safe traffic conditions by monitoring and directing traffic; enforcing laws and ordinances; investigating accidents; providing escort; reporting unsafe streets and facilities.</li><li>Minimizes personal injury by rescuing and reviving victims; radioing for medical assistance.</li><li>Maintains operations by following department policies and procedures; recommending changes.</li><li>Ensures operation of equipment by practicing use; completing preventive maintenance requirements; following manufacturer''s instructions; troubleshooting malfunctions; notifying supervisor of needed repairs; evaluating new equipment and techniques.</li><li>Maintains professional and technical knowledge by studying applicable federal, state, and local laws and ordinances; attending educational workshops; reviewing professional publications; practicing skills; participating in professional societies.</li><li>Contributes to team effort by accomplishing related results as needed. Skills/Qualifications: Decision Making, Legal Compliance, Handles Pressure, Deals with Uncertainty, Lifting, Physical Fitness, Judgment, Objectivity, Dependability, Emotional Control, Integrity<br><br><br></li></ul>'),
+(35, 37, 'Precint 2', 'Junior Police', '2002-04-01', 50000, 'Law Enforcement', 7, '2002-09-21', 'off', '<p>Gives Parking Tickets<br>Apprehends suspects by responding to complaints and calls for help; observing violations; making arrests.<br>Conducts criminal investigations by gathering evidence; interviewing victims and witnesses; interrogating suspects.<br>Documents observations and actions by radioing information; completing reports.<br></p>'),
+(36, 38, 'APMC', 'Operations Accountant', '2010-05-01', 30000, 'Real Estate', 4, '2012-01-01', 'off', '<p>Maintains financial security by following internal controls.\r</p><p>Prepares payments by verifying documentation, and requesting disbursements.\r</p><p>Answers accounting procedure questions by researching and interpreting accounting policy and regulations.\r</p><p>Complies with federal, state, and local financial legal requirements by studying existing and new legislation, enforcing adherence to requirements, and advising management on needed actions.\r</p><p>Prepares special financial reports by collecting, analyzing, and summarizing account information and trends.\r</p><p>Maintains customer confidence and protects operations by keeping financial information confidential.\r</p><p>Maintains professional and technical knowledge by attending educational workshops; reviewing professional publications; establishing personal networks; participating in professional societies.\r</p><p>Accomplishes the result by performing the duty.\r</p><p>Contributes to team effort by accomplishing related results as needed.'),
+(37, 38, 'Cogmotion', 'Project Manager', '2012-02-01', 40000, 'Information Technology', 2, '2013-03-01', 'off', '<p>Plan, budget, oversee and document all aspects of the specific project you are working on. Project managers may work closely with upper management to make sure that the scope and direction of each project is on schedule, as well as other departments for support.</p>'),
+(38, 38, 'Tech4Kids', 'Finance Manager', '2013-04-01', 60000, 'Information Technology', 2, '2017-01-31', 'on', '<p>providing and interpreting financial information\r</p><p>monitoring and interpreting cash flows and predicting future trends\r</p><p>analysing change and advising accordingly\r</p><p>formulating strategic and long-term business plans\r</p><p>researching and reporting on factors influencing business performance\r</p><p>analysing competitors and market trends\r</p><p>developing financial management mechanisms that minimise financial risk\r</p><p>conducting reviews and evaluations for cost-reduction opportunities\r</p><p>managing a company''s financial accounting, monitoring and reporting systems\r</p><p>liaising with auditors to ensure annual monitoring is carried out\r</p><p>developing external relationships with appropriate contacts, e.g. auditors, solicitors, bankers and statutory organisations such as the Inland Revenue\r</p><p>producing accurate financial reports to specific deadlines\r</p><p>managing budgets\r</p><p>arranging new sources of finance for a company''s debt facilities\r</p><p>supervising staff\r</p><p>keeping abreast of changes in financial regulations and legislation.</p>'),
+(39, 39, 'Rappler', 'Metrics Manager', '2016-01-18', 55000, 'Media', 2, '2017-04-30', 'on', '<p>Prepares useful information that drives effective decisions from the mass of data\r</p><p>Presents information well in all formats â€“ written, verbal and using new media tools\r</p><p>Uses their analytical and mathematical approach to a problem to ensure rigour and accuracy (e.g. comfortable with concepts of significance, mathematical trending, modelling)\r</p><p>Knows how to use the best base tools (e.g. advanced Excel, use of relational databases such as mysql) as well as packaged tools such as Google analytics , Omniture etc\r</p><p>Enthusiastically researches the Analytics discipline, reading, networking, researching in order to stay at the top of their game.</p>'),
+(40, 39, 'Tech4Kids', 'CFO', '2006-01-01', 40000, 'Information Technology', 1, '2014-12-31', 'off', '<p>Basic Function: The chief financial officer position is accountable for the administrative, financial, and risk management operations of the company, to include the development of a financial and operational strategy, metrics tied to that strategy, and the ongoing development and monitoring of control systems designed to preserve company assets and report accurate financial results. Principal accountabilities are:\r</p><p>\r</p><p>Planning\r</p><p>\r</p><p>Assist in formulating the company''s future direction and supporting tactical initiatives\r</p><p>Monitor and direct the implementation of strategic business plans\r</p><p>Develop financial and tax strategies\r</p><p>Manage the capital request and budgeting processes\r</p><p>Develop performance measures that support the company''s strategic direction\r</p><p>Operations\r</p><p>\r</p><p>Participate in key decisions as a member of the executive management team\r</p><p>Maintain in-depth relations with all members of the management team\r</p><p>Manage the accounting, human resources, investor relations, legal, tax, and treasury departments\r</p><p>Oversee the financial operations of subsidiary companies and foreign operations\r</p><p>Manage any third parties to which functions have been outsourced\r</p><p>Oversee the company''s transaction processing systems\r</p><p>Implement operational best practices\r</p><p>Oversee employee benefit plans, with particular emphasis on maximizing a cost-effective benefits package\r</p><p>Supervise acquisition due diligence and negotiate acquisitions\r</p><p>Financial Information\r</p><p>\r</p><p>Oversee the issuance of financial information\r</p><p>Personally review and approve all Form 8-K, 10-K, and 10-Q filings with the Securities and Exchange Commission\r</p><p>Report financial results to the board of directors\r</p><p>Risk Management\r</p><p>\r</p><p>Understand and mitigate key elements of the company''s risk profile\r</p><p>Monitor all open legal issues involving the company, and legal issues affecting the industry\r</p><p>Construct and monitor reliable control systems\r</p><p>Maintain appropriate insurance coverage\r</p><p>Ensure that the company complies with all legal and regulatory requirements\r</p><p>Ensure that record keeping meets the requirements of auditors and government agencies\r</p><p>Report risk issues to the audit committee of the board of directors\r</p><p>Maintain relations with external auditors and investigate their findings and recommendations\r</p><p>Funding\r</p><p>\r</p><p>Monitor cash balances and cash forecasts\r</p><p>Arrange for debt and equity financing\r</p><p>Invest funds\r</p><p>Invest pension funds\r</p><p>Third Parties\r</p><p>\r</p><p>Participate in conference calls with the investment community\r</p><p>Maintain banking relationships\r</p><p>Represent the company with investment bankers and investors</p>'),
+(41, 39, 'Thomson Financial', 'Financial Data Analyst', '2000-04-01', 15000, 'Banking and Finance', 7, '2003-04-30', 'off', '<p>Analyze financial data by collecting, monitoring and creating financial models for decision support. Improve financial status by analyzing results; monitoring variances; identifying trends; recommending actions to management. Assist with annual and quarterly forecasting.</p>'),
+(42, 39, 'APMC', 'Operations Accountant II', '2003-06-01', 25000, 'Service', 4, '2005-06-30', 'off', '<p>Perform day-to-day management of financial accounts.\r</p><p>\r</p><p>Provide financial assistance for decision making in timely manner.\r</p><p>\r</p><p>Apply accounting principles to analyze financial information.\r</p><p>\r</p><p>Ensure financial transactions are performed in compliance with company policies.\r</p><p>\r</p><p>Prepare accurate and timely financial management reports and statements.\r</p><p>\r</p><p>Ensure accurate recording and analysis of revenues and expenses.\r</p><p>\r</p><p>Perform reconciliation for various client accounts.\r</p><p>\r</p><p>Analyze financial information to prepare weekly, monthly and annual financial reports.\r</p><p>\r</p><p>Address and resolve customer queries in timely and accurate manner.\r</p><p>\r</p><p>Coordinate internal audit process with Auditors.\r</p><p>\r</p><p>Perform accounting functions such as revenue and asset accounting, payroll and cost analysis.\r</p><p>\r</p><p>Manage book-keeping and financial systems.\r</p><p>\r</p><p>Update accounting systems in line with latest computer technology.\r</p><p>\r</p><p>Provide advice on revenue and expenditure trends and financial commitments.\r</p><p>\r</p><p>Develop solutions to resolve accounting discrepancies and other financial problems/issues.\r</p><p>\r</p><p>Provide continuous management and support of budget and forecast activities.</p>'),
+(43, 40, 'Google', 'Software Engineer', '2011-10-01', 60000, 'Information Technology', 5, '2017-01-28', 'on', '<p>Determines operational feasibility by evaluating analysis, problem definition, requirements, solution development, and proposed solutions.\r</p><p>Documents and demonstrates solutions by developing documentation, flowcharts, layouts, diagrams, charts, code comments and clear code.\r</p><p>Prepares and installs solutions by determining and designing system specifications, standards, and programming.\r</p><p>Improves operations by conducting systems analysis; recommending changes in policies and procedures.\r</p><p>Obtains and licenses software by obtaining required information from vendors; recommending purchases; testing and approving products.\r</p><p>Updates job knowledge by studying state-of-the-art development tools, programming techniques, and computing equipment; participating in educational opportunities; reading professional publications; maintaining personal networks; participating in professional organizations.\r</p><p>Protects operations by keeping information confidential.\r</p><p>Provides information by collecting, analyzing, and summarizing development and service issues.\r</p><p>Accomplishes engineering and organization mission by completing related results as needed.\r</p><p>Develops software solutions by studying information needs; conferring with users; studying systems flow, data usage, and work processes; investigating problem areas; following the software development lifecycle.</p>'),
+(44, 40, 'Apple', 'Applications Developer', '2006-01-01', 40000, 'Information Technology', 5, '2011-09-30', 'off', '<p>establishing a detailed program specification through discussion with clients;\r</p><p>clarifying what actions the program is intended to perform;\r</p><p>breaking down program specification into its simplest elements and translating this logic into a programming language;\r</p><p>devising possible solutions to anticipated problems;\r</p><p>working as part of a team, which may be established purely for a particular project to rite a specific section of the program;\r</p><p>combining all elements of the program design and testing it;\r</p><p>testing sample data-sets to check that output from the program works as intended;\r</p><p>conducting testing and installing the program into production;\r</p><p>reacting to problems and correcting the program as necessary;\r</p><p>evaluating and increasing the program''s effectiveness;\r</p><p>adapting the program to new requirements, as necessary;\r</p><p>conducting user-acceptance testing to ensure the program can be used easily, quickly and accurately;\r</p><p>writing detailed documentation for the operation of the program by users and computer operators;\r</p><p>consulting manuals, periodicals and technical reports to learn new ways to develop programs and maintain existing skills and knowledge;\r</p><p>updating, repairing, modifying and developing existing software and generic applications.</p>'),
+(45, 41, 'The Garage', 'Vice President of Operations', '2009-01-01', 200000, 'Automobile', 1, '2016-12-31', 'off', '<p>Internal Relationships\r</p><p>Develop junior staff to the next level by ensuring assigned staff fully understand projects, providing effective feedback to staff (positive and critical), identifying and promoting growth opportunities for all junior staff\r</p><p>Implement firm policies around recruiting, staffing, training and account management that result in top-notch client service as well as a positive work environment that fosters a pattern of long-term staff retention\r</p><p>Promote a positive environment for staff and identify and work with firm management to address any issues that are creating barriers to an optimal work environment for all staff\r</p><p>Provide feedback, advice and back up as needed to other members of senior staff team to ensure all senior staff has support needed to effectively run accounts and promote positive work environment\r</p><p>Attend and actively participate in senior staff meetings, offering ideas, insights and recommendations on firm policies, staffing, client service, new business and other topics that ultimately impact the overall quality of the firm\r</p><p>Effectively manage all aspects of an account team\r</p><p>Manage workflow for yourself and all staff assigned to your team project team\r</p><p>Consistently demonstrate ability to successfully move into problem-solving mode whenever challenges or concerns arise\r</p><p>Work well with and demonstrate respect for colleagues at all levels and consistently contribute to a positive work environment for the entire staff\r</p><p>Take responsibility for one internal area of management (i.e., new hire orientation, tech support, new business, office moral, etc.)\r</p><p>Assist in hiring new staff that ultimately prove to be excellent, long-term hires\r</p><p>Take the lead on implementing at least one internal program/procedure per quarter that improves office moral and/or contributes to staff retention\r</p><p>External Relationships\r</p><p>Identify new business opportunities, participate in new business pitches and assist in drafting new business proposals\r</p><p>Expand and/or renew existing accounts\r</p><p>Maintain an extensive network of nonprofit and foundation connections that can be tapped for new business outreach, issue expertise, etc.\r</p><p>Develop and conduct trainings, including regular Spitfire trainings such as the Smart Chart as well as niche areas of expertise, such as collaterals or policy maker relations\r</p><p>Successfully run multiple accounts simultaneously, including managing work plans, client expectations, and internal staffing to ensure project is consistent with time and scope in the contract\r</p><p>Show impeccable client service as demonstrated by at least one positive, unsolicited remark from a client per month as well as positive reviews from clients when firm management makes periodic check-in calls\r</p><p>Develop relationships with vendors or contractors that represent a variety of fields (media, policy, design, Web, etc.) and can be used on projects as needed\r</p><p>Develop relationships with other firms that are like-minded and suitable for/open to partnering with Spitfire on projects when appropriate\r</p><p>Communication and Process\r</p><p>Assume all responsibilities for effectively leading an account team, including ensuring all administrative pieces are in place (work plan, contract, budget, projections, etc.), clients report high satisfaction, all staff clearly understand accounts and assignments, and the entire team is working in a cooperative fashion to promote great work as well as a positive internal team environment\r</p><p>Write strategic communication plans and campaign strategies that demonstrate Spitfireâ€™s creative approach, offer unique strategies tailored to the needs of the client and provide enough detail that they can be implemented by client in the event Spitfire is not contracted for implementation\r</p><p>Lead proposal process for new business opportunities by adhering to Spitfireâ€™s policies for new business approach and development\r</p><p>Take a lead role in creating a new piece of Spitfire intellectual property or new Spitfire training at least once per year\r</p><p>Demonstrate outstanding writing skills\r</p><p>Consistently meet internal and external deadlines\r</p><p>Financial and Administrative\r</p><p>Submit expense reimbursement forms as appropriate\r</p><p>Submit accurate time sheets\r</p><p>Regularly update projections and manage work to meet or exceed projected revenue targets\r</p><p>Manage project budgets to maintain high client satisfaction while meeting or coming in below budget\r</p><p>Find ways to save company money by improving/streamlining internal systems or procedures</p>'),
+(46, 41, 'Towing Services', 'Operations Manager', '1998-02-01', 100000, 'Service', 2, '2008-01-28', 'on', '<p>Perform Human Resources Management\r</p><p>\r</p><p>Plan staffing levels.\r</p><p>Work with Human Resources staff to recruit, interview, select, hire, and employ an appropriate number of employees.\r</p><p>Provide oversight and direction to the employees in the operating unit in accordance with the organization''s policies and procedures.\r</p><p>Coach, mentor and develop staff, including overseeing new employee onboarding and providing career development planning and opportunities.\r</p><p>Empower employees to take responsibility for their jobs and goals. Delegate responsibility and expect accountability and regular feedback.\r</p><p>Foster a spirit of teamwork and unity among department members that allows for disagreement over ideas, conflict and expeditious conflict resolution, and the appreciation of diversity as well as cohesiveness, supportiveness, and working effectively together to enable each employee and the department to succeed.\r</p><p>Consciously create a workplace culture that is consistent with the overall organization''s and that emphasizes the identified mission, vision, guiding principles, and values of the organization.\r</p><p>Lead employees using a performance management and development process that provides an overall context and framework to encourage employee contribution and includes goal setting, feedback, and performance development planning.\r</p><p>Lead employees to meet the organization''s expectations for productivity, quality, and goal accomplishment.\r</p><p>Provide effective performance feedback through employee recognition, rewards, and disciplinary action, with the assistance of Human Resources, when necessary.\r</p><p>Maintain employee work schedules including assignments, job rotation, training, vacations and paid time off, telecommuting, cover for absenteeism, and overtime scheduling.\r</p><p>Maintain transparent communication. Appropriately communicate organization information through department meetings, one-on-one meetings, and appropriate email, IM, and regular interpersonal communication.\r</p><p>Perform Department Management\r</p><p>\r</p><p>Manage the overall operational, budgetary, and financial responsibilities and activities of the department.\r</p><p>Plan and implement systems that perform the work and fulfill the mission and the goals of the department efficiently and effectively.\r</p><p>Plan and allocate resources to effectively staff and accomplish the work to meet departmental productivity and quality goals.\r</p><p>Plan, evaluate, and improve the efficiency of business processes and procedures to enhance speed, quality, efficiency, and output.\r</p><p>Make business decisions that are financially responsible, accountable, justifiable, and defensible in accordance with organization policies and procedures.\r</p><p>Establish and maintain relevant controls and feedback systems to monitor the operation of the department.\r</p><p>Review performance data that includes financial, sales, and activity reports and spreadsheets, to monitor and measure departmental productivity, goal achievement, and overall effectiveness.\r</p><p>Manage the preparation and maintenance of reports necessary to carry out the functions of the department. Prepares periodic reports for management, as necessary or requested, to track strategic goal accomplishment.\r</p><p>Communicate regularly with other managers, the director, vice president, president, and other designated contacts within the organization.\r</p><p>Perform other duties and responsibilities, as assigned.\r</p><p>Want More Information About Job Descriptions?</p>'),
+(47, 41, 'Tow Inc.', 'Tow Truck', '1992-03-22', 40000, 'Service', 5, '1997-11-29', 'off', '<p>Towing Cars</p>'),
+(48, 43, 'Sykes', 'Technical Support', '2014-03-31', 23000, 'Customer Service', 7, '2017-01-28', 'on', '<p>Hello Summernote</p>'),
+(49, 1, 'IBM', 'programmer', '2016-08-01', 40000, 'Information Technology', 7, '2017-01-12', 'off', '<p>Hello Summernote</p>'),
+(50, 1, 'Telus', 'entry', '2016-06-27', 10000, 'BPO', 7, '2016-12-06', 'off', '<p>sdfsdff</p>'),
+(51, 1, 'DFA', 'posiiton', '2016-10-05', 1000, 'industry', 7, '2017-01-03', 'off', '<p>dsd</p>'),
+(52, 1, 'Google', 'Metrics Manager', '2016-01-01', 34555, 'industry', 2, '2017-01-13', 'off', '<p>fdfd</p>'),
+(53, 1, 'Google', 'Senior Developer', '2016-11-08', 40000, 'IT', 5, '2017-01-12', 'off', '<p>Refef]</p><p>sdf</p><p><br></p><p>dsfsdfsdf</p>');
 
 --
 -- Indexes for dumped tables
@@ -859,7 +971,7 @@ ALTER TABLE `workexperience`
 -- AUTO_INCREMENT for table `additionalinformation`
 --
 ALTER TABLE `additionalinformation`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `companyinfo`
 --
@@ -869,7 +981,7 @@ ALTER TABLE `companyinfo`
 -- AUTO_INCREMENT for table `educationandtraining`
 --
 ALTER TABLE `educationandtraining`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `jobads`
 --
@@ -879,7 +991,7 @@ ALTER TABLE `jobads`
 -- AUTO_INCREMENT for table `jobapplications`
 --
 ALTER TABLE `jobapplications`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `jobessays`
 --
@@ -904,27 +1016,27 @@ ALTER TABLE `jobtemplates`
 -- AUTO_INCREMENT for table `personalinformation`
 --
 ALTER TABLE `personalinformation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `savedapplications`
 --
 ALTER TABLE `savedapplications`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `skilltags`
 --
 ALTER TABLE `skilltags`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `workexperience`
 --
 ALTER TABLE `workexperience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

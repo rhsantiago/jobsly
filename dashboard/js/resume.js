@@ -125,6 +125,63 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
+    $('#savepinfo').on('click',function() {  
+        $('#pinfo-form').submit();
+     });    
+    
+     $(document).on('submit','#pinfonext-form',function(event){
+            event.preventDefault()
+           event.stopPropagation();
+           
+                    $.ajax({
+                    url: 'wexp-form.php',
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $('#resume-main-body').html(html);                   
+                        $('#resume-main-body #startdate').datepicker();                    
+                        $('#resume-main-body #enddate').datepicker();
+                        $('#resumesb li').removeClass('active');
+                        $('#resumesb #w2').addClass('active');
+                        $('#resume-main-body #summernote').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                          });
+                        $('#wexp-form #successdivworkexp').hide();                                                   
+                        $(function() {
+                            $.material.init();
+                        });
+                        $('#wexp-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
+                        
+                        
+                        
+                    }
+        });
+        return false;
+     });     
+    
     //$('#workexp').on('click',function() {  
       $("a[href='#workexp'], a[href='resume.php?ajax=workexp']").on('click',function (event) {  
            event.preventDefault()
@@ -433,6 +490,10 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
+    $('#saveainfo').on('click',function() {  
+        $('#ainfo-form').submit();
+     });  
+    
     $(document).on('submit','#ainfonext-form',function(event){
         $.ajax({
                     url: 'previewresume.php',
@@ -509,7 +570,7 @@ jQuery(document).ready(function ($) {
                     $('#successdivpinfo').fadeIn(1500);
                     $('#pinfo-form').parsley().reset();
                     $('#mode').val('update');
-                    $("a[href='#workexp']").trigger('click');
+                    //$("a[href='#workexp']").trigger('click');
                 },
                 error: function(data) {
                      $( "#msgSubmit" ).removeClass('hidden');
@@ -587,7 +648,7 @@ jQuery(document).ready(function ($) {
              
             event.preventDefault();
             $('#wexp-form #workexpcardsdiv').hide();
-            $('#wexp-form #successdivworkexp').hide();
+            $('#successdivworkexp').hide();
             var mode = $("#wexp-form #mode").val();
             var userid = $("#wexp-form #userid").val();  
             var company = $("#wexp-form #company").val();
@@ -1006,7 +1067,7 @@ jQuery(document).ready(function ($) {
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){              
-                    $('#ainfo-form #successdivainfo').fadeIn(1500);
+                    $('#successdivainfo').fadeIn(1500);
                     $('#ainfo-form #mode').val('update');
                     $('#ainfo-form').parsley().reset();
                      $(function() {

@@ -34,9 +34,7 @@ if(isset($_SESSION['user'])){
           </div> 
     </div>   
                     <div class="col-md-9">
-                        <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
-                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-                                 <input type="hidden" id="mode" name="mode" value="insert">
+                        
                 <div class="section  section-landing">
 	         
 					<div class="features">
@@ -138,6 +136,9 @@ if(isset($_SESSION['user'])){
                                         
                             </div>
                             <div class="col-md-12">
+                                <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
+                                 <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                 <input type="hidden" id="mode" name="mode" value="insert">
                                     <div id="card" class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -242,13 +243,17 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                         </div>
 
-                                                    </div>
-                                             </div>
-                                    </div>
-                               
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
+                                                    </div><button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
                                                         Add Work Experience
                                                        </button>
+                                                 
+                                                 
+                                             </div>
+                                        
+                                        
+                                    </div>
+                                    </form>
+                                
                                 
                                   <div id="successdivworkexp" class="alert alert-success">
                                                
@@ -270,7 +275,7 @@ if(isset($_SESSION['user'])){
 		                </div>
 					</div>
 	            </div>
-                   </form>                          
+                                             
                     </div>
                     
                 <div class="col-md-3 pull-right">
@@ -289,12 +294,12 @@ if(isset($_SESSION['user'])){
                                                              </div>
                                                     </div>                        
 		       </div> 
-<div class="col-md-6">
-                                 <form method="post" id="wexpnext-form" name="wexpnext-form"> 
-                             <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
-                                                        Go to Next Step
-                                                       </button>
-                                </form>
+                            <div class="col-md-6">
+                                     <form method="post" id="wexpnext-form" name="wexpnext-form"> 
+                                            <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
+                                                            Go to Next Step
+                                                           </button>
+                                    </form>
 		                    </div>
 
 <script>
@@ -363,7 +368,7 @@ jQuery(document).ready(function ($) {
             $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #successdivworkexp').hide();
+    $('#successdivworkexp').hide();
    
     
 });       

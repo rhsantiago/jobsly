@@ -52,7 +52,7 @@ if(isset($_SESSION['user'])){
 <div class="col-md-12">
      <h2 class="title">Additional Information</h2>
 </div>
-                    <div class="col-md-offset-1 col-md-7">
+                    <div class="col-md-offset-1 col-md-8">
                         <div class="col-md-12">            
                        <!--     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">         
@@ -214,12 +214,32 @@ if(isset($_SESSION['user'])){
                                                  
                                                     </div>
                                              </div>
-                              
-                                <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
-                                                        Save Additional Information
-                                                       </button>
+                                       <div class="col-md-6 leftmargin10">
+                                    <button class="btn btn-primary " name="saveainfo" id="saveainfo" type="submit">
+                                                                Save Additional Information
+                                                               </button>
+                                </div>   
+                                       </form>
+                              <div class="col-md-12 leftmargin10">
+                                
+                                       
+                                       <div class="col-md-6">
+                                     <form method="post" id="ainfonext-form" name="ainfonext-form"> 
+                                     <button class="btn btn-primary " name="ainfonext" id="ainfonext" type="submit">
+                                                                Preview Resume
+                                                               </button>
+                                        </form>
+                                    </div>
+                            </div>
                                
-                                  <div id="successdivainfo" class="alert alert-success">
+                                       
+		                    </div>
+                           
+                       
+		                </div>
+                            
+					</div> <!--features-->
+                       <div id="successdivainfo" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
@@ -230,27 +250,10 @@ if(isset($_SESSION['user'])){
                                                   <b>Alert: </b> Your additional information has been saved.
                                                
                                             </div>
-                                       </form>
-		                    </div>
-                            
-                            
-		                    
-		                </div>
-					</div> <!--features-->
-                      
+                   
+                        </div>
 	        </div> 
                         
-                        
-                    <div class="col-md-6">
-                             <form method="post" id="ainfonext-form" name="ainfonext-form"> 
-                             <button class="btn btn-primary " name="ainfonext" id="ainfonext" type="submit">
-                                                        Preview Resume
-                                                       </button>
-                                </form>
-		                    </div>
-                     
-                        
-                    </div>
                     
                     
                 <div class="col-md-3 pull-right">

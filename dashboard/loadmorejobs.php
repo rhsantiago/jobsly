@@ -147,7 +147,7 @@ if(!empty($rows)){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmsalary()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmaxsalary()?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
@@ -298,7 +298,7 @@ if(!empty($rows)){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmsalary()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmaxsalary()?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
@@ -448,7 +448,7 @@ if(!empty($rows)){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmsalary()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmaxsalary()?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>

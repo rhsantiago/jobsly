@@ -69,10 +69,7 @@ if(isset($_SESSION['user'])){
 }
 ?>
 
-<form method="post" id="pinfo-form" name="pinfo-form" data-parsley-validate>
-                    <input type="hidden" id="id" name="id" value="<?=$id?>">
-                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
-                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>"> 
+
 <div class="row">    
    <div class="col-md-12 center">            
        <div class="adstop"> <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" alt="user"></div>  
@@ -81,7 +78,7 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">Personal Information</h2>
        </div>
 </div>    
-                    <div class="col-md-offset-1 col-md-7">
+                    <div class="col-md-offset-1 col-md-8">
                         
                        
                 <div class="section  section-landing">
@@ -89,6 +86,10 @@ if(isset($_SESSION['user'])){
 
 					<div class="features">
 						<div class="row">
+                            <form method="post" id="pinfo-form" name="pinfo-form" data-parsley-validate>
+                    <input type="hidden" id="id" name="id" value="<?=$id?>">
+                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
+                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>"> 
 		                    <div class="col-md-6">
                                     <div class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
@@ -286,11 +287,25 @@ if(isset($_SESSION['user'])){
                                    
                                 
 		                    </div>
-		                     <div class="col-md-12">
+                             </form>
+                             
+                            </div>
+                        <div class="col-md-12 leftmargin10">  
+                                 <div class="col-md-6">
+
+                                                <div class="savebutton leftmargin10">
+                                                    <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
+                                                </div>      
+
+                                </div>
                                 
-                                            <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save and go to Next Step</button>
-                                            </div>       
+                                <div class="col-md-6">                                
+                                     <form method="post" id="pinfonext-form" name="pinfonext-form"> 
+                                 <button class="btn btn-primary " name="pinfonext" id="pinfonext" type="submit">Go to Next Step</button>
+                                    </form>
+                                </div>                                            
+                            </div>
+                            <div class="col-md-12">                                    
                                              <div id="successdivpinfo" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
@@ -301,19 +316,13 @@ if(isset($_SESSION['user'])){
                                                   </button>
                                                   <b>Alert: </b> Your personal information has been saved.
                                                
-                                            </div>
-                                   
+                                            </div>                                   
                             </div>
+                  
 		                </div>
 					</div>
 	            </div>
                         
-                        
-                    
-                        
-                        
-                    </div>
-                    
                     
                 <div class="col-md-3 pull-right">
                           <div class="card card-ads adsright">                                            
@@ -330,7 +339,7 @@ if(isset($_SESSION['user'])){
                                                              </div>
                                                     </div>
 		       </div> 
-            </form>
+            
 
 <script>
 jQuery(document).ready(function ($) {
