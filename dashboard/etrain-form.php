@@ -453,6 +453,7 @@ if(isset($_SESSION['user'])){
 </div>
 <script>
 jQuery(document).ready(function ($) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#etrain-hs-form #hsschool').parsley().on('field:error', function() {
            $('#etrain-hs-form #hsschooldiv').addClass('has-error');
            $('#etrain-hs-form #hsschooldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   

@@ -61,7 +61,7 @@ if(isset($_SESSION['user'])){
     $teaser = strip_tags($teaser, '<p>');
         
     $mode = 'insert';
-    $months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 }
 ?>
@@ -172,7 +172,7 @@ if(isset($_SESSION['user'])){
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="companylogo"> 
+                                                    <div class="companylogo pull-right"> 
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>

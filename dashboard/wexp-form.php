@@ -316,7 +316,7 @@ jQuery(document).ready(function ($) {
         $("#wexp-form").validate();
     });
 */    
-    
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');

@@ -343,6 +343,7 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');
            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   

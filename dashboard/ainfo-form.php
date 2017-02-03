@@ -277,6 +277,7 @@ if(isset($_SESSION['user'])){
    
 <script>
 jQuery(document).ready(function ($) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#resume-main-body #successdivainfo').hide();
     
     $('#ainfo-form #dposition').parsley().on('field:error', function() {

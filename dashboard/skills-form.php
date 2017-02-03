@@ -172,6 +172,7 @@ if(isset($_SESSION['user'])){
 <link rel="stylesheet" href="css/easy-autocomplete.min.css"> 
 <script>
 jQuery(document).ready(function ($) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#skills-skilltag-form #skill').parsley().on('field:error', function() {
            $('#skills-skilltag-form #skilldiv').addClass('has-error');
            $('#skills-skilltag-form #skilldiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
