@@ -15,7 +15,7 @@
     $street = "";
     $city = "";
     $province = "";
-    $country = "";
+    $country = "Philippines";
     $mnumber = "";
     $myemail = "";
     $landline = "";
@@ -171,7 +171,7 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                              <div id="provincediv" class="form-group label-floating">
                                                                 <label class="control-label">Province</label>
-                                                                <input type="text" id="province" class="form-control" value="<?=$province ?>" data-parsley-pattern="^[a-zA-Z ]+$">
+                                                                <input type="text" id="province" class="form-control" value="<?=$province ?>" data-parsley-required data-parsley-pattern="^[a-zA-Z ]+$">
                                                             </div>
                                                             <div id="countrydiv" class="form-group label-floating">
                                                                 <label class="control-label">Country</label>
