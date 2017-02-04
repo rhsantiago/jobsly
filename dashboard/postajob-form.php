@@ -21,6 +21,7 @@ $maxsalary ='';
 $startappdate='';
 $endappdate='';
 $nvacancies='';
+$teaser='';
 $jobdesc ='';
 $city ='';
 $province ='';
@@ -73,6 +74,7 @@ if(isset($_SESSION['user'])){
              $edate = explode("-", $endappdate);
              $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
              $nvacancies = $row['nvacancies'];
+             $teaser = $row['teaser'];    
              $jobdesc = $row['jobdesc'];
              $city = $row['city'];
              $province = $row['province'];
@@ -116,6 +118,7 @@ if(isset($_SESSION['user'])){
              $edate = explode("-", $endappdate);
              $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
              $nvacancies = $row['nvacancies'];
+             $teaser = $row['teaser'];
              $jobdesc = $row['jobdesc'];
              $city = $row['city'];
              $province = $row['province'];
@@ -328,6 +331,13 @@ if($mode==''){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
+                                                            <div>
+                                                            Enter a short teaser description to make your job ad stand out. 150 characters. 
+                                                            </div>    
+                                                            <div id="teaserdiv" class="form-group label-floating">     
+                                                                        <label class="control-label">Job Teaser</label>
+                                                                        <input type="text" id="teaser" value="<?=$teaser?>" class="form-control">
+                                                                    </div>
                                                             Describe applicant requirements, responsibilities and relevant information
                                                                     <div id="jobdesc"><?=$jobdesc?></div>
                                                                     

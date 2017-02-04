@@ -35,6 +35,7 @@ if(isset($_SESSION['user'])){
     $edate = explode("-", $endappdate);
     $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
     $nvacancies = $row['nvacancies'];
+    $teaser = $row['teaser'];
     $jobdesc = $row['jobdesc'];
     $city = $row['city'];
     $province = $row['province'];
@@ -55,11 +56,7 @@ if(isset($_SESSION['user'])){
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];  
-    
-    $teaser = strip_tags($jobdesc, '<p>');
-    $teaser = substr($teaser, 0, 200);
-    $teaser = strip_tags($teaser, '<p>');
-        
+           
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
@@ -180,7 +177,7 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                               <div class="col-md-12">  
-                                                  <?=$teaser?>...<br>
+                                                  <?=$teaser?>...<br><br>
                                               </div>
                                                 <div class="col-md-12">   
                                                     

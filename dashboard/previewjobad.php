@@ -36,6 +36,7 @@ if(isset($_SESSION['user'])){
     $edate = explode("-", $endappdate);
     $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
     $nvacancies = $row['nvacancies'];
+    $teaser = $row['teaser'];
     $jobdesc = $row['jobdesc'];
     $city = $row['city'];
     $province = $row['province'];
@@ -55,11 +56,7 @@ if(isset($_SESSION['user'])){
     }
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
-    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];   
-    
-    $teaser = strip_tags($jobdesc, '<p>');
-    $teaser = substr($teaser, 0, 200);
-    $teaser = strip_tags($teaser, '<p>');
+    $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];    
         
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -173,7 +170,7 @@ if(isset($_SESSION['user'])){
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="companylogo"> 
+                                                    <div class="companylogo pull-right"> 
                                                         <img src="img/champ.png" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
@@ -181,7 +178,7 @@ if(isset($_SESSION['user'])){
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">  
-                                                      <?=$teaser?>...<br>
+                                                      <?=$teaser?>...<br><br>
                                                  </div>
                                                 <div class="col-md-12">   
                                                

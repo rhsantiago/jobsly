@@ -121,7 +121,7 @@ if(isset($_SESSION['user'])){
                                                    -->
                                                 </div>
                                                 <div class="col-md-6 actionicon">                                                   
-                                                        <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                        <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job"><i class="material-icons" >visibility</i>&nbspView &amp; Apply</a></span>
                                                 </div>
                                           </div> 
                                           

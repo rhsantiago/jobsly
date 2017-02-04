@@ -134,7 +134,7 @@ if(isset($_SESSION['user'])){
                                                             echo "<span class='text-success h4weight'>Shortlisted</span>";
                                                         }
                                                     ?>
-                                                        <span class="jobcardbuttons actionicon pull-right"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                        <span class="jobcardbuttons actionicon pull-right"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View Job Ad</a></span>
                                                     </div>
                                                         
                                                 </div>

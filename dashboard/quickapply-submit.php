@@ -19,6 +19,11 @@ $dateapplied = date("Y-m-d");
         $database->bind(':essay', $essay);
         $database->bind(':dateapplied', $dateapplied);
         $database->execute();
+        
+        $database->query('Delete from savedapplications where jobid=:jobid and userid=:userid');
+        $database->bind(':jobid', $jobid);  
+        $database->bind(':userid', $userid);
+        $database->execute();
     }else{
         echo 'applied';
     }

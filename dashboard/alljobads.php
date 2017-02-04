@@ -54,7 +54,7 @@ if(isset($_SESSION['user'])){
                            <div class="alljobsdiv">
                           <?php
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
-                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
+                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
@@ -73,7 +73,7 @@ if(isset($_SESSION['user'])){
                                     $endappdate = $row['endappdate'];
                                     $edate = explode("-", $endappdate);
                                     $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];   
-
+                                    $teaser=$row['teaser'];
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
@@ -86,31 +86,10 @@ if(isset($_SESSION['user'])){
                                 <section class="blog-post">
                                     <div class="panel panel-default">
                                     
-                                      <div class="panel-body">
-                                          <div class="jobad-meta">
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div class="jobad-meta jobad-bottomborder">
                                       <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                         
-                                          
-                                        </div>
-                                     
-                                        <div class="blog-post-content">
-                                            
-                                            <div class="row-fluid">
-                                                <div class="col-md-6 jobad-titletopmargin">
-                                                    
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
-                                                        </div> 
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="companylogo"  align='right'> 
-                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                               
-                                                <div class="col-md-12" align="left">
-                                                    <ul  class="list-inline ">
+                                         <ul  class="list-inline ">
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
@@ -128,6 +107,34 @@ if(isset($_SESSION['user'])){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                            
+                                            <div class="row-fluid">
+                                                <div class="col-md-6 jobad-titletopmargin">
+                                                    
+                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                        <div class="companypos">
+                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
+                                                        </div> 
+                                                        
+                                                </div>
+                                                
+                                                <div class="col-md-6 ">
+                                                    <div class="companylogo pull-right"> 
+                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="col-md-12" >
+                                                            <?=$teaser?>
+                                                        </div>
+                                                <div class="col-md-12" align="left">
+                                                    
                                                         </div>
                                           
                                           </div> 

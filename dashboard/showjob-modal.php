@@ -37,6 +37,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     $edate = explode("-", $endappdate);
     $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
     $nvacancies = $row['nvacancies'];
+    $teaser = $row['teaser'];
     $jobdesc = $row['jobdesc'];
     $city = $row['city'];
     $province = $row['province'];
@@ -58,12 +59,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];   
-    
-    $teaser = strip_tags($jobdesc, '<p>');
-    $teaser = substr($teaser, 0, 200);
-    $teaser = strip_tags($teaser, '<p>');
-
-
+   
     $database->query('SELECT logo from companyinfo where userid = :userid');   
     $database->bind(':userid', $userid);
     $logorow = $database->single();
@@ -131,7 +127,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">  
-                                                      <?=$teaser?>...<br>
+                                                      <?=$teaser?>...<br><br>
                                                  </div>
                                                 <div class="col-md-12">   
                                                

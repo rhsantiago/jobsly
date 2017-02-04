@@ -196,6 +196,7 @@ jQuery(document).ready(function ($) {
             var startappdate = $("#postajob-form #startappdate").val();
             var endappdate = $("#postajob-form #endappdate").val();
             var nvacancies = $("#postajob-form #nvacancies").val();
+            var teaser = $("#postajob-form #teaser").val();
             var jobdesc = $("#postajob-form #jobdesc").summernote('code');
             var city = $("#postajob-form #city").val();
             var province = $("#postajob-form #province").val();
@@ -219,7 +220,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "postajob-submit.php",
-                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
+                data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&teaser=" +teaser+  "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
@@ -528,6 +529,7 @@ jQuery(document).ready(function ($) {
             var startappdate = $("#templatejobdetail-form #startappdate").val();
             var endappdate = $("#templatejobdetail-form #endappdate").val();
             var nvacancies = $("#templatejobdetail-form #nvacancies").val();
+            var teaser = $("#templatejobdetail-form #teaser").val();
             var jobdesc = $("#templatejobdetail-form #jobdesc").summernote('code');
             var city = $("#templatejobdetail-form #city").val();
             var province = $("#templatejobdetail-form #province").val();
@@ -551,7 +553,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "templatejobdetail-submit.php",
-                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
+                data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&teaser=" + teaser + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
                 success : function(data){                 
