@@ -5,7 +5,7 @@
         session_start();
         include 'Database.php';
     }
-
+include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -84,7 +84,7 @@ if(isset($_SESSION['user'])){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specialization?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$specialization]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>

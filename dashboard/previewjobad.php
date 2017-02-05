@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
             $database = new Database();
         }
 }
-
+include 'specialization.php';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -144,7 +144,7 @@ if(isset($_SESSION['user'])){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specialization?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$specialization]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>

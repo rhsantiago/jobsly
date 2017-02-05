@@ -7,7 +7,7 @@
             include 'Database.php';
          }
     }
-
+include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -93,7 +93,7 @@ if(isset($_SESSION['user'])){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specialization?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$specialization]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -115,7 +115,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                 <div class="col-md-6 jobad-titletopmargin">
                                                     
-                                                         <a class="nodecor" href="#"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 

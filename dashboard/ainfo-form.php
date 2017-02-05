@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
         session_start();
         include 'Database.php';
 }
-
+include 'specialization.php';
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -102,10 +102,7 @@ if(isset($_SESSION['user'])){
                                                                         <label class="control-label">Expected Salary</label>
                                                                         <input type="text" id="esalary" class="form-control" value="<?=$esalary?>" data-parsley-required data-parsley-type="number">
                                                                     </div>
-                                                                      <div id="pworklocdiv" class="form-group label-floating">
-                                                                        <label class="control-label">Work Location</label>
-                                                                        <input type="text" id="pworkloc" class="form-control" value="<?=$pworkloc?>">
-                                                                    </div>
+                                                                     
                                                                                                                                      
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   <div id="pleveldiv" class="form-group label-floating">
@@ -126,13 +123,25 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="specializationdiv" class="form-group label-floating">
                                                                         <label class="control-label">Specialization</label>
-                                                                        <input type="text" id="specialization" class="form-control" value="<?=$specialization?>" data-parsley-required>
+                                                                        <select class="form-control" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
+                                                                            <option disabled></option>
+                                                                            <?php
+                                                                                    $i=0;
+                                                                                    foreach($specarray as $spec){
+                                                                                        echo "<option value='$i' "; if($specialization==$i){echo'selected';} echo">$specarray[$i]</option>";
+                                                                                        $i++;
+                                                                                    }
+                                                                            ?>
+                                                                        </select>
+                                                                        
                                                                     </div> 
+                                                                    <div id="otherspecdiv" class="form-group label-floating">
+                                                                        <label class="control-label">Other Specialization</label>
+                                                                        <input type="text" id="otherspec" class="form-control" value="<?=$specialization?>" data-parsley-required>
+                                                                    </div>
                                                                                                                                   
                                                                 </div>
-                                                                <div class="col-md-12 col-xs-12">
-                                                                   
-                                                                </div>
+                                                               
                                                         
                                                             </div>
                                                               
@@ -188,9 +197,14 @@ if(isset($_SESSION['user'])){
                                                                         </div>                                                                         
                                                                       </div>                                                             
                                                                 </div>
-                                                                <div class="col-md-6 col-xs-6">                                                                   <div id="languagesdiv" class="form-group label-floating">
+                                                                <div class="col-md-6 col-xs-6"> 
+                                                                    <div id="languagesdiv" class="form-group label-floating">
                                                                         <label class="control-label">Languages</label>
                                                                         <input type="text" id="languages" class="form-control" value="<?=$languages?>">
+                                                                    </div>
+                                                                     <div id="pworklocdiv" class="form-group label-floating">
+                                                                        <label class="control-label">Work Location</label>
+                                                                        <input type="text" id="pworkloc" class="form-control" value="<?=$pworkloc?>">
                                                                     </div>
                                                                     <div id="wrelocatediv" class="form-group">
                                                                          <div class="checkbox">

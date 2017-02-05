@@ -5,7 +5,7 @@
         session_start();
         include 'Database.php';
     }
-
+include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -137,7 +137,7 @@ if(!empty($rows)){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$jobad->getspecialization()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$jobad->getspecialization()]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -288,7 +288,7 @@ if(!empty($rows)){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$jobad->getspecialization()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$jobad->getspecialization()]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -438,7 +438,7 @@ if(!empty($rows)){
                                                                                            
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$jobad->getspecialization()?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$jobad->getspecialization()]?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>

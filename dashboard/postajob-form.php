@@ -6,7 +6,7 @@
         include 'Database.php';
     }
 
-
+include 'specialization.php';
 $jobid = 0;
 $template = '';
 $templateid = '';
@@ -257,10 +257,20 @@ if($mode==''){
                                                                 <input type="text" id="jobtitle" class="form-control" value="<?=$jobtitle?>" data-parsley-required>  
                                                             </div>
                                                      
-                                                            <div id="specializationdiv" class="form-group label-floating">
-                                                                <label class="control-label">Specialization</label>
-                                                                <input type="text" id="specialization" class="form-control" value="<?=$specialization?>" data-parsley-required>
-                                                            </div>
+                                                             <div id="specializationdiv" class="form-group label-floating">
+                                                                        <label class="control-label">Specialization</label>
+                                                                        <select class="form-control" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
+                                                                            <option disabled></option>
+                                                                            <?php
+                                                                                    $i=0;
+                                                                                    foreach($specarray as $spec){
+                                                                                        echo "<option value='$i' "; if($specialization==$i){echo'selected';} echo">$specarray[$i]</option>";
+                                                                                        $i++;
+                                                                                    }
+                                                                            ?>
+                                                                        </select>
+                                                                        
+                                                                    </div> 
                                                             <div id="msalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Min Salary</label>
                                                                 <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-required data-parsley-type="number">
