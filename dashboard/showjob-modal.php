@@ -7,6 +7,7 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+   $usertype = $_SESSION['usertype'];
 }
 include 'specialization.php';
 $isjobseeker = '';
@@ -17,12 +18,14 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
 
  $database = new Database();
  
-    $database->query('SELECT * from jobads where id = :jobid');
+    $database->query('SELECT * from jobads,companyinfo where jobads.id = :jobid and jobads.userid=companyinfo.userid');
    
     $database->bind(':jobid', $jobid);
     
     $row = $database->single();
     $id = $row['id'];
+    $logo = $row['logo'];
+    $companyid = $row['userid'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
     $specialization = $row['specialization'];
@@ -59,18 +62,16 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];   
-   
-    $database->query('SELECT logo from companyinfo where userid = :userid');   
-    $database->bind(':userid', $userid);
-    $logorow = $database->single();
-    $logo = $logorow['logo'];
- 
+    
+    $esalary=0;
+    if($usertype==2){
+        $database->query('SELECT esalary from additionalinformation where userid = :userid');   
+        $database->bind(':userid', $userid);
+        $ainforow = $database->single();
+        $esalary = $ainforow['esalary'];
+    }
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
-
-
-
-
 
 ?>
 
@@ -120,7 +121,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$logo?>" width="120" height="120" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    
@@ -241,7 +242,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                         <div class="col-md-6">
                                                              <div id="esalarydiv" class="form-group label-floating">
                                                                         <label class="control-label">Expected Salary</label>
-                                                                        <input type="text" id="esalary" class="form-control" value="" data-parsley-required data-parsley-type="number">
+                                                                        <input type="text" id="esalary" class="form-control" value="<?=$esalary?>" data-parsley-required data-parsley-type="number">
                                                              </div>
                                                         </div>
                                                         <div class="col-md-6 ">

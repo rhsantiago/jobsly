@@ -43,16 +43,18 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded from jobads,savedapplications where savedapplications.userid = :userid and jobads.id = savedapplications.jobid order by dateadded desc');
+                                $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel, jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobads.teaser,companyinfo.logo from jobads,savedapplications,companyinfo where savedapplications.userid = :userid and jobads.id = savedapplications.jobid and jobads.userid=companyinfo.userid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
 
                                 $rows = $database->resultset();
                                 foreach($rows as $row){
                                     $id = $row['id'];
+                                    $logo = $row['logo'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
                                     $specialization = $row['specialization'];
                                     $plevel = $row['plevel'];
+                                    $teaser = $row['teaser'];
                                     $jobtype = $row['jobtype'];
                                     $msalary = $row['msalary'];
                                     $maxsalary = $row['maxsalary'];
@@ -111,9 +113,12 @@ if(isset($_SESSION['user'])){
                                                 <div class="col-md-6">
                                                     
                                                     <div class="companylogo" align='right'> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-12">  
+                                                      <?=$teaser?>...<br><br>
+                                                 </div>
                                             </div>    
                                             <div class="row-fluid">
                                                <div class="col-md-6  ">

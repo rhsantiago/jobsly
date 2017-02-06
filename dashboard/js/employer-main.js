@@ -472,8 +472,10 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-registrationsubmit.php',
                 data: 'mode=' + mode + '&companyname=' + companyname + '&companyaddress=' + companyaddress + '&mode=' + mode +'&userid=' + userid +'&companywebsite=' + companywebsite +'&telno=' + telno +'&companytin=' + companytin +'&cperson=' + cperson +'&designation=' + designation +'&cpersonemail=' + cpersonemail +'&cpersontelno=' + cpersontelno +'&industry=' + industry +'&numemp=' + numemp +'&ctype=' + ctype +'&cdesc=' + cdesc,
-                success: function(html) {
-                    //console.log(html);             
+                dataType: 'text',
+                success: function(data) {
+                    //console.log(html);
+                   
                     $('#successdivcreg').fadeIn(1500);
                     $(function() {
                                $.material.init();
