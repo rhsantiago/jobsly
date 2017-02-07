@@ -7,6 +7,7 @@
             include 'Database.php';
          }
     }
+include 'specialization.php';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -74,7 +75,7 @@ if(isset($_SESSION['user'])){
                                                     <th>Specialization</th>
                                                     <th>Job Position</th>                                                   
                                                     <th>Salary</th>
-                                                    <th class="text-right">Actions</th>
+                                                    <th class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -117,16 +118,15 @@ if(isset($_SESSION['user'])){
                                                         </li>
                                                     </ul>    
                                                     </td>
-                                                    <td><?=$specialization?></td>       
+                                                    <td><?=$specarray[$specialization]?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
                                                   <ul class="list-inline">
-                                                        <li>
+                                                        <li class="marginright-10">
                                                             <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
-                                                        </li>      
-                                                     
-                                                        <li id="slline<?=$applicantid?>">   
+                                                        </li>
+                                                      <li id="slline<?=$applicantid?>" class="marginright-10">   
                                                             <?php
                                                                 if($isshortlisted==0){
                                                             ?>      
@@ -139,7 +139,7 @@ if(isset($_SESSION['user'])){
                                                                 }
                                                             ?>
                                                         </li>
-                                                        <li>
+                                                       <li class="marginright-10">
                                                             <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times"></i></a>
                                                        
                                                         </li>

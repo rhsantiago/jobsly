@@ -7,6 +7,7 @@
             include 'Database.php';
          }
     }
+include 'specialization.php';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -103,7 +104,7 @@ if(isset($_SESSION['user'])){
                                    
                                                 <tr id="line<?=$applicantid?>">
                                                     <td><?=$fname?> <?=$lname?></td>
-                                                    <td><?=$specialization?></td>       
+                                                    <td><?=$specarray[$specialization]?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">                                               

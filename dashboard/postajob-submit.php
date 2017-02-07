@@ -39,9 +39,10 @@ $database = new Database();
         
         if($mode=='insert'){
              $database->query(' INSERT INTO jobads (id, userid, jobtitle,company,specialization,plevel,jobtype,msalary,maxsalary,startappdate,endappdate,nvacancies,teaser, jobdesc,city,province,country,yrsexp,mineduc,prefcourse,languages,licenses,wtravel,wrelocate,essay,dateadded) VALUES (NULL, :userid, :jobtitle,:company, :specialization,:plevel,:jobtype,:msalary, :maxsalary,:startappdate,:endappdate,:nvacancies,:teaser,:jobdesc,:city,:province,:country,:yrsexp,:mineduc,:prefcourse,:languages,:licenses,:wtravel,:wrelocate,:essay,:dateadded)');
+             $database->bind(':dateadded', $dateadded);
         }
         if($mode=='update'){
-           $database->query(' UPDATE jobads SET userid = :userid, jobtitle = :jobtitle, company = :company, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, teaser=:teaser, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate,essay=:essay, dateadded = :dateadded WHERE jobads.id = :jobid and userid = :userid'); 
+           $database->query(' UPDATE jobads SET userid = :userid, jobtitle = :jobtitle, company = :company, specialization = :specialization, plevel = :plevel, jobtype = :jobtype, msalary = :msalary, maxsalary = :maxsalary, startappdate = :startappdate, endappdate = :endappdate, nvacancies = :nvacancies, teaser=:teaser, jobdesc = :jobdesc, city = :city, province = :province, country = :country, yrsexp = :yrsexp, mineduc = :mineduc, prefcourse = :prefcourse, languages = :languages, licenses = :licenses, wtravel = :wtravel, wrelocate = :wrelocate,essay=:essay WHERE jobads.id = :jobid and userid = :userid'); 
             $database->bind(':jobid', $jobid);
 
         }
@@ -69,7 +70,7 @@ $database = new Database();
         $database->bind(':wtravel', $wtravel);
         $database->bind(':wrelocate', $wrelocate);
         $database->bind(':essay', $essay);
-        $database->bind(':dateadded', $dateadded);
+       
 
         $database->execute();
 

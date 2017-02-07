@@ -7,7 +7,7 @@
             include 'Database.php';
          }
     }
-
+include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -122,7 +122,7 @@ if(isset($_SESSION['user'])){
                                                             </li>
                                                         </ul>
                                                     </td>
-                                                    <td><?=$specialization?></td>       
+                                                    <td><?=$specarray[$specialization]?></td>       
                                                     <td><?=$position?></td> 
                                                     <td><?=$months[$dapp[1]-1]?>&nbsp;<?=$dapp[2]?></td>
                                                     <td class="text-right">Php <?=$esalary?></td>

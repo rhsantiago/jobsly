@@ -16,11 +16,12 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['view'])){ $view = $_POST['view']; }    
     $database = new Database();
     
-    $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+    $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
     $database->bind(':userid', $applicantid);   
 
     $row = $database->single();
     $maxposition = $row['maxposition'];
+    $photo = $row['photo'];
     $fname = $row['fname'];
     $lname = $row['lname'];
         
@@ -51,7 +52,7 @@ jQuery(document).ready(function ($) {
                             
                                 <div class="profile">                               
                                     <div class="avatar">
-                                        <img src="img/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
+                                        <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
                                         <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>
@@ -265,8 +266,9 @@ jQuery(document).ready(function ($) {
              $datefloat ='';                               
              foreach($rows as $row){
                 $coldate = explode("-", $row['colgraddate']);
-                $colgraddate = $coldate[1] .'/'.$coldate[2].'/'.$coldate[0];  
-                
+                $colgraddate = $coldate[1] .'/'.$coldate[2].'/'.$coldate[0]; 
+                  $coluni = $row['coluni'];
+                if(!empty($coluni) && $coldate[0] > 0){
                  if($isleft){
                     echo '<li>';
                     $isleft = false;
@@ -318,7 +320,7 @@ jQuery(document).ready(function ($) {
         </li>                   
         <?php
              }
-            
+             }
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by hsgraddate desc');
              $database->bind(':userid', $applicantid);  
              $rows = $database->resultset();
@@ -327,7 +329,8 @@ jQuery(document).ready(function ($) {
              foreach($rows as $row){
                  $hsdate = explode("-", $row['hsgraddate']);
                 $hsgraddate = $hsdate[1] .'/'.$hsdate[2].'/'.$hsdate[0];    
-                    
+                $hsscchool = $row['hsschool'];                   
+                if(!empty($hsscchool) && $hsdate[0] > 0){   
                 
                  if($isleft){
                     echo '<li>';
@@ -374,10 +377,9 @@ jQuery(document).ready(function ($) {
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
            </div>           
         </li>                  
-                            
-                         
-        
+                  
         <?php
+             }
              }
         ?>                                    
     
