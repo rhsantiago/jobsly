@@ -139,7 +139,7 @@ if(isset($_SESSION['user'])){
                                                                 }
                                                             ?>
                                                         </li>
-                                                       <li class="marginright-10">
+                                                       <li>
                                                             <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times"></i></a>
                                                        
                                                         </li>

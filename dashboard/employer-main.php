@@ -129,6 +129,7 @@ if($ok == 1 ){
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
                     -->
+                    <li><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
@@ -190,6 +191,7 @@ if($ok == 1 ){
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>   
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>

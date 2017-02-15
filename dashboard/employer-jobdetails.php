@@ -34,8 +34,9 @@ if(isset($_SESSION['user'])){
                            
      </div>
    
-    <div class="col-md-12">
-                             <h2 class="title">Job Details</h2>
+    <div class="col-md-12">        
+            <h2 class="title">Job Details</h2>
+          
        </div>
      </div>
     <div class="col-md-9">

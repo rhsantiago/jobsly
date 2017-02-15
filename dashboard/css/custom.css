@@ -272,6 +272,10 @@ div .parsley-errors-list {
     margin: 10px !important;
 }
 
+.margin15{
+    margin-top: 15px !important;
+}
+
 .timelinepos {
     font-weight: 500;
 }
@@ -408,6 +412,10 @@ div .parsley-errors-list {
     margin-top: 10px !important;
 }
 
+.hometopmargin40 {
+    margin-top: 40px !important;
+}
+
 .essaymargintop{
     margin-top: 5px !important;
 }
@@ -455,6 +463,10 @@ div .parsley-errors-list {
 
 .leftmargin10 {
     margin-left: -15px !important;
+}
+
+.rightmargin15 {
+    margin-left: 15px !important;
 }
 
 
