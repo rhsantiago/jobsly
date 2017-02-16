@@ -308,8 +308,8 @@ if($ok == 1 ){
                                         
                                         
                                     </div>
-                                  </section>
-                                 
+                                    </div>
+                                </section>
                             </div>  
                             <div class="col-md-6">
                        
@@ -395,9 +395,9 @@ if($ok == 1 ){
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#newapps" id="newapps" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="nappsdiv"><?=$napps?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#napp" id="napp" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="nappsdiv"><?=$napps?></span></a></h3>
                                         </div>                                        
-                                            <a href="#newapps" id="newapps" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applications</a>
+                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applications</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
@@ -411,21 +411,94 @@ if($ok == 1 ){
                                <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats rightmargin15">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#shortlisted" id="shortlisted" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
                                         </div>
-                                            <a href="#shortlisted" id="shortlisted" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
+                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
                                     </div>   
 						      </div>
                                    </div>
                             </div>
+                            <div class="col-md-12">
+                                <section class="blog-post">
+                                    <div class="panel panel-default">                                    
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div><h4 class="text-info h4weight">Job Ad Performance</h4></div>
+                                 <div class="table-responsive">      
+                                     <table class="table table-hover table-condensed">
+                                            <thead>
+                                                <tr align="left">
+                                                    <th>Job Title</th>
+                                                    <th>Impressions</th>
+                                                    <th>Views</th>
+                                                    <th>Click Through Rate</th>    
+                                                    <th>Resume Submissions</th>
+                                                    <th>Active</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                              
+                                        <?php
+                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
+                                            $database->bind(':userid', $userid);                                             
+
+                                            $rows = $database->resultset();
+                                            foreach($rows as $row){
+                                                $id = $row['id'];
+                                                $jobtitle = $row['jobtitle'];
+                                                $views = $row['views'];
+                                                $impressions= $row['impressions'];
+                                                $isactive= $row['isactive'];
+                                                $ctr=0;
+                                                if($views > 0 && $impressions > 0){
+                                                    $ctr = $views/$impressions;
+                                                    $ctr = number_format((float)$ctr, 2, '.', '');
+                                                }
+                                                
+                                                $database->query('SELECT count(jobapplications.id) as resumes from jobapplications where jobid=:jobid');
+                                                $database->bind(':jobid', $id);
+                                                $row2= $database->single();
+                                                $resumes = $row2['resumes'];
+                                              
+                                       ?>
+                                   
+                                                <tr>                                                    
+                                                    <td><?=$jobtitle?></td>       
+                                                    <td><?=$impressions?></td> 
+                                                    <td><?=$views?></td>
+                                                    <td><?=$ctr?></td>
+                                                    <td><?=$resumes?></td>
+                                                    <td>
+                                                    <?php
+                                                        if($isactive>0){
+                                                           echo"<span class='text-success'><i class='fa fa-check'></i></span>";
+                                                        }
+                                                    ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                                
+                                            </tbody>
+                                        </table>
+                                      </div>  
+                                </div>
+                                    </div>
+                                  </section>
+                                
+                                </div>
+                                <div class="col-md-6">
+                                    <?php
+                                        include "employer-home-ctrchart.php";
+                                    ?>
+                                </div>
+                                <div class="col-md-6">
+                                    
+                                </div> 
+                            
 		                </div>
 					</div>
-	            </div>
-                        
-                        
-                    
-                        
-                        
+	            </div>                         
                     </div>
                     
                     

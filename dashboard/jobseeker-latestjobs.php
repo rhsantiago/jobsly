@@ -49,7 +49,11 @@ if(isset($_SESSION['user'])){
       $jobad->setteaser($teaser);
       $jobad->setdadd($dadd);       
        
-      $jobadsarray[] = $jobad;   
+      $jobadsarray[] = $jobad;
+       
+      $database->query('update jobads set impressions=impressions + 1 where id=:jobid');   
+      $database->bind(':jobid', $jobid);    
+      $database->execute();   
    
    }
     unset($jobad);

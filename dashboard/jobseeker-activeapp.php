@@ -107,7 +107,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                     
                                                 <div class="col-md-6  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-isjobseeker="jobseeker" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -135,7 +135,7 @@ if(isset($_SESSION['user'])){
                                                             echo "<span class='text-success h4weight'>Shortlisted</span>";
                                                         }
                                                     ?>
-                                                        <span class="jobcardbuttons actionicon pull-right"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View Job Ad</a></span>
+                                                        <span class="jobcardbuttons actionicon pull-right"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="jobseeker" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View Job Ad</a></span>
                                                     </div>
                                                         
                                                 </div>

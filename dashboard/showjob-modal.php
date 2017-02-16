@@ -73,6 +73,13 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 
+    if(strcmp($isjobseeker,'jobseeker')==0){
+        $database->query('update jobads set views=views + 1 where id=:jobid');   
+        $database->bind(':jobid', $jobid);    
+        $database->execute();
+        
+    }
+
 ?>
 
     
