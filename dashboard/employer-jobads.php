@@ -121,6 +121,7 @@ if($ok == 1 ){
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
+                    <li><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
@@ -160,10 +161,31 @@ if($ok == 1 ){
             </div>
             </div>
         </div>
-    
+    <!--sidebar-->
+   <?php
+            $database->query('select companyname,cperson,logo from companyinfo where userid=:userid');
+            $database->bind(':userid', $userid);   
+
+            $row = $database->single();           
+            $companyname = $row['companyname'];
+            $cperson = $row['cperson'];
+            $logo = $row['logo'];
+          
+      
+    ?>
     <!--sidebar-->
  <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="center sidenavmargin">
+                                <div class="avatar center">
+                                        <img src="<?=$logo?>" alt="Circle Image" width="100" height="100" class="img-circle img-responsive img-raised center">
+                                    </div>
+                                    <div class="name">
+                                        <h4 class="sidenavname"><?=$companyname?></h4>
+                                        <h5 class="sidenavposition"><?=$cperson?></h5>
+                                    </div>  
+       </div> 
+    <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>  
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li> 

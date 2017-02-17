@@ -4,7 +4,7 @@
                 <div><h4 class="text-info h4weight">Click Through Rate</h4></div>
           </div>
         
-          <svg id="visualisation" width="100%" height="300"></svg>
+          <svg id="visualisation" width="100%" height="100%"  viewBox="0 0 550 300" preserveAspectRatio="xMidYMid meet"></svg>
             <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
             <script>
                 function InitChart() {
@@ -48,7 +48,7 @@
                     }];
                     var vis = d3.select("#visualisation"),
                         WIDTH = 550,
-                        HEIGHT = 250,
+                        HEIGHT = 300,
                         MARGINS = {
                             top: 20,
                             right: 20,
@@ -96,6 +96,14 @@
                         .attr('fill', 'none');
                 }
                 InitChart();
+                var aspect = width / height,
+                    chart = d3.select('#visualisation');
+                d3.select(window)
+                  .on("resize", function() {
+                    var targetWidth = chart.node().getBoundingClientRect().width;
+                    chart.attr("width", targetWidth);
+                    chart.attr("height", targetWidth / aspect);
+  });
             </script>
         
         

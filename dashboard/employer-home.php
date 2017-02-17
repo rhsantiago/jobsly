@@ -181,8 +181,29 @@ if($ok == 1 ){
             </div>
         </div>
     <!--sidebar-->
+   <?php
+            $database->query('select companyname,cperson,logo from companyinfo where userid=:userid');
+            $database->bind(':userid', $userid);   
+
+            $row = $database->single();           
+            $companyname = $row['companyname'];
+            $cperson = $row['cperson'];
+            $logo = $row['logo'];
+          
+      
+    ?>
+    <!--sidebar-->
    <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <div class="center sidenavmargin">
+                                <div class="avatar center">
+                                        <img src="<?=$logo?>" alt="Circle Image" width="100" height="100" class="img-circle img-responsive img-raised center">
+                                    </div>
+                                    <div class="name">
+                                        <h4 class="sidenavname"><?=$companyname?></h4>
+                                        <h5 class="sidenavposition"><?=$cperson?></h5>
+                                    </div>  
+       </div>    
    <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>    
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -300,7 +321,7 @@ if($ok == 1 ){
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
+                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
                                                        
                                                 </div>
                                           </div> 
@@ -345,7 +366,7 @@ if($ok == 1 ){
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
+                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
                                                        
                                                 </div>
                                           </div> 
@@ -397,7 +418,7 @@ if($ok == 1 ){
                                         <div class="card-header cardmargin" data-background-color="blue">
                                             <h3 class="center marginjobdetaillink"><a href="#napp" id="napp" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="nappsdiv"><?=$napps?></span></a></h3>
                                         </div>                                        
-                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applications</a>
+                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applicants</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
@@ -481,6 +502,9 @@ if($ok == 1 ){
                                                 
                                             </tbody>
                                         </table>
+                                     <div class="pull-right">
+                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
+                                     </div>
                                       </div>  
                                 </div>
                                     </div>
