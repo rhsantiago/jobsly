@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
     $row = $database->single();
     $id = $row['id'];
   */
-    
+    include "serverlogconfig.php";
         
     }else{
         if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
@@ -152,8 +152,14 @@ if(isset($_SESSION['user'])){
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
+                                                    try{                
                                                     $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

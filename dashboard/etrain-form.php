@@ -29,13 +29,19 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-    
+    include "serverlogconfig.php";
     $database = new Database();
 
     $database->query('SELECT * from educationandtraining where userid = :userid');
     $database->bind(':userid', $userid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+    }    
     $id = $row['id'];
     
     if(!empty($id)){

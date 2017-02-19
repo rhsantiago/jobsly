@@ -13,8 +13,8 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
-    $database = new Database();
+   include "serverlogconfig.php";
+   $database = new Database();
 
     
         
@@ -56,8 +56,14 @@ if(isset($_SESSION['user'])){
                                 //$database->query('SELECT * from jobads where userid = :userid and isactive=1 order by dateadded desc');
                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization, jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid and isactive=1 order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
-
+                                try{
                                 $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }    
                                 foreach($rows as $row){
                                     $id = $row['id'];
                                     $jobtitle = $row['jobtitle'];
@@ -81,8 +87,14 @@ if(isset($_SESSION['user'])){
 
                               $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
                                $database->bind(':jobid', $id);   
-
-                               $row = $database->single();       
+                               try{             
+                                    $row = $database->single();  
+                               }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                               }    
                                $aapps = $row['aapps'];
                                $napps = $row['napps'];        
                                $shortlisted = $row['shortlisted']; 

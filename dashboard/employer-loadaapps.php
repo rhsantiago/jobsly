@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
+    include "serverlogconfig.php";
     $database = new Database();
 
   
@@ -48,9 +48,14 @@ if(isset($_SESSION['user'])){
                                 $database->query('SELECT id,jobtitle,company from jobads where id =:jobid and userid = :userid and isactive=1 order by dateadded desc');
                                 $database->bind(':userid', $userid);
                                 $database->bind(':jobid', $jobid);
-
-                                $row = $database->single(); 
-                               
+                                try{
+                                    $row = $database->single(); 
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }
                                     $jobid = $row['id'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
@@ -72,10 +77,10 @@ if(isset($_SESSION['user'])){
                                                 <tr>
                                                    
                                                     <th>Name</th>
-                                                    <th>Specialization</th>
-                                                    <th>Job Position</th>                                                   
+                                                    <th class="col-md-2">Specialization</th>
+                                                    <th class="col-md-2">Job Position</th>                                                   
                                                     <th>Salary</th>
-                                                    <th class="text-center">Actions</th>
+                                                    <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -89,9 +94,14 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid order by jobapplications.id desc');
                                             $database->bind(':jobid', $jobid);                                             
-
-                                            $rows2 = $database->resultset();
-                                             
+                                            try{    
+                                                $rows2 = $database->resultset();
+                                            }catch (PDOException $e) {
+                                                $error = true;
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                include "serverlog.php";
+                                                die("");
+                                            } 
                                             foreach($rows2 as $row2){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
@@ -122,11 +132,11 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
-                                                  <ul class="list-inline">
-                                                        <li class="marginright-10">
+                                                <ul class="list-inline">
+                                                        <li >
                                                             <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
                                                         </li>
-                                                      <li id="slline<?=$applicantid?>" class="marginright-10">   
+                                                      <li id="slline<?=$applicantid?>" >   
                                                             <?php
                                                                 if($isshortlisted==0){
                                                             ?>      
@@ -143,7 +153,7 @@ if(isset($_SESSION['user'])){
                                                             <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times"></i></a>
                                                        
                                                         </li>
-                                                  </ul>
+                                                        </ul>
                                                     </td>
                                                 </tr>
                                             <?php                                               

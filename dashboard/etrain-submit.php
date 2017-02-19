@@ -4,6 +4,7 @@ if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['etrain'])){ $etrain = $_POST['etrain']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
 
@@ -101,8 +102,16 @@ if($etrain=='others'){
 
 
     $database->bind(':userid', $userid);
-       
-    $database->execute();
+    try{   
+        $database->execute();
+        $msg = $etrain." ".$mode;
+        include "serverlog.php";
+    }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+    }     
   
 ?> 
   

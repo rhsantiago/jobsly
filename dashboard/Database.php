@@ -25,7 +25,10 @@ class Database{
         // Catch any errors
         catch(PDOException $e){
             $this->error = $e->getMessage();
-            echo $e->getMessage();
+            $msg = $e->getMessage();
+            $error = true;
+            include "serverlog.php";
+           // echo $e->getMessage();
         }
     }
     

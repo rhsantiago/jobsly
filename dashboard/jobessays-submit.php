@@ -4,6 +4,7 @@ if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
 
@@ -24,13 +25,27 @@ $database = new Database();
          $database->bind(':id', $id);
     }
          
-    $database->bind(':userid', $userid);       
-    $database->execute();
-    
+    $database->bind(':userid', $userid);     
+    try{
+        $database->execute();
+        $msg = "jobessay ".$mode;
+        include "serverlog.php";
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    } 
                                           $database->query('SELECT id,question FROM jobessays where userid = :userid');
-                                          $database->bind(':userid', $userid);  
-                                          $rows = $database->resultset();
-
+                                          $database->bind(':userid', $userid);
+                                          try{  
+                                              $rows = $database->resultset();
+                                          }catch (PDOException $e) {
+                                                $error = true;
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                include "serverlog.php";
+                                                die("");
+                                          }     
                                           foreach($rows as $row){
                                                $id=$row['id'];
                                                $question=$row['question'];

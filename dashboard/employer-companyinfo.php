@@ -28,11 +28,18 @@ if(isset($_SESSION['user'])){
     $numemp='';
     $cdesc='';
     $logo='';
+     include "serverlogconfig.php";
      $database = new Database();
      $database->query('SELECT * from companyinfo where userid = :userid');
      $database->bind(':userid', $userid);   
-     $row = $database->single();
-    
+     try{
+        $row = $database->single();
+     }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }
      $id = $row['id'];
     // $userid = $row['userid'];
      $companyname = $row['companyname'];

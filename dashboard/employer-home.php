@@ -10,7 +10,9 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-   
+        include "serverlogconfig.php";
+        $msg = "logged in";
+        include "serverlog.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -184,8 +186,14 @@ if($ok == 1 ){
    <?php
             $database->query('select companyname,cperson,logo from companyinfo where userid=:userid');
             $database->bind(':userid', $userid);   
-
-            $row = $database->single();           
+            try {
+            $row = $database->single();      
+            }catch (PDOException $e) {
+                 $error = true;
+                 $msg = $e->getTraceAsString()." ".$e->getMessage();
+                 include "serverlog.php";
+                 die("");
+            }
             $companyname = $row['companyname'];
             $cperson = $row['cperson'];
             $logo = $row['logo'];
@@ -249,7 +257,14 @@ if($ok == 1 ){
     $database = new Database();
     $database->query('SELECT id,companyname,companyaddress,cperson,logo,designation,cpersonemail,companywebsite,cpersontelno,industry from companyinfo where userid=:userid');
     $database->bind(':userid', $userid);
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+                 $error = true;
+                 $msg = $e->getTraceAsString()." ".$e->getMessage();
+                 include "serverlog.php";
+                 die("");
+    }
     $id = $row['id'];
     $companyname = $row['companyname'];
     $companyaddress = $row['companyaddress'];
@@ -380,22 +395,50 @@ if($ok == 1 ){
                      <?php
                             $database->query('select count(id) as ajads from jobads where userid=:userid and isactive=1');
                             $database->bind(':userid', $userid);
+                            try{
                             $row = $database->single();
+                            }catch (PDOException $e) {
+                                  $error = true;
+                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                  include "serverlog.php";
+                                  die("");
+                             }
                             $ajads = $row['ajads'];
     
                             $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
                             $database->bind(':userid', $userid);
+                            try{
                             $row = $database->single();
+                            }catch (PDOException $e) {
+                                  $error = true;
+                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                  include "serverlog.php";
+                                  die("");
+                            }    
                             $totapplicants = $row['totapplicants'];
     
                             $database->query('SELECT count(jobapplications.id) as napps from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isnew=1');
                             $database->bind(':userid', $userid);
+                            try{    
                             $row = $database->single();
+                            }catch (PDOException $e) {
+                                  $error = true;
+                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                  include "serverlog.php";
+                                  die("");
+                            }    
                             $napps = $row['napps'];
     
                             $database->query('SELECT count(jobapplications.id) as shortlisted from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isshortlisted=1');
                             $database->bind(':userid', $userid);
+                            try{    
                             $row = $database->single();
+                            }catch (PDOException $e) {
+                                  $error = true;
+                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                  include "serverlog.php";
+                                  die("");
+                            }  
                             $shortlisted = $row['shortlisted'];
         
                      ?>
@@ -461,8 +504,14 @@ if($ok == 1 ){
                                         <?php
                                             $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
                                             $database->bind(':userid', $userid);                                             
-
-                                            $rows = $database->resultset();
+                                            try{
+                                                $rows = $database->resultset();
+                                            }catch (PDOException $e) {
+                                                             $error = true;
+                                                             $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                             include "serverlog.php";
+                                                             die("");
+                                            }    
                                             foreach($rows as $row){
                                                 $id = $row['id'];
                                                 $jobtitle = $row['jobtitle'];
@@ -477,7 +526,14 @@ if($ok == 1 ){
                                                 
                                                 $database->query('SELECT count(jobapplications.id) as resumes from jobapplications where jobid=:jobid');
                                                 $database->bind(':jobid', $id);
+                                                try{
                                                 $row2= $database->single();
+                                                }catch (PDOException $e) {
+                                                             $error = true;
+                                                             $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                             include "serverlog.php";
+                                                             die("");
+                                                }    
                                                 $resumes = $row2['resumes'];
                                               
                                        ?>

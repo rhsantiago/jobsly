@@ -17,11 +17,19 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+   include "serverlogconfig.php"; 
         $database->query('Delete from jobads where id = :jobid');
         $database->bind(':jobid', $jobid);
+        try{
         $database->execute();
-
+        $msg = "delete job ad";
+        include "serverlog.php";    
+        }catch (PDOException $e) {
+            $error = true;
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            include "serverlog.php";
+            die("");
+        }    
 ?>
 
  <?php
@@ -29,8 +37,15 @@ if(isset($_SESSION['user'])){
         $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
                                 $database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
-
+                                
+                                try{
                                 $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }
                                 foreach($rows as $row){
                                     $id = $row['id'];
                                     $jobtitle = $row['jobtitle'];

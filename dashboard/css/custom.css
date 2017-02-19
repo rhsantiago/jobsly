@@ -846,3 +846,13 @@ div .parsley-errors-list {
     color:  #fff;
     font-size: 12px;
 }
+
+.homename {
+    font-size: 22px !important;
+    font-weight: 400 !important;
+}
+
+.homepos {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+}

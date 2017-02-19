@@ -11,7 +11,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-
+    include "serverlogconfig.php";
     $database = new Database();
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
@@ -45,8 +45,14 @@ if(isset($_SESSION['user'])){
                           <?php
                                 $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel, jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobads.teaser,companyinfo.logo from jobads,savedapplications,companyinfo where savedapplications.userid = :userid and jobads.id = savedapplications.jobid and jobads.userid=companyinfo.userid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
-
+                                try{
                                 $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }     
                                 foreach($rows as $row){
                                     $id = $row['id'];
                                     $logo = $row['logo'];

@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
+   include "serverlogconfig.php";
     $database = new Database();
 
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -54,8 +54,14 @@ if(isset($_SESSION['user'])){
                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization, jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser,jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.id = :jobid and jobads.userid = :userid and companyinfo.userid = :userid and isactive=1 order by jobads.dateadded desc');
                                 $database->bind(':jobid', $jobid);
                                 $database->bind(':userid', $userid);
-                                
-                                $row = $database->single();
+                                try{
+                                    $row = $database->single();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }    
                                     $id = $row['id'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
@@ -78,8 +84,14 @@ if(isset($_SESSION['user'])){
                                
                                      $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1 and isreject=0) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
                                      $database->bind(':jobid', $id);   
-
-                                     $row = $database->single();       
+                                     try{
+                                         $row = $database->single();  
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     }   
                                      $aapps = $row['aapps'];
                                      $napps = $row['napps'];
                                      $shortlisted = $row['shortlisted'];

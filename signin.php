@@ -53,7 +53,15 @@ if($success == $email && $isverified == 1 && $usertype == 1){
             $_SESSION['userid'] = $id;
          if(!isset($_SESSION['usertype']))
             $_SESSION['usertype'] = $usertype;
+    /*
+        include('dashboard/log4php/Logger.php');
+        Logger::configure('../jobsly/dashboard/log4php/config.xml');
+        $log = Logger::getLogger('myLogger');
+        $log->info($_SESSION['user'] . " logged in"); 
+    */
         echo 'successemployer';
+    
+        
 }
 
 if($success == $email && $isverified == 1 && $usertype == 2){

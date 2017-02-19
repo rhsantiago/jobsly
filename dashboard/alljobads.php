@@ -13,8 +13,8 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
-    $database = new Database();
+   //include "serverlogconfig.php";
+   $database = new Database();
 
     
         
@@ -56,8 +56,14 @@ if(isset($_SESSION['user'])){
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
-
+                                try{
                                 $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }
                                 foreach($rows as $row){
                                     $id = $row['id'];
                                     $jobtitle = $row['jobtitle'];

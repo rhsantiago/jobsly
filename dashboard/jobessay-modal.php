@@ -56,12 +56,19 @@ if($mode=='del'){
     
     
 }else{
+    include "serverlogconfig.php";
     $database = new Database();
 
     $database->query('SELECT * from jobessays where id = :essayid');
     $database->bind(':essayid', $essayid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+     }     
     $id = $row['id'];
     $question = $row['question'];
     

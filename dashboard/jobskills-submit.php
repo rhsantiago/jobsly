@@ -3,6 +3,7 @@
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
 
@@ -20,13 +21,27 @@ $database = new Database();
     $database->bind(':jobskilltag', $jobskilltag);
     $database->bind(':jobskilltagdate', $jobskilltagdate);
     $database->bind(':userid', $userid);
-       
-    $database->execute();
+    try{   
+        $database->execute();
+        $msg = "insert jobskill ";
+        include "serverlog.php";
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }    
   
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');
                                                     $database->bind(':jobid', $jobid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{      
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    }
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

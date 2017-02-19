@@ -5,7 +5,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
    $usertype = $_SESSION['usertype'];
-    
+    include "serverlogconfig.php";
     include 'Database.php';
     $database = new Database();
 
@@ -13,8 +13,14 @@ if(isset($_SESSION['user'])){
     $database->bind(':email', $user);
     $database->bind(':password', $password);
     $database->bind(':usertype', $usertype);
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+     $error = true;
+     $msg = $e->getTraceAsString()." ".$e->getMessage();
+     include "serverlog.php";
+     die("");
+    }     
     $ok = $row['ok'];
 }
 
@@ -35,9 +41,15 @@ if($ok == 1 ){
     $logo='';
     
      $database->query('SELECT * from companyinfo where userid = :userid');
-     $database->bind(':userid', $userid);   
-     $row = $database->single();
-    
+     $database->bind(':userid', $userid);
+     try{
+         $row = $database->single();
+     }catch (PDOException $e) {
+         $error = true;
+         $msg = $e->getTraceAsString()." ".$e->getMessage();
+         include "serverlog.php";
+         die("");
+     }   
      $id = $row['id'];
     // $userid = $row['userid'];
      $companyname = $row['companyname'];

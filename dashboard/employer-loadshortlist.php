@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
+    include "serverlogconfig.php";
     $database = new Database();
 
     
@@ -48,9 +48,14 @@ if(isset($_SESSION['user'])){
                                 $database->query('SELECT id,jobtitle,company from jobads where id =:jobid and userid = :userid and isactive=1 order by dateadded desc');
                                 $database->bind(':userid', $userid);
                                 $database->bind(':jobid', $jobid);
-
-                                $row = $database->single(); 
-                               
+                                try{
+                                    $row = $database->single(); 
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }
                                     $jobid = $row['id'];
                                     $jobtitle = $row['jobtitle'];
                                     $company = $row['company'];
@@ -71,8 +76,8 @@ if(isset($_SESSION['user'])){
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Specialization</th>
-                                                    <th>Job Position</th>                                                   
+                                                    <th class="col-md-2">Specialization</th>
+                                                    <th class="col-md-2">Job Position</th>                                                   
                                                     <th>Salary</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
@@ -89,8 +94,14 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.userid=workexperience.userid 
                                             and jobapplications.isshortlisted=1');
                                             $database->bind(':jobid', $jobid);                                             
-
-                                            $rows2 = $database->resultset();
+                                            try{    
+                                                $rows2 = $database->resultset();
+                                            }catch (PDOException $e) {
+                                                $error = true;
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                include "serverlog.php";
+                                                die("");
+                                            }    
                                             foreach($rows2 as $row2){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];

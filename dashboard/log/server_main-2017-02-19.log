@@ -1,0 +1,22 @@
+INFO - 2017-02-19 15:11:48 - reggie1@gmail.com logged in
+INFO - 2017-02-19 15:19:52 - reggie1@gmail.com logged in
+INFO - 2017-02-19 15:24:44 - reggie1@gmail.com logged in
+INFO - 2017-02-19 15:27:25 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:27:25 - reggie1@gmail.com logged in
+INFO - 2017-02-19 15:29:11 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:29:11 - reggie1@gmail.com SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companynam' in 'field list'
+INFO - 2017-02-19 15:36:25 - reggie1@gmail.com logged in
+INFO - 2017-02-19 15:46:33 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:46:33 - reggie1@gmail.com employer-home line 193 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companynam' in 'field list'
+INFO - 2017-02-19 15:48:46 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:48:46 - reggie1@gmail.com employer-home line 193 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companynam' in 'field list'
+INFO - 2017-02-19 15:52:20 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:52:20 - reggie1@gmail.com C:\xampp\htdocs\jobsly\dashboard\Database.php 59 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companynam' in 'field list'
+INFO - 2017-02-19 15:53:48 - reggie1@gmail.com logged in
+ERROR - 2017-02-19 15:53:48 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-home.php(190): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'companynam' in 'field list'
+INFO - 2017-02-19 16:09:18 - reggie1@gmail.com logged in
+INFO - 2017-02-19 18:00:30 - reggie1@gmail.com logged in
+INFO - 2017-02-19 18:02:33 - reggie1@gmail.com logged in

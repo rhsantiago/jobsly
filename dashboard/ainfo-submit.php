@@ -13,7 +13,7 @@ if(isset($_POST['wrelocate'])){ $wrelocate = $_POST['wrelocate']; }
 if(isset($_POST['pholder'])){ $pholder = $_POST['pholder']; }
 if(isset($_POST['languages'])){ $languages = $_POST['languages']; }
 
-
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
     
@@ -41,8 +41,15 @@ $database = new Database();
     $database->bind(':wrelocate', $wrelocate);
     $database->bind(':pholder', $pholder);
     $database->bind(':languages', $languages);
-
+    try{
     $database->execute();
-  
+    $msg = "additionalinfo submit ";
+    include "serverlog.php";    
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }
 ?> 
   

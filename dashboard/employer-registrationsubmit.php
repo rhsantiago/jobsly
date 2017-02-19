@@ -15,6 +15,7 @@ if(isset($_POST['numemp'])){ $numemp = $_POST['numemp']; }
 if(isset($_POST['ctype'])){ $ctype = $_POST['ctype']; }
 if(isset($_POST['cdesc'])){ $cdesc = $_POST['cdesc']; }
 
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
 
@@ -39,7 +40,15 @@ $database = new Database();
     $database->bind(':cdesc', $cdesc);
 
     $database->bind(':userid', $userid);
-       
-    $database->execute();
+    try{   
+        $database->execute();
+        $msg = "full registration submit ";
+        include "serverlog.php";    
+    }catch (PDOException $e) {
+          $error = true;
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+          include "serverlog.php";
+          die("");
+    }    
     echo 'success';
 ?> 

@@ -11,14 +11,19 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
+    include "serverlogconfig.php";
     $database = new Database();
 
     $database->query('SELECT * from jobads where userid = :userid');
     $database->bind(':userid', $userid);   
-
-    $row = $database->single();
- 
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }
 
     $mode = 'insert';
    
@@ -126,8 +131,14 @@ if(isset($_SESSION['user'])){
                                       <?php                     
                                           $database->query('SELECT id,question FROM jobessays where userid = :userid');
                                           $database->bind(':userid', $userid);  
-                                          $rows = $database->resultset();
-
+                                          try{                     
+                                              $rows = $database->resultset();
+                                          }catch (PDOException $e) {
+                                                $error = true;
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                include "serverlog.php";
+                                                die("");
+                                          }                     
                                           foreach($rows as $row){
                                                $id=$row['id'];
                                                $question=$row['question'];
