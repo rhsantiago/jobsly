@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+    
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
@@ -33,6 +38,8 @@ if(isset($_POST['essay'])){ $essay = $_POST['essay']; }
 
 date_default_timezone_set('Asia/Manila');
 $dateadded = date("Y-m-d");
+$logtimestamp = date("Y-m-d H:i:s");
+include "serverlogconfig.php";
 
 include 'Database.php';
 $database = new Database();
@@ -71,21 +78,39 @@ $database = new Database();
         $database->bind(':wrelocate', $wrelocate);
         $database->bind(':essay', $essay);
        
-
-        $database->execute();
-
+        try{
+            $database->execute();
+            $msg = "jobad ".$mode;
+            $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        }catch (PDOException $e) {
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            die("");
+        }         
         if($mode=='insert'){
             $database->query('SELECT id from jobads where userid = :userid and jobtitle = :jobtitle order by id desc');
             $database->bind(':userid', $userid);
-            $database->bind(':jobtitle', $jobtitle);    
-            $row = $database->single();
+            $database->bind(':jobtitle', $jobtitle);  
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {                
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }   
             $jobid = $row['id'];
 
             if($templateid > 0){
                 $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
                 $database->bind(':templateid', $templateid);
-                $rows = $database->resultset();
-                date_default_timezone_set('Asia/Manila');
+                try{
+                    $rows = $database->resultset();
+                }catch (PDOException $e) {  
+                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                    die("");
+                }
+               
                 $jobskilltagdate = date("Y-m-d");
 
                 foreach($rows as $row){
@@ -99,13 +124,23 @@ $database = new Database();
                     $database->bind(':jobskill', $jobskill);  
                     $database->bind(':jobskilltag', $jobskilltag);
                     $database->bind(':jobskilltagdate', $jobskilltagdate);
-                    $database->execute();
+                    try{
+                        $database->execute();
+                        $msg = "jobskills ".$mode;
+                        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
+                    }catch (PDOException $e) { 
+                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                        die("");
+                    }     
                 }
             }
 
         }
         include 'jobskills-form.php';
-    
+}else{
+    header("Location: logout.php");
+}
 
     
 ?> 

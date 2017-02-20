@@ -10,13 +10,19 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-    
+    include "serverlogconfig.php";
     $database = new Database();
     
     $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
     $database->bind(':userid', $userid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
     $maxposition = $row['maxposition'];
     $fname = $row['fname'];
     $lname = $row['lname'];
@@ -53,8 +59,14 @@ jQuery(document).ready(function ($) {
               <?php
               $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
               $database->bind(':userid', $userid);   
-
-                      $row = $database->single();             
+                      try{                              
+                          $row = $database->single();   
+                      }catch (PDOException $e) {
+                            $error = true;
+                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                            include "serverlog.php";
+                            die("");
+                      }                        
                       $mnumber = $row['mnumber'];
                       $myemail = $row['myemail'];
                       $landline = $row['landline'];                                
@@ -123,8 +135,14 @@ jQuery(document).ready(function ($) {
         <?php
              $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
              $database->bind(':userid', $userid);  
-             $rows = $database->resultset();
-             
+             try{
+                $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+             } 
              $isleft = true;
              $datefloat ='';
            
@@ -188,8 +206,14 @@ jQuery(document).ready(function ($) {
             
             $database->query('SELECT * FROM educationandtraining where userid = :userid order by pgrad1graddate desc');
              $database->bind(':userid', $userid);  
-             $rows = $database->resultset();
-                  
+             try{   
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+            }      
              $datefloat ='';                               
              foreach($rows as $row){
              $pgrad1uni = $row['pgrad1uni'];
@@ -253,8 +277,14 @@ jQuery(document).ready(function ($) {
                                             
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by colgraddate desc');
              $database->bind(':userid', $userid);  
-             $rows = $database->resultset();
-                         
+             try{
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+             }             
              $datefloat ='';                               
              foreach($rows as $row){
                 $coldate = explode("-", $row['colgraddate']);
@@ -316,8 +346,14 @@ jQuery(document).ready(function ($) {
             
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by hsgraddate desc');
              $database->bind(':userid', $userid);  
-             $rows = $database->resultset();
-             
+             try{ 
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+             } 
              $datefloat ='';                               
              foreach($rows as $row){
                  $hsgraddate= $row['hsgraddate'];

@@ -10,13 +10,19 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-    
+    include "serverlogconfig.php";
     $database = new Database();
 
     $database->query('SELECT * from skilltags where userid = :userid');
     $database->bind(':userid', $userid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
     $id = $row['id'];
     $mode = 'insert';
 }
@@ -92,8 +98,14 @@ if(isset($_SESSION['user'])){
                                                                      <?php
                                                     $database->query('SELECT * FROM skilltags where userid = :userid');
                                                     $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{                
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         $skillid = $row['id'];
                                                         $skilltag = $row['skilltag'];

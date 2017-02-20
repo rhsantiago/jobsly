@@ -10,8 +10,15 @@
 		                     <div class="col-md-12">
                                   <?php
                                 $database->query('SELECT * from jobads order by dateadded desc');
-                               
-                                $rows = $database->resultset();
+                                include "serverlogconfig.php";
+                                try{ 
+                                    $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $error = true;
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    include "serverlog.php";
+                                    die("");
+                                }     
                                 foreach($rows as $row){
                                     $jobid = $row['id'];
                                     $jobtitle = $row['jobtitle'];
@@ -156,8 +163,14 @@
                                                       
                                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                                     $database->bind(':jobid', $jobid);
-                                                                    $rows = $database->resultset();
-                                                                           // echo $row['name'];
+                                                                    try{
+                                                                        $rows = $database->resultset();
+                                                                    }catch (PDOException $e) {
+                                                                        $error = true;
+                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                        include "serverlog.php";
+                                                                        die("");
+                                                                    } 
                                                                     foreach($rows as $row){
                                                                         echo "<li><span class='jobcardothers'>";
                                                                         echo $row['jobskill'];
@@ -195,8 +208,14 @@
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

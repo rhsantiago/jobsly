@@ -6,7 +6,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 include 'Database.php';
 $database = new Database();
-
+include "serverlogconfig.php";
 
 if($skills=='skilltag'){
     if(isset($_POST['skilltag'])){ $skilltag = $_POST['skilltag']; }
@@ -22,13 +22,25 @@ if($skills=='skilltag'){
     $database->bind(':skilltagdate', $skilltagdate);
 }
  $database->bind(':userid', $userid);
-       
- $database->execute();
+ try{      
+    $database->execute();
+ }catch (PDOException $e) {
+    $error = true;
+    $msg = $e->getTraceAsString()." ".$e->getMessage();
+    include "serverlog.php";
+    die("");
+}     
   
                                                     $database->query('SELECT * FROM skilltags where userid = :userid');
-                                                    $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    $database->bind(':userid', $userid); 
+                                                    try{  
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         $skillid = $row['id'];
                                                         $skilltag = $row['skilltag'];

@@ -13,14 +13,19 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
    
-   
+    include "serverlogconfig.php";
     $database = new Database();
  
     $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
     $database->bind(':userid', $userid);
     $database->bind(':jobid', $jobid);
-    
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }    
     $id = $row['id'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
@@ -61,6 +66,8 @@ if(isset($_SESSION['user'])){
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+}else{
+    header("Location: logout.php");
 }
 ?>
     <div class="row">
@@ -232,8 +239,13 @@ if(isset($_SESSION['user'])){
                                                       
                                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                                     $database->bind(':jobid', $jobid);
-                                                                    $rows = $database->resultset();
-                                                                           // echo $row['name'];
+                                                                    try{
+                                                                        $rows = $database->resultset();
+                                                                    }catch (PDOException $e) {
+                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                                        die("");
+                                                                    } 
                                                                     foreach($rows as $row){
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
@@ -271,8 +283,14 @@ if(isset($_SESSION['user'])){
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{        
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

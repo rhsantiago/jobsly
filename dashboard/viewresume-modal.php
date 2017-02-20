@@ -13,13 +13,20 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
    if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
    if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
-   if(isset($_POST['view'])){ $view = $_POST['view']; }    
+   if(isset($_POST['view'])){ $view = $_POST['view']; }  
+    include "serverlogconfig.php";
     $database = new Database();
     
     $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
     $database->bind(':userid', $applicantid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
     $maxposition = $row['maxposition'];
     $photo = $row['photo'];
     $fname = $row['fname'];
@@ -30,7 +37,14 @@ if(isset($_SESSION['user'])){
      $database->query(' UPDATE jobapplications SET isnew = 0 where jobid= :jobid and userid = :userid');
      $database->bind(':jobid', $jobid);  
      $database->bind(':userid', $applicantid);
-     $database->execute();
+     try{
+        $database->execute();
+     }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+     } 
 }
 ?>
 <script>
@@ -62,8 +76,14 @@ jQuery(document).ready(function ($) {
               <?php
               $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
               $database->bind(':userid', $applicantid);   
-
-                      $row = $database->single();             
+                      try{                       
+                          $row = $database->single();  
+                      }catch (PDOException $e) {
+                            $error = true;
+                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                            include "serverlog.php";
+                            die("");
+                      }     
                       $mnumber = $row['mnumber'];
                       $myemail = $row['myemail'];
                       $landline = $row['landline'];                                
@@ -131,8 +151,14 @@ jQuery(document).ready(function ($) {
         <?php
              $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
              $database->bind(':userid', $applicantid);  
-             $rows = $database->resultset();
-             
+             try{
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                    $error = true;
+                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                    include "serverlog.php";
+                    die("");
+             } 
              $isleft = true;
              $datefloat ='';
            
@@ -194,10 +220,16 @@ jQuery(document).ready(function ($) {
         <?php
              }
             
-            $database->query('SELECT * FROM educationandtraining where userid = :userid order by pgrad1graddate desc');
-             $database->bind(':userid', $applicantid);  
-             $rows = $database->resultset();
-                  
+             $database->query('SELECT * FROM educationandtraining where userid = :userid order by pgrad1graddate desc');
+             $database->bind(':userid', $applicantid); 
+             try{
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+             }      
              $datefloat ='';                               
              foreach($rows as $row){
              $pgrad1uni = $row['pgrad1uni'];
@@ -260,8 +292,15 @@ jQuery(document).ready(function ($) {
              }
                                             
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by colgraddate desc');
-             $database->bind(':userid', $applicantid);  
-             $rows = $database->resultset();
+             $database->bind(':userid', $applicantid); 
+             try{
+                $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+            } 
                          
              $datefloat ='';                               
              foreach($rows as $row){
@@ -322,9 +361,15 @@ jQuery(document).ready(function ($) {
              }
              }
              $database->query('SELECT * FROM educationandtraining where userid = :userid order by hsgraddate desc');
-             $database->bind(':userid', $applicantid);  
-             $rows = $database->resultset();
-                         
+             $database->bind(':userid', $applicantid); 
+             try{
+                 $rows = $database->resultset();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+             }             
              $datefloat ='';                               
              foreach($rows as $row){
                  $hsdate = explode("-", $row['hsgraddate']);
@@ -414,7 +459,14 @@ jQuery(document).ready(function ($) {
 <?php
 $database->query('select (select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
 $database->bind(':jobid', $jobid);
-$row = $database->single();   
+try{
+    $row = $database->single();   
+}catch (PDOException $e) {
+    $error = true;
+    $msg = $e->getTraceAsString()." ".$e->getMessage();
+    include "serverlog.php";
+    die("");
+} 
 $napps = $row['napps'];
 ?>
 <script>

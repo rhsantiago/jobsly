@@ -16,7 +16,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-    
+    include "serverlogconfig.php";
     $database = new Database();
 }
 ?>
@@ -44,8 +44,14 @@ if(isset($_SESSION['user'])){
                                             <?php
                                                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
                                                     $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         
                                                         $sdate = explode("-", $row['startdate']);

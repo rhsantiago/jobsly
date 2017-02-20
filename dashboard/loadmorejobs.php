@@ -13,12 +13,19 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['next'])){ $next = $_POST['next']; } 
   $database = new Database();
   include "Jobad.php";
-    
+  include "serverlogconfig.php";  
   $jobadsarray = array();    
     
    $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
-  // $database->bind(':next', $next);                            
-   $rows = $database->resultset();
+  // $database->bind(':next', $next);   
+   try{ 
+       $rows = $database->resultset();
+   }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
 if(!empty($rows)){    
    foreach($rows as $row){
       $jobid = $row['id'];
@@ -87,7 +94,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $applyrow = $database->single();                                     
+                                     try{
+                                         $applyrow = $database->single();      
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     } 
                                      if(!empty($applyrow)){
                                          $datamode = "view";
                                      }else{
@@ -97,8 +111,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $savedrow = $database->single();   
-                               
+                                     try{
+                                         $savedrow = $database->single();   
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     } 
                                 
                              ?>
                                 
@@ -197,8 +217,14 @@ if(!empty($rows)){
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobad->getjobid());
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                     } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';
@@ -240,7 +266,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $applyrow = $database->single();                                     
+                                     try{
+                                         $applyrow = $database->single();   
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                    }     
                                      if(!empty($applyrow)){
                                          $datamode = "view";
                                      }else{
@@ -250,7 +283,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $savedrow = $database->single()
+                                     try{
+                                         $savedrow = $database->single();
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     } 
                              ?>
                                 
                                 <section class="blog-post">
@@ -348,8 +388,14 @@ if(!empty($rows)){
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobad->getjobid());
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';
@@ -390,7 +436,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $applyrow = $database->single();                                     
+                                     try{
+                                         $applyrow = $database->single();   
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     } 
                                      if(!empty($applyrow)){
                                          $datamode = "view";
                                      }else{
@@ -400,7 +453,14 @@ if(!empty($rows)){
                                      $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     $savedrow = $database->single();
+                                     try{
+                                        $savedrow = $database->single();
+                                     }catch (PDOException $e) {
+                                        $error = true;
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        include "serverlog.php";
+                                        die("");
+                                     }    
                              ?>
                                 
                                 <section class="blog-post">
@@ -498,8 +558,14 @@ if(!empty($rows)){
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobad->getjobid());
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                     }
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

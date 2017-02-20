@@ -12,18 +12,8 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+   include "serverlogconfig.php"; 
     if (isset($templateid)){
-   /*
-    $database = new Database();
- 
-    $database->query('SELECT * from skilltags where userid = :userid');
-    $database->bind(':userid', $userid);   
-
-    $row = $database->single();
-    $id = $row['id'];
-  */
-    
-        
     }else{
         if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
     }
@@ -153,8 +143,14 @@ if(isset($_SESSION['user'])){
                                                       
                                                                             $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
                                                                             $database->bind(':templateid', $templateid);
-                                                                            $rows = $database->resultset();
-                                                                                   // echo $row['name'];
+                                                                            try{
+                                                                                $rows = $database->resultset();
+                                                                            }catch (PDOException $e) {
+                                                                                $error = true;
+                                                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                                include "serverlog.php";
+                                                                                die("");
+                                                                            } 
                                                                             foreach($rows as $row){
                                                                                 echo $row['jobskilltag'];
                                                                                 echo ' ';

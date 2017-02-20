@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
     
-  
+    include "serverlogconfig.php";
     $database = new Database();
 
     $mode = 'insert';
@@ -106,8 +106,14 @@ if(isset($_SESSION['user'])){
                                                    <?php                     
                                                     $database->query('SELECT id,jobtitle FROM jobtemplates where userid = :userid');
                                                     $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    }        
                                                     foreach($rows as $row){
                                                         $templateid=$row['id'];
                                                         $jobtitle=$row['jobtitle'];

@@ -10,19 +10,26 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
-  
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
+    include "serverlogconfig.php";
     $database = new Database();
 
     $database->query('SELECT * from jobads where userid = :userid');
     $database->bind(':userid', $userid);   
-
-    $row = $database->single();
- 
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    } 
 
     $mode = 'insert';
    
     
+}else{
+    header("Location: logout.php");
 }
 
 ?>
@@ -111,8 +118,13 @@ if(isset($_SESSION['user'])){
                                                    <?php                     
                                                     $database->query('SELECT id,jobtitle FROM jobtemplates where userid = :userid');
                                                     $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                        die("");
+                                                    }        
                                                     foreach($rows as $row){
                                                         $templateid=$row['id'];
                                                         $jobtitle=$row['jobtitle'];

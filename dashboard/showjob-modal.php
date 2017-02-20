@@ -15,14 +15,20 @@ if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
 
-
+ include "serverlogconfig.php";
  $database = new Database();
  
     $database->query('SELECT * from jobads,companyinfo where jobads.id = :jobid and jobads.userid=companyinfo.userid');
    
     $database->bind(':jobid', $jobid);
-    
-    $row = $database->single();
+    try{
+        $row = $database->single();
+     }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }    
     $id = $row['id'];
     $logo = $row['logo'];
     $companyid = $row['userid'];
@@ -76,7 +82,14 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     if(strcmp($isjobseeker,'jobseeker')==0){
         $database->query('update jobads set views=views + 1 where id=:jobid');   
         $database->bind(':jobid', $jobid);    
-        $database->execute();
+        try{
+            $database->execute();
+        }catch (PDOException $e) {
+            $error = true;
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            include "serverlog.php";
+            die("");
+        } 
         
     }
 
@@ -189,8 +202,14 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                       
                                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                                     $database->bind(':jobid', $jobid);
-                                                                    $rows = $database->resultset();
-                                                                           // echo $row['name'];
+                                                                    try{
+                                                                        $rows = $database->resultset();
+                                                                    }catch (PDOException $e) {
+                                                                        $error = true;
+                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                        include "serverlog.php";
+                                                                        die("");
+                                                                    } 
                                                                     foreach($rows as $row){
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
@@ -231,7 +250,14 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                             $database->query('SELECT * from jobapplications where jobid= :jobid and userid = :userid');
                                             $database->bind(':userid', $userid);
                                             $database->bind(':jobid', $jobid);
-                                            $checkrow = $database->single();
+                                            try{
+                                                $checkrow = $database->single();
+                                            }catch (PDOException $e) {
+                                                $error = true;
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                include "serverlog.php";
+                                                die("");
+                                            } 
                                            if(strcmp($isjobseeker,'jobseeker')==0){
                                                  
                                           if(empty($checkrow)){
@@ -335,8 +361,14 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                       
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

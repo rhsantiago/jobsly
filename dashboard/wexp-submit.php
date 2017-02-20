@@ -19,7 +19,7 @@ if($mode!='del'){
     if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 }
-
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
     
@@ -46,13 +46,28 @@ $database = new Database();
         $database->bind(':currentempcb', $currentempcb);
         $database->bind(':jobdesc', $jobdesc);
     }
-    $database->execute();
+    try{
+        $database->execute();
+        $msg = "workexperience ".$mode.;
+        include "serverlog.php";
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    } 
     
 
                                                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
-                                                    $database->bind(':userid', $userid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    $database->bind(':userid', $userid);
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    }
                                                     foreach($rows as $row){
                                                         
                                                         $sdate = explode("-", $row['startdate']);

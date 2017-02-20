@@ -19,7 +19,7 @@ $birthday = $bday[2] .'-'.$bday[0].'-'.$bday[1];
 if(isset($_POST['gender'])){ $gender = $_POST['gender']; }
 if(isset($_POST['nationality'])){ $nationality = $_POST['nationality']; }
 
-
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
     
@@ -52,8 +52,15 @@ $database = new Database();
     $database->bind(':gender', $gender);
     $database->bind(':nationality', $nationality);
     
-
-    $database->execute();
-  
+    try{
+        $database->execute();
+        $msg = "personalinformation ".$mode;
+        include "serverlog.php";
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    } 
 ?> 
   

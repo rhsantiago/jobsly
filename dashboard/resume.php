@@ -11,6 +11,7 @@ if(isset($_SESSION['user'])){
 
 if($ok == 1 ){
     $ajax = $_GET['ajax'];
+    include "serverlogconfig.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -187,8 +188,14 @@ if($ok == 1 ){
     <?php
             $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
             $database->bind(':userid', $userid);   
-
-            $row = $database->single();
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+            }     
             $maxposition = $row['maxposition'];
             $fname = $row['fname'];
             $lname = $row['lname'];

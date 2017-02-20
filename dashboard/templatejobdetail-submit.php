@@ -32,7 +32,7 @@ if(isset($_POST['essay'])){ $essay = $_POST['essay']; }
 
 date_default_timezone_set('Asia/Manila');
 $dateadded = date("Y-m-d");
-
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
     
@@ -74,14 +74,28 @@ $database = new Database();
     $database->bind(':wrelocate', $wrelocate);
     $database->bind(':essay', $essay);
     
-
-    $database->execute();
-    
+    try{
+        $database->execute();
+        $msg = "jobtemplates ".$mode;
+        include "serverlog.php";
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    } 
     if($mode=='insert'){
         $database->query('SELECT id from jobtemplates where userid = :userid and jobtitle = :jobtitle order by id desc');
         $database->bind(':userid', $userid);
-        $database->bind(':jobtitle', $jobtitle);    
-        $row = $database->single();
+        $database->bind(':jobtitle', $jobtitle);  
+        try{
+            $row = $database->single();
+        }catch (PDOException $e) {
+            $error = true;
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            include "serverlog.php";
+            die("");
+        }     
         $templateid = $row['id'];
     
     }

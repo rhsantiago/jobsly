@@ -5,7 +5,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 include 'Database.php';
 $database = new Database();
-
+include "serverlogconfig.php";
 
 
     if(isset($_POST['jobskilltag'])){ $jobskilltag = $_POST['jobskilltag']; }
@@ -20,13 +20,24 @@ $database = new Database();
     $database->bind(':jobskilltag', $jobskilltag);
     $database->bind(':jobskilltagdate', $jobskilltagdate);
     $database->bind(':userid', $userid);
-       
-    $database->execute();
-  
+    try{   
+        $database->execute();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    } 
                                                     $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');
-                                                    $database->bind(':templateid', $templateid);  
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    $database->bind(':templateid', $templateid); 
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

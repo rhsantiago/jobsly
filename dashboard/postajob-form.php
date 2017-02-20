@@ -43,8 +43,10 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-   
-   $database = new Database();    
+   include "serverlogconfig.php";
+   $database = new Database();
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s"); 
    if($jobid <= 0){
             $template = $_POST['template'];
             $mode = $_POST['mode'];
@@ -57,9 +59,13 @@ if(isset($_SESSION['user'])){
                 
                 $templateid = $template;
                 $database->bind(':userid', $userid);   
-            
-             $row = $database->single();
-
+             try{  
+                 $row = $database->single();
+             }catch (PDOException $e) {
+                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                    die("");
+             }        
              $jobtitle = $row['jobtitle'];
              $company = $row['company'];    
              $specialization = $row['specialization'];
@@ -101,9 +107,13 @@ if(isset($_SESSION['user'])){
              $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
              $database->bind(':jobid', $jobid);
              $database->bind(':userid', $userid);   
-            
-             $row = $database->single();
-
+             try{
+                 $row = $database->single();
+             }catch (PDOException $e) {
+                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                    die("");
+             } 
              $jobtitle = $row['jobtitle'];
              $company = $row['company']; 
              $specialization = $row['specialization'];
@@ -143,6 +153,8 @@ if(isset($_SESSION['user'])){
    }
     
              
+}else{
+    header("Location: logout.php");
 }
 
 
@@ -466,8 +478,13 @@ if($mode==''){
                                                                             <?php                     
                                                                                   $database->query('SELECT id,question FROM jobessays where userid = :userid');
                                                                                   $database->bind(':userid', $userid);  
-                                                                                  $rows = $database->resultset();
-
+                                                                                  try{  
+                                                                                      $rows = $database->resultset();
+                                                                                  }catch (PDOException $e) {
+                                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                                                        die("");
+                                                                                   }   
                                                                                   foreach($rows as $row){
                                                                                        $id=$row['id'];
                                                                                        $question=$row['question'];

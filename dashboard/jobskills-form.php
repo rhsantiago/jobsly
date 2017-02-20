@@ -7,6 +7,8 @@ if (session_status() == PHP_SESSION_NONE) {
         }
 }
 
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -28,6 +30,9 @@ if(isset($_SESSION['user'])){
         if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
     }
     $mode = 'insert';
+
+}else{
+    header("Location: logout.php");
 }
 ?>
     <div class="row">
@@ -153,11 +158,10 @@ if(isset($_SESSION['user'])){
                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                     $database->bind(':jobid', $jobid);
                                                     try{                
-                                                    $rows = $database->resultset();
+                                                        $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){

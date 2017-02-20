@@ -2,20 +2,35 @@
 
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
-
+include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
 
     $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
     $database->bind(':userid', $userid);
     $database->bind(':jobid', $jobid);
-    $checkrow = $database->single();
+    try{
+        $checkrow = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
     if(empty($checkrow)){
         $database->query('INSERT INTO savedapplications (id, jobid, userid) VALUES (NULL, :jobid,:userid)');
         $database->bind(':jobid', $jobid);  
         $database->bind(':userid', $userid);
-      
-        $database->execute();
+        try{
+            $database->execute();
+            $msg = "savedapplications insert";
+            include "serverlog.php";
+        }catch (PDOException $e) {
+            $error = true;
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            include "serverlog.php";
+            die("");
+        }     
         $msg = 'This job ad has been saved. View it under Saved Applications.';
     }else{
         $msg ='You already saved this job ad.';

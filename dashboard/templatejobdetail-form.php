@@ -48,7 +48,7 @@ if(isset($_SESSION['user'])){
    $userid = $_SESSION['userid'];
    
   
-
+   include "serverlogconfig.php"; 
    $database = new Database();
    if($template > 0){
        $templateid = $template;
@@ -60,9 +60,14 @@ if(isset($_SESSION['user'])){
             $database->query('SELECT * from jobtemplates where userid = :userid and id = :template');
             $database->bind(':userid', $userid);   
             $database->bind(':template', $template); 
-     
-            $row = $database->single();
-
+             try{
+                $row = $database->single();
+             }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+            }        
              $jobtitle = $row['jobtitle'];
              $company = $row['company'];
              $specialization = $row['specialization'];

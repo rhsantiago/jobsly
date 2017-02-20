@@ -12,14 +12,20 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+    include "serverlogconfig.php";
     $database = new Database();
  
     $database->query('SELECT * from jobtemplates where userid = :userid and id = :templateid');
     $database->bind(':userid', $userid);
     $database->bind(':templateid', $templateid);
-    
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $error = true;
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        include "serverlog.php";
+        die("");
+    }     
     $id = $row['id'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
@@ -231,8 +237,14 @@ if(isset($_SESSION['user'])){
                                                       
                                                                     $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
                                                                     $database->bind(':templateid', $templateid);
-                                                                    $rows = $database->resultset();
-                                                                           // echo $row['name'];
+                                                                    try{
+                                                                        $rows = $database->resultset();
+                                                                    }catch (PDOException $e) {
+                                                                        $error = true;
+                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                                        include "serverlog.php";
+                                                                        die("");
+                                                                    } 
                                                                     foreach($rows as $row){
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
@@ -270,8 +282,14 @@ if(isset($_SESSION['user'])){
                                                       
                                                     $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');                                                   
                                                     $database->bind(':templateid', $templateid);
-                                                    $rows = $database->resultset();
-                                                           // echo $row['name'];
+                                                    try{        
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $error = true;
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        include "serverlog.php";
+                                                        die("");
+                                                    } 
                                                     foreach($rows as $row){
                                                         echo $row['jobskilltag'];
                                                         echo ' ';

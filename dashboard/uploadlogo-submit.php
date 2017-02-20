@@ -39,6 +39,7 @@ if ($uploadOk == 0) {
 } else {
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        include "serverlogconfig.php";
         include 'Database.php';
         $database = new Database();
         if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -47,8 +48,14 @@ if ($uploadOk == 0) {
           
             $database->bind(':logo', $target_file); 
             $database->bind(':userid', $userid);
-
-            $database->execute();
+            try{
+                $database->execute();
+            }catch (PDOException $e) {
+                $error = true;
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                include "serverlog.php";
+                die("");
+            } 
         header('Location: employer-registrationfull.php');
     } else {
         echo "Sorry, there was an error uploading your file.";
