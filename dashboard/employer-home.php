@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
 if($ok == 1 ){
         include "serverlogconfig.php";
         $msg = "logged in";
-        include "serverlog.php";
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
 ?>
 <!doctype html>
 <html lang="en">
@@ -189,10 +189,9 @@ if($ok == 1 ){
             try {
             $row = $database->single();      
             }catch (PDOException $e) {
-                 $error = true;
-                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                 include "serverlog.php";
-                 die("");
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
             }
             $companyname = $row['companyname'];
             $cperson = $row['cperson'];
@@ -260,10 +259,9 @@ if($ok == 1 ){
     try{
         $row = $database->single();
     }catch (PDOException $e) {
-                 $error = true;
-                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                 include "serverlog.php";
-                 die("");
+       $msg = $e->getTraceAsString()." ".$e->getMessage();
+       $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+       die("");
     }
     $id = $row['id'];
     $companyname = $row['companyname'];
@@ -398,10 +396,9 @@ if($ok == 1 ){
                             try{
                             $row = $database->single();
                             }catch (PDOException $e) {
-                                  $error = true;
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  include "serverlog.php";
-                                  die("");
+                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                 die("");
                              }
                             $ajads = $row['ajads'];
     
@@ -410,9 +407,8 @@ if($ok == 1 ){
                             try{
                             $row = $database->single();
                             }catch (PDOException $e) {
-                                  $error = true;
                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  include "serverlog.php";
+                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                   die("");
                             }    
                             $totapplicants = $row['totapplicants'];
@@ -422,10 +418,9 @@ if($ok == 1 ){
                             try{    
                             $row = $database->single();
                             }catch (PDOException $e) {
-                                  $error = true;
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  include "serverlog.php";
-                                  die("");
+                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                 die("");
                             }    
                             $napps = $row['napps'];
     
@@ -434,9 +429,8 @@ if($ok == 1 ){
                             try{    
                             $row = $database->single();
                             }catch (PDOException $e) {
-                                  $error = true;
                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  include "serverlog.php";
+                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                   die("");
                             }  
                             $shortlisted = $row['shortlisted'];
@@ -507,10 +501,9 @@ if($ok == 1 ){
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {
-                                                             $error = true;
-                                                             $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                             include "serverlog.php";
-                                                             die("");
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                die("");
                                             }    
                                             foreach($rows as $row){
                                                 $id = $row['id'];
@@ -529,10 +522,9 @@ if($ok == 1 ){
                                                 try{
                                                 $row2= $database->single();
                                                 }catch (PDOException $e) {
-                                                             $error = true;
-                                                             $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                             include "serverlog.php";
-                                                             die("");
+                                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                   die("");
                                                 }    
                                                 $resumes = $row2['resumes'];
                                               

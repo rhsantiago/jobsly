@@ -12,7 +12,8 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
 
@@ -58,9 +59,8 @@ if(isset($_SESSION['user'])){
                                 try{
                                     $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }     
                                 foreach($rows as $row){
@@ -101,9 +101,8 @@ if(isset($_SESSION['user'])){
                                             try{
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             } 
                                             foreach($rows2 as $row2){

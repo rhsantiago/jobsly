@@ -59,10 +59,9 @@ if(isset($_SESSION['user'])){
                                 try{
                                 $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
                                 }    
                                 foreach($rows as $row){
                                     $id = $row['id'];
@@ -90,10 +89,9 @@ if(isset($_SESSION['user'])){
                                try{             
                                     $row = $database->single();  
                                }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
                                }    
                                $aapps = $row['aapps'];
                                $napps = $row['napps'];        

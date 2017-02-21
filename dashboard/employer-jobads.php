@@ -169,9 +169,8 @@ if($ok == 1 ){
             try{
                 $row = $database->single();     
             }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             }    
             $companyname = $row['companyname'];

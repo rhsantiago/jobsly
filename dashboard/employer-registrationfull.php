@@ -16,10 +16,9 @@ if(isset($_SESSION['user'])){
     try{
         $row = $database->single();
     }catch (PDOException $e) {
-     $error = true;
-     $msg = $e->getTraceAsString()." ".$e->getMessage();
-     include "serverlog.php";
-     die("");
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
     }     
     $ok = $row['ok'];
 }
@@ -45,10 +44,9 @@ if($ok == 1 ){
      try{
          $row = $database->single();
      }catch (PDOException $e) {
-         $error = true;
-         $msg = $e->getTraceAsString()." ".$e->getMessage();
-         include "serverlog.php";
-         die("");
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
      }   
      $id = $row['id'];
     // $userid = $row['userid'];

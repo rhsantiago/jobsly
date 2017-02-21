@@ -14,6 +14,7 @@ if($ok == 1 ){
      if(empty($ajax)){
          $ajax = 'ajposts';
      }
+    include "serverlogconfig.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -192,8 +193,13 @@ if($ok == 1 ){
    <?php
             $database->query('select companyname,cperson,logo from companyinfo where userid=:userid');
             $database->bind(':userid', $userid);   
-
-            $row = $database->single();           
+            try{
+                $row = $database->single();   
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            } 
             $companyname = $row['companyname'];
             $cperson = $row['cperson'];
             $logo = $row['logo'];

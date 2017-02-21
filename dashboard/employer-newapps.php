@@ -57,9 +57,8 @@ if(isset($_SESSION['user'])){
                                 try{
                                     $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }    
                                 foreach($rows as $row){
@@ -101,9 +100,8 @@ if(isset($_SESSION['user'])){
                                             try{
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             }     
                                             foreach($rows2 as $row2){

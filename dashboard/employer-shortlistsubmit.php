@@ -1,9 +1,14 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 include "serverlogconfig.php";
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");   
 include 'Database.php';
 $database = new Database();
 
@@ -13,10 +18,9 @@ $database = new Database();
     try{
         $checkrow = $database->single();
     }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
     }     
     if(empty($checkrow)){
         $isshortlisted = 1;
@@ -30,12 +34,11 @@ $database = new Database();
      try{
         $database->execute();
         $msg = "shortlisted to".$isshortlisted." ";
-        include "serverlog.php" 
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
      }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
      } 
   
         $database->query('select (select count(id) from jobapplications where jobid=:jobid and isshortlisted=1) as shortlisted from jobapplications');
@@ -43,12 +46,13 @@ $database = new Database();
         try{
             $row = $database->single();   
         }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            die("");
         }     
         $shortlisted = $row['shortlisted'];
         echo $shortlisted;
-  
+}else{
+    header("Location: logout.php");
+}
 ?> 

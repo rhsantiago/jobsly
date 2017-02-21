@@ -57,9 +57,8 @@ if(isset($_SESSION['user'])){
                                 try{
                                     $row = $database->single();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }    
                                     $id = $row['id'];
@@ -87,9 +86,8 @@ if(isset($_SESSION['user'])){
                                      try{
                                          $row = $database->single();  
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      }   
                                      $aapps = $row['aapps'];

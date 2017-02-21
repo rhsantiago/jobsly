@@ -42,13 +42,12 @@ $database = new Database();
     $database->bind(':userid', $userid);
     try{   
         $database->execute();
-        $msg = "full registration submit ";
-        include "serverlog.php";    
+        $msg = "full registration submit ".$mode;
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);    
     }catch (PDOException $e) {
-          $error = true;
-          $msg = $e->getTraceAsString()." ".$e->getMessage();
-          include "serverlog.php";
-          die("");
-    }    
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+        }    
     echo 'success';
 ?> 

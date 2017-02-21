@@ -51,10 +51,9 @@ if(isset($_SESSION['user'])){
                                 try{
                                     $row = $database->single(); 
                                 }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
                                 }
                                     $jobid = $row['id'];
                                     $jobtitle = $row['jobtitle'];
@@ -97,9 +96,8 @@ if(isset($_SESSION['user'])){
                                             try{    
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             }    
                                             foreach($rows2 as $row2){
