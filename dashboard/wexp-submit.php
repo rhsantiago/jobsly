@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -19,10 +24,14 @@ if($mode!='del'){
     if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
-    
+}else{
+    header("Location: logout.php");
+}    
     if($mode=='del'){
          $database->query('Delete from workexperience where id = :id ');
          $database->bind(':id', $id);
@@ -49,11 +58,10 @@ $database = new Database();
     try{
         $database->execute();
         $msg = "workexperience ".$mode.;
-        include "serverlog.php";
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     } 
     
@@ -63,9 +71,8 @@ $database = new Database();
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     }
                                                     foreach($rows as $row){

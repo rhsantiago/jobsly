@@ -1,13 +1,20 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
-
+}else{
+    header("Location: logout.php");
+}
 
     if(isset($_POST['question'])){ $question = $_POST['question']; }
  
@@ -28,12 +35,11 @@ $database = new Database();
     $database->bind(':userid', $userid);     
     try{
         $database->execute();
-        $msg = "jobessay ".$mode;
-        include "serverlog.php";
+        $msg = "jobessay ".$mode;      
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     } 
                                           $database->query('SELECT id,question FROM jobessays where userid = :userid');
@@ -41,9 +47,8 @@ $database = new Database();
                                           try{  
                                               $rows = $database->resultset();
                                           }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                           }     
                                           foreach($rows as $row){

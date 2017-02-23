@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+    
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['companyname'])){ $companyname = $_POST['companyname']; }
@@ -14,7 +19,8 @@ if(isset($_POST['industry'])){ $industry = $_POST['industry']; }
 if(isset($_POST['numemp'])){ $numemp = $_POST['numemp']; }
 if(isset($_POST['ctype'])){ $ctype = $_POST['ctype']; }
 if(isset($_POST['cdesc'])){ $cdesc = $_POST['cdesc']; }
-
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
@@ -50,4 +56,8 @@ $database = new Database();
         die("");
         }    
     echo 'success';
+    
+}else{
+    header("Location: logout.php");
+}    
 ?> 

@@ -1,4 +1,8 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 $target_dir = "photo/";
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $myfile = pathinfo($_FILES["fileToUpload"]["name"]);
@@ -39,6 +43,8 @@ if ($uploadOk == 0) {
 } else {
 
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        date_default_timezone_set('Asia/Manila');
+        $logtimestamp = date("Y-m-d H:i:s");
         include "serverlogconfig.php";
         include 'Database.php';
         $database = new Database();
@@ -50,10 +56,11 @@ if ($uploadOk == 0) {
             $database->bind(':userid', $userid);
             try{
                 $database->execute();
+                $msg = "upload photo ";
+                $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
             }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             }     
         header('Location: resume.php?ajax=pinfo');
@@ -62,4 +69,7 @@ if ($uploadOk == 0) {
        
     }
 }
+}else{
+    header("Location: logout.php");
+}    
 ?>

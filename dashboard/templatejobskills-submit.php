@@ -1,16 +1,22 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 
 if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 include 'Database.php';
 $database = new Database();
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 
 
     if(isset($_POST['jobskilltag'])){ $jobskilltag = $_POST['jobskilltag']; }
     if(isset($_POST['jobskill'])){ $jobskill = $_POST['jobskill']; }
-    date_default_timezone_set('Asia/Manila');
+   
     $jobskilltagdate = date("Y-m-d");
     if($mode=='insert'){
          $database->query(' INSERT INTO jobskillstemplate (id, userid,templateid, jobskill,jobskilltag,jobskilltagdate) VALUES (NULL, :userid,:templateid,:jobskill,:jobskilltag,:jobskilltagdate)');
@@ -22,10 +28,11 @@ include "serverlogconfig.php";
     $database->bind(':userid', $userid);
     try{   
         $database->execute();
+        $msg = "jobskilltemplate ".$mode;
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     } 
                                                     $database->query('SELECT * FROM jobskillstemplate where templateid = :templateid');
@@ -33,9 +40,8 @@ include "serverlogconfig.php";
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){
@@ -43,4 +49,7 @@ include "serverlogconfig.php";
                                                         echo ' ';
                                                       
                                                     }
+}else{
+    header("Location: logout.php");
+}    
 ?> 

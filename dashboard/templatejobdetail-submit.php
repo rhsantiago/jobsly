@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+
 if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -77,11 +82,10 @@ $database = new Database();
     try{
         $database->execute();
         $msg = "jobtemplates ".$mode;
-        include "serverlog.php";
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     } 
     if($mode=='insert'){
@@ -91,9 +95,8 @@ $database = new Database();
         try{
             $row = $database->single();
         }catch (PDOException $e) {
-            $error = true;
             $msg = $e->getTraceAsString()." ".$e->getMessage();
-            include "serverlog.php";
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
             die("");
         }     
         $templateid = $row['id'];
@@ -101,5 +104,8 @@ $database = new Database();
     }
 
     include 'templatejobskills-form.php';
+}else{
+    header("Location: logout.php");
+}    
 ?> 
   

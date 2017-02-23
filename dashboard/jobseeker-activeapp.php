@@ -10,11 +10,14 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+}else{
+    header("Location: logout.php");
 }
 
 ?>
@@ -46,11 +49,10 @@ if(isset($_SESSION['user'])){
                                 $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel, jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobapplications.isnew,jobapplications.isshortlisted,companyinfo.logo from jobads,jobapplications,companyinfo where jobapplications.userid = :userid and jobads.id = jobapplications.jobid and jobads.userid=companyinfo.userid order by dateadded desc');
                                 $database->bind(':userid', $userid);   
                                 try{
-                                $rows = $database->resultset();
+                                    $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }     
                                 foreach($rows as $row){

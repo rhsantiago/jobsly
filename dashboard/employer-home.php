@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -10,6 +12,8 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
+        date_default_timezone_set('Asia/Manila');
+        $logtimestamp = date("Y-m-d H:i:s"); 
         include "serverlogconfig.php";
         $msg = "logged in";
         $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -187,7 +191,7 @@ if($ok == 1 ){
             $database->query('select companyname,cperson,logo from companyinfo where userid=:userid');
             $database->bind(':userid', $userid);   
             try {
-            $row = $database->single();      
+                $row = $database->single();      
             }catch (PDOException $e) {
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -394,7 +398,7 @@ if($ok == 1 ){
                             $database->query('select count(id) as ajads from jobads where userid=:userid and isactive=1');
                             $database->bind(':userid', $userid);
                             try{
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -405,7 +409,7 @@ if($ok == 1 ){
                             $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
                             $database->bind(':userid', $userid);
                             try{
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -416,7 +420,7 @@ if($ok == 1 ){
                             $database->query('SELECT count(jobapplications.id) as napps from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isnew=1');
                             $database->bind(':userid', $userid);
                             try{    
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -427,7 +431,7 @@ if($ok == 1 ){
                             $database->query('SELECT count(jobapplications.id) as shortlisted from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isshortlisted=1');
                             $database->bind(':userid', $userid);
                             try{    
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -520,7 +524,7 @@ if($ok == 1 ){
                                                 $database->query('SELECT count(jobapplications.id) as resumes from jobapplications where jobid=:jobid');
                                                 $database->bind(':jobid', $id);
                                                 try{
-                                                $row2= $database->single();
+                                                    $row2= $database->single();
                                                 }catch (PDOException $e) {
                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 

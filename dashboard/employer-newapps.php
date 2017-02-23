@@ -7,6 +7,8 @@
             include 'Database.php';
          }
     }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s"); 
 include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -21,9 +23,11 @@ if(isset($_SESSION['user'])){
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $dateapplied = '';
-    
-}
 
+
+}else{
+    header("Location: logout.php");
+}
 ?>
 
 

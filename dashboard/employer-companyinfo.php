@@ -12,6 +12,8 @@ if(isset($_SESSION['user'])){
    $usertype = $_SESSION['usertype'];
 
 
+}else{
+    header("Location: logout.php");
 }
     
  
@@ -28,6 +30,8 @@ if(isset($_SESSION['user'])){
     $numemp='';
     $cdesc='';
     $logo='';
+     date_default_timezone_set('Asia/Manila');
+     $logtimestamp = date("Y-m-d H:i:s");
      include "serverlogconfig.php";
      $database = new Database();
      $database->query('SELECT * from companyinfo where userid = :userid');

@@ -1,7 +1,13 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s"); 
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
@@ -12,9 +18,8 @@ $database = new Database();
     try{
         $checkrow = $database->single();
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }     
     if(empty($checkrow)){
@@ -24,18 +29,19 @@ $database = new Database();
         try{
             $database->execute();
             $msg = "savedapplications insert";
-            include "serverlog.php";
+            $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         }catch (PDOException $e) {
-            $error = true;
             $msg = $e->getTraceAsString()." ".$e->getMessage();
-            include "serverlog.php";
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
             die("");
         }     
         $msg = 'This job ad has been saved. View it under Saved Applications.';
     }else{
         $msg ='You already saved this job ad.';
     }
-
+}else{
+    header("Location: logout.php");
+}
     
   
 ?> 

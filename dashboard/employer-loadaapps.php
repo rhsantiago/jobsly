@@ -13,7 +13,8 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
 

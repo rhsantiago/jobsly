@@ -1,9 +1,15 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+    
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['etrain'])){ $etrain = $_POST['etrain']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");    
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
@@ -105,13 +111,14 @@ if($etrain=='others'){
     try{   
         $database->execute();
         $msg = $etrain." ".$mode;
-        include "serverlog.php";
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
     }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+         $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         die("");
     }     
-  
+ }else{
+    header("Location: logout.php");
+} 
 ?> 
   

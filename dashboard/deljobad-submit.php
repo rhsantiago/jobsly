@@ -17,17 +17,18 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");     
    include "serverlogconfig.php"; 
         $database->query('Delete from jobads where id = :jobid');
         $database->bind(':jobid', $jobid);
         try{
-        $database->execute();
-        $msg = "delete job ad";
-        include "serverlog.php";    
+            $database->execute();
+            $msg = "delete jobad";
+            $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);    
         }catch (PDOException $e) {
-            $error = true;
             $msg = $e->getTraceAsString()." ".$e->getMessage();
-            include "serverlog.php";
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
             die("");
         }    
 ?>
@@ -39,12 +40,11 @@ if(isset($_SESSION['user'])){
                                 $database->bind(':userid', $userid);   
                                 
                                 try{
-                                $rows = $database->resultset();
+                                    $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
-                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
-                                    die("");
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
                                 }
                                 foreach($rows as $row){
                                     $id = $row['id'];

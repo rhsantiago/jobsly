@@ -7,6 +7,8 @@
             include 'Database.php';
          }
     }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -57,11 +59,10 @@ if(isset($_SESSION['user'])){
                                $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
                                 try{
-                                $rows = $database->resultset();
+                                    $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }
                                 foreach($rows as $row){

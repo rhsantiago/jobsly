@@ -7,14 +7,16 @@
             include 'Database.php';
          }
     }
+
 include 'specialization.php';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-    
-   include "serverlogconfig.php";
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
+    include "serverlogconfig.php";
     $database = new Database();
 
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');

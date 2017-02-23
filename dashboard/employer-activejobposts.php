@@ -7,6 +7,8 @@
             include 'Database.php';
          }
     }
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -23,6 +25,8 @@ if(isset($_SESSION['user'])){
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
    
     
+}else{
+    header("Location: logout.php");
 }
 
 ?>

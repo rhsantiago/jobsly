@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['user'])){
+
+}else{
+    header("Location: logout.php");
+}
+?>
 <div class="col-md-3"> <!--left-->
                        
                 <div class="section  section-landing">
@@ -9,14 +16,18 @@
                          <div class="jobs">
 		                     <div class="col-md-12">
                                   <?php
+                                 if (session_status() == PHP_SESSION_NONE) {
+                                        session_start();   
+                                 }
                                 $database->query('SELECT * from jobads order by dateadded desc');
+                                 date_default_timezone_set('Asia/Manila');
+                                 $logtimestamp = date("Y-m-d H:i:s"); 
                                 include "serverlogconfig.php";
                                 try{ 
                                     $rows = $database->resultset();
                                 }catch (PDOException $e) {
-                                    $error = true;
                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                    include "serverlog.php";
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                     die("");
                                 }     
                                 foreach($rows as $row){
@@ -166,9 +177,8 @@
                                                                     try{
                                                                         $rows = $database->resultset();
                                                                     }catch (PDOException $e) {
-                                                                        $error = true;
                                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                                        include "serverlog.php";
+                                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                                         die("");
                                                                     } 
                                                                     foreach($rows as $row){
@@ -211,9 +221,8 @@
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){

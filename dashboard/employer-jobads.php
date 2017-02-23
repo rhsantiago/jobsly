@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -11,6 +13,8 @@ if(isset($_SESSION['user'])){
 
 if($ok == 1 ){
     $ajax = $_GET['ajax'];
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
 ?>
 <!doctype html>

@@ -1,4 +1,9 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
+    
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['dposition'])){ $dposition = $_POST['dposition']; } 
@@ -13,6 +18,8 @@ if(isset($_POST['wrelocate'])){ $wrelocate = $_POST['wrelocate']; }
 if(isset($_POST['pholder'])){ $pholder = $_POST['pholder']; }
 if(isset($_POST['languages'])){ $languages = $_POST['languages']; }
 
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
@@ -42,14 +49,16 @@ $database = new Database();
     $database->bind(':pholder', $pholder);
     $database->bind(':languages', $languages);
     try{
-    $database->execute();
-    $msg = "additionalinfo submit ";
-    include "serverlog.php";    
+        $database->execute();
+        $msg = "logged";
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);    
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }
+}else{
+    header("Location: logout.php");
+}    
 ?> 
   

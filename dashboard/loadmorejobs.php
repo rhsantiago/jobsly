@@ -13,6 +13,8 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['next'])){ $next = $_POST['next']; } 
   $database = new Database();
   include "Jobad.php";
+  date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");  
   include "serverlogconfig.php";  
   $jobadsarray = array();    
     
@@ -21,9 +23,8 @@ if(isset($_SESSION['user'])){
    try{ 
        $rows = $database->resultset();
    }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }     
 if(!empty($rows)){    
@@ -64,6 +65,8 @@ if(!empty($rows)){
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 }
+}else{
+    header("Location: logout.php");
 }
 
 ?>
@@ -97,9 +100,8 @@ if(!empty($rows)){
                                      try{
                                          $applyrow = $database->single();      
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
                                      if(!empty($applyrow)){
@@ -114,9 +116,8 @@ if(!empty($rows)){
                                      try{
                                          $savedrow = $database->single();   
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
                                 
@@ -220,9 +221,8 @@ if(!empty($rows)){
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                      } 
                                                     foreach($rows as $row){
@@ -269,9 +269,8 @@ if(!empty($rows)){
                                      try{
                                          $applyrow = $database->single();   
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                     }     
                                      if(!empty($applyrow)){
@@ -286,9 +285,8 @@ if(!empty($rows)){
                                      try{
                                          $savedrow = $database->single();
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
                              ?>
@@ -391,9 +389,8 @@ if(!empty($rows)){
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){
@@ -439,9 +436,8 @@ if(!empty($rows)){
                                      try{
                                          $applyrow = $database->single();   
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
                                      if(!empty($applyrow)){
@@ -456,9 +452,8 @@ if(!empty($rows)){
                                      try{
                                         $savedrow = $database->single();
                                      }catch (PDOException $e) {
-                                        $error = true;
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                        include "serverlog.php";
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      }    
                              ?>
@@ -561,9 +556,8 @@ if(!empty($rows)){
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                      }
                                                     foreach($rows as $row){

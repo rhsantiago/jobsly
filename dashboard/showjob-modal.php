@@ -8,13 +8,16 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
    $usertype = $_SESSION['usertype'];
+}else{
+    header("Location: logout.php");
 }
 include 'specialization.php';
 $isjobseeker = '';
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
-
+ date_default_timezone_set('Asia/Manila');
+ $logtimestamp = date("Y-m-d H:i:s"); 
  include "serverlogconfig.php";
  $database = new Database();
  
@@ -24,9 +27,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     try{
         $row = $database->single();
      }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }    
     $id = $row['id'];
@@ -85,9 +87,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
         try{
             $database->execute();
         }catch (PDOException $e) {
-            $error = true;
             $msg = $e->getTraceAsString()." ".$e->getMessage();
-            include "serverlog.php";
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
             die("");
         } 
         
@@ -253,9 +254,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                             try{
                                                 $checkrow = $database->single();
                                             }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             } 
                                            if(strcmp($isjobseeker,'jobseeker')==0){
@@ -364,9 +364,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                     try{
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {
-                                                        $error = true;
                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                        include "serverlog.php";
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){

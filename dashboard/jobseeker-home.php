@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -7,9 +9,13 @@ if(isset($_SESSION['user'])){
    $usertype = $_SESSION['usertype'];
     
    include 'authenticate.php';
+}else{
+    header("Location: logout.php");
 }
 
 if($ok == 1 ){
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     include 'specialization.php';
 ?>
@@ -142,9 +148,8 @@ if($ok == 1 ){
             try{
             $row = $database->single();
             }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             }     
             $maxposition = $row['maxposition'];
@@ -313,9 +318,8 @@ if($ok == 1 ){
                             try{
                                 $row = $database->single();
                             }catch (PDOException $e) {
-                                $error = true;
                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                include "serverlog.php";
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                 die("");
                             }    
                             $totaapps = $row['totaapps'];
@@ -323,11 +327,10 @@ if($ok == 1 ){
                             $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
                             $database->bind(':userid', $userid);
                             try{    
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
-                                $error = true;
                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                include "serverlog.php";
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                 die("");
                             }     
                             $totapplicants = $row['totapplicants'];
@@ -335,11 +338,10 @@ if($ok == 1 ){
                             $database->query('SELECT count(savedapplications.id) as totsaved from savedapplications where userid=:userid');
                             $database->bind(':userid', $userid);
                             try{    
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
-                                $error = true;
                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                include "serverlog.php";
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                 die("");
                             }     
                             $totsaved = $row['totsaved'];
@@ -347,11 +349,10 @@ if($ok == 1 ){
                             $database->query('SELECT count(jobapplications.id) as shortlisted from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isshortlisted=1');
                             $database->bind(':userid', $userid);
                             try{    
-                            $row = $database->single();
+                                $row = $database->single();
                             }catch (PDOException $e) {
-                                $error = true;
                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                include "serverlog.php";
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                 die("");
                             }     
                             $shortlisted = $row['shortlisted'];
@@ -422,9 +423,8 @@ if($ok == 1 ){
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {
-                                                $error = true;
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                include "serverlog.php";
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             } 
                                             foreach($rows as $row){
@@ -444,9 +444,8 @@ if($ok == 1 ){
                                                 try{
                                                     $row2= $database->single();
                                                 }catch (PDOException $e) {
-                                                    $error = true;
                                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                    include "serverlog.php";
+                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                     die("");
                                                 }     
                                                 $resumes = $row2['resumes'];

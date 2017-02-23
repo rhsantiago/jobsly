@@ -6,7 +6,11 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['workexpid'])){ $workexpid = $_POST['workexpid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_SESSION['user'])){
 
+}else{
+    header("Location: logout.php");
+}
 if($mode=='del'){
 ?>    
     
@@ -60,8 +64,14 @@ if($mode=='del'){
 
     $database->query('SELECT * from workexperience where id = :workexpid');
     $database->bind(':workexpid', $workexpid);   
-
-    $row = $database->single();
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    } 
+    
     $id = $row['id'];
     $startdate = $row['startdate'];
     $sdate = explode("-", $startdate);

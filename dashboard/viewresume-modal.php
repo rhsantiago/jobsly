@@ -14,6 +14,8 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
    if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
    if(isset($_POST['view'])){ $view = $_POST['view']; }  
+    date_default_timezone_set('Asia/Manila');
+    $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
     
@@ -22,9 +24,8 @@ if(isset($_SESSION['user'])){
     try{
         $row = $database->single();
     }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }     
     $maxposition = $row['maxposition'];
@@ -40,11 +41,12 @@ if(isset($_SESSION['user'])){
      try{
         $database->execute();
      }catch (PDOException $e) {
-        $error = true;
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        include "serverlog.php";
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
      } 
+}else{
+    header("Location: logout.php");
 }
 ?>
 <script>
@@ -79,9 +81,8 @@ jQuery(document).ready(function ($) {
                       try{                       
                           $row = $database->single();  
                       }catch (PDOException $e) {
-                            $error = true;
                             $msg = $e->getTraceAsString()." ".$e->getMessage();
-                            include "serverlog.php";
+                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                             die("");
                       }     
                       $mnumber = $row['mnumber'];
@@ -154,9 +155,8 @@ jQuery(document).ready(function ($) {
              try{
                  $rows = $database->resultset();
              }catch (PDOException $e) {
-                    $error = true;
                     $msg = $e->getTraceAsString()." ".$e->getMessage();
-                    include "serverlog.php";
+                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                     die("");
              } 
              $isleft = true;
@@ -225,9 +225,8 @@ jQuery(document).ready(function ($) {
              try{
                  $rows = $database->resultset();
              }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
              }      
              $datefloat ='';                               
@@ -296,9 +295,8 @@ jQuery(document).ready(function ($) {
              try{
                 $rows = $database->resultset();
              }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             } 
                          
@@ -365,9 +363,8 @@ jQuery(document).ready(function ($) {
              try{
                  $rows = $database->resultset();
              }catch (PDOException $e) {
-                $error = true;
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                include "serverlog.php";
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
              }             
              $datefloat ='';                               
@@ -462,9 +459,8 @@ $database->bind(':jobid', $jobid);
 try{
     $row = $database->single();   
 }catch (PDOException $e) {
-    $error = true;
     $msg = $e->getTraceAsString()." ".$e->getMessage();
-    include "serverlog.php";
+    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
     die("");
 } 
 $napps = $row['napps'];

@@ -1,5 +1,8 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+        session_start();   
+}
+if(isset($_SESSION['user'])){
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
@@ -19,7 +22,7 @@ $database = new Database();
      }catch (PDOException $e) {
          $msg = $e->getTraceAsString()." ".$e->getMessage();
          $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-        die("");
+         die("");
      }     
         
         $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as active,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlist from jobapplications');
@@ -39,5 +42,7 @@ $database = new Database();
 
        // header('Content-Type: application/json');
        echo  json_encode($arr,JSON_FORCE_OBJECT);
-       //echo $active; 
+}else{
+    header("Location: logout.php");
+}
 ?> 
