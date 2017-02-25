@@ -100,6 +100,18 @@ if(isset($_SESSION['user'])){
                                $aapps = $row['aapps'];
                                $napps = $row['napps'];        
                                $shortlisted = $row['shortlisted']; 
+                                    
+                               $database->query('SELECT count(distinct personalinformation.userid) as matched from personalinformation,additionalinformation, jobapplications where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
+                                            $database->bind(':specialization', $specialization);  
+                                            $database->bind(':jobid', $id); 
+                                            try{    
+                                                $row2= $database->single();
+                                            }catch (PDOException $e) {
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                die("");
+                                            }   
+                                     $matched = $row2['matched'];       
                          ?>                                
                                 <section class="blog-post">
                                     <div class="panel panel-default">
@@ -174,9 +186,9 @@ if(isset($_SESSION['user'])){
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="orange">
-                                                                    <h3 class="center"><a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="shortlisted">458</a></h3>
+                                                                    <h3 class="center"><a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="matched"><?=$matched?></a></h3>
                                                                 </div>
-                                                                 <a href="#jobdetails" id="jobdetails" class="text-warning h4weight" data-jobid="<?=$id?>" data-page="shortlisted">Matched<br>Resumes</a>                                                           
+                                                                 <a href="#jobdetails" id="jobdetails" class="text-warning h4weight" data-jobid="<?=$id?>" data-page="matched">Matched<br>Resumes</a>                                                           
                                                             </div>
                                                         </li>
                                                     </ul>  

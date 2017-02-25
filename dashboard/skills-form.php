@@ -38,7 +38,7 @@ if(isset($_SESSION['user'])){
      <h2 class="title">Skills</h2>
 </div>     
 </div>
-                    <div class="col-md-offset-1 col-md-8">
+                    <div class="col-md-offset-1 col-md-7">
                         
                        
                 <div class="section  section-landing">

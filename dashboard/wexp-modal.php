@@ -20,7 +20,7 @@ if($mode=='del'){
              <input type="hidden" id="mode" name="mode" value="del">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Delete Work Experience</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Delete Work Experience</h4>
 	      </div>
 	      <div id="modaleditworkexp" class="modal-body modal-gray">
 	                              
@@ -34,7 +34,7 @@ if($mode=='del'){
                                                                
                                                                 <div class="col-md-12 col-xs-12 text-center">
                                                                 
-                                                                   <h3><label>Are you sure you want to delete this Work Experience?</label></h3>
+                                                                   <h3 ><label class="text-danger">Are you sure you want to delete this Work Experience?</label></h3>
                                                                     
 
                                                                 </div>
@@ -47,7 +47,7 @@ if($mode=='del'){
                                
                            
 	      </div>
-	      <div class="modal-footer">
+	      <div class="modal-footer blog-post">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button type="submit" class="btn btn-primary">I'm sure</button>
 	      </div>

@@ -334,6 +334,27 @@ $(document).ready(function ($) {
         return false;
      });
     
+    $("#resume-main-body").on('click','#matched',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-matchedres.php',
+                data: 'jobid=' + jobid,
+                success: function(html) {
+                    //console.log(html);
+                    $('#showjobdetail').html(html); 
+                    $("#jobdetailads").hide();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
+    
     $('#showjob-modal').on('show.bs.modal', function(e) {
              
                var $modal = $(this);

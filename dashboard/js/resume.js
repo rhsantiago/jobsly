@@ -609,10 +609,16 @@ jQuery(document).ready(function ($) {
                 url: "wexp-submit.php",
                 data: "id=" + id + "&mode=" + mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
-                dataType: 'text',
+                dataType: 'html',
                 success : function(data){
-                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);               
+                    if(mode=='del'){
+                        $('#workexp-modal').modal('toggle');
+                    }
+                    $('#workexpcardsdiv').html(data).fadeIn(1500);               
                     $('#wexp-form-modal #successdivworkexp').fadeIn(1500);
+                    $(function() {
+                            $.material.init();
+                     });
                     $('#resume-main-body #summernote').summernote({
                                    toolbar: [
                                      // [groupName, [list of button]]
@@ -674,10 +680,10 @@ jQuery(document).ready(function ($) {
                 url: "wexp-submit.php",
                 data: "mode=" +mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
-                dataType: 'text',
+                dataType: 'html',
                 success : function(data){
-                    $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
-                    $('#wexp-form #successdivworkexp').fadeIn(1500);
+                    $('#workexpcardsdiv').html(data).fadeIn(1500);
+                    $('#successdivworkexp').fadeIn(1500);
                     $('#resume-main-body #startdate').datepicker();                    
                     $('#resume-main-body #enddate').datepicker();
                     $('#resume-main-body #summernote').summernote({

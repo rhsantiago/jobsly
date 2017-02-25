@@ -227,7 +227,7 @@ if($ok == 1 ){
                                     <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
                                     <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
                                     <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
-                <li><a href="#photo-modal" data-userid="<?=$userid?>" data-toggle="modal">Upload Photo</a></li>
+              
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>

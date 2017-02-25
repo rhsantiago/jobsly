@@ -36,7 +36,7 @@ if(isset($_SESSION['user'])){
              <span class="jobcardbuttons"><a href='#profile' id="add"><i class="material-icons">edit</i> Add</a></span>
           </div> 
     </div>   
-                    <div class="col-md-9">
+                   <div class="col-md-offset-1 col-md-7">
                         
                 <div class="section  section-landing">
 	         
@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
                                                         $teaser = substr($teaser, 0, 200);
                                                         $teaser = strip_tags($teaser, '<p>');
                                              ?>           
-                                            <div class="col-md-6"> 
+                                           
                                             <section class="blog-post">
                                     <div class="panel panel-default">
                                     
@@ -135,7 +135,7 @@ if(isset($_SESSION['user'])){
                                         
                                     </div>
                                   </section>
-                                      </div>
+                                        
                                              <?php          
                                                     }
                                              ?>
@@ -143,7 +143,7 @@ if(isset($_SESSION['user'])){
                                          
                                         
                             </div>
-                            <div class="col-md-12">
+                           
                                 <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
                                  <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                  <input type="hidden" id="mode" name="mode" value="insert">
@@ -178,7 +178,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="startdiv" class="form-group label-static">
                                                                         <label class="control-label">Start Date</label>
-                                                                       <input type='text' id='startdate' class='datepicker form-control' data-parsley-required data-parsley-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                       <input type='text' id='startdate' class='datepicker form-control' data-parsley-required  data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                       <div id="msalarydiv" class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
@@ -204,7 +204,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="enddiv" class="form-group label-static">
                                                                         <label class="control-label">End Date</label>
-                                                                        <input type='text' id='enddate' name="enddate" class='datepicker form-control' data-parsley-required data-parsley-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                        <input type='text' id='enddate' name="enddate" class='datepicker form-control' data-parsley-required  data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="checkbox">
@@ -276,6 +276,12 @@ if(isset($_SESSION['user'])){
                                             </div>
                                  
                              
+		                      <div>
+                                     <form method="post" id="wexpnext-form" name="wexpnext-form"> 
+                                            <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
+                                                            Go to Next Step
+                                                           </button>
+                                    </form>
 		                    </div>
                             
                             
@@ -302,13 +308,7 @@ if(isset($_SESSION['user'])){
                                                              </div>
                                                     </div>                        
 		       </div> 
-                            <div class="col-md-6">
-                                     <form method="post" id="wexpnext-form" name="wexpnext-form"> 
-                                            <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
-                                                            Go to Next Step
-                                                           </button>
-                                    </form>
-		                    </div>
+                            
 
 <script>
 jQuery(document).ready(function ($) {

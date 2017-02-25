@@ -3,7 +3,12 @@ if (session_status() == PHP_SESSION_NONE) {
         session_start();   
 }
 if(isset($_SESSION['user'])){
-
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
+include "serverlogconfig.php";
+include 'Database.php';
+$id=0;
+$database = new Database();
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -24,14 +29,8 @@ if($mode!='del'){
     if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 }
-date_default_timezone_set('Asia/Manila');
-$logtimestamp = date("Y-m-d H:i:s");
-include "serverlogconfig.php";
-include 'Database.php';
-$database = new Database();
-}else{
-    header("Location: logout.php");
-}    
+
+ 
     if($mode=='del'){
          $database->query('Delete from workexperience where id = :id ');
          $database->bind(':id', $id);
@@ -57,8 +56,8 @@ $database = new Database();
     }
     try{
         $database->execute();
-        $msg = "workexperience ".$mode.;
-        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        $msg = "workexperience ".$mode;
+        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg." ".$id); 
     }catch (PDOException $e) {
         $msg = $e->getTraceAsString()." ".$e->getMessage();
         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
@@ -132,8 +131,7 @@ $database = new Database();
                                                 <div class="col-md-12">   
                                                
                                                     <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">
-                                                  <?=$jobdesc?>
-                                                   >     
+                                                  <?=$jobdesc?>                                                 
                                                     </div>    
                                                 </div>
                                             </div>
@@ -155,58 +153,13 @@ $database = new Database();
                                         
                                     </div>
                                   </section>
-                                                       <!-- 
-                                                        <div class="card">                                            
-                                                             <div class="content">                           
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <div id="workexpcard" class="">
-                                                                                        <ul class="list-inline">
-                                                                                          <li><h3 class="text-info"><?=$row['position']?></h3></li>
-                                                                                            <li><h6 class="text-muted"><i><?=$row['company']?></i></h6> </li>
-                                                                                            <li class="editfloatright">
-                                                                                                <a href='#workexpmodal' id="editworkexp" title="Edit" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a>
-                                                                                                <a href='#workexpmodaldel' id="delworkexp" title="Delete" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal-del"><i class="material-icons">delete</i></a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <ul class="list-inline">
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                    <i class="material-icons text-info">business</i><i id='industryli'> <?=$row['industry']?></i>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                   <i class="material-icons text-info">date_range</i> <?=$startdate?> - <?=$enddate?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                <i class="material-icons text-info">people</i><i> <?=$row['plevel']?></i>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <h6 class="text-muted">
-                                                                                                   <i class="material-icons text-info">local_atm</i> Php <?=$row['msalary']?>
-                                                                                                </h6>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <hr>
-                                                                                        <p>
-                                                                                            <span class="text-muted"><i class="material-icons text-info">description</i> </span>
-                                                                                            <?=$row['jobdescription']?>
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
-                                               -->                    
+                                                      
                                                         
                                              <?php          
                                                     }
+
+    }else{
+         header("Location: logout.php");
+    }   
                                              ?>
                                             
