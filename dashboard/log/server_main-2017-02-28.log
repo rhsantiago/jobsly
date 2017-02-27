@@ -1,0 +1,12 @@
+INFO - 2017-02-28 00:08:23 - reggie1@gmail.com logged in
+INFO - 2017-02-28 00:08:28 - reggie1@gmail.com logged in
+ERROR - 2017-02-28 00:17:40 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-matchedres.php(112): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: no parameters were bound
+ERROR - 2017-02-28 00:17:43 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-matchedres.php(112): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: no parameters were bound
+INFO - 2017-02-28 00:47:35 - reggie1@gmail.com logged in
+INFO - 2017-02-28 00:47:46 - reggie1@gmail.com invite to apply 

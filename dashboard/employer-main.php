@@ -72,6 +72,13 @@ if($ok == 1 ){
 	    </div>
 	  </div>
 	</div>
+    <div class="modal fullscreen-modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
     <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content modalcontent">

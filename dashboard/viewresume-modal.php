@@ -34,7 +34,7 @@ if(isset($_SESSION['user'])){
     $lname = $row['lname'];
         
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-    
+    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
      $database->query(' UPDATE jobapplications SET isnew = 0 where jobid= :jobid and userid = :userid');
      $database->bind(':jobid', $jobid);  
      $database->bind(':userid', $applicantid);
@@ -44,7 +44,32 @@ if(isset($_SESSION['user'])){
         $msg = $e->getTraceAsString()." ".$e->getMessage();
         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
-     } 
+     }
+    
+    $database->query('select count(jobapplications.userid) as appcount from jobapplications where jobapplications.jobid=:jobid and jobapplications.userid=:userid');
+    $database->bind(':userid', $applicantid); 
+    $database->bind(':jobid', $jobid);
+    try{
+        $checkappcountrow = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }
+    $appcount = $checkappcountrow['appcount'];
+    
+    $database->query('select count(jobinvitations.userid) as invitecount from jobinvitations where jobinvitations.jobid=:jobid and jobinvitations.userid=:userid');
+    $database->bind(':userid', $applicantid); 
+    $database->bind(':jobid', $jobid);
+    try{
+        $checkinvitecountrow = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    } 
+    $invitecount = $checkinvitecountrow['invitecount'];
+    
 }else{
     header("Location: logout.php");
 }
@@ -107,7 +132,26 @@ jQuery(document).ready(function ($) {
                                             
               ?>
                                         
-                                 <div class="row">                                                               
+                                 <div class="row">        
+                                     <?php
+                                        if($appcount==0 && $invitecount>=0){
+                                      ?>
+                                                                <div class="col-md-offset-1 col-md-5 resumetextalign">
+                                                                    <ul style="list-style: none;" class="">
+                                                                        <li> Mobile Number: <b>*****</b></li>
+                                                                        <li> Email: <b>*****</b></li>
+                                                                        <li> Landline: <b>*****</b></li>
+                                                                        <li> Street Address: <b>*****</b></li>
+                                                                        <li> City: <b>*****</b></li>
+                                                                        <li> Nationality: <b>*****</b></li>
+                                                                        <li> Birthdate: <b>*****</b></li>
+                                                                    </ul>
+                                                                </div>
+                                     
+                                     <?php
+                                        }else if($appcount==1){
+                                            
+                                     ?>  
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
                                                                         <li> Mobile Number: <b><?=$mnumber?></b></li>
@@ -118,11 +162,17 @@ jQuery(document).ready(function ($) {
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
                                                                         <li> Birthdate: <b><?=$birthday?></b></li>
                                                                     </ul>
-                                                                </div>
+                                                                </div>   
+                                       <?php     
+                                        }
+                                        
+                                     ?>
+                                    
+                                     
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
                                                                         <li> Desired Position: <b><?=$dposition?></b></li>     
-                                                                        <li> Position Level: <b><?=$plevel?></b></li>
+                                                                        <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
                                                                         <li> Languages: <b><?=$languages?></b></li> 
                                                                         <?php
@@ -140,7 +190,7 @@ jQuery(document).ready(function ($) {
                                                                 </div>
                                                         
                                                             </div>
-                                    </div>    
+                                    </div>
                                
                                     
                                 </div>

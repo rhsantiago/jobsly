@@ -204,6 +204,59 @@ $(document).ready(function ($) {
         });
     });
     
+    $('#invite-modal').on('show.bs.modal', function(e) {
+              
+              var $modal = $(this);
+             //  $modal.find('#modaleditessay #successdivessaymodal').hide();        
+              var mode =  $(e.relatedTarget).data('mode');
+              var applicantid =  $(e.relatedTarget).data('applicantid');
+              var userid = $(e.relatedTarget).data('userid');
+              var jobid = $(e.relatedTarget).data('jobid');
+              var view = $(e.relatedTarget).data('view');
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'invite-modal.php',
+            data: 'applicantid=' + applicantid +
+                  '&userid=' + userid +
+                  '&jobid=' + jobid +
+                  '&mode=' + mode +
+                  '&view=' + view,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);     
+                $(function() {
+                           $.material.init();
+                    });
+               
+            }
+        });
+    });
+    
+    $(document).on('submit','#invite-form',function(event) {
+            event.preventDefault();           
+        
+            var jobid = $("#invite-form #jobid").val(); 
+            var applicantid = $("#invite-form #applicantid").val();
+            var mode = $("#invite-form #mode").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'invite-submit.php',
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                success: function(html) {
+                    $('#invite-modal').modal('toggle');
+                    var li = '#invited' + applicantid;
+                        $("#matchedtable " + li).html("<i class='fa fa-check text-success'> Invite sent</i>").fadeIn('slow').delay(1000);
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+    
     $("#resume-main-body").on('click','#jobdetails',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
