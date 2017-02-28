@@ -10,3 +10,17 @@ ERROR - 2017-02-28 00:17:43 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashbo
 #3 {main} SQLSTATE[HY093]: Invalid parameter number: no parameters were bound
 INFO - 2017-02-28 00:47:35 - reggie1@gmail.com logged in
 INFO - 2017-02-28 00:47:46 - reggie1@gmail.com invite to apply 
+INFO - 2017-02-28 17:28:00 - reggie1@gmail.com logged in
+ERROR - 2017-02-28 17:28:00 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-home.php(513): Database->resultset()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'views' in 'field list'
+INFO - 2017-02-28 17:28:11 - reggie1@gmail.com logged in
+ERROR - 2017-02-28 17:28:11 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-home.php(513): Database->resultset()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'views' in 'field list'
+INFO - 2017-02-28 17:30:20 - reggie1@gmail.com logged in
+INFO - 2017-02-28 17:49:40 - reggie1@gmail.com logged in
+INFO - 2017-02-28 17:50:24 - reggie1@gmail.com logged in
+INFO - 2017-02-28 17:52:17 - reggie1@gmail.com logged in
