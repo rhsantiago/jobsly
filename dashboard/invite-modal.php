@@ -31,6 +31,9 @@ $database = new Database();
             $esalary = $row['esalary'];
             $specialization = $row['specialization'];
             $photo = $row['photo'];
+            if(empty($photo)){
+                $photo='img/unknown.png';
+            }
   
 ?>    
     
@@ -53,7 +56,7 @@ $database = new Database();
                                                             <div class="row">
                                                                   <div class="col-md-12 col-xs-12 text-center">
                                                                 
-                                                                    <h3><label class="text-success">Invite this Applicant to Apply? <span class='text-info'></span></label></h3>
+                                                                    <h3><label class="h4weight text-success">Invite this Applicant to Apply? <span class='text-info'></span></label></h3>
                                                                     
                                                                         
                                                                 </div>

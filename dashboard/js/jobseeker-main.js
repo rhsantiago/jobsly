@@ -24,6 +24,26 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
+    $("a[href='#jinv']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'jobseeker-invites.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);    
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                            });
+                }
+               
+        });
+        return false;
+     });
+    
     $("a[href='#sapp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();

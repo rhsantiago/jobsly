@@ -32,6 +32,9 @@ if(isset($_SESSION['user'])){
     $photo = $row['photo'];
     $fname = $row['fname'];
     $lname = $row['lname'];
+    if(empty($photo)){
+         $photo='img/unknown.png';
+    }
         
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');

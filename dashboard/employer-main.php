@@ -214,7 +214,9 @@ if($ok == 1 ){
             $companyname = $row['companyname'];
             $cperson = $row['cperson'];
             $logo = $row['logo'];
-          
+            if(empty($logo)){
+                $logo='img/unknown.png';
+            }
       
     ?>
     <!--sidebar-->

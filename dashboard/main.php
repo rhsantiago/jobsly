@@ -159,7 +159,9 @@ if($ok == 1 ){
             $fname = $row['fname'];
             $lname = $row['lname'];
             $photo = $row['photo'];
-      
+            if(empty($photo)){
+                $photo='img/unknown.png';
+            }
     ?>
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
@@ -214,6 +216,10 @@ if($ok == 1 ){
                         ?>
                              <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
                         <?php
+                        }
+                        
+                        if($ajax=='jinv'){    
+                             include 'jobseeker-invites.php';
                         }
     
                         if($ajax=='sapp'){
