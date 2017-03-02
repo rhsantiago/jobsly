@@ -48,7 +48,18 @@ $dateapplied = date("Y-m-d");
             $msg = $e->getTraceAsString()." ".$e->getMessage();
             $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
             die("");
-        }    
+        }
+        
+        $database->query('Delete from jobinvitations where jobid=:jobid and userid=:userid');
+        $database->bind(':jobid', $jobid);  
+        $database->bind(':userid', $userid);
+        try{    
+            $database->execute();
+        }catch (PDOException $e) {
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            die("");
+        }
     }else{
         echo 'applied';
     }

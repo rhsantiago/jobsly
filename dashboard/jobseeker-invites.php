@@ -81,7 +81,7 @@ if(isset($_SESSION['user'])){
                                 
                          ?>
                                 
-                                <section class="blog-post">
+                                <section id="section<?=$id?>" class="blog-post">
                                     <div class="panel panel-default">
                                     
                                       <div class="panel-body jobad-bottomborder">

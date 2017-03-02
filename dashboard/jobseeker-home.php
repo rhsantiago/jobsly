@@ -324,7 +324,7 @@ if($ok == 1 ){
                             }    
                             $totaapps = $row['totaapps'];
     
-                            $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
+                            $database->query('SELECT count(jobinvitations.id) as totinvites from jobinvitations where userid=:userid');
                             $database->bind(':userid', $userid);
                             try{    
                                 $row = $database->single();
@@ -333,7 +333,7 @@ if($ok == 1 ){
                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                 die("");
                             }     
-                            $totapplicants = $row['totapplicants'];
+                            $totinvites = $row['totinvites'];
     
                             $database->query('SELECT count(savedapplications.id) as totsaved from savedapplications where userid=:userid');
                             $database->bind(':userid', $userid);
@@ -375,9 +375,9 @@ if($ok == 1 ){
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#napp" id="napp" class="text-primary h4weight pull-right"><span id="nappsdiv">0</span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#jinv" id="jinv" class="text-primary h4weight pull-right"><span id="nappsdiv"><?=$totinvites?></span></a></h3>
                                         </div>                                        
-                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink">Total Job<br>Invitations</a>
+                                            <a href="#jinv" id="jinv" class="text-info h4weight pull-right marginjobdetaillink">Total Job<br>Invitations</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
@@ -391,9 +391,9 @@ if($ok == 1 ){
                                <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats rightmargin15">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" ><span id="shortlistdiv">0</span></a></h3>
                                         </div>
-                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
+                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink">Total Active<br>Applicants</a>		
                                     </div>   
 						      </div>
                                    </div>

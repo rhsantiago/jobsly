@@ -1,0 +1,12 @@
+INFO - 2017-03-01 13:08:03 - reg@jobsly.net savedapplications insert
+INFO - 2017-03-01 13:08:44 - reg@jobsly.net insert job application
+INFO - 2017-03-01 13:09:57 - reg@jobsly.net savedapplications insert
+INFO - 2017-03-01 13:11:14 - reg@jobsly.net insert job application
+ERROR - 2017-03-01 13:11:14 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\quickapply-submit.php(46): Database->execute()
+#2 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where jobid='116' and userid='1'' at line 1
+INFO - 2017-03-01 14:07:23 - reg@jobsly.net insert job application
+INFO - 2017-03-01 14:16:23 - reg@jobsly.net insert job application
+INFO - 2017-03-01 14:19:26 - reg@jobsly.net insert job application
+INFO - 2017-03-01 14:21:42 - reg@jobsly.net insert job application
+INFO - 2017-03-01 14:23:41 - reg@jobsly.net insert job application

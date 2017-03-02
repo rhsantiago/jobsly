@@ -177,9 +177,10 @@ jQuery(document).ready(function ($) {
                 success : function(data){
                     console.log(data);
                     if(data=='applied'){
-                        $('#warningdivquickapply').fadeIn(1500);
+                        $('#warningdivquickapply').fadeIn(1500);                       
                     }else{
                         $('#successdivquickapply').fadeIn(1500);
+                        $('#section'+jobid).remove();
                     }
                                 
                 },

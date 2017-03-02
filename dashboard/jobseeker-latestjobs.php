@@ -74,7 +74,52 @@ if(isset($_SESSION['user'])){
 }
 
 ?>
+<style>
+body {
+    padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px !important;
+    padding: 6px 20px !important;
+    background-color: #eeeeee !important;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0 !important;
+    margin-left: -1px !important;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+.form-horizontal .form-group {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
 
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 700px !important;
+        margin: 0 auto !important;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 700px !important;
+    }
+}
+</style>
     
     <div class="row">
     <div class="col-md-12 center">            
@@ -83,14 +128,44 @@ if(isset($_SESSION['user'])){
                      </div>    
                            
      </div>
-  
+
     <div class="col-md-12">
                  <h2 class="title">Latest Jobs</h2>  
        </div>
-     </div>
+   </div>     
+<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+               
+                  <div class="panel panel-default" >
+                       <div class="panel-body" >                                        
+                             <div id="fnamediv" class="form-group label-floating">
+                                  <label class="control-label">Search</label>
+                                  <input type="text" id="search" class="form-control">  
+                             </div>
+                          
+                                 <div class="col-md-12"> 
+                             <div class="collapse-group collapse" id="options" >
+                                 <p class="">
+                               Together, everyone achieves more! That is our motto and how we grow. Join our dynamic and talented team and find out what you're made of!...
+                            </p>
+                                 
+                             </div>
+                                 <p style="z-index: 1; position: relative;">
+                                     <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
+                             <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#options">Search</a>
+                                         </p>   
+                                     
+                                   
+                                 </div>
+                             </div>
+                       
+                  </div>
+               
+</div>
+<!--
     <div class="col-md-1">
     </div>
-    <div class="col-md-3"> <!--left-->
+-->
+    <div class="col-md-4"> <!--left-->
                        
                 <div class="section  section-landing ">
 	                 
@@ -265,7 +340,7 @@ if(isset($_SESSION['user'])){
                   
     </div><!--left-->
                      
-    <div class="col-md-3"> <!--middle-->
+    <div class="col-md-4"> <!--middle-->
         <div class="section  section-landing ">
 	                 
 
@@ -434,7 +509,7 @@ if(isset($_SESSION['user'])){
 	            </div>
     </div><!--middle-->                
           
-    <div class="col-md-3"> <!--right-->
+    <div class="col-md-4"> <!--right-->
          <div class="section  section-landing ">
 	                 
 
@@ -601,8 +676,11 @@ if(isset($_SESSION['user'])){
 					</div>
 	            </div>
     </div><!--right-->
+<!--
        <div class="col-md-2">
      </div> 
+
+-->
     <div class="loadmore">
          <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
