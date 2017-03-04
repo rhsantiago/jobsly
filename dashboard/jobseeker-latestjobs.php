@@ -1,10 +1,8 @@
 <?php
-
-
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-        include 'Database.php';
-    }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+        
+}
 include 'specialization.php';
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
@@ -13,12 +11,23 @@ if(isset($_SESSION['user'])){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");      
   include "serverlogconfig.php";  
+  include 'Database.php';    
   $database = new Database();
   include "Jobad.php";
+  $jobadsarray = array(); 
+    $search="";
+  if(isset($_POST['search'])){ $search = $_POST['search']; }  
+  
+   if(!empty($search)){ 
+       $search='%'.$search.'%';
+       $database->query("SELECT * from jobads where jobtitle like :search or jobdesc like :search order by dateadded desc limit 0,12");
+       $database->bind(':search', $search);     
+       
+   }else{
+      $database->query("SELECT * from jobads order by dateadded desc limit 0,12");
+   }
     
-  $jobadsarray = array();    
-    
-   $database->query('SELECT * from jobads order by dateadded desc limit 0,12');
+ 
    try{                            
         $rows = $database->resultset();
    }catch (PDOException $e) {
@@ -76,7 +85,7 @@ if(isset($_SESSION['user'])){
 ?>
 <style>
 body {
-    padding-top: 50px;
+  /*  padding-top: 50px; */
 }
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px !important;
@@ -134,32 +143,57 @@ body {
        </div>
    </div>     
 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
-               
+            
+          
+                <section class="blog-post">
                   <div class="panel panel-default" >
-                       <div class="panel-body" >                                        
-                             <div id="fnamediv" class="form-group label-floating">
+                      <form method="post" id="search-form" name="search-form"> 
+                          <input type="hidden" id="userid" name="userid" value="<?=$userid?>">      
+                       <div class="panel-body" >
+                           <div class="col-md-12">
+                               
+                             <div id="searchdiv" class="form-group label-floating" >
                                   <label class="control-label">Search</label>
-                                  <input type="text" id="search" class="form-control">  
-                             </div>
-                          
-                                 <div class="col-md-12"> 
-                             <div class="collapse-group collapse" id="options" >
-                                 <p class="">
-                               Together, everyone achieves more! That is our motto and how we grow. Join our dynamic and talented team and find out what you're made of!...
-                            </p>
                                  
+                                  <input type="text" id="search" class="form-control" style="z-index: 2; position: relative;">  
                              </div>
-                                 <p style="z-index: 1; position: relative;">
-                                     <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
-                             <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#options">Search</a>
-                                         </p>   
-                                     
-                                   
+                           
+                            
+                             <div class="collapse-group collapse" id="options" >
+                                 <div class="col-md-6">
+                                      <div id="minsalarydiv" class="form-group label-floating">
+                                      <label class="control-label">Min. Salary</label>
+                                      <input type="text" id="minsalary" class="form-control">  
+                                     </div>
                                  </div>
+                                 <div class="col-md-6"> 
+                                        <div id="specializationdiv" class="form-group label-floating">
+                                         <label class="control-label">Specialization</label>
+                                         <select class="form-control" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
+                                             <option disabled></option>
+                                               <?php
+                                               $i=0;
+                                                foreach($specarray as $spec){
+                                                    echo "<option value='$i' "; if($specialization==$i){echo'selected';} echo">$specarray[$i]</option>";
+                                                    $i++;
+                                                }
+                                                ?>
+                                          </select>
+                                          </div> 
+                                 </div>
+                                 
+                                
                              </div>
-                       
+                           </div>
+                                <p style="z-index: 1; position: relative;">
+                                     <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
+                                     <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                             </p>  
+                             </div>
+                            </form>
                   </div>
-               
+                </section>   
+        
 </div>
 <!--
     <div class="col-md-1">

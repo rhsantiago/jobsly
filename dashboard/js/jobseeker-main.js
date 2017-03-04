@@ -220,6 +220,27 @@ jQuery(document).ready(function ($) {
    
      });
     
+    $(document).on('submit','#search-form',function(event){
+             event.preventDefault()
+             event.stopPropagation();                  
+            var search = $("#search-form #search").val();
+            
+            $.ajax({
+                    type: "POST",
+                    url: 'jobseeker-latestjobs.php',
+                    data: "search=" +search,
+                    dataType: 'html',
+                    success: function (html) {   
+                         $('#resume-main-body').html(html);
+                         $('[data-toggle="tooltip"]').tooltip();
+                         $(function() {
+                                $.material.init();
+                            });
+                    }
+           });
+        return false;
+    }); 
+    
     
     
 });   

@@ -17,6 +17,8 @@ if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
+    $msg = "logged in";
+    $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
     include 'specialization.php';
 ?>
 <!doctype html>
