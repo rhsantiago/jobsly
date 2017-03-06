@@ -15,20 +15,48 @@ if(isset($_SESSION['user'])){
   $database = new Database();
   include "Jobad.php";
   $jobadsarray = array(); 
-    $search="";
-  if(isset($_POST['search'])){ $search = $_POST['search']; }  
-  
-   if(!empty($search)){ 
+  $search="";
+  $esalary=0;
+  $specializationsearch="";
+  if(isset($_POST['search'])){ $search = $_POST['search']; }
+  if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
+  if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
+  $where = "";
+  $wherekey ="";
+   if(!empty($search)){
        $search='%'.$search.'%';
-       $database->query("SELECT * from jobads where jobtitle like :search or jobdesc like :search order by dateadded desc limit 0,12");
-       $database->bind(':search', $search);     
-       
-   }else{
-      $database->query("SELECT * from jobads order by dateadded desc limit 0,12");
+       $where=" (jobtitle like :search or jobdesc like :search) ";
+        if($esalary > 0){
+            $where = $where."and ";
+        }
+   }
+   if($esalary > 0){ 
+       $where= $where . " msalary <= :esalary and maxsalary >= :esalary ";
+       if($specializationsearch > 0){
+            $where = $where."and ";
+        }
+   }
+   if(!empty($specializationsearch)){ 
+       $where= $where . " specialization = :specialization ";
+   }    
+   
+   if(!empty($where)){
+       $wherekey = " where ";
+   }    
+    $msg = $where;
+    
+   $database->query("SELECT * from jobads ".$wherekey.$where." order by dateadded desc limit 0,12"); 
+   if(!empty($search)){ 
+       $database->bind(':search', $search);  
+   }
+   if($esalary > 0){ 
+       $database->bind(':esalary', $esalary);  
+   }
+   if($specializationsearch > 0){
+       $database->bind(':specialization', $specializationsearch);
    }
     
- 
-   try{                            
+   try{  
         $rows = $database->resultset();
    }catch (PDOException $e) {
         $msg = $e->getTraceAsString()." ".$e->getMessage();
@@ -77,6 +105,7 @@ if(isset($_SESSION['user'])){
             die("");
       } 
    }
+    $specialization=0;
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
@@ -155,22 +184,22 @@ body {
                              <div id="searchdiv" class="form-group label-floating" >
                                   <label class="control-label">Search</label>
                                  
-                                  <input type="text" id="search" class="form-control" style="z-index: 2; position: relative;">  
+                                  <input type="text" id="search" class="form-control searchform">  
                              </div>
-                           
+                            </div>
                             
                              <div class="collapse-group collapse" id="options" >
                                  <div class="col-md-6">
-                                      <div id="minsalarydiv" class="form-group label-floating">
+                                      <div id="esalarydiv" class="form-group label-floating">
                                       <label class="control-label">Min. Salary</label>
-                                      <input type="text" id="minsalary" class="form-control">  
+                                      <input type="text" id="esalary" class="form-control searchform" >  
                                      </div>
                                  </div>
                                  <div class="col-md-6"> 
                                         <div id="specializationdiv" class="form-group label-floating">
                                          <label class="control-label">Specialization</label>
-                                         <select class="form-control" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
-                                             <option disabled></option>
+                                         <select class="form-control searchform" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
+                                             <option></option>
                                                <?php
                                                $i=0;
                                                 foreach($specarray as $spec){
@@ -184,7 +213,7 @@ body {
                                  
                                 
                              </div>
-                           </div>
+                           
                                 <p style="z-index: 1; position: relative;">
                                      <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
                                      <button class="btn btn-primary btn-sm" type="submit">Search</button>

@@ -1,0 +1,15 @@
+INFO - 2017-03-07 00:00:07 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:00:10 - reg@jobsly.net 
+INFO - 2017-03-07 00:00:19 - reg@jobsly.net  specialization = :specialization 
+INFO - 2017-03-07 00:01:38 - reg@jobsly.net  msalary <= :esalary and maxsalary >= :esalary and  specialization = :specialization 
+INFO - 2017-03-07 00:15:10 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:16:03 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:17:21 - reg@jobsly.net logged in
+ERROR - 2017-03-07 00:17:32 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(60): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: no parameters were bound
+INFO - 2017-03-07 00:17:51 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:18:39 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:20:59 - reg@jobsly.net logged in
+INFO - 2017-03-07 00:21:16 - reg@jobsly.net logged in

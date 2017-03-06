@@ -223,12 +223,14 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#search-form',function(event){
              event.preventDefault()
              event.stopPropagation();                  
-            var search = $("#search-form #search").val();
+             var search = $("#search-form #search").val();
+             var esalary = $("#search-form #esalary").val();
+             var specialization = $("#search-form #specialization").val();
             
             $.ajax({
                     type: "POST",
                     url: 'jobseeker-latestjobs.php',
-                    data: "search=" +search,
+                    data: "search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
                     dataType: 'html',
                     success: function (html) {   
                          $('#resume-main-body').html(html);
