@@ -401,97 +401,198 @@ if($ok == 1 ){
                                    </div>
                             </div>
                             <div class="col-md-12">
-                                <section class="blog-post">
-                                    <div class="panel panel-default">                                    
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info h4weight">Job Ad Performance</h4></div>
-                                 <div class="table-responsive">      
-                                     <table class="table table-hover table-condensed">
-                                            <thead>
-                                                <tr align="left">
-                                                    <th>Job Title</th>
-                                                    <th>Impressions</th>
-                                                    <th>Views</th>
-                                                    <th>Click Through Rate</th>    
-                                                    <th>Resume Submissions</th>
-                                                    <th>Active</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                  <h2 class="title">Latest Job Matches</h2>
+                            </div> 
+                            <?php
+                                include "Jobad.php";
+                                $jobadsarray = array();
+                                $database->query("SELECT * from jobads where specialization = :specialization order by dateadded desc limit 0,2"); 
+                                $database->bind(':specialization', $specialization);
+                                try{  
+                                    $rows = $database->resultset();
+                               }catch (PDOException $e) {
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                    die("");
+                               }
+                               foreach($rows as $row){
+                                  $jobid = $row['id'];
+                                  $jobtitle = $row['jobtitle'];
+                                  $company = $row['company'];   
+                                  $specialization = $row['specialization'];
+                                  $plevel = $row['plevel'];
+                                  $jobtype = $row['jobtype'];
+                                  $msalary = $row['msalary'];
+                                  $maxsalary = $row['maxsalary'];
+                                  $jobdesc = $row['jobdesc'];
+                                  $teaser = strip_tags($jobdesc);
+                                  $teaser = substr($teaser, 0, 100);
+                                  $teaser = strip_tags($teaser);
+
+                                  $dateadded = $row['dateadded'];
+                                  $dadd = explode("-", $dateadded);
+                                  $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+
+                                  $jobad = new Jobad();   
+                                  $jobad->setjobid($jobid);
+                                  $jobad->setjobtitle($jobtitle);
+                                  $jobad->setcompany($company);   
+                                  $jobad->setspecialization($specialization);
+                                  $jobad->setplevel($plevel);
+                                  $jobad->setjobtype($jobtype);
+                                  $jobad->setmsalary($msalary);
+                                  $jobad->setmaxsalary($maxsalary);   
+                                  $jobad->setteaser($teaser);
+                                  $jobad->setdadd($dadd);       
+
+                                  $jobadsarray[] = $jobad;
+
+                                  $database->query('update jobads set impressions=impressions + 1 where id=:jobid');   
+                                  $database->bind(':jobid', $jobid); 
+                                  try{ 
+                                      $database->execute();   
+                                  }catch (PDOException $e) {
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                        die("");
+                                  } 
+                               }
+                                $specialization=0;
+                                unset($jobad);
+                                $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+                                $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad'); 
+                                $arrlength = count($jobadsarray);
+                                 for($index = 0; $index < $arrlength;) {
+                                     $jobad = $jobadsarray[$index];
+                            ?>
                               
-                                        <?php
-                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
-                                            $database->bind(':userid', $userid);                                             
-                                            try{
-                                                $rows = $database->resultset();
-                                            }catch (PDOException $e) {
-                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                                die("");
-                                            } 
-                                            foreach($rows as $row){
-                                                $id = $row['id'];
-                                                $jobtitle = $row['jobtitle'];
-                                                $views = $row['views'];
-                                                $impressions= $row['impressions'];
-                                                $isactive= $row['isactive'];
-                                                $ctr=0;
-                                                if($views > 0 && $impressions > 0){
-                                                    $ctr = $views/$impressions;
-                                                    $ctr = number_format((float)$ctr, 2, '.', '');
-                                                }
+                            <div class="col-md-5">
+                                    <section class="blog-post">
+                                    <div class="panel panel-default">
+                                     <img src="img/fjord.jpg" class="img-responsive">
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div class="jobad-meta">
+                                      
+                                          <div class="row-fluid ">
+                                                <div class="col-md-12">
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                </div>    
+                                                <div class="col-md-9  jobad-titletopmargin">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <div class="companypos jobad-bottomborder">
+                                                            <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
+                                                        </div> 
+                                                </div>
+                                                <div class="col-md-3">
+                                                    
+                                                    <div class="companylogo "> 
+                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                          
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                             
+                                         
+                                          <div class="row-fluid">
+                                                 <div class="col-md-12">
+                                                     <ul  class="list-inline leftmargin10 jobad-bottomborder">
+                                                                                           
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">domain</i> &nbsp;<?=$specarray[$jobad->getspecialization()]?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$positionlevels[$jobad->getplevel()-1]?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <h6 id="vertical-align" class="text-muted jobadheader">
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$jobad->getmsalary()?> - <?=$jobad->getmaxsalary()?>
+                                                                                                </h6>
+                                                                                            </li>
+                                                                                        </ul>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                 </div>
                                                 
-                                                $database->query('SELECT count(jobapplications.id) as resumes from jobapplications where jobid=:jobid');
-                                                $database->bind(':jobid', $id);
-                                                try{
-                                                    $row2= $database->single();
-                                                }catch (PDOException $e) {
-                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                                    die("");
-                                                }     
-                                                $resumes = $row2['resumes'];
+                                            </div>
+                                          
+                                        </div>
+                                          <div class="row-fluid">
+                                                <div class="col-md-6  ">
+                                                   <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
+                                                   -->
+                                                </div>                                              
                                               
-                                       ?>
-                                   
-                                                <tr>                                                    
-                                                    <td><?=$jobtitle?></td>       
-                                                    <td><?=$impressions?></td> 
-                                                    <td><?=$views?></td>
-                                                    <td><?=$ctr?></td>
-                                                    <td><?=$resumes?></td>
-                                                    <td>
+                                                <div class="col-md-6 actionicon pull-right">
                                                     <?php
-                                                        if($isactive>0){
-                                                           echo"<span class='text-success'><i class='fa fa-check'></i></span>";
-                                                        }
+                                                        if(empty($applyrow)){
+                                                    ?>    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }else{
                                                     ?>
-                                                    </td>
-                                                </tr>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" title="You already applied to this job"><i class="material-icons text-success" >assignment_turned_in</i></a></span>
+                                                    <?php
+                                                    }
+                                                    
+                                                    if(empty($savedrow)){
+                                                    ?>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <?php
+                                                    }else{
+                                                    ?>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" data-placement="top" title="You already saved this job ad"><i class="material-icons text-success">favorite</i></a></span>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                    
+                                                    
+                                                    <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
+                                                </div>
+                                          </div>      
+                                          
+                                              
+                                         
+                                      </div>
+                                        
+                                        <div class="skilltags jobcardothers">
+                                            Skilltags: <span class="text-info jobcardothers">
                                             <?php
-                                            }
-                                            ?>
-                                                
-                                            </tbody>
-                                        </table>
-                                     <div class="pull-right">
-                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
-                                     </div>
-                                      </div>  
-                                </div>
+                                                      
+                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
+                                                    $database->bind(':jobid', $jobad->getjobid());
+                                                    try{
+                                                        $rows = $database->resultset();
+                                                    }catch (PDOException $e) {
+                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                        die("");
+                                                    } 
+                                                    foreach($rows as $row){
+                                                        echo $row['jobskilltag'];
+                                                        echo ' ';
+                                                    }
+                                                       
+                                             ?>   
+                                            
+                                            </span>
+                                        </div>    
                                     </div>
                                   </section>
-                                
-                                </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        include "employer-home-ctrchart.php";
-                                    ?>
-                                </div>
-                                <div class="col-md-6">
-                                    
-                                </div> 
-                            
+                             </div>
+                              
+                            <?php
+                                     $index = $index+1;
+                                 }
+                            ?>
+                            <div class="col-md-2">
+                                    <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">View All Job Matches</a>
+                            </div>    
 		                </div>
 					</div>
 	            </div>                         

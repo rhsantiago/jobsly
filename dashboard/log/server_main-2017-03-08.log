@@ -1,0 +1,15 @@
+INFO - 2017-03-08 21:44:13 - reg@jobsly.net logged in
+INFO - 2017-03-08 22:07:56 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:09:09 - reg@jobsly.net logged in
+ERROR - 2017-03-08 23:09:09 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-home.php(409): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= '11' order by dateadded desc limit 0,2' at line 1
+INFO - 2017-03-08 23:10:14 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:10:58 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:14:17 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:15:07 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:16:36 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:16:54 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:41:07 - reg@jobsly.net logged in
+INFO - 2017-03-08 23:41:18 - reg@jobsly.net logged in
