@@ -261,14 +261,15 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                            if(strcmp($isjobseeker,'jobseeker')==0){
                                                  
                                           if(empty($checkrow)){
-                                          ?>      
+                                          ?>   
+                                        
                                           <div class="quickapplydiv">
                                               <form method="post" id="quickapply-form-modal" name="quickapply-form-modal" data-parsley-validate> 
                                                   <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                                   <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
                                                   <div class="row-fluid">
                                                         <div class="col-md-12">
-                                                            <div class="center">
+                                                            <div class="center modal-gray">
                                                                 <h6 class="text-primary quickapplytitle h4weight"> Quick Apply</h6>
                                                             </div>    
                                                         </div>
@@ -324,7 +325,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                           
                                                   </div>
                                               </form>  
-                                          </div>      
+                                          </div>  
+                                         
                                           <?php                                          
                                            }                                        
                                         

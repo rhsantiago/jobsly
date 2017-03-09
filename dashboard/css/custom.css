@@ -861,3 +861,7 @@ div .parsley-errors-list {
     z-index: 2;
     position: relative;
 }
+
+.quickapplydiv {
+    background-color: #CCCCCC !important; 
+}

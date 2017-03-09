@@ -406,8 +406,9 @@ if($ok == 1 ){
                             <?php
                                 include "Jobad.php";
                                 $jobadsarray = array();
-                                $database->query("SELECT * from jobads where specialization = :specialization order by dateadded desc limit 0,2"); 
+                                $database->query("SELECT * from jobads where specialization=:specialization and jobads.id not in (select jobapplications.jobid from jobapplications where userid=:userid) order by dateadded desc limit 0,2"); 
                                 $database->bind(':specialization', $specialization);
+                                $database->bind(':userid', $userid);
                                 try{  
                                     $rows = $database->resultset();
                                }catch (PDOException $e) {
