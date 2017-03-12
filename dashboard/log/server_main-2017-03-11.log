@@ -1,0 +1,27 @@
+INFO - 2017-03-11 21:58:04 - reggie@jobsly.net logged in
+ERROR - 2017-03-11 21:58:04 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-home.php(294): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.id' in 'field list'
+INFO - 2017-03-11 22:01:36 - reggie@jobsly.net logged in
+ERROR - 2017-03-11 22:01:36 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-home.php(264): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.id' in 'field list'
+INFO - 2017-03-11 22:03:12 - reggie@jobsly.net logged in
+ERROR - 2017-03-11 22:03:12 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-home.php(264): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.id' in 'field list'
+INFO - 2017-03-11 22:03:16 - reggie@jobsly.net logged in
+ERROR - 2017-03-11 22:03:16 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-home.php(264): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.id' in 'field list'
+INFO - 2017-03-11 22:03:56 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:04:23 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:05:45 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:06:51 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:07:09 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:07:55 - reggie@jobsly.net logged in
+INFO - 2017-03-11 22:09:11 - reggie@jobsly.net logged in

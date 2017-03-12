@@ -1,7 +1,11 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-        session_start();   
-}
+        session_start();
+        // if (!isset($database)){
+     //       include 'Database.php';
+     //    }
+}  
+
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -113,9 +117,9 @@ if($ok == 1 ){
                     <li><a href="admin-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>Approvals<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="admin-jobadsappr.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
-                                    <li><a href="admin-jobadsappr.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
-                                    <li><a href="admin-jobadsappr.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
+                                    <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
@@ -181,9 +185,9 @@ if($ok == 1 ){
    <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>    
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>&nbsp;Approvals<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="admin-jobadsappr.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
-                                    <li><a href="admin-jobadsappr.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
-                                    <li><a href="admin-jobadsappr.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>
+                                    <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
+                                    <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
@@ -207,41 +211,7 @@ if($ok == 1 ){
                 <div class="row-fluid">   <!-- with fluid for full width -->
                     
                     <div id="resume-main-body">                       
-                                <?php
 
-
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-         if (!isset($database)){
-            include 'Database.php';
-         }
-    }  
-    $database = new Database();
-    $database->query('SELECT id,companyname,companyaddress,cperson,logo,designation,cpersonemail,companywebsite,cpersontelno,industry from companyinfo where userid=:userid');
-    $database->bind(':userid', $userid);
-    try{
-        $row = $database->single();
-    }catch (PDOException $e) {
-       $msg = $e->getTraceAsString()." ".$e->getMessage();
-       $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-       die("");
-    }
-    $id = $row['id'];
-    $companyname = $row['companyname'];
-    $companyaddress = $row['companyaddress'];
-    $cperson = $row['cperson'];
-    $designation = $row['designation'];
-    $cpersonemail = $row['cpersonemail'];
-    $companywebsite = $row['companywebsite'];
-    $cpersontelno = $row['cpersontelno'];
-    $industry = $row['industry'];
-    $logo = $row['logo'];
-
-?>
-
-
-
-    
     <div class="row">
     <div class="col-md-12 center">            
                     <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
@@ -269,8 +239,7 @@ if($ok == 1 ){
                                                         
                             </div>  
                      <?php
-                            $database->query('select count(id) as ajads from jobads where userid=:userid and isactive=1');
-                            $database->bind(':userid', $userid);
+                            $database->query('select count(id) as jadsappr from jobads where isactive=0');
                             try{
                                 $row = $database->single();
                             }catch (PDOException $e) {
@@ -278,10 +247,9 @@ if($ok == 1 ){
                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                  die("");
                              }
-                            $ajads = $row['ajads'];
+                            $jadsappr = $row['jadsappr'];
     
-                            $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
-                            $database->bind(':userid', $userid);
+                            $database->query('SELECT count(useraccounts.id) as totemp from useraccounts where usertype=1 and isverified=0');
                             try{
                                 $row = $database->single();
                             }catch (PDOException $e) {
@@ -289,10 +257,9 @@ if($ok == 1 ){
                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                   die("");
                             }    
-                            $totapplicants = $row['totapplicants'];
+                            $totemp = $row['totemp'];
     
-                            $database->query('SELECT count(jobapplications.id) as napps from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isnew=1');
-                            $database->bind(':userid', $userid);
+                            $database->query('SELECT count(useraccounts.id) as totjseeker from useraccounts where usertype=2 and isverified=0');
                             try{    
                                 $row = $database->single();
                             }catch (PDOException $e) {
@@ -300,10 +267,9 @@ if($ok == 1 ){
                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                  die("");
                             }    
-                            $napps = $row['napps'];
+                            $totjseeker = $row['totjseeker'];
     
-                            $database->query('SELECT count(jobapplications.id) as shortlisted from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isshortlisted=1');
-                            $database->bind(':userid', $userid);
+                            $database->query('SELECT count(useraccounts.id) as totjseeker from useraccounts where usertype=2 and isverified=0');
                             try{    
                                 $row = $database->single();
                             }catch (PDOException $e) {
@@ -311,7 +277,7 @@ if($ok == 1 ){
                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                   die("");
                             }  
-                            $shortlisted = $row['shortlisted'];
+                             $totjseeker = $row['totjseeker'];
         
                      ?>
                                 
@@ -320,34 +286,34 @@ if($ok == 1 ){
                                <div class="row-fluid">
                                    <div class="col-lg-12"> 
                             <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats leftmargin10" >
+                                    <div  class="card card-stats" >
                                         <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="aappsdiv"><?=$ajads?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="jobadsapprdiv"><?=$jadsappr?></span></a></h3>
                                         </div>
-                                      <a href="#ajposts" id="ajposts" class="text-primary h4weight pull-left  marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Job Ads</a>
+                                      <a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Job Ads<br>Approval</a>
                                         
                                     </div>
 						      </div>
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#napp" id="napp" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="nappsdiv"><?=$napps?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#empappr" id="empappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="empapprdiv"><?=$totemp?></span></a></h3>
                                         </div>                                        
-                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applicants</a>
+                                            <a href="#empappr" id="empappr" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Employers<br>Approval</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="green">
-                                            <h3 class="center marginjobdetaillink"><a href="#short" id="short" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$shortlisted?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="jseekerapprdiv"><?=$totjseeker?></span></a></h3>
                                         </div>
-                                            <a href="#short" id="short" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>		
+                                            <a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Job Seekers<br>Approval</a>		
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats rightmargin15">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totjseeker?></span></a></h3>
                                         </div>
                                             <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
                                     </div>   
@@ -355,91 +321,12 @@ if($ok == 1 ){
                                    </div>
                             </div>
                             <div class="col-md-12">
-                                <section class="blog-post">
-                                    <div class="panel panel-default">                                    
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info h4weight">Job Ad Performance</h4></div>
-                                 <div class="table-responsive">      
-                                     <table class="table table-hover table-condensed">
-                                            <thead>
-                                                <tr align="left">
-                                                    <th>Job Title</th>
-                                                    <th>Impressions</th>
-                                                    <th>Views</th>
-                                                    <th>Click Through Rate</th>    
-                                                    <th>Resume Submissions</th>
-                                                    <th>Active</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                              
-                                        <?php
-                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
-                                            $database->bind(':userid', $userid);                                             
-                                            try{
-                                                $rows = $database->resultset();
-                                            }catch (PDOException $e) {
-                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                                die("");
-                                            }    
-                                            foreach($rows as $row){
-                                                $id = $row['id'];
-                                                $jobtitle = $row['jobtitle'];
-                                                $views = $row['views'];
-                                                $impressions= $row['impressions'];
-                                                $isactive= $row['isactive'];
-                                                $ctr=0;
-                                                if($views > 0 && $impressions > 0){
-                                                    $ctr = $views/$impressions;
-                                                    $ctr = number_format((float)$ctr, 2, '.', '');
-                                                }
-                                                
-                                                $database->query('SELECT count(jobapplications.id) as resumes from jobapplications where jobid=:jobid');
-                                                $database->bind(':jobid', $id);
-                                                try{
-                                                    $row2= $database->single();
-                                                }catch (PDOException $e) {
-                                                   $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                   $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                                   die("");
-                                                }    
-                                                $resumes = $row2['resumes'];
-                                              
-                                       ?>
-                                   
-                                                <tr>                                                    
-                                                    <td><?=$jobtitle?></td>       
-                                                    <td><?=$impressions?></td> 
-                                                    <td><?=$views?></td>
-                                                    <td><?=$ctr?></td>
-                                                    <td><?=$resumes?></td>
-                                                    <td>
-                                                    <?php
-                                                        if($isactive>0){
-                                                           echo"<span class='text-success'><i class='fa fa-check'></i></span>";
-                                                        }
-                                                    ?>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                            }
-                                            ?>
-                                                
-                                            </tbody>
-                                        </table>
-                                     <div class="pull-right">
-                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
-                                     </div>
-                                      </div>  
-                                </div>
-                                    </div>
-                                  </section>
+                                
                                 
                                 </div>
                                 <div class="col-md-6">
                                     <?php
-                                        include "employer-home-ctrchart.php";
+                                        //include "employer-home-ctrchart.php";
                                     ?>
                                 </div>
                                 <div class="col-md-6">
