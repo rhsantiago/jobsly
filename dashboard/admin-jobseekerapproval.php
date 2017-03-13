@@ -33,7 +33,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Employers for Account Approval</h2>
+                             <h2 class="title">Job Seekers for Account Approval</h2>
        </div>
      </div>
     <div class="col-md-9">
@@ -62,7 +62,7 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 and isverified = 0 order by signupdate');      
+                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=2 and isverified = 0 order by signupdate');      
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {

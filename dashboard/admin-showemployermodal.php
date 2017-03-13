@@ -19,8 +19,10 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
  $logtimestamp = date("Y-m-d H:i:s"); 
  include "serverlogconfig.php";
  $database = new Database();
- 
-    $database->query('SELECT * from useraccounts, companyinfo where useraccounts.id=:employerid and useraccounts.id=companyinfo.id');
+ $sdate='';
+ $signupdate='';
+ $email='';
+    $database->query('SELECT * from useraccounts, companyinfo where useraccounts.id=:employerid and useraccounts.id=companyinfo.userid');
     $database->bind(':employerid', $employerid);
     try{
         $row = $database->single();
@@ -29,24 +31,24 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
     }      
-    $email = $row['useraccounts.email'];    
-    $signupdate = $row['useraccounts.signupdate'];
+    $email = $row['email'];    
+    $signupdate = $row['signupdate'];
     $sdate = explode("-", $signupdate);
-    $signupdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-    $companyname = $row['companyinfo.companyname'];
-    $companyaddress = $row['companyinfo.companyaddress'];
-    $companywebsite = $row['companyinfo.companywebsite'];
-    $telno = $row['companyinfo.telno'];
-    $companytin = $row['companyinfo.companytin'];
-    $cperson = $row['companyinfo.cperson'];
-    $designation = $row['companyinfo.designation'];
-    $cpersonemail = $row['companyinfo.cpersonemail'];
-    $cpersontelno = $row['companyinfo.cpersontelno'];
-    $industry = $row['companyinfo.industry'];
-    $numemp = $row['companyinfo.numemp'];
-    $ctype = $row['companyinfo.ctype'];
-    $cdesc = $row['companyinfo.cdesc'];
-    $logo = $row['companyinfo.logo'];
+ 
+    $companyname = $row['companyname'];
+    $companyaddress = $row['companyaddress'];
+    $companywebsite = $row['companywebsite'];
+    $telno = $row['telno'];
+    $companytin = $row['companytin'];
+    $cperson = $row['cperson'];
+    $designation = $row['designation'];
+    $cpersonemail = $row['cpersonemail'];
+    $cpersontelno = $row['cpersontelno'];
+    $industry = $row['industry'];
+    $numemp = $row['numemp'];
+    $ctype = $row['ctype'];
+    $cdesc = $row['cdesc'];
+    $logo = $row['logo'];
      
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 ?>
@@ -54,7 +56,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Job Ad</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Employer</h4>
 	      </div>
               
 	      <div id="modaldeljobad" class="modal-body modal-gray">
@@ -72,10 +74,8 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                         <div class="blog-post-content">
                                             <div class="row-fluid">
                                                 <div class="col-md-6">
-                                                        <h2 class="text-info jobad-title"><?=$jobtitle?></h2>
-                                                        <div class="companypos">
-                                                            <h6 class="text-muted"><i><?=$company?></i></h6>
-                                                        </div> 
+                                                        <h2 class="text-info jobad-title"><?=$companyname?></h2>
+                                                      
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
@@ -85,91 +85,42 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                             </div>    
                                          
                                           <div class="row-fluid">
-                                                 <div class="col-md-12">  
-                                                      <?=$teaser?>...<br><br>
-                                                 </div>
-                                                <div class="col-md-12">   
-                                               
-                                                    <div class="collapse-group collapse" id="viewdetails">
-                                                  <?=$jobdesc?>
+                                             
+                                                  <?=$cdesc?>
                                                         
-                                                    <div><b>Requirements</b></div>
-                                                        <ul>
-                                                            <?php
-                                                            if($yrsexp > 0){
-                                                            ?>    
-                                                                <li><?=$yrsexp?> years work experience</li>
-                                                            <?php
-                                                            }
-                                          
-                                                            if(!empty($mineduc)){
-                                                            ?>                                                            
-                                                                <li><?=$mineduc?></li>
-                                                            <?php
-                                                            }
-                                          
-                                                            if(!empty($languages)){
-                                                            ?>
-                                                                <li><?=$languages?></li>
-                                                            <?php
-                                                            }
-                                          
-                                                            if(!empty($licenses)){
-                                                            ?>
-                                                                <li><?=$licenses?></li>
-                                                            <?php
-                                                            }
-                                          
-                                                            if($wtravel == 'on'){
-                                                            ?>
-                                                                <li>Willing to travel</li>
-                                                            <?php
-                                                            }
-                                          
-                                                             if($wrelocate == 'on'){
-                                                            ?>
-                                                                <li>Willing to relocate</li>
-                                                            <?php
-                                                            }
-                                                            ?>
+                                                    <div class="col-md-6">
+                                                        <ul style="list-style: none;">
+                                                              
+                                                                <li>Username: <?=$email?></li>
+                                                                                                                     
+                                                                <li>Signup Date: <?=$signupdate?></li>
+                                                           
+                                                                <li>Company Name: <?=$companyname?></li>
                                                             
-                                                        </ul>
-                                                        <p><b>Technical / Job-specific skills</b></p>
-                                                        <ul>
-                                                            <?php
-                                                      
-                                                                    $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
-                                                                    $database->bind(':jobid', $jobid);
-                                                                    try{
-                                                                        $rows = $database->resultset();
-                                                                    }catch (PDOException $e) {
-                                                                        $error = true;
-                                                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                                        include "serverlog.php";
-                                                                        die("");
-                                                                    } 
-                                                                    foreach($rows as $row){
-                                                                        echo '<li>';
-                                                                        echo $row['jobskill'];
-                                                                        echo '</li>';
-                                                                    }
-
-                                                             ?>                                                              
-                                                        </ul>
-                                                        <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
-                                                        <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
-                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>     
-                                                    </div>    
-                                                </div>
+                                                                <li>Company Address: <?=$companyaddress?></li>
+                                                           
+                                                                <li>Website: <?=$companywebsite?></li>
+                                                                <li>Office Num: <?=$telno?></li>
+                                                                <li>TIN: <?=$companytin?></li>                                                         
+                                                                <li>Industry: <?=$industry?></li>
+                                                                <li>Number of Employees: <?=$numemp?></li>
+                                                                <li>Company Type: <?=$ctype?></li>
+                                                        </ul>                                                       
+                                                  </div>
+                                                        <div class="col-md-6">
+                                                        <ul style="list-style: none;">
+                                                                <li>Contact Person: <?=$cperson?></li>
+                                                                <li>Designation: <?=$designation?></li>
+                                                                <li>Contact Person Email: <?=$cpersonemail?></li>
+                                                                <li>Contact Person Phone Num: <?=$cpersontelno?></li>  
+                                                        </ul>                                                       
+                                                  </div>   
+                                               
                                             </div>
                                           
                                         </div>
-                                        <div class="row-fluid">
-                                                <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
-                                                </div>
-                                          </div>    
-                                          <div id="adapproveddiv" class="adapproveddiv">
+                                      
+                                          <div id="employerapproveddiv" class="employerapproveddiv">
                                                 <div class="row-fluid">
                                                         <div class="col-md-12">
                                                             <div id="successadapproved" name="successadapproved" class="alert alert-success">
@@ -180,7 +131,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                                   </button>
-                                                                  <b>Alert: </b> Job Ad Approved!
+                                                                  <b>Alert: </b> Employer Approved!
 
                                                             </div>
                                                     </div>    
@@ -194,12 +145,12 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                            
 	      </div>
 	      <div class="modal-footer blog-post">
-                <form method="post" id="approvejobad-form" name="approvejobad-form">
-                    <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                <form method="post" id="approveemployer-form" name="approveemployer-form">
+                    <input type="hidden" id="employerid" name="employerid" value="<?=$employerid?>">
                     <input type="hidden" id="mode" name="mode" value="approve">
                </form>    
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <button type="button" id="approvejobad" name="approvejobad" class="btn btn-primary">Approve</button>
+               <button type="button" id="approveemployer" name="approveemployer" class="btn btn-primary">Approve</button>
 	      </div>
 <script>
 jQuery(document).ready(function ($) {
@@ -208,8 +159,8 @@ jQuery(document).ready(function ($) {
        $.material.init();
     });
     
-    jQuery('#approvejobad').on('click',function() {  
-        $('#approvejobad-form').submit();
+    jQuery('#approveemployer').on('click',function() {  
+        $('#approveemployer-form').submit();
      });
     
 });       

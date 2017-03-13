@@ -86,10 +86,9 @@ $(document).ready(function ($) {
         return false;
      });
     
-    $('#admin-showjemployer-modal').on('show.bs.modal', function(e) {
+    $('#admin-showemployer-modal').on('show.bs.modal', function(e) {
              
-               var $modal = $(this);
-        // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
+               var $modal = $(this);   
                var employerid =  $(e.relatedTarget).data('employerid');
                var mode =  $(e.relatedTarget).data('mode');         
      
@@ -110,7 +109,26 @@ $(document).ready(function ($) {
         });
     });
     
-    
+    $(document).on('submit','#approveemployer-form',function(event) {
+            event.preventDefault();
+            var employerid = $("#approveemployer-form #employerid").val();
+            var mode = $("#approveemployer-form #mode").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'admin-approveemployersubmit.php',
+                data: 'employerid=' + employerid + '&mode=' + mode,         
+                success: function(data) {                           
+                     $('#employerapproveddiv').fadeIn(1500); 
+                     $("#line" + employerid).remove();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
     
     
     
