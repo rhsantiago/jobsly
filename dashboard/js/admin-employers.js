@@ -1,10 +1,10 @@
 $(document).ready(function ($) {
     
-    $("a[href='#jobadsappr'], a[href='admin-approvals.php?ajax=jobadsappr']").on('click', function (event){  
+    $("a[href='#emplist'], a[href='admin-employers.php?ajax=emplist']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
-            url: 'admin-jobadsapproval.php',
+            url: 'admin-employerslist.php',
             dataType: 'html',
 
             success: function (html) {
@@ -18,11 +18,11 @@ $(document).ready(function ($) {
         return false;
     });
     
-    $("a[href='#empappr'], a[href='admin-approvals.php?ajax=empappr']").on('click', function (event){  
+    $("a[href='#empjobads'], a[href='admin-employers.php?ajax=empjobads']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
         $.ajax({
-            url: 'admin-employersapproval.php',
+            url: 'admin-employerjobads.php',
             dataType: 'html',
 
             success: function (html) {

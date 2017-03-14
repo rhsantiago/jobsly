@@ -115,17 +115,17 @@ if($ok == 1 ){
         	<div class="collapse navbar-collapse" id="navigation-example">
         		<ul class="nav navbar-nav navbar-right">
                     <li><a href="admin-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>Approvals<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="admin-approvals.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>Approvals<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
                                     <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
                                     <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="admin-employers.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin-employerslist.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
-                            <li><a href="admin-employerslis?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
+                            <li><a href="admin-employers.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
+                            <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>    
                     </li>
                     <li class="divider"></li>
@@ -182,18 +182,18 @@ if($ok == 1 ){
                                         <h4 class="sidenavname"><?=$fname?></h4>                                        
                                     </div>  
        </div>    
-   <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>    
-   <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>&nbsp;Approvals<b class="caret"></b></a>
+   <div class="sidebar-item"><a href="admin-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>    
+   <div class="sidebar-item dropdown active"><a href="admin-approvals.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>&nbsp;Approvals<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
                                     <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
                                     <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
+   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-employers.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="admin-employerslist.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
-                            <li><a href="admin-employerslis?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>    
+                            <li><a href="admin-employers.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
+                            <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>    
     </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

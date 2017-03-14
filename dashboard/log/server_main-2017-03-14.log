@@ -1,0 +1,43 @@
+INFO - 2017-03-14 21:38:10 - reggie@jobsly.net logged in
+INFO - 2017-03-14 22:29:16 - reggie@jobsly.net logged in
+INFO - 2017-03-14 22:47:29 - reggie@jobsly.net logged in
+ERROR - 2017-03-14 22:47:31 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+ERROR - 2017-03-14 22:48:32 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+INFO - 2017-03-14 22:50:44 - reggie@jobsly.net logged in
+ERROR - 2017-03-14 22:51:06 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+INFO - 2017-03-14 22:51:33 - reggie@jobsly.net logged in
+ERROR - 2017-03-14 22:51:36 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+INFO - 2017-03-14 22:51:47 - reggie@jobsly.net logged in
+INFO - 2017-03-14 22:56:53 - reggie@jobsly.net logged in
+ERROR - 2017-03-14 22:57:02 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+INFO - 2017-03-14 23:07:08 - reggie@jobsly.net logged in
+ERROR - 2017-03-14 23:13:52 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1
+ERROR - 2017-03-14 23:22:00 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(67): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(214): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by signupdate desc' at line 1

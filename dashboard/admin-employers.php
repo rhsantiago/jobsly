@@ -15,6 +15,7 @@ if(isset($_SESSION['user'])){
 
 if($ok == 1 ){
     $ajax = $_GET['ajax'];
+    $employerid = $_GET['employerid'];
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
@@ -57,7 +58,7 @@ if($ok == 1 ){
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/admin-approvals.js" type="text/javascript"></script>
+    <script src="js/admin-employers.js" type="text/javascript"></script>
     <script src="js/summernote.min.js" type="text/javascript"></script> 
     <script src="js/parsley.js"></script>
 </head>
@@ -124,15 +125,15 @@ if($ok == 1 ){
                     <li><a href="admin-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
                    <li class="dropdown active"><a href="admin-approvals.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>Approvals<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="#jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
-                                    <li><a href="#empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
-                                    <li><a href="#jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
+                                    <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="admin-employers.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin-employers.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
-                            <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
+                            <li><a href="#emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
+                            <li><a href="#empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>    
                     </li>
     				
@@ -187,15 +188,15 @@ if($ok == 1 ){
     <div class="sidebar-item"><a href="admin-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>   
    <div class="sidebar-item dropdown active"><a href="admin-approvals.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">assignment_turned_in</i>&nbsp;Approvals<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
-                                    <li><a href="#empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
-                                    <li><a href="#jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jobadsappr" id="jobadsappr"><i class="material-icons">flag</i>&nbsp;Job Ads</a></li>
+                                    <li><a href="admin-approvals.php?ajax=empappr" id="empappr"><i class="material-icons">business</i>&nbsp;Employers</a></li>  
+                                    <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul>
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-employers.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="admin-employers.php?ajax=emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
-                            <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
+                            <li><a href="#emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
+                            <li><a href="#empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -205,31 +206,19 @@ if($ok == 1 ){
     
      <!--sidebar-->
     <div id="main" class="wrapper ">
-       
-
 		<div class="main main-raised ">
-         
 			<div class="container-fluid"> <!-- with fluid for full width -->
                 <div class="row-fluid">   <!-- with fluid for full width -->
-                    
                     <div id="resume-main-body">    
-                        
-                        
     <?php
-    if($ajax=='jobadsappr'){
-         include 'admin-jobadsapproval.php';    
+    if($ajax=='emplist'){
+         include 'admin-employerslist.php';    
     }
-    if($ajax=='empappr'){
-         include 'admin-employersapproval.php';
-    }
-    if($ajax=='jseekerappr'){
-         include 'admin-jobseekerapproval.php'; 
-    }
-    ?>    
-       
-                 
-                        
-                      
+    if($ajax=='empjobads'){
+        
+         include 'admin-employerjobads.php';
+    }  
+    ?>          
                 </div> <!--resume main body-->        
                 
 	        </div>
