@@ -115,7 +115,7 @@ if($ok == 1 ){
                                     <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
+                    <li class="dropdown active"><a href="resume.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
@@ -398,6 +398,40 @@ if($ok == 1 ){
                                             <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink">Total Active<br>Applicants</a>		
                                     </div>   
 						      </div>
+                            <?php
+                                    $database->query('SELECT count(personalinformation.id) as pinfo, count(additionalinformation.id) as ainfo from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+                                    $database->bind(':userid', $userid);
+                                    try{    
+                                        $row = $database->single();
+                                    }catch (PDOException $e) {
+                                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                        die("");
+                                    }     
+                                    $pinfo = $row['pinfo']; 
+                                    $ainfo = $row['ainfo']; 
+                                    if($pinfo<=0 && $ainfo<=0){
+                            ?>
+                                  
+                                                        <div class="col-lg-12 col-md-12 leftmargin10">   
+                                    
+                                                            <div id="successadapproved" name="successadapproved" class="alert alert-warning">
+                                               
+                                                                  <div class="alert-icon">
+                                                                    <i class="material-icons">check</i>
+                                                                  </div>
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                                  </button>
+                                                                  <b>Alert: </b> Please complete your Personal Information and Additional Information to start applying for jobs.
+
+                                                            </div>
+                                                </div>
+                                        
+                            <?php            
+                                    }
+                            
+                            ?>
                                    </div>
                             </div>
                             <div class="col-md-12">

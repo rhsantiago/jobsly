@@ -1,7 +1,7 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-        
+     include 'Database.php';     
 }
 include 'specialization.php';
 if(isset($_SESSION['user'])){
@@ -11,7 +11,7 @@ if(isset($_SESSION['user'])){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");      
   include "serverlogconfig.php";  
-  include 'Database.php';    
+     
   $database = new Database();
   include "Jobad.php";
   $jobadsarray = array(); 

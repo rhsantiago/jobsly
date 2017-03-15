@@ -257,10 +257,25 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
-                                            } 
+                                            }
+                                          
+                                            $database->query('SELECT count(personalinformation.id) as pinfo, count(additionalinformation.id) as ainfo from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+                                            $database->bind(':userid', $userid);
+                                            try{    
+                                                $row = $database->single();
+                                            }catch (PDOException $e) {
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                die("");
+                                            }     
+                                            $pinfo = $row['pinfo']; 
+                                            $ainfo = $row['ainfo']; 
+                                         
+                                            
+                                          
                                            if(strcmp($isjobseeker,'jobseeker')==0){
                                                  
-                                          if(empty($checkrow)){
+                                          if(empty($checkrow) && $pinfo>0 && $ainfo>0){
                                           ?>   
                                         
                                           <div class="quickapplydiv">
@@ -353,8 +368,29 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                           </div>   
                                          <?php
                                           }
-                                          ?>
                                          
+                                          
+                                          if($pinfo<=0 && $ainfo<=0){
+                                          ?>
+                                  
+                                                        <div class="col-lg-12 col-md-12">   
+                                    
+                                                            <div id="successadapproved" name="successadapproved" class="alert alert-warning">
+                                               
+                                                                  <div class="alert-icon">
+                                                                    <i class="material-icons">check</i>
+                                                                  </div>
+                                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                                  </button>
+                                                                  <b>Alert: </b> Please complete your Personal Information and Additional Information to start applying for jobs.
+
+                                                            </div>
+                                                </div>
+                                        
+                                           <?php            
+                                                }
+                                           ?>          
                                       </div>
                                         
                                         <div class="skilltags">
