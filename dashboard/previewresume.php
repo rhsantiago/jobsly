@@ -93,30 +93,30 @@ jQuery(document).ready(function ($) {
                                  <div class="row">                                                               
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Mobile Number: <?=$mnumber?></li>
-                                                                        <li> Email: <?=$myemail?></li>
-                                                                        <li> Landline: <?=$landline?></li>
-                                                                        <li> Street Address: <?=$street?></li>
-                                                                        <li> City: <?=$city?>, <?=$province?></li>
-                                                                        <li> Nationality: <?=$nationality?></li>
-                                                                        <li> Birthdate: <?=$birthday?></li>
+                                                                        <li> Mobile Number: <b><?=$mnumber?></b></li>
+                                                                        <li> Email: <b><?=$myemail?></b></li>
+                                                                        <li> Landline: <b><?=$landline?></b></li>
+                                                                        <li> Street Address: <b><?=$street?></b></li>
+                                                                        <li> City: <?=$city?>, <b><?=$province?></b></li>
+                                                                        <li> Nationality: <b><?=$nationality?></b></li>
+                                                                        <li> Birthdate: <b><?=$birthday?></b></li>
                                                                     </ul>
                                                                 </div>
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: <?=$dposition?></li>     
-                                                                        <li> Position Level: <?=$positionlevels[$plevel-1]?></li>
-                                                                        <li> Expected Salary: <?=$esalary?></li> 
-                                                                        <li> Languages: <?=$languages?></li> 
+                                                                        <li> Desired Position: <b><?=$dposition?></b></li>     
+                                                                        <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
+                                                                        <li> Expected Salary: <b><?=$esalary?></b></li> 
+                                                                        <li> Languages: <b><?=$languages?></b></li> 
                                                                         <?php
                                                                             if($wtravel=='on'){
-                                                                                echo '<li> Willing to Travel</li>';
+                                                                                echo '<li> <b>Willing to Travel</b></li>';
                                                                             }
                                                                             if($wrelocate=='on'){
-                                                                                echo '<li> Willing to Relocate</li>';
+                                                                                echo '<li><b> Willing to Relocate</b></li>';
                                                                             }
                                                                             if($pholder=='on'){
-                                                                                echo '<li> Valid Passport Holder</li';
+                                                                                echo '<li> <b>Valid Passport Holder</b></li';
                                                                             }
                                                                         ?>                                                                     
                                                                      </ul>
