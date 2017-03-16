@@ -130,6 +130,44 @@ $(document).ready(function ($) {
         return false;
      });
     
+     $(document).on('submit','#employersearch-form',function(event){
+             event.preventDefault()
+             event.stopPropagation();                  
+             var search = $("#employersearch-form #search").val();
+            $.ajax({
+                    type: "POST",
+                    url: 'admin-employerslist.php',
+                    data: "search=" + search,
+                    dataType: 'html',
+                    success: function (html) {   
+                         $('#resume-main-body').html(html);
+                         $('[data-toggle="tooltip"]').tooltip();
+                         $(function() {
+                                $.material.init();
+                            });
+                    }
+           });
+        return false;
+    });
+    
+    $(document).on('click','#employersloadmore',function(event) {
+            
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-employerslistloadmore.php',
+            data: '',
+                  
+            success: function(html) {
+                $('#activeappstable').append(html).fadeIn('slow').delay(1000);
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
     
     
 });   

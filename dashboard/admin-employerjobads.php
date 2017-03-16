@@ -40,7 +40,27 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Job Ads for Approval</h2>
+                        <?php
+                            if(!empty($employerid)){
+                                $database->query('SELECT companyname from companyinfo where userid=:employerid'); 
+                                $database->bind(':employerid', $employerid);
+                                try{
+                                    $row = $database->single();
+                                }catch (PDOException $e) {
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                    die("");
+                                }                               
+                                $companyname = $row['companyname'];
+                        ?>
+                                <h2 class="title">Job Ads by <?=$companyname?></h2>
+                        <?php
+                            }else{
+                        ?>
+                                <h2 class="title">Job Ads for Approval</h2>
+                        <?php
+                            }
+                        ?>
        </div>
      </div>
     <div class="col-md-offset-1 col-md-7">

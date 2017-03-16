@@ -18,7 +18,9 @@ if(isset($_SESSION['user'])){
    //include "serverlogconfig.php";
    $database = new Database();
 
-    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+   $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+   $search="";
+   if(isset($_POST['search'])){ $search = $_POST['search']; } 
 
 }
 
@@ -43,6 +45,29 @@ if(isset($_SESSION['user'])){
 						<div class="row">
                                                      
                             <div class="col-md-12">
+                            
+              <section class="blog-post">
+                  <div class="panel panel-default" >
+                      <form method="post" id="employersearch-form" name="employersearch-form"> 
+                          <input type="hidden" id="adminid" name="adminid" value="<?=$adminid?>">      
+                       <div class="panel-body" >
+                           <div class="col-md-9">
+                               
+                             <div id="searchdiv" class="form-group label-floating" >
+                                  <label class="control-label">Search Employers</label>
+                                 
+                                  <input type="text" id="search" class="form-control searchform" value="<?=$search?>">  
+                             </div>
+                            </div>  
+                             <div class="col-md-3">
+                               <button class="btn btn-primary btn-md" type="submit">Search</button>
+                           </div>
+                             </div>
+                            </form>
+                  </div>
+                </section>   
+                                
+                                
                            <div class="alljobsdiv">
                           
                                <section class="blog-post">
@@ -62,7 +87,13 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 order by signupdate desc');      
+                                            if(!empty($search)){
+                                                $search='%'.$search.'%';
+                                                $database->query('SELECT useraccounts.id,useraccounts.email,useraccounts.companyname, useraccounts.signupdate from useraccounts where useraccounts.companyname like :search and usertype=1 order by signupdate desc');
+                                                $database->bind(':search', $search);
+                                            }else{
+                                                $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 order by signupdate desc');   
+                                            }
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {
@@ -109,7 +140,9 @@ if(isset($_SESSION['user'])){
                                 
                                 
                             </div>  
-                                      
+                               <div class="col-md-12 center">
+                                                        <a id="employersloadmore" class="btn btn-primary" data-target="">Load More</a>
+                                                </div>       
 		                     
 		                </div>
 					</div>
