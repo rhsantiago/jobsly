@@ -91,28 +91,28 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                                     <div class="col-md-6">
                                                         <ul style="list-style: none;">
                                                               
-                                                                <li>Username: <?=$email?></li>
+                                                                <li>Username: <b><?=$email?></b></li>
                                                                                                                      
-                                                                <li>Signup Date: <?=$signupdate?></li>
+                                                                <li>Signup Date: <b><?=$signupdate?></b></li>
                                                            
-                                                                <li>Company Name: <?=$companyname?></li>
+                                                                <li>Company Name: <b><?=$companyname?></b></li>
                                                             
-                                                                <li>Company Address: <?=$companyaddress?></li>
+                                                                <li>Company Address: <b><?=$companyaddress?></b></li>
                                                            
-                                                                <li>Website: <?=$companywebsite?></li>
-                                                                <li>Office Num: <?=$telno?></li>
-                                                                <li>TIN: <?=$companytin?></li>                                                         
-                                                                <li>Industry: <?=$industry?></li>
-                                                                <li>Number of Employees: <?=$numemp?></li>
-                                                                <li>Company Type: <?=$ctype?></li>
+                                                                <li>Website: <b><?=$companywebsite?></b></li>
+                                                                <li>Office Num: <b><?=$telno?></b></li>
+                                                                <li>TIN: <b><?=$companytin?></b></li>                                                         
+                                                                <li>Industry: <b><?=$industry?></b></li>
+                                                                <li>Number of Employees: <b><?=$numemp?></b></li>
+                                                                <li>Company Type: <b><?=$ctype?></b></li>
                                                         </ul>                                                       
                                                   </div>
                                                         <div class="col-md-6">
                                                         <ul style="list-style: none;">
-                                                                <li>Contact Person: <?=$cperson?></li>
-                                                                <li>Designation: <?=$designation?></li>
-                                                                <li>Contact Person Email: <?=$cpersonemail?></li>
-                                                                <li>Contact Person Phone Num: <?=$cpersontelno?></li>  
+                                                                <li>Contact Person: <b><?=$cperson?></b></li>
+                                                                <li>Designation: <b><?=$designation?></b></li>
+                                                                <li>Contact Person Email: <b><?=$cpersonemail?></b></li>
+                                                                <li>Contact Person Phone Num: <b><?=$cpersontelno?></b></li>  
                                                         </ul>                                                       
                                                   </div>   
                                                
@@ -147,11 +147,16 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 	      <div class="modal-footer blog-post">
                 <form method="post" id="approveemployer-form" name="approveemployer-form">
                     <input type="hidden" id="employerid" name="employerid" value="<?=$employerid?>">
-                    <input type="hidden" id="mode" name="mode" value="approve">
+                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                </form>    
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <?php
+                    if($mode=='approve'){
+               ?>  
                <button type="button" id="approveemployer" name="approveemployer" class="btn btn-primary">Approve</button>
-	      </div>
+              <?php
+                    }
+               ?>
 <script>
 jQuery(document).ready(function ($) {
     jQuery('#adapproveddiv').hide();

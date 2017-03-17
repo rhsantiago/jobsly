@@ -53,7 +53,7 @@ if(isset($_SESSION['user'])){
                            <div class="alljobsdiv">
                           <?php
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
-                               $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                               $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
                               
                                 try{
                                     $rows = $database->resultset();
@@ -82,12 +82,16 @@ if(isset($_SESSION['user'])){
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                     $logo = $row['logo'];
-
+                                    $isactive = $row['isactive'];
+                                    $inactive='';
+                                    if($isactive < 1){
+                                        $inactive=' inactive';
+                                    }
                                
                                 
                          ?>
                                 
-                                <section id="section<?=$id?>" class="blog-post">
+                                <section id="section<?=$id?>" class="blog-post <?=$inactive?>">
                                     <div class="panel panel-default">
                                     
                                       <div class="panel-body jobad-bottomborder">

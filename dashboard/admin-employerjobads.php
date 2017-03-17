@@ -80,7 +80,7 @@ if(isset($_SESSION['user'])){
                                     $empcondition = " jobads.userid=:employerid and ";
                                }
                             
-                               $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where'.$empcondition.' jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');
+                               $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where'.$empcondition.' jobads.userid=companyinfo.userid order by jobads.isactive desc, jobads.dateadded desc');
                                if(!empty($employerid)){
                                     $database->bind(':employerid', $employerid);
                                }
@@ -111,12 +111,17 @@ if(isset($_SESSION['user'])){
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                     $logo = $row['logo'];
+                                    $isactive = $row['isactive'];
+                                    $inactive='';
+                                    if($isactive < 1){
+                                        $inactive=' inactive';
+                                    }
 
                                
                                 
                          ?>
                                 
-                                <section id="section<?=$id?>" class="blog-post">
+                                <section id="section<?=$id?>" class="blog-post <?=$inactive?>">
                                     <div class="panel panel-default">
                                     
                                       <div class="panel-body jobad-bottomborder">

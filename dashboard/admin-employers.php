@@ -12,10 +12,10 @@ if(isset($_SESSION['user'])){
 }else{
     header("Location: logout.php");
 }
-
+//$employerid='';
 if($ok == 1 ){
     $ajax = $_GET['ajax'];
-    $employerid = $_GET['employerid'];
+   // $employerid = $_GET['employerid'];
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
@@ -130,6 +130,12 @@ if($ok == 1 ){
                                     <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul> 
                     </li>
+                    <li class="dropdown active"><a href="admin-jobads.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="admin-jobads.php?ajax=alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
+                                    <li><a href="admin-jobads.php?ajax=ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>
+                         </ul> 
+                    </li>
                     <li class="dropdown active"><a href="admin-employers.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>
@@ -193,6 +199,12 @@ if($ok == 1 ){
                                     <li><a href="admin-approvals.php?ajax=jseekerappr" id="jseekerappr"><i class="material-icons">people</i>&nbsp;Job Seekers</a></li>  
                          </ul>
     </div>
+    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+                            <li><a href="admin-jobads.php?ajax=alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
+                            <li><a href="admin-jobads.php?ajax=ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>    
+    </ul>
+    </div>   
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-employers.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="#emplist" id="emplist"><i class="material-icons">list</i>&nbsp;List</a></li>

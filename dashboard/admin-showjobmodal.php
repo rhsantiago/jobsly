@@ -261,10 +261,17 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 	      <div class="modal-footer blog-post">
                 <form method="post" id="approvejobad-form" name="approvejobad-form">
                     <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
-                    <input type="hidden" id="mode" name="mode" value="approve">
+                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                </form>    
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <button type="button" id="approvejobad" name="approvejobad" class="btn btn-primary">Approve</button>
+               <?php
+                    if($mode=='approve'){
+               ?>    
+                        <button type="button" id="approvejobad" name="approvejobad" class="btn btn-primary">Approve</button>
+               <?php
+                    }
+               ?>           
+              
 	      </div>
 <script>
 jQuery(document).ready(function ($) {

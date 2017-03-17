@@ -865,3 +865,8 @@ div .parsley-errors-list {
 .quickapplydiv {
     background-color: #CCCCCC !important; 
 }
+
+.inactive{
+    opacity: 0.5;
+    filter: alpha(opacity=50);   
+}

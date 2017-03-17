@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Employer List</h2>
+                             <h2 class="title">Active Job Ads List</h2>
        </div>
      </div>
     <div class="col-md-9">
@@ -48,13 +48,13 @@ if(isset($_SESSION['user'])){
                             
               <section class="blog-post">
                   <div class="panel panel-default" >
-                      <form method="post" id="employersearch-form" name="employersearch-form"> 
+                      <form method="post" id="jobadssearch-form" name="jobadssearch-form"> 
                           <input type="hidden" id="adminid" name="adminid" value="<?=$adminid?>">      
                        <div class="panel-body" >
                            <div class="col-md-9">
                                
                              <div id="searchdiv" class="form-group label-floating" >
-                                  <label class="control-label">Search Employers</label>
+                                  <label class="control-label">Search Job Ads</label>
                                  
                                   <input type="text" id="search" class="form-control searchform" value="<?=$search?>">  
                              </div>
@@ -73,14 +73,15 @@ if(isset($_SESSION['user'])){
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-primary h4weight">Employers</h4></div>
+                                          <div><h4 class="text-primary h4weight">Active Job Ads</h4></div>
                                     <div class="table-responsive">      
                                      <table id="activeappstable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th class="col-md-2">Company Name</th>
-                                                    <th class="col-md-2 text-right">Email</th>                                                   
-                                                    <th class="col-md-2 text-right">Signup Date</th>
+                                                    <th class="col-md-2">Position</th>
+                                                    <th class="col-md-2 text-right">Company</th>                                                   
+                                                    <th class="col-md-2 text-right">Posted By</th>
+                                                    <th class="col-md-2 text-right">Max Salary</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -89,10 +90,10 @@ if(isset($_SESSION['user'])){
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT useraccounts.id,useraccounts.email,useraccounts.companyname, useraccounts.signupdate from useraccounts where useraccounts.companyname like :search and usertype=1 order by signupdate desc');
+                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, companyinfo.companyname from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 order by signupdate desc');   
+                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded,jobads.isactive, companyinfo.companyname from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');   
                                             }
                                             try{
                                                 $rows = $database->resultset();
@@ -101,24 +102,29 @@ if(isset($_SESSION['user'])){
                                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
                                             }
+                                            $userid='';
                                             foreach($rows as $row){
                                                 $id = $row['id'];
-                                                $email = $row['email'];
+                                                $userid = $row['userid'];
+                                                $jobtitle = $row['jobtitle'];
                                                 $companyname = $row['companyname'];
-                                                $signupdate= $row['signupdate'];
-                                                $dadd = explode("-", $signupdate);
-                                                $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
+                                                $company= $row['company'];
+                                                $maxsalary= $row['maxsalary'];
+                                                $companyname= $row['companyname'];                                                
+                                            
                                        ?>
                                    
                                                 <tr id="line<?=$id?>">                                                   
-                                                    <td><span class="h4weight"><?=$companyname?></span></td>
-                                                    <td class="text-right"><?=$email?></td>                      
-                                                    <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
+                                                    <td><span class="h4weight"><?=$jobtitle?></span></td>
+                                                    <td class="text-right"><?=$company?></td>        
+                                                    <td class="text-right"><?=$companyname?></td> 
+                                                    <td class="text-right"><?=$maxsalary?></td> 
+                                                    
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                         <li >
-                                                            <a href="#showemployermodal" data-employerid="<?=$id?>" data-mode="approve" data-toggle="modal" data-target="#admin-showemployer-modal" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-building fa-2x text-info"></i></a>
-                                                            <a target="_blank" href="admin-employers.php?ajax=empjobads&employerid=<?=$id?>"  rel="tooltip" id="showemployer" title="View Job Ads by this Employer" ><i class="fa fa-external-link-square fa-2x text-warning"></i></a>
+                                                            <a href="#showjobmodal" data-jobid="<?=$id?>" data-mode="view" data-toggle="modal" data-target="#admin-showjob-modal" rel="tooltip" id="showjob" title="View Job Ad" ><i class="fa fa-briefcase fa-2x text-info"></i></a>&nbsp;
+                                                            <a href="#showemployermodal" data-employerid="<?=$userid?>" data-mode="view" data-toggle="modal" data-target="#admin-showemployer-modal" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-building fa-2x text-warning" ></i></a>
                                                         </li>
                                                       
                                                         </ul>
