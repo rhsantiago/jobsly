@@ -35,6 +35,23 @@ $(document).ready(function ($) {
         });
         return false;
     });
+    $("a[href='#jdtls'], a[href='admin-jobads.php?ajax=jdtls']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'admin-jobadpage.php',
+            dataType: 'html',
+
+            success: function (html) {
+                    $('[data-toggle="tooltip"]').tooltip();
+                    $('#resume-main-body').html(html);    
+                            $(function() {
+                                $.material.init();
+                            });             
+                }
+        });
+        return false;
+    });
     
      $('#admin-showjob-modal').on('show.bs.modal', function(e) {
              
@@ -85,29 +102,7 @@ $(document).ready(function ($) {
             });
         return false;
      });
-    
-    $('#admin-showemployer-modal').on('show.bs.modal', function(e) {
-             
-               var $modal = $(this);   
-               var employerid =  $(e.relatedTarget).data('employerid');
-               var mode =  $(e.relatedTarget).data('mode');         
-     
-        $.ajax({
-            cache: false,
-            type: 'POST',
-            url: 'admin-showemployermodal.php',
-            data: 'employerid=' + employerid + "&mode=" + mode,
-                  
-            success: function(data) {
-                $modal.find('.modalcontent').html(data);
-                $modal.find('#employerapproveddiv').hide();             
-                $(function() {
-                           $.material.init();
-                });
-                
-            }
-        });
-    });
+   
     
     $(document).on('submit','#approveemployer-form',function(event) {
             event.preventDefault();
@@ -150,12 +145,12 @@ $(document).ready(function ($) {
         return false;
     });
     
-    $(document).on('click','#employersloadmore',function(event) {
+    $(document).on('click','#activejobadsloadmore',function(event) {
             
             $.ajax({
             cache: false,
             type: 'POST',
-            url: 'admin-employerslistloadmore.php',
+            url: 'admin-activejobadslistloadmore.php',
             data: '',
                   
             success: function(html) {

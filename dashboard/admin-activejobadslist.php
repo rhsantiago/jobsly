@@ -124,7 +124,7 @@ if(isset($_SESSION['user'])){
                                                 <ul class="list-inline">
                                                         <li >
                                                             <a href="#showjobmodal" data-jobid="<?=$id?>" data-mode="view" data-toggle="modal" data-target="#admin-showjob-modal" rel="tooltip" id="showjob" title="View Job Ad" ><i class="fa fa-briefcase fa-2x text-info"></i></a>&nbsp;
-                                                            <a href="#showemployermodal" data-employerid="<?=$userid?>" data-mode="view" data-toggle="modal" data-target="#admin-showemployer-modal" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-building fa-2x text-warning" ></i></a>
+                                                            <a target="_blank" href="admin-jobads.php?ajax=jdtls&employerid=<?=$userid?>&jobid=<?=$id?>"  rel="tooltip" id="jobdetails" title="View Job Ad Details" ><i class="fa fa-external-link-square fa-2x text-warning" ></i></a>
                                                         </li>
                                                       
                                                         </ul>
@@ -175,7 +175,7 @@ if(isset($_SESSION['user'])){
                                                     </div>
 		       </div> 
             <div class="col-md-12 center">
-                                                        <a id="employersloadmore" class="btn btn-primary" data-target="">Load More</a>
+                                                        <a id="activejobadsloadmore" class="btn btn-primary" data-target="">Load More</a>
                                                 </div> 
 
 <script>

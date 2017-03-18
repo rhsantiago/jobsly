@@ -230,6 +230,10 @@ if($ok == 1 ){
         
          include 'admin-inactivejobadslist.php';
     }  
+    if($ajax=='jdtls'){
+        
+         include 'admin-jobadpage.php';
+    }
     ?>          
                 </div> <!--resume main body-->        
                 
