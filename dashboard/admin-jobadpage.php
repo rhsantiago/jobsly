@@ -124,7 +124,7 @@ if(isset($_SESSION['user'])){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Job Ad Details</h2>
+                             <h2 class="title">Details for Job Id: <?=$jobid?></h2>
        </div>
      </div>
     <div class="col-md-9">
@@ -181,6 +181,7 @@ if(isset($_SESSION['user'])){
                                             </div>    
                                          
                                           <div class="row-fluid">
+                                              
                                                  <div class="col-md-12">  
                                                       <?=$teaser?>...<br><br>
                                                  </div>
@@ -326,6 +327,7 @@ if(isset($_SESSION['user'])){
                                                         <ul style="list-style: none;">
                                                               
                                                                 <li>Username: <b><?=$email?></b></li>
+                                                                <li>User Id: <b><?=$employerid?></b></li>
                                                                                                                      
                                                                 <li>Signup Date: <b><?=$signupdate?></b></li>
                                                            
@@ -394,12 +396,103 @@ if(isset($_SESSION['user'])){
                                     </div>   
 						     
 						      </div>
+                                    
+                        <div class="col-md-12">
+                    <section class="blog-post">
+                                    <div class="panel panel-default leftmargin10">                                    
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div><h4 class="text-primary h4weight">Active Applications</h4></div>
+                                    <div class="table-responsive">      
+                                     <table  class="table table-hover table-condensed">
+                                            <thead>
+                                                <tr>
+                                                   
+                                                    <th>Name</th>
+                                                    <th class="col-md-2">Specialization</th>
+                                                    <th class="col-md-2">Job Position</th>                                                   
+                                                    <th>Salary</th>
+                                                    <th class="text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="activeappstable">
+                              
+                                        <?php
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            jobads.id=:jobid 
+                                            and jobapplications.isreject=0
+                                            and jobapplications.jobid=jobads.id  
+                                            and jobapplications.userid=personalinformation.userid 
+                                            and jobapplications.userid=additionalinformation.userid
+                                            and jobapplications.userid=workexperience.userid order by jobapplications.id desc limit 0,10');
+                                            $database->bind(':jobid', $jobid);                                             
+                                            try{    
+                                                $rows2 = $database->resultset();
+                                                $next = $database->rowCount();
+                                            }catch (PDOException $e) {
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                die("");
+                                            } 
+                                            foreach($rows2 as $row2){
+                                                $applicantid = $row2['userid'];
+                                                $fname = $row2['fname'];
+                                                $lname = $row2['lname'];
+                                                $esalary = $row2['esalary'];
+                                                $position = $row2['position'];
+                                                $specialization = $row2['specialization'];
+                                                $isshortlisted = $row2['isshortlisted'];
+                                                $isnew = $row2['isnew'];
+                                       ?>
+                                   
+                                                <tr id="line<?=$applicantid?>">                                                   
+                                                    <td>
+                                                    <ul class="list-inline"> 
+                                                        <li>
+                                                            <span class="h4weight"><?=$fname?> <?=$lname?></span>
+                                                        </li>
+                                                     
+                                                    </ul>    
+                                                    </td>
+                                                    <td><?=$specarray[$specialization]?></td>       
+                                                    <td><?=$position?></td>                                                   
+                                                    <td>Php <?=$esalary?></td>
+                                                    <td class="td-actions text-right">
+                                                <ul class="list-inline">
+                                                    <li >
+                                                            <a href="#showresumemodal" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#admin-showresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
+                                                        </li>
+                                                </ul>
+                                                    </td>
+                                                </tr>
+                                            <?php                                               
+                                            }
+                                            ?>
+                                                
+                                            </tbody>
+                                         
+                                        </table>
+                                        <div class="col-md-12 center">
+                                            <div class="loadmoreform">
+                                             <form method="post" id="admin-loadmoreaappsform" name="admin-loadmoreaappsform">                    
+                                                    <input type="hidden" id="next" name="next" value="<?=$next?>">
+                                                    <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+
+                                             </form>
+                                        </div>
+                                                        <a id="aappsloadmore" class="btn btn-primary" data-target="">Load More</a>
+                                                </div>
+                                        
+                                      </div>    
+                                        </div>  
+                                    </div>
+                                  </section>        
+        </div>               
                             
                                     </div>
 					</div>
 	            </div>
                         
-                        
+        
                     
                         
                         

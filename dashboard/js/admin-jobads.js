@@ -163,6 +163,56 @@ $(document).ready(function ($) {
         });
     });
     
+    $('#admin-showresume-modal').on('show.bs.modal', function(e) {
+             
+               var $modal = $(this);      
+               var applicantid =  $(e.relatedTarget).data('applicantid');
+               var jobid =  $(e.relatedTarget).data('jobid');    
+               var mode =  $(e.relatedTarget).data('mode');         
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-viewresumemodal.php',
+            data: 'jobid=' + jobid + "&applicantid=" + applicantid + "&mode=" + mode,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $modal.find('#adapproveddiv').hide();             
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+     $(document).on('click','#aappsloadmore',function(event){
+         $('#admin-loadmoreaappsform').submit();
+      });     
+    
+    $(document).on('submit','#admin-loadmoreaappsform',function(event){
+             
+            event.preventDefault();                  
+            var next = $("#admin-loadmoreaappsform #next").val();
+            var jobid = $("#admin-loadmoreaappsform #jobid").val();
+            
+            $.ajax({
+                    type: "POST",
+                    url: 'admin-loadmoreaapps.php',
+                    data: "next=" +next+ "&jobid=" +jobid,
+                    dataType: 'html',
+
+                    success: function (html) {
+                       // console.log(html);
+                        $(".loadmoreform").remove();
+                        $('#activeappstable').append(html).fadeIn('slow').delay(1000);
+                        $('[data-toggle="tooltip"]').tooltip();
+                        //$('#loading').hide();
+                    }
+           });
+    });
+    
     
     
 });   
