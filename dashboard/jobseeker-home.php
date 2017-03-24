@@ -83,25 +83,6 @@ if($ok == 1 ){
 
         	<div class="collapse navbar-collapse" id="navigation-example">
                 
-                <ul class="nav navbar-nav navbar-right">
-                        <li class="divider"></li>
-		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
-        		</ul>
         		<ul class="nav navbar-nav navbar-right">
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
@@ -109,10 +90,10 @@ if($ok == 1 ){
                     <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
-                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="resume.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -122,9 +103,10 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
                             <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
                             <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
-                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                            <li><a target="_blank" href="previewresume.php" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>    
                     </li>
+                    <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
     				
                 </ul>
     				
@@ -179,10 +161,10 @@ if($ok == 1 ){
     <div class="sidebar-item"><a href="jobseeker-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>   
    <div class="sidebar-item dropdown"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
-                                    <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -192,7 +174,7 @@ if($ok == 1 ){
                             <li><a href="resume.php?ajax=etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education</a></li>
                             <li><a href="resume.php?ajax=skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
                             <li><a href="resume.php?ajax=ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Info</a></li>
-                            <li><a href="resume.php?ajax=pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                            <li><a target="_blank" href="previewresume.php" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>
@@ -247,7 +229,7 @@ if($ok == 1 ){
                                     </div>
                                     <div class="name center">
                                         <h4 class="homename text-info"><?=$fname?>&nbsp;<?=$lname?></h4>
-                                        <h5 class="homepos text-info"><?=$maxposition?></h5>
+                                        <h5 class="homepos "><?=$maxposition?></h5>
                                     </div>  
                                  </div>
                             </div>  
@@ -368,34 +350,34 @@ if($ok == 1 ){
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats leftmargin10" >
                                         <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center marginjobdetaillink"><a href="#aapp" id="aapp" class="text-primary h4weight pull-right"><span id="aappsdiv"><?=$totaapps?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="main.php?ajax=aapp" class="text-primary h4weight pull-right"><span id="aappsdiv"><?=$totaapps?></span></a></h3>
                                         </div>
-                                      <a href="#aapp" id="aapp" class="text-primary h4weight pull-left  marginjobdetaillink">Total Active<br>Applications</a>
+                                      <a href="main.php?ajax=aapp" class="text-primary h4weight pull-left  marginjobdetaillink">Total Active<br>Applications</a>
                                         
                                     </div>
 						      </div>
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#jinv" id="jinv" class="text-primary h4weight pull-right"><span id="nappsdiv"><?=$totinvites?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="main.php?ajax=jinv"  class="text-primary h4weight pull-right"><span id="nappsdiv"><?=$totinvites?></span></a></h3>
                                         </div>                                        
-                                            <a href="#jinv" id="jinv" class="text-info h4weight pull-right marginjobdetaillink">Total Job<br>Invitations</a>
+                                            <a href="main.php?ajax=jinv" class="text-info h4weight pull-right marginjobdetaillink">Total Job<br>Invitations</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="green">
-                                            <h3 class="center marginjobdetaillink"><a href="#sapp" id="sapp" class="text-success h4weight pull-right"><span id="shortlistdiv"><?=$totsaved?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="main.php?ajax=sapp"  class="text-success h4weight pull-right"><span id="shortlistdiv"><?=$totsaved?></span></a></h3>
                                         </div>
-                                            <a href="#sapp" id="sapp" class="text-success h4weight pull-right marginjobdetaillink">Total Saved<br>Applications</a>		
+                                            <a href="main.php?ajax=sapp" class="text-success h4weight pull-right marginjobdetaillink">Total Saved<br>Applications</a>		
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats rightmargin15">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" ><span id="shortlistdiv">0</span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="main.php?ajax=ajposts"  class="text-success h4weight pull-right" ><span id="shortlistdiv">0</span></a></h3>
                                         </div>
-                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink">Total Active<br>Applicants</a>		
+                                            <a href="main.php?ajax=ajposts"  class="text-warning h4weight pull-right marginjobdetaillink">Total Active<br>Applicants</a>		
                                     </div>   
 						      </div>
                             <?php

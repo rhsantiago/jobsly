@@ -490,7 +490,7 @@ function closeNav() {
     isClosed = true;
 }
         
-      openNav();
+   openNav();
 </script>
 
 </html>

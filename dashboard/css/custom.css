@@ -870,3 +870,7 @@ div .parsley-errors-list {
     opacity: 0.5;
     filter: alpha(opacity=50);   
 }
+
+.fullwidth {
+    width: 100% !important;
+}

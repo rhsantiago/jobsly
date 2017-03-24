@@ -139,7 +139,11 @@ if(isset($_SESSION['user'])){
                           
                                <section class="blog-post">
                                     <div class="panel panel-default">
-                                      <img src="img/fjord.jpg" class="img-responsive">
+                                     <div class="row">
+                                                <div class="col-md-12">
+                                                  <img src="img/fjord.jpg"  class="img-responsive fullwidth">
+                                                </div>
+                                              </div>
                                        
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta jobad-bottomborder">

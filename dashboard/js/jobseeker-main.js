@@ -242,7 +242,17 @@ jQuery(document).ready(function ($) {
            });
         return false;
     }); 
-    
+   /* 
+    $('#viewjobnewpage').on('click', function (){  
+
+        var jobid = $(this).data('jobid');
+        var mode = $(this).data('mode');
+        var isjobseeker = $(this).data('isjobseeker');
+        if (jobid != undefined && jobid != null) {
+            window.location = 'viewjob-newpage.php?jobid=' + jobid + '&mode=' + mode + '&isjobseeker=' + isjobseeker;
+        }
+    });
+    */
     
     
 });   

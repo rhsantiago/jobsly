@@ -81,57 +81,10 @@ if($ok == 1 ){
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-               <i onclick="openNav()" class="leftofnavheader material-icons">menu</i>
+             
         		<a class="navbar-brand logo" >jobsly</a>
         	</div>
 
-        	<div class="collapse navbar-collapse" id="navigation-example">
-        		
-    				<ul class="nav navbar-nav navbar-right">
-                        <li class="divider"></li>
-		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
-        		</ul>
-                <ul class="nav navbar-nav navbar-right">
-                     <li>
-                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
-                    </li>
-                    <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
-                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li> 
-                         </ul> 
-                    </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
-                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
-                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
-                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
-                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
-                        </ul>    
-                    </li>
-    				
-                </ul>
-        	</div>
     	</div>
     </nav>
 
@@ -208,7 +161,7 @@ jQuery(document).ready(function ($) {
 });
 </script>      
 
- <div class="col-md-12"> 
+ <div class="col-md-9"> 
     
         <div class="profile-content">
 	            <div class="container-fluid">
@@ -592,7 +545,21 @@ jQuery(document).ready(function ($) {
         
                         
  </div>
-
+<div class="col-md-3 ">
+                          <div class="card card-ads adsright">                                            
+                                                             <div class="content">
+                                                                                                                                       
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
+                                                                                </div>
+                                                                               
+                                                                            
+                                                                            </div>
+                                                                      
+                                                             </div>
+                                                    </div>
+		       </div> 
  </div>
 	        </div>
 
