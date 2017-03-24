@@ -169,7 +169,7 @@ if($ok == 1 ){
                             <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
                             <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                            <li><a target="_blank" href="previewresume.php" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>    
                     </li>
     				
@@ -237,7 +237,7 @@ if($ok == 1 ){
                             <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education</a></li>
                             <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
                             <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Info</a></li>
-                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                            <li><a target="_blank" href="previewresume.php" id=""><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
    <div class="sidebar-item"><a href="#">Jobs</a></div>

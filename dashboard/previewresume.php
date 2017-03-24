@@ -1,19 +1,186 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
-        include 'Database.php';
+        if (!isset($database)){
+           // include 'Database.php';
+         }
 }
-
 
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
+   $usertype = $_SESSION['usertype'];
+    
+   include 'authenticate.php';
+}else{
+    header("Location: logout.php");
+}
+
+if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
-    $logtimestamp = date("Y-m-d H:i:s");
+    $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
+    
     $database = new Database();
     
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>jobsly - find your next adventure</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+
+	<!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/material-kit.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <link href="css/media.css" rel="stylesheet"/>
+    <link href="css/summernote.css" rel="stylesheet"/>
+
+    
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/resume.js" type="text/javascript"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/parsley.js"></script>
+</head>
+
+<body class="landing-page">
+  
+   <nav class="navbar navbar-fixed-top ">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+                
+        	<div class="navbar-header">                
+        		<button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+               <i onclick="openNav()" class="leftofnavheader material-icons">menu</i>
+        		<a class="navbar-brand logo" >jobsly</a>
+        	</div>
+
+        	<div class="collapse navbar-collapse" id="navigation-example">
+        		
+    				<ul class="nav navbar-nav navbar-right">
+                        <li class="divider"></li>
+		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
+		            <li>
+		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+        		</ul>
+                <ul class="nav navbar-nav navbar-right">
+                     <li>
+                            <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
+                    </li>
+                    <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="main.php?ajax=aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
+                                    <li><a href="main.php?ajax=jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
+                                    <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
+                                    <li><a href="main.php?ajax=ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li> 
+                         </ul> 
+                    </li>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i>&nbsp;Resume<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
+                            <li><a href="#workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
+                            <li><a href="#etrain" id="etrain"><i class="material-icons">school</i>&nbsp;Education &amp; Training</a></li>
+                            <li><a href="#skills" id="skills"><i class="material-icons">build</i>&nbsp;Skills</a></li>
+                            <li><a href="#ainfo" id="ainfo"><i class="material-icons">add_box</i>&nbsp;Additional Information</a></li>
+                            <li><a href="#pres" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
+                        </ul>    
+                    </li>
+    				
+                </ul>
+        	</div>
+    	</div>
+    </nav>
+
+
+     <div class="header header-filter purple-header">
+           <div class="container">
+                <div class="row-fluid">
+					<div class="col-md-11 margin-top-title col-md-offset-1">
+                        <div class="row-fluid">
+                    
+                          
+                        </div>
+                        
+                </div>
+            </div>
+            </div>
+        </div>
+    <?php
+            $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+            $database->bind(':userid', $userid);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+            $maxposition = $row['maxposition'];
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $photo = $row['photo'];
+      
+    ?>
+  
+    <div id="main" class="wrapper ">
+       
+
+		<div class="main main-raised ">
+         
+			<div class="container-fluid"> <!-- with fluid for full width -->
+                <div class="row-fluid">   <!-- with fluid for full width -->
+                    
+                    <div id="resume-main-body">   
+<?php
+
+
+
+if(isset($_SESSION['user'])){
+
     $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
     $database->bind(':userid', $userid);   
     try{
@@ -199,6 +366,7 @@ jQuery(document).ready(function ($) {
               
           </div>           
         </li>
+             <li>&nbsp;</li>               
         <?php
              }
             
@@ -267,7 +435,8 @@ jQuery(document).ready(function ($) {
             </div>
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#pgrad1viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
           </div>           
-        </li>            
+        </li>        
+                    <li>&nbsp;</li>
         <?php             
              }
              }
@@ -335,7 +504,8 @@ jQuery(document).ready(function ($) {
             </div>
               <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#colviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>              
           </div>           
-        </li>                   
+        </li>              
+            <li>&nbsp;</li>
         <?php
              }
              }
@@ -423,3 +593,53 @@ jQuery(document).ready(function ($) {
                         
  </div>
 
+ </div>
+	        </div>
+
+		</div>
+</div>
+        
+	    <footer class="footer">
+	        <div class="container">
+	            <nav class="pull-left">
+	                <ul>
+	                    <li>
+	                        <a href="http://www.creative-tim.com">
+	                            Creative Tim
+	                        </a>
+	                    </li>
+						<li>
+	                        <a href="http://presentation.creative-tim.com">
+	                           About Us
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="http://blog.creative-tim.com">
+	                           Blog
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="http://www.creative-tim.com/license">
+	                            Licenses
+	                        </a>
+	                    </li>
+	                </ul>
+	            </nav>
+	            <div class="copyright pull-right">
+	                &copy; 2016, made with <i class="fa fa-heart heart"></i> by Creative Tim
+	            </div>
+	        </div>
+	    </footer>
+
+	</div>
+    
+</body>
+
+
+</html>
+<?php
+} else{
+    include 'logout.php';
+    
+}
+?>
