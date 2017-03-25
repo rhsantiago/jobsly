@@ -218,7 +218,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
    
    
      </div>
-     <div class="col-md-9">
+     <div class="col-md-offset-1 col-md-7">
                        
                 <div class="section  section-landing">
 					<div class="features">
@@ -628,27 +628,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
     <script src="js/parsley.js"></script>
      
     <script>
-    var isClosed = true;
-function openNav() {
-    if(isClosed){
-        document.getElementById("mySidenav").style.width = "200px";
-        document.getElementById("main").style.marginLeft = "200px";
-        isClosed = false;
-    } else{
-        closeNav();
-    }
-}
 
-function closeNav() {
-  
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    isClosed = true;
-}
-  
-    if(window.screen.width > 768){    
-        openNav();
-    }
         
         
 jQuery(document).ready(function ($) {
@@ -659,6 +639,8 @@ jQuery(document).ready(function ($) {
                        successClass: "has-success",
                        errorClass: "has-error"
                 });
+         $('#successdivquickapply').hide();
+         $('#warningdivquickapply').hide();
 <?php
 if(strcmp($isjobseeker,'jobseeker')==0){
  ?>  

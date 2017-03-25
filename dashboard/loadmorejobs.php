@@ -16,7 +16,9 @@ if(isset($_SESSION['user'])){
   date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");  
   include "serverlogconfig.php";  
-  $jobadsarray = array();    
+  $jobadsarray = array();
+    
+    $logo="";
     
    $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
   // $database->bind(':next', $next);   
@@ -30,6 +32,7 @@ if(isset($_SESSION['user'])){
 if(!empty($rows)){    
    foreach($rows as $row){
       $jobid = $row['id'];
+      $employerid = $row['userid'];
       $jobtitle = $row['jobtitle'];
       $company = $row['company'];   
       $specialization = $row['specialization'];
@@ -48,6 +51,7 @@ if(!empty($rows)){
        
       $jobad = new Jobad();   
       $jobad->setjobid($jobid);
+      $jobad->setuserid($employerid);   
       $jobad->setjobtitle($jobtitle);
       $jobad->setcompany($company);   
       $jobad->setspecialization($specialization);
@@ -120,6 +124,19 @@ if(!empty($rows)){
                                         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
+                                     
+                                     $database->query('SELECT logo from companyinfo where userid = :userid');    
+                                     $database->bind(':userid', $jobad->getuserid());                                   
+                                     try{     
+                                        $logorow = $database->single();                                     
+                                     }catch (PDOException $e) {
+                                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                            die("");
+                                     } 
+                                     
+                                     $logo = $logorow['logo'];  
+                                     $jobad->setlogo($logo);
                                 
                              ?>
                                 
@@ -134,7 +151,10 @@ if(!empty($rows)){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>"  data-isjobseeker="jobseeker"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                        <!--
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                    -->    
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -142,7 +162,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -188,7 +208,11 @@ if(!empty($rows)){
                                                     <?php
                                                         if(empty($applyrow)){
                                                     ?>    
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <span class="jobcardbuttons">
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                        <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
+                                                        -->
+                                                    </span>
                                                     <?php
                                                     }else{
                                                     ?>
@@ -289,6 +313,18 @@ if(!empty($rows)){
                                         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
                                      } 
+                                     
+                                     $database->query('SELECT logo from companyinfo where userid = :userid');    
+                                     $database->bind(':userid', $jobad->getuserid());                              
+                                     try{     
+                                        $logorow = $database->single();                                     
+                                     }catch (PDOException $e) {
+                                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                            die("");
+                                     } 
+                                     $logo = $logorow['logo'];
+                                     $jobad->setlogo($logo);
                              ?>
                                 
                                 <section class="blog-post">
@@ -302,7 +338,10 @@ if(!empty($rows)){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                         <!--
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                    -->    
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -310,7 +349,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -356,7 +395,11 @@ if(!empty($rows)){
                                                     <?php
                                                         if(empty($applyrow)){
                                                     ?>    
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <span class="jobcardbuttons">
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                        <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
+                                                        -->
+                                                    </span>
                                                     <?php
                                                     }else{
                                                     ?>
@@ -455,7 +498,19 @@ if(!empty($rows)){
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
                                         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
-                                     }    
+                                     }  
+                                     
+                                     $database->query('SELECT logo from companyinfo where userid = :userid');    
+                                     $database->bind(':userid', $jobad->getuserid());                               
+                                     try{     
+                                        $logorow = $database->single();                                     
+                                     }catch (PDOException $e) {
+                                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                            die("");
+                                     } 
+                                     $logo = $logorow['logo'];
+                                     $jobad->setlogo($logo);
                              ?>
                                 
                                 <section class="blog-post">
@@ -469,7 +524,10 @@ if(!empty($rows)){
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                         <!--
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                    -->    
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -477,7 +535,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -523,7 +581,11 @@ if(!empty($rows)){
                                                     <?php
                                                         if(empty($applyrow)){
                                                     ?>    
-                                                    <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a></span>
+                                                    <span class="jobcardbuttons">
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                        <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
+                                                        -->  
+                                                    </span>
                                                     <?php
                                                     }else{
                                                     ?>

@@ -3,6 +3,8 @@
 class Jobad{
     
     private $jobid;
+    private $userid;
+    private $logo;
     private $jobtitle;
     private $company;
     private $specialization;
@@ -20,6 +22,22 @@ class Jobad{
  
 	public function getjobid() {
 		return $this->jobid;
+	}
+    
+    public function setuserid($new_userid) {   	
+		$this->userid = $new_userid;
+	}	
+ 
+	public function getuserid() {
+		return $this->userid;
+	}
+    
+    public function setlogo($new_logo) {   	
+		$this->logo = $new_logo;
+	}	
+ 
+	public function getlogo() {
+		return $this->logo;
 	}
     
     public function setjobtitle($new_jobtitle) {   	

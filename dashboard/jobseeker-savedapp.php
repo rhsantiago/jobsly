@@ -113,7 +113,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                     
                                                 <div class="col-md-6  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -134,7 +134,10 @@ if(isset($_SESSION['user'])){
                                                    -->
                                                 </div>
                                                 <div class="col-md-6 actionicon">                                                   
-                                                        <span class="jobcardbuttons"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job"><i class="material-icons" >visibility</i>&nbspView &amp; Apply</a></span>
+                                                        <span class="jobcardbuttons"><a class="blog-post-share " target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View &amp; Apply</a></span>
+                                                    <!-- modal
+                                                            <a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job">
+                                                    -->
                                                 </div>
                                           </div> 
                                           

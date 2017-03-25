@@ -207,8 +207,6 @@ jQuery(document).ready(function ($) {
             success: function (html) {
                      $modal.find('.modalcontent').html(html);
                    
-                    $('#resumesb li').removeClass('active');
-                    $('#resumesb #s3').addClass('active');
                     $('[data-toggle="tooltip"]').tooltip(); 
                             $(function() {
                                 $.material.init();

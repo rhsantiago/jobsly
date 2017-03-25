@@ -21,3 +21,32 @@ INFO - 2017-03-25 00:43:52 - reg@jobsly.net logged in
 INFO - 2017-03-25 00:44:12 - reg@jobsly.net logged in
 INFO - 2017-03-25 00:45:58 - reg@jobsly.net logged in
 INFO - 2017-03-25 00:46:57 - reg@jobsly.net logged in
+INFO - 2017-03-25 20:16:42 - reg@jobsly.net logged in
+INFO - 2017-03-25 20:50:49 - reg@jobsly.net insert job application
+INFO - 2017-03-25 20:52:47 - reg@jobsly.net logged in
+INFO - 2017-03-25 21:17:45 - reg@jobsly.net savedapplications insert
+INFO - 2017-03-25 21:19:03 - reg@jobsly.net logged in
+INFO - 2017-03-25 21:25:36 - reg@jobsly.net savedapplications insert
+ERROR - 2017-03-25 21:37:32 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(279): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobid' in 'where clause'
+INFO - 2017-03-25 22:00:03 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:02:39 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:23:59 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:24:28 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:27:13 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:27:53 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:28:22 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:31:31 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:32:46 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:32:59 - reg@jobsly.net savedapplications insert
+INFO - 2017-03-25 22:33:04 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:33:13 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:33:22 - reg@jobsly.net logged in
+INFO - 2017-03-25 22:34:59 - reg@jobsly.net logged in
+INFO - 2017-03-25 23:31:09 - reg@jobsly.net logged in
+ERROR - 2017-03-25 23:48:09 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\otherapplicants.php(161): Database->resultset()
+#3 {main} SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'esalary' in field list is ambiguous

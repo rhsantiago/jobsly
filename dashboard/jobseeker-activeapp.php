@@ -115,7 +115,7 @@ if(isset($_SESSION['user'])){
                                             <div class="row-fluid">
                                                     
                                                 <div class="col-md-6  jobad-titletopmargin">
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-isjobseeker="jobseeker" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=<?=$isjobseeker?>" id="viewjobnewpage"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -143,7 +143,16 @@ if(isset($_SESSION['user'])){
                                                             echo "<span class='text-success h4weight'>Shortlisted</span>";
                                                         }
                                                     ?>
-                                                        <span class="jobcardbuttons actionicon pull-right"><a target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=<?=$mode?>&isjobseeker=<?=$isjobseeker?>" id="viewjobnewpage" class="blog-post-share "  data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="jobseeker" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View Job Ad</a></span>
+                                                        <ul class="list-inline pull-right">
+                                                            <li><span class="jobcardbuttons actionicon "><a target="_blank" href="otherapplicants.php?jobid=<?=$id?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage" class="blog-post-share " title="View Job"><i class="material-icons" >compare_arrows</i>&nbsp;Other Applicants</a></span></li>
+                                                            <li><span class="jobcardbuttons actionicon"><a target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage" class="blog-post-share " title="View Job"><i class="material-icons" >visibility</i>&nbsp;View Job Ad</a></span>
+                                                        <!-- modal
+                                                            <a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job">
+                                                    --></li>
+                                                        </ul>    
+                                                        
+                                                    
+                                                        
                                                     </div>
                                                         
                                                 </div>
