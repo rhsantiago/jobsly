@@ -497,8 +497,8 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          <?php
                                           }
                                          
-                                          
-                                          if($pinfo<=0 && $ainfo<=0){
+                                          if(strcmp($isjobseeker,'jobseeker')==0){
+                                              if($pinfo<=0 && $ainfo<=0){
                                           ?>
                                   
                                                         <div class="col-lg-12 col-md-12">   
@@ -518,6 +518,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                         
                                            <?php            
                                                 }
+                                          }
                                            ?>          
                                       </div>
                                         

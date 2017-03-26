@@ -127,10 +127,15 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$specarray[$specialization]?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
-                                                    <td class="td-actions text-right">                                                 
+                                                    <td class="td-actions text-right">
+                                                        <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>"  title="View Profile" >
+                                                            <i class="fa fa-user text-info"></i>
+                                                        </a> 
+                                                        <!--
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
                                                         </a>       
+                                                        -->
                                                     </td>
                                                 </tr>
                                             <?php

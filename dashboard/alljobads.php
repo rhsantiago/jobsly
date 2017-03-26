@@ -120,9 +120,11 @@ if(isset($_SESSION['user'])){
                                         <div class="blog-post-content">
                                             
                                             <div class="row-fluid">
-                                                <div class="col-md-6 jobad-titletopmargin">
-                                                    
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                <div class="col-md-6 jobad-titletopmargin">                                                        
+                                                         <!-- ajax enabled
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job">
+                                                         -->
+                                                        <a class="nodecor" target="_blank" href='viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=employer' title="View Job"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -150,7 +152,12 @@ if(isset($_SESSION['user'])){
                                                
                                                 <div class="col-md-6 actionicon pull-right">
                                                                                                                 
-                                                         <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                         <span class="jobcardbuttons h4weight">
+                                                             <a class="blog-post-share " target="_blank" href='viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=employer' title="View Job"><i class="material-icons" >visibility</i></a>
+                                                             <!-- ajax enabled
+                                                             <a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-isjobseeker="employer"  title="View Job"><i class="material-icons" >visibility</i></a>
+                                                             -->    
+                                                         </span>
                                                         <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
                                                         <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
                                                 </div>

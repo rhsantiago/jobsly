@@ -369,8 +369,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                          <?php
                                           }
                                          
-                                          
-                                          if($pinfo<=0 && $ainfo<=0){
+                                          if(strcmp($isjobseeker,'jobseeker')==0){
+                                                if($pinfo<=0 && $ainfo<=0){
                                           ?>
                                   
                                                         <div class="col-lg-12 col-md-12">   
@@ -389,7 +389,8 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
                                                 </div>
                                         
                                            <?php            
-                                                }
+                                                 }
+                                          }
                                            ?>          
                                       </div>
                                         
