@@ -123,12 +123,17 @@ if(isset($_SESSION['user'])){
                                                     <td class="td-actions text-right">                                               
                                                         <ul class="list-inline">
                                                             <li>
+                                                        <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" >
+                                                            <i class="fa fa-user fa-2x text-info"></i>
+                                                        </a>        
+                                                         <!-- ajax enabled       
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
-                                                            <i class="fa fa-user text-info"></i>
+                                                            <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
+                                                        -->       
                                                         </li>
                                                         <li>                                                        
-                                                         <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple"><i class="fa fa-times"></i></button>   
+                                                         <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></button>   
                                                         </li>
                                                         </ul>        
                                                     </td>

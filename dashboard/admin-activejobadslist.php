@@ -82,6 +82,7 @@ if(isset($_SESSION['user'])){
                                                     <th class="col-md-2 text-right">Company</th>                                                   
                                                     <th class="col-md-2 text-right">Posted By</th>
                                                     <th class="col-md-2 text-right">Max Salary</th>
+                                                    <th class="col-md-2 text-right">Date Added</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -90,7 +91,7 @@ if(isset($_SESSION['user'])){
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, companyinfo.companyname from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');
+                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded, companyinfo.companyname from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');
                                                 $database->bind(':search', $search);
                                             }else{
                                                 $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded,jobads.isactive, companyinfo.companyname from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=1 order by jobads.dateadded');   
@@ -110,15 +111,18 @@ if(isset($_SESSION['user'])){
                                                 $companyname = $row['companyname'];
                                                 $company= $row['company'];
                                                 $maxsalary= $row['maxsalary'];
-                                                $companyname= $row['companyname'];                                                
-                                            
+                                                $companyname= $row['companyname'];   
+                                                $dateadded= $row['dateadded']; 
+                                                $dadd = explode("-", $dateadded);
+                                                $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
                                        ?>
                                    
                                                 <tr id="line<?=$id?>">                                                   
                                                     <td><span class="h4weight"><?=$jobtitle?></span></td>
                                                     <td class="text-right"><?=$company?></td>        
                                                     <td class="text-right"><?=$companyname?></td> 
-                                                    <td class="text-right"><?=$maxsalary?></td> 
+                                                    <td class="text-right"><?=$maxsalary?></td>
+                                                    <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
                                                     
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">

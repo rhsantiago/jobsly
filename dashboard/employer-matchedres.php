@@ -130,7 +130,7 @@ if(isset($_SESSION['user'])){
                                                         <ul class="list-inline">
                                                             <li>
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
-                                                            <i class="fa fa-user text-info"></i>
+                                                            <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
                                                         </li>
                                                         <?php
@@ -138,7 +138,7 @@ if(isset($_SESSION['user'])){
                                                         ?>
                                                         <li id='invited<?=$applicantid?>'>
                                                          <a href="#invitemodal" data-applicantid="<?=$applicantid?>" data-mode="insert" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="matched" data-toggle="modal" data-target="#invite-modal" rel="tooltip" id="inviteview" title="Invite to Apply" >
-                                                            <i class="fa fa-envelope text-warning"></i>    
+                                                            <i class="fa fa-envelope fa-2x text-warning"></i>    
                                                           </a> 
                                                         </li>
                                                         <?php

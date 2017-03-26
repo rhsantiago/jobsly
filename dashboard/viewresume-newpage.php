@@ -681,39 +681,7 @@ jQuery(document).ready(function ($) {
 
 
 
-<?php
-$database->query('select (select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
-$database->bind(':jobid', $jobid);
-try{
-    $row = $database->single();   
-}catch (PDOException $e) {
-    $msg = $e->getTraceAsString()." ".$e->getMessage();
-    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-    die("");
-} 
-$napps = $row['napps'];
-?>
-<script>
-jQuery(document).ready(function ($) {
-    $('#nappsdiv').html(<?=$napps?>);
-    $('#newbadgediv<?=$applicantid?>').html('');
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-    */
-    
-});       
-</script>
+
 
                       
                 </div> <!--resume main body-->        

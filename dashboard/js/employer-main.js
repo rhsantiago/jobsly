@@ -170,9 +170,7 @@ $(document).ready(function ($) {
         return false;
     });
     */
-     $('#applicantview').on('click', function(event){  
-             $('#viewresume-form').submit();
-     });
+     
     
     
      $('#viewresume-modal').on('show.bs.modal', function(e) {

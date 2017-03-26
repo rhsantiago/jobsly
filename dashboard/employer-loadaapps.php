@@ -133,23 +133,31 @@ if(isset($_SESSION['user'])){
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                         <li >
-                                                            <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
+                                                            <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                                <input type="hidden" id="mode" name="view" value="view">
+                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                                <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                            </form>
+                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                            <!-- ajax enabled
+                                                            <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                             -->   
                                                         </li>
                                                       <li id="slline<?=$applicantid?>" >   
                                                             <?php
                                                                 if($isshortlisted==0){
                                                             ?>      
-                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus"></i></button>                                                          
+                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus fa-2x"></i></button>                                                          
                                                             <?php
                                                                 }else{
                                                             ?>        
-                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple'><i class='fa fa-check'></i></button>
+                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple'><i class='fa fa-check fa-2x'></i></button>
                                                             <?php
                                                                 }
                                                             ?>
                                                         </li>
                                                        <li>
-                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times"></i></a>
+                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
                                                        
                                                         </li>
                                                         </ul>
@@ -209,3 +217,37 @@ if(isset($_SESSION['user'])){
                                                     </div>
 		       </div> 
             
+<script>
+jQuery(document).ready(function ($) {
+    
+    $('#applicantview').on('click', function(event){  
+             $('#viewresume-form').submit();
+   
+     });
+    
+    $(document).on('submit','#viewresume-form',function(event) {
+            event.preventDefault();           
+        
+            var jobid = $("#viewresume-form #jobid").val(); 
+            var applicantid = $("#viewresume-form #applicantid").val();
+            var mode = $("#viewresume-form #mode").val();
+            $.ajax({                
+                cache: false,
+                type: 'POST',
+                url: 'viewresume-submit.php',
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                success: function(napps) {                 
+                    $('#nappsdiv').html(napps);
+                    $("#newbadgediv" + applicantid).html('');
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+
+    
+});       
+</script>   

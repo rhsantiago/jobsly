@@ -100,7 +100,7 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
                                             and jobapplications.isnew=1');
-                                            $database->bind(':jobid', $jobid);                                             
+                                            $database->bind(':jobid', $jobid);
                                             try{
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
@@ -140,10 +140,15 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td> 
                                                     <td><?=$months[$dapp[1]-1]?>&nbsp;<?=$dapp[2]?></td>
                                                     <td class="text-right">Php <?=$esalary?></td>
-                                                    <td class="td-actions text-right">                                                 
+                                                    <td class="td-actions text-right">
+                                                        <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" >
+                                                            <i class="fa fa-user text-info"></i>
+                                                        </a> 
+                                                        <!-- ajax enabled
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
-                                                        </a>       
+                                                        </a>     
+                                                        -->
                                                     </td>
                                                 </tr>
                                             <?php

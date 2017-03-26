@@ -213,6 +213,7 @@ jQuery(document).ready(function ($) {
               
           </div>           
         </li>
+        <li>&nbsp;</li>                    
         <?php
              }
             
@@ -281,7 +282,8 @@ jQuery(document).ready(function ($) {
             </div>
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#pgrad1viewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
           </div>           
-        </li>            
+        </li>   
+        <li>&nbsp;</li>            
         <?php             
              }
              }
@@ -350,7 +352,8 @@ jQuery(document).ready(function ($) {
             </div>
               <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#colviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>              
           </div>           
-        </li>                   
+        </li>  
+        <li>&nbsp;</li>    
         <?php
              }
              }
@@ -415,7 +418,7 @@ jQuery(document).ready(function ($) {
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
            </div>           
         </li>                  
-                  
+        <li>&nbsp;</li>          
         <?php
              }
              }

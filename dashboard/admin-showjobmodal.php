@@ -58,6 +58,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
     $languages = $row['languages'];
     $licenses = $row['licenses'];
     $essay = $row['essay'];
+    $isactive = $row['isactive'];
     $wtravel = $row['wtravel'];
     if($wtravel=='on'){
        $wtravel = 'checked';
@@ -265,7 +266,7 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                </form>    
 	           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                <?php
-                    if($mode=='approve'){
+                    if($mode=='approve' && $isactive==0){
                ?>    
                         <button type="button" id="approvejobad" name="approvejobad" class="btn btn-primary">Approve</button>
                <?php
