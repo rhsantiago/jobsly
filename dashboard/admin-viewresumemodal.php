@@ -12,8 +12,7 @@ if(isset($_SESSION['user'])){
   
    if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
    if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
-   if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
-   if(isset($_POST['view'])){ $view = $_POST['view']; }  
+  
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
@@ -451,23 +450,9 @@ jQuery(document).ready(function ($) {
               </ul>  
 	      </div>
 
-
-<?php
-$database->query('select (select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps from jobapplications');
-$database->bind(':jobid', $jobid);
-try{
-    $row = $database->single();   
-}catch (PDOException $e) {
-    $msg = $e->getTraceAsString()." ".$e->getMessage();
-    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-    die("");
-} 
-$napps = $row['napps'];
-?>
 <script>
 jQuery(document).ready(function ($) {
-    $('#nappsdiv').html(<?=$napps?>);
-    $('#newbadgediv<?=$applicantid?>').html('');
+   
     /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');

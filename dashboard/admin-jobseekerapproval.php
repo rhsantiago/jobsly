@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $adminid = $_SESSION['adminid'];
-    
+
    //include "serverlogconfig.php";
    $database = new Database();
 
@@ -43,17 +43,21 @@ if(isset($_SESSION['user'])){
 						<div class="row">
                                                      
                             <div class="col-md-12">
+                                
+                                
+                                
                            <div class="alljobsdiv">
-                          
+                        
+                               
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-primary h4weight">Employers</h4></div>
+                                          <div><h4 class="text-primary h4weight">Jobseekers</h4></div>
                                     <div class="table-responsive">      
                                      <table id="activeappstable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th class="col-md-2">Company Name</th>
+                                                    <th class="col-md-2">Name</th>
                                                     <th class="col-md-2 text-right">Email</th>                                                   
                                                     <th class="col-md-2 text-right">Signup Date</th>
                                                     <th class="text-right">Actions</th>
@@ -62,7 +66,9 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=2 and isverified = 0 order by signupdate');      
+                                                $id='';
+                                                $signupdate='';
+                                            $database->query('SELECT useraccounts.id,fname, lname, email,signupdate from personalinformation, useraccounts where personalinformation.userid=useraccounts.id  order by signupdate desc limit 0,10');      
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {
@@ -73,20 +79,21 @@ if(isset($_SESSION['user'])){
                                             foreach($rows as $row){
                                                 $id = $row['id'];
                                                 $email = $row['email'];
-                                                $companyname = $row['companyname'];
+                                                $fname= $row['fname'];
+                                                $lname= $row['lname'];
                                                 $signupdate= $row['signupdate'];
                                                 $dadd = explode("-", $signupdate);
                                                 $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                        ?>
                                    
                                                 <tr id="line<?=$id?>">                                                   
-                                                    <td><span class="h4weight"><?=$companyname?></span></td>
+                                                    <td><span class="h4weight"><?=$fname?> <?=$lname?></span></td>
                                                     <td class="text-right"><?=$email?></td>                      
                                                     <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                         <li >
-                                                            <a href="#showemployermodal" data-employerid="<?=$id?>" data-mode="approve" data-toggle="modal" data-target="#admin-showemployer-modal" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-briefcase fa-2x text-info"></i></a>
+                                                            <a href="#viewjobseekermodal" data-applicantid="<?=$id?>" data-mode="view" data-toggle="modal" data-target="#admin-viewresumemodal" rel="tooltip" id="viewjobseeker" title="View Jobseeker" ><i class="fa fa-user fa-2x text-info"></i></a>
                                                         </li>
                                                       
                                                         </ul>

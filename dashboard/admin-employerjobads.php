@@ -180,8 +180,10 @@ if(isset($_SESSION['user'])){
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                                                                                
+                                                          <span class="jobcardbuttons h4weight"><a class="blog-post-share" target="_blank" href='admin-jobads.php?ajax=jdtls&jobid=<?=$id?>&employerid=<?=$employerid?>' title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                          <!-- ajax enabled                                                      
                                                          <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#adminshowjobmodal' data-toggle="modal" data-target="#admin-showjob-modal" data-jobid="<?=$id?>" data-mode="approve"  title="View Job"><i class="material-icons" >visibility</i></a></span>
+                                                        -->
                                                         <a class="blog-post-share " href="#editjob" id="editjob" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i></a>
                                                         <a class="blog-post-share " href="#deljob" id="deljob" data-toggle="modal" data-placement="top" data-jobid="<?=$id?>" data-mode="del" data-target="#jobpost-modal" title="Delete"><i class="material-icons">delete</i></a>   
                                                 </div>

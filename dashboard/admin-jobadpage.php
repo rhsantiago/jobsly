@@ -331,7 +331,7 @@ if(isset($_SESSION['user'])){
                                                         <ul style="list-style: none;">
                                                               
                                                                 <li>Username: <b><?=$email?></b></li>
-                                                                <li>User Id: <b><?=$employerid?></b></li>
+                                                                <li>User Id: <b><?=$companyid?></b></li>
                                                                                                                      
                                                                 <li>Signup Date: <b><?=$signupdate?></b></li>
                                                            
@@ -463,7 +463,7 @@ if(isset($_SESSION['user'])){
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                     <li >
-                                                            <a href="#showresumemodal" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#admin-showresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user text-info"></i></a>
+                                                            <a href="#showresumemodal" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#admin-showresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
                                                         </li>
                                                 </ul>
                                                     </td>

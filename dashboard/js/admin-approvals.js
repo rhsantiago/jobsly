@@ -36,6 +36,24 @@ $(document).ready(function ($) {
         return false;
     });
     
+    $("a[href='#jseekerappr'], a[href='admin-approvals.php?ajax=jseekerappr']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+        $.ajax({
+            url: 'admin-jobseekerapproval.php',
+            dataType: 'html',
+
+            success: function (html) {
+                    $('[data-toggle="tooltip"]').tooltip();
+                    $('#resume-main-body').html(html);    
+                            $(function() {
+                                $.material.init();
+                            });             
+                }
+        });
+        return false;
+    });
+    
      $('#admin-showjob-modal').on('show.bs.modal', function(e) {
              
                var $modal = $(this);
@@ -129,6 +147,29 @@ $(document).ready(function ($) {
             });
         return false;
      });
+    
+    $('#admin-viewresumemodal').on('show.bs.modal', function(e) {
+             
+               var $modal = $(this);   
+               var applicantid =  $(e.relatedTarget).data('applicantid');
+               var mode =  $(e.relatedTarget).data('mode');         
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-viewresumemodal.php',
+            data: 'applicantid=' + applicantid + "&mode=" + mode,
+                  
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $modal.find('#employerapproveddiv').hide();             
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
     
     
     
