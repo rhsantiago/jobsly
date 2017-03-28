@@ -75,6 +75,8 @@ if(isset($_SESSION['user'])){
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
     $views = $row['views'];
     $impressions = $row['impressions'];
+    $isactive = $row['isactive'];
+    $isverified = $row['isverified'];
     
     $companyname = $row['companyname'];
     $companyaddress = $row['companyaddress'];
@@ -136,7 +138,50 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                     
                            <div class="alljobsdiv">
-                          
+                                <div class="card essaymargintop">                                           
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">                                                            
+                                                            <div class="row">
+                                                      
+                                                               <div class="col-md-12"> 
+                                                                   <form method="post" id="jobactivation-form" name="jobactivation-form">
+                                                                        <ul class="list-inline">
+                                                                                          
+                                                                                            <li class="editfloatright">
+                                                                                                <?php
+                                                                                                if($isactive==1 && $isverified==1){
+                                                                                               echo"
+                                                                                               <input type='hidden' id='action' name='action' value='deactivate'>
+                                                                                               <input type='hidden' id='jobid' name='jobid' value='$jobid'>
+                                                                                               <button class='btn btn-primary' name='activatebtn' id='activatebtn' type='submit'>Deactivate</button>";
+                                                                                                }else if($isactive==0 && $isverified==1){   
+                                                                                                echo"
+                                                                                                <input type='hidden' id='action' name='action' value='activate'>
+                                                                                               <input type='hidden' id='jobid' name='jobid' value='$jobid'>
+                                                                                                <button class='btn btn-primary' name='activatebtn' id='activatebtn' type='submit'>Activate</button>";    
+                                                                                                }else if($isactive==0 && $isverified==0){
+                                                                                                   echo"Please verify Employer first";   
+                                                                                                }
+                                                                                                ?>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                     </form>  
+                                                             <?php
+                                                                if($isactive==1 && $isverified==1){
+                                                                    echo"<h3 id='activelabel' class='text-success h4weight'>This Job ad is ACTIVE</h3>";  
+                                                                }else{
+                                                                    echo"<h3 id='activelabel' class='text-danger h4weight'>This Job ad is INACTIVE</h3>";     
+                                                                }           
+                                                            ?>        
+                                                         
+                                                      
+                                                        </div>                                                       
+                                                     </div>
+                                              </div>
+                                        </div>
+                                  </div>
+                               </div>    
                                <section class="blog-post">
                                     <div class="panel panel-default">
                                      <div class="row">

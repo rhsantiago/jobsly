@@ -53,6 +53,37 @@ $(document).ready(function ($) {
         return false;
     });
     
+    $(document).on('submit','#jobactivation-form',function(event) {
+            event.preventDefault();
+            var jobid = $("#jobactivation-form #jobid").val();
+            var action = $("#jobactivation-form #action").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'admin-jobactivation-submit.php',
+                data: 'jobid=' + jobid + '&action=' + action,         
+                success: function(data) {     
+                     if(action=='deactivate'){
+                        $('#jobactivation-form #activatebtn').html('Activate'); 
+                        $("#jobactivation-form #action").val('activate');
+                        $("#activelabel").removeClass('text-success').addClass('text-danger').html('This Job ad is INACTIVE'); 
+                     }else if(action=='activate'){
+                        $('#jobactivation-form #activatebtn').html('Deactivate'); 
+                        $("#jobactivation-form #action").val('deactivate'); 
+                        $("#activelabel").removeClass('text-danger').addClass('text-success').html('This Job ad is ACTIVE');                       
+                     }
+              
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+    
+    
+    /*
      $('#admin-showjob-modal').on('show.bs.modal', function(e) {
              
                var $modal = $(this);
@@ -77,54 +108,8 @@ $(document).ready(function ($) {
             }
         });
     });
-    
-    $('#approvejobad').on('click',function() {  
-        $('#approvejobad-form').submit();
-     });
-    
-    $(document).on('submit','#approvejobad-form',function(event) {
-            event.preventDefault();
-            var jobid = $("#approvejobad-form #jobid").val();
-            var mode = $("#approvejobad-form #mode").val();
-            $.ajax({
-                cache: false,
-                type: 'POST',
-                url: 'admin-approvejobadsubmit.php',
-                data: 'jobid=' + jobid + '&mode=' + mode,         
-                success: function(data) {                           
-                     $('#adapproveddiv').fadeIn(1500); 
-                     $("#section" + jobid).remove();
-                    $(function() {
-                               $.material.init();
-                    });
-
-                }
-            });
-        return false;
-     });
-   
-    
-    $(document).on('submit','#approveemployer-form',function(event) {
-            event.preventDefault();
-            var employerid = $("#approveemployer-form #employerid").val();
-            var mode = $("#approveemployer-form #mode").val();
-            $.ajax({
-                cache: false,
-                type: 'POST',
-                url: 'admin-approveemployersubmit.php',
-                data: 'employerid=' + employerid + '&mode=' + mode,         
-                success: function(data) {                           
-                     $('#employerapproveddiv').fadeIn(1500); 
-                     $("#line" + employerid).remove();
-                    $(function() {
-                               $.material.init();
-                    });
-
-                }
-            });
-        return false;
-     });
-    
+   */
+       
      $(document).on('submit','#jobadssearch-form',function(event){
              event.preventDefault()
              event.stopPropagation();                  
