@@ -229,6 +229,10 @@ if($ok == 1 ){
     if($ajax=='empjobads'){
         
          include 'admin-employerjobads.php';
+    } 
+    if($ajax=='emppage'){
+        
+         include 'admin-employerpage.php';
     }  
     ?>          
                 </div> <!--resume main body-->        

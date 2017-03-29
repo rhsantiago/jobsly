@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if(isset($_SESSION['user'])){
 
-if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+if(isset($_POST['employerid'])){ $employerid = $_POST['employerid']; }
 if(isset($_POST['action'])){ $action = $_POST['action']; }
 include 'Database.php';
 $database = new Database();
@@ -13,22 +13,22 @@ $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 
     if($action=='deactivate'){
-        $database->query('Update jobads set isactive=0 where id=:jobid');
+        $database->query('Update useraccounts set isverified=0 where id=:employerid');
     }else if($action=='activate'){
-        $database->query('Update jobads set isactive=1 where id=:jobid');
+        $database->query('Update useraccounts set isverified=1 where id=:employerid');
     }
-    $database->bind(':jobid', $jobid); 
+    $database->bind(':employerid', $employerid); 
 
     try{
         $database->execute();
-        $msg = $action." ".$jobid;
+        $msg = $action." ".$employerid;
         $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
     }catch (PDOException $e) {
          $msg = $e->getTraceAsString()." ".$e->getMessage();
          $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
          die("");
     }
-    echo $jobid;
+    echo employerid;
 }else{
     header("Location: logout.php");
 }                                      

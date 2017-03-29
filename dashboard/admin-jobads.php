@@ -231,10 +231,9 @@ if($ok == 1 ){
                     <div id="resume-main-body">    
     <?php
     if($ajax=='alist'){
-         include 'admin-activejobadslist.php';    
+         include 'admin-activejobadslist.php';
     }
-    if($ajax=='ilst'){
-        
+    if($ajax=='ilist'){        
          include 'admin-inactivejobadslist.php';
     }  
     if($ajax=='jdtls'){

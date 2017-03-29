@@ -130,6 +130,35 @@ $(document).ready(function ($) {
         return false;
      });
     
+    $(document).on('submit','#employeractivation-form',function(event) {
+            event.preventDefault();
+            var employerid = $("#employeractivation-form #employerid").val();
+            var action = $("#employeractivation-form #action").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'admin-employeractivation-submit.php',
+                data: 'employerid=' + employerid + '&action=' + action,         
+                success: function(data) {     
+                     if(action=='deactivate'){
+                        $('#employeractivation-form #activatebtn').html('Activate'); 
+                        $("#employeractivation-form #action").val('activate');
+                        $("#activelabel").removeClass('text-success').addClass('text-danger').html('This Employer is INACTIVE'); 
+                     }else if(action=='activate'){
+                        $('#employeractivation-form #activatebtn').html('Deactivate'); 
+                        $("#employeractivation-form #action").val('deactivate'); 
+                        $("#activelabel").removeClass('text-danger').addClass('text-success').html('This Employer is ACTIVE');                       
+                     }
+              
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+    
      $(document).on('submit','#employersearch-form',function(event){
              event.preventDefault()
              event.stopPropagation();                  

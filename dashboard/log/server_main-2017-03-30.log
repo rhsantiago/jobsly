@@ -1,0 +1,15 @@
+ERROR - 2017-03-30 01:16:20 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\admin-employeractivation-submit.php(23): Database->execute()
+#2 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'isactive' in 'field list'
+ERROR - 2017-03-30 01:17:06 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\admin-employeractivation-submit.php(23): Database->execute()
+#2 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'isactive' in 'field list'
+ERROR - 2017-03-30 01:19:12 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\admin-employeractivation-submit.php(23): Database->execute()
+#2 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'isactive' in 'field list'
+ERROR - 2017-03-30 01:19:36 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\admin-employeractivation-submit.php(23): Database->execute()
+#2 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'isactive' in 'field list'
+INFO - 2017-03-30 01:32:33 - reggie@jobsly.net activate 34
+INFO - 2017-03-30 01:33:17 - reggie@jobsly.net deactivate 34
+INFO - 2017-03-30 01:33:26 - reggie@jobsly.net activate 34

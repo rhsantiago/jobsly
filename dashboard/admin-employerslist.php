@@ -81,6 +81,7 @@ if(isset($_SESSION['user'])){
                                                     <th class="col-md-2">Company Name</th>
                                                     <th class="col-md-2 text-right">Email</th>                                                   
                                                     <th class="col-md-2 text-right">Signup Date</th>
+                                                    <th class="col-md-2 text-right">Status</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -89,10 +90,10 @@ if(isset($_SESSION['user'])){
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT useraccounts.id,useraccounts.email,useraccounts.companyname, useraccounts.signupdate from useraccounts where useraccounts.companyname like :search and usertype=1 order by signupdate desc');
+                                                $database->query('SELECT useraccounts.id,useraccounts.email,useraccounts.companyname, useraccounts.signupdate,useraccounts.isverified from useraccounts where useraccounts.companyname like :search and usertype=1 order by signupdate desc');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 order by signupdate desc');   
+                                                $database->query('SELECT id,email,companyname, signupdate,isverified from useraccounts where usertype=1 order by signupdate desc');   
                                             }
                                             try{
                                                 $rows = $database->resultset();
@@ -108,16 +109,27 @@ if(isset($_SESSION['user'])){
                                                 $signupdate= $row['signupdate'];
                                                 $dadd = explode("-", $signupdate);
                                                 $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
+                                                $isverified= $row['isverified'];
+                                                if($isverified==1){
+                                                    $isverified="<spam class='text-success h4weight'>Active</span>";
+                                                }else{
+                                                    $isverified="<spam class='text-danger h4weight'>Inactive</span>";
+                                                }
                                        ?>
                                    
                                                 <tr id="line<?=$id?>">                                                   
                                                     <td><span class="h4weight"><?=$companyname?></span></td>
-                                                    <td class="text-right"><?=$email?></td>                      
+                                                    <td class="text-right"><?=$email?></td>
                                                     <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
+                                                    <td class="text-right"><?=$isverified?></td>
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                         <li >
+                                                            <a target="_blank" href="admin-employers.php?ajax=emppage&employerid=<?=$id?>" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-building fa-2x text-info"></i></a>
+                                                            <!-- ajax anabled
                                                             <a href="#showemployermodal" data-employerid="<?=$id?>" data-mode="approve" data-toggle="modal" data-target="#admin-showemployer-modal" rel="tooltip" id="showemployer" title="View Employer" ><i class="fa fa-building fa-2x text-info"></i></a>
+                                                            -->
+                                                            &nbsp;&nbsp;
                                                             <a target="_blank" href="admin-employers.php?ajax=empjobads&employerid=<?=$id?>"  rel="tooltip" id="showemployer" title="View Job Ads by this Employer" ><i class="fa fa-external-link-square fa-2x text-warning"></i></a>
                                                         </li>
                                                       
