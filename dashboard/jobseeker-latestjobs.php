@@ -27,7 +27,7 @@ if(isset($_SESSION['user'])){
    if(!empty($search)){
        $search='%'.$search.'%';
        $where=" (jobtitle like :search or jobdesc like :search) ";
-        if($esalary > 0){
+        if($esalary > 0 || $specializationsearch > 0){
             $where = $where."and ";
         }
    }
@@ -40,13 +40,16 @@ if(isset($_SESSION['user'])){
    if(!empty($specializationsearch)){ 
        $where= $where . " specialization = :specialization ";
    }    
-   
+     
+   $wherekey = " where ";  
+   $isactiveclause = " isactive=1 ";        
    if(!empty($where)){
-       $wherekey = " where ";
+       $isactiveclause = " and ".$isactiveclause;
    }    
-    $msg = $where;
+       
+   $msg = $where;
     
-   $database->query("SELECT * from jobads ".$wherekey.$where." order by dateadded desc limit 0,12"); 
+   $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit 0,12"); 
    if(!empty($search)){ 
        $database->bind(':search', $search);  
    }

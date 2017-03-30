@@ -13,3 +13,24 @@ ERROR - 2017-03-30 01:19:36 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashbo
 INFO - 2017-03-30 01:32:33 - reggie@jobsly.net activate 34
 INFO - 2017-03-30 01:33:17 - reggie@jobsly.net deactivate 34
 INFO - 2017-03-30 01:33:26 - reggie@jobsly.net activate 34
+INFO - 2017-03-30 17:45:55 - reg@jobsly.net logged in
+ERROR - 2017-03-30 17:46:10 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(61): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'isactive=1  order by dateadded desc limit 0,12' at line 1
+INFO - 2017-03-30 17:47:45 - reg@jobsly.net logged in
+ERROR - 2017-03-30 17:48:00 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(61): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'isactive=1  order by dateadded desc limit 0,12' at line 1
+INFO - 2017-03-30 17:51:18 - reg@jobsly.net logged in
+ERROR - 2017-03-30 18:13:09 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(65): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  isactive=1  order by dateadded desc limit 0,12' at line 1
+ERROR - 2017-03-30 18:42:42 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(64): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '11'  and  isactive=1  order by dateadded desc limit 0,12' at line 1
+INFO - 2017-03-30 18:46:19 - reg@jobsly.net logged in
+INFO - 2017-03-30 18:47:04 - reggie1@gmail.com logged in

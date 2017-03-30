@@ -56,7 +56,7 @@ if(isset($_SESSION['user'])){
                            <div class="alljobsdiv">
                           <?php
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
-                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.dateadded desc');
+                               $database->query('SELECT jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded, jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.userid = :userid and companyinfo.userid = :userid order by jobads.isactive desc, jobads.dateadded desc');
                                 $database->bind(':userid', $userid);   
                                 try{
                                     $rows = $database->resultset();
@@ -80,7 +80,8 @@ if(isset($_SESSION['user'])){
                                     $endappdate = $row['endappdate'];
                                     $edate = explode("-", $endappdate);
                                     $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];   
-                                    $teaser=$row['teaser'];
+                                    $teaser =$row['teaser'];
+                                    $isactive =$row['isactive'];                                    
                                     $dateadded = $row['dateadded'];
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
@@ -149,7 +150,18 @@ if(isset($_SESSION['user'])){
                                           </div> 
                                         </div>                                  
                                          <div class="row-fluid">
-                                               
+                                               <div  class="col-md-6">
+                                                        Status:
+                                                   <?php
+                                                        if($isactive==1){
+                                                            echo "<span class='text-success h4weight'>Active, jobseekers can see your job ad</span>";
+                                                        }
+                                                        if($isactive==0){
+                                                            echo "<span class='text-danger h4weight'>Inactive, review in progress</span>";
+                                                        }
+                                                       
+                                                    ?>
+                                             </div>
                                                 <div class="col-md-6 actionicon pull-right">
                                                                                                                 
                                                          <span class="jobcardbuttons h4weight">
