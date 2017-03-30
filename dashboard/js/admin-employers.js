@@ -196,8 +196,35 @@ $(document).ready(function ($) {
             }
         });
     });
+    /*
+    $(document).on('click','#uploadjobadheader',function(event) {
+       
+            var applicantid =  $(this).data('applicantid');       
+            var mode =  $(this).data('mode');
+            $('#uploadjobadheader-form #employerid').val(employerid);        
+            $('#uploadjobadheader-form #mode').val(mode);           
+            $('#uploadjobadheader-form').submit();
+    });
     
-    
-    
+    $(document).on('submit','#uploadjobadheader-form',function(event){
+             event.preventDefault()
+             event.stopPropagation();
+         var employerid = $("#uploadjobadheader-form #employerid").val();
+            $.ajax({
+                    type: "POST",
+                    url: 'admin-uploadjobadheader-submit.php',
+                    data: "employerid=" + employerid,
+                    dataType: 'html',
+                    success: function (html) {   
+                         $('#resume-main-body').html(html);
+                         $('[data-toggle="tooltip"]').tooltip();
+                         $(function() {
+                                $.material.init();
+                            });
+                    }
+           });
+        return false;
+    });
+   */
 });   
     

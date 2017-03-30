@@ -53,6 +53,7 @@ if(isset($_SESSION['user'])){
     $signupdate = $row['signupdate'];
     $sdate = explode("-", $signupdate); 
     $isverified = $row['isverified'];
+    $header = $row['header'];
     
     
     $database->query('SELECT count(id) as totjobs  from jobads where userid=:employerid');   
@@ -116,8 +117,7 @@ if(isset($_SESSION['user'])){
                                              <div class="content">
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">                                                            
-                                                            <div class="row">
-                                                      
+                                                            <div class="row">                                                                
                                                                <div class="col-md-12"> 
                                                                    <form method="post" id="employeractivation-form" name="employeractivation-form">
                                                                         <ul class="list-inline">
@@ -154,6 +154,9 @@ if(isset($_SESSION['user'])){
                                         </div>
                                   </div>
                                </div>
+                               
+                               
+                               
                                <div class="col-md-12">
                                    <section class="blog-post leftmargin10">
                                     <div class="panel panel-default">
@@ -252,6 +255,49 @@ if(isset($_SESSION['user'])){
 						      
                             
                                     </div>
+                            <div class="jobadheadercard card essaymargintop">                                           
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">                                                            
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <h4 class="text-info">Job Ad Header</h4>
+                                                                </div>
+                                                                <form method="post" id="uploadjobadheader-form" name="uploadjobadheader-form"  action="admin-uploadjobadheader-submit.php" method="post" enctype="multipart/form-data"> 
+                                                               <div class="col-md-6"> 
+                                                                  
+                                                                         <input type='hidden' id='action' name='action' value='upload'>
+                                                                         <input type='hidden' id='employerid' name='employerid' value='<?=$employerid?>'>
+                                                                        <div id="fileuploaddiv" class="">                 
+                                                                           <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                                                                         </div> 
+                                                                   
+                                                                </div>
+                                                                <div class="col-md-6"> 
+                                                                        <button class='btn btn-primary editfloatright' name='uploadheaderbtn' id='uploadheaderbtn' type='submit'>Upload</button>
+                                                                    
+                                                                </div>    
+                                                                </form> 
+                                                             <div class="col-md-12"> 
+                                                                 <hr>
+                                                                    <?php
+                                                                        if(!empty($header)){
+                                                                    ?>    
+                                                                        <img id="jobadheader" src="<?=$header?>"  class="img-responsive fullwidth">
+                                                                        <br>
+                                                                        <form method="post" id="uploadjobadheader-form" name="deljobadheader-form"  action="admin-delheader-submit.php" method="post">    
+                                                                            <input type='hidden' id='employerid' name='employerid' value='<?=$employerid?>'>
+                                                                             <button class='btn btn-primary editfloatright' name='delheaderbtn' id='delheaderbtn' type='submit'>Remove</button>
+                                                                        </form>    
+                                                                    <?php
+                                                                        }
+                                                                    ?>
+                                                             </div>       
+                                                            </div>
+                                              </div>
+                                        </div>
+                                  </div>
+                               </div>
 					</div>
 	            </div>
                         

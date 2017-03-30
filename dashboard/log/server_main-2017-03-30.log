@@ -34,3 +34,4 @@ ERROR - 2017-03-30 18:42:42 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard
 #3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '11'  and  isactive=1  order by dateadded desc limit 0,12' at line 1
 INFO - 2017-03-30 18:46:19 - reg@jobsly.net logged in
 INFO - 2017-03-30 18:47:04 - reggie1@gmail.com logged in
+INFO - 2017-03-30 23:29:48 - reggie@jobsly.net logged in
