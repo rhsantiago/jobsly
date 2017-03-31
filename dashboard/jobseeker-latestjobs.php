@@ -276,7 +276,7 @@ body {
                                             die("");
                                      } 
                                      
-                                     $database->query('SELECT logo from companyinfo where userid = :userid');    
+                                     $database->query('SELECT logo, header from companyinfo where userid = :userid');    
                                      $database->bind(':userid', $jobad->getuserid());                                   
                                      try{     
                                         $logorow = $database->single();                                     
@@ -285,14 +285,21 @@ body {
                                             $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                             die("");
                                      } 
-                                     
-                                     $logo = $logorow['logo'];  
+                                     $logo = $logorow['logo'];
+                                     $header = $logorow['header'];
                                      $jobad->setlogo($logo);
+                                     $jobad->setheader($header);
                              ?>
                                 
                                 <section class="blog-post">
                                     <div class="panel panel-default">
-                                     <img src="img/fjord.jpg" class="img-responsive">
+                                     <?php
+                                        if(!empty($header)){
+                                     ?>  
+                                     <img id="jobadheader" src="<?=$jobad->getheader()?>"  class="img-responsive">
+                                      <?php
+                                        }
+                                     ?>
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta">
                                       

@@ -17,7 +17,7 @@ if(isset($_SESSION['user'])){
     include "serverlogconfig.php";
     $database = new Database();
  
-    $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
+    $database->query('SELECT * from jobads,companyinfo where jobads.userid = :userid and jobads.id = :jobid');
     $database->bind(':userid', $userid);
     $database->bind(':jobid', $jobid);
     try{
@@ -28,6 +28,8 @@ if(isset($_SESSION['user'])){
         die("");
     }    
     $id = $row['id'];
+    $logo = $row['logo'];
+    $header = $row['header'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
     $specialization = $row['specialization'];
@@ -144,7 +146,17 @@ if(isset($_SESSION['user'])){
                               
                                   <section class="blog-post">
                                     <div class="panel panel-default">
-                                     <img src="img/fjord.jpg" class="img-responsive">
+                                     <?php
+                                        if(!empty($header)){
+                                     ?>    
+                                     <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="<?=$header?>"  class="img-responsive fullwidth">                                         
+                                                </div>
+                                              </div>
+                                     <?php
+                                        }
+                                     ?> 
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta jobad-bottomborder">
                                       <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
@@ -178,9 +190,15 @@ if(isset($_SESSION['user'])){
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <?php
+                                                        if(!empty($header)){
+                                                     ?> 
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="img/champ.png" width="70" height="70" class="img-responsive">
+                                                        <img src="<?=$logo?>" width="120" height="120" class="img-responsive">
                                                     </div>
+                                                    <?php
+                                                        }
+                                                     ?> 
                                                 </div>
                                             </div>    
                                          

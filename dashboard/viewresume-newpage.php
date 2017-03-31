@@ -70,7 +70,7 @@ if($ok == 1 ){
 </head>
 
 <body class="landing-page">
-     <!-- Modal -->
+     <!-- Modal 
 	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content modalcontent">
@@ -124,7 +124,7 @@ if($ok == 1 ){
         </form>    
 	</div>
     
-    
+    -->
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->

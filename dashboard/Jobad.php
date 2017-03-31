@@ -5,6 +5,7 @@ class Jobad{
     private $jobid;
     private $userid;
     private $logo;
+    private $header;
     private $jobtitle;
     private $company;
     private $specialization;
@@ -38,6 +39,14 @@ class Jobad{
  
 	public function getlogo() {
 		return $this->logo;
+	}
+    
+    public function setheader($new_header) {   	
+		$this->header = $new_header;
+	}	
+ 
+	public function getheader() {
+		return $this->header;
 	}
     
     public function setjobtitle($new_jobtitle) {   	

@@ -33,6 +33,7 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
     }    
     $id = $row['id'];
     $logo = $row['logo'];
+    $header = $row['header'];
     $companyid = $row['userid'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
@@ -106,8 +107,17 @@ if(isset($_POST['isjobseeker'])){ $isjobseeker = $_POST['isjobseeker']; }
 	                           
                  <section class="blog-post">
                                     <div class="panel panel-default">
-                                      <img src="img/fjord.jpg" class="img-responsive">
-                                       
+                                      <?php
+                                        if(!empty($header)){
+                                     ?>    
+                                     <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="<?=$header?>"  class="img-responsive fullwidth">                                         
+                                                </div>
+                                              </div>
+                                     <?php
+                                        }
+                                     ?>                                         
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta jobad-bottomborder">
                                       <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>

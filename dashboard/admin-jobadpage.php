@@ -36,6 +36,7 @@ if(isset($_SESSION['user'])){
     }    
     $id = $row['id'];
     $logo = $row['logo'];
+    $header = $row['header'];
     $companyid = $row['userid'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
@@ -184,11 +185,17 @@ if(isset($_SESSION['user'])){
                                </div>    
                                <section class="blog-post">
                                     <div class="panel panel-default">
+                                     <?php
+                                        if(!empty($header)){
+                                     ?>    
                                      <div class="row">
-                                                <div class="col-md-12">
-                                                  <img src="img/fjord.jpg"  class="img-responsive fullwidth">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="<?=$header?>"  class="img-responsive fullwidth">                                         
                                                 </div>
                                               </div>
+                                     <?php
+                                        }
+                                     ?>     
                                        
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta jobad-bottomborder">
