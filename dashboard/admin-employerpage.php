@@ -30,7 +30,8 @@ if(isset($_SESSION['user'])){
         $msg = $e->getTraceAsString()." ".$e->getMessage();
         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
-    }   
+    }
+    $logo = $row['logo'];
     $companyname = $row['companyname'];
     $companyaddress = $row['companyaddress'];
     $companywebsite = $row['companywebsite'];
@@ -103,6 +104,7 @@ if(isset($_SESSION['user'])){
     <div class="col-md-12">
                              <h2 class="title">Details for Employer Id: <?=$employerid?></h2>
        </div>
+        
      </div>
     <div class="col-md-9">
                        
@@ -141,9 +143,9 @@ if(isset($_SESSION['user'])){
                                                                      </form>  
                                                              <?php
                                                                 if($isverified==1){
-                                                                    echo"<h3 id='activelabel' class='text-success h4weight'>This Employer is ACTIVE</h3>";  
+                                                                    echo"<h4 id='activelabel' class='text-success h4weight margin30'>This Employer is ACTIVE</h4>";  
                                                                 }else{
-                                                                    echo"<h3 id='activelabel' class='text-danger h4weight'>This Employer is INACTIVE</h3>";     
+                                                                    echo"<h4 id='activelabel' class='text-danger h4weight margin30'>This Employer is INACTIVE</h4>";     
                                                                 }           
                                                             ?>        
                                                          
@@ -166,7 +168,7 @@ if(isset($_SESSION['user'])){
                                         <div class="blog-post-content">
                                             <div class="row-fluid">
                                                 <div class="col-md-6">
-                                                        <h2 class="text-info jobad-title"><?=$companyname?></h2>
+                                                        <h2 class="text-info h4weight"><?=$companyname?></h2>
                                                   
                                                 </div>
                                                 <div class="col-md-6">
@@ -174,8 +176,9 @@ if(isset($_SESSION['user'])){
                                                         <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
-                                            </div>    
-                                         
+                                            </div>
+                              
+                                         <!--
                                           <div class="row-fluid">
                                              
                                                   <?=$cdesc?>
@@ -210,7 +213,7 @@ if(isset($_SESSION['user'])){
                                                 
                                                
                                             </div>
-                                          
+                                          -->
                                         </div>
                                       
                                       </div>
@@ -225,7 +228,7 @@ if(isset($_SESSION['user'])){
                                      
 		                     
 		                </div>
-                                <div class="row">                              
+                        <div class="row">                              
                             <div class="col-md-4"> 
                                     <div  class="card card-stats" >
                                         <div class="card-header cardmargin" data-background-color="purple">
@@ -251,10 +254,233 @@ if(isset($_SESSION['user'])){
                                       <a href="#activeapps" id="activeapps" class="text-danger h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Total Inactive<br>Job Ads</a>                                        
                                    </div>     
                                </div>
-                                						     
-						      
+                                		
+                            </div>
+                        <div class="row">
+                                                     
+                            <div class="col-md-12">
+                           
+
+<form method="post" id="companyregistration-form" name="companyregistration-form" data-parsley-trigger="keyup" data-parsley-validate>                    
+                    <input type="hidden" id="mode" name="mode" value="update">
+                    <input type="hidden" id="userid" name="userid" value="<?=$employerid?>">
+                
                             
+		                   
+                                <div class="col-md-6">
+                                    <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-success">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">assignment_turned_in</i>
+                                                                   Company Information
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                          <div class="row">
+                                                                <div class="col-md-12">
+                                                            <div id="companynameediv" class="form-group label-floating">
+                                                                <label class="control-label">Name of Company</label>
+                                                                <input type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
+                                                            </div>
+                                                            <div id="companyaddressdiv" class="form-group label-floating">
+                                                                <label class="control-label">Company Address</label>
+                                                                <input type="text" id="companyaddress" class="form-control" value="<?=$companyaddress?>" data-parsley-required>
+                                                            </div>
+                                                             <div id="companywebsitediv" class="form-group label-floating">
+                                                                <label class="control-label">Company Website</label>
+                                                                <input type="text" id="companywebsite" class="form-control" value="<?=$companywebsite?>">
+                                                            </div>       
+                                                            
+                                                            
+                                                        </div>
+                                                         <div class="col-md-6">
+                                                                <div id="telnodiv" class="form-group label-floating">
+                                                                <label class="control-label">Tel No.</label>
+                                                                <input type="text" id="telno" class="form-control" value="<?=$telno?>" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                             </div>
+                                                             <?php
+                                                                    if($employerid > 0){
+                                                             ?>
+                                                             <div >
+                                                                 <a href="#logoupload-modal" data-userid="<?=$userid?>" data-toggle="modal">Upload Company Logo</a>
+                                                              </div>
+                                                             <?php
+                                                                    }
+                                                             ?>
+                                                         </div>
+                                                         <div class="col-md-6">
+                                                             <div id="companytindiv" class="form-group label-floating">
+                                                                <label class="control-label">Company TIN</label>
+                                                                <input type="text" id="companytin" class="form-control" value="<?=$companytin?>" data-parsley-required>
+                                                            </div>
+                                                             <?php
+                                                                    if(!empty($logo)){
+                                                             ?>
+                                                             <div class="container"><div class="col-md-1" style="padding-left: 0px;  padding-right: 0px;">
+                                                                    <img src="<?=$logo?>" class="img-responsive">
+                                                                </div>
+                                                            </div>
+                                                           
+                                                             <?php
+                                                                    }
+                                                             ?>
+                                                         </div>      
+                                                              
+                                                                
+                                                       
+                                                    </div>
+                                                        </div>
+
+                                                    </div>
+                                             </div>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6">
+                                            <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-info">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">description</i>
+                                                                    Contact Person
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                            <div class="row">
+                                                            <div class="col-md-12">    
+                                                                <div id="cpersondiv" class="form-group label-floating">
+                                                                    <label class="control-label">Contact Person</label>
+                                                                    <input type="text" id="cperson" class="form-control" value="<?=$cperson?>" data-parsley-required>
+                                                                </div>
+                                                                <div id="designationdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Designation</label>
+                                                                    <input type="text" id="designation" class="form-control" value="<?=$designation?>" data-parsley-required>
+                                                                </div>
+                                                             </div>   
+                                                                <div class="col-md-6">
+                                                                    <div id="cpersonemaildiv" class="form-group label-floating">
+                                                                        <label class="control-label">Email</label>
+                                                                        <input type="text" id="cpersonemail" value="<?=$cpersonemail?>" class="form-control" data-parsley-type="email">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div id="cpersontelnodiv" class="form-group label-floating">
+                                                                        <label class="control-label">Tel No</label>
+                                                                        <input type="text" id="cpersontelno" value="<?=$cpersontelno?>" class="form-control" data-parsley-required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">
+                                                                    </div>
+                                                                </div>    
+                                                               
+                                                        </div>
+                                                        </div>       
+                                                    </div>
+                                             </div>
+                                    </div>
+                                    </div>    
+                                    
+                                
+                                     <div class="col-md-12">
+                                
+                                    <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-warning">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">note_add</i>
+                                                                    Other Information
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                            
+                                                            <div class="col-md-6">
+                                                               
+                                                                <div id="industrydiv" class="form-group label-floating">
+                                                                    <label class="control-label">Industry</label>
+                                                                    <input type="text" id="industry" value="<?=$industry?>" class="form-control">
+                                                                </div>
+                                                                <div id="numempdiv" class="form-group label-floating">
+                                                                    <label class="control-label">Number of Employees</label>
+                                                                    <input type="text" id="numemp" class="form-control" value="<?=$numemp?>"  data-parsley-type="number">
+                                                                </div>
+                                                               
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                             <div id="typediv" class="form-group label-floating">
+                                                                <label class="control-label">Type of Company</label>
+                                                                <select class="form-control" id="ctype" name="ctype"  placeholder="Position Level">       
+                                                                           <option value='1' <?php if($ctype==1){echo' selected';}?>>Direct Employer</option>
+                                                                           <option value='2' <?php if($ctype==2){echo' selected';}?>>Recruitment Agency</option> 
+                                                                </select>
+                                                            </div> 
+                                                            </div>    
+                                                            <div class="col-md-12">
+                                                                Company Description
+                                                            <div id="cdesc"><?=$cdesc?></div>
+                                                                  <div class="savebutton pull-right">
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Company Information</button>
+                                            </div>    
+                                                             
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+                                             </div>
+                                    </div>
+                                   
+		                    </div>
+		               
+		                     <div class="col-md-12">                                      
+                                             <div id="successdivcreg" name="successdivcreg" class="alert alert-success">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> Your Company Information has been saved.
+                                               
+                                            </div>
+                                   
+                            </div>
+		             
+				
+            </form>
+   
+                            </div>  
+                          
+		                     
+		                </div>
+                        
                             <div class="jobadheadercard card essaymargintop">                                           
                                              <div class="content">
                                                     <div class="tab-content">
@@ -327,7 +553,29 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
+  $('#resume-main-body #successdivcreg').hide();
+    
+  $('#cdesc').summernote({
+              toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']], 
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']]
+              ],
+              callbacks: {
+                onPaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                    e.preventDefault();
+
+                    // Firefox fix
+                    setTimeout(function () {
+                        document.execCommand('insertText', false, bufferText);
+                    }, 10);
+                }
+            }    
+            });    
     /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');

@@ -15,7 +15,7 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $adminid = $_SESSION['adminid'];
     
-   //include "serverlogconfig.php";
+   include "serverlogconfig.php";
    $database = new Database();
 
    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -90,10 +90,10 @@ if(isset($_SESSION['user'])){
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT useraccounts.id,useraccounts.email,useraccounts.companyname, useraccounts.signupdate,useraccounts.isverified from useraccounts where useraccounts.companyname like :search and usertype=1 order by signupdate desc');
+                                                $database->query('SELECT useraccounts.id,useraccounts.email, useraccounts.signupdate, useraccounts.isverified,companyinfo.companyname from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and companyinfo.companyname like :search and usertype=1 order by signupdate desc');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT id,email,companyname, signupdate,isverified from useraccounts where usertype=1 order by signupdate desc');   
+                                                $database->query('SELECT useraccounts.id,email,companyinfo.companyname, signupdate,isverified from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and usertype=1 order by signupdate desc');   
                                             }
                                             try{
                                                 $rows = $database->resultset();

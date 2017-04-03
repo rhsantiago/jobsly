@@ -80,7 +80,30 @@ if($ok == 1 ){
 	    </div>
 	  </div>
 	</div>
-    
+    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form role="form"  id="logoupload-form" name="logoupload-form" action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
+            <input type="hidden" id="userid" name="userid" value="">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	        <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
+	      </div>
+            <div id="modalrejectapp" class="modal-body">
+            
+            <div id="fileuploaddiv" class="">                 
+                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                 </div> 
+           </div>
+            <div class="modal-footer blog-post">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
+	      </div>
+	    </div>
+           
+	  </div>
+        </form>    
+	</div>
    
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">

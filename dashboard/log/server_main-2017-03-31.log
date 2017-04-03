@@ -23,3 +23,12 @@ ERROR - 2017-03-31 16:19:17 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashbo
 #2 C:\xampp\htdocs\jobsly\dashboard\previewjobad.php(24): Database->single()
 #3 {main} SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
 INFO - 2017-03-31 16:19:46 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:36:33 - reggie@jobsly.net logged in
+INFO - 2017-03-31 23:47:25 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:50:04 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:50:10 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:50:17 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:50:26 - reggie1@gmail.com logged in
+INFO - 2017-03-31 23:54:09 - reggie@jobsly.net logged in
+INFO - 2017-03-31 23:59:47 - reggie@jobsly.net logged in
+INFO - 2017-03-31 23:59:57 - reggie@jobsly.net logged in

@@ -69,6 +69,19 @@ if($ok == 1 ){
      $ctype = $row['ctype'];
      $logo = $row['logo'];
 
+     if(empty($companyname)){
+         $database->query('SELECT companyname, email from useraccounts where id = :userid');
+         $database->bind(':userid', $userid);
+         try{
+             $row = $database->single();
+         }catch (PDOException $e) {
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            die("");
+         }
+         $companyname = $row['companyname'];
+         $cpersonemail = $row['email'];
+     }
 ?>
 <!doctype html>
 <html lang="en">
@@ -248,7 +261,7 @@ if($ok == 1 ){
                                                                 <div class="col-md-12">
                                                             <div id="companynameediv" class="form-group label-floating">
                                                                 <label class="control-label">Name of Company</label>
-                                                                <input type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
+                                                                <input disabled type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
                                                             </div>
                                                             <div id="companyaddressdiv" class="form-group label-floating">
                                                                 <label class="control-label">Company Address</label>
@@ -473,7 +486,8 @@ I / We understand and agree to the terms and conditions of this agreement.
                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                   </button>
-                                                  <b>Alert: </b> Your Company Information has been saved.
+                                                  <b>Alert: </b> Your Company Information has been saved and will be verified shortly. Thank you.
+                                                                 
                                                
                                             </div>
                                    
@@ -563,6 +577,7 @@ I / We understand and agree to the terms and conditions of this agreement.
     <script src="js/employer-main.js" type="text/javascript"></script>
 <script>
 $(document).ready(function() {
+     $('#successdivcreg').hide();
     $('#companyregistration-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"

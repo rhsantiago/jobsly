@@ -276,6 +276,14 @@ div .parsley-errors-list {
     margin-top: 15px !important;
 }
 
+.margin20{
+    margin-top: 20px !important;
+}
+
+.margin30{
+    margin-top: 30px !important;
+}
+
 .timelinepos {
     font-weight: 500;
 }

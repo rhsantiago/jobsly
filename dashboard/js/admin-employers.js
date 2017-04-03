@@ -196,6 +196,51 @@ $(document).ready(function ($) {
             }
         });
     });
+    
+    $(document).on('submit','#logoupload-form',function(event) {         
+            $('#logoupload-form #userid').val($('#companyregistration-form #userid').val());                     
+            $('#logoupload-form #mode').val($('#companyregistration-form #mode').val());            
+    });
+    
+    $(document).on('submit','#companyregistration-form',function(event) {
+            event.preventDefault();           
+            var mode = $("#companyregistration-form #mode").val();
+            var userid = $("#companyregistration-form #userid").val();
+            var companyname = $("#companyregistration-form #companyname").val(); 
+            var companyaddress = $("#companyregistration-form #companyaddress").val();
+            var companywebsite = $("#companyregistration-form #companywebsite").val();
+            var telno = $("#companyregistration-form #telno").val();
+            var companytin = $("#companyregistration-form #companytin").val();
+            var cperson = $("#companyregistration-form #cperson").val();
+            var designation = $("#companyregistration-form #designation").val();
+            var cpersonemail = $("#companyregistration-form #cpersonemail").val();
+            var cpersontelno = $("#companyregistration-form #cpersontelno").val();
+            var industry = $("#companyregistration-form #industry").val();
+            var numemp = $("#companyregistration-form #numemp").val();
+            var ctype = $("#companyregistration-form #ctype").val();
+            var cdesc = $("#companyregistration-form #cdesc").summernote('code');     
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-registrationsubmit.php',
+                data: 'mode=' + mode + '&companyname=' + companyname + '&companyaddress=' + companyaddress + '&mode=' + mode +'&userid=' + userid +'&companywebsite=' + companywebsite +'&telno=' + telno +'&companytin=' + companytin +'&cperson=' + cperson +'&designation=' + designation +'&cpersonemail=' + cpersonemail +'&cpersontelno=' + cpersontelno +'&industry=' + industry +'&numemp=' + numemp +'&ctype=' + ctype +'&cdesc=' + cdesc,
+                dataType: 'text',
+                success: function(data) {
+                    //console.log(html);
+                   
+                    $('#successdivcreg').fadeIn(1500);
+                    $(function() {
+                               $.material.init();
+                    });
+                    $('#companyregistration-form').parsley({
+                       successClass: "has-success",
+                       errorClass: "has-error"
+                });
+                }
+            });
+        return false;
+     });
+    
     /*
     $(document).on('click','#uploadjobadheader',function(event) {
        

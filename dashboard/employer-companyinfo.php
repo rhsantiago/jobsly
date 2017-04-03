@@ -121,7 +121,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-12">
                                                             <div id="companynameediv" class="form-group label-floating">
                                                                 <label class="control-label">Name of Company</label>
-                                                                <input type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
+                                                                <input disabled type="text" id="companyname" class="form-control" value="<?=$companyname?>" data-parsley-required>  
                                                             </div>
                                                             <div id="companyaddressdiv" class="form-group label-floating">
                                                                 <label class="control-label">Company Address</label>
