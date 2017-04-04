@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_POST['page'])){ $page = $_POST['page']; }
 
 if($mode=='reject'){
 ?>    
@@ -14,6 +15,7 @@ if($mode=='reject'){
              <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
              <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
              <input type="hidden" id="mode" name="mode" value="reject">
+             <input type="hidden" id="page" name="page" value="<?=$page?>">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Reject Application</h4>

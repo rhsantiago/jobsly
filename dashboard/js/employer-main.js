@@ -441,13 +441,14 @@ $(document).ready(function ($) {
                
                var jobid =  $(e.relatedTarget).data('jobid');
                var mode =  $(e.relatedTarget).data('mode');
-               var applicantid =  $(e.relatedTarget).data('applicantid');    
+               var applicantid =  $(e.relatedTarget).data('applicantid');
+               var page =  $(e.relatedTarget).data('page');
      
         $.ajax({
             cache: false,
             type: 'POST',
             url: 'employer-rejectappmodal.php',
-            data: 'jobid=' + jobid + "&mode=" + mode + "&applicantid=" + applicantid,
+            data: 'jobid=' + jobid + "&mode=" + mode + "&applicantid=" + applicantid + "&page=" + page,
                   
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
@@ -484,11 +485,12 @@ $(document).ready(function ($) {
             var jobid = $("#rejectapp-form #jobid").val(); 
             var applicantid = $("#rejectapp-form #applicantid").val();
             var mode = $("#rejectapp-form #mode").val();
+            var page =  $("#rejectapp-form #page").val();
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-rejectformsubmit.php',
-                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + "&page=" + page,
                // dataType: 'application/json; charset=utf-8',
                 success: function(data) {
                     console.log(data);
@@ -496,9 +498,13 @@ $(document).ready(function ($) {
                     var myObj = JSON.parse(data);
                     $('#aappsdiv').html(myObj[0]);
                     $('#shortlistdiv').html(myObj[1]);
+                    var mytable = "#activeappstable ";
+                    if(page=='short'){
+                        mytable = "#shortlisttable ";
+                    }
                     if(mode=='reject'){
                         var tr = '#line' + applicantid;
-                        $("#activeappstable " + tr).fadeOut('slow').delay(1000).hide(0);
+                        $(mytable + tr).fadeOut('slow').delay(1000).hide(0);
                     }
                    
                    // $('#showjobdetail').html(html); 

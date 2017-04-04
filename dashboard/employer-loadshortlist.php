@@ -133,8 +133,12 @@ if(isset($_SESSION['user'])){
                                                         -->       
                                                         </li>
                                                         <li>                                                        
-                                                         <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></button>   
+                                                         <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple"><i class="fa fa-undo fa-2x"></i></button>   
                                                         </li>
+                                                         <li>
+                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-page="short" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
+                                                       
+                                                        </li>   
                                                         </ul>        
                                                     </td>
                                                 </tr>
