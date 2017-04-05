@@ -141,7 +141,7 @@ if($ok == 1 ){
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
-                                    <li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
+                                    <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
@@ -231,7 +231,7 @@ if($ok == 1 ){
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                                     <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
-                                    <li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>
+                                    <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>

@@ -148,6 +148,8 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
     $logo = $row['logo'];
     $header = $row['header'];
     $companyid = $row['userid'];
+    $cdesc = $row['cdesc'];
+    $companyname = $row['companyname'];
     $jobtitle = $row['jobtitle'];
     $company = $row['company'];
     $specialization = $row['specialization'];
@@ -160,7 +162,12 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
     $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
     $endappdate = $row['endappdate'];
     $edate = explode("-", $endappdate);
-    $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+    if($edate[1] >= 1 && $edate[2] >= 2 && $edate[0] >= 1){
+        $endappdate = '';
+    }else{
+        $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+    }
+    
     $nvacancies = $row['nvacancies'];
     $teaser = $row['teaser'];
     $jobdesc = $row['jobdesc'];
@@ -355,7 +362,13 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                         </ul>
                                                         <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
                                                         <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
-                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>     
+                                                        <?php
+                                                          if($edate[1] >= 1 && $edate[2] >= 2 && $edate[0] >= 1){      
+                                                        ?>         
+                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>
+                                                        <?php
+                                                          }
+                                                        ?>
                                                     </div>    
                                                 </div>
                                             </div>
@@ -552,6 +565,63 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                         </div>    
                                     </div>
                                   </section>  
+                               
+                                <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                     <div class="row">
+                                                <div class="col-md-12 ">                                                  
+                                                        <div class="quickapplydiv">&nbsp;</div>                                 
+                                                </div>
+                                      </div>
+                                  
+                                      <div class="panel-body">
+                                          
+                                          <div class="jobad-meta">
+                                      
+                                        </div>
+                                     
+                                        <div class="blog-post-content">
+                                            <div class="row-fluid">
+                                                <div class="col-md-6">
+                                                        <h2 class="text-info jobad-title">About <?=$companyname?></h2>
+                                                      
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="companylogo pull-right"> 
+                                                        <img src="<?=$logo?>" width="120" height="120" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                         
+                                          <div class="row-fluid">
+                                               
+                                                <div class="col-md-12">   
+                                               
+                                                    <div class="collapse-group" id="viewdetails">
+                                                  <?=$cdesc?>
+                                                        
+                                                   
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                          
+                                        </div>
+                                          <div class="row-fluid">
+                                               
+                                                       
+                                                <div class="col-md-12 jobad-bottomborder">
+                                                   
+                                                </div>
+                                          </div>
+                                          
+                                         
+                                        </div>
+                                    </div>
+                                  </section>  
+                               
+                               
+                               
                                 </div>
                             </div>
                         </div>

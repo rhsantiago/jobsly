@@ -39,7 +39,11 @@ if(isset($_SESSION['user'])){
     $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
     $endappdate = $row['endappdate'];
     $edate = explode("-", $endappdate);
-    $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+    if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
+        $endappdate = '';
+    }else{
+        $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+    }
     $nvacancies = $row['nvacancies'];
     $teaser = $row['teaser'];
     $jobdesc = $row['jobdesc'];
@@ -255,7 +259,13 @@ if(isset($_SESSION['user'])){
                                                         </ul>
                                                         <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
                                                         <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
-                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>    
+                                                        <?php
+                                                          if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
+                                                        ?>         
+                                                        <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>
+                                                        <?php
+                                                          }
+                                                        ?>    
                                                     </div>    
                                                 </div>
                                             </div>

@@ -110,6 +110,19 @@ if(isset($_SESSION['user'])){
                  $dadd = explode("-", $dateadded);
                  $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
              }
+    
+             if(empty($company)){
+                 $database->query('SELECT companyname from companyinfo where userid = :userid');                   
+                 $database->bind(':userid', $userid);   
+                 try{  
+                     $row = $database->single();
+                 }catch (PDOException $e) {
+                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                        die("");
+                 }
+                 $company = $row['companyname'];
+             }
  
 }else{
     header("Location: logout.php");

@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
                     $msg = $e->getTraceAsString()." ".$e->getMessage();
                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                     die("");
-             }        
+             }
              $jobtitle = $row['jobtitle'];
              $company = $row['company'];    
              $specialization = $row['specialization'];
@@ -78,7 +78,11 @@ if(isset($_SESSION['user'])){
              $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
              $endappdate = $row['endappdate'];
              $edate = explode("-", $endappdate);
-             $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             if($edate[1] >= 1 && $edate[2] >= 2 && $edate[0] >= 1){
+                $endappdate = '';
+             }else{
+                $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             }
              $nvacancies = $row['nvacancies'];
              $teaser = $row['teaser'];    
              $jobdesc = $row['jobdesc'];
@@ -102,6 +106,17 @@ if(isset($_SESSION['user'])){
              $dateadded = $row['dateadded'];
              $dadd = explode("-", $dateadded);
              $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
+            }else{
+                $database->query('SELECT companyname from companyinfo where userid = :userid');                   
+                $database->bind(':userid', $userid);   
+                 try{  
+                     $row = $database->single();
+                 }catch (PDOException $e) {
+                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                        die("");
+                 }
+                $company = $row['companyname'];
             }
    }else{      
              $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
@@ -324,7 +339,7 @@ if($mode==''){
                                                             </div>
                                                             <div id="endappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Deadline (MM/DD/YYYY)</label>
-                                                                <input type='text' id='endappdate' class='datepicker form-control'  value="<?=$endappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='endappdate' class='datepicker form-control'  value="<?=$endappdate?>" data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                           </div>
                                                     </div>
