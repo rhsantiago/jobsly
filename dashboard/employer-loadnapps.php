@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     include "serverlogconfig.php";
     $database = new Database();
 
-    
+    $today = date("Y-m-d");
         
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -49,9 +49,10 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT id,jobtitle,company from jobads where id =:jobid and userid = :userid and isactive=1 order by dateadded desc');
+                                $database->query('SELECT id,jobtitle,company from jobads where (id =:jobid and jobads.userid=:userid and isactive=1) order by dateadded desc');
                                 $database->bind(':userid', $userid);
                                 $database->bind(':jobid', $jobid);
+                              
                                 try{
                                     $row = $database->single(); 
                                 }catch (PDOException $e) {
@@ -65,13 +66,18 @@ if(isset($_SESSION['user'])){
                                   
                                 
                          ?> 
-                               
+                               <form method="post" id="shortlist-form" name="shortlist-form"> 
+                                                             <input type="hidden" id="applicantid" name="applicantid" value="">
+                                                             <input type="hidden" id="jobid" name="jobid" value="">
+                                                             <input type="hidden" id="mode" name="mode" value="remove">
+                                                             <input type="hidden" id="page" name="page" value="newappstable">
+                                                       </form>
                                <section class="blog-post">
                                     <div class="panel panel-default">                                    
                                       <div class="panel-body jobad-bottomborder">
                                           <div><h4 class="text-info h4weight">New Applicants</h4></div>
                                     <div class="table-responsive">      
-                                     <table class="table table-hover table-condensed">
+                                     <table id="newappstable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
@@ -84,15 +90,16 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
-                                            and jobapplications.isnew=1');
-                                            $database->bind(':jobid', $jobid);                                             
+                                            and (jobapplications.isnew=1 or dateapplied=:today)');
+                                            $database->bind(':jobid', $jobid);    
+                                            $database->bind(':today', $today);    
                                             try{    
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
@@ -108,9 +115,10 @@ if(isset($_SESSION['user'])){
                                                 $position = $row2['position'];
                                                 $specialization = $row2['specialization'];
                                                 $isnew = $row2['isnew'];
+                                                $isshortlisted = $row2['isshortlisted'];
                                        ?>
                                    
-                                                <tr>
+                                                <tr id="line<?=$applicantid?>">
                                                     <td>
                                                         <ul class="list-inline"> 
                                                             <li>
@@ -134,10 +142,41 @@ if(isset($_SESSION['user'])){
                                                             <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
                                                             <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
                                                         </form> 
+                                                        <ul class="list-inline">
+                                                        <li >
+                                                            <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                                <input type="hidden" id="mode" name="view" value="view">
+                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                                <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                            </form>
+                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                            <!-- ajax enabled
+                                                            <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                             -->   
+                                                        </li>
+                                                      <li id="slline<?=$applicantid?>" >   
+                                                            <?php
+                                                                if($isshortlisted==0){
+                                                            ?>      
+                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" data-page="newappstable" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus fa-2x"></i></button>                                                          
+                                                            <?php
+                                                                }else{
+                                                            ?>        
+                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple'><i class='fa fa-check fa-2x'></i></button>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </li>
+                                                       <li>
+                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-page="new" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
+                                                       
+                                                        </li>
+                                                        
+                                                        <!--
                                                         <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
-                                                        <!-- ajax enabled
+                                                         ajax enabled
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
                                                         </a>         

@@ -49,9 +49,10 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT id,jobtitle,company from jobads where id =:jobid and userid = :userid and isactive=1 order by dateadded desc');
+                                $database->query('SELECT id,jobtitle,company from jobads where (id =:jobid and userid = :userid and isactive=1)  order by dateadded desc');
                                 $database->bind(':userid', $userid);
                                 $database->bind(':jobid', $jobid);
+                               
                                 try{
                                     $row = $database->single(); 
                                 }catch (PDOException $e) {

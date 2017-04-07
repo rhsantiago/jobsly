@@ -12,12 +12,14 @@ if(isset($_SESSION['user'])){
    $usertype = $_SESSION['usertype'];
     
    include 'authenticate.php';
+   
 }
 
 if($ok == 1 ){
     if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; } 
     if(isset($_GET['page'])){ $page = $_GET['page']; } 
     date_default_timezone_set('Asia/Manila');
+    $today = date("Y-m-d"); 
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";    
     include 'specialization.php';  
@@ -228,8 +230,9 @@ if($ok == 1 ){
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                     $logo = $row['logo'];
                                
-                                     $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1 and isreject=0) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
-                                     $database->bind(':jobid', $id);   
+                                     $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isreject=0 and (isnew=1 or dateapplied=:today)) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
+                                     $database->bind(':jobid', $id);
+                                     $database->bind(':today', $today);
                                      try{
                                          $row = $database->single();  
                                      }catch (PDOException $e) {

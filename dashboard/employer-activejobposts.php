@@ -18,7 +18,7 @@ if(isset($_SESSION['user'])){
    include "serverlogconfig.php";
    $database = new Database();
 
-    
+   $today = date("Y-m-d"); 
         
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -88,8 +88,9 @@ if(isset($_SESSION['user'])){
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
                                     $logo = $row['logo'];
 
-                              $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and isnew=1) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
-                               $database->bind(':jobid', $id);   
+                              $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and (isnew=1 or dateapplied=:today)) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
+                              $database->bind(':jobid', $id);   
+                              $database->bind(':today', $today);        
                                try{             
                                     $row = $database->single();  
                                }catch (PDOException $e) {

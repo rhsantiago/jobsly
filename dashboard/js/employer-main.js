@@ -346,9 +346,11 @@ $(document).ready(function ($) {
             var applicantid =  $(this).data('applicantid');
             var jobid =  $(this).data('jobid');
             var mode =  $(this).data('mode');
+            var page =  $(this).data('page');
             $('#shortlist-form #applicantid').val(applicantid);
             $('#shortlist-form #jobid').val(jobid);
             $('#shortlist-form #mode').val(mode);
+            $('#shortlist-form #page').val(page);
             $('#shortlist-form').submit();
     });  
     
@@ -358,11 +360,12 @@ $(document).ready(function ($) {
             var jobid = $("#shortlist-form #jobid").val(); 
             var applicantid = $("#shortlist-form #applicantid").val();
             var mode = $("#shortlist-form #mode").val();
+            var page = $("#shortlist-form #page").val();
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-shortlistsubmit.php',
-                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + '&page=' + page,
                 success: function(html) {
                     //console.log(html);
                     $('#shortlistdiv').html(html);
@@ -372,7 +375,11 @@ $(document).ready(function ($) {
                     }
                     if(mode=='add'){
                         var li = '#slline' + applicantid;
-                        $("#activeappstable " + li).html("<button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple btn-xs'><i class='fa fa-check'></i></button>").fadeIn('slow').delay(1000);
+                        var curtable = '#activeappstable ';
+                        if(page=='newappstable'){
+                            curtable = '#newappstable ';
+                        }
+                        $(curtable + li).html("<button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple btn-xs'><i class='fa fa-check'></i></button>").fadeIn('slow').delay(1000);
                     }
                    // $('#showjobdetail').html(html); 
                   //  $("#jobdetailads").hide();
@@ -498,9 +505,13 @@ $(document).ready(function ($) {
                     var myObj = JSON.parse(data);
                     $('#aappsdiv').html(myObj[0]);
                     $('#shortlistdiv').html(myObj[1]);
+                    $('#nappsdiv').html(myObj[2]);
                     var mytable = "#activeappstable ";
                     if(page=='short'){
                         mytable = "#shortlisttable ";
+                    }
+                    if(page=='new'){
+                        mytable = "#newappstable ";
                     }
                     if(mode=='reject'){
                         var tr = '#line' + applicantid;

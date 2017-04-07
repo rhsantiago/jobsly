@@ -25,7 +25,7 @@ $database = new Database();
          die("");
      }     
         
-        $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as active,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlist from jobapplications');
+        $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as active, (select count(id) from jobapplications where jobid=:jobid  and isreject=0 and isnew=1) as new, (select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlist from jobapplications');
         $database->bind(':jobid', $jobid);
         try{
             $row = $database->single();  
@@ -35,10 +35,11 @@ $database = new Database();
             die("");
         }    
         $active = $row['active'];
+        $new = $row['new'];
         $shortlist = $row['shortlist'];
         
       
-        $arr = array($active,$shortlist);
+        $arr = array($active,$shortlist,$new);
 
        // header('Content-Type: application/json');
        echo  json_encode($arr,JSON_FORCE_OBJECT);
