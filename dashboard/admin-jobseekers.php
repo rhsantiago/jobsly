@@ -12,13 +12,14 @@ if(isset($_SESSION['user'])){
 }else{
     header("Location: logout.php");
 }
-//$employerid='';
+
+
 if($ok == 1 ){
-    $ajax = $_GET['ajax'];
-   // $employerid = $_GET['employerid'];
+
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
+    
 ?>
 <!doctype html>
 <html lang="en">
@@ -53,12 +54,12 @@ if($ok == 1 ){
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>  -->
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/admin-jobads.js" type="text/javascript"></script>
+    <script src="js/admin-jobseekers.js" type="text/javascript"></script>
     <script src="js/summernote.min.js" type="text/javascript"></script> 
     <script src="js/parsley.js"></script>
 </head>
@@ -80,7 +81,7 @@ if($ok == 1 ){
 	    </div>
 	  </div>
 	</div>
-    <div class="modal fullscreen-modal fade" id="admin-showresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fullscreen-modal fade" id="admin-viewresumemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content modalcontent">
 	      
@@ -125,8 +126,8 @@ if($ok == 1 ){
                     </li>
                     <li class="dropdown active"><a href="admin-jobads.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="#alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
-                                    <li><a href="#ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>
+                                    <li><a href="admin-jobads.php?ajax=alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
+                                    <li><a href="admin-jobads.php?ajax=ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="admin-employers.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
@@ -135,7 +136,8 @@ if($ok == 1 ){
                             <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>    
                     </li>
-    				<li><a href="admin-jobseekers.php" id="jobseekers"><i class="material-icons">people</i>Jobseekers</a></li>
+                    <li><a href="admin-jobseekers.php" id="jobseekers"><i class="material-icons">people</i>Jobseekers</a></li>
+    				
                 </ul>
         	</div>
     	</div>
@@ -194,8 +196,8 @@ if($ok == 1 ){
     </div>
     <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
-                            <li><a href="#alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
-                            <li><a href="#ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>    
+                            <li><a href="admin-jobads.php?ajax=alist" id="alist"><i class="material-icons">list</i>&nbsp;Active List</a></li>
+                            <li><a href="admin-jobads.php?ajax=ilist" id="ilist"><i class="material-icons">highlight_off</i>&nbsp;Inactive List</a></li>    
     </ul>
     </div>   
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="admin-employers.php"><i class="material-icons">business</i>&nbsp;Employers<b class="caret"></b></a>
@@ -211,26 +213,19 @@ if($ok == 1 ){
     
      <!--sidebar-->
     <div id="main" class="wrapper ">
+       
+
 		<div class="main main-raised ">
+         
 			<div class="container-fluid"> <!-- with fluid for full width -->
                 <div class="row-fluid">   <!-- with fluid for full width -->
-                    <div id="resume-main-body">    
-    <?php
-    if($ajax=='alist'){
-         include 'admin-activejobadslist.php';
-    }
-    if($ajax=='ilist'){        
-         include 'admin-inactivejobadslist.php';
-    }  
-    if($ajax=='jdtls'){
-        
-         include 'admin-jobadpage.php';
-    }
-    ?>          
-                </div> <!--resume main body-->        
-                
-	        </div>
-
+                    
+                    <div id="resume-main-body">   
+                        <?php
+                    include 'admin-jobseekerslist.php';    
+              ?>
+	        </div><!--resume main body-->  
+                         </div> 
 		</div>
 </div>
         

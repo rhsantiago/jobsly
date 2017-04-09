@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
     include "serverlogconfig.php";
     include 'Database.php';
     $database = new Database();
-
+    $mode = 'insert';
     $database->query('SELECT count(id) as ok from useraccounts where email = :email and password = :password and usertype = :usertype and isverified = 0');
     $database->bind(':email', $user);
     $database->bind(':password', $password);
@@ -28,7 +28,7 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
- 
+    $mode = 'update';
     $companyname='';
     $telno='';
     $companyaddress='';
@@ -211,7 +211,7 @@ if($ok == 1 ){
 
 
 <form method="post" id="companyregistration-form" name="companyregistration-form" data-parsley-trigger="keyup" data-parsley-validate>                    
-                    <input type="hidden" id="mode" name="mode" value="insert">
+                    <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                  
     

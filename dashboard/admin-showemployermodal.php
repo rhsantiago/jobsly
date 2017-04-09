@@ -85,9 +85,9 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
                                             </div>    
                                          
                                           <div class="row-fluid">
-                                             
+                                             <div class="col-md-12">
                                                   <?=$cdesc?>
-                                                        
+                                              </div>          
                                                     <div class="col-md-6">
                                                         <ul style="list-style: none;">
                                                               

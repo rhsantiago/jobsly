@@ -134,6 +134,7 @@ if($ok == 1 ){
                             <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>    
                     </li>
+                    <li><a href="admin-jobseekers.php" id="jobseekers"><i class="material-icons">people</i>Jobseekers</a></li>
                     <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
                 </ul>    				
@@ -208,7 +209,7 @@ if($ok == 1 ){
                             <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>    
     </ul>
     </div>
-   <div class="sidebar-item"><a href="#">Jobs</a></div>
+   <div class="sidebar-item"><a href="admin-jobseekers.php"><i class="material-icons">people</i>&nbsp;Jobseekers</a></div>
    <div class="sidebar-item"><a href="#">Settings</a></div>
    
 </div>

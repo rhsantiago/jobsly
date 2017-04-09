@@ -171,6 +171,26 @@ $(document).ready(function ($) {
         });
     });
     
+    $(document).on('submit','#jobadssearch-form',function(event){
+             event.preventDefault()
+             event.stopPropagation();                  
+             var search = $("#jobadssearch-form #search").val();
+            $.ajax({
+                    type: "POST",
+                    url: 'admin-jobadsapproval.php',
+                    data: "search=" + search,
+                    dataType: 'html',
+                    success: function (html) {   
+                         $('#resume-main-body').html(html);
+                         $('[data-toggle="tooltip"]').tooltip();
+                         $(function() {
+                                $.material.init();
+                            });
+                    }
+           });
+        return false;
+    });
+    
     
     
 });   

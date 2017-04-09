@@ -18,12 +18,11 @@ if(isset($_SESSION['user'])){
    //include "serverlogconfig.php";
    $database = new Database();
 
-    
-        
-    $mode = 'insert';
+ 
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
-   
+    $search="";
+    if(isset($_POST['search'])){ $search = $_POST['search']; } 
     
 }
 
@@ -50,10 +49,41 @@ if(isset($_SESSION['user'])){
 						<div class="row">
                                                      
                             <div class="col-md-12">
+                                
+                                
+                            <section class="blog-post">
+                              <div class="panel panel-default" >
+                                  <form method="post" id="jobadssearch-form" name="jobadssearch-form"> 
+                                      <input type="hidden" id="adminid" name="adminid" value="<?=$adminid?>">      
+                                   <div class="panel-body" >
+                                       <div class="col-md-9">
+
+                                         <div id="searchdiv" class="form-group label-floating" >
+                                              <label class="control-label">Search Job Ads</label>
+
+                                              <input type="text" id="search" class="form-control searchform" value="<?=$search?>">  
+                                         </div>
+                                        </div>  
+                                         <div class="col-md-3">
+                                           <button class="btn btn-primary btn-md" type="submit">Search</button>
+                                       </div>
+                                         </div>
+                                        </form>
+                              </div>
+                            </section>      
+                                
+                                
+                                
                            <div class="alljobsdiv">
                           <?php
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
-                               $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                               if(!empty($search)){
+                                    $search='%'.$search.'%';
+                                    $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                                    $database->bind(':search', $search);
+                                }else{ 
+                                    $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                                }
                               
                                 try{
                                     $rows = $database->resultset();

@@ -52,8 +52,8 @@ if($ok == 1 ){
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>  -->
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
@@ -108,21 +108,7 @@ if($ok == 1 ){
     				<ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
+		            
         		</ul>
                 <ul class="nav navbar-nav navbar-right">
                      <li>
@@ -148,7 +134,7 @@ if($ok == 1 ){
                             <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>    
                     </li>
-    				
+    				<li><a href="admin-jobseekers.php" id="jobseekers"><i class="material-icons">people</i>Jobseekers</a></li>
                 </ul>
         	</div>
     	</div>
@@ -217,7 +203,7 @@ if($ok == 1 ){
                             <li><a href="admin-employers.php?ajax=empjobads" id="empjobads"><i class="material-icons">work</i>&nbsp;Job Ads</a></li>
                         </ul>
     </div>
-   <div class="sidebar-item"><a href="#">Jobs</a></div>
+   <div class="sidebar-item"><a href="admin-jobseekers.php"><i class="material-icons">people</i>&nbsp;Jobseekers</a></div>
    <div class="sidebar-item"><a href="#">Settings</a></div>
    
 </div>
