@@ -17,6 +17,7 @@ date_default_timezone_set('Asia/Manila');
 $logtimestamp = date("Y-m-d H:i:s"); 
 include "serverlogconfig.php";
  $database = new Database();   
+ $next=0;    
 }
 ?>
 
@@ -70,7 +71,7 @@ include "serverlogconfig.php";
                                       <div class="panel-body jobad-bottomborder">
                                           <div><h4 class="text-primary h4weight">Jobseekers</h4></div>
                                     <div class="table-responsive">      
-                                     <table id="activeappstable" class="table table-hover table-condensed">
+                                     <table id="jobseekerstable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th class="col-md-2">Name</th>
@@ -80,7 +81,7 @@ include "serverlogconfig.php";
                                                     <th class="text-left">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="jobseekerstablebody">
                               
                                         <?php
                                             $id='';
@@ -156,6 +157,22 @@ include "serverlogconfig.php";
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12 center">
+                                            <!--
+                                                <div class="loadmore">
+                                                     <div class="loadmoreform">
+                                                         <form method="post" id="jobseekersloadmore-form" name="jobseekersloadmore-form">  
+                                                                <input type="hidden" id="next" name="next" value="<?=$next?>">
+                                                         </form>
+                                                    </div>
+                                                </div>
+                                            -->
+                                                <a id="jobseekersloadmore" name="jobseekersloadmore" class="btn btn-primary" data-next="<?=$next?>">Load More</a>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
                                       </div>    
                                         </div>  
                                     </div>

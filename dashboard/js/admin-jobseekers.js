@@ -82,6 +82,34 @@ $(document).ready(function ($) {
             });
         return false;
      });
+    /*
+    $(document).on('click','#jobseekersloadmore',function(event) {
+            $('#jobseekersloadmore-form').submit();
+    });
+    */
+    $(document).on('click','#jobseekersloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+             var next =  $(this).data('next');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-loadmorejobseekers.php',
+            data: 'next=' + next,
+            dataType: 'html',
+            success: function(html) {
+                next = next + 10;
+                $("#jobseekersloadmore").data("next", next);
+                $("#jobseekersloadmore").attr("data-next", $("#jobseekersloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#jobseekerstablebody').append(html).fadeIn('slow').delay(1000);
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
 
     
     
