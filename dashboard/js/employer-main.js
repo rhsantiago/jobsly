@@ -468,23 +468,93 @@ $(document).ready(function ($) {
         });
     });
     
-     $(document).on('click','#aappsloadmore',function(event) {
-            
+    
+    $(document).on('click','#aappsloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+            var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            var jobid =  $(this).data('jobid');
             $.ajax({
             cache: false,
             type: 'POST',
             url: 'employer-loadmoreaapps.php',
-            data: '',
-                  
-            success: function(html) {
-                $('#activeappstable').append(html).fadeIn('slow').delay(1000);
+            data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
+            dataType: 'text',
+            success: function(html) {               
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#aappsloadmore").data("next", next);
+                $("#aappsloadmore").attr("data-next", $("#aappsloadmore").data("next"));      
+                $('#aappstablebody').append(html).fadeIn('slow').delay(1000);
+                }
                 $(function() {
                            $.material.init();
                 });
                 
             }
         });
-    });  
+    });
+    
+    $(document).on('click','#nappsloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+            var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'employer-loadmorenapps.php',
+            data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
+            dataType: 'text',
+            success: function(html) {             
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#nappsloadmore").data("next", next);
+                $("#nappsloadmore").attr("data-next", $("#nappsloadmore").data("next"));            
+                $('#nappstablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+    $(document).on('click','#shortlistloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+            var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'employer-loadmoreshortlist.php',
+            data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
+            dataType: 'text',
+            success: function(html) {         
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#shortlistloadmore").data("next", next);
+                $("#shortlistloadmore").attr("data-next", $("#shortlistloadmore").data("next"));             
+                $('#shortlisttablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
     
      $(document).on('submit','#rejectapp-form',function(event) {
             event.preventDefault();           

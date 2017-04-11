@@ -131,15 +131,59 @@ $(document).ready(function ($) {
     });
     
     $(document).on('click','#activejobadsloadmore',function(event) {
-            
+           // var next = $("#jobseekersloadmore-form #next").val();
+             var next =  $(this).data('next');
+            var search =  $(this).data('search');
             $.ajax({
             cache: false,
             type: 'POST',
             url: 'admin-activejobadslistloadmore.php',
-            data: '',
-                  
+            data: 'next=' + next + '&search=' + search,
+            dataType: 'text',
             success: function(html) {
-                $('#activeappstable').append(html).fadeIn('slow').delay(1000);
+                console.log(html);
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#activejobadsloadmore").data("next", next);
+                $("#activejobadsloadmore").attr("data-next", $("#activejobadsloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#activejobadstablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+    $(document).on('click','#inactivejobadsloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+             var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-inactivejobadslistloadmore.php',
+            data: 'next=' + next + '&search=' + search,
+            dataType: 'text',
+            success: function(html) {
+                console.log(html);
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#inactivejobadsloadmore").data("next", next);
+                $("#inactivejobadsloadmore").attr("data-next", $("#inactivejobadsloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#inactivejobadstablebody').append(html).fadeIn('slow').delay(1000);
+                }
                 $(function() {
                            $.material.init();
                 });
@@ -172,30 +216,35 @@ $(document).ready(function ($) {
         });
     });
     
-     $(document).on('click','#aappsloadmore',function(event){
-         $('#admin-loadmoreaappsform').submit();
-      });     
-    
-    $(document).on('submit','#admin-loadmoreaappsform',function(event){
-             
-            event.preventDefault();                  
-            var next = $("#admin-loadmoreaappsform #next").val();
-            var jobid = $("#admin-loadmoreaappsform #jobid").val();
-            
+     $(document).on('click','#jobadpageaappsloadmore',function(event) {
+ 
+            var next =  $(this).data('next');
+            var jobid =  $(this).data('jobid');
             $.ajax({
-                    type: "POST",
-                    url: 'admin-loadmoreaapps.php',
-                    data: "next=" +next+ "&jobid=" +jobid,
-                    dataType: 'html',
-
-                    success: function (html) {
-                       // console.log(html);
-                        $(".loadmoreform").remove();
-                        $('#activeappstable').append(html).fadeIn('slow').delay(1000);
-                        $('[data-toggle="tooltip"]').tooltip();
-                        //$('#loading').hide();
-                    }
-           });
+            cache: false,
+            type: 'POST',
+            url: 'admin-jobadpageloadmore.php',
+            data: 'next=' + next + '&jobid=' + jobid,
+            dataType: 'text',
+            success: function(html) {
+                console.log(html);
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#jobadpageaappsloadmore").data("next", next);
+                $("#jobadpageaappsloadmore").attr("data-next", $("#jobadpageaappsloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#activeappstablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
     });
     
     

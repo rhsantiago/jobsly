@@ -1,0 +1,18 @@
+ERROR - 2017-04-12 00:00:21 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadmoreaapps.php(34): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+ERROR - 2017-04-12 00:00:46 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadmoreaapps.php(34): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+ERROR - 2017-04-12 00:00:53 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadmoreaapps.php(34): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+INFO - 2017-04-12 00:45:57 - reggie1@gmail.com shortlisted to1 
+INFO - 2017-04-12 00:46:01 - reggie1@gmail.com shortlisted to0 
+INFO - 2017-04-12 00:46:10 - reggie1@gmail.com shortlisted to1 
+INFO - 2017-04-12 00:57:35 - reggie1@gmail.com logged in
+INFO - 2017-04-12 01:02:14 - reggie1@gmail.com logged in
+INFO - 2017-04-12 01:09:49 - reggie1@gmail.com logged in

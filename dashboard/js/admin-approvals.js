@@ -191,6 +191,66 @@ $(document).ready(function ($) {
         return false;
     });
     
+    $(document).on('click','#empapprloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+             var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-empapprloadmore.php',
+            data: 'next=' + next + '&search=' + search,
+            dataType: 'text',
+            success: function(html) {              
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#empapprloadmore").data("next", next);
+                $("#empapprloadmore").attr("data-next", $("#empapprloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#empapprtablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
+    $(document).on('click','#jobseekerapprloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+             var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'admin-jobseekerapprloadmore.php',
+            data: 'next=' + next + '&search=' + search,
+            dataType: 'text',
+            success: function(html) {              
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                next = next + 10;
+                $("#jobseekerapprloadmore").data("next", next);
+                $("#jobseekerapprloadmore").attr("data-next", $("#jobseekerapprloadmore").data("next"));
+              //  $(".loadmoreform").remove();
+              //  $(".loadmore").html("<div class='loadmoreform'><form method='post' id='jobseekersloadmore-form' name='jobseekersloadmore-form'><input type='hidden' id='next' name='next' value='"+next+"'></form></div>");
+                $('#jobseekerapprtablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                
+            }
+        });
+    });
+    
     
     
 });   

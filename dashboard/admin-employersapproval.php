@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
    $database = new Database();
 
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-
+    $next=10;
 }
 
 ?>
@@ -59,10 +59,10 @@ if(isset($_SESSION['user'])){
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="empapprtablebody">
                               
                                         <?php
-                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 and isverified = 0 order by signupdate');      
+                                            $database->query('SELECT id,email,companyname, signupdate from useraccounts where usertype=1 and isverified = 0 order by signupdate desc limit 0,10');      
                                             try{
                                                 $rows = $database->resultset();
                                             }catch (PDOException $e) {
@@ -98,6 +98,24 @@ if(isset($_SESSION['user'])){
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯
+                                                                 
+                                               
+                                            </div>
+                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="empapprloadmore" name="empapprloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>">Load More</a>
+                                        </div>
                                       </div>    
                                         </div>  
                                     </div>
@@ -140,21 +158,7 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-    */
+  $('#resume-main-body #endofsearch').hide();
     
 });       
 </script>

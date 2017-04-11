@@ -18,9 +18,7 @@ if(isset($_SESSION['user'])){
     
     include "serverlogconfig.php";
     $database = new Database();
-
-    
-        
+    $next=10;
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
@@ -86,7 +84,7 @@ if(isset($_SESSION['user'])){
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="shortlisttablebody">
                               
                                         <?php
                                             $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
@@ -149,23 +147,29 @@ if(isset($_SESSION['user'])){
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯                                                       
+                                            </div>                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="shortlistloadmore" name="shortlistloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>" data-jobid="<?=$jobid?>">Load More</a>
+                                        </div>
                                       </div>    
                                         </div>  
                                     </div>
                                   </section>
                             
                                 </div> 
-                                
-                                
-                                
                             </div>  
-                                        <div class="col-md-12">
-                                
-                                                  
-                                           
-                                   
-                            </div>
-		                     
+                               
 		                </div>
 					</div>
 	            </div>
@@ -193,3 +197,37 @@ if(isset($_SESSION['user'])){
                                                     </div>
 		       </div> 
             
+<script>
+jQuery(document).ready(function ($) {
+    $('#resume-main-body #endofsearch').hide();
+    $('#applicantview').on('click', function(event){  
+             $('#viewresume-form').submit();
+   
+     });
+    
+    $(document).on('submit','#viewresume-form',function(event) {
+            event.preventDefault();           
+        
+            var jobid = $("#viewresume-form #jobid").val(); 
+            var applicantid = $("#viewresume-form #applicantid").val();
+            var mode = $("#viewresume-form #mode").val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'viewresume-submit.php',
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                success: function(napps) {  
+                    $('#nappsdiv').html(napps);
+                    $("#newbadgediv" + applicantid).html('');
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+
+    
+});       
+</script>  

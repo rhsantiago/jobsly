@@ -21,7 +21,7 @@ if(isset($_SESSION['user'])){
    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
    $search="";
    if(isset($_POST['search'])){ $search = $_POST['search']; } 
-
+    $next=10;    
 }
 
 ?>
@@ -85,15 +85,15 @@ if(isset($_SESSION['user'])){
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="employerstablebody">
                               
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT useraccounts.id,useraccounts.email, useraccounts.signupdate, useraccounts.isverified,companyinfo.companyname from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and companyinfo.companyname like :search and usertype=1 order by signupdate desc');
+                                                $database->query('SELECT useraccounts.id,useraccounts.email, useraccounts.signupdate, useraccounts.isverified,companyinfo.companyname from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and companyinfo.companyname like :search and usertype=1 order by signupdate desc limit 0,10');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT useraccounts.id,email,companyinfo.companyname, signupdate,isverified from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and usertype=1 order by signupdate desc');   
+                                                $database->query('SELECT useraccounts.id,email,companyinfo.companyname, signupdate,isverified from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and usertype=1 order by signupdate desc limit 0,10');   
                                             }
                                             try{
                                                 $rows = $database->resultset();
@@ -142,6 +142,26 @@ if(isset($_SESSION['user'])){
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯
+                                                                 
+                                               
+                                            </div>
+                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="employersloadmore" name="employersloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>">Load More</a>
+                                        </div>
+                                        
+                                        
                                       </div>    
                                         </div>  
                                     </div>
@@ -180,13 +200,9 @@ if(isset($_SESSION['user'])){
                                                              </div>
                                                     </div>
 		       </div> 
-            <div class="col-md-12 center">
-                                                        <a id="employersloadmore" class="btn btn-primary" data-target="">Load More</a>
-                                                </div> 
-
 <script>
 jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
+  $('#resume-main-body #endofsearch').hide();
     /*
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');

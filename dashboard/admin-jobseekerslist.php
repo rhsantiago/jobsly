@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Manila');
 $logtimestamp = date("Y-m-d H:i:s"); 
 include "serverlogconfig.php";
  $database = new Database();   
- $next=0;    
+ $next=10;    
 }
 ?>
 
@@ -157,22 +157,24 @@ include "serverlogconfig.php";
                                                 
                                             </tbody>
                                         </table>
-                                        <div class="col-md-12 center">
-                                            <!--
-                                                <div class="loadmore">
-                                                     <div class="loadmoreform">
-                                                         <form method="post" id="jobseekersloadmore-form" name="jobseekersloadmore-form">  
-                                                                <input type="hidden" id="next" name="next" value="<?=$next?>">
-                                                         </form>
-                                                    </div>
-                                                </div>
-                                            -->
-                                                <a id="jobseekersloadmore" name="jobseekersloadmore" class="btn btn-primary" data-next="<?=$next?>">Load More</a>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯
+                                                                 
+                                               
+                                            </div>
+                                   
                                         </div>
-                                        
-                                        
-                                        
-                                        
+                                        <div class="col-md-12 center">                                           
+                                                <a id="jobseekersloadmore" name="jobseekersloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>">Load More</a>
+                                        </div>
                                       </div>    
                                         </div>  
                                     </div>
@@ -215,21 +217,6 @@ include "serverlogconfig.php";
 
 <script>
 jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-    */
-    
+  $('#resume-main-body #endofsearch').hide();
 });       
 </script>

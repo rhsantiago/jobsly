@@ -17,21 +17,13 @@ if(isset($_SESSION['user'])){
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
-
-  
-        
+    $next=10;
     $mode = 'insert';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
    
-    
 }
-
 ?>
-
-
-
-    
     <div class="row">
  
      </div>
@@ -83,7 +75,7 @@ if(isset($_SESSION['user'])){
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="aappstablebody">
                               
                                         <?php
                                             $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
@@ -92,8 +84,10 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid order by jobapplications.id desc');
-                                            $database->bind(':jobid', $jobid);                                             
+                                            and jobapplications.userid=workexperience.userid 
+                                            and jobads.userid=:userid order by jobapplications.id desc limit 0,10');
+                                            $database->bind(':jobid', $jobid);  
+                                            $database->bind(':userid', $userid);    
                                             try{    
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
@@ -168,39 +162,33 @@ if(isset($_SESSION['user'])){
                                             ?>
                                                 
                                             </tbody>
-                                        </table>
-                                        <div class="col-md-12 center">
-                                                        <a id="aappsloadmore" class="btn btn-primary" data-target="">Load More</a>
-                                                </div>
-                                        
+                                        </table>                                       
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯                                                       
+                                            </div>                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="aappsloadmore" name="aappsloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>" data-jobid="<?=$jobid?>">Load More</a>
+                                        </div>
                                       </div>    
                                         </div>  
                                     </div>
                                   </section>
                             
                                 </div> 
-                                
-                                
-                                
-                            </div>  
-                                        <div class="col-md-12">
-                                
-                                                  
-                                           
-                                   
-                            </div>
-		                     
+                            </div>       
 		                </div>
 					</div>
 	            </div>
-                        
-                        
-                    
-                        
-                        
                     </div>
-                    
-                    
                 <div class="col-md-3 pull-right">
                           <div class="card card-ads adsright">                                            
                                                              <div class="content">
@@ -212,14 +200,12 @@ if(isset($_SESSION['user'])){
                                                                                
                                                                             
                                                                             </div>
-                                                                      
                                                              </div>
                                                     </div>
 		       </div> 
-            
 <script>
 jQuery(document).ready(function ($) {
-    
+    $('#resume-main-body #endofsearch').hide();
     $('#applicantview').on('click', function(event){  
              $('#viewresume-form').submit();
    

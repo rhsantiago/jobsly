@@ -15,21 +15,23 @@ if(isset($_POST['next'])){ $next = $_POST['next']; }
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }    
 $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 date_default_timezone_set('Asia/Manila');
+$today = date("Y-m-d");    
 $logtimestamp = date("Y-m-d H:i:s"); 
 include "serverlogconfig.php";
  $database = new Database();   
 }
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
-                                            jobads.id=:jobid 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            jobads.id=:jobid
+                                            and jobads.userid=:userid
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
-                                            and jobads.userid=:userid order by jobapplications.id desc limit '.$next.',10');
-                                            $database->bind(':jobid', $jobid);
+                                            and (jobapplications.isnew=1 or dateapplied=:today) order by dateapplied limit '.$next.',10');
+                                            $database->bind(':jobid', $jobid);    
+                                            $database->bind(':today', $today);
                                             $database->bind(':userid', $userid);
-
                                             try{    
                                                 $rows2 = $database->resultset();
                                                 $row_cnt = $database->rowCount();
@@ -37,7 +39,7 @@ include "serverlogconfig.php";
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                 die("");
-                                            } 
+                                            }    
                                             if($row_cnt > 0){
                                                     foreach($rows2 as $row2){
                                                         $applicantid = $row2['userid'];
@@ -46,30 +48,35 @@ include "serverlogconfig.php";
                                                         $esalary = $row2['esalary'];
                                                         $position = $row2['position'];
                                                         $specialization = $row2['specialization'];
-                                                        $isshortlisted = $row2['isshortlisted'];
                                                         $isnew = $row2['isnew'];
+                                                        $isshortlisted = $row2['isshortlisted'];
                                                ?>
 
-                                                        <tr id="line<?=$applicantid?>">                                                   
+                                                        <tr id="line<?=$applicantid?>">
                                                             <td>
-                                                            <ul class="list-inline"> 
-                                                                <li>
-                                                                    <span class="h4weight"><?=$fname?> <?=$lname?></span>
-                                                                </li>
-                                                                <li id="newbadgediv<?=$applicantid?>">                                                   
-                                                                    <?php
-                                                                        if($isnew==1){
-                                                                            echo "<span class='badge'>New</span>";
-                                                                        }
-                                                                    ?>
-                                                                </li>
-                                                            </ul>    
+                                                                <ul class="list-inline"> 
+                                                                    <li>
+                                                                        <span class="h4weight"><?=$fname?> <?=$lname?></span>
+                                                                    </li>
+                                                                    <li id="newbadgediv<?=$applicantid?>">                                                   
+                                                                        <?php
+                                                                            if($isnew==1){
+                                                                                echo "<span class='badge'>New</span>";
+                                                                            }
+                                                                        ?>
+                                                                    </li>
+                                                                </ul>
                                                             </td>
                                                             <td><?=$specarray[$specialization]?></td>       
                                                             <td><?=$position?></td>                                                   
                                                             <td>Php <?=$esalary?></td>
                                                             <td class="td-actions text-right">
-                                                        <ul class="list-inline">
+                                                                <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                                    <input type="hidden" id="mode" name="view" value="view">
+                                                                    <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                                    <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                                </form> 
+                                                                <ul class="list-inline">
                                                                 <li >
                                                                     <form method="post" id="viewresume-form" name="viewresume-form">                    
                                                                         <input type="hidden" id="mode" name="view" value="view">
@@ -85,7 +92,7 @@ include "serverlogconfig.php";
                                                                     <?php
                                                                         if($isshortlisted==0){
                                                                     ?>      
-                                                                    <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus fa-2x"></i></button>                                                          
+                                                                    <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" data-page="newappstable" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus fa-2x"></i></button>                                                          
                                                                     <?php
                                                                         }else{
                                                                     ?>        
@@ -95,10 +102,19 @@ include "serverlogconfig.php";
                                                                     ?>
                                                                 </li>
                                                                <li>
-                                                                    <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
+                                                                    <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-page="new" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
 
                                                                 </li>
-                                                                </ul>
+
+                                                                <!--
+                                                                <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" >
+                                                                    <i class="fa fa-user fa-2x text-info"></i>
+                                                                </a>
+                                                                 ajax enabled
+                                                                <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                                    <i class="fa fa-user text-info"></i>
+                                                                </a>         
+                                                                -->
                                                             </td>
                                                         </tr>
                                                     <?php                                               

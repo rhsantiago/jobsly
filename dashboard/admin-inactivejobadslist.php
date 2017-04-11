@@ -21,7 +21,7 @@ if(isset($_SESSION['user'])){
    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
    $search="";
    if(isset($_POST['search'])){ $search = $_POST['search']; } 
-
+   $next=10; 
 }
 
 ?>
@@ -86,15 +86,15 @@ if(isset($_SESSION['user'])){
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="inactivejobadstablebody">
                               
                                         <?php
                                             if(!empty($search)){
                                                 $search='%'.$search.'%';
-                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded, companyinfo.companyname from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded, companyinfo.companyname from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded desc limit 0,10');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded,jobads.isactive, companyinfo.companyname from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');   
+                                                $database->query('SELECT distinct jobads.id,jobads.userid,jobads.jobtitle,jobads.company, jobads.maxsalary, jobads.dateadded,jobads.isactive, companyinfo.companyname from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded desc limit 0,10');   
                                             }
                                             try{
                                                 $rows = $database->resultset();
@@ -147,6 +147,24 @@ if(isset($_SESSION['user'])){
                                                 
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯
+                                                                 
+                                               
+                                            </div>
+                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="inactivejobadsloadmore" name="inactivejobadsloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>">Load More</a>
+                                        </div>
                                       </div>    
                                         </div>  
                                     </div>
@@ -185,27 +203,10 @@ if(isset($_SESSION['user'])){
                                                              </div>
                                                     </div>
 		       </div> 
-            <div class="col-md-12 center">
-                                                        <a id="activejobadsloadmore" class="btn btn-primary" data-target="">Load More</a>
-                                                </div> 
 
 <script>
 jQuery(document).ready(function ($) {
-  $('#resume-main-body #successdivdeljob').hide();
-    /*
-    $('#pinfo-form #fname').parsley().on('field:error', function() {
-           $('#pinfo-form #fnamediv').addClass('has-error');
-           $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#pinfo-form #fname').parsley().on('field:success', function() {
-            $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
-            $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
-    });
-    
-   
-    
-    */
+  $('#resume-main-body #endofsearch').hide();
     
 });       
 </script>
