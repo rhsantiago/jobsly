@@ -105,7 +105,10 @@
                 <li><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50">
 				</li>
 				<li id="download" >
-                    <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Login</button>
+                    <button type="button" id="loginbtn" onclick="location.href='login.php';" href="login.php" class="btn btn-info btn-lg getstarted">Login</button>
+                    <!--
+                        <button type="button" class="btn btn-info btn-lg getstarted" data-toggle="modal" data-target="#myModal">Login</button>
+                    -->
                 </li>
                 <li id="download" >
                     <div class="dropdown">

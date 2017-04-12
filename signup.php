@@ -114,22 +114,27 @@
 				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer">
 					  <div class="signup-form-title">Jobseeker Registration</div>
 					 <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+                         <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-user" ></span>
+                         </div>     
 					   	        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-required-message="Email is required."/>
-                                
                     </div>
                     <div id="emailerrorcontainer"></div>
 				</div>
                 
 				<div class="form-group" id="password-group">					 
 					<div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+                        <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
+                        </div>    
 					<input type="password" class="form-control" name="password" id="password" placeholder="Password" required />
                     </div>
 				</div>
                 <div class="form-group">					 
 					<div class="input-group" id="confirm-password-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+                        <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
+                        </div>    
 					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
                     </div>
 				</div>			
@@ -138,7 +143,7 @@
 					Create Account
 				</button>
 			</form>
-            <div class="sign-up-form-already"><a href=""> I already have an account</a></div>
+            <div class="sign-up-form-already"><a href="login.php"> I already have an account</a></div>
                 <?php
                 }else{
                 ?>
@@ -147,7 +152,9 @@
 				<div class="form-group" id="email-group" data-parsley-errors-container="#emailerrorcontainer" class="form-group-margin">
 					 <div class="signup-form-title"> Employer Registration</div>
 					 <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-user input-group-addon info-input-group-addon" ></span>
+                         <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-user" ></span>
+                         </div>
 					<input type="email" class="form-control" name="email" id="email" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup" data-parsley-required-message="Email is required."/>
                     </div>
                     <div id="emailerrorcontainer"></div>
@@ -155,22 +162,28 @@
 				<div class="form-group" id="password-group">
 					 
 					<div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+                        <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
+                        </div>    
 					<input type="password" class="form-control" name="password" id="password" placeholder="Password" required/>
                     </div>
 				</div>
                 <div class="form-group" id="confirm-password-group">
 					 
 					<div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-ban-circle input-group-addon info-input-group-addon" id="basic-addon1"></span>
+                        <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-ban-circle" id="basic-addon1"></span>
+                        </div>    
 					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
                     </div>
 				</div>
                 <div class="form-group">
 					 
 					 <div class="input-group">
-                                <span class="glyphicon glyphicon glyphicon-inbox input-group-addon info-input-group-addon" ></span>
-					<input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name" required/>
+                         <div class="input-group-addon info-input-group-addon">
+                                <span class="glyphicon glyphicon glyphicon-inbox" ></span>
+                         </div>     
+					       <input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name" required/>
                     </div>
 				</div>
 				
@@ -179,7 +192,7 @@
 					Create Account
 				</button>
 			</form>
-            <div><a href=""> I already have an account</a></div>
+            <div><a href="login.php"> I already have an account</a></div>
              <div><p>* For Employers, please use your work email address for faster verification.</p></div>
                 <?php
                 }
