@@ -182,7 +182,7 @@
                     <div class="sub-title lead3">Sales Specialists BPO, Australian account</div>
                     <div class="sub-title lead3">Java Technical Lead, J2EE Spring hibernate</div>
                     <div class="sub-title lead3"></div>
-                    <div class="sub-title lead3"><a href="pinterest.php">View all</a></div>
+                    <div class="sub-title lead3"><a href="latestjobs.php">View all</a></div>
 				</div>  
 				
                 <div class="col-sm-6 wow fadeInRightBig featured"  data-animation-delay="200">   

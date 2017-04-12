@@ -133,7 +133,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 						<div class="row">
                            <div class="col-md-12">
                                 <?php
-                                $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel, jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobapplications.isnew,jobapplications.isshortlisted,companyinfo.logo from jobads,jobapplications,companyinfo where jobapplications.userid = :userid and jobads.id = jobapplications.jobid and jobads.userid=companyinfo.userid order by dateadded desc');
+                                $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel, jobads.jobtype,jobads.msalary,jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.dateadded,jobapplications.isnew,jobapplications.isshortlisted,companyinfo.logo from jobads,jobapplications,companyinfo where jobapplications.userid = :userid and jobads.id = jobapplications.jobid and jobads.userid=companyinfo.userid');
                                 $database->bind(':userid', $userid);   
                                 try{
                                     $row = $database->single();
@@ -262,7 +262,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                             <tbody>
                               
                                         <?php
-                                            $database->query('Select distinct jobapplications.userid, workexperience.position,jobapplications.esalary,yexp, colmajor from workexperience, jobapplications,additionalinformation, educationandtraining where jobapplications.jobid=:jobid and workexperience.startdate = (select max(startdate) from workexperience where workexperience.userid=jobapplications.userid) and workexperience.userid=jobapplications.userid and additionalinformation.userid=jobapplications.userid and educationandtraining.userid=jobapplications.userid order by esalary desc');
+                                            $database->query('Select distinct jobapplications.userid, workexperience.position,jobapplications.esalary,yexp, colmajor from workexperience, jobapplications,additionalinformation, educationandtraining where jobapplications.jobid=:jobid and workexperience.startdate = (select max(startdate) from workexperience where workexperience.userid=jobapplications.userid) and workexperience.userid=jobapplications.userid and additionalinformation.userid=jobapplications.userid and educationandtraining.userid=jobapplications.userid order by esalary desc limit 0,10');
                                             $database->bind(':jobid', $jobid);                                             
                                             try{    
                                                 $rows2 = $database->resultset();

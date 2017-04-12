@@ -124,8 +124,14 @@ if(isset($_SESSION['user'])){
                                                         <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">  
-                                                      <?=$teaser?>...<br><br>
+                                                <div class="col-md-12">                                                      
+                                                    <?php
+                                                    if(!empty($teaser)){
+                                                      echo $teaser;    
+                                                      echo "...<br><br>";  
+                                                    }
+                                                    ?>
+                                                    
                                                  </div>
                                             </div>    
                                             <div class="row-fluid">

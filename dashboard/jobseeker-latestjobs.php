@@ -296,7 +296,7 @@ body {
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="<?=$jobad->getheader()?>"  class="img-responsive">
+                                     <img id="jobadheader" src="<?=$jobad->getheader()?>"  class="img-responsive" width="100%">
                                       <?php
                                         }
                                      ?>
