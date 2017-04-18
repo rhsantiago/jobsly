@@ -9,6 +9,7 @@ include "serverlogconfig.php";
 include 'Database.php';
 $id=0;
 $database = new Database();
+$months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');    
 if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
@@ -24,9 +25,14 @@ if($mode!='del'){
     if(isset($_POST['industry'])){ $industry = $_POST['industry']; }
     if(isset($_POST['plevel'])){ $plevel = $_POST['plevel']; }
     if(isset($_POST['enddate'])){ $enddate = $_POST['enddate']; }
-    $edate = explode("/", $enddate);
-    $enddate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
     if(isset($_POST['currentempcb'])){ $currentempcb = $_POST['currentempcb']; }
+    if($currentempcb=='off'){
+        $edate = explode("/", $enddate);
+        $enddate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
+    }else{
+        $enddate = '0000-00-00';
+    }
+    
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 }
 
@@ -78,8 +84,13 @@ if($mode!='del'){
                                                         
                                                         $sdate = explode("-", $row['startdate']);
                                                         $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-                                                        $edate = explode("-", $row['enddate']);
-                                                        $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                                        $cecb = $row['currentemployer'];
+                                                        if($cecb=='off'){
+                                                            $edate = explode("-", $row['enddate']);
+                                                            $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                                        }else{
+                                                            $enddate='present';
+                                                        }
                                                         $jobdesc = $row['jobdescription'];
                                                         $teaser = strip_tags($jobdesc, '<p>');
                                                         $teaser = substr($teaser, 0, 200);
@@ -100,7 +111,14 @@ if($mode!='del'){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$startdate?> - <?=$enddate?>
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?> -
+                                                                                                    <?php
+                                                                                                        if($enddate != 'present'){
+                                                                                                            echo $months[$edate[1]-1].'&nbsp;'.$edate[0];
+                                                                                                        }else{
+                                                                                                            echo "present";
+                                                                                                        }
+                                                                                                    ?>
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>

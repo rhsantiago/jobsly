@@ -241,21 +241,12 @@ include "serverlogconfig.php";
                                     <button class="btn btn-primary " name="saveainfo" id="saveainfo" type="submit">
                                                                 Save Additional Information
                                                                </button>
-                                </div>   
+                                </div>
+                                       <div class="col-md-6 leftmargin10">
+                                   <a href="previewresume.php" id="ainfonext" target="_blank" class="btn btn-primary">Preview Resume</a>
+                                </div>
                                        </form>
-                              <div class="col-md-12 leftmargin10">
-                                
-                                       
-                                       <div class="col-md-6">
-                                     <form method="post" id="ainfonext-form" name="ainfonext-form"> 
-                                     <button class="btn btn-primary " name="ainfonext" id="ainfonext" type="submit">
-                                                                Preview Resume
-                                                               </button>
-                                        </form>
-                                    </div>
-                            </div>
-                               
-                                       
+                         
 		                    </div>
                            
                        

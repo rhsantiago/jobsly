@@ -103,7 +103,7 @@ if($ok == 1 ){
             </div>
         </div>
     <?php
-            $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+            $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
             $database->bind(':userid', $userid);   
             try{
                 $row = $database->single();
@@ -114,6 +114,7 @@ if($ok == 1 ){
             }     
             $maxposition = $row['maxposition'];
             $fname = $row['fname'];
+            $mname = $row['mname'];
             $lname = $row['lname'];
             $photo = $row['photo'];
       
@@ -172,7 +173,7 @@ jQuery(document).ready(function ($) {
                                         <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
@@ -192,7 +193,9 @@ jQuery(document).ready(function ($) {
                       $street = $row['street'];
                       $city = $row['city'];
                       $province = $row['province'];                                
-                      $nationality = $row['nationality'];          
+                      $nationality = $row['nationality'];
+                      $gender = $row['gender'];
+                      $age = $row['age'];
                       $birthday = $row['birthday'];
                       if(!empty($birthday)){                        
                         $bday = explode("-", $birthday);
@@ -219,7 +222,9 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b><?=$street?></b></li>
                                                                         <li> City: <?=$city?>, <b><?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
-                                                                        <li> Birthdate: <b><?=$birthday?></b></li>
+                                                                        <li> Age: <b><?=$age?></b></li>
+                                                                        <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>
+                                                                        <li> Gender: <b><?=$gender?></b></li>
                                                                     </ul>
                                                                 </div>
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
@@ -267,8 +272,13 @@ jQuery(document).ready(function ($) {
              foreach($rows as $row){
                 $sdate = explode("-", $row['startdate']);
                 $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-                $edate = explode("-", $row['enddate']);
-                $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                $cecb = $row['currentemployer'];
+                if($cecb=='off'){
+                    $edate = explode("-", $row['enddate']);
+                    $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                 }else{
+                    $enddate='present';
+                 }
                 
                  if($isleft){
                     echo '<li>';
@@ -308,7 +318,15 @@ jQuery(document).ready(function ($) {
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted jobadheader">
-                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$startdate?> - <?=$enddate?>
+                         <i class="material-icons text-info jobadheadericon">date_range</i> 
+                          <?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?> -
+                          <?php
+                              if($enddate != 'present'){
+                                 echo $months[$edate[1]-1].'&nbsp;'.$edate[0];
+                              }else{
+                                  echo "present";
+                              }
+                           ?>
                       </h6>
                   </li>
                   
@@ -379,7 +397,7 @@ jQuery(document).ready(function ($) {
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted jobadheader">
-                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$pgrad1graddate?>
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?>
                       </h6>
                   </li>
                 
@@ -448,7 +466,7 @@ jQuery(document).ready(function ($) {
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted jobadheader">
-                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$colgraddate?>
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?>
                       </h6>
                   </li>
                 
@@ -516,7 +534,7 @@ jQuery(document).ready(function ($) {
                  </li>
                   <li>
                       <h6 id="vertical-align" class="text-muted jobadheader">
-                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$hsgraddate?>
+                         <i class="material-icons text-info jobadheadericon">date_range</i> <?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?>
                       </h6>
                   </li>
                 

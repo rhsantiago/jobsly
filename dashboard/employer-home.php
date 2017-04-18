@@ -140,7 +140,7 @@ if($ok == 1 ){
                                     <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
-                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
+                                    <li><a href="employer-main.php?ajax=search" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
                          </ul> 
                     </li>
@@ -154,21 +154,7 @@ if($ok == 1 ){
                     </li>
                     <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
+		            
     				
                 </ul>    				
         	</div>
@@ -230,7 +216,7 @@ if($ok == 1 ){
                                     <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
-                                    <li><a href="#" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
+                                    <li><a href="employer-main.php?ajax=search" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
                                     <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
                          </ul> 
     </div>
@@ -294,10 +280,10 @@ if($ok == 1 ){
     
     <div class="row">
     <div class="col-md-12 center">            
-                    <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
+                  <!--  <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">  
                      </div>    
-                           
+                      -->     
      </div>
    
     <div class="col-md-12">

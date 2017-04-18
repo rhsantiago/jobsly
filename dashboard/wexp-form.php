@@ -19,6 +19,7 @@ if(isset($_SESSION['user'])){
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
     $database = new Database();
+    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 }else{
     header("Location: logout.php");
 }
@@ -58,8 +59,13 @@ if(isset($_SESSION['user'])){
                                                         
                                                         $sdate = explode("-", $row['startdate']);
                                                         $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-                                                        $edate = explode("-", $row['enddate']);
-                                                        $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                                        $cecb = $row['currentemployer'];
+                                                        if($cecb=='off'){
+                                                            $edate = explode("-", $row['enddate']);
+                                                            $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                                                        }else{
+                                                            $enddate='present';
+                                                        }
                                                         $jobdesc = $row['jobdescription'];
                                                         $teaser = strip_tags($jobdesc, '<p>');
                                                         $teaser = substr($teaser, 0, 200);
@@ -81,7 +87,16 @@ if(isset($_SESSION['user'])){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$startdate?> - <?=$enddate?>
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;
+                                                                                                    <?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?> -
+                                                                                                    <?php
+                                                                                                        if($enddate != 'present'){
+                                                                                                            echo $months[$edate[1]-1].'&nbsp;'.$edate[0];
+                                                                                                        }else{
+                                                                                                            echo "present";
+                                                                                                        }
+                                                                                                    ?>
+                                                                                           
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -119,7 +134,7 @@ if(isset($_SESSION['user'])){
                                             </div>
                                             <div class="row-fluid">
                                                <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">Read more</a>
+                                                        <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">Read more</a>
                                                 </div>
                                                 <div class="col-md-6 actionicon">                                                   
                                                         <span class="jobcardbuttons"><a href='#workexpmodal' id="editworkexp" title="Edit" data-mode="update" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a></span>
@@ -228,8 +243,7 @@ if(isset($_SESSION['user'])){
                                                                                         ['style', ['bold', 'italic', 'underline', 'clear']],                       
                                                                                         ['fontsize', ['fontsize']],
                                                                                         ['color', ['color']],
-                                                                                        ['para', ['ul', 'ol', 'paragraph']],
-                                                                                        ['height', ['height']]
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
                                                                                       ],
                                                                                       callbacks: {
                                                                                         onPaste: function (e) {
@@ -242,7 +256,18 @@ if(isset($_SESSION['user'])){
                                                                                                 document.execCommand('insertText', false, bufferText);
                                                                                             }, 10);
                                                                                         }
-                                                                                    }
+                                                                                    },
+                                                                                    cleaner:{
+          notTime: 2400, // Time to display Notifications.
+          action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+          newline: '<br>', // Summernote's default is to use '<p><br></p>'
+          notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+          icon: '<i class="note-icon">[Your Button]</i>',
+          keepHtml: false, // Remove all Html formats
+          keepClasses: false, // Remove Classes
+          badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+          badAttributes: ['style', 'start'] // Remove attributes from remaining tags
+    }
                                                                                     });
                                                                             });
                                                                             </script>
@@ -332,7 +357,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#wexp-form #company').parsley().on('field:success', function() {
             $('#wexp-form #companydiv').addClass('has-success');
-            $('#wexp-form #companydiv').find('span').remove()
+            $('#wexp-form #companydiv').find('span').remove();
             $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -342,17 +367,25 @@ jQuery(document).ready(function ($) {
     });    
     $('#wexp-form #position').parsley().on('field:success', function() {
             $('#wexp-form #positiondiv').addClass('has-success');
-            $('#wexp-form #positiondiv').find('span').remove()
+            $('#wexp-form #positiondiv').find('span').remove();
             $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
     $('#wexp-form #startdate').parsley().on('field:error', function() {
            $('#wexp-form #startdiv').addClass('has-error');
            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
+    }); 
+    
+    $('#wexp-form #startdate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form #startdiv').removeClass('has-error');
+            $('#wexp-form #startdiv').addClass('has-success');
+            $('#wexp-form #startdiv').find('span').remove();
+            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
     $('#wexp-form #startdate').parsley().on('field:success', function() {
             $('#wexp-form #startdiv').addClass('has-success');
-            $('#wexp-form #startdiv').find('span').remove()
+            $('#wexp-form #startdiv').find('span').remove();
             $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -362,7 +395,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#wexp-form #msalary').parsley().on('field:success', function() {
             $('#wexp-form #msalarydiv').addClass('has-success');
-            $('#wexp-form #msalarydiv').find('span').remove()
+            $('#wexp-form #msalarydiv').find('span').remove();
             $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -370,10 +403,30 @@ jQuery(document).ready(function ($) {
            $('#wexp-form #enddiv').addClass('has-error');
            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
+    
+    $('#wexp-form #enddate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form #enddiv').removeClass('has-error');
+            $('#wexp-form #enddiv').addClass('has-success');
+            $('#wexp-form #enddiv').find('span').remove();
+            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
     $('#wexp-form #enddate').parsley().on('field:success', function() {
             $('#wexp-form #enddiv').addClass('has-success');
-            $('#wexp-form #enddiv').find('span').remove()
+            $('#wexp-form #enddiv').find('span').remove();
             $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#currentempcb').click(function(){
+        if($(this).is(":checked")){
+           $("#enddate").attr("disabled" , "disabled");
+           $('#enddate').removeAttr('data-parsley-required');           
+        }
+        else{
+           $("#enddate").removeAttr("disabled");
+           $('#enddate').attr('data-parsley-required', '');    
+           
+        }
     });
     
     $('#successdivworkexp').hide();

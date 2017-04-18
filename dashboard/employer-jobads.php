@@ -106,6 +106,7 @@ if($ok == 1 ){
     				<ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
+                        <!--
 		            <li>
 		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
 							<i class="fa fa-twitter"></i>
@@ -120,7 +121,7 @@ if($ok == 1 ){
 		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
 							<i class="fa fa-instagram"></i>
 						</a>
-		            </li>
+		            </li> -->
         		</ul>
                 <ul class="nav navbar-nav navbar-right">
                      <li>

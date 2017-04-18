@@ -204,8 +204,7 @@ jQuery(document).ready(function ($) {
                                       ['style', ['bold', 'italic', 'underline', 'clear']],                       
                                       ['fontsize', ['fontsize']],
                                       ['color', ['color']],
-                                       ['para', ['ul', 'ol', 'paragraph']],
-                                       ['height', ['height']]
+                                       ['para', ['ul', 'ol', 'paragraph']]                                   
                                     ],
                                     callbacks: {
                                       onPaste: function (e) {
@@ -1172,6 +1171,18 @@ jQuery(document).ready(function ($) {
                 }
             });
             return false;
+    });
+    
+    $('#currentempcb').click(function(){
+        if($(this).is(":checked")){
+           $("#enddate").attr("disabled" , "disabled");
+           $('#enddate').removeAttr('data-parsley-required');           
+        }
+        else{
+           $("#enddate").removeAttr("disabled");
+           $('#enddate').attr('data-parsley-required', '');    
+           
+        }
     });
   /*
     $(document).on('click','#photo-modal',function(event) {

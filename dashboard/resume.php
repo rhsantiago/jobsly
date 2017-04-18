@@ -59,7 +59,8 @@ if($ok == 1 ){
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/resume.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/summernote.min.js" type="text/javascript"></script>
+    <script src="js/summernote-cleaner.js"></script>
     <script src="js/parsley.js"></script>
 </head>
 
