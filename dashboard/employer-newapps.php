@@ -142,7 +142,7 @@ if(isset($_SESSION['user'])){
                                                     <td class="text-right">Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
                                                         <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" >
-                                                            <i class="fa fa-user text-info"></i>
+                                                            <i class="fa fa-user text-info fa-2x"></i>
                                                         </a> 
                                                         <!-- ajax enabled
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >

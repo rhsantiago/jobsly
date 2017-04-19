@@ -94,12 +94,12 @@ if($ok == 1 ){
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
                     <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
                                     <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -161,13 +161,13 @@ if($ok == 1 ){
                                         <h5 class="sidenavposition"><?=$maxposition?></h5>
                                     </div>  
        </div>
-    <div class="sidebar-item"><a href="jobseeker-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>   
+    <div class="sidebar-item"><a href="jobseeker-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>
+    <div class="sidebar-item"><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Jobs</a></div>   
    <div class="sidebar-item dropdown"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="#ljob" id="ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                                    <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>                                   
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -198,30 +198,17 @@ if($ok == 1 ){
               
                         <?php
                         if($ajax=='aapp'){
-                             include 'jobseeker-activeapp.php';
-                        ?>
-                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
-                        <?php
-                        }
-                        
+                             include 'jobseeker-activeapp.php';                      
+                        }                        
                         if($ajax=='jinv'){    
                              include 'jobseeker-invites.php';
-                        }
-    
+                        }    
                         if($ajax=='sapp'){
                              include 'jobseeker-savedapp.php';
-                        ?>
-                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #s3').addClass('active');});</script>
-                        <?php
-                        }                       
-    
-                        if($ajax=='ljob'){
-                             include 'jobseeker-latestjobs.php';
-                        ?>
-                             <script>$(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #l4').addClass('active');});</script>
-                        <?php
                         }
                         ?>
+                             
+                       
                 </div> <!--resume main body-->        
                 <!--
 		    	<div class="section text-center section-landing">

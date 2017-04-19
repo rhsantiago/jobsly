@@ -216,7 +216,7 @@ if(!empty($rows)){
                                                         if(empty($applyrow)){
                                                     ?>    
                                                     <span class="jobcardbuttons">
-                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage" data-toggle="tooltip" title="View Job Ad"><i class="material-icons" >assignment_turned_in</i></a>
                                                         <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
                                                         -->
                                                     </span>
@@ -411,7 +411,7 @@ if(!empty($rows)){
                                                         if(empty($applyrow)){
                                                     ?>    
                                                     <span class="jobcardbuttons">
-                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage" data-toggle="tooltip" title="View Job Ad"><i class="material-icons" >assignment_turned_in</i></a>
                                                         <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
                                                         -->
                                                     </span>
@@ -605,7 +605,7 @@ if(!empty($rows)){
                                                         if(empty($applyrow)){
                                                     ?>    
                                                     <span class="jobcardbuttons">
-                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage" data-toggle="tooltip" title="View Job Ad"><i class="material-icons" >assignment_turned_in</i></a>
                                                         <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
                                                         -->  
                                                     </span>

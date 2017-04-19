@@ -218,6 +218,14 @@ jQuery(document).ready(function ($) {
    
      });
     
+    /*
+     $(document).on('submit','#search-form',function(event){
+        e.preventDefault();
+          $.post( 'jobseeker-latestjobs.php', $('#search-form').serialize(), function( data ) {
+               alert( data ); 
+          } );
+     });     
+   
     $(document).on('submit','#search-form',function(event){
              event.preventDefault()
              event.stopPropagation();                  
@@ -240,6 +248,7 @@ jQuery(document).ready(function ($) {
            });
         return false;
     }); 
+    */
    /* 
     $('#viewjobnewpage').on('click', function (){  
 

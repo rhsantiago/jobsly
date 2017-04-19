@@ -89,7 +89,7 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct personalinformation.userid, personalinformation.fname, personalinformation.lname, additionalinformation.specialization, additionalinformation.esalary, (select distinct position from workexperience where workexperience.userid=personalinformation.userid order by startdate desc limit 0,1) as position from personalinformation,additionalinformation where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
+                                            $database->query('SELECT distinct personalinformation.userid, personalinformation.fname, personalinformation.lname, additionalinformation.specialization, additionalinformation.esalary, (select  position from workexperience where workexperience.userid=personalinformation.userid order by startdate desc limit 0,1) as position from personalinformation,additionalinformation where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
                                             $database->bind(':specialization', $specialization); 
                                             $database->bind(':jobid', $jobid);    
                                             try{    

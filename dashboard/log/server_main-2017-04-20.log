@@ -1,0 +1,26 @@
+INFO - 2017-04-20 00:11:39 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:12:15 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:19:31 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:27:04 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:45:08 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:49:06 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:49:24 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:53:41 - reg@jobsly.net logged in
+INFO - 2017-04-20 00:53:43 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:09:11 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:09:13 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:11:50 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:12:35 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:12:39 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:14:51 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:15:36 - reg@jobsly.net logged in
+INFO - 2017-04-20 01:16:22 - reg@jobsly.net logged in
+INFO - 2017-04-20 02:00:55 - reg@jobsly.net logged in
+INFO - 2017-04-20 02:01:20 - reg@jobsly.net logged in
+INFO - 2017-04-20 02:06:07 - reg@jobsly.net logged in
+INFO - 2017-04-20 02:09:31 - reg@jobsly.net logged in
+INFO - 2017-04-20 02:11:42 - reggie1@gmail.com logged in
+ERROR - 2017-04-20 02:17:16 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadaapps.php(92): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

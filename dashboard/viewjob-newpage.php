@@ -530,7 +530,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                                   </button>
-                                                                  <b>Alert: </b> Please complete your Personal Information and Additional Information to start applying for jobs.
+                                                                  <b>Alert: </b> Please complete the personal information and additional information portions of your resume to start applying for jobs.
 
                                                             </div>
                                                 </div>

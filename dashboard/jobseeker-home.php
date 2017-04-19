@@ -88,12 +88,12 @@ if($ok == 1 ){
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
                     <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
                     <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="main.php?ajax=aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="main.php?ajax=jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li> 
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="resume.php" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -158,13 +158,13 @@ if($ok == 1 ){
                                         <h5 class="sidenavposition"><?=$maxposition?></h5>
                                     </div>  
        </div>
-    <div class="sidebar-item"><a href="jobseeker-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>   
+    <div class="sidebar-item"><a href="jobseeker-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>  
+    <div class="sidebar-item"><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Jobs</a></div>   
    <div class="sidebar-item dropdown"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
             <ul class="dropdown-menu">
                                     <li><a href="main.php?ajax=aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="main.php?ajax=jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
-                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
-                                    <li><a href="main.php?ajax=ljob"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                                    <li><a href="main.php?ajax=sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>  
                          </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
@@ -177,7 +177,7 @@ if($ok == 1 ){
                             <li><a target="_blank" href="previewresume.php" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
-   <div class="sidebar-item"><a href="#">Jobs</a></div>
+   
    <div class="sidebar-item"><a href="#">Settings</a></div>
    
 </div>
@@ -577,7 +577,7 @@ if($ok == 1 ){
                                                         if(empty($applyrow)){
                                                     ?>    
                                                     <span class="jobcardbuttons">
-                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><i class="material-icons" >assignment_turned_in</i></a>
+                                                    <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage" data-toggle="tooltip" title="View Job Ad"><i class="material-icons" >assignment_turned_in</i></a>
                                                         <!--<a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-isjobseeker="jobseeker" title="Apply now">
                                                         -->
                                                     </span>
