@@ -79,11 +79,17 @@ if(isset($_SESSION['user'])){
              if($templateid > 0 || $template > 0){
                  $sdate = explode("-", $startappdate);
                  $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+                 if($sdate[0]<1){
+                     $startappdate='';
+                 }
              }
              $endappdate = $row['endappdate'];
              if($templateid > 0 || $template > 0){
                  $edate = explode("-", $endappdate);
                  $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                 if($edate[0]<1){
+                     $endappdate='';
+                 }
              }
              $nvacancies = $row['nvacancies'];
              $teaser = $row['teaser'];

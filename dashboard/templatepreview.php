@@ -55,14 +55,8 @@ if(isset($_SESSION['user'])){
     $prefcourse = $row['prefcourse'];
     $languages = $row['languages'];
     $licenses = $row['licenses'];
-    $wtravel = $row['wtravel'];
-    if($wtravel=='on'){
-       $wtravel = 'checked';
-    }
-    $wrelocate = $row['wrelocate'];
-    if($wrelocate=='on'){
-       $wrelocate = 'checked';
-    }
+    $wtravel = $row['wtravel'];    
+    $wrelocate = $row['wrelocate'];   
     $dateadded = $row['dateadded'];
     $dadd = explode("-", $dateadded);
     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];  
@@ -258,8 +252,12 @@ if(isset($_SESSION['user'])){
                                                              ?>                                                              
                                                         </ul>
                                                         <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
+                                                        <?php
+                                                          if($sdate[1] >= 1 && $sdate[2] >= 1 && $sdate[0] >= 1){
+                                                        ?> 
                                                         <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
                                                         <?php
+                                                          }
                                                           if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
                                                         ?>         
                                                         <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>

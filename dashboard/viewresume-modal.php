@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     include "serverlogconfig.php";
     $database = new Database();
     
-    $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+    $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
     $database->bind(':userid', $applicantid);   
     try{
         $row = $database->single();
@@ -32,6 +32,7 @@ if(isset($_SESSION['user'])){
     $photo = $row['photo'];
     $fname = $row['fname'];
     $lname = $row['lname'];
+    $mname = $row['mname'];
     if(empty($photo)){
          $photo='img/unknown.png';
     }
@@ -121,10 +122,13 @@ jQuery(document).ready(function ($) {
                       $province = $row['province'];                                
                       $nationality = $row['nationality'];          
                       $birthday = $row['birthday'];                              
-                      $bday = explode("-", $birthday);
+                      if(!empty($birthday)){                        
+                        $bday = explode("-", $birthday);
+                      }
                       $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
                       
                       $dposition = $row['dposition'];
+                      $gender = $row['gender'];                       
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
                       $languages = $row['languages'];                      
@@ -163,7 +167,8 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b><?=$street?></b></li>
                                                                         <li> City: <b><?=$city?>, <?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
-                                                                        <li> Birthdate: <b><?=$birthday?></b></li>
+                                                                        <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>
+                                                                        <li> Gender: <b><?=$gender?></b></li>
                                                                     </ul>
                                                                 </div>   
                                        <?php     

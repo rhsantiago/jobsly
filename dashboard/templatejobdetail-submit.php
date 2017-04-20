@@ -15,8 +15,12 @@ if(isset($_POST['jobtype'])){ $jobtype = $_POST['jobtype']; }
 if(isset($_POST['msalary'])){ $msalary = $_POST['msalary']; }
 if(isset($_POST['maxsalary'])){ $maxsalary = $_POST['maxsalary']; }
 if(isset($_POST['startappdate'])){ $startappdate = $_POST['startappdate']; }
-$sdate = explode("/", $startappdate);
-$startappdate = $sdate[2] .'-'.$sdate[0].'-'.$sdate[1];
+if(!empty($startappdate)){    
+    $sdate = explode("/", $startappdate);
+    $startappdate = $sdate[2] .'-'.$sdate[0].'-'.$sdate[1];
+}else{
+    $startappdate='0000-00-00';
+}
 if(isset($_POST['endappdate'])){ $endappdate = $_POST['endappdate']; }
 $edate = explode("/", $endappdate);
 $endappdate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
