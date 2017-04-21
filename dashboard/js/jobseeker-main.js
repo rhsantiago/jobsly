@@ -103,17 +103,20 @@ jQuery(document).ready(function ($) {
    
      $(document).on('submit','#loadmorejobs-form',function(event){
              
-            event.preventDefault();                  
+            event.preventDefault();
             var next = $("#loadmorejobs-form #next").val();
+            var search = $("#loadmorejobs-form #search").val();
+            var esalary = $("#loadmorejobs-form #esalary").val();
+            var specialization = $("#loadmorejobs-form #specialization").val();
             
             $.ajax({
                     type: "POST",
                     url: 'loadmorejobs.php',
-                    data: "next=" +next,
+                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
                     dataType: 'html',
 
                     success: function (html) {
-                       // console.log(html);
+                        console.log(specialization);
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
                         $('[data-toggle="tooltip"]').tooltip();
@@ -149,9 +152,7 @@ jQuery(document).ready(function ($) {
                        successClass: "has-success",
                        errorClass: "has-error"
                 });
-                
-               
-                    
+                   
             }
         });
     });

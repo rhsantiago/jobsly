@@ -10,17 +10,58 @@ if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
-   if(isset($_POST['next'])){ $next = $_POST['next']; } 
-  $database = new Database();
-  include "Jobad.php";
-  date_default_timezone_set('Asia/Manila');
-    $logtimestamp = date("Y-m-d H:i:s");  
-  include "serverlogconfig.php";  
-  $jobadsarray = array();
+   if(isset($_POST['next'])){ $next = $_POST['next']; }
+   if(isset($_POST['search'])){ $search = $_POST['search']; }
+   if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
+   if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
+  
+   $database = new Database();
+   include "Jobad.php";
+   date_default_timezone_set('Asia/Manila');
+   $logtimestamp = date("Y-m-d H:i:s");  
+   include "serverlogconfig.php";  
+   $jobadsarray = array();    
+   $logo="";
+    $log->info("search=".$search." ".$esalary." ".$specializationsearch); 
+   $where = "";
+   $wherekey ="";
+   if(!empty($search)){
+       $search='%'.$search.'%';
+       $where=" (jobtitle like :search or jobdesc like :search) ";
+        if($esalary > 0 || $specializationsearch > 0){
+            $where = $where."and ";
+        }
+   }
+   if($esalary > 0){ 
+       $where= $where . " msalary <= :esalary and maxsalary >= :esalary ";
+       if($specializationsearch > 0){
+            $where = $where."and ";
+        }
+   }
+   if($specializationsearch >= 0){ 
+       $where= $where . " specialization = :specialization ";
+   }    
+     
+   $wherekey = " where ";  
+   $isactiveclause = " isactive=1 ";        
+   if(!empty($where)){
+       $isactiveclause = " and ".$isactiveclause;
+   }    
+       
+   $msg = $where;
+     
+   $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit ".$next.",12"); 
+   if(!empty($search)){ 
+       $database->bind(':search', $search);  
+   }
+   if($esalary > 0){ 
+       $database->bind(':esalary', $esalary);  
+   }
+   if($specializationsearch > 0){
+       $database->bind(':specialization', $specializationsearch);
+   }
     
-    $logo="";
-    
-   $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
+  // $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
   // $database->bind(':next', $next);   
    try{ 
        $rows = $database->resultset();
@@ -113,6 +154,8 @@ if(!empty($rows)){
                                      }else{
                                          $datamode = "apply";
                                      }
+                                     
+                                     
                                      
                                      $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);

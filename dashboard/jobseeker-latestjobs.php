@@ -1032,6 +1032,9 @@ body {
          <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
+                    <input type="hidden" id="search" name="search" value="<?=$search?>">
+                    <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
+                    <input type="hidden" id="specialization" name="specialization" value="<?=$specialization?>">
                    
              </form>
         </div>
