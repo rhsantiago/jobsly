@@ -26,7 +26,7 @@ if(isset($_SESSION['user'])){
    $where = "";
    $wherekey ="";
    if(!empty($search)){
-       $search='%'.$search.'%';
+      // $search='%'.$search.'%';
        $where=" (jobtitle like :search or jobdesc like :search) ";
         if($esalary > 0 || $specializationsearch > 0){
             $where = $where."and ";
@@ -38,7 +38,7 @@ if(isset($_SESSION['user'])){
             $where = $where."and ";
         }
    }
-   if($specializationsearch >= 0){ 
+   if(!empty($specializationsearch)){ 
        $where= $where . " specialization = :specialization ";
    }    
      
@@ -57,9 +57,12 @@ if(isset($_SESSION['user'])){
    if($esalary > 0){ 
        $database->bind(':esalary', $esalary);  
    }
-   if($specializationsearch > 0){
+   if(!empty($specializationsearch)){ 
        $database->bind(':specialization', $specializationsearch);
    }
+
+    
+   // $database->query("SELECT * from jobads where (jobtitle like '%".$search."%' or jobdesc like '%".$search."%') and isactive=1 order by dateadded desc limit ".$next.",12");
     
   // $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
   // $database->bind(':next', $next);   
@@ -82,9 +85,7 @@ if(!empty($rows)){
       $msalary = $row['msalary'];
       $maxsalary = $row['maxsalary'];
       $jobdesc = $row['jobdesc'];
-      $teaser = strip_tags($jobdesc);
-      $teaser = substr($teaser, 0, 100);
-      $teaser = strip_tags($teaser);
+      $teaser = $row['teaser'];
        
       $dateadded = $row['dateadded'];
       $dadd = explode("-", $dateadded);
@@ -242,7 +243,7 @@ if(!empty($rows)){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -437,7 +438,7 @@ if(!empty($rows)){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -631,7 +632,7 @@ if(!empty($rows)){
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -718,7 +719,9 @@ if(!empty($rows)){
     <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
-                   
+                    <input type="hidden" id="search" name="search" value="<?=$search?>">
+                    <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
+                    <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>">
              </form>
         </div>
    

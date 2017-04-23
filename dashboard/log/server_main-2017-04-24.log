@@ -1,0 +1,91 @@
+INFO - 2017-04-24 00:04:35 - reg@jobsly.net logged in
+INFO - search= 0 0
+ERROR - 2017-04-24 00:04:41 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(67): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: no parameters were bound
+INFO - search=%web% 0 0
+ERROR - 2017-04-24 00:04:47 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(67): Database->resultset()
+#3 {main} SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+INFO - search= 0 0
+INFO - search=undefined undefined undefined
+ERROR - 2017-04-24 00:06:12 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(67): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = 'undefined'  and  isactive=1  order by dateadded desc limit 18,' at line 1
+INFO - search=%web% 0 0
+ERROR - 2017-04-24 00:06:18 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(67): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '0'  and  isactive=1  order by dateadded desc limit 3,12' at line 1
+INFO - search=%web% 0 0
+ERROR - 2017-04-24 00:10:29 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(jobtitle like %%web%% or jobdesc like %%web%%) order by dateadded desc limit 3,' at line 1
+INFO - search=%web% 0 0
+ERROR - 2017-04-24 00:11:59 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(jobtitle like '%%web%%' or jobdesc like '%%web%%') order by dateadded desc limi' at line 1
+INFO - search=web 0 0
+ERROR - 2017-04-24 00:14:21 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(jobtitle like '%web%' or jobdesc like '%web%') order by dateadded desc limit 3,' at line 1
+INFO - 2017-04-24 00:15:10 - reg@jobsly.net logged in
+INFO - search=web 0 0
+INFO - search=undefined undefined undefined
+INFO - search=undefined undefined undefined
+INFO - search=undefined undefined undefined
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search= 0 0
+INFO - search=web 0 0
+INFO - search=undefined undefined undefined
+INFO - search=undefined undefined undefined
+INFO - search=web 0 0
+INFO - search= 10000 0
+INFO - search=  0
+INFO - search=  11
+INFO - search=web  0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+INFO - search=web 0 0
+ERROR - 2017-04-24 00:43:56 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '0'  and  isactive=1  order by dateadded desc limit 3,12' at line 1
+INFO - 2017-04-24 00:45:54 - reg@jobsly.net logged in
+INFO - search=web 0 
+ERROR - 2017-04-24 00:46:32 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = ''  and  isactive=1  order by dateadded desc limit 3,12' at line 1
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search=web 0 
+ERROR - 2017-04-24 00:50:39 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = ''  and  isactive=1  order by dateadded desc limit 3,12' at line 1
+INFO - search=web 0 
+ERROR - 2017-04-24 00:51:43 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\loadmorejobs.php(70): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = ''  and  isactive=1  order by dateadded desc limit 3,12' at line 1
+INFO - search=web 0 
+INFO - search=web 0 

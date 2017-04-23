@@ -257,7 +257,7 @@ body {
   $where = "";
   $wherekey ="";
    if(!empty($search)){
-       $search='%'.$search.'%';
+       $searchstring='%'.$search.'%';
        $where=" (jobtitle like :search or jobdesc like :search) ";
         if($esalary > 0 || $specializationsearch > 0){
             $where = $where."and ";
@@ -283,12 +283,12 @@ body {
     
    $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit 0,12"); 
    if(!empty($search)){ 
-       $database->bind(':search', $search);  
+       $database->bind(':search', $searchstring);  
    }
    if($esalary > 0){ 
        $database->bind(':esalary', $esalary);  
    }
-   if($specializationsearch > 0){
+   if(!empty($specializationsearch)){ 
        $database->bind(':specialization', $specializationsearch);
    }
     
@@ -309,10 +309,7 @@ body {
       $jobtype = $row['jobtype'];
       $msalary = $row['msalary'];
       $maxsalary = $row['maxsalary'];
-      $jobdesc = $row['jobdesc'];
-      $teaser = strip_tags($jobdesc);
-      $teaser = substr($teaser, 0, 100);
-      $teaser = strip_tags($teaser);
+      $teaser = $row['teaser'];
        
       $dateadded = $row['dateadded'];
       $dadd = explode("-", $dateadded);
@@ -376,7 +373,7 @@ body {
                              <div id="searchdiv" class="form-group label-floating" >
                                   <label class="control-label">Search</label>
                                  
-                                  <input type="text" id="search" name="search" class="form-control searchform">  
+                                  <input type="text" id="search" name="search" value="<?=$search?>" class="form-control searchform">  
                              </div>
                             </div>
                             
@@ -384,7 +381,7 @@ body {
                                  <div class="col-md-6">
                                       <div id="esalarydiv" class="form-group label-floating">
                                       <label class="control-label">Min. Salary</label>
-                                      <input type="text" id="esalary" class="form-control searchform" >  
+                                      <input type="text" id="esalary" name="esalary" value="<?=$esalary?>" class="form-control searchform" >  
                                      </div>
                                  </div>
                                  <div class="col-md-6"> 
@@ -395,7 +392,10 @@ body {
                                                <?php
                                                $i=0;
                                                 foreach($specarray as $spec){
-                                                    echo "<option value='$i' "; if($specialization==$i){echo'selected';} echo">$specarray[$i]</option>";
+                                                    echo "<option value='$i' "; 
+                                                    if($specialization==$i){
+                                                        //echo'selected';
+                                                    } echo">$specarray[$i]</option>";
                                                     $i++;
                                                 }
                                                 ?>
@@ -536,7 +536,7 @@ body {
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -737,7 +737,7 @@ body {
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -932,7 +932,7 @@ body {
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
-                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?>...</span><br>
+                                                     <span class="jobcarddesc"><?=$jobad->getteaser()?></span><br>
                                                  </div>
                                                 
                                             </div>
@@ -1034,7 +1034,7 @@ body {
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
                     <input type="hidden" id="search" name="search" value="<?=$search?>">
                     <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
-                    <input type="hidden" id="specialization" name="specialization" value="<?=$specialization?>">
+                    <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>">
                    
              </form>
         </div>
