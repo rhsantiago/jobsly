@@ -250,10 +250,11 @@ body {
   $search="";
   $esalary=0;
   $specializationsearch="";
-  $logo="";    
+  $logo="";
   if(isset($_POST['search'])){ $search = $_POST['search']; }
   if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
-  if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
+  if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }
+ 
   $where = "";
   $wherekey ="";
    if(!empty($search)){
@@ -264,7 +265,7 @@ body {
         }
    }
    if($esalary > 0){ 
-       $where= $where . " msalary <= :esalary and maxsalary >= :esalary ";
+       $where= $where . " msalary >= :esalary and maxsalary >= :esalary ";
        if($specializationsearch > 0){
             $where = $where."and ";
         }
@@ -274,18 +275,18 @@ body {
    }    
      
    $wherekey = " where ";  
-   $isactiveclause = " isactive=1 ";        
+   $isactiveclause = " isactive=1 ";
    if(!empty($where)){
        $isactiveclause = " and ".$isactiveclause;
-   }    
+   }
        
    $msg = $where;
     
    $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit 0,12"); 
    if(!empty($search)){ 
-       $database->bind(':search', $searchstring);  
+       $database->bind(':search', $searchstring);
    }
-   if($esalary > 0){ 
+   if($esalary > 0){
        $database->bind(':esalary', $esalary);  
    }
    if(!empty($specializationsearch)){ 
@@ -296,14 +297,18 @@ body {
         $rows = $database->resultset();
    }catch (PDOException $e) {
         $msg = $e->getTraceAsString()." ".$e->getMessage();
-        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
         die("");
-   }    
+   }
+    if(isset($_POST['specialization'])){
+         $log->info($msg." ".$specializationsearch);
+    }
+  
    foreach($rows as $row){
       $jobid = $row['id'];
       $employerid = $row['userid'];
       $jobtitle = $row['jobtitle'];
-      $company = $row['company'];   
+      $company = $row['company'];
       $specialization = $row['specialization'];
       $plevel = $row['plevel'];
       $jobtype = $row['jobtype'];
@@ -324,9 +329,9 @@ body {
       $jobad->setplevel($plevel);
       $jobad->setjobtype($jobtype);
       $jobad->setmsalary($msalary);
-      $jobad->setmaxsalary($maxsalary);   
+      $jobad->setmaxsalary($maxsalary);
       $jobad->setteaser($teaser);
-      $jobad->setdadd($dadd);       
+      $jobad->setdadd($dadd);
        
       $jobadsarray[] = $jobad;
        
@@ -340,7 +345,7 @@ body {
             die("");
       } 
    }
-    $specialization=0;
+   // $specialization=0;
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
@@ -357,7 +362,7 @@ body {
      </div>
 
     <div class="col-md-12">
-                 <h2 class="title">Latest Jobs</h2>  
+                 <!--<h2 class="title">Latest Jobs</h2>  -->
        </div>
    </div>     
 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
@@ -365,7 +370,7 @@ body {
           
                 <section class="blog-post">
                   <div class="panel panel-default" >
-                      <form method="POST"  id="search-form" name="search-form"> 
+                      <form method="POST"  id="search-form" name="search-form">
                           <input type="hidden" id="userid" name="userid" value="<?=$userid?>">      
                        <div class="panel-body" >
                            <div class="col-md-12">
@@ -377,43 +382,53 @@ body {
                              </div>
                             </div>
                             
-                             <div class="collapse-group collapse" id="options" >
+                             <div class="collapse-group 
+                                         <?php
+                                            if($esalary<1 && empty($_POST['specialization'])){
+                                                echo " collapse";
+                                            }
+                                         ?>
+                                         " id="options" >
                                  <div class="col-md-6">
                                       <div id="esalarydiv" class="form-group label-floating">
                                       <label class="control-label">Min. Salary</label>
-                                      <input type="text" id="esalary" name="esalary" value="<?=$esalary?>" class="form-control searchform" >  
+                                      <input type="text" id="esalary" name="esalary" 
+                                             <?php
+                                                 if($esalary>0){
+                                                    echo " value='$esalary' ";
+                                                 }
+                                             ?>
+                                             class="form-control searchform" >
                                      </div>
                                  </div>
                                  <div class="col-md-6"> 
                                         <div id="specializationdiv" class="form-group label-floating">
                                          <label class="control-label">Specialization</label>
                                          <select class="form-control searchform" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
-                                             <option></option>
+                                             <option value='-1' selected ></option>
                                                <?php
                                                $i=0;
                                                 foreach($specarray as $spec){
-                                                    echo "<option value='$i' "; 
-                                                    if($specialization==$i){
-                                                        //echo'selected';
+                                                    echo "<option value='$i' ";
+                                                    if($specializationsearch==$i && !empty($_POST['specialization'])){
+                                                        echo'selected';
                                                     } echo">$specarray[$i]</option>";
                                                     $i++;
                                                 }
                                                 ?>
                                           </select>
-                                          </div> 
+                                          </div>
                                  </div>
-                                 
-                                
                              </div>
                            
                                 <p style="z-index: 1; position: relative;">
                                      <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
                                      <button class="btn btn-primary btn-sm" type="submit">Search</button>
-                             </p>  
+                             </p>
                              </div>
                             </form>
                   </div>
-                </section>   
+                </section>
         
 </div>
 <!--
@@ -427,7 +442,7 @@ body {
 
 					<div class="features">
                         
-                        <div class="row">                  
+                        <div class="row">
                          <div class="jobs">
 		                     <div class="col-md-12 leftmargin10">
                                   <?php
@@ -439,12 +454,12 @@ body {
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
                                      try{
-                                         $applyrow = $database->single();   
+                                         $applyrow = $database->single();
                                      }catch (PDOException $e) {
                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
                                         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                         die("");
-                                     }      
+                                     }
                                      if(!empty($applyrow)){
                                          $datamode = "view";
                                      }else{
@@ -454,7 +469,7 @@ body {
                                      $database->query('SELECT * from savedapplications where jobid= :jobid and userid = :userid');
                                      $database->bind(':userid', $userid);
                                      $database->bind(':jobid', $jobad->getjobid());
-                                     try{     
+                                     try{
                                         $savedrow = $database->single();                                     
                                      }catch (PDOException $e) {
                                             $msg = $e->getTraceAsString()." ".$e->getMessage();
@@ -492,7 +507,7 @@ body {
                                           <div class="row-fluid ">
                                                 <div class="col-md-12">
                                                     <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
-                                                </div>    
+                                                </div>
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                     <!--
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
@@ -501,15 +516,15 @@ body {
                                                         
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
-                                                        </div> 
+                                                        </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     
-                                                    <div class="companylogo "> 
+                                                    <div class="companylogo ">
                                                          <img src="<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
-                                            </div>   
+                                            </div>
                                           
                                         </div>
                                      

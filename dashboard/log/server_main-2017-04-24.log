@@ -89,3 +89,97 @@ ERROR - 2017-04-24 00:51:43 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard
 #3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = ''  and  isactive=1  order by dateadded desc limit 3,12' at line 1
 INFO - search=web 0 
 INFO - search=web 0 
+INFO - 2017-04-24 15:27:31 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - search=web 0 
+INFO - search=web 0 
+INFO - 2017-04-24 15:45:04 - reg@jobsly.net logged in
+INFO - search=web 0 
+INFO - search=%web% 0 
+INFO - 2017-04-24 15:48:44 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - 2017-04-24 15:51:23 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - 2017-04-24 16:01:26 - reg@jobsly.net logged in
+INFO - 2017-04-24 16:07:10 - reg@jobsly.net logged in
+INFO - 2017-04-24 16:07:56 - reg@jobsly.net logged in
+INFO - search=  11
+INFO - 2017-04-24 16:12:42 - reg@jobsly.net logged in
+INFO - 2017-04-24 16:13:32 - reg@jobsly.net logged in
+INFO - 2017-04-24 16:21:50 - reg@jobsly.net logged in
+INFO - search=  11
+INFO - 2017-04-24 16:22:01 - reg@jobsly.net logged in
+INFO - search= 30000 0
+INFO - search= 30000 0
+INFO - 2017-04-24 16:50:42 - reg@jobsly.net logged in
+INFO - 2017-04-24 16:51:02 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:04:57 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - search=web  0
+INFO - 2017-04-24 17:05:20 - reg@jobsly.net logged in
+INFO - search= 30000 11
+INFO - search= 30000 
+INFO - 2017-04-24 17:07:08 - reg@jobsly.net logged in
+INFO - 
+INFO -  msalary >= :esalary and maxsalary >= :esalary 
+INFO - search= 30000 0
+INFO - 2017-04-24 17:08:50 - reg@jobsly.net logged in
+INFO - 
+INFO - 2017-04-24 17:12:33 - reg@jobsly.net logged in
+INFO - 
+INFO -  msalary >= :esalary and maxsalary >= :esalary 
+INFO -  (jobtitle like :search or jobdesc like :search) and  msalary >= :esalary and maxsalary >= :esalary 
+INFO - search=web 30000 0
+INFO - 2017-04-24 17:13:17 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:15:17 - reg@jobsly.net logged in
+INFO -  
+INFO - 2017-04-24 17:16:08 - reg@jobsly.net logged in
+INFO -  
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO -  
+INFO - 2017-04-24 17:20:56 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:20:58 - reg@jobsly.net logged in
+INFO -  
+INFO - 2017-04-24 17:21:06 - reg@jobsly.net logged in
+INFO -  
+INFO - 2017-04-24 17:21:10 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:22:05 - reg@jobsly.net logged in
+INFO -  
+INFO - 2017-04-24 17:25:15 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:25:15 - reg@jobsly.net logged in
+INFO -  
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO - 2017-04-24 17:33:23 - reg@jobsly.net logged in
+INFO -  
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO - 2017-04-24 17:34:15 - reg@jobsly.net logged in
+INFO -  specialization = :specialization  -1
+INFO - 2017-04-24 17:44:08 - reg@jobsly.net logged in
+INFO -  
+INFO - search= 0 
+INFO -  0
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO - 2017-04-24 17:54:51 - reg@jobsly.net logged in
+INFO -  msalary >= :esalary and maxsalary >= :esalary  0
+INFO - 2017-04-24 17:58:21 - reg@jobsly.net logged in
+INFO - 2017-04-24 17:58:23 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:01:41 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:02:23 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:02:27 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:02:42 - reg@jobsly.net logged in
+INFO -  msalary >= :esalary and maxsalary >= :esalary and  specialization = :specialization  11
+INFO - 2017-04-24 18:06:12 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:06:14 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:06:38 - reg@jobsly.net logged in
+INFO - 2017-04-24 18:06:40 - reg@jobsly.net logged in
+ERROR - 2017-04-24 18:07:45 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(297): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '-1'  and  isactive=1  order by dateadded desc limit 0,12' at line 1
