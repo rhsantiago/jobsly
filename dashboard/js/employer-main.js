@@ -263,7 +263,7 @@ $(document).ready(function ($) {
                 cache: false,
                 type: 'POST',
                 url: 'employer-jobdetails.php',
-                data: 'jobid=' + jobid,
+                data: 'jobid=' + jobid + '&page=' + page,
                 success: function(html) {
                    // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -282,11 +282,12 @@ $(document).ready(function ($) {
     $("#resume-main-body").on('click','#activeapps',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-loadaapps.php',
-                data: 'jobid=' + jobid,
+                data: 'jobid=' + jobid+ '&page=' + page,
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -303,11 +304,12 @@ $(document).ready(function ($) {
     $("#resume-main-body").on('click','#newapps',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-loadnapps.php',
-                data: 'jobid=' + jobid,
+                data: 'jobid=' + jobid+ '&page=' + page,
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -324,11 +326,34 @@ $(document).ready(function ($) {
     $("#resume-main-body").on('click','#shortlisted',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-loadshortlist.php',
-                data: 'jobid=' + jobid,
+                data: 'jobid=' + jobid+ '&page=' + page,
+                success: function(html) {
+                    //console.log(html);
+                    $('#showjobdetail').html(html); 
+                    $("#jobdetailads").hide();
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+      //  return false;
+     });
+    
+    $("#resume-main-body").on('click','#matched',function(event) {
+            event.preventDefault();           
+            var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'employer-matchedres.php',
+                data: 'jobid=' + jobid+ '&page=' + page,
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -395,11 +420,12 @@ $(document).ready(function ($) {
     $("#resume-main-body").on('click','#matched',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
+            var page =  $(this).data('page');
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'employer-matchedres.php',
-                data: 'jobid=' + jobid,
+                data: 'jobid=' + jobid+ '&page=' + page,
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 

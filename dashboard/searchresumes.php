@@ -41,7 +41,7 @@ $isjobseeker = '';
    
    
      </div>
-     <div class="col-md-8">
+     <div class="col-md-9">
                        
                 <div class="section  section-landing">
 					<div class="features">
@@ -60,7 +60,7 @@ $isjobseeker = '';
                                                     <th class="col-md-2">Years of Experience</th>
                                                     <th class="col-md-2">Expected Salary</th>                                                   
                                                     <th>Educational Attainment</th>
-                                           
+                                                    <th class="text-left">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -109,7 +109,21 @@ $isjobseeker = '';
                                                     <td><?=$yexp?></td>     
                                                     <td>Php <?=$esalary?></td>
                                                     <td><?=$colmajor?></td>         
-                                                 
+                                                    <td class="td-actions ">                                               
+                                                        <ul class="list-inline">
+                                                            <li>
+                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                            <i class="fa fa-user fa-2x text-info"></i>
+                                                        </a>
+                                                        </li>
+                                                        
+                                                        <li id='invited<?=$applicantid?>'>
+                                                         <a href="#invitemodal" data-applicantid="<?=$applicantid?>" data-mode="insert" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="matched" data-toggle="modal" data-target="#invite-modal" rel="tooltip" id="inviteview" title="Invite to Apply" >
+                                                            <i class="fa fa-envelope fa-2x text-warning"></i>    
+                                                          </a> 
+                                                        </li>
+                                                        </ul>        
+                                                    </td>
                                                 </tr>
                                             <?php
                                             }

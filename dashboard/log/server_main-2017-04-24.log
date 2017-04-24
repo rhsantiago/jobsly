@@ -183,3 +183,84 @@ ERROR - 2017-04-24 18:07:45 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard
 #1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
 #2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(297): Database->resultset()
 #3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '-1'  and  isactive=1  order by dateadded desc limit 0,12' at line 1
+INFO - 2017-04-24 21:36:50 - reggie@jobsly.net logged in
+INFO - 2017-04-24 21:45:18 - reggie1@gmail.com logged in
+INFO - 2017-04-24 21:46:53 - reggie1@gmail.com logged in
+INFO - 2017-04-24 21:48:13 - reggie1@gmail.com logged in
+INFO - 2017-04-24 22:02:29 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+ERROR - 2017-04-24 22:03:40 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(297): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'specialization = '-1'  and  isactive=1  order by dateadded desc limit 0,12' at line 1
+INFO -  msalary >= :esalary and maxsalary >= :esalary  
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO - search= 30000 
+INFO -  msalary >= :esalary and maxsalary >= :esalary and  specialization = :specialization  11
+INFO - search= 30000 11
+INFO - search= 30000 11
+ERROR - 2017-04-24 22:15:18 - reg@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\jobseeker-latestjobs.php(297): Database->resultset()
+#3 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by dateadded desc limit 0,12' at line 1
+INFO - 2017-04-24 22:17:43 - reg@jobsly.net logged in
+INFO - 2017-04-24 22:19:21 - reg@jobsly.net logged in
+INFO - 2017-04-24 22:19:23 - reg@jobsly.net logged in
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO - search= 0 
+INFO -  (jobtitle like :search or jobdesc like :search) and  specialization = :specialization  11
+INFO - search=web  11
+INFO - search= 0 
+INFO -  (jobtitle like :search or jobdesc like :search) and  specialization = :specialization  8
+INFO - 2017-04-24 22:23:13 - reg@jobsly.net logged in
+INFO -  (jobtitle like :search or jobdesc like :search)  
+INFO - search=web  
+INFO -  (jobtitle like :search or jobdesc like :search)  
+INFO - search=web  
+INFO -  msalary >= :esalary and maxsalary >= :esalary  
+INFO - search= 30000 
+INFO -  msalary >= :esalary and maxsalary >= :esalary  
+INFO - search= 30000 
+INFO - search= 30000 
+INFO -  msalary >= :esalary and maxsalary >= :esalary  
+INFO - search= 30000 
+INFO -  msalary >= :esalary and maxsalary >= :esalary and  specialization = :specialization  11
+INFO - search= 30000 11
+INFO - search= 30000 11
+INFO - 2017-04-24 22:57:20 - reggie1@gmail.com logged in
+INFO - 2017-04-24 22:58:18 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:01:43 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:08:43 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:08:45 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:09:40 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:22:01 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:23:32 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:27:11 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:27:12 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:34:45 - reggie1@gmail.com shortlisted to1 
+INFO - 2017-04-24 23:34:53 - reggie1@gmail.com shortlisted to0 
+INFO - 2017-04-24 23:37:37 - reg@jobsly.net logged in
+INFO - 2017-04-24 23:38:29 - reg@jobsly.net logged
+INFO - 2017-04-24 23:38:29 - reg@jobsly.net logged
+INFO - 2017-04-24 23:42:07 - reggie1@gmail.com logged in
+INFO - 2017-04-24 23:42:07 - reggie1@gmail.com logged in

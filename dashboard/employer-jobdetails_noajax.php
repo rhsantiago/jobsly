@@ -16,8 +16,8 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-    if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
-    if(isset($_POST['page'])){ $page = $_POST['page']; } 
+    if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; } 
+    if(isset($_GET['page'])){ $page = $_GET['page']; } 
     date_default_timezone_set('Asia/Manila');
     $today = date("Y-m-d"); 
     $logtimestamp = date("Y-m-d H:i:s");
@@ -28,7 +28,152 @@ if($ok == 1 ){
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 ?>
-                      
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>jobsly - find your next adventure</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+
+	<!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/material-kit.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <link href="css/media.css" rel="stylesheet"/>
+    <link href="css/summernote.css" rel="stylesheet"/>
+    
+    <!--   Core JS Files   -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/employer-main.js" type="text/javascript"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/parsley.js"></script>
+</head>
+
+<body class="landing-page">
+     <!-- Modal -->
+	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
+    <div class="modal fullscreen-modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
+    <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
+    <div class="modal fullscreen-modal fade" id="rejectapp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content modalcontent">
+	      
+	    </div>
+	  </div>
+	</div>
+    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
+            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modalcontent">
+	        <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
+	      </div>
+            <div id="modalrejectapp" class="modal-body">
+            
+            <div id="fileuploaddiv" class="">                 
+                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
+                 </div> 
+           </div>
+            <div class="modal-footer blog-post">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
+	      </div>
+	    </div>
+           
+	  </div>
+        </form>    
+	</div>
+    
+    
+   <nav class="navbar navbar-fixed-top ">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+                
+        	<div class="navbar-header">                
+        		<button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+               
+        		<a class="navbar-brand logo" >jobsly</a>
+        	</div>
+        	
+    	</div>
+    </nav>
+
+
+
+     <div class="header header-filter purple-header">
+            <div class="container">
+                <div class="row-fluid">
+					<div class="col-md-11 margin-top-title col-md-offset-1">
+                        <div class="row-fluid">
+                            
+                            <div id="resumesb" class="">  
+                               
+                            </div>
+                            
+                          
+	                 </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+   
+    <div id="main" class="wrapper ">
+       
+
+		<div class="main main-raised ">
+         
+			<div class="container-fluid"> <!-- with fluid for full width -->
+                <div class="row-fluid">   <!-- with fluid for full width -->
+                    
+                    <div id="resume-main-body">                       
     
     <div class="row">
     <div class="col-md-12 center">            
@@ -264,7 +409,53 @@ $(document).ready(function ($) {
     
 });      
 </script>
-               
+                      
+                </div> <!--resume main body-->        
+                
+	        </div>
+
+		</div>
+</div>
+      
+	    <footer class="footer">
+	        <div class="container">
+	            <nav class="pull-left">
+	                <ul>
+	                    <li>
+	                        <a href="http://www.creative-tim.com">
+	                            Creative Tim
+	                        </a>
+	                    </li>
+						<li>
+	                        <a href="http://presentation.creative-tim.com">
+	                           About Us
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="http://blog.creative-tim.com">
+	                           Blog
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href="http://www.creative-tim.com/license">
+	                            Licenses
+	                        </a>
+	                    </li>
+	                </ul>
+	            </nav>
+	            <div class="copyright pull-right">
+	                &copy; 2016, made with <i class="fa fa-heart heart"></i> by Creative Tim
+	            </div>
+	        </div>
+	    </footer>
+
+	</div>
+    
+</body>
+
+	
+
+</html>
 <?php
 } else{
     include 'logout.php';

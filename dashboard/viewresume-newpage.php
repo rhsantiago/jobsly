@@ -292,6 +292,7 @@ jQuery(document).ready(function ($) {
                       $province = $row['province'];                                
                       $nationality = $row['nationality'];
                       $gender = $row['gender'];
+                      $age = $row['age'];
                       $birthday = $row['birthday'];                              
                       if(!empty($birthday)){                        
                         $bday = explode("-", $birthday);
@@ -321,6 +322,7 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b>*****</b></li>
                                                                         <li> City: <b>*****</b></li>
                                                                         <li> Nationality: <b>*****</b></li>
+                                                                        <li> Age: <b>*****</b></li>
                                                                         <li> Birthdate: <b>*****</b></li>
                                                                     </ul>
                                                                 </div>
@@ -337,6 +339,7 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b><?=$street?></b></li>
                                                                         <li> City: <b><?=$city?>, <?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
+                                                                        <li> Age: <b><?=$age?></b></li>
                                                                         <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>
                                                                         <li> Gender: <b><?=$gender?></b></li>
                                                                     </ul>

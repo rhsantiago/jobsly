@@ -65,7 +65,7 @@ jQuery(document).ready(function ($) {
                                         <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$fname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
@@ -86,6 +86,7 @@ jQuery(document).ready(function ($) {
                       $city = $row['city'];
                       $province = $row['province'];                                
                       $nationality = $row['nationality'];
+                      $age = $row['age'];                       
                       $gender = $row['gender'];                        
                       $birthday = $row['birthday'];                              
                       if(!empty($birthday)){                        
@@ -115,6 +116,7 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b><?=$street?></b></li>
                                                                         <li> City: <b><?=$city?>, <?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
+                                                                        <li> Age: <b><?=$age?></b></li>
                                                                         <?php
                                                                         if(!empty($birthday)){
                                                                         ?>    

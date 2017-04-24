@@ -121,7 +121,8 @@ jQuery(document).ready(function ($) {
                       $city = $row['city'];
                       $province = $row['province'];                                
                       $nationality = $row['nationality'];          
-                      $birthday = $row['birthday'];                              
+                      $birthday = $row['birthday'];
+                      $age = $row['age'];                       
                       if(!empty($birthday)){                        
                         $bday = explode("-", $birthday);
                       }
@@ -167,6 +168,7 @@ jQuery(document).ready(function ($) {
                                                                         <li> Street Address: <b><?=$street?></b></li>
                                                                         <li> City: <b><?=$city?>, <?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
+                                                                        <li> Age: <b><?=$age?></b></li>
                                                                         <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>
                                                                         <li> Gender: <b><?=$gender?></b></li>
                                                                     </ul>

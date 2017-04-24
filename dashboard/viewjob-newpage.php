@@ -290,7 +290,13 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          
                                           <div class="row-fluid">
                                                  <div class="col-md-12">  
-                                                      <?=$teaser?>...<br><br>
+                                                   <?php
+                                                    if(!empty($teaser)){
+                                                  ?>      
+                                                        <?=$teaser?>...<br><br>
+                                                  <?php
+                                                    }
+                                            	  ?>
                                                  </div>
                                                 <div class="col-md-12">   
                                                

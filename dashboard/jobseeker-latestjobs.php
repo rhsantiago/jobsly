@@ -275,7 +275,7 @@ body {
    }    
      
    $wherekey = " where ";  
-   $isactiveclause = " isactive=1 ";
+   $isactiveclause = " (isactive=1 or isactive=0) ";
    if(!empty($where)){
        $isactiveclause = " and ".$isactiveclause;
    }
@@ -362,7 +362,7 @@ body {
      </div>
 
     <div class="col-md-12">
-                 <!--<h2 class="title">Latest Jobs</h2>  -->
+                 <h2 class="title">Latest Jobs</h2>
        </div>
    </div>     
 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
@@ -405,7 +405,7 @@ body {
                                         <div id="specializationdiv" class="form-group label-floating">
                                          <label class="control-label">Specialization</label>
                                          <select class="form-control searchform" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
-                                             <option value='-1' selected ></option>
+                                             <option value='' selected ></option>
                                                <?php
                                                $i=0;
                                                 foreach($specarray as $spec){

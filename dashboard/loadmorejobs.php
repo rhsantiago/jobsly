@@ -33,7 +33,7 @@ if(isset($_SESSION['user'])){
         }
    }
    if($esalary > 0){ 
-       $where= $where . " msalary <= :esalary and maxsalary >= :esalary ";
+       $where= $where . " msalary >= :esalary and maxsalary >= :esalary ";
        if($specializationsearch > 0){
             $where = $where."and ";
         }
@@ -43,7 +43,7 @@ if(isset($_SESSION['user'])){
    }    
      
    $wherekey = " where ";
-   $isactiveclause = " isactive=1 ";
+   $isactiveclause = " (isactive=1 or isactive=0) ";
    if(!empty($where)){
        $isactiveclause = " and ".$isactiveclause;
    }    
@@ -123,9 +123,7 @@ if(!empty($rows)){
    
     
      </div>
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-3"> <!--left-->
+   <div class="col-md-4"> <!--left-->
                        
                <div class="section  section-landing notopmargin">
 	                 
@@ -324,7 +322,7 @@ if(!empty($rows)){
                   
     </div><!--left-->
                      
-    <div class="col-md-3"> <!--middle-->
+    <div class="col-md-4"> <!--middle-->
         <div class="section  section-landing notopmargin">
 	                 
 
@@ -518,7 +516,7 @@ if(!empty($rows)){
 	            </div>
     </div><!--middle-->                
           
-    <div class="col-md-3"> <!--right-->
+    <div class="col-md-4"> <!--right-->
          <div class="section  section-landing notopmargin">
 	                 
 

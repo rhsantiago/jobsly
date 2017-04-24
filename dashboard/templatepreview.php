@@ -180,8 +180,14 @@ if(isset($_SESSION['user'])){
                                             </div>    
                                          
                                           <div class="row-fluid">
-                                              <div class="col-md-12">  
-                                                  <?=$teaser?>...<br><br>
+                                              <div class="col-md-12">
+                                                  <?php
+                                                    if(!empty($teaser)){
+                                                  ?>      
+                                                        <?=$teaser?>...<br><br>
+                                                  <?php
+                                                    }
+                                            	  ?>
                                               </div>
                                                 <div class="col-md-12">   
                                                     

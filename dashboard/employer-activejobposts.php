@@ -145,11 +145,12 @@ if(isset($_SESSION['user'])){
                                             
                                             <div class="row-fluid">
                                                 <div class="col-md-6 jobad-titletopmargin">
+                                                        <!-- no ajax
                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>" class="nodecor"><h2 class="text-info  jobad-title"><?=$jobtitle?></h2></a>
-                                                    
-                                                        <!-- ajax enabled
-                                                         <a href="#jobdetails" id="jobdetails" class="nodecor" data-jobid="<?=$id?>"><h2 class="text-info  jobad-title"><?=$jobtitle?></h2></a>
                                                         -->
+                                                        
+                                                         <a href="#jobdetails" id="jobdetails" class="nodecor" data-jobid="<?=$id?>"><h2 class="text-info  jobad-title"><?=$jobtitle?></h2></a>
+                                                        
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -167,64 +168,73 @@ if(isset($_SESSION['user'])){
                                                             <div class="card">
                                                                 <div class="card-header cardmargin" data-background-color="purple">
                                                                     <h3 class="center">
+                                                                        <!-- no ajax 
                                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=activeapps" class="text-primary h4weight"><?=$aapps?></a>
-                                                                        <!-- ajax enabled
+                                                                        -->
+                                                                         
                                                                         <a href="#jobdetails" id="jobdetails" data-page="activeapps" class="text-primary h4weight" data-jobid="<?=$id?>"><?=$aapps?></a>
-                                                                        -->    
+                                                                            
                                                                     </h3>
                                                                 </div>
+                                                                <!--no  ajax
                                                                 <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=activeapps" class="text-primary h4weight">Active<br>Applications</a> 
-                                                                <!-- ajax enabled
+                                                                 -->
                                                                 <a href="#jobdetails" id="jobdetails" data-page="activeapps" class="text-primary h4weight" data-jobid="<?=$id?>">Active<br>Applications</a>   
-                                                                -->
+                                                               
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">                                                            
                                                             <div class="card">
                                                                 <div class="card-header cardmargin" data-background-color="blue">
                                                                     <h3 class="center">
+                                                                        <!-- no ajax
                                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=newapps" class="text-info h4weight"><?=$napps?></a>
-                                                                        <!-- ajax enabled
+                                                                         -->
                                                                         <a href="#jobdetails" id="jobdetails" class="text-info h4weight" data-jobid="<?=$id?>" data-page="newapps"><?=$napps?></a>
-                                                                        -->
+                                                                       
                                                                     </h3>
                                                                 </div>
+                                                                <!-- no ajax
                                                                 <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=newapps" class="text-info h4weight">New<br>Applications</a> 
-                                                                <!-- ajax enabled
+                                                                 -->  
                                                                  <a href="#jobdetails" id="jobdetails" class="text-info h4weight" data-jobid="<?=$id?>" data-page="newapps">New<br>Applications</a> 
-                                                                -->        
+                                                                     
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="green">
                                                                     <h3 class="center">
+                                                                        <!--no ajax
                                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=shortlisted" class="text-success h4weight"><?=$shortlisted?></a>
-                                                                        <!-- ajax enabled
-                                                                        <a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="shortlisted"><?=$shortlisted?></a>
                                                                         -->
+                                                                        <a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="shortlisted"><?=$shortlisted?></a>
+                                                                        
                                                                     </h3>
                                                                 </div>
+                                                                 <!--no ajax
                                                                  <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=shortlisted" class="text-success h4weight" >Shortlisted<br>Applicants</a>   
-                                                                 <!-- ajax enabled
+                                                                  -->
                                                                  <a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="shortlisted">Shortlisted<br>Applicants</a>   
-                                                                -->
+                                                               
                                                             </div>
                                                         </li>
                                                         <li class="activejobstotals-left">
                                                              <div class="card ">
                                                                 <div class="card-header cardmargin" data-background-color="orange">
                                                                     <h3 class="center">
+                                                                        <!-- no ajax
                                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=matched" class="text-success h4weight"><?=$matched?></a>
-                                                                        <!-- ajax enabled
-                                                                        <a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="matched"><?=$matched?></a>
                                                                         -->
+                                                                        <a href="#jobdetails" id="jobdetails" class="text-success h4weight" data-jobid="<?=$id?>" data-page="matched"><?=$matched?></a>
+                                                                        
                                                                     </h3>
                                                                 </div>
+                                                                 <!-- no ajax
                                                                  <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>&page=matched" class="text-warning h4weight">Matched<br>Resumes</a>
-                                                                 <!-- ajax enabled
+                                                                  -->
                                                                  <a href="#jobdetails" id="jobdetails" class="text-warning h4weight" data-jobid="<?=$id?>" data-page="matched">Matched<br>Resumes</a>
-                                                                -->
+                                                               
                                                             </div>
                                                         </li>
                                                     </ul>  
