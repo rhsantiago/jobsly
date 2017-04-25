@@ -8,6 +8,7 @@ if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['applicantid'])){ $applicantid= $_POST['applicantid']; }
 if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+if(isset($_POST['view'])){ $view = $_POST['view']; }
 
 date_default_timezone_set('Asia/Manila');
 $logtimestamp = date("Y-m-d H:i:s");
@@ -42,6 +43,7 @@ $database = new Database();
              <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>"> 
              <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
              <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
+             <input type="hidden" id="view" name="view" value="<?=$view?>">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Invite to Apply</h4>

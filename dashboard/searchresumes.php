@@ -1,20 +1,16 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-        session_start();   
+        session_start();  
+        if (!isset($database)){
+           // include 'Database.php';
+         }
 }
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
    $usertype = $_SESSION['usertype'];
-    
-  // include 'authenticate.php';
-      
-}else{
-    header("Location: logout.php");
-}
 
-if($ok == 1 ){
    
      date_default_timezone_set('Asia/Manila');
      $logtimestamp = date("Y-m-d H:i:s");
@@ -32,33 +28,29 @@ $isjobseeker = '';
 
 ?>
 <div class="row">
-    <div class="col-md-12 center">            
+    <div class="col-md-12 center">
                     <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                 alt="user">  
-                     </div>    
-                           
+                                 alt="user">
+                     </div>
      </div>
-   
-   
      </div>
-     <div class="col-md-9">
-                       
+     <div class="col-md-9">                    
                 <div class="section  section-landing">
 					<div class="features">
-						<div class="row">                          
+						<div class="row">
                             
                             <div class="col-md-12">
                                     <section class="blog-post">
-                                    <div class="panel panel-default">                                    
+                                    <div class="panel panel-default">
                                       <div class="panel-body jobad-bottomborder">
                                           <div><h4 class="text-info h4weight">Other Applicants</h4></div>
-                                    <div class="table-responsive">      
+                                    <div class="table-responsive">
                                      <table class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th>Latest Position</th>
                                                     <th class="col-md-2">Years of Experience</th>
-                                                    <th class="col-md-2">Expected Salary</th>                                                   
+                                                    <th class="col-md-2">Expected Salary</th>                                           
                                                     <th>Educational Attainment</th>
                                                     <th class="text-left">Actions</th>
                                                 </tr>
@@ -73,11 +65,11 @@ $isjobseeker = '';
                                             and educationandtraining.userid=useraccounts.id 
                                             and usertype=2 order by esalary desc limit 0,10');
                                                              
-                                            try{    
+                                            try{
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
                                                 die("");
                                             }    
                                             foreach($rows2 as $row2){
@@ -94,35 +86,39 @@ $isjobseeker = '';
                                         <?php
                                                 }else{
                                         ?>            
-                                                <tr>        
+                                                <tr>
                                         <?php
                                                 }
                                         ?>        
                                                     <td>
-                                                        <ul class="list-inline"> 
-                                                            <li>
-                                                                <span class="h4weight"><?=$position?></span>
-                                                            </li>
-                                                       
-                                                        </ul>
-                                                    </td>
-                                                    <td><?=$yexp?></td>     
-                                                    <td>Php <?=$esalary?></td>
-                                                    <td><?=$colmajor?></td>         
-                                                    <td class="td-actions ">                                               
                                                         <ul class="list-inline">
                                                             <li>
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
-                                                            <i class="fa fa-user fa-2x text-info"></i>
-                                                        </a>
-                                                        </li>
+                                                                <span class="h4weight"><?=$position?></span>
+                                                            </li>           
+                                                        </ul>
+                                                    </td>
+                                                    <td><?=$yexp?></td>
+                                                    <td>Php <?=$esalary?></td>
+                                                    <td><?=$colmajor?></td>
+                                                    <td class="td-actions ">
+                                                        <ul class="list-inline">
+                                                            <li>
+                                                                <!-- ajax enabled
+                                                                <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                                    <i class="fa fa-user fa-2x text-info"></i>
+                                                                </a>
+                                                                -->
+                                                                 <a href="viewinviteresume-newpage.php?applicantid=<?=$applicantid?>&userid=<?=$userid?>" target="_blank" rel="tooltip" id="applicantview" title="View Profile" >
+                                                                    <i class="fa fa-user fa-2x text-info"></i>
+                                                                </a>
+                                                            </li>
                                                         
                                                         <li id='invited<?=$applicantid?>'>
                                                          <a href="#invitemodal" data-applicantid="<?=$applicantid?>" data-mode="insert" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="matched" data-toggle="modal" data-target="#invite-modal" rel="tooltip" id="inviteview" title="Invite to Apply" >
-                                                            <i class="fa fa-envelope fa-2x text-warning"></i>    
-                                                          </a> 
+                                                            <i class="fa fa-envelope fa-2x text-warning"></i>
+                                                          </a>
                                                         </li>
-                                                        </ul>        
+                                                        </ul>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -131,8 +127,8 @@ $isjobseeker = '';
                                                 
                                             </tbody>
                                         </table>
-                                      </div>    
-                                        </div>  
+                                      </div>
+                                        </div>
                                     </div>
                                   </section>
                             </div>
@@ -143,17 +139,13 @@ $isjobseeker = '';
                            
 	      </div>
 	      <div class="col-md-3 pull-right">
-                          <div class="card card-ads adsright">                                            
+                          <div class="card card-ads adsright"> 
                                                              <div class="content">
-                                                                                                                                       
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
                                                                                 </div>
-                                                                               
-                                                                            
                                                                             </div>
-                                                                      
                                                              </div>
                                                     </div>
 		       </div> 

@@ -66,6 +66,28 @@ $(document).ready(function ($) {
         return false;
      });
     
+    $("a[href='#search']").on('click', function (event){  
+        event.preventDefault()
+        event.stopPropagation();
+ 
+        $.ajax({
+            url: 'searchresumes.php',
+            dataType: 'html',
+
+            success: function (html) {
+                       // console.log(html);
+                    $('#resume-main-body').html(html);               
+                    $('[data-toggle="tooltip"]').tooltip(); 
+                            $(function() {
+                                $.material.init();
+                    });
+                     
+                }
+               
+        });
+        return false;
+     });
+    
      $("a[href='#cinfo']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
@@ -237,14 +259,19 @@ $(document).ready(function ($) {
             var jobid = $("#invite-form #jobid").val(); 
             var applicantid = $("#invite-form #applicantid").val();
             var mode = $("#invite-form #mode").val();
+            var view = $("#invite-form #view").val();
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'invite-submit.php',
-                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode,
+                data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + '&view=' + view,
                 success: function(html) {
                     $('#invite-modal').modal('toggle');
-                    var li = '#invited' + applicantid;
+                    if(view=='search'){
+                        var li = '#invited' + jobid;
+                    }else{
+                        var li = '#invited' + applicantid;
+                    }
                         $("#matchedtable " + li).html("<i class='fa fa-check text-success'> Invite sent</i>").fadeIn('slow').delay(1000);
                     $(function() {
                                $.material.init();
