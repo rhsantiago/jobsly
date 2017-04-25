@@ -28,7 +28,7 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-    $mode = 'update';
+    
     $companyname='';
     $telno='';
     $companyaddress='';
@@ -51,7 +51,12 @@ if($ok == 1 ){
         $msg = $e->getTraceAsString()." ".$e->getMessage();
         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         die("");
-     }   
+     }
+     $count = $database->rowCount();
+     if($count>0){
+        $mode = 'update';
+     }
+        
      $id = $row['id'];
     // $userid = $row['userid'];
      $companyname = $row['companyname'];

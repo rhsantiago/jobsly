@@ -492,7 +492,7 @@ jQuery(document).ready(function ($) {
                     $(function() {
                          $.material.init();
                     });
-                    $('#templates-form').parsley({
+                    $('#templatejobdetail-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error",
                             classHandler: function (el) {
@@ -619,16 +619,7 @@ jQuery(document).ready(function ($) {
                     $(function() {
                              $.material.init();
                     });
-                    $('#templatejobdetail-form').parsley({
-                                successClass: "has-success",
-                                errorClass: "has-error",
-                                classHandler: function (el) {
-                                    return el.$element.closest(".form-group");
-                                },
-                                errorsContainer: function (el) {
-                                    return el.$element.closest(".form-group");
-                                },
-                    });
+                    
                 },
                 error: function(data) {
                     console.log(data);                  

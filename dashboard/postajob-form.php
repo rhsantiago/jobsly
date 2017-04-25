@@ -46,6 +46,7 @@ if(isset($_SESSION['user'])){
    include "serverlogconfig.php";
    $database = new Database();
     date_default_timezone_set('Asia/Manila');
+    $today = date("m/d/Y");
     $logtimestamp = date("Y-m-d H:i:s"); 
    if($jobid <= 0){
             $template = $_POST['template'];
@@ -74,14 +75,18 @@ if(isset($_SESSION['user'])){
              $msalary = $row['msalary'];
              $maxsalary = $row['maxsalary'];
              $startappdate = $row['startappdate'];
-             $sdate = explode("-", $startappdate);
-             $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             $sdate = explode("-", $startappdate);   
+             if($sdate[1] >= 1 && $sdate[2] >= 1 && $edate[0] >= 1){
+                  $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             }else{             
+                  $startappdate = $today;
+             }
              $endappdate = $row['endappdate'];
              $edate = explode("-", $endappdate);
-             if($edate[1] >= 1 && $edate[2] >= 2 && $edate[0] >= 1){
-                $endappdate = '';
+             if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
+                 $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];               
              }else{
-                $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+                 $endappdate = $today;
              }
              $nvacancies = $row['nvacancies'];
              $teaser = $row['teaser'];    
@@ -574,6 +579,16 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
+    $('#postajob-form').parsley({
+                                successClass: "has-success",
+                                errorClass: "has-error",
+                                classHandler: function (el) {
+                                    return el.$element.closest(".form-group");
+                                },
+                                errorsContainer: function (el) {
+                                    return el.$element.closest(".form-group");
+                                },
+                            });
     
     $('#postajob-form #essayselect').on('change', function() {
        $("#postajob-form #essay").val($('#postajob-form #essayselect').val());

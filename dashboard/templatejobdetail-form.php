@@ -529,6 +529,16 @@ if($mode==''){
 
 <script>
 jQuery(document).ready(function ($) {
+    $('#templatejobdetail-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                     });
     
     $('#templatejobdetail-form #essayselect').on('change', function() {
        $("#templatejobdetail-form #essay").val($('#templatejobdetail-form #essayselect').val());
