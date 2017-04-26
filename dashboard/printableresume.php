@@ -46,9 +46,9 @@
                         <ul class="nopadmargin" style="list-style: none;">
                         <li><span class="resumename">Regidor H. Santiago</span></li>
                         <li><span><i>Software Engineer</i></span></li>
-                        </ul>    
-                    </div>    
-                </div>    
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-md-5 red-border">
                     <div class="margin30">
                          <ul class="pull-right" style="list-style: none;">
@@ -59,18 +59,18 @@
                 </div>
                 <div class="col-md-12">
                      <hr class="nopadmargin">
-                </div>    
+                </div>
                 
                 <div class="col-md-3 red-border ">
                     <div class="margin10">
                         <span>Work Experience</span>
-                    </div>    
-                </div> 
+                    </div>
+                </div>
                 <div class="col-md-9 red-border ">
                     
                 </div>
-            </div>    
-    </div>    
+            </div>
+    </div>
 </body>
     
 </html>    

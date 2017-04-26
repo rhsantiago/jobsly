@@ -510,7 +510,7 @@ jQuery(document).ready(function ($) {
                     <li><h4 class="timelinepos text-success resumecard margin10">High School</h4></li>
                     <li class="<?=$datefloat?> margin10"><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></li>
                     <li></li>
-                 </ul> 
+                 </ul>
                 <div class="margin-10 text-muted">
                   <ul class="list-inline tlcompanydiv <?php if($datefloat=='editfloatleft'){ echo ' tltextright';}?>">
                         <li><h7><i><?=$row['hsschool']?></i></h7> </li>             
@@ -518,7 +518,7 @@ jQuery(document).ready(function ($) {
                   </div>
             </div>
                
-            <div class="timeline-body collapse-group collapse jobdescdiv" id="hsviewdetails<?=$row['id']?>"> 
+            <div class="timeline-body collapse-group collapse jobdescdiv" id="hsviewdetails<?=$row['id']?>">
                <ul class="list-inline">
                  <li>
                      <h6 id="vertical-align" class="text-muted jobadheader">
@@ -531,7 +531,7 @@ jQuery(document).ready(function ($) {
                       </h6>
                   </li>
                 
-               </ul>   
+               </ul>
               <?=$row['hsawards']?>
             </div>
                <p class="center"><a class="btn expandmore" data-toggle="collapse" data-target="#hsviewdetails<?=$row['id']?>"><i class="material-icons blackicon md-36">expand_more</i></a></p>
