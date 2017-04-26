@@ -344,20 +344,24 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                             ?>
                                                             
                                                         </ul>
-                                                        <p><b>Technical / Job-specific skills</b></p>
-                                                        <ul>
-                                                            <?php
+                                                        <?php
                                                       
                                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                                     $database->bind(':jobid', $jobid);
                                                                     try{
                                                                         $rows = $database->resultset();
+                                                                        $skillscount = $database->rowCount();
                                                                     }catch (PDOException $e) {
                                                                         $error = true;
                                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                                         include "serverlog.php";
                                                                         die("");
                                                                     } 
+                                                                 if($skillscount > 0){   
+                                                             ?>  
+                                                        <p><b>Technical / Job-specific skills</b></p>
+                                                        <ul>
+                                                            <?php        
                                                                     foreach($rows as $row){
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
@@ -366,9 +370,18 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 
                                                              ?>                                                              
                                                         </ul>
+                                                        <?php
+                                                                 }
+                                                            if(!empty($city) || !empty($province) || !empty($country)){
+                                                        ?>
                                                         <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
+                                                        <?php
+                                                            }
+                                                            if($sdate[1] >= 1 && $sdate[2] >= 2 && $sdate[0] >= 1){
+                                                        ?>    
                                                         <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
                                                         <?php
+                                                            }
                                                           if($edate[1] >= 1 && $edate[2] >= 2 && $edate[0] >= 1){      
                                                         ?>         
                                                         <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>

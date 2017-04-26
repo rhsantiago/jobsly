@@ -147,8 +147,12 @@ if($ok == 1 ){
                                             
                                             <div class="row-fluid">
                                                 <div class="col-md-6 jobad-titletopmargin">
-                                                    
+                                                         <!-- ajax enabled
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-employer="employer"><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>
+                                                         -->	
+                                                        <a class="nodecor" target="_blank" href='viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&employer=employer' ><h2 class="text-info jobad-title"><?=$jobtitle?></h2></a>    
+                                                    
+                                                    
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$company?></i></h6>
                                                         </div> 
@@ -170,8 +174,12 @@ if($ok == 1 ){
                                             </div>                                  
                                             <div class="row-fluid">
                                                
-                                                <div class="col-md-6 actionicon pull-right">                                                   
-                                                        <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View Job</a></span>   
+                                                <div class="col-md-6 actionicon pull-right">   
+                                                        <!-- ajax enabled
+                                                        <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-mode="view" data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View Job</a></span>
+                                                        -->
+                                                        <span class="jobcardbuttons h4weight"><a class="blog-post-share" target="_blank" href='viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&employer=employer' title="View Job"><i class="material-icons" >visibility</i> View Job</a></span>
+                                                    
                                                 </div>
                                           </div> 
                                       </div>

@@ -76,7 +76,7 @@ if(isset($_SESSION['user'])){
              $maxsalary = $row['maxsalary'];
              $startappdate = $row['startappdate'];
              $sdate = explode("-", $startappdate);   
-             if($sdate[1] >= 1 && $sdate[2] >= 1 && $edate[0] >= 1){
+             if($sdate[1] >= 1 && $sdate[2] >= 1 && $sdate[0] >= 1){
                   $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
              }else{             
                   $startappdate = $today;
@@ -86,7 +86,7 @@ if(isset($_SESSION['user'])){
              if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
                  $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];               
              }else{
-                 $endappdate = $today;
+                 $endappdate = date("m/d/Y", strtotime("+2 month"));
              }
              $nvacancies = $row['nvacancies'];
              $teaser = $row['teaser'];    
@@ -122,6 +122,8 @@ if(isset($_SESSION['user'])){
                         die("");
                  }
                 $company = $row['companyname'];
+                $startappdate = $today;
+                $endappdate = date("m/d/Y", strtotime("+2 month"));
             }
    }else{      
              $database->query('SELECT * from jobads where userid = :userid and id = :jobid');
@@ -142,11 +144,19 @@ if(isset($_SESSION['user'])){
              $msalary = $row['msalary'];
              $maxsalary = $row['maxsalary'];
              $startappdate = $row['startappdate'];
-             $sdate = explode("-", $startappdate);
-             $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             $sdate = explode("-", $startappdate);   
+             if($sdate[1] >= 1 && $sdate[2] >= 1 && $sdate[0] >= 1){
+                  $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+             }else{             
+                  $startappdate = $today;
+             }
              $endappdate = $row['endappdate'];
              $edate = explode("-", $endappdate);
-             $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+             if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){
+                 $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];               
+             }else{
+                 $endappdate = date("m/d/Y", strtotime("+2 month"));
+             }
              $nvacancies = $row['nvacancies'];
              $teaser = $row['teaser'];
              $jobdesc = $row['jobdesc'];
@@ -310,7 +320,7 @@ if($mode==''){
                                                             
                                                            <div id="startappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Position Start Date (MM/DD/YYYY)</label>
-                                                                <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>" data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='startappdate' class='datepicker form-control'  value="<?=$startappdate?>" data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                             </div>
                                                              <div id="pleveldiv" class="form-group label-floating">
                                                                 <label class="control-label">Position Level</label>
@@ -476,7 +486,7 @@ if($mode==''){
                                                                          <div class="checkbox">
                                                                             <label>
                                                                                     <input type="checkbox" id="wtravel" name="optionsCheckboxes" <?=$wtravel?>>
-                                                                                Show Willing to Travel?
+                                                                                Willing to Travel?
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -484,7 +494,7 @@ if($mode==''){
                                                                          <div class="checkbox">
                                                                             <label>
                                                                                     <input type="checkbox" id="wrelocate" name="optionsCheckboxes" <?=$wrelocate?>>
-                                                                                Show Willing to Relocate?
+                                                                                Willing to Relocate?
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -495,6 +505,7 @@ if($mode==''){
                                                                    
                                                                 <label class="control-label">Select a pre-made essay question or create a new one below</label>
                                                                     <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" >
+                                                                    <option value=""></option>     
                                                                             <?php                     
                                                                                   $database->query('SELECT id,question FROM jobessays where userid = :userid');
                                                                                   $database->bind(':userid', $userid);  

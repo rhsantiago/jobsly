@@ -430,7 +430,7 @@ if($mode==''){
                                                                          <div class="checkbox">
                                                                             <label>
                                                                                     <input type="checkbox" id="wtravel" name="optionsCheckboxes" <?=$wtravel?>>
-                                                                                Show Willing to Travel?
+                                                                                Willing to Travel?
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -438,7 +438,7 @@ if($mode==''){
                                                                          <div class="checkbox">
                                                                             <label>
                                                                                     <input type="checkbox" id="wrelocate" name="optionsCheckboxes" <?=$wrelocate?>>
-                                                                                Show Willing to Relocate?
+                                                                                Willing to Relocate?
                                                                             </label>
                                                                         </div>
                                                                     </div>
@@ -450,6 +450,7 @@ if($mode==''){
                                                                    
                                                                 <label class="control-label">Select a pre-made essay question or create a new one below</label>
                                                                     <select class="form-control" id="essayselect" name="essayselect"  placeholder="Essay" data-parsley-required>
+                                                                    <option value=""></option>    
                                                                             <?php                     
                                                                                   $database->query('SELECT id,question FROM jobessays where userid = :userid');
                                                                                   $database->bind(':userid', $userid);  

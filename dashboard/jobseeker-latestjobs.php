@@ -275,7 +275,7 @@ body {
    }    
      
    $wherekey = " where ";  
-   $isactiveclause = " (isactive=1 or isactive=0) ";
+   $isactiveclause = " isactive=1 ";
    if(!empty($where)){
        $isactiveclause = " and ".$isactiveclause;
    }
@@ -506,7 +506,7 @@ body {
                                       
                                           <div class="row-fluid ">
                                                 <div class="col-md-12">
-                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$jobad->getdadd()[1]-1]?>&nbsp;<?=$jobad->getdadd()[2]?>,&nbsp;<?=$jobad->getdadd()[0]?></p>
                                                 </div>
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                     <!--
@@ -708,7 +708,7 @@ body {
                                       
                                           <div class="row-fluid ">
                                                 <div class="col-md-12">
-                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$jobad->getdadd()[1]-1]?>&nbsp;<?=$jobad->getdadd()[2]?>,&nbsp;<?=$jobad->getdadd()[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
@@ -903,7 +903,7 @@ body {
                                       
                                           <div class="row-fluid ">
                                                 <div class="col-md-12">
-                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
+                                                    <p class="blog-post-date pull-right text-muted"><?=$months[$jobad->getdadd()[1]-1]?>&nbsp;<?=$jobad->getdadd()[2]?>,&nbsp;<?=$jobad->getdadd()[0]?></p>
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
