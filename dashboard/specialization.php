@@ -1,6 +1,6 @@
 <?php
 $specarray = array(
-    'Accountancy and Finance',
+    'Accounting and Finance',
     'Administrative and Clerical Support',
     'Analytics/Business Intelligence',
     'Architecture and Engineering',

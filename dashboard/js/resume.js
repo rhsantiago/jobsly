@@ -1184,7 +1184,18 @@ jQuery(document).ready(function ($) {
            
         }
     });
-  /*
+    
+    $(document).on('click','#printable',function(event){
+         event.preventDefault();
+         $('#printable-form').submit();
+    });
+ /*   
+    $(document).on('submit','#printable-form',function(event){
+            event.preventDefault();
+            var userid = $("#printable-form #userid").val();
+            window.open("printableresume.php, '_blank');
+    });    
+  
     $(document).on('click','#photo-modal',function(event) {
             var applicantid =  $(this).data('applicantid');
             var jobid =  $(this).data('jobid');
