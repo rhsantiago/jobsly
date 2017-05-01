@@ -11,6 +11,11 @@ if(isset($_SESSION['user'])){
 }else{
     header("Location: logout.php");
 }
+$startdate = '';
+$enddate = '';
+$startdateinput = '';
+$sdate = '';
+$edate = '';
 if($mode=='del'){
 ?>    
     
@@ -74,9 +79,13 @@ if($mode=='del'){
     
     $id = $row['id'];
     $startdate = $row['startdate'];
-    $sdate = explode("-", $startdate);
-    $startdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-
+    
+    if($startdate=='00/00/0000'){
+        $startdate = "";
+    }else{
+        $sdate = explode("-", $startdate);
+        $startdateinput = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+    }
     $enddate = $row['enddate'];
     $edate = explode("-", $enddate);
     $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
@@ -93,7 +102,7 @@ if($mode=='del'){
 .datepicker{z-index:1151 !important;}
 </style>
 
-<form method="post" id="wexp-form-modal" name="wexp-form" data-parsley-validate> 
+<form method="post" id="wexp-form-modal" name="wexp-form-modal" data-parsley-validate> 
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
              <input type="hidden" id="id" name="id" value="<?=$workexpid?>">
              <input type="hidden" id="mode" name="mode" value="update">
@@ -120,7 +129,7 @@ if($mode=='del'){
                                                                     </div>
                                                                     <div id="startdiv" class="form-group label-static">
                                                                         <label class="control-label">Start Date</label>
-                                                                       <input type='text' id='startdate' class='datepicker form-control'  value="<?=$startdate?>" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                       <input type='text' id='startdate' name='startdate' class='datepicker form-control'  value="" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                       <div class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
@@ -183,7 +192,7 @@ if($mode=='del'){
                                                                                               document.execCommand('insertText', false, bufferText);
                                                                                           }, 10);
                                                                                       }
-                                                                                    }  
+                                                                                    }
                                                                                     });
                                                                             });
                                                                             </script>
@@ -218,3 +227,89 @@ if($mode=='del'){
 <?php
 }
 ?>
+<script>
+jQuery(document).ready(function ($) {
+    
+    $("#wexp-form-modal #startdate").datepicker("setValue", "<?=$startdateinput?>");
+    $("#wexp-form-modal #startdate").datepicker('update');
+   $('#wexp-form #company').parsley().on('field:error', function() {
+           $('#wexp-form #companydiv').addClass('has-error');
+           $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #company').parsley().on('field:success', function() {
+            $('#wexp-form #companydiv').addClass('has-success');
+            $('#wexp-form #companydiv').find('span').remove();
+            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #position').parsley().on('field:error', function() {
+           $('#wexp-form #positiondiv').addClass('has-error');
+           $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #position').parsley().on('field:success', function() {
+            $('#wexp-form #positiondiv').addClass('has-success');
+            $('#wexp-form #positiondiv').find('span').remove();
+            $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #startdate').parsley().on('field:error', function() {
+           $('#wexp-form #startdiv').addClass('has-error');
+           $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    }); 
+    
+    $('#wexp-form #startdate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form #startdiv').removeClass('has-error');
+            $('#wexp-form #startdiv').addClass('has-success');
+            $('#wexp-form #startdiv').find('span').remove();
+            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #startdate').parsley().on('field:success', function() {
+            $('#wexp-form #startdiv').addClass('has-success');
+            $('#wexp-form #startdiv').find('span').remove();
+            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #msalary').parsley().on('field:error', function() {
+           $('#wexp-form #msalarydiv').addClass('has-error');
+           $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form #msalary').parsley().on('field:success', function() {
+            $('#wexp-form #msalarydiv').addClass('has-success');
+            $('#wexp-form #msalarydiv').find('span').remove();
+            $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #enddate').parsley().on('field:error', function() {
+           $('#wexp-form #enddiv').addClass('has-error');
+           $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    
+    $('#wexp-form #enddate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form #enddiv').removeClass('has-error');
+            $('#wexp-form #enddiv').addClass('has-success');
+            $('#wexp-form #enddiv').find('span').remove();
+            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form #enddate').parsley().on('field:success', function() {
+            $('#wexp-form #enddiv').addClass('has-success');
+            $('#wexp-form #enddiv').find('span').remove();
+            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#currentempcb').click(function(){
+        if($(this).is(":checked")){
+           $("#enddate").attr("disabled" , "disabled");
+           $('#enddate').removeAttr('data-parsley-required');           
+        }
+        else{
+           $("#enddate").removeAttr("disabled");
+           $('#enddate').attr('data-parsley-required', '');    
+           
+        }
+    });
+    
+    $('#successdivworkexp').hide();
+});       
+</script>

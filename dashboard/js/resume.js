@@ -1105,9 +1105,11 @@ jQuery(document).ready(function ($) {
                   '&mode=' + mode,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
+                $('#wexp-form-modal #startdate').datepicker();
+                $('#wexp-form-modal #enddate').datepicker();
                 $(function() {
                            $.material.init();
-                    });
+                });
                 $('#successdivworkexp').hide();
                 $('#wexp-form-modal').parsley({
                        successClass: "has-success",

@@ -116,20 +116,20 @@ if(isset($_SESSION['user'])){
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$row['position']?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$row['company']?></i></h6>
-                                                        </div> 
+                                                        </div>
                                                 </div>
                                                 
                                             </div>
                                             <div class="row-fluid">
-                                                 <div class="col-md-12">  
+                                                 <div class="col-md-12">
                                                       <?=$teaser?>...<br>
                                                  </div>
-                                                <div class="col-md-12">   
+                                                <div class="col-md-12">
                                                
                                                     <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">
                                                   <?=$jobdesc?>
-                                                   >     
-                                                    </div>    
+                                                 
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row-fluid">
@@ -256,7 +256,7 @@ if(isset($_SESSION['user'])){
                                                                                                 document.execCommand('insertText', false, bufferText);
                                                                                             }, 10);
                                                                                         }
-                                                                                    },
+                                                                                    }/*,
                                                                                     cleaner:{
           notTime: 2400, // Time to display Notifications.
           action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
@@ -267,7 +267,7 @@ if(isset($_SESSION['user'])){
           keepClasses: false, // Remove Classes
           badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
           badAttributes: ['style', 'start'] // Remove attributes from remaining tags
-    }
+    }  */
                                                                                     });
                                                                             });
                                                                             </script>

@@ -1,16 +1,8 @@
-
-
-
-
-
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
-
-
-
   <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-181ab2bfd39f84244ec09224501ce17957dee40c02a8c0d3e503b9dfb63c2f8e.css" integrity="sha256-GBqyv9OfhCROwJIkUBzheVfe5AwCqMDT5QO537Y8L44=" media="all" rel="stylesheet" />
   <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-b52c57c07c4915b411746bf84ae6a5d3677b7f35d74105281d365c2ff17ca512.css" integrity="sha256-tSxXwHxJFbQRdGv4Sual02d7fzXXQQUoHTZcL/F8pRI=" media="all" rel="stylesheet" />
   

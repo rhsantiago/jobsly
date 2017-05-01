@@ -254,24 +254,121 @@ if($ok == 1 ){
                         <span class="resumesection"><i>Education</i></span>
                     </div>
                 </div>
+                <?php
+                    $database->query('SELECT * from educationandtraining where userid = :userid');
+                    $database->bind(':userid', $useridparam);   
+                    try{
+                        $row = $database->single();
+                    }catch (PDOException $e) {
+                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                        die("");
+                    }    
+                    $id = $row['id'];
+
+                    if(!empty($id)){
+                        $mode = 'update';
+                        $hsschool = $row['hsschool'];
+                        $hsadd = $row['hsadd'];
+                        $hsgraddate = $row['hsgraddate'];
+                        $hsdate = explode("-", $hsgraddate);
+                        $hsgraddate = $hsdate[1] .'/'.$hsdate[2].'/'.$hsdate[0];
+                        if($hsgraddate=='00/00/0000'){
+                            $hsgraddate = "";
+                        }
+                        $hsawards = $row['hsawards'];
+
+                        $coluni = $row['coluni'];
+                        $coladd = $row['coladd'];
+                        $colgpa = $row['colgpa'];
+                        $colgraddate = $row['colgraddate'];
+                        $coldate = explode("-", $colgraddate);
+                        $colgraddate = $coldate[1] .'/'.$coldate[2].'/'.$coldate[0];
+                        if($colgraddate=='00/00/0000'){
+                            $colgraddate = "";
+                        }
+                        $colmajor = $row['colmajor'];
+                        $smcol = $row['colawards'];
+
+                        $pgrad1uni = $row['pgrad1uni'];
+                        $pgrad1add = $row['pgrad1add'];
+                        $pgrad1gpa = $row['pgrad1gpa'];
+                        $pgrad1graddate = $row['pgrad1graddate'];
+                        $pgrad1date = explode("-", $pgrad1graddate);
+                        $pgrad1graddate = $pgrad1date[1] .'/'.$pgrad1date[2].'/'.$pgrad1date[0];
+                        if($pgrad1graddate=='00/00/0000'){
+                            $pgrad1graddate = "";
+                        }
+                        $pgrad1course = $row['pgrad1course'];
+                        $smpgrad1 = $row['pgrad1awards'];
+
+                        $smothers = $row['othersawards'];
+
+
+                    }
+                    $first= true;
+                    $offset = '';
+                    if(!empty($pgrad1uni) && !empty($pgrad1course)){                    
+                ?>
+                
                  <div class=" col-md-9">
                      <div class="margin10">
                         <ul class="nopadmargin" style="list-style: none;">
-                        <li><span class="resumesection h4weight">Master in Information Technology</span></li>
-                        <li><span>Ateneo Information Technology Institute</span></li>    
-                        <li><span><i>Mar 2005 - Jun-2007</i></span></li>
-                        </ul>
-                    </div>                     
-                </div>
-                <div class="col-md-offset-3 col-md-9 ">                     
-                    <div class="margin10">
-                        <ul class="nopadmargin" style="list-style: none;">
-                        <li><span class="resumesection h4weight">Bachelor of Arts Major in Political Science</span></li>
-                        <li><span>De La Salle University</span></li>    
-                        <li><span><i>Mar 2004 - Jun-2010</i></span></li>
+                        <li><span class="resumesection h4weight"><?=$pgrad1course = $row['pgrad1course']?></span></li>
+                        <li><span><?=$pgrad1uni?></span></li>    
+                        <li><span><i><?=$months[$pgrad1date[1]-1]?>&nbsp;<?=$pgrad1date[0]?></i></span></li>
                         </ul>
                     </div>
+                    <?php
+                    if(!empty($smpgrad1)){
+                        echo"<div class='margin10'>$smpgrad1</div>";
+                    }
+                    ?> 
                 </div>
+                <?php
+                    $offset = 'col-md-offset-3 ';
+                    }
+                    
+                    if(!empty($coluni) && !empty($colmajor)){
+                ?>    
+                <div class="<?=$offset?> col-md-9 ">
+                    <div class="margin10">
+                        <ul class="nopadmargin" style="list-style: none;">
+                        <li><span class="resumesection h4weight"><?=$colmajor?></span></li>
+                        <li><span><?=$coluni?></span></li>
+                        <li><span><i><?=$months[$coldate[1]-1]?>&nbsp;<?=$coldate[0]?></i></span></li>
+                        </ul>
+                    </div>
+                    <?php
+                    if(!empty($smcol)){
+                        echo"<div class='margin10'>$smcol</div>";
+                    }
+                    ?>                 
+                </div>
+                <?php
+                    $offset = 'col-md-offset-3 ';
+                    }
+                    if(!empty($hsschool)){
+                ?>    
+                <div class="<?=$offset?> col-md-9 ">
+                    <div class="margin10">
+                        <ul class="nopadmargin" style="list-style: none;">
+                        <li><span class="resumesection h4weight">High School</span></li>
+                        <li><span><?=$hsschool?></span></li>
+                        <li><span><i><?=$months[$hsdate[1]-1]?>&nbsp;<?=$hsdate[0]?></i></span></li>
+                        </ul>
+                    </div>
+                    <?php
+                    if(!empty($hsawards)){
+                        echo"<div class='margin10'>$hsawards</div>";
+                    }
+                    ?>                   
+                </div>
+                <?php
+                    $offset = 'col-md-offset-3 ';
+                    }
+                ?>
+                
                 <div class="col-md-12">
                      <hr class="nopadmargin h4weight">
                 </div>
