@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['workexpid'])){ $workexpid = $_POST['workexpid']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
+
 if(isset($_SESSION['user'])){
 
 }else{
@@ -14,12 +15,13 @@ if(isset($_SESSION['user'])){
 $startdate = '';
 $enddate = '';
 $startdateinput = '';
-$sdate = '';
-$edate = '';
+$enddateinput = '';
+$sdate = array('0000','00','00');
+$edate = array('0000','00','00');
 if($mode=='del'){
 ?>    
     
-   <form method="post" id="wexp-form-modal" name="wexp-form"> 
+   <form method="post" id="wexp-form-modal" name="wexp-form-modal" data-parsley-validate>
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
              <input type="hidden" id="id" name="id" value="<?=$workexpid?>">
              <input type="hidden" id="mode" name="mode" value="del">
@@ -80,15 +82,23 @@ if($mode=='del'){
     $id = $row['id'];
     $startdate = $row['startdate'];
     
-    if($startdate=='00/00/0000'){
-        $startdate = "";
+    if($startdate=='0000-00-00'){
+        $startdateinput = "";
     }else{
         $sdate = explode("-", $startdate);
-        $startdateinput = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+        if(isset($sdate[1]) && isset($sdate[2]) && isset($sdate[1])){
+            $startdateinput = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
+        }
     }
     $enddate = $row['enddate'];
-    $edate = explode("-", $enddate);
-    $enddate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+    if($enddate=='0000-00-00'){
+        $enddateinput = "";
+    }else{
+        $edate = explode("-", $enddate);
+        if(isset($edate[1]) && isset($edate[2]) && isset($edate[1])){           
+            $enddateinput = $edate[1] .'/'.$edate[2].'/'.$edate[0];
+        }
+    }
 
     $cecb = $row['currentemployer'];
     if($cecb=='on'){
@@ -102,7 +112,7 @@ if($mode=='del'){
 .datepicker{z-index:1151 !important;}
 </style>
 
-<form method="post" id="wexp-form-modal" name="wexp-form-modal" data-parsley-validate> 
+<form method="post" id="wexp-form-modal-edit" name="wexp-form-modal-edit" > 
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
              <input type="hidden" id="id" name="id" value="<?=$workexpid?>">
              <input type="hidden" id="mode" name="mode" value="update">
@@ -127,7 +137,7 @@ if($mode=='del'){
                                                                         <label class="control-label">Position</label>
                                                                         <input type="text" id="position" class="form-control" value="<?=$row['position']?>" data-parsley-required>
                                                                     </div>
-                                                                    <div id="startdiv" class="form-group label-static">
+                                                                    <div id="startdiv" class="form-group  label-static">
                                                                         <label class="control-label">Start Date</label>
                                                                        <input type='text' id='startdate' name='startdate' class='datepicker form-control'  value="" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
@@ -155,7 +165,7 @@ if($mode=='del'){
                                                                     </div>
                                                                     <div id="enddiv" class="form-group label-static">
                                                                         <label class="control-label">End Date</label>
-                                                                        <input type='text' id='enddate' class='datepicker form-control'  value="<?=$enddate?>" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                        <input type='text' id='enddate' class='datepicker form-control'  value="" data-parsley-required data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                     </div>
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="">
@@ -229,9 +239,17 @@ if($mode=='del'){
 ?>
 <script>
 jQuery(document).ready(function ($) {
-    
-    $("#wexp-form-modal #startdate").datepicker("setValue", "<?=$startdateinput?>");
-    $("#wexp-form-modal #startdate").datepicker('update');
+   
+  // $("#wexp-form-modal-edit #startdate").datepicker("setValue", "<?=$startdateinput?>");
+  // $("#wexp-form-modal-edit #startdate").datepicker('update');
+ //  $("#wexp-form-modal-edit #enddate").datepicker("setValue", "<?=$enddateinput?>");
+ //  $("#wexp-form-modal-edit #enddate").datepicker('update');
+    $("#wexp-form-modal-edit #startdate").val("<?=$startdateinput?>");
+    $("#wexp-form-modal-edit #enddate").val("<?=$enddateinput?>");
+//   $('#wexp-form-modal-edit #startdate').datepicker();
+ //  $('#wexp-form-modal-edit #enddate').datepicker();
+       
+    /*
    $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
@@ -297,7 +315,7 @@ jQuery(document).ready(function ($) {
             $('#wexp-form #enddiv').find('span').remove();
             $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-    
+    */
     $('#currentempcb').click(function(){
         if($(this).is(":checked")){
            $("#enddate").attr("disabled" , "disabled");

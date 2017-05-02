@@ -1089,7 +1089,7 @@ jQuery(document).ready(function ($) {
     
     
     
-    $('#workexp-modal').on('show.bs.modal', function(e) {
+    $('#workexp-modal').on('shown.bs.modal', function(e) {
 
         var $modal = $(this),
                mode =  $(e.relatedTarget).data('mode');
@@ -1105,11 +1105,12 @@ jQuery(document).ready(function ($) {
                   '&mode=' + mode,
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
-                $('#wexp-form-modal #startdate').datepicker();
-                $('#wexp-form-modal #enddate').datepicker();
                 $(function() {
                            $.material.init();
                 });
+                $('#wexp-form-modal-edit #startdate').datepicker();
+                $('#wexp-form-modal-edit #enddate').datepicker();
+                
                 $('#successdivworkexp').hide();
                 $('#wexp-form-modal').parsley({
                        successClass: "has-success",
