@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
          }
 }
 if(isset($_POST['userid'])){ $useridparam = $_POST['userid']; }
+if(isset($_POST['employerid'])){ $employeridparam = $_POST['employerid']; }
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -17,9 +18,10 @@ if(isset($_SESSION['user'])){
     header("Location: logout.php");
 }
 
-if($useridparam != $userid){
+if(($useridparam != $userid) && ($employeridparam != $userid)){
     header("Location: logout.php");
 }
+
 if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s"); 
@@ -27,7 +29,7 @@ if($ok == 1 ){
     
     $database = new Database();
     $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
-            $database->bind(':userid', $userid);   
+            $database->bind(':userid', $useridparam);   
             try{
                 $row = $database->single();
             }catch (PDOException $e) {
@@ -46,7 +48,7 @@ if($ok == 1 ){
     
     
     $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
-              $database->bind(':userid', $userid);   
+              $database->bind(':userid', $useridparam);   
                       try{                              
                           $row = $database->single();   
                       }catch (PDOException $e) {
@@ -152,7 +154,7 @@ if($ok == 1 ){
                 </div>
                 <?php
                      $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
-                     $database->bind(':userid', $userid);  
+                     $database->bind(':userid', $useridparam);  
                      try{
                         $rows = $database->resultset();
                      }catch (PDOException $e) {
@@ -209,7 +211,7 @@ if($ok == 1 ){
                 
                 <?php
                                                     $database->query('SELECT * FROM skilltags where userid = :userid');
-                                                    $database->bind(':userid', $userid);  
+                                                    $database->bind(':userid', $useridparam);  
                                                     try{                
                                                         $rows = $database->resultset();
                                                     }catch (PDOException $e) {

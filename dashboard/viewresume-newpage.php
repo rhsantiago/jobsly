@@ -272,6 +272,12 @@ jQuery(document).ready(function ($) {
                                     <div class="name">
                                         <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
+                                        <br>
+                                         <form method="post" action="printableresume.php" id="printable-form" name="printable-form" target="_blank">
+                                            <input type="hidden" id="userid" name="userid" value="<?=$applicantid?>">
+                                            <input type="hidden" id="employerid" name="employerid" value="<?=$userid?>">
+                                        </form>     
+                                        <a href='#printable' id='printable' name="printable">Printable Resume</a>
                                     </div>
                                     <div class="jumbotron">
               <?php

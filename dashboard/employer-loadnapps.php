@@ -90,7 +90,7 @@ if(isset($_SESSION['user'])){
                                             <tbody id="nappstablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobads.userid=:userid
                                             and jobapplications.isreject=0
@@ -98,6 +98,8 @@ if(isset($_SESSION['user'])){
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.userid=useraccounts.id
+                                            and useraccounts.isverified = 1
                                             and (jobapplications.isnew=1 or dateapplied=:today) order by dateapplied limit 0,10');
                                             $database->bind(':jobid', $jobid);    
                                             $database->bind(':today', $today);    

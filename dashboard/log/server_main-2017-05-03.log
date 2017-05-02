@@ -1,0 +1,23 @@
+INFO - 2017-05-03 00:01:12 - reggie1@gmail.com logged in
+INFO - 2017-05-03 00:07:35 - reggie1@gmail.com logged in
+ERROR - 2017-05-03 00:08:13 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadaapps.php(114): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.userid' in 'where clause'
+ERROR - 2017-05-03 00:08:13 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadaapps.php(114): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.userid' in 'where clause'
+INFO - 2017-05-03 00:09:27 - reggie1@gmail.com logged in
+INFO - 2017-05-03 00:09:28 - reggie1@gmail.com logged in
+ERROR - 2017-05-03 00:09:35 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadaapps.php(113): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.userid' in 'where clause'
+ERROR - 2017-05-03 00:09:35 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-loadaapps.php(113): Database->single()
+#3 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jobapplications.userid' in 'where clause'
+INFO - 2017-05-03 00:10:36 - reggie1@gmail.com logged in
+INFO - 2017-05-03 00:40:28 - reggie1@gmail.com logged in
+INFO - 2017-05-03 01:08:28 - reg@jobsly.net logged in

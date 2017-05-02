@@ -701,4 +701,9 @@ $(document).ready(function ($) {
         return false;
      });
     
+    $(document).on('click','#printable',function(event){
+         event.preventDefault();
+         $('#printable-form').submit();
+    });
+    
 });       

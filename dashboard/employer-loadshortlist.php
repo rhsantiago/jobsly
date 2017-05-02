@@ -87,13 +87,15 @@ if(isset($_SESSION['user'])){
                                             <tbody id="shortlisttablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
                                             and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.userid=useraccounts.id
+                                            and useraccounts.isverified = 1
                                             and jobapplications.isshortlisted=1');
                                             $database->bind(':jobid', $jobid);                                             
                                             try{    

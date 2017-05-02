@@ -86,7 +86,7 @@ if(isset($_SESSION['user'])){
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
                                     $logo = $row['logo'];
 
-                              $database->query('select (select count(id) from jobapplications where jobid=:jobid and isreject=0) as aapps,(select count(id) from jobapplications where jobid=:jobid and (isnew=1 or dateapplied=:today)) as napps,(select count(id) from jobapplications where jobid=:jobid and isshortlisted=1 and isreject=0) as shortlisted from jobapplications');
+                              $database->query('select (select count(jobapplications.id) from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isreject=0 and isverified=1) as aapps,(select count(jobapplications.id) from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isverified=1 and (isnew=1 or dateapplied=:today)) as napps,(select count(jobapplications.id) from jobapplications, useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isshortlisted=1 and isreject=0 and isverified=1) as shortlisted from jobapplications limit 0,1');
                               $database->bind(':jobid', $id);   
                               $database->bind(':today', $today);        
                                try{             

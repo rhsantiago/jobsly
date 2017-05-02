@@ -2,3 +2,31 @@ INFO - 2017-05-02 01:08:15 - reg@jobsly.net logged in
 INFO - 2017-05-02 01:08:17 - reg@jobsly.net logged in
 INFO - 2017-05-02 01:10:57 - reg@jobsly.net workexperience update 16
 INFO - 2017-05-02 12:48:04 - reg@jobsly.net logged in
+INFO - 2017-05-02 23:32:30 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:33:04 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:36:32 - reggie1@gmail.com logged in
+ERROR - 2017-05-02 23:36:34 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-activejobposts.php(93): Database->single()
+#3 C:\xampp\htdocs\jobsly\dashboard\employer-main.php(254): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42S22]: Column not found: 1054 Unknown column 'isverified' in 'where clause'
+INFO - 2017-05-02 23:38:22 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:38:23 - reggie1@gmail.com logged in
+ERROR - 2017-05-02 23:38:25 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-activejobposts.php(93): Database->single()
+#3 C:\xampp\htdocs\jobsly\dashboard\employer-main.php(254): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in field list is ambiguous
+INFO - 2017-05-02 23:39:52 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:39:53 - reggie1@gmail.com logged in
+ERROR - 2017-05-02 23:39:54 - reggie1@gmail.com #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\employer-activejobposts.php(93): Database->single()
+#3 C:\xampp\htdocs\jobsly\dashboard\employer-main.php(254): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'id) from jobapplications where jobid='119' and isreject=0) as aapps,(select coun' at line 1
+INFO - 2017-05-02 23:40:48 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:40:49 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:42:54 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:44:18 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:46:26 - reggie1@gmail.com logged in
+INFO - 2017-05-02 23:46:53 - reggie1@gmail.com logged in
