@@ -193,7 +193,26 @@ if(isset($_SESSION['user'])){
     include "serverlogconfig.php";
     $database = new Database();
     
-    $database->query('select position as maxposition,fname,lname,mname, photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+    //$database->query('select position as maxposition,fname,lname,mname, photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+    $database->query('select fname,lname,mname, photo from personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid');
+    $database->bind(':userid', $applicantid);   
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }     
+  
+    $photo = $row['photo'];
+    $fname = $row['fname'];
+    $lname = $row['lname'];
+    $mname = $row['mname'];
+    if(empty($photo)){
+         $photo='img/unknown.png';
+    }
+    
+    $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
     $database->bind(':userid', $applicantid);   
     try{
         $row = $database->single();
@@ -203,13 +222,6 @@ if(isset($_SESSION['user'])){
         die("");
     }     
     $maxposition = $row['maxposition'];
-    $photo = $row['photo'];
-    $fname = $row['fname'];
-    $lname = $row['lname'];
-    $mname = $row['mname'];
-    if(empty($photo)){
-         $photo='img/unknown.png';
-    }
         
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');

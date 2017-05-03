@@ -146,22 +146,14 @@ include "serverlogconfig.php";
                                                                     </div> 
                                                                     <div id="otherspecdiv" class="form-group label-floating">
                                                                         <label class="control-label">Other Specialization</label>
-                                                                        <input type="text" id="otherspec" class="form-control" value="<?=$specialization?>" data-parsley-required>
-                                                                    </div>
-                                                                                                                                  
+                                                                        <input type="text" id="otherspec" class="form-control" value="<?=$specialization?>">
+                                                                    </div>                                                     
                                                                 </div>
-                                                               
-                                                        
                                                             </div>
-                                                              
                                                         </div>
-                                                        
                                                     </div>
-                                                 
                                                     </div>
                                              </div>
-                                            
-                                
                                 <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -172,17 +164,14 @@ include "serverlogconfig.php";
                                                                 <a href="#hs" data-toggle="tab">
                                                                     <i class="material-icons">info</i>Other Information
                                                                 </a>
-                                                            </li>                                                           
-                                                            
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                           </div>
                                              <div class="content">
                                                     <div class="tab-content">
-                                                        
                                                         <div class="tab-pane active" id="">
-                                                            
                                                             <div class="row">
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="yexpdiv" class="form-group label-floating">
@@ -203,7 +192,7 @@ include "serverlogconfig.php";
                                                                                     <input type="checkbox" id="pholder" name="optionsCheckboxes" <?=$pholder?>>
                                                                                 Do you have a valid passport?
                                                                             </label>
-                                                                        </div>                                                                         
+                                                                        </div>                                                    
                                                                       </div>                                                             
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6"> 
@@ -228,13 +217,9 @@ include "serverlogconfig.php";
                                                                 <div class="col-md-12 col-xs-12">
                                                                    
                                                                 </div>
-                                                        
                                                             </div>
-                                                             
                                                         </div>
-                                                        
                                                     </div>
-                                                 
                                                     </div>
                                              </div>
                                        <div class="col-md-6 leftmargin10">
@@ -246,15 +231,10 @@ include "serverlogconfig.php";
                                    <a href="previewresume.php" id="ainfonext" target="_blank" class="btn btn-primary">Preview Resume</a>
                                 </div>
                                        </form>
-                         
 		                    </div>
-                           
-                       
 		                </div>
-                            
 					</div> <!--features-->
                        <div id="successdivainfo" class="alert alert-success">
-                                               
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
                                                   </div>
@@ -264,31 +244,19 @@ include "serverlogconfig.php";
                                                   <b>Alert: </b> Your additional information has been saved.
                                                
                                             </div>
-                   
                         </div>
-	        </div> 
-                        
-                    
-                    
+	        </div>
                 <div class="col-md-3 pull-right">
-                    
-                                                    <div class="card card-ads adsright">                                            
-                                                             <div class="content">
-                                                                                                                                       
+                                                    <div class="card card-ads adsright">                               
+                                                             <div class="content">                                      
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
                                                                                 </div>
-                                                                               
-                                                                            
                                                                             </div>
-                                                                      
                                                              </div>
                                                     </div>
-                        
-		       </div> 
-                
-   
+		       </div>
 <script>
 jQuery(document).ready(function ($) {
     $('html, body').animate({ scrollTop: 0 }, 'fast');

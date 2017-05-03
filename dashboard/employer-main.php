@@ -234,9 +234,7 @@ if($ok == 1 ){
                             <li><a href="employer-jobads.php?ajax=essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
     </ul>
     </div>
-   <div class="sidebar-item"><a href="#">Jobs</a></div>
-   <div class="sidebar-item"><a href="#">Settings</a></div>
-   
+  
 </div>
   
      <!--sidebar-->

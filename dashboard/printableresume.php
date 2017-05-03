@@ -28,7 +28,23 @@ if($ok == 1 ){
     include "serverlogconfig.php";
     
     $database = new Database();
-    $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+   // $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+    $database->query('select fname,lname,mname,photo from personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid');
+            $database->bind(':userid', $useridparam);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+          
+    
+            $fname = $row['fname'];
+            $mname = $row['mname'];
+            $lname = $row['lname'];
+            $photo = $row['photo'];
+     $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
             $database->bind(':userid', $useridparam);   
             try{
                 $row = $database->single();
@@ -38,10 +54,9 @@ if($ok == 1 ){
                 die("");
             }     
             $maxposition = $row['maxposition'];
-            $fname = $row['fname'];
-            $mname = $row['mname'];
-            $lname = $row['lname'];
-            $photo = $row['photo'];
+    
+    
+    
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $bday = array('0000','00','00');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');

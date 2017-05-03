@@ -180,9 +180,7 @@ if($ok == 1 ){
                             <li><a target="_blank" href="previewresume.php"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
-   <div class="sidebar-item"><a href="#">Jobs</a></div>
-   <div class="sidebar-item"><a href="#">Settings</a></div>
-   
+ 
 </div>
     
      <!--sidebar-->

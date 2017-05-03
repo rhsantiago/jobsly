@@ -127,7 +127,9 @@ if($ok == 1 ){
         </div>
     <!--sidebar-->
    <?php
-            $database->query('select position as maxposition,fname,lname,mnumber,myemail,photo,esalary,specialization from workexperience, personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid and additionalinformation.userid=:userid');
+      //  $database->query('select position as maxposition,fname,lname,mnumber,myemail,photo,esalary,specialization from workexperience, personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid and additionalinformation.userid=:userid');
+    
+            $database->query('select fname,lname,mnumber,myemail,photo,esalary,specialization from  personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and useraccounts.id=:userid and additionalinformation.userid=:userid');
             $database->bind(':userid', $userid);   
             try{
             $row = $database->single();
@@ -136,7 +138,7 @@ if($ok == 1 ){
                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             }     
-            $maxposition = $row['maxposition'];
+           
             $fname = $row['fname'];
             $lname = $row['lname'];
             $mnumber = $row['mnumber'];
@@ -144,7 +146,17 @@ if($ok == 1 ){
             $esalary = $row['esalary'];
             $specialization = $row['specialization'];
             $photo = $row['photo'];
-      
+    
+            $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+            $database->bind(':userid', $userid);   
+            try{
+            $row2 = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+             $maxposition = $row2['maxposition'];
     ?>
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">
@@ -177,9 +189,7 @@ if($ok == 1 ){
                             <li><a target="_blank" href="previewresume.php" id="pres"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
-   
-   <div class="sidebar-item"><a href="#">Settings</a></div>
-   
+  
 </div>
     
      <!--sidebar-->
@@ -263,7 +273,13 @@ if($ok == 1 ){
                                                 <div class="col-md-12 jobad-titletopmargin">
                                                     <div class="hometopmargin40">
                                                             Expected Salary: <span class="text-info"><b><?=$esalary?></b></span><br>
-                                                            Specialization: <span class="text-info"><b><?=$specarray[$specialization]?></b></span><br>
+                                                            Specialization: <span class="text-info"><b>
+                                                         <?php
+                                                         if(!empty($specialization)){
+                                                            echo $specarray[$specialization];
+                                                         }
+                                                         ?>
+                                                        </b></span><br>
                                                             Email: <span class="text-info"><b><?=$myemail?></b></span><br>  
                                                             Mobile Num: <span class="text-info"><b><?=$mnumber?></b></span><br>
                                                         
