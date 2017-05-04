@@ -128,9 +128,14 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
-                                                        <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>"  title="View Profile" >
-                                                            <i class="fa fa-user text-info fa-2x"></i>
-                                                        </a> 
+                                                       
+                                                        <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                                <input type="hidden" id="mode" name="view" value="view">
+                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                                <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                            </form>
+                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                        
                                                         <!--
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>

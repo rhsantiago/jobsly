@@ -291,7 +291,7 @@ jQuery(document).ready(function ($) {
                                         </form>     
                                         <a href='#printable' id='printable' name="printable">Printable Resume</a>
                                     </div>
-                                    <div class="jumbotron">
+                                  
               <?php
               $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
               $database->bind(':userid', $applicantid);   
@@ -327,9 +327,20 @@ jQuery(document).ready(function ($) {
                                             
                                             
               ?>
-                                        
-                                 <div class="row">        
-                                     <?php
+                     
+                <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">                                                    
+                                <div align="left">
+                                    
+                                    <div class="name center">
+                                        <?php
                                         if($appcount==0 && $invitecount>=0){
                                       ?>
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
@@ -388,10 +399,17 @@ jQuery(document).ready(function ($) {
                                                                      </ul>
                                                                 </div>
                                                         
+                                                        
                                                             </div>
+                                    </div>  
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
                                     </div>
-                               
-                                    
+                                 
+              </section>                    
                                 </div>
                             
                              <link href="css/timeline.css" rel="stylesheet"/>

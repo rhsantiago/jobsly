@@ -129,9 +129,17 @@ if(isset($_SESSION['user'])){
                                                     <td class="td-actions ">                                               
                                                         <ul class="list-inline">
                                                             <li>
+                                                         <!-- ajax enabled       
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
+                                                        -->
+                                                        <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                                <input type="hidden" id="mode" name="view" value="view">
+                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                                <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                            </form>
+                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>        
                                                         </li>
                                                         <?php
                                                             if($invitecheck == 0){
