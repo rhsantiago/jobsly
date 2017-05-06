@@ -232,7 +232,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                         <div class="col-md-12 col-xs-12">
                                                                     <hr>
-                                                                 Responsibilities / Accomplishments
+                                                            <span>Responsibilities / Accomplishments</span>
                                                                     <div id="summernote"></div>
                                                                     
                                                                           <script>
@@ -256,7 +256,7 @@ if(isset($_SESSION['user'])){
                                                                                                 document.execCommand('insertText', false, bufferText);
                                                                                             }, 10);
                                                                                         }
-                                                                                    }/*,
+                                                                                    },
                                                                                     cleaner:{
           notTime: 2400, // Time to display Notifications.
           action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
@@ -267,7 +267,7 @@ if(isset($_SESSION['user'])){
           keepClasses: false, // Remove Classes
           badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
           badAttributes: ['style', 'start'] // Remove attributes from remaining tags
-    }  */
+    }
                                                                                     });
                                                                             });
                                                                             </script>

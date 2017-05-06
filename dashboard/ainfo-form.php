@@ -47,7 +47,7 @@ include "serverlogconfig.php";
             $pholder = 'checked';
         }
         $languages = $row['languages'];
-        
+        $profsum = $row['profsum'];
     if(!empty($id)){
         $mode = 'update';               
     }else{
@@ -154,6 +154,74 @@ include "serverlogconfig.php";
                                                     </div>
                                                     </div>
                                              </div>
+                                       
+                                 <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-warning">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#hs" data-toggle="tab">
+                                                                    <i class="material-icons">person</i>Professional Summary
+                                                                </a>
+                                                            </li>                                                           
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        
+                                                        <div class="tab-pane active" id="hs">
+                                                            <div class="col-md-12 col-xs-12">        
+                                                                <span>Write a short paragraph that highlights the accomplishments in your career so far. </span>
+                                                                    <div id="summernote"><?=$profsum?></div>
+                                                                    
+                                                                          <script>
+                                                                            $(document).ready(function() {
+                                                                               $('#summernote').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    },
+                                                                                    cleaner:{
+          notTime: 2400, // Time to display Notifications.
+          action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+          newline: '<br>', // Summernote's default is to use '<p><br></p>'
+          notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+          icon: '<i class="note-icon">[Your Button]</i>',
+          keepHtml: false, // Remove all Html formats
+          keepClasses: false, // Remove Classes
+          badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+          badAttributes: ['style', 'start'] // Remove attributes from remaining tags
+    }
+                                                                                    });
+                                                                            });
+                                                                            </script>
+
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                             </div>      
+                                       
                                 <div class="card card-nav-tabs">
                                             <div id="tabtitle" class="header  header-info">
                                                 <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->

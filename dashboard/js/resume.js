@@ -473,6 +473,27 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                        $('#resume-main-body #summernote').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']]                                   
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                          });
                         $('#ainfo-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error",
@@ -1063,12 +1084,12 @@ jQuery(document).ready(function ($) {
             if($("#ainfo-form #pholder").prop('checked')==true){
                pholder = 'on';
             }            
-       
+            var profsum = $('#ainfo-form #summernote').summernote('code');
             $.ajax({
                 cache: false,
                 type: "POST",              
                 url: "ainfo-submit.php",
-                data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages,
+                data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages + "&profsum=" + profsum,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                 success : function(data){              

@@ -216,8 +216,13 @@ if(isset($_SESSION['user'])){
                                                
                                                     <div class="collapse-group collapse" id="viewdetails">
                                                   <?=$jobdesc?>
-                                                        
+                                                    <?php
+                                                if(($yrsexp > 0) || (!empty($mineduc)) || (!empty($languages)) || (!empty($licenses)) || ($wtravel == 'on') || ($wrelocate == 'on')){
+                                                    ?>
                                                     <div><b>Requirements</b></div>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                         <ul>
                                                             <?php
                                                             if($yrsexp > 0){
@@ -258,9 +263,7 @@ if(isset($_SESSION['user'])){
                                                             ?>
                                                             
                                                         </ul>
-                                                        <p><b>Technical / Job-specific skills</b></p>
-                                                        <ul>
-                                                            <?php
+                                                        <?php
                                                       
                                                                     $database->query('SELECT * FROM jobskills where jobid = :jobid');                                                   
                                                                     $database->bind(':jobid', $jobid);
@@ -271,17 +274,33 @@ if(isset($_SESSION['user'])){
                                                                         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                                                         die("");
                                                                     } 
+                                                                    $skillscount = $database->rowCount();    
+                                                            if($skillscount > 0){
+                                                             ?>
+                                                        
+                                                        <p><b>Technical / Job-specific skills</b></p>       
+                                                        <ul>
+                                                       <?php
                                                                     foreach($rows as $row){
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
                                                                         echo '</li>';
                                                                     }
-
-                                                             ?>                                                              
+                                                        ?>
                                                         </ul>
-                                                        <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
-                                                        <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
                                                         <?php
+                                                                 }
+                                                            if(!empty($city) || !empty($province) || !empty($country)){
+                                                        ?>
+                                                        <p><b>Location: </b><?=$city?>, <?=$province?> <?=$country?></p>
+                                                        <?php
+                                                            }
+                                                          if($sdate[1] >= 1 && $sdate[2] >= 1 && $sdate[0] >= 1){      
+                                                        ?>
+                                                        <p><b>Position start date: </b><?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[2]?>,&nbsp;<?=$sdate[0]?></p>
+                                                        
+                                                        <?php
+                                                          }
                                                           if($edate[1] >= 1 && $edate[2] >= 1 && $edate[0] >= 1){      
                                                         ?>         
                                                         <p><b>Application deadline: </b><?=$months[$edate[1]-1]?>&nbsp;<?=$edate[2]?>,&nbsp;<?=$edate[0]?></p>

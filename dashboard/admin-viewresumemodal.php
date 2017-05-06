@@ -80,7 +80,7 @@ jQuery(document).ready(function ($) {
                                         <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
-                                    <div class="jumbotron">
+                                  
               <?php
               $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
               $database->bind(':userid', $applicantid);   
@@ -110,66 +110,93 @@ jQuery(document).ready(function ($) {
                       $dposition = $row['dposition'];
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
-                      $languages = $row['languages'];                      
+                      $languages = $row['languages'];                    
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
+                      $profsum = $row['profsum'];                       
                       $pholder = $row['pholder'];                        
                                             
-                                            
+                      if(!empty($profsum)){                         
               ?>
-                                        
-                                 <div class="row">        
+                       <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">
+                               <div align="left">
+                               <?=$profsum?>
+                               </div>
+                                
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
+                                    </div>
                                  
-                                                                <div class="col-md-offset-1 col-md-5 resumetextalign">
+              </section>
+                 <?php
+                     }
+                ?>                  
+                 <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">                                                    
+                                <div align="left">
+                                    
+                                    <div class="name center">
+                                        <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
                                                                         <li> Mobile Number: <b><?=$mnumber?></b></li>
                                                                         <li> Email: <b><?=$myemail?></b></li>
                                                                         <li> Landline: <b><?=$landline?></b></li>
                                                                         <li> Street Address: <b><?=$street?></b></li>
-                                                                        <li> City: <b><?=$city?>, <?=$province?></b></li>
+                                                                        <li> City: <?=$city?>, <b><?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
                                                                         <li> Age: <b><?=$age?></b></li>
-                                                                        <?php
-                                                                        if(!empty($birthday)){
-                                                                        ?>    
                                                                         <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>
-                                                                        <?php
-                                                                        }
-                                                                        ?>    
                                                                         <li> Gender: <b><?=$gender?></b></li>
                                                                     </ul>
-                                                                </div>                                    
-                                     
+                                                                </div>
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: <b><?=$dposition?></b></li> 
-                                                                        <?php
-                                                                        if(!empty($plevel)){
-                                                                        ?>    
+                                                                        <li> Desired Position: <b><?=$dposition?></b></li>     
                                                                         <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
-                                                                        <?php
-                                                                        }
-                                                                        ?>    
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
                                                                         <li> Languages: <b><?=$languages?></b></li> 
                                                                         <?php
                                                                             if($wtravel=='on'){
-                                                                                echo '<li> Willing to Travel</li>';
+                                                                                echo '<li> <b>Willing to Travel</b></li>';
                                                                             }
                                                                             if($wrelocate=='on'){
-                                                                                echo '<li> Willing to Relocate</li>';
+                                                                                echo '<li><b> Willing to Relocate</b></li>';
                                                                             }
                                                                             if($pholder=='on'){
-                                                                                echo '<li> Valid Passport Holder</li';
+                                                                                echo '<li> <b>Valid Passport Holder</b></li';
                                                                             }
                                                                         ?>                                                                     
                                                                      </ul>
                                                                 </div>
                                                         
                                                             </div>
+                                    </div>  
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
                                     </div>
-                               
-                                    
+                                 
+              </section>             
                                 </div>
                             
                              <link href="css/timeline.css" rel="stylesheet"/>

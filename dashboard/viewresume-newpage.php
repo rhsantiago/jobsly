@@ -70,61 +70,7 @@ if($ok == 1 ){
 </head>
 
 <body class="landing-page">
-     <!-- Modal 
-	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="rejectapp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
-            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content modalcontent">
-	        <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
-	      </div>
-            <div id="modalrejectapp" class="modal-body">
-            
-            <div id="fileuploaddiv" class="">                 
-                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
-                 </div> 
-           </div>
-            <div class="modal-footer blog-post">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">Upload</button>
-	      </div>
-	    </div>
-           
-	  </div>
-        </form>    
-	</div>
     
-    -->
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -320,14 +266,38 @@ jQuery(document).ready(function ($) {
                       $dposition = $row['dposition'];
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
-                      $languages = $row['languages'];                      
+                      $languages = $row['languages'];
+                      $profsum = $row['profsum'];
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];                        
                                             
-                                            
+                     if(!empty($profsum)){                       
               ?>
-                     
+                <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">
+                               <div align="left">
+                               <?=$profsum?>
+                               </div>
+                                
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
+                                    </div>
+                                 
+                </section>     
+                <?php
+                     }
+                ?>
                 <section class="blog-post">
                                     <div class="panel panel-default">
                                     

@@ -210,14 +210,35 @@ jQuery(document).ready(function ($) {
                       $dposition = $row['dposition'];
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
-                      $languages = $row['languages'];                      
+                      $languages = $row['languages'];
+                      $profsum = $row['profsum'];
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];                        
                                             
                                             
               ?>
-                  
+                 <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">
+                               <div align="left">
+                               <?=$profsum?>
+                               </div>
+                                
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
+                                    </div>
+                                 
+              </section>   
                  <section class="blog-post">
                                     <div class="panel panel-default">
                                     

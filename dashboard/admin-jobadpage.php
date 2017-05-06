@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
     
     
     
-    $database->query('SELECT * from jobads,companyinfo,useraccounts where jobads.id = :jobid and jobads.userid=companyinfo.userid and jobads.userid=useraccounts.id');   
+    $database->query('SELECT * from jobads,companyinfo,useraccounts where jobads.id = :jobid and jobads.userid=companyinfo.userid and jobads.userid=useraccounts.id and useraccounts.isverified=1');   
     $database->bind(':jobid', $jobid);
     try{
         $row = $database->single();
@@ -480,13 +480,13 @@ if(isset($_SESSION['user'])){
                                             <tbody id="activeappstablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
                                             and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid order by jobapplications.id desc limit 0,10');
+                                            order by jobapplications.id desc limit 0,10');
                                             $database->bind(':jobid', $jobid);                                             
                                             try{    
                                                 $rows2 = $database->resultset();
@@ -500,11 +500,22 @@ if(isset($_SESSION['user'])){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
                                                 $lname = $row2['lname'];
-                                                $esalary = $row2['esalary'];
-                                                $position = $row2['position'];
+                                                $esalary = $row2['esalary'];                                               
                                                 $specialization = $row2['specialization'];
                                                 $isshortlisted = $row2['isshortlisted'];
                                                 $isnew = $row2['isnew'];
+                                                
+                                                $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                $database->bind(':userid', $applicantid);
+                                       
+                                                try{
+                                                    $row3 = $database->single(); 
+                                                }catch (PDOException $e) {
+                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                    die("");
+                                                }
+                                                    $position = $row3['position'];
                                        ?>
                                    
                                                 <tr id="line<?=$applicantid?>">                                                   

@@ -17,7 +17,7 @@ if(isset($_POST['wtravel'])){ $wtravel = $_POST['wtravel']; }
 if(isset($_POST['wrelocate'])){ $wrelocate = $_POST['wrelocate']; }
 if(isset($_POST['pholder'])){ $pholder = $_POST['pholder']; }
 if(isset($_POST['languages'])){ $languages = $_POST['languages']; }
-
+if(isset($_POST['profsum'])){ $profsum = $_POST['profsum']; }
 date_default_timezone_set('Asia/Manila');
 $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
@@ -25,12 +25,12 @@ include 'Database.php';
 $database = new Database();
     
     if($mode=='insert'){
-         $database->query(' INSERT INTO additionalinformation (id, userid, dposition,specialization,plevel,esalary,pworkloc,yexp,wtravel,wrelocate,pholder,languages) VALUES (NULL, :userid, :dposition, :specialization,:plevel,:esalary,:pworkloc,:yexp,:wtravel,:wrelocate,:pholder,:languages)');
+         $database->query(' INSERT INTO additionalinformation (id, userid, dposition,specialization,plevel,esalary,pworkloc,yexp,wtravel,wrelocate,pholder,languages,profsum) VALUES (NULL, :userid, :dposition, :specialization,:plevel,:esalary,:pworkloc,:yexp,:wtravel,:wrelocate,:pholder,:languages,:profsum)');
          
     }
 
     if($mode=='update'){
-       $database->query(' UPDATE additionalinformation SET userid = :userid, dposition = :dposition, specialization = :specialization, plevel = :plevel, esalary = :esalary, pworkloc = :pworkloc, yexp = :yexp, wtravel = :wtravel, wrelocate = :wrelocate, pholder = :pholder, languages = :languages WHERE additionalinformation.id = :pid or userid = :userid'); 
+       $database->query(' UPDATE additionalinformation SET userid = :userid, dposition = :dposition, specialization = :specialization, plevel = :plevel, esalary = :esalary, pworkloc = :pworkloc, yexp = :yexp, wtravel = :wtravel, wrelocate = :wrelocate, pholder = :pholder, languages = :languages, profsum=:profsum WHERE additionalinformation.id = :pid or userid = :userid'); 
         $database->bind(':pid', $id);
         
     }
@@ -48,6 +48,7 @@ $database = new Database();
     $database->bind(':wrelocate', $wrelocate);
     $database->bind(':pholder', $pholder);
     $database->bind(':languages', $languages);
+    $database->bind(':profsum', $profsum);
     try{
         $database->execute();
         $msg = "logged";

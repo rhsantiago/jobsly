@@ -89,7 +89,8 @@ if($ok == 1 ){
                       $dposition = $row['dposition'];
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
-                      $languages = $row['languages'];                      
+                      $languages = $row['languages'];
+                      $profsum = $row['profsum'];
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];  
@@ -157,6 +158,24 @@ if($ok == 1 ){
                              <li>Mobile: <?=$mnumber?></li>
                         </ul>       
                     </div>    
+                </div>
+                
+                <!--Professional Summary-->
+                <div class="col-md-12">
+                     <hr class="nopadmargin h4weight">
+                </div>
+                <div class="col-md-3 ">
+                    <div class="margin10">
+                        <span class="resumesection"><i>Professional Summary</i></span>
+                    </div>
+                </div>                
+                <div class="col-md-9 ">
+                     <div class="margin10">
+                        <div align="left">
+                            <?=$profsum?>
+                        </div>
+                    </div>
+                    
                 </div>
                 <!--work exp-->
                 <div class="col-md-12">

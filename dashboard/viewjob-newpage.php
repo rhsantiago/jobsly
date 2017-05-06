@@ -302,8 +302,13 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                
                                                     <div class="collapse-group collapse" id="viewdetails">
                                                   <?=$jobdesc?>
-                                                        
+                                                    <?php
+                                                if(($yrsexp > 0) || (!empty($mineduc)) || (!empty($languages)) || (!empty($licenses)) || ($wtravel == 'on') || ($wrelocate == 'on')){
+                                                    ?>    
                                                     <div><b>Requirements</b></div>
+                                                    <?php
+                                                    }
+                                                    ?>    
                                                         <ul>
                                                             <?php
                                                             if($yrsexp > 0){
@@ -354,7 +359,6 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                     }catch (PDOException $e) {
                                                                         $error = true;
                                                                         $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                                                        include "serverlog.php";
                                                                         die("");
                                                                     } 
                                                                  if($skillscount > 0){   

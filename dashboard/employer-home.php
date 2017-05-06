@@ -135,13 +135,12 @@ if($ok == 1 ){
         	<div class="collapse navbar-collapse" id="navigation-example">
         		<ul class="nav navbar-nav navbar-right">
                     <li><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li><a href="searchresumes.php" id="home"><i class="material-icons">find_in_page</i>Resume&nbsp;Search</a></li>
                     <li class="dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
-                                    <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
+                                    <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;By Job Ad</a></li>
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
-                                    <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
-                                    <li><a href="employer-main.php?ajax=search" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
-                                    <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
+                                    <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>                                 
                          </ul> 
                     </li>
                     <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
@@ -210,15 +209,14 @@ if($ok == 1 ){
                                         <h5 class="sidenavposition"><?=$cperson?></h5>
                                     </div>  
        </div>    
-   <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>    
+   <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>
+   <div class="sidebar-item"><a href="searchresumes.php"><i class="material-icons">find_in_page</i>&nbsp;Resume&nbsp;Search</a></div>        
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                                    <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;Active Job Ads</a></li>
+                                    <li><a href="employer-main.php?ajax=ajposts"><i class="material-icons">flag</i>&nbsp;By Job Ad</a></li>
                                     <li><a href="employer-main.php?ajax=short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
-                                    <li><a href="employer-main.php?ajax=search" id="search"><i class="material-icons">find_in_page</i>&nbsp;Search</a></li>
-                                    <!--<li><a href="employer-main.php?ajax=cinfo"><i class="material-icons">info</i>&nbsp;Company Info</a></li>-->
-                         </ul> 
+            </ul> 
     </div>
    <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
