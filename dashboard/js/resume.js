@@ -1132,7 +1132,7 @@ jQuery(document).ready(function ($) {
                 $('#wexp-form-modal-edit #startdate').datepicker();
                 $('#wexp-form-modal-edit #enddate').datepicker();
                 
-                $('#successdivworkexp').hide();
+              $modal.find('#successdivworkexp').hide();
                 $('#wexp-form-modal').parsley({
                        successClass: "has-success",
                        errorClass: "has-error"

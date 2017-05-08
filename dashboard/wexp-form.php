@@ -34,7 +34,8 @@ if(isset($_SESSION['user'])){
          </div>
          <div class="col-md-12">    
                        <h2 class="title">Work Experience</h2> 
-             <span class="jobcardbuttons"><a href='#profile' id="add"><i class="material-icons">edit</i> Add</a></span>
+            <!-- <span class="jobcardbuttons"><a href='#profile' id="add"><i class="material-icons">edit</i> Add</a></span> -->
+             <span class="jobcardbuttons"><a href='#workexpmodal' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"> Add </a></span>
           </div> 
     </div>   
                    <div class="col-md-offset-1 col-md-7">
@@ -158,13 +159,13 @@ if(isset($_SESSION['user'])){
                                          
                                         
                             </div>
-                           
+                            <!--
                                 <form method="post" id="wexp-form" name="wexp-form" data-parsley-validate data-parsley-trigger="keyup"> 
                                  <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                  <input type="hidden" id="mode" name="mode" value="insert">
                                     <div id="card" class="card card-nav-tabs cardtopmargin">
                                             <div id="tabtitle" class="header  header-success">
-                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                               
                                                 <div class="nav-tabs-navigation">
                                                     <div class="nav-tabs-wrapper">
                                                         <ul class="nav nav-tabs" data-tabs="tabs">
@@ -286,7 +287,7 @@ if(isset($_SESSION['user'])){
                                         
                                     </div>
                                     </form>
-                                
+                             
                                 
                                   <div id="successdivworkexp" class="alert alert-success">
                                                
@@ -299,7 +300,7 @@ if(isset($_SESSION['user'])){
                                                   <b>Alert: </b> Your work experience has been saved.
                                                
                                             </div>
-                                 
+                                    -->
                              
 		                      <div>
                                      <form method="post" id="wexpnext-form" name="wexpnext-form"> 

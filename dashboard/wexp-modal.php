@@ -66,7 +66,7 @@ if($mode=='del'){
 <?php    
     
     
-}else{
+}else if($mode=='update'){
     $database = new Database();
 
     $database->query('SELECT * from workexperience where id = :workexpid');
@@ -80,6 +80,11 @@ if($mode=='del'){
     } 
     
     $id = $row['id'];
+    $company = $row['company'];
+    $position = $row['position'];
+    $msalary = $row['msalary'];
+    $industry = $row['industry'];
+    $jobdescription = $row['jobdescription'];
     $startdate = $row['startdate'];
     
     if($startdate=='0000-00-00'){
@@ -106,6 +111,15 @@ if($mode=='del'){
     }
     
     $plevel = $row['plevel'];
+}else if($mode=='insert'){
+    $company = "";
+    $position = "";
+    $msalary = "";
+    $industry = "";
+    $jobdescription = "";
+    $cecb = "";
+    $plevel = 0;
+}
 ?>
 
 <style>
@@ -115,10 +129,19 @@ if($mode=='del'){
 <form method="post" id="wexp-form-modal-edit" name="wexp-form-modal-edit" > 
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
              <input type="hidden" id="id" name="id" value="<?=$workexpid?>">
-             <input type="hidden" id="mode" name="mode" value="update">
+             <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Edit Work Experience</h4>
+	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">
+                <?php
+                    if($mode=='insert'){
+                        echo "Add";
+                    }else{
+                        echo "Edit";
+                    }
+                        
+                ?>
+                Work Experience</h4>
 	      </div>
 	      <div id="modaleditworkexp" class="modal-body modal-gray">
 	                              
@@ -131,11 +154,11 @@ if($mode=='del'){
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div class="form-group label-floating">
                                                                         <label class="control-label">Company Name</label>
-                                                                        <input type="text" id="company" class="form-control" value="<?=$row['company']?>" data-parsley-required>
+                                                                        <input type="text" id="company" class="form-control" value="<?=$company?>" data-parsley-required>
                                                                     </div>
                                                                     <div id="positiondiv" class="form-group label-floating">
                                                                         <label class="control-label">Position</label>
-                                                                        <input type="text" id="position" class="form-control" value="<?=$row['position']?>" data-parsley-required>
+                                                                        <input type="text" id="position" class="form-control" value="<?=$position?>" data-parsley-required>
                                                                     </div>
                                                                     <div id="startdiv" class="form-group  label-static">
                                                                         <label class="control-label">Start Date</label>
@@ -143,13 +166,13 @@ if($mode=='del'){
                                                                     </div>
                                                                       <div class="form-group label-floating">
                                                                         <label class="control-label">Monthly Salary</label>
-                                                                        <input type="text" id="msalary" class="form-control" value="<?=$row['msalary']?>" required data-parsley-type="number">
+                                                                        <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" required data-parsley-type="number">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">
                                                                     <div class="form-group label-floating">
                                                                         <label class="control-label">Industry</label>
-                                                                        <input type="text" id="industry" class="form-control"  value="<?=$row['industry']?>">
+                                                                        <input type="text" id="industry" class="form-control"  value="<?=$industry?>">
                                                                     </div>
                                                                     <div class="form-group label-floating">
                                                                         <label class="control-label">Position Level</label>
@@ -179,7 +202,7 @@ if($mode=='del'){
                                                                 <div class="col-md-12 col-xs-12">
                                                                     <hr>
                                                                    Responsibilities / Accomplishments
-                                                                    <div id="summernote"><?=$row['jobdescription']?></div>
+                                                                    <div id="summernote"><?=$jobdescription?></div>
                                                                           <script>
                                                                             $(document).ready(function() {
                                                                                $('#summernote').summernote({
@@ -231,12 +254,20 @@ if($mode=='del'){
 	      </div>
 	      <div class="modal-footer blog-post">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary" >Save changes</button>
+	        <button type="submit" class="btn btn-primary" >
+                <?php
+                    if($mode=='insert'){
+                        echo "Add Work Experience";
+                    }else{
+                        echo "Save changes";
+                    }
+                        
+                ?>
+                
+              </button>
 	      </div>
 </form>
-<?php
-}
-?>
+
 <script>
 jQuery(document).ready(function ($) {
    
@@ -328,6 +359,6 @@ jQuery(document).ready(function ($) {
         }
     });
     
-    $('#successdivworkexp').hide();
+  //  $('#successdivworkexp').hide();
 });       
 </script>

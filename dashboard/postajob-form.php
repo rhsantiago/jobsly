@@ -148,7 +148,7 @@ if(isset($_SESSION['user'])){
              if($sdate[1] >= 1 && $sdate[2] >= 1 && $sdate[0] >= 1){
                   $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
              }else{             
-                  $startappdate = $today;
+                  $startappdate = "";
              }
              $endappdate = $row['endappdate'];
              $edate = explode("-", $endappdate);
