@@ -338,6 +338,7 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
   /*  
      $("#enddate").datepicker({
       onSelect: function() {
@@ -349,8 +350,8 @@ jQuery(document).ready(function ($) {
     .on("input change", function (e) {
         $("#wexp-form").validate();
     });
-*/    
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
+   
+    
     
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
@@ -431,7 +432,7 @@ jQuery(document).ready(function ($) {
     });
     
     $('#successdivworkexp').hide();
-   
+   */ 
     
 });       
 </script>

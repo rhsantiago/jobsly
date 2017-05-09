@@ -125,8 +125,10 @@ if($mode=='del'){
 <style>
 .datepicker{z-index:1151 !important;}
 </style>
-
-<form method="post" id="wexp-form-modal-edit" name="wexp-form-modal-edit" > 
+<?php
+    if($mode!='del'){
+?>
+<form method="post" id="wexp-form-modal" name="wexp-form-modal" > 
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
              <input type="hidden" id="id" name="id" value="<?=$workexpid?>">
              <input type="hidden" id="mode" name="mode" value="<?=$mode?>">
@@ -205,28 +207,7 @@ if($mode=='del'){
                                                                     <div id="summernote"><?=$jobdescription?></div>
                                                                           <script>
                                                                             $(document).ready(function() {
-                                                                               $('#summernote').summernote({
-                                                                                      toolbar: [
-                                                                                        // [groupName, [list of button]]
-                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
-                                                                                        ['fontsize', ['fontsize']],
-                                                                                        ['color', ['color']],
-                                                                                        ['para', ['ul', 'ol', 'paragraph']],
-                                                                                        ['height', ['height']]
-                                                                                      ],
-                                                                                      callbacks: {
-                                                                                      onPaste: function (e) {
-                                                                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-
-                                                                                          e.preventDefault();
-
-                                                                                          // Firefox fix
-                                                                                          setTimeout(function () {
-                                                                                              document.execCommand('insertText', false, bufferText);
-                                                                                          }, 10);
-                                                                                      }
-                                                                                    }
-                                                                                    });
+                                                                               
                                                                             });
                                                                             </script>
 
@@ -267,86 +248,114 @@ if($mode=='del'){
               </button>
 	      </div>
 </form>
-
+<?php
+}
+?>
 <script>
 jQuery(document).ready(function ($) {
-   
-  // $("#wexp-form-modal-edit #startdate").datepicker("setValue", "<?=$startdateinput?>");
-  // $("#wexp-form-modal-edit #startdate").datepicker('update');
- //  $("#wexp-form-modal-edit #enddate").datepicker("setValue", "<?=$enddateinput?>");
- //  $("#wexp-form-modal-edit #enddate").datepicker('update');
-    $("#wexp-form-modal-edit #startdate").val("<?=$startdateinput?>");
-    $("#wexp-form-modal-edit #enddate").val("<?=$enddateinput?>");
-//   $('#wexp-form-modal-edit #startdate').datepicker();
- //  $('#wexp-form-modal-edit #enddate').datepicker();
-       
-    /*
-   $('#wexp-form #company').parsley().on('field:error', function() {
-           $('#wexp-form #companydiv').addClass('has-error');
-           $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
-    });    
-    $('#wexp-form #company').parsley().on('field:success', function() {
-            $('#wexp-form #companydiv').addClass('has-success');
-            $('#wexp-form #companydiv').find('span').remove();
-            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#summernote').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    },
+   cleaner:{
+          notTime: 2400, // Time to display Notifications.
+          action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+          newline: '<br>', // Summernote's default is to use '<p><br></p>'
+          notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+          icon: '<i class="note-icon">[Your Button]</i>',
+          keepHtml: false, // Remove all Html formats
+          keepClasses: false, // Remove Classes
+          badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+          badAttributes: ['style', 'start'] // Remove attributes from remaining tags
+    }
+    
     });
     
-    $('#wexp-form #position').parsley().on('field:error', function() {
-           $('#wexp-form #positiondiv').addClass('has-error');
-           $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $("#wexp-form-modal #startdate").val("<?=$startdateinput?>");
+    $("#wexp-form-modal #enddate").val("<?=$enddateinput?>");
+
+    $('#wexp-form-modal #company').parsley().on('field:error', function() {
+           $('#wexp-form-modal #companydiv').addClass('has-error');
+           $('#wexp-form-modal #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#wexp-form-modal #company').parsley().on('field:success', function() {
+            $('#wexp-form-modal #companydiv').addClass('has-success');
+            $('#wexp-form-modal #companydiv').find('span').remove();
+            $('#wexp-form-modal #companydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
+    $('#wexp-form-modal #position').parsley().on('field:error', function() {
+           $('#wexp-form-modal #positiondiv').addClass('has-error');
+           $('#wexp-form-modal #positiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
     $('#wexp-form #position').parsley().on('field:success', function() {
-            $('#wexp-form #positiondiv').addClass('has-success');
-            $('#wexp-form #positiondiv').find('span').remove();
-            $('#wexp-form #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+            $('#wexp-form-modal #positiondiv').addClass('has-success');
+            $('#wexp-form-modal #positiondiv').find('span').remove();
+            $('#wexp-form-modal #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #startdate').parsley().on('field:error', function() {
-           $('#wexp-form #startdiv').addClass('has-error');
-           $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#wexp-form-modal #startdate').parsley().on('field:error', function() {
+           $('#wexp-form-modal #startdiv').addClass('has-error');
+           $('#wexp-form-modal #startdiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     }); 
     
-    $('#wexp-form #startdate').datepicker().on('changeDate', function (ev) {
-            $('#wexp-form #startdiv').removeClass('has-error');
-            $('#wexp-form #startdiv').addClass('has-success');
-            $('#wexp-form #startdiv').find('span').remove();
-            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#wexp-form-modal #startdate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form-modal #startdiv').removeClass('has-error');
+            $('#wexp-form-modal #startdiv').addClass('has-success');
+            $('#wexp-form-modal #startdiv').find('span').remove();
+            $('#wexp-form-modal #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
     $('#wexp-form #startdate').parsley().on('field:success', function() {
-            $('#wexp-form #startdiv').addClass('has-success');
-            $('#wexp-form #startdiv').find('span').remove();
-            $('#wexp-form #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+            $('#wexp-form-modal #startdiv').addClass('has-success');
+            $('#wexp-form-modal #startdiv').find('span').remove();
+            $('#wexp-form-modal #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #msalary').parsley().on('field:error', function() {
-           $('#wexp-form #msalarydiv').addClass('has-error');
-           $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#wexp-form-modal #msalary').parsley().on('field:error', function() {
+           $('#wexp-form-modal #msalarydiv').addClass('has-error');
+           $('#wexp-form-modal #msalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#wexp-form #msalary').parsley().on('field:success', function() {
-            $('#wexp-form #msalarydiv').addClass('has-success');
-            $('#wexp-form #msalarydiv').find('span').remove();
-            $('#wexp-form #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#wexp-form-modal #msalary').parsley().on('field:success', function() {
+            $('#wexp-form-modal #msalarydiv').addClass('has-success');
+            $('#wexp-form-modal #msalarydiv').find('span').remove();
+            $('#wexp-form-modal #msalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #enddate').parsley().on('field:error', function() {
-           $('#wexp-form #enddiv').addClass('has-error');
-           $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    $('#wexp-form-modal #enddate').parsley().on('field:error', function() {
+           $('#wexp-form-modal #enddiv').addClass('has-error');
+           $('#wexp-form-modal #enddiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
     
-    $('#wexp-form #enddate').datepicker().on('changeDate', function (ev) {
-            $('#wexp-form #enddiv').removeClass('has-error');
-            $('#wexp-form #enddiv').addClass('has-success');
-            $('#wexp-form #enddiv').find('span').remove();
-            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#wexp-form-modal #enddate').datepicker().on('changeDate', function (ev) {
+            $('#wexp-form-modal #enddiv').removeClass('has-error');
+            $('#wexp-form-modal #enddiv').addClass('has-success');
+            $('#wexp-form-modal #enddiv').find('span').remove();
+            $('#wexp-form-modal #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #enddate').parsley().on('field:success', function() {
-            $('#wexp-form #enddiv').addClass('has-success');
-            $('#wexp-form #enddiv').find('span').remove();
-            $('#wexp-form #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    $('#wexp-form-modal #enddate').parsley().on('field:success', function() {
+            $('#wexp-form-modal #enddiv').addClass('has-success');
+            $('#wexp-form-modal #enddiv').find('span').remove();
+            $('#wexp-form-modal #enddiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
-    */
+    
     $('#currentempcb').click(function(){
         if($(this).is(":checked")){
            $("#enddate").attr("disabled" , "disabled");
@@ -358,6 +367,9 @@ jQuery(document).ready(function ($) {
            
         }
     });
+    
+    $('#successdivworkexp').hide();
+  
     
   //  $('#successdivworkexp').hide();
 });       

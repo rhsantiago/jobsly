@@ -1129,8 +1129,41 @@ jQuery(document).ready(function ($) {
                 $(function() {
                            $.material.init();
                 });
-                $('#wexp-form-modal-edit #startdate').datepicker();
-                $('#wexp-form-modal-edit #enddate').datepicker();
+                 $('#summernote').summernote({
+                                                                                      toolbar: [
+                                                                                        // [groupName, [list of button]]
+                                                                                        ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                                                                        ['fontsize', ['fontsize']],
+                                                                                        ['color', ['color']],
+                                                                                        ['para', ['ul', 'ol', 'paragraph']]
+                                                                                      ],
+                                                                                      callbacks: {
+                                                                                        onPaste: function (e) {
+                                                                                            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                                                                            e.preventDefault();
+
+                                                                                            // Firefox fix
+                                                                                            setTimeout(function () {
+                                                                                                document.execCommand('insertText', false, bufferText);
+                                                                                            }, 10);
+                                                                                        }
+                                                                                    },
+   cleaner:{
+          notTime: 2400, // Time to display Notifications.
+          action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+          newline: '<br>', // Summernote's default is to use '<p><br></p>'
+          notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+          icon: '<i class="note-icon">[Your Button]</i>',
+          keepHtml: false, // Remove all Html formats
+          keepClasses: false, // Remove Classes
+          badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+          badAttributes: ['style', 'start'] // Remove attributes from remaining tags
+    }
+    
+    });
+                $('#wexp-form-modal #startdate').datepicker();
+                $('#wexp-form-modal #enddate').datepicker();
                 
               $modal.find('#successdivworkexp').hide();
                 $('#wexp-form-modal').parsley({
