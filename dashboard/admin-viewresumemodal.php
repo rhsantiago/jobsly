@@ -498,7 +498,44 @@ jQuery(document).ready(function ($) {
             
     </ul>
 
-                            
+              <?php
+                             $database->query('SELECT othersawards FROM educationandtraining where userid = :userid');
+                             $database->bind(':userid', $userid);  
+                             try{ 
+                                 $row = $database->single();
+                             }catch (PDOException $e) {
+                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                die("");
+                             } 
+                             $othersawards= $row['othersawards'];
+                             if(!empty($othersawards)){    
+                        ?>
+                        <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">
+                               <div align="left">
+                                   <h4 class="text-warning">Professional Trainings</h4>
+                               <?=$othersawards?>
+                               </div>
+                                
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
+                                    </div>
+                                 
+                            </section>  
+                           <?php
+                             }
+                            ?>              
                             
                             
 	                    </div>

@@ -39,7 +39,7 @@ if($success == $email && $isverified == 0 && $usertype == 1){
             $_SESSION['userid'] = $id;
          if(!isset($_SESSION['usertype']))
             $_SESSION['usertype'] = $usertype;
-        echo 'unverifiedemployer';
+        echo 'unverified';
   //  }
 }
 
@@ -75,5 +75,18 @@ if($success == $email && $isverified == 1 && $usertype == 2){
      if(!isset($_SESSION['usertype']))
         $_SESSION['usertype'] = $usertype;
     echo 'success';   
+}
+
+if($success == $email && $isverified == 0 && $usertype == 2){
+    session_start();
+    if(!isset($_SESSION['user']))
+        $_SESSION['user'] = $success;
+    if(!isset($_SESSION['password']))
+        $_SESSION['password'] = $password;
+    if(!isset($_SESSION['userid']))
+        $_SESSION['userid'] = $id;
+     if(!isset($_SESSION['usertype']))
+        $_SESSION['usertype'] = $usertype;
+    echo 'unverified';   
 }
 ?>

@@ -22,7 +22,10 @@
 <style>
 a:hover { 
     color: white !important;
-}    
+}
+    .loginerror{
+        color: red;
+    }    
 </style>
 </head>
 

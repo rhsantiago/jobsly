@@ -408,6 +408,39 @@ if($ok == 1 ){
                 <div class="col-md-12">
                      <hr class="nopadmargin h4weight">
                 </div>
+                
+                <!-- Professional Trainings --> 
+                <?php
+                             $database->query('SELECT othersawards FROM educationandtraining where userid = :userid');
+                             $database->bind(':userid', $userid);  
+                             try{ 
+                                 $row = $database->single();
+                             }catch (PDOException $e) {
+                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                die("");
+                             } 
+                             $othersawards= $row['othersawards'];
+                             if(!empty($othersawards)){    
+                        ?>
+                <div class="col-md-12">
+                     <hr class="nopadmargin h4weight">
+                </div>
+                <div class="col-md-3 ">
+                    <div class="margin10">
+                        <span class="resumesection"><i>Professional Trainings</i></span>
+                    </div>
+                </div>                
+                <div class="col-md-9 ">
+                     <div class="margin10">
+                        <div align="left">
+                            <?=$othersawards?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                         }
+                ?>
             </div>
     </div>
 </body>

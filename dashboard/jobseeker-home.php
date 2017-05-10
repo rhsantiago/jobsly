@@ -654,8 +654,12 @@ if($ok == 1 ){
                                      $index = $index+1;
                                  }
                             ?>
-                            <div class="col-md-2">
-                                    <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">View All Job Matches</a>
+                            <div class="col-md-12">
+                                    <form method="post" id="viewalljobs-form" name="viewalljobs-form"> 
+                                            <a href='jobseeker-latestjobs.php' class="btn btn-primary " name="viewalljobs" id="viewalljobs" >
+                                                            View All Job Matches
+                                                           </a>
+                                    </form>
                             </div>    
 		                </div>
 					</div>

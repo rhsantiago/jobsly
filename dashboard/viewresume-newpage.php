@@ -59,14 +59,20 @@ if($ok == 1 ){
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
+    <!--
     <script src="js/summernote.min.js" type="text/javascript"></script> 
     <script src="js/parsley.js"></script>
+    <script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+    -->
+    <style>
+            #resumeinfo ul, #resumeinfo li {
+            margin: 0; padding: 0;
+        }
+    </style>
 </head>
 
 <body class="landing-page">
@@ -305,16 +311,16 @@ jQuery(document).ready(function ($) {
                                      
                                         <div class="blog-post-content">
                                             
-                         <div class="row-fluid">
-                           <div class="col-md-12">                                                    
-                                <div align="left">
+                         <div class="row">
+                          <!--   <div class="col-md-12">       -->                                             
+                             <!--     <div align="left">    -->
                                     
                                     <div class="name center">
                                         <?php
                                         if($appcount==0 && $invitecount>=0){
                                       ?>
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
+                                                                    <ul align="left" style="list-style: none;" class="">
                                                                         <li> Mobile Number: <b>*****</b></li>
                                                                         <li> Email: <b>*****</b></li>
                                                                         <li> Landline: <b>*****</b></li>
@@ -331,7 +337,7 @@ jQuery(document).ready(function ($) {
                                             
                                      ?>  
                                                                 <div class="col-md-offset-1 col-md-5 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
+                                                                    <ul align="left" style="list-style: none;" class="">
                                                                         <li> Mobile Number: <b><?=$mnumber?></b></li>
                                                                         <li> Email: <b><?=$myemail?></b></li>
                                                                         <li> Landline: <b><?=$landline?></b></li>
@@ -350,7 +356,7 @@ jQuery(document).ready(function ($) {
                                     
                                      
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
-                                                                    <ul style="list-style: none;" class="">
+                                                                    <ul align="left" style="list-style: none;" class="">
                                                                         <li> Desired Position: <b><?=$dposition?></b></li>     
                                                                         <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
@@ -371,8 +377,8 @@ jQuery(document).ready(function ($) {
                                                         
                                                         
                                                             </div>
-                                    </div>  
-                                 </div>
+                                <!--      </div>  -->
+                            <!--     </div> -->
                             </div>  
                                                 
                           </div>
@@ -680,7 +686,44 @@ jQuery(document).ready(function ($) {
     
             
     </ul>
-
+                        <?php
+                             $database->query('SELECT othersawards FROM educationandtraining where userid = :userid');
+                             $database->bind(':userid', $userid);  
+                             try{ 
+                                 $row = $database->single();
+                             }catch (PDOException $e) {
+                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                die("");
+                             } 
+                             $othersawards= $row['othersawards'];
+                             if(!empty($othersawards)){    
+                        ?>
+                        <section class="blog-post">
+                                    <div class="panel panel-default">
+                                    
+                                      <div class="panel-body">                                        
+                                     
+                                        <div class="blog-post-content">
+                                            
+                         <div class="row-fluid">
+                           <div class="col-md-12">
+                               <div align="left">
+                                   <h4 class="text-warning">Professional Trainings</h4>
+                               <?=$othersawards?>
+                               </div>
+                                
+                                 </div>
+                            </div>  
+                                                
+                          </div>
+                                       </div>
+                                    </div>
+                                 
+                            </section>  
+                           <?php
+                             }
+                            ?>
                             
                             
                             
