@@ -480,12 +480,13 @@ if(isset($_SESSION['user'])){
                                             <tbody id="activeappstablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
-                                            and jobapplications.userid=additionalinformation.userid
+                                            and jobapplications.userid=additionalinformation.userid 
+                                            and useraccounts.isverified = 1 
                                             order by jobapplications.id desc limit 0,10');
                                             $database->bind(':jobid', $jobid);                                             
                                             try{    

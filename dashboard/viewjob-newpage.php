@@ -641,8 +641,128 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          
                                         </div>
                                     </div>
-                                  </section>  
-                               
+                                  </section>
+               <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="h4weight text-primary">Other Job Ads from <?=$companyname?></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>               
+<?php
+  $jobtitlearray = array();
+  $database->query("SELECT id, jobtitle from jobads where userid=:userid order by dateadded desc limit 0,12"); 
+  $database->bind(':userid', $companyid);    
+  try{  
+        $rows = $database->resultset();
+   }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
+        die("");
+   } 
+
+   foreach($rows as $row){
+      $jobid = $row['id'];
+      $jobtitle = $row['jobtitle'];
+       
+      $jobtitlearray[] = $jobtitle;
+   }
+?>
+                  <div class="row">
+                                               
+           <div class="col-md-4">
+               <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 0; $index < $arrlength;) {
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                    <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="text-info"><?=$jobtitle?></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                <?php
+                    $index = $index+3;
+                }
+                ?>
+            
+            </div>
+            <div class="col-md-4">
+                <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 1; $index < $arrlength;) {
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                  <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="text-info"><?=$jobtitle?></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                 <?php
+                    $index = $index+3;
+                }
+                ?>
+          </div>                       
+            <div class="col-md-4">
+                <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 2; $index < $arrlength;) {
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                  <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                       <span class="text-info"><?=$jobtitle?></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                <?php
+                    $index = $index+3;
+                }
+                ?>
+             </div>   
+             
+                                     
+                                          </div>
                                
                                
                                 </div>
