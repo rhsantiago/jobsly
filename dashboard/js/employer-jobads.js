@@ -768,6 +768,51 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
+    $(document).on('submit','#template-form-modal',function(event){
+            event.preventDefault();
+            var templateid = $('#template-form-modal #templateid').val();
+            var userid = $('#template-form-modal #userid').val();
+            $.ajax({    
+                        type: "POST",
+                        url: 'template-modal-submit.php',
+                        data:"templateid=" + templateid + "&userid=" + userid,
+                        dataType: 'html',
+                        success: function (html) {
+                            $('#templates-modal-del').modal('toggle');
+                            $('#jtemp').trigger('click');
+                            
+                            $(function() {
+                                $.material.init();
+                            });
+                            
+                        }
+            });
+            return false;
+    });
+    
+    $('#templates-modal-del').on('show.bs.modal', function(e) {
+              
+               var $modal = $(this);
+               var templateid = $(e.relatedTarget).data('templateid');
+               var userid = $(e.relatedTarget).data('userid');
+             
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'template-modal.php',
+            data: 'templateid=' + templateid +               
+                  '&userid=' + userid,
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);     
+                $(function() {
+                           $.material.init();
+                    });
+            }
+        });
+    });
+    
+    
+    
     $(document).on('submit','#jobessays-form',function(event){
              
             event.preventDefault();      

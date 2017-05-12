@@ -150,9 +150,11 @@ if(isset($_SESSION['user'])){
                               
                                   <section class="blog-post">
                                     <div class="panel panel-default">
+                                        <div align="center"> Add your own image header. Ask us how! 
                                      <?php
                                         if(!empty($header)){
                                      ?>    
+                                        </div>
                                      <div class="row">
                                                 <div class="col-md-12">                                                  
                                                   <img id="jobadheader" src="<?=$header?>"  class="img-responsive fullwidth">                                         
@@ -314,7 +316,7 @@ if(isset($_SESSION['user'])){
                                         </div>
                                           <div class="row-fluid">
                                                 <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
+                                                        <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>
                                                 <div class="col-md-6 actionicon">
                                                         <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a>

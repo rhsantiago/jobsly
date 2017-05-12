@@ -53,14 +53,10 @@ if($ok == 1 ){
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
-    <script src="js/parsley.js"></script>
+    
 </head>
 
 <body class="landing-page">
@@ -370,7 +366,11 @@ if($esalarypost > 0){
                                                                     <i class="fa fa-user fa-2x text-info"></i>
                                                                 </a>
                                                                 -->
-                                                                 <a href="viewinviteresume-newpage.php?applicantid=<?=$applicantid?>&userid=<?=$userid?>" target="_blank" rel="tooltip" id="applicantview" title="View Profile" >
+                                                                <form method="post" action="viewinviteresume-newpage.php" id="resumeinvite-form<?=$applicantid?>" name="resumeinvite-form<?=$applicantid?>" target="_blank">
+                                                                    <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+                                                                    <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
+                                                                </form>
+                                                                 <a href="#applicantview" target="_blank" rel="tooltip" id="applicantview" data-applicantid="<?=$applicantid?>" title="View Profile" >
                                                                     <i class="fa fa-user fa-2x text-info"></i>
                                                                 </a>
                                                             </li>

@@ -79,7 +79,6 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">Job Templates / Preview</h2>
                </div>
      </div>     
-                   
 
 <div class="col-md-offset-1 col-md-7">
                        
@@ -139,7 +138,9 @@ if(isset($_SESSION['user'])){
                               
                                   <section class="blog-post">
                                     <div class="panel panel-default">
+                                        <div align="center"> Add your own image header. Ask us how! 
                                      <img src="img/fjord.jpg" class="img-responsive">
+                                        </div>    
                                       <div class="panel-body jobad-bottomborder">
                                           <div class="jobad-meta jobad-bottomborder">
                                       <p class="blog-post-date pull-right text-muted"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></p>
@@ -277,7 +278,7 @@ if(isset($_SESSION['user'])){
                                         </div>
                                           <div class="row-fluid">
                                                 <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
+                                                        <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>
                                                 <div class="col-md-6 actionicon">
                                                         <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Apply now"><i class="material-icons" >assignment_turned_in</i></a>
@@ -317,11 +318,11 @@ if(isset($_SESSION['user'])){
 		                    </div>
                             
                             <div class="col-md-6">
-                             <!--       
-                                <button class="btn btn-primary " name="addwexp" id="addwexp" type="submit">
-                                                        Add Work Experience
+                                 
+                                <button class="btn btn-primary btn-sm" name="deltemp" id="deltemp" data-templateid="<?=$templateid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#templates-modal-del" type="button">
+                                                        Delete Job Template
                                                        </button>
-                            -->
+                           
 		                    </div>
 		                    
 		                </div>

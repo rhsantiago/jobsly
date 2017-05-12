@@ -706,4 +706,10 @@ $(document).ready(function ($) {
          $('#printable-form').submit();
     });
     
+    $(document).on('click','#applicantview',function(event){
+         event.preventDefault();
+         var applicantid =  $(this).data('applicantid');
+         $('#resumeinvite-form'+applicantid).submit();
+    });
+    
 });       

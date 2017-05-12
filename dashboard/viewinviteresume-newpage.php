@@ -116,8 +116,10 @@ if($ok == 1 ){
     <?php
 
 $isshortlisted = 0;
-   if(isset($_GET['applicantid'])){ $applicantid = $_GET['applicantid']; }
-    if(isset($_GET['userid'])){ $useridget = $_GET['userid']; }
+ //   if(isset($_GET['applicantid'])){ $applicantid = $_GET['applicantid']; }
+ //   if(isset($_GET['userid'])){ $useridget = $_GET['userid']; }
+    if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
+    if(isset($_POST['userid'])){ $useridget = $_POST['userid']; }
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
@@ -166,7 +168,7 @@ jQuery(document).ready(function ($) {
                                         <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title">*****&nbsp;*****</h3>
                                         <h5><?=$maxposition?></h5>
                                     </div>
                                     <div class="jumbotron">
@@ -557,8 +559,7 @@ jQuery(document).ready(function ($) {
                                             <thead>
                                                 <tr>
                                                     <th class="col-md-2">Position</th>
-                                                    <th class="col-md-2 text-right">Company</th>                                                   
-                                                    <th class="col-md-2 text-right">Posted By</th>
+                                                    <th class="col-md-2 text-right">Company</th>
                                                     <th class="col-md-2 text-right">Max Salary</th>
                                                     <th class="col-md-2 text-right">Date Added</th>
                                                     <th class="text-right">Actions</th>
@@ -587,10 +588,8 @@ jQuery(document).ready(function ($) {
                                                 $id = $row['id'];
                                                 //$userid = $row['userid'];
                                                 $jobtitle = $row['jobtitle'];
-                                                $companyname = $row['companyname'];
                                                 $company= $row['company'];
                                                 $maxsalary= $row['maxsalary'];
-                                                $companyname= $row['companyname'];
                                                 $dateadded= $row['dateadded'];
                                                 $dadd = explode("-", $dateadded);
                                                 $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
@@ -611,7 +610,6 @@ jQuery(document).ready(function ($) {
                                                 <tr id="line<?=$id?>">                                                   
                                                     <td><span class="h4weight"><?=$jobtitle?></span></td>
                                                     <td class="text-right"><?=$company?></td>
-                                                    <td class="text-right"><?=$companyname?></td>
                                                     <td class="text-right"><?=$maxsalary?></td>
                                                     <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
                                                     
