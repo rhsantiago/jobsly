@@ -19,14 +19,13 @@ $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
  $database = new Database();   
 }
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobads.userid=:userid
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
-                                            and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.userid=additionalinformation.userid                                         
                                             and jobapplications.userid=useraccounts.id
                                             and useraccounts.isverified = 1
                                             and jobapplications.isshortlisted=1 order by dateapplied desc limit '.$next.',10');
@@ -45,10 +44,21 @@ include "serverlogconfig.php";
                                                         $applicantid = $row2['userid'];
                                                         $fname = $row2['fname'];
                                                         $lname = $row2['lname'];
-                                                        $esalary = $row2['esalary'];
-                                                        $position = $row2['position'];
+                                                        $esalary = $row2['esalary'];                                              
                                                         $specialization = $row2['specialization'];
                                                         $isshortlisted = $row2['isshortlisted'];
+                                                        
+                                                        $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                        $database->bind(':userid', $applicantid);
+
+                                                        try{
+                                                            $row3 = $database->single(); 
+                                                        }catch (PDOException $e) {
+                                                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                            die("");
+                                                        }
+                                                            $position = $row3['position'];
 
                                                ?>
 
@@ -70,10 +80,10 @@ include "serverlogconfig.php";
                                                                 -->       
                                                                 </li>
                                                                 <li>                                                        
-                                                                 <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple"><i class="fa fa-undo fa-2x"></i></button>   
+                                                                 <button type="button" id="shortlistbutton" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="remove" rel="tooltip" title="Remove from shortlist" class=" btn btn-danger btn-simple btn-xs"><i class="fa fa-undo fa-2x"></i></button>   
                                                                 </li>
                                                                  <li>
-                                                                    <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-page="short" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
+                                                                    <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-page="short" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times fa-2x"></i></a>
 
                                                                 </li>   
                                                                 </ul>        

@@ -33,8 +33,9 @@ $database = new Database();
 	<script src="../jobsly/dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../jobsly/dashboard/js/material.min.js"></script>
 	<script src="../jobsly/dashboard/js/material-kit.js" type="text/javascript"></script>
+    <!--
     <script src="../jobsly/dashboard/js/jobseeker-main.js" type="text/javascript"></script>
-
+    -->
 
 </head>
 
@@ -70,7 +71,39 @@ $database = new Database();
            
         		<a class="navbar-brand logo" >jobsly</a>
         	</div>
-
+            <div class="collapse navbar-collapse" id="navigation-example">
+        		
+    				<ul class="nav navbar-nav navbar-right">                      
+                        <!--
+		            <li>
+		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+                    -->
+        		</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="login.php" id="home"><i class="material-icons">done</i>Signin</a></li>
+                    
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">create</i>&nbsp;Signup<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="signup.php?target=jobseeker">Job seeker</a></li>
+						            <li><a href="signup.php?target=employer">Employers</a></li>
+                         </ul> 
+                    </li>                
+                </ul>
+        	</div>
         	
     	</div>
     </nav>
@@ -270,15 +303,15 @@ body {
           
                 <section class="blog-post">
                   <div class="panel panel-default" >
-                      <form method="post" id="search-form" name="search-form"> 
-                          <input type="hidden" id="userid" name="userid" value="<?=$userid?>">      
+                      <form method="post" action="latestjobs.php"  id="search-form"> 
+                       
                        <div class="panel-body" >
                            <div class="col-md-12">
                                
                              <div id="searchdiv" class="form-group label-floating" >
                                   <label class="control-label">Search</label>
                                  
-                                  <input type="text" id="search" class="form-control searchform">  
+                                  <input type="text" id="search" name="search" class="form-control searchform">  
                              </div>
                             </div>
                             
@@ -357,7 +390,12 @@ body {
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive" width="100%">
+                                   <!--  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive" width="100%">  -->
+                                        <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>
@@ -493,7 +531,11 @@ body {
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive">
+                                      <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>
@@ -627,7 +669,11 @@ body {
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive">
+                                      <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>

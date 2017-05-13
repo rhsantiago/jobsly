@@ -137,8 +137,8 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$specarray[$specialization]?></td>       
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
-                                                    <td class="td-actions text-right">
-                                                <ul class="list-inline">
+                                                    <td class="td-actions" align="right">
+                                                <ul class="list-inline" >
                                                         <li >
                                                             <form method="post" id="viewresume-form" name="viewresume-form">                    
                                                                 <input type="hidden" id="mode" name="view" value="view">
@@ -154,17 +154,17 @@ if(isset($_SESSION['user'])){
                                                             <?php
                                                                 if($isshortlisted==0){
                                                             ?>      
-                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple"><i class="fa fa-plus fa-2x"></i></button>                                                          
+                                                            <button id="shortlistbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-mode="add" rel="tooltip" title="Add to shortlist" class="btn btn-success btn-simple btn-xs"><i class="fa fa-plus fa-2x"></i></button>                                                          
                                                             <?php
                                                                 }else{
                                                             ?>        
-                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple'><i class='fa fa-check fa-2x'></i></button>
+                                                                 <button type='button' rel='tooltip' title='Already in shortlist' class='btn btn-success btn-simple btn-xs'><i class='fa fa-check fa-2x'></i></button>
                                                             <?php
                                                                 }
                                                             ?>
                                                         </li>
                                                        <li>
-                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple"><i class="fa fa-times fa-2x"></i></a>
+                                                            <a href="#rejectappmodal" id="rejectbutton" type="button" data-applicantid="<?=$applicantid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-mode="reject" data-target="#rejectapp-modal" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times fa-2x"></i></a>
                                                        
                                                         </li>
                                                         </ul>

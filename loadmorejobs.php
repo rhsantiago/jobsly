@@ -101,7 +101,11 @@ if(!empty($rows)){
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive">
+                                    <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>
@@ -235,7 +239,11 @@ if(!empty($rows)){
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive">
+                                     <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>
@@ -367,7 +375,11 @@ if(!empty($rows)){
                                      <?php
                                         if(!empty($header)){
                                      ?>  
-                                     <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive">
+                                    <div class="row">
+                                                <div class="col-md-12">                                                  
+                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                </div>
+                                              </div>
                                       <?php
                                         }
                                      ?>
