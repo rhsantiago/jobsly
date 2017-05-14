@@ -159,7 +159,9 @@ if($ok == 1 ){
                         </ul>       
                     </div>    
                 </div>
-                
+                <?php
+                  if(!empty($profsum)){        
+                ?>          
                 <!--Professional Summary-->
                 <div class="col-md-12">
                      <hr class="nopadmargin h4weight">
@@ -177,6 +179,9 @@ if($ok == 1 ){
                     </div>
                     
                 </div>
+                <?php
+                  }
+                ?>    
                 <!--work exp-->
                 <div class="col-md-12">
                      <hr class="nopadmargin">

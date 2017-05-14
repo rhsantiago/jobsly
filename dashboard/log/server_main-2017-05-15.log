@@ -1,0 +1,21 @@
+ERROR - 2017-05-15 00:02:08 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(100): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(236): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select id from jobads, useraccounts where jobads.userid=useraccounts.id and isac' at line 1
+ERROR - 2017-05-15 00:02:57 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(72): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(100): Database->resultset()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(236): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'select id from jobads, useraccounts where jobads.userid=useraccounts.id and joba' at line 1
+ERROR - 2017-05-15 01:01:37 - reggie@jobsly.net #0 C:\xampp\htdocs\jobsly\dashboard\Database.php(59): PDOStatement->execute()
+#1 C:\xampp\htdocs\jobsly\dashboard\Database.php(63): Database->execute()
+#2 C:\xampp\htdocs\jobsly\dashboard\admin-employerslist.php(124): Database->single()
+#3 C:\xampp\htdocs\jobsly\dashboard\admin-employers.php(236): include('C:\\xampp\\htdocs...')
+#4 {main} SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+INFO - 2017-05-15 01:31:02 - reggie1@gmail.com logged in
+INFO - 2017-05-15 01:33:03 - reggie1@gmail.com logged in
+INFO - 2017-05-15 01:33:21 - reggie1@gmail.com logged in
+INFO - 2017-05-15 01:34:05 - reggie1@gmail.com logged in
+INFO - 2017-05-15 01:35:02 - reggie1@gmail.com logged in
+INFO - 2017-05-15 01:36:45 - reggie1@gmail.com logged in

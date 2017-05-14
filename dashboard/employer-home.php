@@ -435,10 +435,10 @@ if($ok == 1 ){
                                 
                                 
                                 
-                               <div class="row-fluid">
+                               <div class="row">
                                    <div class="col-lg-12"> 
                             <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats leftmargin10" >
+                                    <div  class="card card-stats " ><!-- leftmargin10-->
                                         <div class="card-header cardmargin" data-background-color="purple">
                                             <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="aappsdiv"><?=$ajads?></span></a></h3>
                                         </div>
@@ -463,13 +463,13 @@ if($ok == 1 ){
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats rightmargin15">
+                                     <div  class="card card-stats "><!-- rightmargin15-->
                                         <div class="card-header cardmargin" data-background-color="orange">
                                             <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
                                         </div>
                                             <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
                                     </div>   
-						      </div>
+						      </div> 
                                    </div>
                             </div>
                             <div class="col-md-12">

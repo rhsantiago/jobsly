@@ -80,8 +80,10 @@ if(isset($_SESSION['user'])){
                                                 <tr>
                                                     <th class="col-md-2">Company Name</th>
                                                     <th class="col-md-2 text-right">Email</th>                                                   
-                                                    <th class="col-md-2 text-right">Signup Date</th>
-                                                    <th class="col-md-2 text-right">Status</th>
+                                                  <!--  <th class="col-md-2 text-right">Signup Date</th> -->
+                                                    <th class="col-md-2 text-center">Active</th>
+                                                    <th class="col-md-2 text-left">Inactive</th>
+                                                    <th class="col-md-2 ">Status</th>
                                                     <th class="text-right">Actions</th>
                                                 </tr>
                                             </thead>
@@ -93,7 +95,7 @@ if(isset($_SESSION['user'])){
                                                 $database->query('SELECT useraccounts.id,useraccounts.email, useraccounts.signupdate, useraccounts.isverified,companyinfo.companyname from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and companyinfo.companyname like :search and usertype=1 order by signupdate desc limit 0,10');
                                                 $database->bind(':search', $search);
                                             }else{
-                                                $database->query('SELECT useraccounts.id,email,companyinfo.companyname, signupdate,isverified from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and usertype=1 order by signupdate desc limit 0,10');   
+                                                $database->query('SELECT useraccounts.id,email,companyinfo.companyname, signupdate,isverified, (select count(jobads.id) from jobads, useraccounts where jobads.userid=useraccounts.id and jobads.isactive=1) as active from useraccounts,companyinfo where useraccounts.id=companyinfo.userid and usertype=1 order by signupdate desc limit 0,10');   
                                             }
                                             try{
                                                 $rows = $database->resultset();
@@ -107,6 +109,7 @@ if(isset($_SESSION['user'])){
                                                 $email = $row['email'];
                                                 $companyname = $row['companyname'];
                                                 $signupdate= $row['signupdate'];
+                                                
                                                 $dadd = explode("-", $signupdate);
                                                 $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0]; 
                                                 $isverified= $row['isverified'];
@@ -115,13 +118,27 @@ if(isset($_SESSION['user'])){
                                                 }else{
                                                     $isverified="<spam class='text-danger h4weight'>Inactive</span>";
                                                 }
+                                                
+                                                $database->query('select (select count(jobads.id) from jobads, useraccounts where jobads.userid=useraccounts.id and jobads.userid=:userid and jobads.isactive=1) as active, (select count(jobads.id) from jobads, useraccounts where jobads.userid=useraccounts.id and jobads.userid=:userid and jobads.isactive=0) as inactive from jobads');   
+                                                $database->bind(':userid', $id);
+                                                try{
+                                                    $row2 = $database->single();
+                                                }catch (PDOException $e) {
+                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                    die("");
+                                                }
+                                                $active= $row2['active'];
+                                                $inactive= $row2['inactive'];
                                        ?>
                                    
                                                 <tr id="line<?=$id?>">                                                   
                                                     <td><span class="h4weight"><?=$companyname?></span></td>
                                                     <td class="text-right"><?=$email?></td>
-                                                    <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td>
-                                                    <td class="text-right"><?=$isverified?></td>
+                                                  <!--  <td class="text-right"><?=$months[$dadd[1]-1]?>&nbsp;<?=$dadd[2]?>,&nbsp;<?=$dadd[0]?></td> -->
+                                                    <td class="text-center"><?=$active?></td>
+                                                    <td class="text-left"><?=$inactive?></td>
+                                                    <td class=""><?=$isverified?></td>
                                                     <td class="td-actions text-right">
                                                 <ul class="list-inline">
                                                         <li >

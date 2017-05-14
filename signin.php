@@ -23,7 +23,7 @@ if(is_null($success)){
 //if($success == $email && $isverified == 0){
 //    echo 'unverified';
 //}
-if($success == $email && $isverified == 0 && $usertype == 1){
+if(strtolower($success) == strtolower($email) && $isverified == 0 && $usertype == 1){
    /* $database->query('SELECT companyname,companyaddress from companyinfo where userid=:userid');
     $database->bind(':userid', $id);
     $row = $database->single();
@@ -43,7 +43,7 @@ if($success == $email && $isverified == 0 && $usertype == 1){
   //  }
 }
 
-if($success == $email && $isverified == 1 && $usertype == 1){
+if(strtolower($success) == strtolower($email) && $isverified == 1 && $usertype == 1){
      session_start();
         if(!isset($_SESSION['user']))
             $_SESSION['user'] = $success;
@@ -64,7 +64,7 @@ if($success == $email && $isverified == 1 && $usertype == 1){
         
 }
 
-if($success == $email && $isverified == 1 && $usertype == 2){
+if(strtolower($success) == strtolower($email) && $isverified == 1 && $usertype == 2){
     session_start();
     if(!isset($_SESSION['user']))
         $_SESSION['user'] = $success;
@@ -77,7 +77,7 @@ if($success == $email && $isverified == 1 && $usertype == 2){
     echo 'success';   
 }
 
-if($success == $email && $isverified == 0 && $usertype == 2){
+if(strtolower($success) == strtolower($email) && $isverified == 0 && $usertype == 2){
     session_start();
     if(!isset($_SESSION['user']))
         $_SESSION['user'] = $success;
