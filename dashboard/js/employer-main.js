@@ -712,4 +712,12 @@ $(document).ready(function ($) {
          $('#resumeinvite-form'+applicantid).submit();
     });
     
+    $(document).on('click','#resumeview',function(event){
+         event.preventDefault();
+         var applicantid =  $(this).data('applicantid');
+         $('#viewresume-form'+applicantid).submit();
+         $('#nappsdiv').html(napps);
+         $("#newbadgediv" + applicantid).html('');
+    });
+    
 });       

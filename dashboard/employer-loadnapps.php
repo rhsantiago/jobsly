@@ -141,19 +141,19 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td>                                                   
                                                     <td>Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
-                                                        <form method="post" id="viewresume-form" name="viewresume-form">                    
+                                                      <!--  <form method="post" id="viewresume-form" name="viewresume-form">                    
                                                             <input type="hidden" id="mode" name="view" value="view">
                                                             <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
                                                             <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
-                                                        </form> 
+                                                        </form> -->
                                                         <ul class="list-inline">
                                                         <li >
-                                                            <form method="post" id="viewresume-form" name="viewresume-form">                    
-                                                                <input type="hidden" id="mode" name="view" value="view">
-                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                            <form method="post" action="viewresume-newpage.php" id="viewresume-form<?=$applicantid?>" name="viewresume-form<?=$applicantid?>" target="_blank">                    
+                                                                <input type="hidden" id="mode" name="mode" value="view">
+                                                                <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
                                                                 <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
                                                             </form>
-                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                            <a target="_blank" href="#resumeview" data-applicantid="<?=$applicantid?>" id="resumeview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
                                                             <!-- ajax enabled
                                                             <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
                                                              -->   

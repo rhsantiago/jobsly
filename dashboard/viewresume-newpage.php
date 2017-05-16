@@ -15,8 +15,8 @@ if(isset($_SESSION['user'])){
 }
 
 if($ok == 1 ){
-    if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; } 
-    if(isset($_GET['page'])){ $page = $_GET['page']; } 
+    if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; } 
+    if(isset($_POST['page'])){ $page = $_POST['page']; } 
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";    
@@ -136,10 +136,10 @@ if(isset($_SESSION['user'])){
    $password = $_SESSION['password'];
    $userid = $_SESSION['userid'];
   
-   if(isset($_GET['applicantid'])){ $applicantid = $_GET['applicantid']; }
-   if(isset($_GET['mode'])){ $mode = $_GET['mode']; } 
-   if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; }
-   if(isset($_GET['view'])){ $view = $_GET['view']; }  
+   if(isset($_POST['applicantid'])){ $applicantid = $_POST['applicantid']; }
+   if(isset($_POST['mode'])){ $mode = $_POST['mode']; } 
+   if(isset($_POST['jobid'])){ $jobid = $_POST['jobid']; }
+   if(isset($_POST['view'])){ $view = $_POST['view']; }  
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";

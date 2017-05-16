@@ -330,7 +330,7 @@ if($ok == 1 ){
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
+                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" title="Edit"><i class="material-icons" >edit</i> Edit</a>
                                                        
                                                 </div>
                                           </div> 
@@ -375,7 +375,7 @@ if($ok == 1 ){
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
+                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" title="Edit"><i class="material-icons" >edit</i> Edit</a>
                                                        
                                                 </div>
                                           </div> 

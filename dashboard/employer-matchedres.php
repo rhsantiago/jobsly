@@ -134,12 +134,12 @@ if(isset($_SESSION['user'])){
                                                             <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
                                                         -->
-                                                        <form method="post" id="viewresume-form" name="viewresume-form">                    
-                                                                <input type="hidden" id="mode" name="view" value="view">
-                                                                <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
+                                                        <form method="post" action="viewresume-newpage.php" id="viewresume-form<?=$applicantid?>" name="viewresume-form<?=$applicantid?>" target="_blank">                    
+                                                                <input type="hidden" id="mode" name="mode" value="view">
+                                                                <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
                                                                 <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
                                                             </form>
-                                                            <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>        
+                                                            <a target="_blank" href="#resumeview" data-applicantid="<?=$applicantid?>" id="resumeview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
                                                         </li>
                                                         <?php
                                                             if($invitecheck == 0){
