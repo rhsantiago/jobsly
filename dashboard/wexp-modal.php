@@ -273,7 +273,7 @@ jQuery(document).ready(function ($) {
                                                                                             }, 10);
                                                                                         }
                                                                                     },
-   cleaner:{
+ /*  cleaner:{
           notTime: 2400, // Time to display Notifications.
           action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
           newline: '<br>', // Summernote's default is to use '<p><br></p>'
@@ -284,7 +284,7 @@ jQuery(document).ready(function ($) {
           badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
           badAttributes: ['style', 'start'] // Remove attributes from remaining tags
     }
-    
+   */ 
     });
     
     $("#wexp-form-modal #startdate").val("<?=$startdateinput?>");

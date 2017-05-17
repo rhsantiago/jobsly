@@ -166,5 +166,12 @@ a:hover {
 	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="dashboard/js/material.min.js"></script>
     <script src="js/signin.js"></script>
+<script>
+$(document).ready(function() {
+     $('#email').focus();
+});      
+    
+</script>    
+    
 
 </html>

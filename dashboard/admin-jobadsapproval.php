@@ -79,7 +79,7 @@ if(isset($_SESSION['user'])){
                                 //$database->query('SELECT * from jobads where userid = :userid order by dateadded desc');
                                if(!empty($search)){
                                     $search='%'.$search.'%';
-                                    $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.jobtitle like :search and jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
+                                    $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where (jobads.jobtitle like :search or jobads.company like :search or companyinfo.companyname like :search) and jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');
                                     $database->bind(':search', $search);
                                 }else{ 
                                     $database->query('SELECT distinct jobads.id,jobads.jobtitle,jobads.company,jobads.specialization,jobads.plevel,jobads.jobtype,jobads.msalary, jobads.maxsalary,jobads.startappdate,jobads.endappdate,jobads.teaser, jobads.dateadded,jobads.isactive, companyinfo.logo from jobads,companyinfo where jobads.userid=companyinfo.userid and jobads.isactive=0 order by jobads.dateadded');

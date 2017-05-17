@@ -54,14 +54,9 @@ if($ok == 1 ){
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/employer-main.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
-    <script src="js/parsley.js"></script>
+   
 </head>
 
 <body class="landing-page">
@@ -296,7 +291,7 @@ if($ok == 1 ){
                                 
                                 
                                 
-                               <div class="row-fluid">
+                               <div class="row">
                                    <div class="col-lg-12"> 
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats" >
@@ -324,7 +319,7 @@ if($ok == 1 ){
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats rightmargin15">
+                                     <div  class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="orange">
                                             <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totjseeker?></span></a></h3>
                                         </div>
@@ -432,9 +427,24 @@ function closeNav() {
     isClosed = true;
 }
 
-      if(window.screen.width > 768){    
-        openNav();
-      }
+$(document).ready(function() {
+    // Optimalisation: Store the references outside the event handler:
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        if (windowsize >= 768) {
+          openNav();
+        }
+        if(windowsize < 768){
+            closeNav();
+        }
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+});        
 </script>
 
 </html>

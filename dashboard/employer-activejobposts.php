@@ -141,7 +141,7 @@ if(isset($_SESSION['user'])){
                                      
                                         <div class="blog-post-content">
                                             
-                                            <div class="row-fluid">
+                                            <div class="row">
                                                 <div class="col-md-6 jobad-titletopmargin">
                                                         <!-- no ajax
                                                         <a target="_blank" href="employer-jobdetails.php?jobid=<?=$id?>" class="nodecor"><h2 class="text-info  jobad-title"><?=$jobtitle?></h2></a>
@@ -159,7 +159,7 @@ if(isset($_SESSION['user'])){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row-fluid">
+                                            <div class="row">
                                                 <div class="col-md-12" align="center">
                                                     <ul class="list-inline">
                                                         <li>                                                            

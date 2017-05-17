@@ -361,10 +361,10 @@ if($ok == 1 ){
                                 
                                 
                                 
-                               <div class="row-fluid">
+                               <div class="row">
                                    <div class="col-lg-12"> 
                             <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats leftmargin10" >
+                                    <div  class="card card-stats" >
                                         <div class="card-header cardmargin" data-background-color="purple">
                                             <h3 class="center marginjobdetaillink"><a href="main.php?ajax=aapp" class="text-primary h4weight pull-right"><span id="aappsdiv"><?=$totaapps?></span></a></h3>
                                         </div>
@@ -389,7 +389,7 @@ if($ok == 1 ){
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats rightmargin15">
+                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="orange">
                                             <h3 class="center marginjobdetaillink"><a href="main.php?ajax=ajposts"  class="text-success h4weight pull-right" ><span id="shortlistdiv">0</span></a></h3>
                                         </div>
@@ -761,10 +761,24 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     isClosed = true;
 }
-  
-    if(window.screen.width > 768){    
-        openNav();
+$(document).ready(function() {
+    // Optimalisation: Store the references outside the event handler:
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        if (windowsize >= 768) {
+          openNav();
+        }
+        if(windowsize < 768){
+            closeNav();
+        }
     }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+});        
 </script>
 
 

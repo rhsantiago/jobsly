@@ -301,7 +301,24 @@ function closeNav() {
     isClosed = true;
 }
         
-      openNav();
+$(document).ready(function() {
+    // Optimalisation: Store the references outside the event handler:
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        if (windowsize >= 768) {
+          openNav();
+        }
+        if(windowsize < 768){
+            closeNav();
+        }
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth);
+});             
 </script>
 
 </html>
