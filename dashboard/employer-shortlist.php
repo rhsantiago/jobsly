@@ -90,13 +90,12 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted, additionalinformation.specialization from  personalinformation, jobapplications, additionalinformation,jobads where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
-                                            and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.userid=additionalinformation.userid                                      
                                             and jobapplications.isshortlisted=1');
                                             $database->bind(':jobid', $jobid);                                             
                                             try{
@@ -111,9 +110,20 @@ if(isset($_SESSION['user'])){
                                                 $fname = $row2['fname'];
                                                 $lname = $row2['lname'];
                                                 $esalary = $row2['esalary'];
-                                                $position = $row2['position'];
+                                               
                                                 $specialization = $row2['specialization'];
                                                 $isshortlisted = $row2['isshortlisted'];
+                                                
+                                                 $database->query('select distinct position from workexperience,jobapplications where workexperience.userid = :userid order by startdate desc limit 0,1');
+                                                 $database->bind(':userid', $applicantid);
+                                                 try{
+                                                    $row3 = $database->single();
+                                                 }catch (PDOException $e) {
+                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                    die("");
+                                                 } 
+                                                  $position = $row3['position'];
                                        ?>
                                    
                                                 <tr>
@@ -128,15 +138,20 @@ if(isset($_SESSION['user'])){
                                                     <td><?=$position?></td>                                                   
                                                     <td class="text-right">Php <?=$esalary?></td>
                                                     <td class="td-actions text-right">
-                                                       
+                                                        <form method="post" action="viewresume-newpage.php" id="viewresume-form<?=$applicantid?>" name="viewresume-form<?=$applicantid?>" target="_blank">                    
+                                                                <input type="hidden" id="mode" name="mode" value="view">
+                                                                <input type="hidden" id="jobid" name="jobid" value="<?=$jobid?>">
+                                                                <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
+                                                            </form>
+                                                            <a target="_blank" href="#resumeview" data-applicantid="<?=$applicantid?>" id="resumeview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
+                                                        <!--
                                                         <form method="post" id="viewresume-form" name="viewresume-form">                    
                                                                 <input type="hidden" id="mode" name="view" value="view">
                                                                 <input type="hidden" id="jobid" name="view" value="<?=$jobid?>">
                                                                 <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">   
                                                             </form>
                                                             <a target="_blank" href="viewresume-newpage.php?applicantid=<?=$applicantid?>&jobid=<?=$jobid?>" rel="tooltip" id="applicantview" title="View Profile" ><i class="fa fa-user fa-2x text-info"></i></a>
-                                                        
-                                                        <!--
+                                                       
                                                         <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user text-info"></i>
                                                         </a>       

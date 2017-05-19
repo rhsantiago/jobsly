@@ -160,7 +160,7 @@ if($ok == 1 ){
                     </div>    
                 </div>
                 <?php
-                  if(!empty($profsum)){        
+                  if(!empty($profsum) && strlen($profsum)>50){        
                 ?>          
                 <!--Professional Summary-->
                 <div class="col-md-12">
@@ -181,6 +181,16 @@ if($ok == 1 ){
                 </div>
                 <?php
                   }
+                    $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
+                     $database->bind(':userid', $useridparam);  
+                     try{
+                        $rows = $database->resultset();
+                     }catch (PDOException $e) {
+                        $msg = $e->getTraceAsString()." ".$e->getMessage();
+                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                        die("");
+                     }
+                if($database->rowCount()>0){
                 ?>    
                 <!--work exp-->
                 <div class="col-md-12">
@@ -192,15 +202,7 @@ if($ok == 1 ){
                     </div>
                 </div>
                 <?php
-                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
-                     $database->bind(':userid', $useridparam);  
-                     try{
-                        $rows = $database->resultset();
-                     }catch (PDOException $e) {
-                        $msg = $e->getTraceAsString()." ".$e->getMessage();
-                        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                        die("");
-                     } 
+                     
                      
                      $first= true;
                      $offset = '';
@@ -246,6 +248,7 @@ if($ok == 1 ){
                 <?php
                         $first = false;     
                      }
+}
                 ?>         
                 
                 <?php

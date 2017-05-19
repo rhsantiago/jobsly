@@ -95,7 +95,7 @@ a:hover {
 										<input type="password" id="password" placeholder="Password..." class="form-control" />
 									</div>
                                     <div class="errormsg">
-                  <div id="unverified" class="loginerror hidden">Unverified account. Please check you email for the verification link</div>
+                  <div id="unverified" class="loginerror hidden">Unverified account. Please check your email for the verification link</div>
                   <div id="notfound" class="loginerror hidden">Email not found or password does not match</div>
               </div>
 

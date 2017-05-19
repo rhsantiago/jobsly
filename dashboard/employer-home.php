@@ -442,7 +442,7 @@ if($ok == 1 ){
                                         <div class="card-header cardmargin" data-background-color="purple">
                                             <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="aappsdiv"><?=$ajads?></span></a></h3>
                                         </div>
-                                      <a href="#ajposts" id="ajposts" class="text-primary h4weight pull-left  marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Job Ads</a>
+                                      <a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Job Ads</a>
                                         
                                     </div>
 						      </div>

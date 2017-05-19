@@ -278,7 +278,7 @@ jQuery(document).ready(function ($) {
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];                        
                                             
-                     if(!empty($profsum)){                       
+                     if(!empty($profsum) && strlen($profsum)>50){              
               ?>
                 <section class="blog-post">
                                     <div class="panel panel-default">

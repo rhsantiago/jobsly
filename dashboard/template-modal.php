@@ -3,12 +3,28 @@ if (session_status() == PHP_SESSION_NONE) {
         session_start();
         include 'Database.php';
     }    
-if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+if(isset($_POST['userid'])){ $useridpost = $_POST['userid']; }
 if(isset($_POST['templateid'])){ $templateid = $_POST['templateid']; }
 //if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 
 if(isset($_SESSION['user'])){
-
+$userid = $_SESSION['userid'];
+date_default_timezone_set('Asia/Manila');
+$logtimestamp = date("Y-m-d H:i:s");
+include "serverlogconfig.php";
+$database = new Database();
+    
+$database->query('SELECT jobtitle from jobtemplates where userid = :userid and id = :templateid');
+$database->bind(':userid', $userid);   
+$database->bind(':templateid', $templateid); 
+   try{
+       $row = $database->single();
+   }catch (PDOException $e) {
+       $msg = $e->getTraceAsString()." ".$e->getMessage();
+       $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+       die("");
+   }        
+   $jobtitle = $row['jobtitle'];
 }else{
     header("Location: logout.php");
 }
@@ -36,7 +52,7 @@ if(isset($_SESSION['user'])){
                                                                
                                                                 <div class="col-md-12 col-xs-12 text-center">
                                                                 
-                                                                   <h3 ><label class="text-danger">Are you sure you want to delete this Job Ad Template <?=$templateid?>?</label></h3>
+                                                                   <h3 ><label class="text-danger">Are you sure you want to delete the Job Ad Template</label> <br><label class=""><?=$jobtitle?>?</label></h3>
                                                                     
 
                                                                 </div>

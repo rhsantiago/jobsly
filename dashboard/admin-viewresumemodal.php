@@ -500,7 +500,7 @@ jQuery(document).ready(function ($) {
 
               <?php
                              $database->query('SELECT othersawards FROM educationandtraining where userid = :userid');
-                             $database->bind(':userid', $userid);  
+                             $database->bind(':userid', $applicantid);  
                              try{ 
                                  $row = $database->single();
                              }catch (PDOException $e) {
