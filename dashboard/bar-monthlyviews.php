@@ -26,7 +26,7 @@
    <script type="text/javascript">
 
 			//Width and height
-			var w = 500;
+			var w = 400;
 			var h = 200;
 			var barPadding = 1;
 			var padding = 30;
@@ -38,7 +38,7 @@
             var dataset2 = [ 'Jan', 'Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
        
             var xScale = d3.time.scale().domain([new Date(2013, 0, 1), new Date(2013, 11, 31)]).range([0, w]);
-            var x = d3.scale.linear().domain([0, dataset2.length]).range([0, w]);
+         //   var x = d3.scale.linear().domain([0, dataset2.length]).range([0, w]);
            //Create scale functions
         /*
 			var xScale = d3.scale.linear()
@@ -54,7 +54,7 @@
 							  .scale(xScale)
 							  .orient("bottom")
 							  .ticks(dataset2.length)
-                                .tickFormat(d3.time.format("%b"));;
+                                .tickFormat(d3.time.format("%b"));
 
 			//Define Y axis
 			var yAxis = d3.svg.axis()
@@ -80,8 +80,8 @@
 			   .attr("y", function(d) {
 			   		return h - (d * 8)-10;
 			   })
-			   //.attr("width", w / dataset.length - barPadding)
-                .attr("width", 25) //width of each bar
+			     .attr("width", w / dataset.length - barPadding)
+              // .attr("width", 25) //width of each bar
 			   .attr("height", function(d) {
 			   		return (d * 8) +10;
 			   })
