@@ -21,12 +21,12 @@
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>    
         
 <script>
-    var data = [30,25,38,52,110];
+    var data = [30,25,38,52];
     var margin = {top: 20, right: 20, bottom: 40, left: 40},
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
-    var heightScale = d3.scale.linear()
+    var yScale = d3.scale.linear()
                     .domain([0,d3.max(data)])
                     .range([height,0]);
     
@@ -42,7 +42,7 @@
     var yaxis = d3.svg.axis()
                 .orient("left")
                 .ticks(5)              
-                .scale(heightScale);
+                .scale(yScale);
 
     var canvas = d3.select("body")
                 .append("svg")
@@ -56,12 +56,24 @@
                 .enter()
                     .append("rect")
                     .attr("height", function(d){return d;})
-                    .attr("width", 20)
+                    .attr("width", 30)
                     .attr("fill", "teal")                    
-                    .attr("x", function(d,i){ return i * 22;})
+                    .attr("x", function(d,i){ return i * 40;})
                     .attr("y", function(d) {
                                     return height - d;  //Height minus data value
                                 });
+    
+                    canvas.selectAll("text")
+                     .data(newScaledData)
+                    .enter()
+                        .append("text")
+                        .attr("x", function(d,i){ return i * 41;})
+                        .attr("y", function(d) {
+                                    return height - d + 15;  //Height minus data value
+                                })
+                    .attr("fill", "white")
+                    .text(function(d,i){ return data[i];});
+
    
     canvas.append("g")
             .attr("transform", "translate(-2,0)")      
