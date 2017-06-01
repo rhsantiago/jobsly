@@ -21,7 +21,7 @@
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>    
         
 <script>
-    var data = [30,25,38,52];
+    var data = [30,25,38,52,100];
     var margin = {top: 20, right: 20, bottom: 40, left: 40},
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
@@ -55,30 +55,36 @@
                 .data(newScaledData)
                 .enter()
                     .append("rect")
-                    .attr("height", function(d){return d;})
+                    .attr("height", 0)
                     .attr("width", 30)
-                    .attr("fill", "teal")                    
+                    .attr("fill", "teal")
+                    .attr("y", function(d) { return height - .5; })                    
+                    .transition().duration(1000)
+                    .ease("linear")                    
+                    .attr("fill", "teal")
                     .attr("x", function(d,i){ return i * 40;})
                     .attr("y", function(d) {
-                                    return height - d;  //Height minus data value
-                                });
-    
-                    canvas.selectAll("text")
+                                    return height- d;  //Height minus data value
+                                })
+                    .attr("height", function(d){return d;});
+                
+    canvas.selectAll("text")
                      .data(newScaledData)
-                    .enter()
+                     .enter()
                         .append("text")
-                        .attr("x", function(d,i){ return i * 41;})
+                        .attr("x", function(d,i){ return i * 42;})
                         .attr("y", function(d) {
                                     return height - d + 15;  //Height minus data value
                                 })
                     .attr("fill", "white")
+                    .attr("font-size",12)
                     .text(function(d,i){ return data[i];});
 
    
     canvas.append("g")
             .attr("transform", "translate(-2,0)")      
             .attr("font-size",8)
-              .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
+            .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
             .call(yaxis);
        
 </script>
