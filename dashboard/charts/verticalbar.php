@@ -26,6 +26,13 @@
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
+    var mindate = new Date(2012,0,1),
+            maxdate = new Date(2012,0,31);
+    
+    var xScale = d3.time.scale()
+	          .domain([mindate, maxdate])    // values between for month of january
+		      .range([0, width]);
+    
     var yScale = d3.scale.linear()
                     .domain([0,d3.max(data)])
                     .range([height,0]);
@@ -43,11 +50,16 @@
                 .orient("left")
                 .ticks(5)              
                 .scale(yScale);
+    
+    var xaxis = d3.svg.axis()
+            .orient("bottom")
+            .ticks(5)   
+            .scale(xScale);
 
     var canvas = d3.select("body")
                 .append("svg")
                 .attr("width", width)
-                .attr("height", height)
+                .attr("height", height+margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
@@ -58,9 +70,9 @@
                     .attr("height", 0)
                     .attr("width", 30)
                     .attr("fill", "teal")
-                    .attr("y", function(d) { return height - .5; })                    
+                    .attr("y", function(d) { return height - .5; })              
                     .transition().duration(1000)
-                    .ease("linear")                    
+                    .ease("linear")
                     .attr("fill", "teal")
                     .attr("x", function(d,i){ return i * 40;})
                     .attr("y", function(d) {
@@ -82,11 +94,17 @@
 
    
     canvas.append("g")
-            .attr("transform", "translate(-2,0)")      
+            .attr("transform", "translate(-2,0)")  
             .attr("font-size",8)
             .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
             .call(yaxis);
-       
+    
+    canvas.append("g")
+            .attr("transform", "translate(-2,"+height+")")      
+            .attr("font-size",8)
+            .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
+            .call(xaxis);
+   
 </script>
      </div>
 </section>
