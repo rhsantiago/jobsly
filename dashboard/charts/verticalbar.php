@@ -22,17 +22,18 @@
         
 <script>
     var data = [30,25,38,52,100];
+    var dates = ['Jan','Feb','Mar','Apr','May'];
     var margin = {top: 20, right: 20, bottom: 40, left: 40},
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
     var mindate = new Date(2012,0,1),
             maxdate = new Date(2012,0,31);
-    
+  /*  
     var xScale = d3.time.scale()
 	          .domain([mindate, maxdate])    // values between for month of january
-		      .range([0, width]);
-    
+		      .range([0, width-60]);
+  */    
     var yScale = d3.scale.linear()
                     .domain([0,d3.max(data)])
                     .range([height,0]);
@@ -50,12 +51,12 @@
                 .orient("left")
                 .ticks(5)              
                 .scale(yScale);
-    
+ /*   
     var xaxis = d3.svg.axis()
             .orient("bottom")
             .ticks(5)   
             .scale(xScale);
-
+*/
     var canvas = d3.select("body")
                 .append("svg")
                 .attr("width", width)
@@ -68,13 +69,13 @@
                 .enter()
                     .append("rect")
                     .attr("height", 0)
-                    .attr("width", 30)
+                    .attr("width", 40)
                     .attr("fill", "teal")
-                    .attr("y", function(d) { return height - .5; })              
-                    .transition().duration(1000)
+                    .attr("y", function(d) { return height - .5; })     
+                    .transition().duration(700)
                     .ease("linear")
                     .attr("fill", "teal")
-                    .attr("x", function(d,i){ return i * 40;})
+                    .attr("x", function(d,i){ return i * 44;})
                     .attr("y", function(d) {
                                     return height- d;  //Height minus data value
                                 })
@@ -84,13 +85,13 @@
                      .data(newScaledData)
                      .enter()
                         .append("text")
-                        .attr("x", function(d,i){ return i * 42;})
+                        .attr("x", function(d,i){ return i * 45;})
                         .attr("y", function(d) {
                                     return height - d + 15;  //Height minus data value
-                                })
+                                })            
                     .attr("fill", "white")
                     .attr("font-size",12)
-                    .text(function(d,i){ return data[i];});
+                    .text(function(d,i){ return dates[i];});
 
    
     canvas.append("g")
@@ -98,12 +99,13 @@
             .attr("font-size",8)
             .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
             .call(yaxis);
-    
+  /*  
     canvas.append("g")
             .attr("transform", "translate(-2,"+height+")")      
             .attr("font-size",8)
             .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
-            .call(xaxis);
+            .call(xaxis)
+    */
    
 </script>
      </div>
