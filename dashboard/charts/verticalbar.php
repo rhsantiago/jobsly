@@ -27,13 +27,18 @@
     width = 600 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
     
+    
     var mindate = new Date(2012,0,1),
             maxdate = new Date(2012,0,31);
-  /*  
+/*
     var xScale = d3.time.scale()
 	          .domain([mindate, maxdate])    // values between for month of january
 		      .range([0, width-60]);
-  */    
+*/   
+    var xScale = d3.scale.ordinal()
+	          .domain(dates)    // values between for month of january
+		      .rangeRoundBands([0, 44 * data.length]);
+    
     var yScale = d3.scale.linear()
                     .domain([0,d3.max(data)])
                     .range([height,0]);
@@ -49,14 +54,14 @@
     
     var yaxis = d3.svg.axis()
                 .orient("left")
-                .ticks(5)              
+                .ticks(data.length)              
                 .scale(yScale);
- /*   
+   
     var xaxis = d3.svg.axis()
             .orient("bottom")
-            .ticks(5)   
+            .ticks(dates.length)   
             .scale(xScale);
-*/
+
     var canvas = d3.select("body")
                 .append("svg")
                 .attr("width", width)
@@ -75,7 +80,7 @@
                     .transition().duration(700)
                     .ease("linear")
                     .attr("fill", "teal")
-                    .attr("x", function(d,i){ return i * 44;})
+                    .attr("x", function(d,i){ return i * 44;}) // bar spacing
                     .attr("y", function(d) {
                                     return height- d;  //Height minus data value
                                 })
@@ -91,7 +96,7 @@
                                 })            
                     .attr("fill", "white")
                     .attr("font-size",12)
-                    .text(function(d,i){ return dates[i];});
+                    .text(function(d,i){ return data[i];});
 
    
     canvas.append("g")
@@ -99,14 +104,14 @@
             .attr("font-size",8)
             .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
             .call(yaxis);
-  /*  
-    canvas.append("g")
-            .attr("transform", "translate(-2,"+height+")")      
-            .attr("font-size",8)
-            .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})
-            .call(xaxis)
-    */
    
+    canvas.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(-2,"+height+")")      
+            .attr("font-size",8)            
+            .style({ 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'})            
+            .call(xaxis)
+                 
 </script>
      </div>
 </section>
