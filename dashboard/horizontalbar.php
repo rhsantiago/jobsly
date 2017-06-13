@@ -16,16 +16,16 @@
  }
 
  </style>
-
-<svg class="chart"></svg>
+<svg id="horizontalbarchart" class="chart" width="100%" height="100%"  viewBox="0 0 550 300" preserveAspectRatio="xMidYMid meet"></svg>
+<!-- <svg class="chart"></svg> -->
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>    
         
 <script>
     var data = [30,25,52,85,70];
     var dates = ['Jan','Feb','Mar','Apr','May'];
     var margin = {top: 20, right: 20, bottom: 40, left: 40},
-    var width = 600 - margin.left - margin.right,
-   var  height = 300 - margin.top - margin.bottom;
+     width = 500 - margin.left - margin.right,
+     height = 300 - margin.top - margin.bottom;
     
     var yScale = d3.scale.ordinal()
 	          .domain(dates)    // values between for month of january
@@ -54,13 +54,13 @@
             .ticks(data.length)   
             .scale(xScale);
     
-    var canvas = d3.select("body")
+    var canvas = d3.select("#horizontalbarchart")
                 .append("svg")
                 .attr("width", width+50)
                 .attr("height", height)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
+   
      var bars = canvas.selectAll("rect")
                 .data(newScaledData)
                 .enter()

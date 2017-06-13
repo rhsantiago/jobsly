@@ -561,7 +561,14 @@ if($ok == 1 ){
                                     ?>
                                 </div>
                                 <div class="col-md-6">
-                                    
+                                    <?php
+                                        include "verticalbar.php";
+                                    ?>
+                                </div> 
+                                 <div class="col-md-12">
+                                    <?php
+                                        include "horizontalbar.php";
+                                    ?>
                                 </div> 
                             
 		                </div>

@@ -66,7 +66,7 @@
                     vis.append("rect")
                             .attr("width", "100%")
                             .attr("height", "100%")
-                            .attr("fill", "orange");
+                            .attr("fill", "gray");
                     
                     vis.append("svg:g")
                         .attr("class", "x axis")
@@ -96,7 +96,7 @@
                         .attr('fill', 'none');
                 }
                 InitChart();
-                var aspect = width / height,
+                var aspect = WIDTH / HEIGHT,
                     chart = d3.select('#visualisation');
                 d3.select(window)
                   .on("resize", function() {
