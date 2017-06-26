@@ -25,7 +25,7 @@ $database = new Database();
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
 
 	<!-- CSS Files -->
-    <link href="../jobsly/dashboard/css/bootstrap.min.css" rel="stylesheet" />
+  <!--  <link href="../jobsly/dashboard/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../jobsly/dashboard/css/material-kit.css" rel="stylesheet"/>
     <link href="../jobsly/dashboard/css/custom.css" rel="stylesheet"/>
     <link href="../jobsly/dashboard/css/media.css" rel="stylesheet"/>
@@ -33,6 +33,15 @@ $database = new Database();
 	<script src="../jobsly/dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../jobsly/dashboard/js/material.min.js"></script>
 	<script src="../jobsly/dashboard/js/material-kit.js" type="text/javascript"></script>
+-->    
+    <link href="dashboard/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="dashboard/css/material-kit.css" rel="stylesheet"/>
+    <link href="dashboard/css/custom.css" rel="stylesheet"/>
+    <link href="dashboard/css/media.css" rel="stylesheet"/>
+    <script src="dashboard/js/jquery.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/material.min.js"></script>
+	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
     <!--
     <script src="../jobsly/dashboard/js/jobseeker-main.js" type="text/javascript"></script>
     -->
@@ -671,7 +680,10 @@ body {
                                      ?>  
                                       <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                <!--  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">   
+                                                -->
+                                                    <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">   
+                        
                                                 </div>
                                               </div>
                                       <?php
@@ -696,7 +708,10 @@ body {
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
+                                                        <!--
                                                         <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                        -->
+                                                        <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   

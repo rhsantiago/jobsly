@@ -23,7 +23,7 @@ $database = new Database();
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
-
+ <!--
 	<link href="../jobsly/dashboard/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../jobsly/dashboard/css/material-kit.css" rel="stylesheet"/>
     <link href="../jobsly/dashboard/css/custom.css" rel="stylesheet"/>
@@ -33,6 +33,16 @@ $database = new Database();
 	<script src="../jobsly/dashboard/js/material.min.js"></script>
 	<script src="../jobsly/dashboard/js/material-kit.js" type="text/javascript"></script>
     <script src="../jobsly/dashboard/jobseeker-main.js" type="text/javascript"></script>
+  --> 
+    <link href="dashboard/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="dashboard/css/material-kit.css" rel="stylesheet"/>
+    <link href="dashboard/css/custom.css" rel="stylesheet"/>
+    <link href="dashboard/css/media.css" rel="stylesheet"/>
+    <script src="dashboard/js/jquery.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/material.min.js"></script>
+	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
+    <script src="dashboard/jobseeker-main.js" type="text/javascript"></script>
 
 </head>
 
@@ -208,7 +218,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                      ?>    
                                      <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$header?>"  class="img-responsive fullwidth">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$header?>"  class="img-responsive fullwidth">                                         
                                                 </div>
                                       </div>
                                      <?php
@@ -249,7 +259,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="../jobsly/dashboard/<?=$logo?>" width="120" height="120" class="img-responsive">
+                                                        <img src="dashboard/<?=$logo?>" width="120" height="120" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    
@@ -423,7 +433,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="../jobsly/dashboard/<?=$logo?>" width="120" height="120" class="img-responsive">
+                                                        <img src="dashboard/<?=$logo?>" width="120" height="120" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    

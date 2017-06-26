@@ -1,4 +1,7 @@
 <?php
+$email='';
+$usertype='';
+$companyname='';
 if(isset($_POST['email'])){ 
     $email = $_POST['email']; 
 }
@@ -18,8 +21,9 @@ $verify = $row['email'];
 if($verify){
   echo 'emailtaken';  
 }else{
-    
-    $verifyhash = '222';
+    $verifyhash = hash("sha256",$password.date("YmdHis"));
+    $password = hash("sha256", $password);
+   
     date_default_timezone_set('Asia/Manila');
     $signupdate = date("Y-m-d");
     if($usertype == 'jobseeker'){
@@ -31,7 +35,7 @@ if($verify){
     $database->query(' INSERT INTO useraccounts (id, email, password, usertype,companyname, verifyhash, signupdate) VALUES (NULL, :email, :password, :usertype, :companyname, :verifyhash, :signupdate)');
     $database->bind(':companyname', $companyname);
     $database->bind(':email', $email);
-    $database->bind(':password', $password);
+    $database->bind(':password',  $password);
     $database->bind(':usertype', $usertype);
     $database->bind(':verifyhash', $verifyhash);
     $database->bind(':signupdate', $signupdate);
