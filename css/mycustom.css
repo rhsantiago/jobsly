@@ -6,7 +6,8 @@
 
 
 .navbar-header .logo{ 
-  color: #E6E6FA !important;
+ /* color: #E6E6FA !important; */
+    color: #fff !important;
   font-family: "Oleo Script", cursive !important;
   font-size: 38px;
   text-transform: lowercase; 
@@ -18,7 +19,8 @@
 
 .navbar-color {
    position: fixed;
-    background-color: rgba(75, 183, 119, 0.7) !important;
+   /* background-color: rgba(75, 183, 119, 0.7) !important; */ 
+    background-color: #9c27b0 !important;
     margin-left: 0;
     padding-left: 0px;
     

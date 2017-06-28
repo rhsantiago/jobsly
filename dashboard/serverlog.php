@@ -8,8 +8,8 @@
         $logtimestamp = date("Y-m-d H:i:s");
         $error = $_GET['error'] ?? '';
         if($error==true){
-           // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         }else{
-           // $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
         }
 ?>

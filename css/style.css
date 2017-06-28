@@ -7,7 +7,8 @@ http://www.andreagalanti.it
 */
 
 .navbar-header .logo{ 
-  color: #E6E6FA !important;
+   /* color: #E6E6FA !important; */
+    color: #fff !important;
   font-family: "Oleo Script", cursive !important;
   font-size: 42px;
   text-transform: lowercase; 
@@ -20,7 +21,8 @@ http://www.andreagalanti.it
 
 #home.navbar-color{
    position: fixed;
-    background-color: rgba(75, 183, 119, 0.7) !important;
+   /* background-color: rgba(75, 183, 119, 0.7) !important; */ 
+    background-color: #9c27b0 !important;
     margin-left: 0;
     padding-left: 0px; 
 }
@@ -2287,7 +2289,8 @@ select[multiple].navbar-form .btn {
 }
 .navbar-default {
   /*background-color: #ecf0f1;*/
-    background-color: rgba(75, 183, 119, 0.7) !important;
+    /* background-color: rgba(75, 183, 119, 0.7) !important; */ 
+    background-color: #9c27b0 !important;
 }
 .navbar-default .navbar-brand {
   color: #34495e;

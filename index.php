@@ -150,7 +150,7 @@
 					
 					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
-					<li class="menuItem"><a href="#screen">Screenshot</a></li>
+					
 					<li class="menuItem"><a href="#screen" data-toggle="modal" data-target="#myModal">Login</a></li>
                     <li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Signup<strong class="caret"></strong></a>
@@ -190,11 +190,9 @@
 				
                 <div class="col-sm-6 wow fadeInRightBig featured"  data-animation-delay="200">   
                     <h3 class="section-heading featuredtitle">Featured Companies</h3>
-					<div class="sub-title lead3">Fully responsive, mobile-ready and made for the modern world.</div>
+					<div class="sub-title lead3"></div>
                     <p class="lead featuredtitle">
-						Still using that jobsite from 1999? jobsly is made "mobile-first" for the best possible UX.
-                        Whether on your laptop, desktop or smartphone, users will have the same beautiful interface.
-                        No clunky apps to download.
+						
                         
 					</p>
 					 
@@ -219,21 +217,20 @@
 			</div>
 			
 			<div class="row">
-			
-				<div class="col-sm-4 wow fadeInDown text-center">
-				  <img class="rotate" src="img/icon/like.svg" alt="Generic placeholder image">
-				  <h3>Social Media</h3>
-				  <p class="lead">Leverage the power of social media and engage more jobseekers. Post and share your job listing on your company's fb page. Be alerted by facebook chatbot messages on new applicants, job post statistics and more. </p>
-
-				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
+							
 				
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/gift-box.svg" alt="Generic placeholder image">
 				   <h3>Always Free</h3>
-				   <p class="lead">Never pay to post jobs again. Take advantage of our free tools and features not even fee-based job sites have. 
-                    Did we mention it's free?</p>
+				   <p class="lead">Never pay to post jobs again. Take advantage of our free tools and features not even fee-based job sites have. No resume limits. Did we mention it's free?</p>
 				   <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+				</div><!-- /.col-lg-4 -->
+                
+                <div class="col-sm-4  wow fadeInDown text-center">
+				  <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
+				  <h3>Premium Tools</h3>
+				  <p class="lead">Your Dashboard is an all-in-one place to create your resume, search for jobs, track applications and many more. Compare salaries, shortlist applicants and be alerted for updates on your applications. On the go? View the site on your mobile browser and get the same beautiful interface with all the features available. It's job matching for the modern world!</p>
+				 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
 				
 				<div class="col-sm-4 wow fadeInDown text-center">
@@ -247,13 +244,6 @@
 			</div><!-- /.row -->
 				
 			<div class="row tworow">
-			
-				<div class="col-sm-4  wow fadeInDown text-center">
-				  <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
-				  <h3>Premium Tools</h3>
-				  <p class="lead">Your Dashboard is an all-in-one place to create your resume. search for jobs, track applications and many more. Optional social media features such as facebook chatbot notifications are at your disposal. Our software engineers are always hard at work to bring you more. </p>
-				 <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-				</div><!-- /.col-lg-4 -->
 				
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/pencil.svg" alt="Generic placeholder image">
@@ -267,6 +257,13 @@
 				   <h3>Curated Content</h3>
 				 <p class="lead">We verify each company and each job posting. Applicants are also pre-screened for validity. Quality jobs for qualified applicants.  </p>                    
                     
+				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+				</div><!-- /.col-lg-4 -->
+                <div class="col-sm-4 wow fadeInDown text-center">
+				  <img class="rotate" src="img/icon/like.svg" alt="Generic placeholder image">
+				  <h3>Social Media</h3>
+				  <p class="lead">Coming soon! Leverage the power of social media and engage more jobseekers. Post and share your job listing on your company's fb page. Be alerted by facebook chatbot messages on new applicants, job post statistics and more. </p>
+
 				  <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
 				
@@ -301,7 +298,7 @@
                 </div>
 				
                 <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">   
-                    <h3 class="section-heading">Features</h3>
+                    <h3 class="section-heading">Work is Beautiful.</h3>
 					<div class="sub-title lead3">Fully responsive, mobile-ready and made for the modern world.</div>
                     <p class="lead">
 						Still using that jobsite from 1999? jobsly is made "mobile-first" for the best possible UX.
@@ -330,7 +327,7 @@
 			<div class="row">
 			<div class="col-md-6 col-md-offset-3 text-center white">
 				<h2>Get Live Updates</h2>
-				<p class="lead" style="margin-top:0">A special thanks to Death.</p>
+				<p class="lead" style="margin-top:0"></p>
 			 </div>
 			<div class="col-md-6 col-md-offset-3 text-center">
 				<div class="mockup-content">
@@ -354,20 +351,7 @@
 		</div>
 	</div>	
 	
-	
-	<!-- Banner Download -->
-	<div id="downloadlink" class="banner">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center wrap_title">
-				<h2>Download Free</h2>
-				<p class="lead" style="margin-top:0">Pay with a Tweet</p>
-				<p><a class="btn btn-embossed btn-primary view" role="button">Free Download</a></p> 
-			 </div>
-			</div>
-		</div>
-	</div>
-	
+
 	<!-- Contact -->
 	<div id="contact" class="content-section-a">
 		<div class="container">
@@ -375,7 +359,7 @@
 			
 			<div class="col-md-6 col-md-offset-3 text-center wrap_title">
 				<h2>Contact Us</h2>
-				<p class="lead" style="margin-top:0">A special thanks to Death.</p>
+				<p class="lead" style="margin-top:0"></p>
 			</div>
 			
 			<form role="form" action="" method="post" >
@@ -412,12 +396,13 @@
 				<div class="col-md-5 col-md-push-1 address">
 					<address>
 					<h3>Office Location</h3>
+                        <!--
 					<p class="lead"><a href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">The Pentagon<br>
 					Washington, DC 20301</a><br>
 					Phone: XXX-XXX-XXXX<br>
 					Fax: XXX-XXX-YYYY</p>
 					</address>
-
+                        -->
 					<h3>Social</h3>
 					<li class="social"> 
 					<a href="#"><i class="fa fa-facebook-square fa-size"> </i></a>
@@ -436,13 +421,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7">
+              <!--
             <h3 class="footer-title">Follow Me!</h3>
             <p>Vuoi ricevere news su altri template?<br/>
               Visita Andrea Galanti.it e vedrai tutte le news riguardanti nuovi Theme!<br/>
               Go to: <a  href="http://andreagalanti.it" target="_blank">andreagalanti.it</a>
             </p>
 			
-			<!-- LICENSE -->
+		
 			<a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
 		   property="dc:title">Flatfy Theme </a> by
 		   <a rel="dc:creator" href="http://www.andreagalanti.it"
@@ -453,19 +439,13 @@
 		   Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
 		   
               </BR>
+              -->
           </div> <!-- /col-xs-7 -->
 
           <div class="col-md-5">
             <div class="footer-banner">
-              <h3 class="footer-title">Flatfy Theme</h3>
-              <ul>
-                <li>12 Column Grid Bootstrap</li>
-                <li>Form Contact</li>
-                <li>Drag Gallery</li>
-                <li>Full Responsive</li>
-                <li>Lorem Ipsum</li>
-              </ul>
-              Go to: <a href="http://andreagalanti.it/flatfy" target="_blank">andreagalanti.it/flatfy</a>
+              <h3 class="footer-title">jobsly</h3>
+            
             </div>
           </div>
         </div>
