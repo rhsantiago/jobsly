@@ -92,8 +92,8 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, jobapplications.dateapplied, jobapplications.isnew, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
-                                            jobads.id=:jobid 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, jobapplications.dateapplied, jobapplications.isnew, additionalinformation.specialization, (select  position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
+                                            jobads.id=:jobid                                          
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
@@ -136,7 +136,7 @@ if(isset($_SESSION['user'])){
                                                             </li>
                                                         </ul>
                                                     </td>
-                                                    <td><?=$specarray[$specialization]?></td>       
+                                                    <td><?=$specarray[$specialization]?></td>
                                                     <td><?=$position?></td> 
                                                     <td><?=$months[$dapp[1]-1]?>&nbsp;<?=$dapp[2]?></td>
                                                     <td class="text-right">Php <?=$esalary?></td>

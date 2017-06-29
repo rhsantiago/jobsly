@@ -480,7 +480,7 @@ if(isset($_SESSION['user'])){
                                             <tbody id="activeappstablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
+                                            $database->query('SELECT distinct jobapplications.id,  jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isshortlisted,jobapplications.isnew, additionalinformation.specialization from personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
@@ -506,7 +506,7 @@ if(isset($_SESSION['user'])){
                                                 $isshortlisted = $row2['isshortlisted'];
                                                 $isnew = $row2['isnew'];
                                                 
-                                                $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                $database->query('select position,startdate from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
                                                 $database->bind(':userid', $applicantid);
                                        
                                                 try{

@@ -90,7 +90,7 @@ if(isset($_SESSION['user'])){
                                             <tbody id="nappstablebody">
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select distinct position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position, jobapplications.dateapplied from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid 
                                             and jobads.userid=:userid
                                             and jobapplications.isreject=0

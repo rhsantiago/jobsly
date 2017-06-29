@@ -55,7 +55,7 @@ if(isset($_SESSION['user'])){
                             <div class="col-md-12">
                            <div class="alljobsdiv">
                           <?php
-                                $database->query('SELECT id,jobtitle,company from jobads where userid = :userid and isactive=1 order by dateadded desc');
+                                $database->query('SELECT id,jobtitle,company,dateadded from jobads where userid = :userid and isactive=1 order by dateadded desc');
                                 $database->bind(':userid', $userid);   
                                 try{
                                     $rows = $database->resultset();
@@ -114,7 +114,7 @@ if(isset($_SESSION['user'])){
                                                 $specialization = $row2['specialization'];
                                                 $isshortlisted = $row2['isshortlisted'];
                                                 
-                                                 $database->query('select distinct position from workexperience,jobapplications where workexperience.userid = :userid order by startdate desc limit 0,1');
+                                                 $database->query('select position from workexperience,jobapplications where workexperience.userid = :userid order by startdate desc limit 0,1');
                                                  $database->bind(':userid', $applicantid);
                                                  try{
                                                     $row3 = $database->single();

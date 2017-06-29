@@ -20,7 +20,7 @@ $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
  $database = new Database();   
 }
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position,jobapplications.dateapplied from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid
                                             and jobads.userid=:userid
                                             and jobapplications.isreject=0
