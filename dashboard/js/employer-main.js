@@ -15,7 +15,7 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                     
+                ChangeUrl('jobsly - Active Job Ads', 'employer-main.php?ajax=ajposts');     
                 }
                
         });
@@ -25,7 +25,7 @@ $(document).ready(function ($) {
     $("a[href='#short']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
- 
+        
         $.ajax({
             url: 'employer-shortlist.php',
             dataType: 'html',
@@ -37,7 +37,7 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                     });
-                     
+                    ChangeUrl('jobsly - Shortlisted Applicants', 'employer-main.php?ajax=short');
                 }
                
         });
@@ -59,7 +59,7 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                     });
-                     
+                    ChangeUrl('jobsly - Active Job Ads', 'employer-main.php?ajax=napp'); 
                 }
                
         });

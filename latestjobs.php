@@ -9,6 +9,19 @@ $database = new Database();
 <!doctype html>
 <html lang="en">
 <head>
+     
+    <!-- Google Tag Manager -->
+<script>
+ window.dataLayer = window.dataLayer || [];   
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKMGLRW');
+
+
+
+</script>    
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
 	<link rel="icon" type="image/png" href="../img/favicon.png">
@@ -33,6 +46,7 @@ $database = new Database();
 	<script src="../jobsly/dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../jobsly/dashboard/js/material.min.js"></script>
 	<script src="../jobsly/dashboard/js/material-kit.js" type="text/javascript"></script>
+    <script src="../jobsly/dashboard/js/jobseeker-main.js" type="text/javascript"></script>
 -->    
     <link href="dashboard/css/bootstrap.min.css" rel="stylesheet" />
     <link href="dashboard/css/material-kit.css" rel="stylesheet"/>
@@ -42,6 +56,7 @@ $database = new Database();
 	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="dashboard/js/material.min.js"></script>
 	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
+   
     <!--
     <script src="../jobsly/dashboard/js/jobseeker-main.js" type="text/javascript"></script>
     -->
@@ -49,6 +64,10 @@ $database = new Database();
 </head>
 
 <body class="landing-page">
+ <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->   
    <!-- Modal -->
 	<div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
@@ -78,7 +97,7 @@ $database = new Database();
 		            <span class="icon-bar"></span>
         		</button>
            
-        		<a class="navbar-brand logo" >jobsly</a>
+        		<a href='index.php' class="navbar-brand logo" >jobsly</a>
         	</div>
             <div class="collapse navbar-collapse" id="navigation-example">
         		
@@ -178,7 +197,7 @@ include 'dashboard/specialization.php';
    }    
        
    $msg = $where;
-    
+   //$log->info($where);
    $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit 0,12"); 
    if(!empty($search)){ 
        $database->bind(':search', $search);  
@@ -245,8 +264,8 @@ include 'dashboard/specialization.php';
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
-
-
+$search = str_replace('%','',$search);
+                        
 ?>
 <style>
 body {
@@ -320,7 +339,7 @@ body {
                              <div id="searchdiv" class="form-group label-floating" >
                                   <label class="control-label">Search</label>
                                  
-                                  <input type="text" id="search" name="search" class="form-control searchform">  
+                                  <input type="text" id="search" name="search" class="form-control searchform" value="<?=$search?>">  
                              </div>
                             </div>
                             
@@ -402,7 +421,7 @@ body {
                                    <!--  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive" width="100%">  -->
                                         <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
                                                 </div>
                                               </div>
                                       <?php
@@ -417,7 +436,7 @@ body {
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                     <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         
@@ -428,7 +447,7 @@ body {
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                         <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                         <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -542,7 +561,7 @@ body {
                                      ?>  
                                       <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
                                                 </div>
                                               </div>
                                       <?php
@@ -557,7 +576,7 @@ body {
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
@@ -567,7 +586,7 @@ body {
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                         <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                         <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    
@@ -698,7 +717,7 @@ body {
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
@@ -778,6 +797,7 @@ body {
                                      $index = $index+3;
                                 }
                                     $next = $arrlength +1;
+                                    $log->info("search=".$search.',ip='.$_SERVER['REMOTE_ADDR']);
                                     ?>
                                    
                             </div>
@@ -795,13 +815,25 @@ body {
          <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
+                    <input type="hidden" id="search" name="search" value="<?=$search?>">
+                    <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
+                    <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>">
                    
              </form>
         </div>
     </div>
 <script>
+function ChangeUrl(title, url) {
+    if (typeof (history.pushState) != "undefined") {
+        var obj = { Title: title, Url: url };
+        history.pushState(obj, obj.Title, obj.Url);
+    } else {
+        alert("Browser does not support HTML5.");
+    }
+}      
+    
 jQuery(document).ready(function ($) {
-  /*
+ 
      $(window).scroll(function() {
       if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             $('#loadmorejobs-form').submit();
@@ -813,22 +845,24 @@ jQuery(document).ready(function ($) {
              
             event.preventDefault();                  
             var next = $("#loadmorejobs-form #next").val();
-            
+            var search = $("#loadmorejobs-form #search").val();
+            var esalary = $("#loadmorejobs-form #esalary").val();
+            var specialization = $("#loadmorejobs-form #specialization").val();
             $.ajax({
                     type: "POST",
                     url: 'loadmorejobs.php',
-                    data: "next=" +next,
+                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
                     dataType: 'html',
 
                     success: function (html) {
-                        console.log(html);
+                       
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
-                        //$('#loading').hide();
+                        ChangeUrl('jobsly - Active Job Ads', "loadmorejobs.php?next="+next+""); 
                     }
            });
     });  
-   */
+  
 });       
 </script>
 

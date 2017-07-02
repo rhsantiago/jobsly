@@ -26,12 +26,20 @@ if(isset($_SESSION['user'])){
    
     
 }
-
+if($ajax!='short'){
 ?>
-
-
-
-    
+<script>
+ /*  
+window.dataLayer.push({
+    'event': 'virtualPageView',
+    'virtualUrl': '/employer-shortlist.php',
+    'virtualTitle': 'Employers - Shortlisted Applicants'
+});
+*/
+</script>
+<?php
+}
+?>
     <div class="row">
     <div class="col-md-12 center">            
                     <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 

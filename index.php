@@ -6,9 +6,17 @@
 <!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html> <!--<![endif]-->
 <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKMGLRW');</script>
+<!-- End Google Tag Manager -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="Flatfy Free Flat and Responsive HTML5 Template ">
+    <meta name="description" content="">
     <meta name="author" content="">
 
     <title>jobsly – find your next adventure.</title>
@@ -51,6 +59,10 @@
 </head>
 
 <body id="home">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 	<!-- Preloader -->
 	<div id="preloader">
@@ -151,7 +163,7 @@
 					<li class="menuItem menus"><a href="#whatis">What is jobsly?</a></li>
 					<li class="menuItem"><a href="#useit">Features</a></li>
 					
-					<li class="menuItem"><a href="#screen" data-toggle="modal" data-target="#myModal">Login</a></li>
+					<li class="menuItem"><a href="login.php" data-toggle="" data-target="">Login</a></li>
                     <li class="dropdown">
 							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Signup<strong class="caret"></strong></a>
 							<ul class="dropdown-menu dropdown-menu-right">
@@ -185,7 +197,7 @@
                     <div class="sub-title lead3">Sales Specialists BPO, Australian account</div>
                     <div class="sub-title lead3">Java Technical Lead, J2EE Spring hibernate</div>
                     <div class="sub-title lead3"></div>
-                    <div class="sub-title lead3"><a href="latestjobs.php">View all</a></div>
+                    <div class="sub-title lead3"><button type="button" id="loginbtn" onclick="location.href='latestjobs.php';" href="latestjobs.php" class="btn btn-info btn-lg getstarted">View All</button></div>
 				</div>  
 				
                 <div class="col-sm-6 wow fadeInRightBig featured"  data-animation-delay="200">   

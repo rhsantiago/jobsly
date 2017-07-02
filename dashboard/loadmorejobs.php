@@ -14,7 +14,7 @@ if(isset($_SESSION['user'])){
    if(isset($_POST['search'])){ $search = $_POST['search']; }
    if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
    if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
-  
+   $search = str_replace('%','',$search); 
    $database = new Database();
    include "Jobad.php";
    date_default_timezone_set('Asia/Manila');
@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
    include "serverlogconfig.php";  
    $jobadsarray = array();    
    $logo="";
-    $log->info("search=".$search." ".$esalary." ".$specializationsearch); 
+   // $log->info("search=".$search." ".$esalary." ".$specializationsearch); 
    $where = "";
    $wherekey ="";
    if(!empty($search)){
@@ -110,6 +110,7 @@ if(!empty($rows)){
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+    $search = str_replace('%','',$search); 
 }
 }else{
     header("Location: logout.php");

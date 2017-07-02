@@ -1,7 +1,14 @@
 <?php
 include 'dashboard/Database.php';
 include 'dashboard/specialization.php';
-   if(isset($_POST['next'])){ $next = $_POST['next']; } 
+   $esalary = '';
+   $search='';
+   $specializationsearch='';
+   if(isset($_POST['next'])){ $next = $_POST['next']; }
+   if(isset($_POST['search'])){ $search = $_POST['search']; }
+   if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
+   if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }
+  $search = str_replace('%','',$search);
   $database = new Database();
   include "dashboard/Jobad.php";
   date_default_timezone_set('Asia/Manila');
@@ -10,10 +17,47 @@ include 'dashboard/specialization.php';
   include "dashboard/serverlogconfig.php";  
   $jobadsarray = array();
     
-    $logo="";
-    
-   $database->query("SELECT * from jobads order by dateadded desc limit ".$next.",12");
-  // $database->bind(':next', $next);   
+  
+   $datamode='';
+   $logo="";
+ //  $log->info("search=".$search." ".$next." ".$specializationsearch); 
+   $where = "";
+   $wherekey ="";
+   if(!empty($search)){
+       $search='%'.$search.'%';
+       $where=" (jobtitle like :search or jobdesc like :search) ";
+        if($esalary > 0 || $specializationsearch > 0){
+            $where = $where."and ";
+        }
+   }
+   if($esalary > 0){ 
+       $where= $where . " msalary >= :esalary and maxsalary >= :esalary ";
+       if($specializationsearch > 0){
+            $where = $where."and ";
+        }
+   }
+   if($specializationsearch > 0){ 
+       $where= $where . " specialization = :specialization ";
+   }    
+     
+   $wherekey = " where ";
+   $isactiveclause = " isactive=1 ";
+   if(!empty($where)){
+       $isactiveclause = " and ".$isactiveclause;
+   }    
+       
+   $msg = $where;
+   //$log->info('next='.$next." search=".$search);
+   $database->query("SELECT * from jobads ".$wherekey.$where.$isactiveclause." order by dateadded desc limit ".$next.",12"); 
+   if(!empty($search)){ 
+       $database->bind(':search', $search);  
+   }
+   if($esalary > 0){
+       $database->bind(':esalary', $esalary);
+   }
+   if(!empty($specializationsearch)){ 
+       $database->bind(':specialization', $specializationsearch);
+   }
    try{ 
        $rows = $database->resultset();
    }catch (PDOException $e) {
@@ -60,6 +104,7 @@ if(!empty($rows)){
     unset($jobad);
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+   $search = str_replace('%','',$search); 
 }
 ?>
     <div class="row"> 
@@ -103,7 +148,7 @@ if(!empty($rows)){
                                      ?>  
                                     <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
                                                 </div>
                                               </div>
                                       <?php
@@ -118,7 +163,7 @@ if(!empty($rows)){
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                         <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
@@ -128,7 +173,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                        <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -241,7 +286,7 @@ if(!empty($rows)){
                                      ?>  
                                      <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
                                                 </div>
                                               </div>
                                       <?php
@@ -256,7 +301,7 @@ if(!empty($rows)){
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
@@ -266,7 +311,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                        <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -377,7 +422,7 @@ if(!empty($rows)){
                                      ?>  
                                     <div class="row">
                                                 <div class="col-md-12">                                                  
-                                                  <img id="jobadheader" src="../jobsly/dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
+                                                  <img id="jobadheader" src="dashboard/<?=$jobad->getheader()?>"  class="img-responsive fullwidth" width="100%">                                         
                                                 </div>
                                               </div>
                                       <?php
@@ -392,7 +437,7 @@ if(!empty($rows)){
                                                 </div>    
                                                 <div class="col-md-9  jobad-titletopmargin">
                                                          <!--
-                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="<?=$datamode?>" data-isjobseeker="jobseeker">
+                                                         <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
                                                     <a class="nodecor" target="_blank" href="viewjob-newpage.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobnewpage"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
@@ -402,7 +447,7 @@ if(!empty($rows)){
                                                 <div class="col-md-3">
                                                     
                                                     <div class="companylogo "> 
-                                                        <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
+                                                        <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>   
@@ -484,7 +529,9 @@ if(!empty($rows)){
     <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
-                   
+                    <input type="hidden" id="search" name="search" value="<?=$search?>">
+                    <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
+                    <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>"> 
              </form>
         </div>
    
