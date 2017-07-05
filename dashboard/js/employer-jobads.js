@@ -16,7 +16,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                     
+                    ChangeUrl('Job Ads | jobsly', 'employer-jobads.php?ajax=ajads');
+                    $('title').html('Job Ads | jobsly');
                 }
                
         });
@@ -62,7 +63,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                     
+                     ChangeUrl('Post a Job Ad | jobsly', 'employer-jobads.php?ajax=pjobad');
+                     $('title').html('Post a Job Ad | jobsly');
                 }
                
         });
@@ -85,7 +87,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                     
+                     ChangeUrl('Job Templates | jobsly', 'employer-jobads.php?ajax=jtemp');
+                     $('title').html('Job Templates | jobsly');
                 }
                
         });
@@ -108,7 +111,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                     
+                     ChangeUrl('Job Application Essay Questions | jobsly', 'employer-jobads.php?ajax=essays');
+                     $('title').html('Job Application Essay Questions | jobsly');
                 }
                
         });
@@ -169,6 +173,8 @@ jQuery(document).ready(function ($) {
                                 return el.$element.closest(".form-group");
                             },
                      });
+                     ChangeUrl('Post a Job Ad | jobsly', 'postajob-form.php');
+                     $('title').html('Post a Job Ad | jobsly');
                 },
                 error: function(data) {
                     console.log(data);                  
@@ -243,6 +249,8 @@ jQuery(document).ready(function ($) {
                                }
                     }
                     $("#jobskill").easyAutocomplete(options);
+                    ChangeUrl('Job Skills | jobsly', 'jobskills-form.php');
+                    $('title').html('Job Skills | jobsly');
                 },
                 error: function(data) {
                     console.log(data); 
@@ -350,6 +358,8 @@ jQuery(document).ready(function ($) {
                                     return el.$element.closest(".form-group");
                                 },
                             });
+                            ChangeUrl('Post a Job Ad | jobsly', 'postajob-form.php');
+                            $('title').html('Post a Job Ad | jobsly');
                         }
             });
         }
@@ -394,6 +404,8 @@ jQuery(document).ready(function ($) {
                                     return el.$element.closest(".form-group");
                                 },
                             });
+                            ChangeUrl('Job Skills | jobsly', 'jobskills-form.php');
+                            $('title').html('Job Skills | jobsly');
                         }
             });
         }
@@ -416,7 +428,8 @@ jQuery(document).ready(function ($) {
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #p2').addClass('active');
                             $('[data-toggle="tooltip"]').tooltip();
-                            
+                            ChangeUrl('Preview Job Ad | jobsly', 'previewjobad.php');
+                            $('title').html('Preview Job Ad | jobsly');
                         }
             });
          }
@@ -439,6 +452,8 @@ jQuery(document).ready(function ($) {
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #p2').addClass('active');
                             $('[data-toggle="tooltip"]').tooltip();
+                            ChangeUrl('Preview Job Ad | jobsly', 'previewjobad.php');
+                            $('title').html('Preview Job Ad | jobsly');
                         }
             });
         }
@@ -502,6 +517,8 @@ jQuery(document).ready(function ($) {
                                 return el.$element.closest(".form-group");
                             },
                      });
+                     ChangeUrl('Job Ad Template | jobsly', 'templatejobdetail-form.php');
+                     $('title').html('Job Ad Template | jobsly');
                 },
                 error: function(data) {
                     console.log(data);                  
@@ -582,6 +599,8 @@ jQuery(document).ready(function ($) {
                                }
                     }
                     $("#jobskill").easyAutocomplete(options);
+                    ChangeUrl('Job Skills | jobsly', 'templatejobskills-form.php');
+                    $('title').html('Job Skills | jobsly');
                 },
                 error: function(data) {
                     console.log(data); 
@@ -644,7 +663,9 @@ jQuery(document).ready(function ($) {
                             $('#resume-main-body').html(html); 
                             $('#resumesb li').removeClass('active');
                             $('#resumesb #j3').addClass('active');
-                            $('[data-toggle="tooltip"]').tooltip();                       
+                            $('[data-toggle="tooltip"]').tooltip();
+                            ChangeUrl('Job Ad Template Preview | jobsly', 'templatepreview.php');
+                            $('title').html('Job Ad Template Preview | jobsly');
                         }
             });
         }
@@ -702,6 +723,8 @@ jQuery(document).ready(function ($) {
                                     return el.$element.closest(".form-group");
                                 },
                             });
+                            ChangeUrl('Job Ad Template | jobsly', 'templatejobdetail-form.php');
+                            $('title').html('Job Ad Template | jobsly');
                         }
             });
         }      
@@ -736,6 +759,8 @@ jQuery(document).ready(function ($) {
                                     return el.$element.closest(".form-group");
                                 },
                             });
+                            ChangeUrl('Job Skills | jobsly', 'templatejobskills-form.php');
+                            $('title').html('Job Skills | jobsly');
                         }
             });
         }
@@ -761,7 +786,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                            
+                            ChangeUrl('Job Ad Template Preview | jobsly', 'templatepreview.php');
+                             $('title').html('Job Ad Template Preview | jobsly');
                         }
             });
         }
@@ -937,6 +963,8 @@ jQuery(document).ready(function ($) {
                                     return el.$element.closest(".form-group");
                                 },
                             });
+                            ChangeUrl('Post a Job Ad | jobsly', 'postajob-form.php');
+                            $('title').html('Post a Job Ad | jobsly');
                         }
             });
         }

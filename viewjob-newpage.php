@@ -375,7 +375,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                         </div>
                                           <div class="row-fluid">
                                                 <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Read more</a>
+                                                        <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>                                             
                                                        
                                                 <div class="col-md-12 jobad-bottomborder">

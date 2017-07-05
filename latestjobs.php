@@ -27,7 +27,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>jobsly - find your next adventure</title>
+	<title>Latest Jobs | jobsly</title>
+ 	<meta name="description" content="Find your next adventure! Search for jobs matching your preference and qualifications." />
+ 	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -811,7 +813,8 @@ body {
      </div> 
 
 -->
-    <div class="loadmore">
+       
+    <div class="loadmore">  
          <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
@@ -822,6 +825,12 @@ body {
              </form>
         </div>
     </div>
+    
+    <div class="col-md-12 center">                    
+        <div id="loading" >
+             <img id="loader" src="img/loader.gif">
+         </div>
+    </div>                     
 <script>
 function ChangeUrl(title, url) {
     if (typeof (history.pushState) != "undefined") {
@@ -840,7 +849,7 @@ jQuery(document).ready(function ($) {
 
       }
     });
-    
+    $('#loader').hide();
      $(document).on('submit','#loadmorejobs-form',function(event){
              
             event.preventDefault();                  
@@ -853,7 +862,12 @@ jQuery(document).ready(function ($) {
                     url: 'loadmorejobs.php',
                     data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
                     dataType: 'html',
-
+                    beforeSend: function() {
+                         $('#loader').show();
+                      },
+                    complete: function(){
+                         $('#loader').hide();
+                      },
                     success: function (html) {
                        
                         $(".loadmoreform").remove();

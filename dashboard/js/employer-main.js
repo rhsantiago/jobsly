@@ -15,7 +15,8 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
-                ChangeUrl('jobsly - Active Job Ads', 'employer-main.php?ajax=ajposts');     
+                ChangeUrl('Job Ads | jobsly', 'employer-main.php?ajax=ajposts');
+                $('title').html('Job Ads | jobsly');
                 }
                
         });
@@ -37,7 +38,8 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                     });
-                    ChangeUrl('jobsly - Shortlisted Applicants', 'employer-main.php?ajax=short');
+                    ChangeUrl('Shortlisted Applicants | jobsly', 'employer-shortlist.php');
+                    $('title').html('Shortlisted Applicants | jobsly');
                 }
                
         });
@@ -59,7 +61,8 @@ $(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                     });
-                    ChangeUrl('jobsly - Active Job Ads', 'employer-main.php?ajax=napp'); 
+                    ChangeUrl('New Applicants | jobsly', 'employer-main.php?ajax=napp');
+                    $('title').html('New Applicants | jobsly');
                 }
                
         });
@@ -322,7 +325,8 @@ $(document).ready(function ($) {
                     $(function() {
                                $.material.init();
                     });
-
+                    ChangeUrl('Job Applications | jobsly', 'employer-loadaapps.php');
+                    $('title').html('Job Applications | jobsly');    
                 }
             });
       //  return false;
@@ -344,7 +348,8 @@ $(document).ready(function ($) {
                     $(function() {
                                $.material.init();
                     });
-
+                    ChangeUrl('New Job Applicants | jobsly', 'employer-loadnapps.php');
+                    $('title').html('New Job Applicants | jobsly');
                 }
             });
       //  return false;
@@ -366,7 +371,8 @@ $(document).ready(function ($) {
                     $(function() {
                                $.material.init();
                     });
-
+                    ChangeUrl('Shortlisted Job Applicants | jobsly', 'employer-loadshortlist.php');
+                    $('title').html('Shortlisted Job Applicants | jobsly');
                 }
             });
       //  return false;
@@ -388,7 +394,8 @@ $(document).ready(function ($) {
                     $(function() {
                                $.material.init();
                     });
-
+                    ChangeUrl('Matched Resumes | jobsly', 'employer-matchedres.php');
+                    $('title').html('Matched Resumes | jobsly');    
                 }
             });
       //  return false;
@@ -443,7 +450,7 @@ $(document).ready(function ($) {
             });
         return false;
      });
-    
+    /*
     $("#resume-main-body").on('click','#matched',function(event) {
             event.preventDefault();           
             var jobid =  $(this).data('jobid');
@@ -460,12 +467,13 @@ $(document).ready(function ($) {
                     $(function() {
                                $.material.init();
                     });
-
+                    ChangeUrl('Matched Resumes | jobsly', 'employer-matchedres.php');
+                    $('title').html('Matched Resumes | jobsly');
                 }
             });
       //  return false;
      });
-    
+    */
     $('#showjob-modal').on('show.bs.modal', function(e) {
              
                var $modal = $(this);
@@ -546,7 +554,7 @@ $(document).ready(function ($) {
                 $(function() {
                            $.material.init();
                 });
-                
+                 ChangeUrl('Job Applications | jobsly', 'employer-loadaapps.php?next='+next);
             }
         });
     });
@@ -575,7 +583,7 @@ $(document).ready(function ($) {
                 $(function() {
                            $.material.init();
                 });
-                
+                ChangeUrl('New Job Applicants | jobsly', 'employer-loadshortlist.php?next='+next);
             }
         });
     });
@@ -604,7 +612,7 @@ $(document).ready(function ($) {
                 $(function() {
                            $.material.init();
                 });
-                
+                ChangeUrl('Shortlisted Job Applicants | jobsly', 'employer-loadshortlist.php?next='+next);
             }
         });
     });

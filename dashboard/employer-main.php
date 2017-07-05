@@ -22,18 +22,15 @@ if($ok == 1 ){
 ?>
 <!doctype html>
 <html lang="en">
-<head>
-//var dataLayer = [];    
-window.dataLayer = window.dataLayer || [];     
+<head> 
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>
+ window.dataLayer = window.dataLayer || [];       
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MKMGLRW');
-
-
-
 </script>
 <!-- End Google Tag Manager -->
 
@@ -42,7 +39,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>jobsly - find your next adventure</title>
+	<title>Job Ads | Manage Applicants | jobsly</title>
+ 	<meta name="description" content="View applications and manage new and shortlisted applicants" />
+ 	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
+
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
