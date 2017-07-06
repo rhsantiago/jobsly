@@ -119,6 +119,8 @@ jQuery(document).ready(function ($) {
                                 return el.$element.closest(".form-group");
                             },
                      });
+                     ChangeUrl('Personal Information | jobsly', 'pinfo-form.php');
+                     $('title').html('Personal Information | jobsly');
                 }
                
         });
@@ -174,7 +176,8 @@ jQuery(document).ready(function ($) {
                             successClass: "has-success",
                             errorClass: "has-error"
                         });
-                        
+                        ChangeUrl('Work Experience | jobsly', 'wexp-form.php');
+                        $('title').html('Work Experience | jobsly');
                         
                         
                     }
@@ -227,7 +230,8 @@ jQuery(document).ready(function ($) {
                             successClass: "has-success",
                             errorClass: "has-error"
                         });
-                        
+                        ChangeUrl('Work Experience | jobsly', 'wexp-form.php');
+                        $('title').html('Work Experience | jobsly');
                         
                         
                     }
@@ -287,7 +291,9 @@ jQuery(document).ready(function ($) {
                         $('#etrain-pgrad1-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
-                        })
+                        });
+                        ChangeUrl('Education | jobsly', 'etrain-form.php');
+                        $('title').html('Education | jobsly');
                     }
         });
         return false;
@@ -347,7 +353,9 @@ jQuery(document).ready(function ($) {
                         $('#etrain-pgrad1-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
-                        })
+                        });
+                        ChangeUrl('Education | jobsly', 'etrain-form.php');
+                        $('title').html('Education | jobsly');
                     }
         });
         return false;
@@ -385,6 +393,8 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                        ChangeUrl('Skills | jobsly', 'skills-form.php');
+                        $('title').html('Skills | jobsly');
                     }
         });
         return false;
@@ -422,6 +432,8 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                        ChangeUrl('Skills | jobsly', 'skills-form.php');
+                        $('title').html('Skills | jobsly');
                     }
         });
         return false;
@@ -453,6 +465,8 @@ jQuery(document).ready(function ($) {
                             },
 
                         });
+                        ChangeUrl('Expected Salary | jobsly', 'ainfo-form.php');
+                        $('title').html('Expected Salary | jobsly');
                     }
         });
         return false;
@@ -505,6 +519,8 @@ jQuery(document).ready(function ($) {
                             },
 
                         });
+                         ChangeUrl('Expected Salary | jobsly', 'ainfo-form.php');
+                        $('title').html('Expected Salary | jobsly');
                     }
         });
         return false;
@@ -527,6 +543,8 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                         ChangeUrl('Preview Resume | jobsly', 'previewresume.php');
+                        $('title').html('Preview Resume | jobsly');
                     }
         });
         return false;
@@ -545,6 +563,8 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                         ChangeUrl('Preview Resume | jobsly', 'previewresume.php');
+                        $('title').html('Preview Resume | jobsly');
                     }
         });
         return false;
@@ -1149,6 +1169,7 @@ jQuery(document).ready(function ($) {
                                                                                             }, 10);
                                                                                         }
                                                                                     },
+                     /*
    cleaner:{
           notTime: 2400, // Time to display Notifications.
           action: 'paste', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
@@ -1160,7 +1181,7 @@ jQuery(document).ready(function ($) {
           badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
           badAttributes: ['style', 'start'] // Remove attributes from remaining tags
     }
-    
+    */
     });
                 $('#wexp-form-modal #startdate').datepicker();
                 $('#wexp-form-modal #enddate').datepicker();

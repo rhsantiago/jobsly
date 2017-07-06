@@ -17,6 +17,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
+                    ChangeUrl('Job Applications | jobsly', 'jobseeker-activeapp.php');
+                    $('title').html('Job Applications | jobsly');
                      
                 }
                
@@ -38,6 +40,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
+                    ChangeUrl('Job Invitations | jobsly', 'jobseeker-invites.php');
+                    $('title').html('Job Invitations | jobsly');
                 }
                
         });
@@ -61,6 +65,8 @@ jQuery(document).ready(function ($) {
                             $(function() {
                                 $.material.init();
                             });
+                    ChangeUrl('Saved Applications | jobsly', 'jobseeker-savedapp.php');
+                    $('title').html('Saved Applications | jobsly');
                      
                 }
                
@@ -120,7 +126,7 @@ jQuery(document).ready(function ($) {
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
                         $('[data-toggle="tooltip"]').tooltip();
-                        //$('#loading').hide();
+                        ChangeUrl('Latest Jobs | jobsly', 'jobseeker-latestjobs.php?next='+next);
                     }
            });
     }); 

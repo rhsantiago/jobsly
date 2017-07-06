@@ -26,12 +26,24 @@ if($ok == 1 ){
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>
+ window.dataLayer = window.dataLayer || [];       
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKMGLRW');
+</script>
+<!-- End Google Tag Manager -->    
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>jobsly - find your next adventure</title>
+	<title>Latest Jobs | jobsly</title>
+ 	<meta name="description" content="Find your next adventure! Search for jobs matching your preference and qualifications." />
+ 	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -96,6 +108,10 @@ body {
 </head>
 
 <body class="landing-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->    
    <!-- Modal -->
 	<div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
@@ -1174,6 +1190,15 @@ function closeNav() {
     document.getElementById("main").style.marginLeft= "0";
     isClosed = true;
 }
+        
+function ChangeUrl(title, url) {
+    if (typeof (history.pushState) != "undefined") {
+        var obj = { Title: title, Url: url };
+        history.pushState(obj, obj.Title, obj.Url);
+    } else {
+        alert("Browser does not support HTML5.");
+    }
+}        
   
 $(document).ready(function() {
     // Optimalisation: Store the references outside the event handler:

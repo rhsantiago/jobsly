@@ -872,7 +872,7 @@ jQuery(document).ready(function ($) {
                        
                         $(".loadmoreform").remove();
                         $('.loadmore').append(html);
-                        ChangeUrl('jobsly - Active Job Ads', "loadmorejobs.php?next="+next+""); 
+                        ChangeUrl('Latest Jobs | jobsly', "latestjobs.php?next="+next+""); 
                     }
            });
     });  
