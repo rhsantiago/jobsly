@@ -8,7 +8,20 @@ if(isset($_SESSION['user'])){
    $userid = $_SESSION['userid'];
    $usertype = $_SESSION['usertype'];
     
-   include 'authenticate.php';
+ include 'authenticate.php'; 
+ include 'specialization.php';
+
+            $database->query('select specialization from additionalinformation where additionalinformation.userid=:userid');
+            $database->bind(':userid', $userid);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+            $userspec = $row['specialization'];
+  
 }else{
     header("Location: logout.php");
 }
@@ -24,7 +37,17 @@ if($ok == 1 ){
 <head>
     <!-- Google Tag Manager -->
 <script>
- window.dataLayer = window.dataLayer || [];        
+ window.dataLayer = window.dataLayer || []; 
+    </script>
+    <script>
+    var userId = <?=$userid?>;
+    var specialization = "<?=$specarray[$userspec]?>";
+    window.dataLayer.push({
+        'userId': userId,
+        'specialization': specialization
+    });
+    </script>    
+<script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -144,7 +167,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               
                         <?php
 
-include 'specialization.php';
 $isjobseeker = '';
 if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; }
 if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
@@ -383,12 +405,10 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                              ?>
                                                         
                                                             <script>
-                                                            var skills =['Excel','Java','Spring','jQuery'];
-                                                            var userId = <?=$userid?>;    
+                                                            var skills =['Excel','Java','Spring','jQuery'];     
                                                           for (var i=0; i<skills.length; i++) {
                                                             window.dataLayer.push({                                                       
-                                                              'event': 'jobAdSkills',                                                          
-                                                              'userId': userId,   
+                                                              'event': 'jobAdSkills',
                                                               'skill': skills[i]
                                                             });
                                                           }
@@ -698,6 +718,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                   </section>               
 <?php
   $jobtitlearray = array();
+  $jobidarray = array();    
   $database->query("SELECT id, jobtitle from jobads where userid=:userid order by dateadded desc limit 0,12"); 
   $database->bind(':userid', $companyid);    
   try{  
@@ -711,7 +732,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
    foreach($rows as $row){
       $jobid = $row['id'];
       $jobtitle = $row['jobtitle'];
-       
+      $jobidarray[] = $jobid; 
       $jobtitlearray[] = $jobtitle;
    }
 ?>
@@ -721,6 +742,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                <?php
                 $arrlength = count($jobtitlearray);
                 for($index = 0; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
                       $jobtitle = $jobtitlearray[$index];
               
                 ?>
@@ -731,7 +753,9 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          <div class="row-fluid">
                                                <div class="col-md-12">
                                                    <div class="center">
-                                                   <span class="text-info"><?=$jobtitle?></span>
+                                                   <span class="text-info">
+                                                       <a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a>
+                                                       </span>
                                                    </div>
                                                 </div>
                                           </div>  
@@ -749,6 +773,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                 <?php
                 $arrlength = count($jobtitlearray);
                 for($index = 1; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
                       $jobtitle = $jobtitlearray[$index];
               
                 ?>
@@ -759,7 +784,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          <div class="row-fluid">
                                                <div class="col-md-12">
                                                    <div class="center">
-                                                   <span class="text-info"><?=$jobtitle?></span>
+                                                   <span class="text-info"><a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a></span>
                                                    </div>
                                                 </div>
                                           </div>  
@@ -776,6 +801,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                 <?php
                 $arrlength = count($jobtitlearray);
                 for($index = 2; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
                       $jobtitle = $jobtitlearray[$index];
               
                 ?>
@@ -786,7 +812,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          <div class="row-fluid">
                                                <div class="col-md-12">
                                                    <div class="center">
-                                                       <span class="text-info"><?=$jobtitle?></span>
+                                                       <span class="text-info"><a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a></span>
                                                    </div>
                                                 </div>
                                           </div>  

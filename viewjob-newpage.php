@@ -9,12 +9,24 @@ $database = new Database();
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>
+ window.dataLayer = window.dataLayer || [];        
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKMGLRW');
+</script>
+<!-- End Google Tag Manager -->    
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>jobsly - find your next adventure</title>
+	<title>Job Ads | Jobs | jobsly</title>
+ 	<meta name="description" content="View job ad details including industry, salary and similar jobs." />
+ 	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -42,11 +54,15 @@ $database = new Database();
 	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="dashboard/js/material.min.js"></script>
 	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
-    <script src="dashboard/jobseeker-main.js" type="text/javascript"></script>
+    <script src="dashboard/js/jobseeker-main.js" type="text/javascript"></script>
 
 </head>
 
 <body class="landing-page">
+ <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->   
    <!-- Modal -->
 	<div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
@@ -113,7 +129,6 @@ if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; }
 if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
 if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 
- $database = new Database();
  
     $database->query('SELECT * from jobads,companyinfo where jobads.id = :jobid and jobads.userid=companyinfo.userid');
    
@@ -339,6 +354,23 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                     } 
                                                                  if($skillscount > 0){   
                                                              ?>
+                                                         <script>
+                                                            var skills =['Excel','Java','Spring','jQuery'];      
+                                                          for (var i=0; i<skills.length; i++) {
+                                                            window.dataLayer.push({                                                       
+                                                              'event': 'jobAdSkills',  
+                                                              'skill': skills[i]
+                                                            });
+                                                          }
+                                                           /*     
+                                                            window.dataLayer.push({
+                                                                'event': 'virtualPageView',
+                                                                'virtualUrl': '/viewjob-newpage.php',
+                                                                'virtualTitle': 'Employees - View Job Ad',
+                                                                //'skills':[{'skill':'Excel'},{'skill':'Java'},{'skill':'Spring'},{'skill':'jQuery'}]
+                                                            });
+                                                            */
+                                                            </script>
                                                         <p><b>Technical / Job-specific skills</b></p>
                                                         <ul>
                                                                <?php        
@@ -533,21 +565,14 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/material.min.js"></script>
-
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/
-	<script src="js/nouislider.min.js" type="text/javascript"></script>  -->
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="dashboard/js/jquery.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="dashboard/js/material.min.js"></script>
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/jobseeker-main.js" type="text/javascript"></script>
-    <script src="js/parsley.js"></script>
-     
+	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
+  <!--  <script src="dashboard/js/jobseeker-main.js" type="text/javascript"></script>-->
+
     <script>
 
         

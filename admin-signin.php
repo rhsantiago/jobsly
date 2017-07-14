@@ -7,7 +7,7 @@ $database = new Database();
 
 $database->query('SELECT id,email,password from adminaccounts where email = :email and password = :password');
 $database->bind(':email', $email);
-$database->bind(':password', $password);
+$database->bind(':password', hash("sha256", $password));
 $row = $database->single();
 $id = $row['id'];
 $success = $row['email'];

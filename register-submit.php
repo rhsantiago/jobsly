@@ -40,6 +40,34 @@ if($verify){
     $database->bind(':verifyhash', $verifyhash);
     $database->bind(':signupdate', $signupdate);
     $database->execute();
+    
+    
+    require 'dashboard/phpmailer/PHPMailerAutoload.php';
+
+$mail = new PHPMailer;
+
+$mail->isSMTP();
+
+$mail->SMTPDebug = 0;
+$mail->Debugoutput = 'html';
+$mail->Host = 'smtp.gmail.com';
+
+$mail->Port = 587;
+
+$mail->SMTPAuth = true;
+$mail->Username = "info@jobsly.net";
+$mail->Password = "r33c3*fr3y";
+
+$mail->isHTML(true);  
+$mail->setFrom('info@jobsly.net', 'jobsly');
+$mail->Subject = 'Welcome to jobsly!';
+$mail->addAddress($email);
+$mail->Body    = "Thank you for registering! <a href='http://www.jobsly.net/verified.php?email=".$email."&verify=".$verifyhash."'>Click here to complete your jobsly registration</a>";
+
+if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+  
 ?> 
     
 
@@ -53,6 +81,7 @@ if($verify){
         
         </div>
 <?php
+}
 }
 
 ?>
