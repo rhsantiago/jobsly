@@ -111,6 +111,7 @@ jQuery(document).ready(function ($) {
              
             event.preventDefault();
             var next = $("#loadmorejobs-form #next").val();
+            var inext = $("#loadmorejobs-form #inext").val();
             var search = $("#loadmorejobs-form #search").val();
             var esalary = $("#loadmorejobs-form #esalary").val();
             var specialization = $("#loadmorejobs-form #specialization").val();
@@ -118,7 +119,7 @@ jQuery(document).ready(function ($) {
             $.ajax({
                     type: "POST",
                     url: 'loadmorejobs.php',
-                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
+                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization+"&inext="+inext,
                     dataType: 'html',
 
                     success: function (html) {

@@ -1074,6 +1074,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <div class="loadmoreform">
              <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
+                    <input type="hidden" id="inext" name="inext" value="0">
                     <input type="hidden" id="search" name="search" value="<?=$search?>">
                     <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
                     <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>">
@@ -1161,11 +1162,6 @@ jQuery(document).ready(function ($) {
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/
-	<script src="js/nouislider.min.js" type="text/javascript"></script>  -->
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>

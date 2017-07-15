@@ -15,7 +15,7 @@ class Jobad{
     private $maxsalary;
     private $jobdesc;
     private $teaser;
-    private $dadd;
+    private $dadd;  
     
     public function setjobid($new_jobid) {   	
 		$this->jobid = $new_jobid;
@@ -128,6 +128,7 @@ class Jobad{
 	public function getdadd() {
 		return $this->dadd;
 	}
+  
     
     
     

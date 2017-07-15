@@ -816,8 +816,9 @@ body {
        
     <div class="loadmore">  
          <div class="loadmoreform">
-             <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">                    
+             <form method="post" id="loadmorejobs-form" name="loadmorejobs-form">     
                     <input type="hidden" id="next" name="next" value="<?=$next?>">
+                    <input type="hidden" id="inext" name="inext" value="0">
                     <input type="hidden" id="search" name="search" value="<?=$search?>">
                     <input type="hidden" id="esalary" name="esalary" value="<?=$esalary?>">
                     <input type="hidden" id="specialization" name="specialization" value="<?=$specializationsearch?>">
@@ -854,13 +855,14 @@ jQuery(document).ready(function ($) {
              
             event.preventDefault();                  
             var next = $("#loadmorejobs-form #next").val();
+            var inext = $("#loadmorejobs-form #inext").val();
             var search = $("#loadmorejobs-form #search").val();
             var esalary = $("#loadmorejobs-form #esalary").val();
             var specialization = $("#loadmorejobs-form #specialization").val();
             $.ajax({
                     type: "POST",
                     url: 'loadmorejobs.php',
-                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization,
+                    data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization+"&inext="+inext,
                     dataType: 'html',
                     beforeSend: function() {
                          $('#loader').show();
