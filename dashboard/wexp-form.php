@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])){
          <div class="col-md-12">    
                        <h2 class="title">Work Experience</h2> 
             <!-- <span class="jobcardbuttons"><a href='#profile' id="add"><i class="material-icons">edit</i> Add</a></span> -->
-             <span class="jobcardbuttons"><a href='#workexpmodal' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"> Add </a></span>
+             
           </div> 
     </div>   
                    <div class="col-md-offset-1 col-md-7">
@@ -44,7 +44,7 @@ if(isset($_SESSION['user'])){
 	         
 					<div class="features">
 						<div class="row">
-		                    
+		                    <span class="jobcardbuttons"><a href='#workexpmodal' class='btn btn-primary btn-sm' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"> Add </a></span>
                                         <div id="workexpcardsdiv">
                                             <?php
                                                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');

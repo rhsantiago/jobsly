@@ -20,13 +20,53 @@ if($ok == 1 ){
     $msg = "logged in";
     $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
     include 'specialization.php';
+    
+    
+    $database->query('select fname,lname,mnumber,myemail,photo,esalary,specialization from  personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and useraccounts.id=:userid and additionalinformation.userid=:userid');
+            $database->bind(':userid', $userid);   
+            try{
+            $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+           
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $mnumber = $row['mnumber'];
+            $myemail = $row['myemail'];
+            $esalary = $row['esalary'];
+            $specialization = $row['specialization'];
+            $photo = $row['photo'];
+    
+            $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+            $database->bind(':userid', $userid);   
+            try{
+            $row2 = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+             $maxposition = $row2['maxposition'];
 ?>
 <!doctype html>
 <html lang="en">
 <head>
  <!-- Google Tag Manager -->
 <script>
- window.dataLayer = window.dataLayer || [];       
+ window.dataLayer = window.dataLayer || []; 
+    </script>
+    <script>
+    var userId = <?=$userid?>;
+    var specialization = "<?=$specarray[$specialization]?>";
+    window.dataLayer.push({
+        'userId': userId,
+        'specialization': specialization
+    });
+    </script>    
+<script>     
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -145,34 +185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <?php
       //  $database->query('select position as maxposition,fname,lname,mnumber,myemail,photo,esalary,specialization from workexperience, personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid and additionalinformation.userid=:userid');
     
-            $database->query('select fname,lname,mnumber,myemail,photo,esalary,specialization from  personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and useraccounts.id=:userid and additionalinformation.userid=:userid');
-            $database->bind(':userid', $userid);   
-            try{
-            $row = $database->single();
-            }catch (PDOException $e) {
-                $msg = $e->getTraceAsString()." ".$e->getMessage();
-                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                die("");
-            }     
-           
-            $fname = $row['fname'];
-            $lname = $row['lname'];
-            $mnumber = $row['mnumber'];
-            $myemail = $row['myemail'];
-            $esalary = $row['esalary'];
-            $specialization = $row['specialization'];
-            $photo = $row['photo'];
-    
-            $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
-            $database->bind(':userid', $userid);   
-            try{
-            $row2 = $database->single();
-            }catch (PDOException $e) {
-                $msg = $e->getTraceAsString()." ".$e->getMessage();
-                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                die("");
-            }     
-             $maxposition = $row2['maxposition'];
+            
     ?>
     <!--sidebar-->
    <div id="mySidenav" class="sidenav">

@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<link rel="icon" type="image/png" href="../img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Job Ads | Jobs | jobsly</title>
+	<title>Job Ads | Job Opening | jobsly</title>
  	<meta name="description" content="View job ad details including industry, salary and similar jobs." />
  	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
 
@@ -92,9 +92,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		            <span class="icon-bar"></span>
         		</button>
            
-        		<a class="navbar-brand logo" >jobsly</a>
+        		<a href='index.php' class="navbar-brand logo" >jobsly</a>
         	</div>
-
+            <div class="collapse navbar-collapse" id="navigation-example">
+        		
+    				<ul class="nav navbar-nav navbar-right">                      
+                        <!--
+		            <li>
+		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-twitter"></i>
+						</a>
+		            </li>
+		            <li>
+		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-facebook-square"></i>
+						</a>
+		            </li>
+					<li>
+		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+							<i class="fa fa-instagram"></i>
+						</a>
+		            </li>
+                    -->
+        		</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="login.php" id="home"><i class="material-icons">done</i>Signin</a></li>
+                    
+                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">create</i>&nbsp;Signup<b class="caret"></b></a>
+                         <ul class="dropdown-menu">
+                                    <li><a href="signup.php?target=jobseeker">Job seeker</a></li>
+						            <li><a href="signup.php?target=employer">Employers</a></li>
+                         </ul> 
+                    </li>                
+                </ul>
+        	</div>
         	
     	</div>
     </nav>
@@ -124,10 +156,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <?php
 
 include 'dashboard/specialization.php';
-$isjobseeker = '';
+//$isjobseeker = '';
 if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; }
 if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
-if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
+//if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 
  
     $database->query('SELECT * from jobads,companyinfo where jobads.id = :jobid and jobads.userid=companyinfo.userid');
@@ -257,7 +289,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;Php <?=$msalary?> - <?=$maxsalary?>
+                                                                                                   <i class="material-icons text-info jobadheadericon">local_atm</i> &nbsp;<span class="h4weight text-danger">Login to view salary</span>
                                                                                                 </h6>
                                                                                             </li>
                                                                                         </ul>
@@ -291,7 +323,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                  </div>
                                                 <div class="col-md-12">   
                                                
-                                                    <div class="collapse-group collapse" id="viewdetails">
+                                                    <div id="viewdetails" class="collapse-group collapse" >
                                                   <?=$jobdesc?>
                                                    <?php
                                                 if(($yrsexp > 0) || (!empty($mineduc)) || (!empty($languages)) || (!empty($licenses)) || ($wtravel == 'on') || ($wrelocate == 'on')){
@@ -409,10 +441,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                 <div class="col-md-6">
                                                         <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails">Read more</a>
                                                 </div>                                             
-                                                       
-                                                <div class="col-md-12 jobad-bottomborder">
-                                                   
-                                                </div>
+                                               
                                           </div>
                                         
                                       </div>
@@ -474,7 +503,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                
                                                 <div class="col-md-12">   
                                                
-                                                    <div class="collapse-group" id="viewdetails">
+                                                    <div class="collapse-group">
                                                   <?=$cdesc?>
                                                         
                                                    
@@ -483,13 +512,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                             </div>
                                           
                                         </div>
-                                          <div class="row-fluid">
-                                               
-                                                       
-                                                <div class="col-md-12 jobad-bottomborder">
-                                                   
-                                                </div>
-                                          </div>
+                                       
                                           
                                          
                                         </div>
@@ -564,20 +587,21 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
     
 </body>
 
-	<!--   Core JS Files   -->
-	<script src="dashboard/js/jquery.min.js" type="text/javascript"></script>
-	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="dashboard/js/material.min.js"></script>
-
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
-  <!--  <script src="dashboard/js/jobseeker-main.js" type="text/javascript"></script>-->
-
     <script>
-
-        
+function ChangeUrl(title, url) {
+    if (typeof (history.pushState) != "undefined") {
+        var obj = { Title: title, Url: url };
+        history.pushState(obj, obj.Title, obj.Url);
+    } else {
+        alert("Browser does not support HTML5.");
+    }
+}
+    var str =  '<?=$jobtitle?>';   
+   var newString = str.replace(/[^A-Z0-9]/ig, "-");     
         
 jQuery(document).ready(function ($) {
+    ChangeUrl("", "viewjob-newpage.php?jobid="+<?=$jobid?>+"&job="+newString); 
+    $("title").html("<?=$jobtitle?> | Job Opening | jobsly");
     $(function() {
        $.material.init();
     });

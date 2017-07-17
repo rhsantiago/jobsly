@@ -4,7 +4,7 @@ $database = new Database();
      date_default_timezone_set('Asia/Manila');
      $logtimestamp = date("Y-m-d H:i:s");
      $page='public';
-     include "dashboard/serverlogconfig.php";
+     include "serverlogconfig.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,14 +46,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<script src="../jobsly/dashboard/js/material-kit.js" type="text/javascript"></script>
     <script src="../jobsly/dashboard/jobseeker-main.js" type="text/javascript"></script>
   --> 
-    <link href="dashboard/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="dashboard/css/material-kit.css" rel="stylesheet"/>
-    <link href="dashboard/css/custom.css" rel="stylesheet"/>
-    <link href="dashboard/css/media.css" rel="stylesheet"/>
-    <script src="dashboard/js/jquery.min.js" type="text/javascript"></script>
-	<script src="dashboard/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="dashboard/js/material.min.js"></script>
-	<script src="dashboard/js/material-kit.js" type="text/javascript"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/material-kit.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <link href="css/media.css" rel="stylesheet"/>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/material-kit.js" type="text/javascript"></script>
   
 </head>
 
@@ -93,21 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            
         		<a class="navbar-brand logo" >jobsly</a>
         	</div>
-           <div class="collapse navbar-collapse" id="navigation-example">
-        		
-    				
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li><a href="login.php" id="home"><i class="material-icons">done</i>Signin</a></li>
-                    
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">create</i>&nbsp;Signup<b class="caret"></b></a>
-                         <ul class="dropdown-menu">
-                                    <li><a href="signup.php?target=jobseeker">Job seeker</a></li>
-						            <li><a href="signup.php?target=employer">Employers</a></li>
-                         </ul> 
-                    </li>                
-                </ul>
-        	</div>
+
         	
     	</div>
     </nav>
@@ -136,7 +122,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               
                         <?php
 
-include 'dashboard/specialization.php';
 $isjobseeker = '';
 if(isset($_GET['jobid'])){ $jobid = $_GET['jobid']; }
 if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
@@ -209,7 +194,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="companylogo pull-right"> 
-                                                        <img src="dashboard/img/indeed.png" width="120" height="120" class="img-responsive">
+                                                        <img src="img/indeed.png" width="120" height="120" class="img-responsive">
                                                     </div>
                                                 </div>
                                             </div>    
@@ -316,21 +301,20 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
     
 </body>
 
-   <script>
-function ChangeUrl(title, url) {
-    if (typeof (history.pushState) != "undefined") {
-        var obj = { Title: title, Url: url };
-        history.pushState(obj, obj.Title, obj.Url);
-    } else {
-        alert("Browser does not support HTML5.");
-    }
-}
-    var str =  '<?=$jobtitle?>';   
-   var newString = str.replace(/[^A-Z0-9]/ig, "-");     
+	<!--   Core JS Files   -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+  <!--  <script src="dashboard/js/jobseeker-main.js" type="text/javascript"></script>-->
+
+    <script>
+
+        
         
 jQuery(document).ready(function ($) {
-    ChangeUrl("", "viewjobi.php?jobid="+<?=$jobid?>+"&job="+newString); 
-    $("title").html("<?=$jobtitle?> | Job Opening | jobsly");
     $(function() {
        $.material.init();
     });
