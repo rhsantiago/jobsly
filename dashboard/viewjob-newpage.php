@@ -403,23 +403,8 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                     } 
                                                                  if($skillscount > 0){   
                                                              ?>
-                                                        
-                                                            <script>
-                                                            var skills =['Excel','Java','Spring','jQuery'];     
-                                                          for (var i=0; i<skills.length; i++) {
-                                                            window.dataLayer.push({                                                       
-                                                              'event': 'jobAdSkills',
-                                                              'skill': skills[i]
-                                                            });
-                                                          }
-                                                           /*     
-                                                            window.dataLayer.push({
-                                                                'event': 'virtualPageView',
-                                                                'virtualUrl': '/viewjob-newpage.php',
-                                                                'virtualTitle': 'Employees - View Job Ad',
-                                                                //'skills':[{'skill':'Excel'},{'skill':'Java'},{'skill':'Spring'},{'skill':'jQuery'}]
-                                                            });
-                                                            */
+                                                        <script>
+                                                            var skills =[];
                                                             </script>
                                                         <p><b>Technical / Job-specific skills</b></p>
                                                         <ul>
@@ -428,10 +413,19 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                                         echo '<li>';
                                                                         echo $row['jobskill'];
                                                                         echo '</li>';
+                                                                        echo "<script>skills.push('".$row['jobskill']."')</script>";
                                                                     }
 
                                                              ?>                                                              
                                                         </ul>
+                                                        <script>                                                            
+                                                          for (var i=0; i<skills.length; i++) {
+                                                            window.dataLayer.push({                                                       
+                                                              'event': 'jobAdSkills',  
+                                                              'skill': skills[i]
+                                                            });
+                                                          }                                                      
+                                                            </script>
                                                         <?php
                                                                  }
                                                             if(!empty($city) || !empty($province) || !empty($country)){

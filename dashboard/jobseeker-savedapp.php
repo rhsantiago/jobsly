@@ -139,7 +139,8 @@ if(isset($_SESSION['user'])){
                                                    <!-- <span class="jobcardreadmorelink"><a class="btn btn-primary jobcardreadmore" >Read more</a></span>
                                                    -->
                                                 </div>
-                                                <div class="col-md-6 actionicon">                                                   
+                                                <div class="col-md-6 actionicon">
+                                                        <span class="jobcardbuttons"><a class="blog-post-share " href="#removesaved" id="removesaved" data-jobid="<?=$id?>" title="Remove"><i class="material-icons" >delete</i>&nbsp;Remove&nbsp;&nbsp;</a></span>
                                                         <span class="jobcardbuttons"><a class="blog-post-share " target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage" title="View Job"><i class="material-icons" >visibility</i>&nbsp;View &amp; Apply</a></span>
                                                     <!-- modal
                                                             <a class="blog-post-share " href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>" data-isjobseeker="jobseeker" data-mode="view" title="View Job">

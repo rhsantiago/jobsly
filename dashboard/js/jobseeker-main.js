@@ -226,6 +226,30 @@ jQuery(document).ready(function ($) {
    
      });
     
+    
+     $(document).on('click','#removesaved',function(e) {
+            event.preventDefault();           
+        
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'jobseeker-removesaved.php',
+                data: 'jobid=' + jobid,
+                success: function(html) {
+                     $('#section'+ jobid).delay(700).fadeOut(300, function(){
+                        $(this).remove();
+                     });
+                   // $("#section" + jobid).remove().delay(1000);
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+    
     /*
      $(document).on('submit','#search-form',function(event){
         e.preventDefault();

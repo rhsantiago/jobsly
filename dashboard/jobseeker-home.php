@@ -12,7 +12,7 @@ if(isset($_SESSION['user'])){
 }else{
     header("Location: logout.php");
 }
-
+$datamode='';
 if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
