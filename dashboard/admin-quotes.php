@@ -13,13 +13,13 @@ if(isset($_SESSION['user'])){
   
    include 'admin-authenticate.php';
 }
-
+$msg = "";
 if($ok == 1 ){
         date_default_timezone_set('Asia/Manila');
         $logtimestamp = date("Y-m-d H:i:s"); 
         include "serverlogconfig.php";
-        $msg = "logged in";
-        $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -56,33 +56,13 @@ if($ok == 1 ){
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/admin-quotes.js" type="text/javascript"></script>
    
 </head>
 
 <body class="landing-page">
      <!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="rejectapp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fullscreen-modal fade" id="viewquote-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  <div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content modalcontent">
 	      
@@ -90,7 +70,6 @@ if($ok == 1 ){
 	  </div>
 	</div>
 
-    
     
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
@@ -206,8 +185,8 @@ if($ok == 1 ){
     </ul>
     </div>
    <div class="sidebar-item"><a href="admin-jobseekers.php"><i class="material-icons">people</i>&nbsp;Jobseekers</a></div>
-   <div class="sidebar-item"><a href="admin-quotes.php"><i class="material-icons">mood</i>&nbsp;Quotes</a></div>    
-      
+   <div class="sidebar-item"><a href="admin-quotes.php"><i class="material-icons">mood</i>&nbsp;Quotes</a></div>
+
 </div>
   
      <!--sidebar-->
@@ -230,7 +209,7 @@ if($ok == 1 ){
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Home</h2>
+                             <h2 class="title">Quotes</h2>
        </div>
      </div>
     <div class="col-md-9">
@@ -240,15 +219,127 @@ if($ok == 1 ){
 
 					<div class="features">
 						<div class="row">
-                                                     
-                            <div class="col-md-6">
-                       
-                            </div>  
-                            <div class="col-md-6">
-                                                        
-                            </div>  
+                          <div class="col-md-12">
+                              
+                           <div class="allquotesdiv">
+                               <section class="blog-post">
+                                  <div class="panel panel-default" >
+                                      <form method="post" id="quotes-form" name="quotes-form"> 
+                                          <input type="hidden" id="adminid" name="adminid" value="<?=$adminid?>">      
+                                       <div class="panel-body" >
+                                           <div class="col-md-12">
+
+                                             <div id="quotediv" class="form-group label-floating" >
+                                                  <label class="control-label">Quote</label>
+                                                  <input type="text" id="quote" name="quote" class="form-control searchform" value="">      
+                                             </div>
+                                               <div id="authordiv" class="form-group label-floating" >
+                                                  <label class="control-label">Author</label>                                          
+                                                  <input type="text" id="author" name="author" class="form-control searchform" value="">
+                                             </div>
+                                            </div>  
+                                             <div class="col-md-12">
+                                               <button class="btn btn-primary btn-sm" type="submit">Add</button>
+                                                <div id="addsuccess" name="addsuccess" class="alert alert-success">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> Quote Added
+                                            </div> 
+                                           </div>
+                                             </div>
+                                            </form>
+                                      
+                                  </div>
+                                </section> 
+                               
+                               
+                               <section class="blog-post">
+                                    <div class="panel panel-default">                                    
+                                      <div class="panel-body jobad-bottomborder">
+                                          <div><h4 class="text-primary h4weight">Quotes</h4></div>
+                                    <div class="table-responsive">      
+                                     <table id="quotestable" class="table table-hover table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-md-2">Author</th>  
+                                                    <th class="col-md-8">Quote</th>                                                    
+                                                    <th class="text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="quotetablebody">
+                              
+                                        <?php
+                                            $id='';
+                                            
+                                            $database->query('select * from quotes order by id desc');     
+                                            try{
+                                                $rows = $database->resultset();
+                                            }catch (PDOException $e) {
+                                                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                die("");
+                                            }
+                                            foreach($rows as $row){
+                                                $qid = $row['id'];
+                                                $quote = $row['quote'];
+                                                $author = $row['author'];
+                                                $quote = substr($quote,0,30);
+                                       ?>
+                                   
+                                                <tr id="line<?=$qid?>">                                                   
+                                                    <td><span class="h4weight"><?=$author?></span></td>
+                                                    <td class=""><?=$quote?>...</td>       
+                                                    <td class="td-actions text-right">
+                                                <ul class="list-inline">
+                                                        <li >
+                                                            <a href="#viewquotemodal" data-qid="<?=$qid?>" data-mode="view" data-toggle="modal" data-target="#viewquote-modal" id="viewquote" title="View Quote" ><i class="fa fa-search-plus fa-2x text-info"></i></a>
+                                                        </li>
+                                                      
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            <?php                                               
+                                            }
+                                            ?>
+                                                
+                                            </tbody>
+                                        </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯
+                                                                 
+                                               
+                                            </div>
+                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="jobseekerapprloadmore" name="jobseekerapprloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>">Load More</a>
+                                        </div>
+                                      </div>    
+                                        </div>  
+                                    </div>
+                                  </section>
+                            
+                                </div> 
+                                
+                                
+                                
+                            </div>                            
+                      
                      <?php
-                            $database->query('select count(id) as jadsappr from jobads where isactive=0');
+                           
                             try{
                                 $row = $database->single();
                             }catch (PDOException $e) {
@@ -256,92 +347,11 @@ if($ok == 1 ){
                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                                  die("");
                              }
-                            $jadsappr = $row['jadsappr'];
-    
-                            $database->query('SELECT count(useraccounts.id) as totemp from useraccounts where usertype=1 and isverified=0');
-                            try{
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                  die("");
-                            }    
-                            $totemp = $row['totemp'];
-    
-                            $database->query('SELECT count(useraccounts.id) as totjseeker from useraccounts where usertype=2 and isverified=0');
-                            try{    
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                 die("");
-                            }    
-                            $totjseeker = $row['totjseeker'];
-    
-                            $database->query('SELECT count(useraccounts.id) as totjseeker from useraccounts where usertype=2 and isverified=0');
-                            try{    
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                  die("");
-                            }  
-                             $totjseeker = $row['totjseeker'];
-        
-                     ?>
-                                
-                                
-                                
-                               <div class="row">
-                                   <div class="col-lg-12"> 
-                            <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats" >
-                                        <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center marginjobdetaillink"><a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="jobadsapprdiv"><?=$jadsappr?></span></a></h3>
-                                        </div>
-                                      <a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Job Ads<br>Approval</a>
-                                        
-                                    </div>
-						      </div>
-                            <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats">
-                                        <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#empappr" id="empappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="empapprdiv"><?=$totemp?></span></a></h3>
-                                        </div>                                        
-                                            <a href="#empappr" id="empappr" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Employers<br>Approval</a>
-                                    </div>                                  
-						    </div>
-                                <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats">
-                                        <div class="card-header cardmargin" data-background-color="green">
-                                            <h3 class="center marginjobdetaillink"><a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="jseekerapprdiv"><?=$totjseeker?></span></a></h3>
-                                        </div>
-                                            <a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Job Seekers<br>Approval</a>		
-                                    </div>   
-						      </div>
-                               <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats ">
-                                        <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totjseeker?></span></a></h3>
-                                        </div>
-                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
-                                    </div>   
-						      </div>
-                                   </div>
-                            </div>
-                            <div class="col-md-12">
-                                
-                                
-                                </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        //include "employer-home-ctrchart.php";
-                                    ?>
-                                </div>
-                                <div class="col-md-6">
-                                    
-                                </div> 
                             
+                    ?>
+                                
+                  
+                         
 		                </div>
 					</div>
 	            </div>                         

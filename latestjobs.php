@@ -447,10 +447,15 @@ body {
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    
+                                                <?php
+                                                    if(!empty($jobad->getlogo())){
+                                                 ?>    
                                                     <div class="companylogo "> 
                                                          <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
+                                                <?php
+                                                    }
+                                                ?>
                                                 </div>
                                             </div>   
                                           
@@ -586,10 +591,15 @@ body {
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    
+                                                 <?php
+                                                    if(!empty($jobad->getlogo())){
+                                                 ?>
                                                     <div class="companylogo "> 
                                                          <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
+                                                 <?php
+                                                    }
+                                                 ?>    
                                                 </div>
                                             </div>    
                                           
@@ -727,13 +737,18 @@ body {
                                                         </div> 
                                                 </div>
                                                 <div class="col-md-3">
-                                                    
+                                                  <?php
+                                                    if(!empty($jobad->getlogo())){
+                                                 ?> 
                                                     <div class="companylogo "> 
                                                         <!--
                                                         <img src="../jobsly/dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                         -->
                                                         <img src="dashboard/<?=$jobad->getlogo()?>" width="70" height="70" class="img-responsive">
                                                     </div>
+                                                <?php
+                                                    }
+                                                ?>
                                                 </div>
                                             </div>   
                                           

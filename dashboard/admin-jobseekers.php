@@ -137,6 +137,7 @@ if($ok == 1 ){
                         </ul>    
                     </li>
                     <li><a href="admin-jobseekers.php" id="jobseekers"><i class="material-icons">people</i>Jobseekers</a></li>
+                    <li><a href="admin-quotes.php"><i class="material-icons">mood</i>&nbsp;Quotes</a></li>
     				
                 </ul>
         	</div>
@@ -207,7 +208,7 @@ if($ok == 1 ){
                         </ul>
     </div>
    <div class="sidebar-item"><a href="admin-jobseekers.php"><i class="material-icons">people</i>&nbsp;Jobseekers</a></div>
-   <div class="sidebar-item"><a href="#">Settings</a></div>
+   <div class="sidebar-item"><a href="admin-quotes.php"><i class="material-icons">mood</i>&nbsp;Quotes</a></div>
    
 </div>
     

@@ -323,7 +323,7 @@ if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
                                                  </div>
                                                 <div class="col-md-12">   
                                                
-                                                    <div id="viewdetails" class="collapse-group collapse" >
+                                                    <div id="viewdetails" class="collapse-group" >
                                                   <?=$jobdesc?>
                                                    <?php
                                                 if(($yrsexp > 0) || (!empty($mineduc)) || (!empty($languages)) || (!empty($licenses)) || ($wtravel == 'on') || ($wrelocate == 'on')){
