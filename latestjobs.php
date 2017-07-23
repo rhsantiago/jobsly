@@ -267,7 +267,7 @@ include 'dashboard/specialization.php';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
 $search = str_replace('%','',$search);
-                        
+
 ?>
 <style>
 body {
@@ -397,6 +397,7 @@ body {
 		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
+                                 $quoterandrow = rand(0,$arrlength-1);
                                  for($index = 0; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                                                                                                                                                                
@@ -413,6 +414,11 @@ body {
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
+                                    
                              ?>
                                 
                                 <section class="blog-post">
@@ -559,6 +565,10 @@ body {
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -666,6 +676,7 @@ body {
                                      $index = $index+3;
                                      $datamode='';
                                 }
+                                
                                     ?>
                                    
                             </div>
@@ -702,6 +713,10 @@ body {
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">

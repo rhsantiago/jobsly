@@ -18,8 +18,7 @@ include 'dashboard/specialization.php';
   include "dashboard/serverlogconfig.php";  
   $jobadsarray = array();
   $jobadsarray2 = array();
-    
-  
+ $quoterandrow = 0;
    $datamode='';
    $logo="";
  //  $log->info("search=".$search." ".$next." ".$specializationsearch); 
@@ -125,6 +124,7 @@ if(!empty($rows)){
 		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
+                                 $quoterandrow = rand(0,$arrlength-1);
                                  for($index = 0; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                                                     
@@ -141,6 +141,10 @@ if(!empty($rows)){
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                                 
                              ?>
                                 
@@ -280,6 +284,10 @@ if(!empty($rows)){
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -416,6 +424,10 @@ if(!empty($rows)){
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -569,6 +581,7 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
        </div>
 <?php
     }
+    $quoterandrow = 0;
 ?>
 <div class="col-md-4"> <!--left-->
      
@@ -579,8 +592,12 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
 		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray2);
+                                 $quoterandrow = rand(0,$arrlength-1);
                                  for($index = 0; $index < $arrlength;) {
                                      $jobad = $jobadsarray2[$index];
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -653,6 +670,9 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
                                  $arrlength = count($jobadsarray2);
                                  for($index = 1; $index < $arrlength;) {
                                      $jobad = $jobadsarray2[$index];
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                                   
                              ?>
                                 
@@ -728,6 +748,9 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
                                  $arrlength = count($jobadsarray2);
                                  for($index = 2; $index < $arrlength;) {
                                      $jobad = $jobadsarray2[$index];
+                                     if($quoterandrow == $index){
+                                        include 'dashboard/randomquote.php';
+                                     }
                                    
                              ?>
                                 

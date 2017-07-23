@@ -460,6 +460,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		                     <div class="col-md-12 leftmargin10">
                                   <?php
                                  $arrlength = count($jobadsarray);
+                                 $quoterandrow = rand(0,$arrlength-1);
                                  for($index = 0; $index < $arrlength;) {
                                      $jobad = $jobadsarray[$index];
                                
@@ -503,6 +504,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -710,6 +715,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
@@ -910,6 +919,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                      $header = $logorow['header'];
                                      $jobad->setlogo($logo);
                                      $jobad->setheader($header);
+                                     
+                                     if($quoterandrow == $index){
+                                        include 'randomquote.php';
+                                     }
                              ?>
                                 
                                 <section class="blog-post">
