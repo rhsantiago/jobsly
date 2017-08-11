@@ -1,0 +1,57 @@
+
+html,body{
+    height:100%;
+}
+
+.toptotals {
+    background-color: #55b559;
+    width: auto;
+    height: 70px;
+}
+
+.toptitles {
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px; 
+    margin-left: 20px;
+}
+
+.topvalues {
+    color: #fff;
+    margin-top: 5px;
+    margin-left: 70px;
+    font-size: 36px;
+}
+
+.infoblue{
+    background: #0ab1fc;
+}
+
+.font12{
+    font-size: 12px;  
+}
+
+.whitecolor{
+    color: #fff;
+}
+
+.margintop10{
+     margin-top: 10px;
+}
+
+.tablehead{
+    padding-top: 10px;
+    padding-bottom: 10px;
+ 
+}
+
+.middlepanel{   
+    background-color: #CCCCCC;
+}
+.tablediv {
+       border: 5px;
+}
+
+.padleft-15{
+    padding-left: -25px;
+}

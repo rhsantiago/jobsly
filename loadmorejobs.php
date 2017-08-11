@@ -101,6 +101,15 @@ if(!empty($rows)){
        
       $jobadsarray[] = $jobad;
        
+      $database->query('update jobads set impressions=impressions + 1 where id=:jobid');   
+      $database->bind(':jobid', $jobid); 
+      try{ 
+          $database->execute();   
+      }catch (PDOException $e) {
+            $msg = $e->getTraceAsString()." ".$e->getMessage();
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+            die("");
+      } 
    
    }
     unset($jobad);
