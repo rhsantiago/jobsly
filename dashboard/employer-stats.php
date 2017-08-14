@@ -51,7 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="css/material-kit.css" rel="stylesheet"/>
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
-    <link href="css/summernote.css" rel="stylesheet"/>
+    <link href="css/charts.css" rel="stylesheet"/>
     
     <!--   Core JS Files   -->
 	<script src="js/jquery.min.js" type="text/javascript"></script>
@@ -61,14 +61,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 	<script src="js/nouislider.min.js" type="text/javascript"></script>
 
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
-    <script src="js/parsley.js"></script>
+    <script src="js/canvasjs.min.js"></script>
 </head>
 
 <body class="landing-page">
@@ -299,215 +296,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Home</h2>
+                             <h2 class="title">Statistics</h2>
        </div>
      </div>
-    <div class="col-md-9">
+    
+               
+                        
                        
-                <div class="section  section-landing">
-	                 
+<?php
+     $database->query("SELECT sum(impressions) as totalimpressions, sum(views) as totalviews from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
+     $database->bind(':userid', $userid);                                             
+     try{
+          $row = $database->single();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+          $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+          die("");
+     }
+     $totalimpressions = $row['totalimpressions'];
+     $totalviews = $row['totalviews'];
+     if(($totalimpressions > 0) && ($totalviews > 0)){
+        $ctrrate =   ($totalviews / $totalimpressions) * 100;
+        $ctrrate = number_format((float)$ctrrate, 2, '.', '');
+     }else{
+        $totalimpressions = 1;
+        $totalviews = 1;
+        $ctrrate = 1; 
+     }
+?>                    
+     <div class="row-fluid">
+                  <div class="col-md-4" >
+                        <div class="toptotals" >  
+                               <div class="toptitles" >  
+                                    Impressions (last 30 days)
+                                </div>
+                                <div class="topvalues" >  
+                                    <?=$totalimpressions?>
+                                </div>
+                        </div>
+                        
 
-					<div class="features">
-						<div class="row">
-                                                     
-                            <div class="col-md-6">
-                       
-                                
-                                <section class="blog-post">
-                                    <div class="panel panel-default">
-                                    
-                                      <div class="panel-body">                                        
-                                     
-                                        <div class="blog-post-content">
-                                            
-                                            <div class="row-fluid">
-                                                <div class="col-md-6 jobad-titletopmargin">                                                    
-                                                    <h2 class="title jobad-title "><span class="text-info"><?=$companyname?></span></h2>
-                                                        <div>
-                                                            <h6 class="text-muted"><i><?=$companyaddress?></i></h6>
-                                                        </div> 
-                                                </div>                                                
-                                                <div class="col-md-6 ">
-                                                    <div class="companylogo pull-right"> 
-                                                        <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="col-md-12" >
-                                                <br>
-                                                    <h6 id="vertical-align" class="text-muted jobadheader">
-                                                       <i class="material-icons text-info jobadheadericon">cloud_queue</i> &nbsp;<?=$companywebsite?>
-                                                        </h6>                                                                                          
-                                          </div> 
-                                        </div>                                  
-                                         <div class="row-fluid">
-                                               
-                                                <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" title="Edit"><i class="material-icons" >edit</i> Edit</a>
-                                                       
-                                                </div>
-                                          </div> 
-                                      </div>
-                                        
-                                        
-                                    </div>
-                                    </div>
-                                </section>
-                            </div>  
-                            <div class="col-md-6">
-                       
-                                
-                                <section class="blog-post">
-                                    <div class="panel panel-default">
-                                    
-                                      <div class="panel-body">                                        
-                                     
-                                        <div class="blog-post-content">
-                                            
-                                            <div class="row-fluid">
-                                                <div class="col-md-12 jobad-titletopmargin">
-                                                    <div class="hometopmargin40">
-                                                            Contact Person: <span class="text-info"><b><?=$cperson?></b></span><br>
-                                                            Designation: <span class="text-info"><b><?=$designation?></b></span><br>
-                                                            Email: <span class="text-info"><b><?=$cpersonemail?></b></span><br>  
-                                                            Tel Num: <span class="text-info"><b><?=$cpersontelno?></b></span><br>
-                                                        
-                                                     </div>   
-                                                </div>  
-                                            </div>
-                                            <div class="row-fluid">
-                                                <div class="col-md-12" >
-                                                     
-                                                        </div>
-                                                <div class="col-md-12" align="left">
-                                                    
-                                                        </div>
-                                          
-                                          </div> 
-                                        </div>                                  
-                                         <div class="row-fluid">
-                                               
-                                                <div class="col-md-6 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" title="Edit"><i class="material-icons" >edit</i> Edit</a>
-                                                       
-                                                </div>
-                                          </div> 
-                                      </div>
-                                        
-                                        
-                                    </div>
-                                  </section>
-                                 
-                            </div>  
-                     <?php
-                            $database->query('select count(id) as ajads from jobads where userid=:userid and isactive=1');
-                            $database->bind(':userid', $userid);
-                            try{
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                 die("");
-                             }
-                            $ajads = $row['ajads'];
-    
-                            $database->query('SELECT count(jobapplications.id) as totapplicants from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isreject=0');
-                            $database->bind(':userid', $userid);
-                            try{
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                  die("");
-                            }    
-                            $totapplicants = $row['totapplicants'];
-    
-                            $database->query('SELECT count(jobapplications.id) as napps from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isnew=1');
-                            $database->bind(':userid', $userid);
-                            try{    
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                 die("");
-                            }    
-                            $napps = $row['napps'];
-    
-                            $database->query('SELECT count(jobapplications.id) as shortlisted from jobapplications where jobapplications.jobid IN (select id from jobads where userid=:userid and jobads.isactive=1) and jobapplications.isshortlisted=1');
-                            $database->bind(':userid', $userid);
-                            try{    
-                                $row = $database->single();
-                            }catch (PDOException $e) {
-                                  $msg = $e->getTraceAsString()." ".$e->getMessage();
-                                  $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
-                                  die("");
-                            }  
-                            $shortlisted = $row['shortlisted'];
-        
-                     ?>
-                                
-                                
-                                
-                               <div class="row">
-                                   <div class="col-lg-12"> 
-                            <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats " ><!-- leftmargin10-->
-                                        <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="aappsdiv"><?=$ajads?></span></a></h3>
-                                        </div>
-                                      <a href="#ajposts" id="ajposts" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Job Ads</a>
-                                        
-                                    </div>
-						      </div>
-                            <div class="col-lg-3 col-md-3"> 
-                                    <div  class="card card-stats">
-                                        <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#napp" id="napp" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="nappsdiv"><?=$napps?></span></a></h3>
-                                        </div>                                        
-                                            <a href="#napp" id="napp" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total New<br>Applicants</a>
-                                    </div>                                  
-						    </div>
-                                <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats">
-                                        <div class="card-header cardmargin" data-background-color="green">
-                                            <h3 class="center marginjobdetaillink"><a href="#short" id="short" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$shortlisted?></span></a></h3>
-                                        </div>
-                                            <a href="#short" id="short" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Shortlisted<br>Applicants</a>		
-                                    </div>   
-						      </div>
-                               <div class="col-lg-3 col-md-3"> 
-                                     <div  class="card card-stats "><!-- rightmargin15-->
-                                        <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totapplicants?></span></a></h3>
-                                        </div>
-                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
-                                    </div>   
-						      </div> 
-                                   </div>
+                          <div id="impressionschart" style="height: 250px; width: 90%;">
+	                      </div>
+
+                  </div>
+                  <div class="col-md-4">
+                             <div class="toptotals" >  
+                                    <div class="toptitles" >  
+                                    Views (last 30 days)
+                                </div>
+                                <div class="topvalues" >  
+                                    <?=$totalviews?>
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <section class="blog-post">
-                                    <div class="panel panel-default">                                    
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info h4weight">Job Ad Performance</h4></div>
-                                 <div class="table-responsive">      
+   
+                  <div id="viewschart" style="height: 250px; width: 90%;">
+	                      </div>
+                  </div>   
+                  <div class="col-md-4">
+                             <div class="toptotals" >  
+                                <div class="toptitles" >  
+                                    Click Through Rate (last 30 days)
+                                </div>
+                                <div class="topvalues" >  
+                                    <?=$ctrrate?>%
+                                </div>
+                            </div> 
+                  <div id="ctrchart" style="height: 250px; width: 90%;">
+	                      </div>   
+                  </div>
+    </div>
+                  
+         <div class="row-fluid">
+              <div class="col-md-12 middlepanel margintop10">  
+            <div class="col-md-7" >  
+                
+                                 <div class="table-responsive margintop10 tablediv">      
                                      <table class="table table-hover table-condensed">
-                                            <thead>
-                                                <tr align="left">
-                                                    <th>Job Title</th>
+                                            <thead class="tablehead">
+                                                <tr align="left" class="infoblue font12 whitecolor">
+                                                    <th >Job Title</th>
                                                     <th>Impressions</th>
                                                     <th>Views</th>
-                                                    <th>Click Through Rate</th>    
-                                                    <th>Resume Submissions</th>
-                                                    <th>Active</th>
+                                                    <th>Click<br>Through Rate</th>    
+                                                    <th>Resume<br>Submissions</th>                                                  
                                                 </tr>
                                             </thead>
                                             <tbody>
-                              
-                                        <?php
-                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
+                       <?php
+                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by views desc limit 0,5');
                                             $database->bind(':userid', $userid);                                             
                                             try{
                                                 $rows = $database->resultset();
@@ -524,7 +401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 $isactive= $row['isactive'];
                                                 $ctr=0;
                                                 if($views > 0 && $impressions > 0){
-                                                    $ctr = $views/$impressions;
+                                                    $ctr = ($views/$impressions) * 100;
                                                     $ctr = number_format((float)$ctr, 2, '.', '');
                                                 }
                                                 
@@ -539,74 +416,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 }    
                                                 $resumes = $row2['resumes'];
                                               
-                                       ?>
-                                   
-                                                <tr>                                                    
+                                       ?>             
+                                                                           
+                                                <tr class="font12">
                                                     <td><?=$jobtitle?></td>       
                                                     <td><?=$impressions?></td> 
                                                     <td><?=$views?></td>
-                                                    <td><?=$ctr?></td>
+                                                    <td><?=$ctr?>%</td>
                                                     <td><?=$resumes?></td>
-                                                    <td>
-                                                    <?php
-                                                        if($isactive>0){
-                                                           echo"<span class='text-success'><i class='fa fa-check'></i></span>";
-                                                        }
-                                                    ?>
-                                                    </td>
+                                                   
                                                 </tr>
-                                            <?php
+                                             <?php
                                             }
                                             ?>
-                                                
+                                                                                            
                                             </tbody>
                                         </table>
-                                     <div class="pull-right">
-                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
-                                     </div>
-                                      </div>  
-                                </div>
-                                    </div>
-                                  </section>
                                 
+                                      </div>  
+              
+            </div>
+            <div class="col-md-5 padleft-15" >
+                <div class="">
+                     <div id="chart4"  style="height: 300px; width: 80%;">
+                     </div>
+                </div>    
+            </div>  
+        </div>           
+                               
+     </div>
+                        
+    <div class="row-fluid">
+                  <div class="col-md-4 margintop10" >                  
+                          <div id="chart5" style="height: 250px; width: 90%;">
+	                      </div>
+                  </div>
+                  <div class="col-md-8 margintop10 pull-right">
+                          <div class="toptotals" >  
+                               <div class="toptitles" >  
+                                    Average Salary
                                 </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        include "employer-home-ctrchart.php";
-                                    ?>
+                                <div class="topvalues" >  
+                                    28,757.43
                                 </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        include "verticalbar.php";
-                                    ?>
-                                </div> 
-                                 <div class="col-md-12">
-                                    <?php
-                                        include "horizontalbar.php";
-                                    ?>
-                                </div> 
-                            
-		                </div>
-					</div>
-	            </div>                         
-                    </div>
-                    
-                    
-                <div class="col-md-3 pull-right">
-                          <div class="card card-ads adsright">                                            
-                                                             <div class="content">
-                                                                                                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
-		       </div> 
+                        </div>
+                          <div id="chart6" style="height: 250px; width: 85%;">
+	                      </div>  
+                  </div>
+                
+                 
+    </div>                                            
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+        
             
                       
                     </div> <!--resume main body-->        
@@ -651,7 +519,449 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
     
 </body>
+<script type="text/javascript">
+CanvasJS.addColorSet("jobslycolorset",
+     [//colorSet Array
+    "#55b559",
+    "#a72abd",
+    "#fbc53c",
+    "#f55145",
+    "#0ab1fc",
+    ]);
+    
+<?php
+     $database->query("SELECT dateadded, sum(impressions) as totimp from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE() group BY dateadded");
+     $database->bind(':userid', $userid);                                             
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+          $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+          die("");
+     }
+    
+?>
+    var chart1 = new CanvasJS.Chart("impressionschart",
+    { 
+      colorSet:  "jobslycolorset",    
+      height:250,     
+      backgroundColor: "#e7e7e7",
+      animationEnabled: true,  
+      axisY:{
+        tickLength: 5,  
+        includeZero: false,  
+        interval: 50,
+      },
+      axisX:{
+        tickLength: 5,   
+        valueFormatString: "DD-MMM"
+      },    
+      title:{
+      text: "Impressions",
+      fontSize: 16,  
+      },
+       data: [
+      {
+        type: "line",
+        lineThickness: 5,         
+        markerType: "none",   
+        dataPoints: [
+    <?php
+        $index=0;
+        $num_rows = $database->rowCount(); 
+        
+        foreach($rows as $row){
+            $dateadded = $row['dateadded'];
+            $dadd = explode("-", $dateadded);
+            $dateadded = $dadd[0].",". ($dadd[1]-1).",".$dadd[2];
+            
+            $totimp = $row['totimp'];
+            
+            echo "{ x: new Date(".$dateadded."), y: ".$totimp." }";
+            if($index<$num_rows){
+                echo ",";
+            }
+            $index++;
+        }
+    ?>    
+       // { x: new Date(2012, 00, 1), y: 450 },
+       // { x: new Date(2012, 01, 1), y: 414 },
+       // { x: new Date(2012, 02, 1), y: 520 },
+       // { x: new Date(2012, 03, 1), y: 460 },
+      //  { x: new Date(2012, 04, 1), y: 450 }
+        ]
+      }
+      ]
+    });
 
+
+    
+    <?php
+     $database->query("SELECT jobtitle, views from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
+     $database->bind(':userid', $userid);                                             
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+          $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+          die("");
+     }
+ 
+    ?>
+	var chart2 = new CanvasJS.Chart("viewschart",
+	{  
+        colorSet:  "jobslycolorset",
+        height:250,     
+        backgroundColor: "#e7e7e7",
+		title:{
+			text: "Views",
+            fontSize: 16
+		},
+        animationEnabled: true,
+		data: [
+		{
+			type: "doughnut",
+            innerRadius: "60%", 
+			startAngle: 60,
+			toolTipContent: "{legendText}: {y} - <strong>#percent% </strong>",
+			showInLegend: true,
+          explodeOnClick: false, //**Change it to true
+			dataPoints: [
+                <?php
+                    $index=0;
+                    $num_rows = $database->rowCount(); 
+
+                    foreach($rows as $row){
+                        $jobtitle = $row['jobtitle'];
+                        $views = $row['views'];
+
+                        echo "{y: ".$views.", indexLabel: '".$jobtitle." #percent%', legendText: '".$jobtitle."' }";
+                        if($index<$num_rows){
+                            echo ",";
+                        }
+                        $index++;
+                    }
+                ?> 
+			//	{y: 65899660, indexLabel: "Barack Obama #percent%", legendText: "Barack Obama" },
+			//	{y: 60929152, indexLabel: "Mitt Romney #percent%", legendText: "Mitt Romney" },
+			//	{y: 2175850,  indexLabel: "Others #percent%", legendText: "Others" }
+                
+			]
+		}
+		]
+	});
+    
+    
+    <?php
+     $industrysearch = '%'.$industry.'%';
+     $database->query("SELECT sum(impressions) as totimp, sum(views) as totviews from jobads
+ inner join companyinfo on companyinfo.industry like :industry  and jobads.userid=companyinfo.userid and jobads.dateadded  BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
+    // $database->bind(':userid', $userid);
+     $database->bind(':industry', $industrysearch);  
+     try{
+          $row = $database->single();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+      $totimp = $row['totimp'];
+      $totviews = $row['totviews'];
+     
+     if(($totimp > 0) && ($totviews > 0)){
+        $industryctr =   ($totviews / $totimp) * 100;
+        $industryctr = number_format((float)$industryctr, 2, '.', '');
+     }else{
+         $totimp = 1;
+         $totviews = 1;
+         $industryctr = 1;
+         
+     }
+    
+     $database->query("SELECT sum(impressions) as totimpuser, sum(views) as totviewsuser from jobads
+ inner join companyinfo on companyinfo.industry like :industry and jobads.userid=:userid and jobads.userid=companyinfo.userid and jobads.dateadded  BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
+     $database->bind(':userid', $userid);
+     $database->bind(':industry', $industry);  
+     try{
+          $row = $database->single();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+      if(($totimpuser > 0) && ($totviewsuser > 0)){
+          $totimpuser = $row['totimpuser'];
+          $totviewsuser = $row['totviewsuser'];
+          $userctr =   ($totviewsuser / $totimpuser) * 100;
+          $userctr = number_format((float)$userctr, 2, '.', '');
+      }else{
+          $totimpuser = 1;
+          $totviewsuser = 1;
+          $userctr = 1;
+      }
+    
+    ?>
+var chart3 = new CanvasJS.Chart("ctrchart", {
+    
+      height:250,     
+      backgroundColor: "#e7e7e7",
+      dataPointWidth: 100,
+      animationEnabled: true,
+				title: {
+					text: "Click Through Rate - <?=$industry?>",
+                    fontSize: 16
+				},
+				axisX: {
+					interval: 10
+				},				
+				data: [{
+					type: "column",
+                    color: "#fbc53c",                
+					indexLabelLineThickness: 2,
+					dataPoints: [
+						  { x: 10, y: <?=$industryctr?>,label: "Industry CTR" },
+						  { x: 20, y: <?=$userctr?>,label: "Company CTR"}
+					]
+				}]
+			});
+
+var chart4 = new CanvasJS.Chart("chart4",
+    {
+       height:250,
+       backgroundColor: "#CCCCCC",
+       title:{
+       text: "Resume Submissions Industry vs. Company",
+       fontSize: 16,
+       animationEnabled: true,    
+      },
+      axisY: {
+          interval: 2,         
+      },
+      axisX: { 
+          tickLength: 0,
+          valueFormatString:  " ",
+      },    
+      data: [{        
+        type: "bar",
+        color: "#0ab1fc",
+        showInLegend: true,  
+        indexLabelFontColor: "white",
+        legendText: "Industry",  
+          
+        <?php
+include 'specialization.php';    
+                    
+ $database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and specialization in (SELECT specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and jobads.userid=:userid GROUP by specialization desc) GROUP by specialization desc");
+  $database->bind(':userid', $userid);   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+     $num_rows = $database->rowCount();                   
+                    
+?>      
+        dataPoints: [
+<?php            
+      $index=0;   
+      $x = 10;
+      foreach($rows as $row){
+        $totapps = $row['totapps'];
+        $specialization = $row['specialization'];    
+        
+        echo "{ x: ".$x.", indexLabel: '".$specarray[$specialization]."',y: ".$totapps." }";
+        
+        if($index<$num_rows){
+             echo ",";
+        }
+        $index++;
+        $x = $x +10;
+      }
+?>            
+                  
+        ]
+      },
+      {        
+        type: "bar",
+        color: "#81d0f4",  
+        showInLegend: true,
+        legendText: "Company",
+        dataPoints: [
+   <?php
+        
+$database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and jobads.userid=:userid GROUP by specialization desc");
+     $database->bind(':userid', $userid); 
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+     $num_rows = $database->rowCount();    
+        $index=0;   
+        $x = 10;
+      foreach($rows as $row){
+        $totapps = $row['totapps'];
+        $specialization = $row['specialization'];    
+        
+        echo "{ x: ".$x.", y: ".$totapps." }";
+        
+        if($index<$num_rows){
+             echo ",";
+        }
+        $index++;
+        $x = $x +10;
+      }
+  
+    ?>        
+        ]
+      }        
+      ]
+    });
+    
+    
+    <?php
+
+ $database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid GROUP by specialization desc");
+   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+    ?>
+    var chart5 = new CanvasJS.Chart("chart5",
+	{
+        colorSet:  "jobslycolorset",    
+        height:250,
+        backgroundColor: "#e7e7e7",
+        animationEnabled: true,
+		title:{
+			text: "jobsly Resume Distribution",
+            fontSize: 16
+		},
+                animationEnabled: true,
+		legend:{
+			verticalAlign: "center",
+			horizontalAlign: "right",
+			fontSize: 12,
+		},		
+		data: [
+		{        
+			type: "pie",   
+			indexLabel: "{label} {y}%",
+			startAngle:-20,      
+			showInLegend: true,
+			toolTipContent:"{legendText} {y}%",
+			dataPoints: [
+                <?php            
+                      $index=0;
+                      $num_rows = $database->rowCount();  
+                      foreach($rows as $row){
+                        $totapps = $row['totapps'];
+                        $specialization = $row['specialization'];    
+
+                       echo "{  y: ".$totapps.", legendText: '".$specarray[$specialization]."'}";
+                        if($index<$num_rows){
+                             echo ",";
+                        }
+                        $index++;                    
+                      }
+                ?>  
+                
+			//	{  y: 83.24, legendText:"Education and Training"},
+		
+			]
+		}
+		]
+	});
+   
+    
+    <?php
+
+ $database->query("SELECT count(jobads.id) as totjobads, sum(msalary + maxsalary) as sumsalary, min(msalary) as minsalary, max(maxsalary) as maxsalary, specialization from jobads GROUP by specialization order by maxsalary desc limit 0,5");
+   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+    ?>
+    var chart6 = new CanvasJS.Chart("chart6",
+	{
+        colorSet:  "jobslycolorset",    
+        height:250,
+        animationEnabled: true,
+        backgroundColor: "#e7e7e7",
+        fontSize: 12,
+		title:{
+			text: "Average Salary per Specialization",
+            fontSize: 16
+		},
+		axisY: {
+			includeZero:true,
+			title: "Salary in USD(Thousands)",
+			interval: 20000,
+            labelFontSize: 12,
+		},
+        axisX: {
+			labelFontSize: 12,
+            valueFormatString: " ",
+          
+		},
+		data: [
+		{
+			type: "rangeBar",
+			showInLegend: true,
+			yValueFormatString: "$#0.##K",
+			indexLabel: "{y[#index]}",
+			
+            indexLabelFontSize: 12,
+			dataPoints: [   // Y: [Low, High]
+               <?php            
+                      $index=0;
+                      $x = 10;
+                      $num_rows = $database->rowCount();  
+                      foreach($rows as $row){
+                        $totjobads = $row['totjobads'];
+                        $sumsalary = $row['sumsalary'];
+                        $minsalary = $row['minsalary'];  
+                        $maxsalary = $row['maxsalary'];  
+                        $avgsalary = $sumsalary / $totjobads;
+                        $specialization = $row['specialization'];    
+
+                       echo "{x: ".$x.", y:[".$minsalary.", ".$maxsalary."], label: '".$specarray[$specialization]."'}";
+                        if($index<$num_rows){
+                             echo ",";
+                        }
+                        $index++;
+                        $x = $x +10;  
+                      }
+                ?>  
+                
+			//	{x: 10, y:[80, 110], label: "Data Scientist"},
+			//	{x: 20, y:[95, 141], label: "Product Manager" },
+			//	{x: 30, y:[98, 115], label: "Web Developer" },
+			//	{x: 40, y:[90, 160], label: "Software Engineer"},
+			//	{x: 50, y:[100,152], label: "Quality Assurance"}
+			]
+		}
+		]
+	});
+	</script>
 	
     <script>
     var isClosed = true;
@@ -689,6 +999,12 @@ $(document).ready(function() {
     checkWidth();
     // Bind event listener
     $(window).resize(checkWidth);
+    chart1.render();
+	chart2.render();
+    chart3.render();
+    chart4.render();
+    chart5.render();
+    chart6.render();
 });        
 </script>
 

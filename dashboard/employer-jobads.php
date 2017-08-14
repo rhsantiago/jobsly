@@ -167,7 +167,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="#essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
                         </ul>    
                     </li>
-    				
+    				<li><a href="employer-stats.php" id="home"><i class="material-icons">assessment</i>Statistics</a></li>
                 </ul>
         	</div>
     	</div>
@@ -237,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="#essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
     </ul>
     </div>
- 
+    <div class="sidebar-item"><a href="employer-stats.php"><i class="material-icons">assessment</i>&nbsp;Statistics</a></div>
 </div>
     
      <!--sidebar-->
