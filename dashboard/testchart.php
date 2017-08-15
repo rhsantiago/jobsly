@@ -356,7 +356,7 @@
                                             </thead>
                                             <tbody>
                        <?php
-                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by dateadded desc limit 0,5');
+                                            $database->query('SELECT id,jobtitle,views,impressions,isactive from jobads where userid=:userid order by views desc limit 0,5');
                                             $database->bind(':userid', $userid);                                             
                                             try{
                                                 $rows = $database->resultset();
@@ -677,18 +677,17 @@ var chart3 = new CanvasJS.Chart("ctrchart", {
 				}]
 			});
 
-    
 var chart4 = new CanvasJS.Chart("chart4",
     {
        height:250,
        backgroundColor: "#CCCCCC",
        title:{
-       text: "Average Resume Submissions",
+       text: "Resume Submissions Industry vs. Company",
        fontSize: 16,
        animationEnabled: true,    
       },
       axisY: {
-          interval: 50,         
+          interval: 2,         
       },
       axisX: { 
           tickLength: 0,
@@ -699,32 +698,98 @@ var chart4 = new CanvasJS.Chart("chart4",
         color: "#0ab1fc",
         showInLegend: true,  
         indexLabelFontColor: "white",
-        legendText: "Industry CTR",  
+        legendText: "Industry",  
+          
+        <?php
+include 'specialization.php';    
+                    
+ $database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and specialization in (SELECT specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and jobads.userid=:userid GROUP by specialization desc) GROUP by specialization desc");
+  $database->bind(':userid', $userid);   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+     $num_rows = $database->rowCount();                   
+                    
+?>      
         dataPoints: [
-        { x: 10, indexLabel: "Marketing, advertising and PR",y: 171 },
-        { x: 20, indexLabel: "Information technology",y: 155},
-        { x: 30, indexLabel: "Creative arts and design",y: 150 },
-        { x: 40, indexLabel: "Business, consulting and management",y: 165 },
-        { x:50, indexLabel: "Accountancy, banking and finance", y: 195 }
+<?php            
+      $index=0;   
+      $x = 10;
+      foreach($rows as $row){
+        $totapps = $row['totapps'];
+        $specialization = $row['specialization'];    
+        
+        echo "{ x: ".$x.", indexLabel: '".$specarray[$specialization]."',y: ".$totapps." }";
+        
+        if($index<$num_rows){
+             echo ",";
+        }
+        $index++;
+        $x = $x +10;
+      }
+?>            
+                  
         ]
       },
       {        
         type: "bar",
         color: "#81d0f4",  
         showInLegend: true,
-        legendText: "Company CTR",
+        legendText: "Company",
         dataPoints: [
-        { x: 10, y: 71 },
-        { x: 20, y: 55},
-        { x: 30, y: 50 },
-        { x: 40, y: 65 },
-        { x:50, y: 95 }
+   <?php
+        
+$database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid and jobads.userid=:userid GROUP by specialization desc");
+     $database->bind(':userid', $userid); 
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+     $num_rows = $database->rowCount();    
+        $index=0;   
+        $x = 10;
+      foreach($rows as $row){
+        $totapps = $row['totapps'];
+        $specialization = $row['specialization'];    
+        
+        echo "{ x: ".$x.", y: ".$totapps." }";
+        
+        if($index<$num_rows){
+             echo ",";
+        }
+        $index++;
+        $x = $x +10;
+      }
+  
+    ?>        
         ]
       }        
       ]
     });
     
     
+    <?php
+
+ $database->query("SELECT count(jobapplications.id) as totapps,specialization from jobads inner join jobapplications on jobads.id=jobapplications.jobid GROUP by specialization desc");
+   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+    ?>
     var chart5 = new CanvasJS.Chart("chart5",
 	{
         colorSet:  "jobslycolorset",    
@@ -749,45 +814,99 @@ var chart4 = new CanvasJS.Chart("chart4",
 			showInLegend: true,
 			toolTipContent:"{legendText} {y}%",
 			dataPoints: [
-				{  y: 83.24, legendText:"Education and Training"},
-				{  y: 8.16, legendText:"Legal Services!"},
-				{  y: 4.67, legendText:"Sciences"},
-				{  y: 1.67, legendText:"Baidu"},       
-				{  y: 0.98, legendText:"Others"}
+                <?php            
+                      $index=0;
+                      $num_rows = $database->rowCount();  
+                      foreach($rows as $row){
+                        $totapps = $row['totapps'];
+                        $specialization = $row['specialization'];    
+
+                       echo "{  y: ".$totapps.", legendText: '".$specarray[$specialization]."'}";
+                        if($index<$num_rows){
+                             echo ",";
+                        }
+                        $index++;                    
+                      }
+                ?>  
+                
+			//	{  y: 83.24, legendText:"Education and Training"},
+		
 			]
 		}
 		]
 	});
    
     
+    <?php
+
+ $database->query("SELECT count(jobads.id) as totjobads, sum(msalary + maxsalary) as sumsalary, min(msalary) as minsalary, max(maxsalary) as maxsalary, specialization from jobads GROUP by specialization order by maxsalary desc limit 0,5");
+   
+     try{
+          $rows = $database->resultset();
+     }catch (PDOException $e) {
+          $msg = $e->getTraceAsString()." ".$e->getMessage();
+         // $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         echo $msg;
+          die("");
+     }
+    ?>
     var chart6 = new CanvasJS.Chart("chart6",
 	{
         colorSet:  "jobslycolorset",    
         height:250,
         animationEnabled: true,
         backgroundColor: "#e7e7e7",
+        fontSize: 12,
 		title:{
-			text: "Employees Salary in a Company",
+			text: "Average Salary per Specialization",
             fontSize: 16
 		},
 		axisY: {
-			includeZero:false,
+			includeZero:true,
 			title: "Salary in USD(Thousands)",
-			interval: 50,
-		}, 	
+			interval: 20000,
+            labelFontSize: 12,
+		},
+        axisX: {
+			labelFontSize: 12,
+            valueFormatString: " ",
+          
+		},
 		data: [
 		{
 			type: "rangeBar",
 			showInLegend: true,
 			yValueFormatString: "$#0.##K",
 			indexLabel: "{y[#index]}",
-			legendText: "Department wise Min and Max Salary",
+			
+            indexLabelFontSize: 12,
 			dataPoints: [   // Y: [Low, High]
-				{x: 10, y:[80, 110], label: "Data Scientist"},
-				{x: 20, y:[95, 141], label: "Product Manager" },
-				{x: 30, y:[98, 115], label: "Web Developer" },
-				{x: 40, y:[90, 160], label: "Software Engineer"},
-				{x: 50, y:[100,152], label: "Quality Assurance"}
+               <?php            
+                      $index=0;
+                      $x = 10;
+                      $num_rows = $database->rowCount();  
+                      foreach($rows as $row){
+                        $totjobads = $row['totjobads'];
+                        $sumsalary = $row['sumsalary'];
+                        $minsalary = $row['minsalary'];  
+                        $maxsalary = $row['maxsalary'];  
+                        $avgsalary = $sumsalary / $totjobads;
+                        $specialization = $row['specialization'];    
+
+                       echo "{x: ".$x.", y:[".$minsalary.", ".$maxsalary."], label: '".$specarray[$specialization]."'}";
+                        if($index<$num_rows){
+                             echo ",";
+                        }
+                        $index++;
+                        $x = $x +10;  
+                      }
+                ?>  
+                
+			//	{x: 10, y:[80, 110], label: "Data Scientist"},
+			//	{x: 20, y:[95, 141], label: "Product Manager" },
+			//	{x: 30, y:[98, 115], label: "Web Developer" },
+			//	{x: 40, y:[90, 160], label: "Software Engineer"},
+			//	{x: 50, y:[100,152], label: "Quality Assurance"}
 			]
 		}
 		]

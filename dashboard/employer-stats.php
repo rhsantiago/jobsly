@@ -73,61 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->    
-     <!-- Modal -->
-	<div class="modal fullscreen-modal fade" id="viewresume-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="invite-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="showjob-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="rejectapp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-lg" role="document">
-	    <div class="modal-content modalcontent">
-	      
-	    </div>
-	  </div>
-	</div>
-    <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
-            <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content modalcontent">
-	        <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title text-primary h4weight" id="myModalLabel">Upload Company Logo</h4>
-	      </div>
-            <div id="modalrejectapp" class="modal-body">
-            
-            <div id="fileuploaddiv" class="">                 
-                   <input type="file" id="fileToUpload" name="fileToUpload" class="">
-                 </div> 
-           </div>
-            <div class="modal-footer blog-post">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">Upload</button>
-	      </div>
-	    </div>
-           
-	  </div>
-        </form>    
-	</div>
-    
-    
+
    <nav class="navbar navbar-fixed-top ">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
@@ -328,11 +274,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="col-md-4" >
                         <div class="toptotals" >  
                                <div class="toptitles" >  
-                                    Impressions (last 30 days)
+                                   Impressions (last 30 days) <a data-toggle="tooltip" title="Impressions - The number of times your job post appeared on the latest jobs or search results pages"><i class="tooltips material-icons">help_outline</i></a>
                                 </div>
                                 <div class="topvalues" >  
-                                    <?=$totalimpressions?>
+                                    <?=$totalimpressions?>                                     
                                 </div>
+                                  
                         </div>
                         
 
@@ -343,7 +290,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="col-md-4">
                              <div class="toptotals" >  
                                     <div class="toptitles" >  
-                                    Views (last 30 days)
+                                    Views (last 30 days) <a data-toggle="tooltip" title="Views - The number of times your job post was clicked and viewed"><i class="tooltips material-icons">help_outline</i></a>
                                 </div>
                                 <div class="topvalues" >  
                                     <?=$totalviews?>
@@ -356,7 +303,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="col-md-4">
                              <div class="toptotals" >  
                                 <div class="toptitles" >  
-                                    Click Through Rate (last 30 days)
+                                    Click Through Rate (last 30 days) <a data-toggle="tooltip" title="Click-through Rate - the ratio of the number of times your job post was clicked to the number of timed it was shown"><i class="tooltips material-icons">help_outline</i></a>
                                 </div>
                                 <div class="topvalues" >  
                                     <?=$ctrrate?>%
@@ -454,7 +401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="col-md-8 margintop10 pull-right">
                           <div class="toptotals" >  
                                <div class="toptitles" >  
-                                    Average Salary
+                                    Average Salary <a data-toggle="tooltip" title="Average Salary - The average salary for jobs posted on jobsly"><i class="tooltips material-icons">help_outline</i></a>
                                 </div>
                                 <div class="topvalues" >  
                                     28,757.43
@@ -913,7 +860,7 @@ $database->query("SELECT count(jobapplications.id) as totapps,specialization fro
 		},
 		axisY: {
 			includeZero:true,
-			title: "Salary in USD(Thousands)",
+			title: "Salary in Php(Thousands)",
 			interval: 20000,
             labelFontSize: 12,
 		},
@@ -925,7 +872,7 @@ $database->query("SELECT count(jobapplications.id) as totapps,specialization fro
 		data: [
 		{
 			type: "rangeBar",
-			showInLegend: true,
+			showInLegend: false,
 			yValueFormatString: "$#0.##K",
 			indexLabel: "{y[#index]}",
 			

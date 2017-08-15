@@ -16,6 +16,10 @@ html,body{
     margin-left: 20px;
 }
 
+.tooltips {
+    color: #fff;   
+}
+
 .topvalues {
     color: #fff;
     margin-top: 5px;
