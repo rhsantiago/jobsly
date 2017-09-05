@@ -498,7 +498,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                           
                                            if(strcmp($isjobseeker,'jobseeker')==0){
                                                  
-                                          if(empty($checkrow) && $pinfo>0 && $ainfo>0){
+                                          if(empty($checkrow) && $pinfo>0 && $ainfo>0 && ($usertype == 2)){
                                           ?>   
                                         
                                           <div class="quickapplydiv">
@@ -592,7 +592,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                          <?php
                                           }
                                          
-                                          if(strcmp($isjobseeker,'jobseeker')==0){
+                                          if((strcmp($isjobseeker,'jobseeker')==0) && ($usertype == 2)){
                                               if($pinfo<=0 && $ainfo<=0){
                                           ?>
                                   
@@ -833,19 +833,17 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                            
 	      </div>
 	      <div class="col-md-3 pull-right">
+                    <!--
                           <div class="card card-ads adsright">                                            
-                                                             <div class="content">
-                                                                                                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
+                               <div class="content">
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                          
+                                     </div>
+                                   </div>
+                                </div>
+                          </div>
+                    -->
 		       </div> 
 
                 </div> 

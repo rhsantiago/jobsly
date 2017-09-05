@@ -509,19 +509,17 @@ I / We understand and agree to the terms and conditions of this agreement.
                     
                     
                 <div class="col-md-3 pull-right">
+                        <!--
                           <div class="card card-ads adsright">                                            
-                                                             <div class="content">
-                                                                                                                                       
-                                                                            <div class="row">
-                                                                                <div class="col-md-12">
-                                                                                    <img alt="Bootstrap Image Preview" src="img/ad1.jpg" width="300" height="250" class="img-responsive" style="padding-top: 5px"/><img alt="Bootstrap Image Preview" src="http://lorempixel.com/300/250/" class="img-responsive" style="padding-top: 5px"/>
-                                                                                </div>
-                                                                               
-                                                                            
-                                                                            </div>
-                                                                      
-                                                             </div>
-                                                    </div>
+                               <div class="content">
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                          
+                                     </div>
+                                   </div>
+                                </div>
+                          </div>
+                    -->
 		       </div> 
             </form>
 
