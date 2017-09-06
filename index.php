@@ -293,14 +293,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="row">
                 <div class="col-sm-6 wow fadeInLeftBig">
                      <div id="owl-demo-1" class="owl-carousel">
-						<a href="img/iphone.png" class="image-link">
+						<a href="dashboard/email/img/beautiful2.png" class="image-link">
 							<div class="item">
-								<img  class="img-responsive img-rounded" src="img/iphone.png" alt="">
+								<img  class="img-responsive img-rounded" src="dashboard/email/img/beautiful2.png" alt="">
 							</div>
 						</a>
-						<a href="img/iphone.png" class="image-link">
+						<a href="dashboard/email/img/latest.png" class="image-link">
 							<div class="item">
-								<img  class="img-responsive img-rounded" src="img/iphone.png" alt="">
+								<img  class="img-responsive img-rounded" src="dashboard/email/img/latest.png" alt="">
 							</div>
 						</a>
 						<a href="img/iphone.png" class="image-link">
