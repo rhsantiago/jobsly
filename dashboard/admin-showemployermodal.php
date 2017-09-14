@@ -19,9 +19,9 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
  $logtimestamp = date("Y-m-d H:i:s"); 
  include "serverlogconfig.php";
  $database = new Database();
- $sdate='';
+ $sdate= array();
  $signupdate='';
- $email='';
+ $email='';array(
     $database->query('SELECT * from useraccounts, companyinfo where useraccounts.id=:employerid and useraccounts.id=companyinfo.userid');
     $database->bind(':employerid', $employerid);
     try{

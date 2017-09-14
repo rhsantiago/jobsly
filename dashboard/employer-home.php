@@ -570,22 +570,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                   </section>
                                 
                                 </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        include "employer-home-ctrchart.php";
-                                    ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php
-                                        include "verticalbar.php";
-                                    ?>
-                                </div> 
-                                 <div class="col-md-12">
-                                    <?php
-                                        include "horizontalbar.php";
-                                    ?>
-                                </div> 
-                            
+                          
 		                </div>
 					</div>
 	            </div>                         

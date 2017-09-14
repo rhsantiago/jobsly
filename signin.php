@@ -21,10 +21,25 @@ $usertype = $row['usertype'];
 if(is_null($success)){
     echo 'notfound';
 }
-//if($success == $email && $isverified == 0){
-//    echo 'unverified';
-//}
-if(strtolower($success) == strtolower($email) && $isverified == 0 && $usertype == 1){
+$complete = 0;
+if($usertype==1){
+    $database->query('SELECT companyname,companyaddress,telno,companytin,cperson,designation,cpersontelno from companyinfo where userid = :userid');
+    $database->bind(':userid', $id);
+    $row = $database->single();
+    $complete = 0;
+    $companyname = $row['companyname'];
+    $companyaddress = $row['companyaddress'];
+    $telno = $row['telno'];
+    $companytin = $row['companytin'];
+    $cperson = $row['cperson'];
+    $designation = $row['designation'];
+    $cpersontelno = $row['cpersontelno'];
+    if(!empty($companyname) && !empty($companyaddress) && !empty($telno) && !empty($companytin) && !empty($cperson) && !empty($designation) && !empty($cpersontelno)){
+        $complete = 1;
+    }
+}
+
+if(strtolower($success) == strtolower($email)  && $usertype == 1 && ($isverified == 0 || $complete == 0)){
    /* $database->query('SELECT companyname,companyaddress from companyinfo where userid=:userid');
     $database->bind(':userid', $id);
     $row = $database->single();
@@ -40,11 +55,11 @@ if(strtolower($success) == strtolower($email) && $isverified == 0 && $usertype =
             $_SESSION['userid'] = $id;
          if(!isset($_SESSION['usertype']))
             $_SESSION['usertype'] = $usertype;
-        echo 'unverified';
+        echo 'unverifiedemployer';
   //  }
 }
 
-if(strtolower($success) == strtolower($email) && $isverified == 1 && $usertype == 1){
+if(strtolower($success) == strtolower($email) && $isverified == 1 && $usertype == 1 && $complete == 1){
      session_start();
         if(!isset($_SESSION['user']))
             $_SESSION['user'] = $success;

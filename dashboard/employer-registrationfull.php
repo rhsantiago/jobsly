@@ -233,7 +233,8 @@ if($ok == 1 ){
        </div>
     
     <div class="col-md-offset-1 col-md-7">
-                       
+        <br>
+                Please complete the form below for account review. We will activate your account within 24 hours.       
                 <div class="section  section-landing">
 	                 
 
@@ -481,7 +482,7 @@ I / We understand and agree to the terms and conditions of this agreement.
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Company Information</button>
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Agree &amp; Save Company Information</button>
                                             </div>       
                                              <div id="successdivcreg" name="successdivcreg" class="alert alert-success">
                                                

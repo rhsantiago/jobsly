@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="author" content="">
 
-    <title>jobsly – jobs for the modern world</title>
+    <title>jobsly – find your next adventure.</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
         <?php
             include 'inc/resources.php';

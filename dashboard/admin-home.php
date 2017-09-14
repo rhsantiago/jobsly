@@ -297,34 +297,34 @@ if($ok == 1 ){
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats" >
                                         <div class="card-header cardmargin" data-background-color="purple">
-                                            <h3 class="center marginjobdetaillink"><a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="jobadsapprdiv"><?=$jadsappr?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right"><span id="jobadsapprdiv"><?=$jadsappr?></span></a></h3>
                                         </div>
-                                      <a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right  marginjobdetaillink" data-jobid="<?=$id?>">Job Ads<br>Approval</a>
+                                      <a href="#jobadsappr" id="jobadsappr" class="text-primary h4weight pull-right  marginjobdetaillink" >Job Ads<br>Approval</a>
                                         
                                     </div>
 						      </div>
                             <div class="col-lg-3 col-md-3"> 
                                     <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="blue">
-                                            <h3 class="center marginjobdetaillink"><a href="#empappr" id="empappr" class="text-primary h4weight pull-right" data-jobid="<?=$id?>"><span id="empapprdiv"><?=$totemp?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#empappr" id="empappr" class="text-primary h4weight pull-right" ><span id="empapprdiv"><?=$totemp?></span></a></h3>
                                         </div>                                        
-                                            <a href="#empappr" id="empappr" class="text-info h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Employers<br>Approval</a>
+                                            <a href="#empappr" id="empappr" class="text-info h4weight pull-right marginjobdetaillink">Employers<br>Approval</a>
                                     </div>                                  
 						    </div>
                                 <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats">
                                         <div class="card-header cardmargin" data-background-color="green">
-                                            <h3 class="center marginjobdetaillink"><a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="jseekerapprdiv"><?=$totjseeker?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right" ><span id="jseekerapprdiv"><?=$totjseeker?></span></a></h3>
                                         </div>
-                                            <a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Job Seekers<br>Approval</a>		
+                                            <a href="#jseekerappr" id="jseekerappr" class="text-success h4weight pull-right marginjobdetaillink" >Job Seekers<br>Approval</a>		
                                     </div>   
 						      </div>
                                <div class="col-lg-3 col-md-3"> 
                                      <div  class="card card-stats ">
                                         <div class="card-header cardmargin" data-background-color="orange">
-                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" data-jobid="<?=$id?>"><span id="shortlistdiv"><?=$totjseeker?></span></a></h3>
+                                            <h3 class="center marginjobdetaillink"><a href="#ajposts" id="ajposts" class="text-success h4weight pull-right" ><span id="shortlistdiv"><?=$totjseeker?></span></a></h3>
                                         </div>
-                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" data-jobid="<?=$id?>">Total Active<br>Applicants</a>		
+                                            <a href="#ajposts" id="ajposts" class="text-warning h4weight pull-right marginjobdetaillink" >Total Active<br>Applicants</a>		
                                     </div>   
 						      </div>
                                    </div>

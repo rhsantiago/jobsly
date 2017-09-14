@@ -20,8 +20,25 @@ $database = new Database();
         die("");
     }    
     $ok = $row['ok'];
+ $database->query('SELECT usertype from useraccounts where email=:email and verifyhash=:verifyhash');
+   
+ $database->bind(':email', $email);
+ $database->bind(':verifyhash', $verifyhash);
+    try{
+        $row = $database->single();
+     }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }
+    $usertype = $row['usertype'];
+
 if($ok > 0){
-    $database->query('update useraccounts set isverified=1 where email=:email and verifyhash=:verifyhash');
+ if($usertype==1){
+      $database->query('update useraccounts set isverified=0 where email=:email and verifyhash=:verifyhash');
+ }else{
+      $database->query('update useraccounts set isverified=1 where email=:email and verifyhash=:verifyhash');
+ }   
    
  $database->bind(':email', $email);
  $database->bind(':verifyhash', $verifyhash);
