@@ -38,8 +38,77 @@ $(document).ready(function($) {
     
      });
     
-    $('#signin').click(function() {     
-             $('#login-form').submit();
+    $('#sendresetlink-form').on('submit',function(event){
+           // event.preventDefault();
+            
+            var email = $("#sendresetlink-form #email").val();  
+           
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "sendresetlink.php",
+                data: "email=" + email,
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                    $( "#notfound" ).addClass('hidden');
+                    $( "#success" ).addClass('hidden');
+                           if(data == 'success'){
+                               $( "#success" ).removeClass('hidden');
+                           }else if(data == 'notfound'){
+                               $( "#notfound" ).removeClass('hidden');
+                           }
+                    
+                },
+                error: function(data) {
+                    
+                }
+            });
+            return false;
+    
+     });
+    
+    $('#resetpw-form').on('submit',function(event){
+           // event.preventDefault();
+            
+            var email = $("#resetpw-form #email").val();
+            var password = $("#resetpw-form #password").val();
+            var password2 = $("#resetpw-form #password2").val();
+                
+            if(password==password2){
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "sendresetlink.php",
+                data: "email=" + email,
+                dataType: 'text',
+                success : function(data){
+                    console.log(data);
+                    $( "#notfound" ).addClass('hidden');
+                    $( "#success" ).addClass('hidden');
+                           if(data == 'success'){
+                               $( "#success" ).removeClass('hidden');
+                           }else if(data == 'notfound'){
+                               $( "#notfound" ).removeClass('hidden');
+                           }
+                    
+                },
+                error: function(data) {
+                    
+                }
+            });
+            return false;
+            }else{
+                $( "#pwnotmatch" ).addClass('hidden');
+                $( "#pwsuccess" ).addClass('hidden');
+                $( "#pwnotmatch" ).removeClass('hidden');
+                 return false;
+            }
+    
+     });
+    
+    $('#forgot').click(function() {     
+             window.location.href = 'forgot.php?mode=forgot';
            
            // return false;
         });
