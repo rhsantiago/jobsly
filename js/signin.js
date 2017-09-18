@@ -13,12 +13,6 @@ $(document).ready(function($) {
                 url: "signin.php",
                 data: "email=" + email + "&password=" + password,           
                 dataType: 'text',
-                beforeSend: function() {
-                 $('#loader').show();
-                      },
-                 complete: function(){
-                      $('#loader').hide();
-                  },
                 success : function(data){
                     console.log(data);
                     $( "#notfound" ).addClass('hidden');
@@ -55,13 +49,8 @@ $(document).ready(function($) {
                 url: "sendresetlink.php",
                 data: "email=" + email,
                 dataType: 'text',
-                 beforeSend: function() {
-                 $('#loader').show();
-                      },
-                 complete: function(){
-                         $('#loader').hide();
-                      },
-                success : function(data){                  
+                success : function(data){
+                    console.log(data);
                     $( "#notfound" ).addClass('hidden');
                     $( "#success" ).addClass('hidden');
                            if(data == 'success'){
@@ -85,27 +74,20 @@ $(document).ready(function($) {
             var email = $("#resetpw-form #email").val();
             var password = $("#resetpw-form #password").val();
             var password2 = $("#resetpw-form #password2").val();
-            var verifyhash = $("#resetpw-form #verifyhash").val();
                 
             if(password==password2){
             $.ajax({
                 cache: false,
                 type: "POST",
-                url: "resetpw.php",
-                data: "email=" + email + "&verifyhash=" + verifyhash + "&password=" +password + "&password2=" + password2,
+                url: "sendresetlink.php",
+                data: "email=" + email,
                 dataType: 'text',
-                beforeSend: function() {
-                 $('#loader').show();
-                      },
-                 complete: function(){
-                      $('#loader').hide();
-                  },
                 success : function(data){
                     console.log(data);
                     $( "#notfound" ).addClass('hidden');
-                    $( "#pwsuccess" ).addClass('hidden');
-                           if(data == 'pwsuccess'){
-                               $( "#pwsuccess" ).removeClass('hidden');
+                    $( "#success" ).addClass('hidden');
+                           if(data == 'success'){
+                               $( "#success" ).removeClass('hidden');
                            }else if(data == 'notfound'){
                                $( "#notfound" ).removeClass('hidden');
                            }
