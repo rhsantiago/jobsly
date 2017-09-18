@@ -97,6 +97,9 @@ a:hover {
                                     <div class="errormsg">
                   <div id="unverified" class="loginerror hidden">Unverified account. Please check your email for the verification link</div>
                   <div id="notfound" class="loginerror hidden">Email not found or password does not match</div>
+                                    <div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>    
               </div>
 
 								</div>

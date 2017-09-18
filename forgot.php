@@ -106,7 +106,10 @@ if($mode=='forgot') {
 
                                     <div class="errormsg">                 
                   <div id="notfound" class="loginerror hidden">Email not found!</div>
-                  <div id="success" class="loginerror hidden">Password Reset link sent to your email!</div>                        
+                  <div id="success" class="loginerror hidden">Password Reset link sent to your email!</div>   
+                                    <div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>                    
               </div>
 
 								</div>
@@ -115,7 +118,8 @@ if($mode=='forgot') {
                                         <li>    
                                             <button class="btn btn-info " name="signin" id="signin" type="submit">Send Password Reset Link</button>
                                         </li>                                         
-                                    </ul>    
+                                    </ul>
+                                    
 								</div>
 							</form>
 						</div>
@@ -136,6 +140,7 @@ if($mode=='forgot') {
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup">
 							<form method="POST" id="resetpw-form" action="resetpw.php" name="resetpw-form">
+                                <input type="hidden" id="verifyhash" value="<?=$verify?>">
 								<div class="header header-primary text-center">
 									<h4>Reset Password</h4>
 									
@@ -147,23 +152,26 @@ if($mode=='forgot') {
 										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-										<input type="text" id="email" class="form-control" placeholder="Email...">
+										<input type="text" value="<?=$email?>" id="email" class="form-control" placeholder="Email...">
 									</div>
                                     <div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>
 										</span>
-										<input type="password" id="password" placeholder="Password..." class="form-control" />
+										<input type="password" id="password" placeholder="New Password..." class="form-control" />
 									</div>
                                     <div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>
 										</span>
-										<input type="password" id="password2" placeholder="Confirm Password..." class="form-control" />
+										<input type="password" id="password2" placeholder="Confirm New Password..." class="form-control" />
 									</div>
                                     <div class="errormsg">                 
                   <div id="pwnotmatch" class="loginerror hidden">Passwords do not match!</div>
-                  <div id="pwsuccess" class="loginerror hidden text-success">Password Reset Successful!</div>                        
+                  <div id="pwsuccess" class="loginerror hidden text-success">Password Reset Successful!</div>
+                                    <div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>    
               </div>
 
 								</div>
@@ -199,6 +207,7 @@ if($mode=='forgot') {
 <script>
 $(document).ready(function() {
      $('#email').focus();
+     $('#loader').hide();
 });      
     
 </script>    

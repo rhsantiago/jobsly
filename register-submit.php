@@ -56,13 +56,14 @@ $mail->Port = 587;
 
 $mail->SMTPAuth = true;
 $mail->Username = "info@jobsly.net";
-$mail->Password = "r33c3*fr3y";
+//$mail->Password = "r33c3*fr3y";
+$mail->Password = "freya*0209";
 
 $mail->isHTML(true);  
 $mail->setFrom('info@jobsly.net', 'jobsly');
 $mail->Subject = 'Welcome to jobsly!';
 $mail->addAddress($email);
-$mail->Body    = "Thank you for registering! <a href='http://www.jobsly.net/verified.php?email=".$email."&verify=".$verifyhash."'>Click here to complete your jobsly registration</a>";
+$mail->Body    = "Thank you for registering! <a href='https://www.jobsly.net/verified.php?email=".$email."&verify=".$verifyhash."'>Click here to complete your jobsly registration</a>";
 
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
