@@ -3,7 +3,9 @@
  
 }
 
-
+.loginerror{
+        color: red;
+    }    
 
 .navbar-header .logo{ 
  /* color: #E6E6FA !important; */

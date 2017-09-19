@@ -22,7 +22,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  	<meta name="keywords" content="Jobs, Hiring, Career, Work, Resume, Call Center Jobs, Recruitment" />
 
     <title>jobsly – find your next adventure | Job Search | Resume Search</title>
-
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
+	<link rel="icon" href="img/favicon.ico">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
  

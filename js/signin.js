@@ -3,7 +3,9 @@ $(document).ready(function($) {
     
      $('#login-form').on('submit',function(event){
            // event.preventDefault();
-            
+            $( "#notfound" ).addClass('hidden');       
+            $( "#unverified" ).addClass('hidden');
+            $('#loader').hide();
             var email = $("#login-form #email").val();  
             var password = $("#login-form #password").val();
             
@@ -46,7 +48,9 @@ $(document).ready(function($) {
     
     $('#sendresetlink-form').on('submit',function(event){
            // event.preventDefault();
-            
+            $( "#notfound" ).addClass('hidden');
+            $( "#success" ).addClass('hidden');          
+            $('#loader').hide();
             var email = $("#sendresetlink-form #email").val();  
            
             $.ajax({
@@ -81,7 +85,9 @@ $(document).ready(function($) {
     
     $('#resetpw-form').on('submit',function(event){
            // event.preventDefault();
-            
+            $( "#notfound" ).addClass('hidden');
+            $( "#pwsuccess" ).addClass('hidden');
+            $('#loader').hide();
             var email = $("#resetpw-form #email").val();
             var password = $("#resetpw-form #password").val();
             var password2 = $("#resetpw-form #password2").val();

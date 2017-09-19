@@ -18,7 +18,7 @@ $database->bind(':email', $email);
 $row = $database->single();
 $verify = $row['email'];
 
-if($verify){
+if(!empty($verify)){
   echo 'emailtaken';  
 }else{
     $verifyhash = hash("sha256",$password.date("YmdHis"));

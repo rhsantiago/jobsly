@@ -8,7 +8,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="author" content="">
-
+     <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
+	<link rel="icon" href="img/favicon.ico">   
     <title>jobsly – find your next adventure.</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>    
         <?php
@@ -137,8 +138,11 @@
                         </div>    
 					<input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" data-parsley-equalto="#password" required data-parsley-equalto-message="Passwords do not match."/>
                     </div>
-				</div>			
-				
+				</div>
+                <div id="emailtaken" class="loginerror hidden">Email already registered!</div>
+				<div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>
 				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
 					Create Account
 				</button>
@@ -186,7 +190,10 @@
 					       <input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name" required/>
                     </div>
 				</div>
-				
+                <div id="emailtaken" class="loginerror hidden">Email already registered!</div>    
+				<div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>
 				
 				<button type="submit" class="btn btn-primary" name="submitbutton" id="submitbutton">
 					Create Account

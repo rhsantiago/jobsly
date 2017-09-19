@@ -14,6 +14,7 @@ $(document).ready(function($) {
    // $('#signupform').html($('#jobseekerform').html());
    // $('#signupform').slideDown(1000);
     // $("#signup-form").parsley();
+    $('#loader').hide();
     
     $("#signup-form").parsley({
         successClass: "has-success",
@@ -34,6 +35,7 @@ $(document).ready(function($) {
     $('#signupform #signup-form').on('submit',function(event){
              
             event.preventDefault();
+            $( "#emailtaken" ).addClass('hidden');
             var password = $("#signupform #password").val();
             var email = $("#signupform #email").val();       
             var usertype = $("#signupform #usertype").val();
@@ -46,9 +48,17 @@ $(document).ready(function($) {
                 data: "password=" + password + "&email=" + email + "&usertype=" + usertype + "&companyname=" + companyname,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                  },
                 success : function(data){
+                    console.log(data);
                    if(data=='emailtaken')
                    {
+                        $( "#emailtaken" ).removeClass('hidden');
                         $( "#signupform #email-group" ).addClass('has-error');           
                    }else{
                         $( "#signupform" ).html(data);
