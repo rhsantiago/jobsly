@@ -75,8 +75,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <!-- End Google Tag Manager -->    
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
+	<link rel="icon" href="img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Jobseeker Home | Job Search | Post Resume | jobsly</title>

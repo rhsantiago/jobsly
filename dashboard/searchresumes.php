@@ -33,8 +33,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MKMGLRW');</script>
 <!-- End Google Tag Manager -->    
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
+	<link rel="icon" href="img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Resume Search | Hire the best employees | jobsly</title>
@@ -192,7 +192,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     </div>
     <div class="sidebar-item"><a href="employer-stats.php"><i class="material-icons">assessment</i>&nbsp;Statistics</a></div>   
-  
+    <div id="loading" class="center" >
+                                        <img id="loader"  class="loader " src="img/loader.gif">
+                                    </div>
 </div>
   
      <!--sidebar-->
@@ -228,9 +230,11 @@ if($esalarypost > 0){
 ?>
 <div class="row">
     <div class="col-md-12 center">
+        <!--
                     <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">
                      </div>
+        -->
      </div>
      </div>
      <div class="col-md-9">
