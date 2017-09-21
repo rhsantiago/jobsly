@@ -156,10 +156,11 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 ?>
 <div class="row">
     <div class="col-md-12 center">            
+         <!--
                     <div class="adstop">     <img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                  alt="user">  
                      </div>    
-                           
+        -->   
      </div>
    
    
@@ -263,37 +264,28 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 		</div>
 </div>
       
-	    <footer class="footer">
+	   <footer class="footer">
 	        <div class="container">
-	            <nav class="pull-left">
-	                <ul>
-	                    <li>
-	                        <a href="http://www.creative-tim.com">
-	                            Creative Tim
-	                        </a>
-	                    </li>
-						<li>
-	                        <a href="http://presentation.creative-tim.com">
-	                           About Us
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="http://blog.creative-tim.com">
-	                           Blog
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="http://www.creative-tim.com/license">
-	                            Licenses
-	                        </a>
-	                    </li>
-	                </ul>
-	            </nav>
-	            <div class="copyright pull-right">
-	                &copy; 2016, made with <i class="fa fa-heart heart"></i> by Creative Tim
-	            </div>
+                <div class="col-md-6">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                jobsly on 	                           
+
+                            </li>
+                            <li>
+                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square" aria-hidden="true"></i> </a>
+                            </li>	                   
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright pull-right">
+                        &copy; jobsly 2016
+                    </div>
+                </div>
 	        </div>
-	    </footer>
+        </footer>
 
 	</div>
     
