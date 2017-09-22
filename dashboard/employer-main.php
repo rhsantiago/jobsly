@@ -233,8 +233,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <div class="name">
                                         <h4 class="sidenavname"><?=$companyname?></h4>
                                         <h5 class="sidenavposition"><?=$cperson?></h5>
-                                    </div>  
-       </div>    
+                                    </div>
+       
+       </div>
+          
    <div class="sidebar-item"><a href="employer-home.php"><i class="material-icons">home</i>&nbsp;Home</a></div>
    <div class="sidebar-item"><a href="searchresumes.php"><i class="material-icons">find_in_page</i>&nbsp;Resume&nbsp;Search</a></div>    
    <div class="sidebar-item dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>&nbsp;Applicants<b class="caret"></b></a>
@@ -253,6 +255,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     </div>
     <div class="sidebar-item"><a href="employer-stats.php"><i class="material-icons">assessment</i>&nbsp;Statistics</a></div>
+     <div id="loading" class="center" >
+           <img id="loader"  class="loader " src="img/loader.gif">
+    </div>  
 </div>
   
      <!--sidebar-->
@@ -344,6 +349,7 @@ function ChangeUrl(title, url) {
 }        
 
  $(document).ready(function() {
+     $('#loader').hide();
     // Optimalisation: Store the references outside the event handler:
     var $window = $(window);
 

@@ -3,10 +3,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#ajads']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'alljobads.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },    
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);  
@@ -28,10 +34,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#pjobad']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'selecttemplate-form.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -74,10 +86,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#jtemp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'templates.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -98,10 +116,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#essays']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'jobessays-form.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -122,7 +146,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#selecttemplate-form',function(event){
              
             event.preventDefault();      
-      
+            $('#loader').hide();
             var id = $("#selecttemplate-form #id").val();
             var template = $("#selecttemplate-form #template").val();
             var mode = $("#selecttemplate-form #mode").val();
@@ -135,6 +159,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&template=" + template + "&userid=" + userid,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){                 
                     $('#resume-main-body').html(data).fadeIn(1500);
                     $('#resume-main-body #startappdate').datepicker();
@@ -187,7 +217,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#postajob-form',function(event){
              
             event.preventDefault();      
-      
+            $('#loader').hide();
             var jobid = $("#postajob-form #jobid").val();
             var templateid = $("#postajob-form #templateid").val();
             var jobtitle = $("#postajob-form #jobtitle").val();
@@ -229,6 +259,12 @@ jQuery(document).ready(function ($) {
                 data: "jobid=" + jobid + "&templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&teaser=" +teaser+  "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){                 
                     $('#resume-main-body').html(data).fadeIn(1500); 
                     $('#resume-main-body #successdivjobskillstag').hide();
@@ -261,7 +297,8 @@ jQuery(document).ready(function ($) {
    
     $(document).on('submit','#jobskills-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();
+            $('#loader').hide();
             $('#resume-main-body #successdivjobskillstag').hide();
             var jobid = $("#jobskills-form #jobid").val();           
             var mode = $("#jobskills-form #mode").val();
@@ -278,6 +315,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&jobid=" + jobid +"&jobskill=" + jobskill + "&jobskilltag=" + jobskilltag,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                 },
                 success : function(data){
                     console.log(data);
                     $('.features #jobskilltagsdiv').html(data).fadeIn(1500);
@@ -309,6 +352,7 @@ jQuery(document).ready(function ($) {
     
     $("#resume-main-body").on('click','#step-2',function(event) {
         event.preventDefault(); 
+        $('#loader').hide();
         var jobid = $(this).data('jobid');
         
         if(jobid > 0){
@@ -317,6 +361,12 @@ jQuery(document).ready(function ($) {
                         url: 'postajob-form.php',
                         data:"jobid=" + jobid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             $('#resume-main-body').html(html); 
@@ -367,7 +417,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#step-3',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var jobid = $(this).data('jobid');
         if(jobid > 0){
             $.ajax({    
@@ -375,6 +426,12 @@ jQuery(document).ready(function ($) {
                         url: 'jobskills-form.php',
                         data:"jobid=" + jobid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -413,7 +470,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#step-4',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var jobid = $(this).data('jobid');
          if(jobid > 0){
             $.ajax({    
@@ -421,6 +479,12 @@ jQuery(document).ready(function ($) {
                         url: 'previewjobad.php',
                         data:"jobid=" + jobid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -437,7 +501,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#previewjobad',function() {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var jobid = $(this).data('jobid');
         if(jobid > 0){
             $.ajax({    
@@ -445,6 +510,12 @@ jQuery(document).ready(function ($) {
                         url: 'previewjobad.php',
                         data:"jobid=" + jobid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -464,7 +535,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#templates-form',function(event){
              
             event.preventDefault();      
-      
+            $('#loader').hide();
             var template = $("#templates-form #template").val();
             var mode = $("#templates-form #mode").val();
             if(template > 0){
@@ -479,6 +550,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&template=" + template + "&userid=" + userid,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){                 
                     $('#resume-main-body').html(data).fadeIn(1500);
                     $('#resume-main-body #startappdate').datepicker();
@@ -532,7 +609,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#templatejobdetail-form',function(event){
              
             event.preventDefault();      
-      
+            $('#loader').hide();
             var templateid = $("#templatejobdetail-form #templateid").val();
             var jobtitle = $("#templatejobdetail-form #jobtitle").val();
             var company = $("#templatejobdetail-form #company").val();
@@ -573,6 +650,12 @@ jQuery(document).ready(function ($) {
                 data: "templateid=" + templateid + "&mode=" +mode + "&userid=" + userid + "&jobtitle=" + jobtitle + "&company=" + company + "&specialization=" + specialization +"&plevel=" + plevel + "&jobtype=" + jobtype + "&msalary=" + msalary + "&maxsalary=" + maxsalary + "&startappdate=" + startappdate + "&endappdate=" + endappdate + "&nvacancies=" + nvacancies + "&teaser=" + teaser + "&jobdesc=" + jobdesc + "&city=" + city + "&province=" + province + "&country=" + country + "&yrsexp=" + yrsexp + "&mineduc=" + mineduc + "&prefcourse=" + prefcourse + "&languages=" + languages + "&licenses=" + licenses + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                 },
                 success : function(data){                 
                     $('#resume-main-body').html(data).fadeIn(1500); 
                     $('#resume-main-body #successdivjobskillstag').hide();
@@ -611,7 +694,8 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#jobskillstemplate-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();
+            $('#loader').hide();
             $('#resume-main-body #successdivjobskillstag').hide();
             var templateid = $("#jobskillstemplate-form #templateid").val();           
             var mode = $("#jobskillstemplate-form #mode").val();
@@ -628,6 +712,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&templateid=" + templateid +"&jobskill=" + jobskill + "&jobskilltag=" + jobskilltag,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                 },
                 success : function(data){
                     console.log(data);
                     $('.features #jobskilltagsdiv').html(data).fadeIn(1500);
@@ -649,7 +739,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#previewjobtemplate',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var templateid = $(this).data('templateid');
         if(templateid > 0){
             $.ajax({    
@@ -657,6 +748,12 @@ jQuery(document).ready(function ($) {
                         url: 'templatepreview.php',
                         data:"templateid=" + templateid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -673,7 +770,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#step-2-template',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var templateid = $(this).data('templateid');
         
         if(templateid > 0){
@@ -682,6 +780,12 @@ jQuery(document).ready(function ($) {
                         url: 'templatejobdetail-form.php',
                         data:"templateid=" + templateid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             $('#resume-main-body').html(html); 
@@ -732,7 +836,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#step-3-template',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var templateid = $(this).data('templateid');
         if(templateid > 0){
             $.ajax({    
@@ -740,6 +845,12 @@ jQuery(document).ready(function ($) {
                         url: 'templatejobskills-form.php',
                         data:"templateid=" + templateid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -768,7 +879,8 @@ jQuery(document).ready(function ($) {
     });
     
     $("#resume-main-body").on('click','#step-4-template',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide();
         var templateid = $(this).data('templateid');
         if(templateid > 0){
             $.ajax({    
@@ -776,6 +888,12 @@ jQuery(document).ready(function ($) {
                         url: 'templatepreview.php',
                         data:"templateid=" + templateid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             
@@ -796,6 +914,7 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#template-form-modal',function(event){
             event.preventDefault();
+            $('#loader').hide();
             var templateid = $('#template-form-modal #templateid').val();
             var userid = $('#template-form-modal #userid').val();
             $.ajax({    
@@ -803,6 +922,12 @@ jQuery(document).ready(function ($) {
                         url: 'template-modal-submit.php',
                         data:"templateid=" + templateid + "&userid=" + userid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                             $('#templates-modal-del').modal('toggle');
                             $('#jtemp').trigger('click');
@@ -841,7 +966,8 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#jobessays-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();
+            $('#loader').hide();
             $('#resume-main-body #successdivessay').hide();
             var id = $("#jobessays-form #id").val();           
             var mode = $("#jobessays-form #mode").val();
@@ -856,6 +982,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&id=" + id +"&question=" + question,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                 },
                 success : function(data){
                     //console.log(data);
                     $('.features #essaysdiv').html(data).fadeIn(1500);
@@ -913,7 +1045,8 @@ jQuery(document).ready(function ($) {
     });
     
      $("#resume-main-body").on('click','#editjob',function(event) {
-        event.preventDefault(); 
+        event.preventDefault();
+        $('#loader').hide(); 
         var jobid = $(this).data('jobid');
         
         if(jobid > 0){
@@ -922,6 +1055,12 @@ jQuery(document).ready(function ($) {
                         url: 'postajob-form.php',
                         data:"jobid=" + jobid,
                         dataType: 'html',
+                        beforeSend: function() {
+                             $('#loader').show();
+                                  },
+                             complete: function(){
+                                  $('#loader').hide();
+                         },
                         success: function (html) {
                            // console.log(url);
                             $('#resume-main-body').html(html); 
@@ -1002,7 +1141,8 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#deljobad-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();
+            $('#loader').hide();
             $('#resume-main-body #successdivdeljob').hide();          
             var mode = $("#deljobad-form #mode").val();
             var userid = $("#deljobad-form #userid").val();          
@@ -1016,6 +1156,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&jobid=" + jobid,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                 },
                 success : function(data){
                     console.log(data);
                     $('.alljobsdiv').html(data).fadeIn(1500);

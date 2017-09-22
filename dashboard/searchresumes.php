@@ -192,9 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     </div>
     <div class="sidebar-item"><a href="employer-stats.php"><i class="material-icons">assessment</i>&nbsp;Statistics</a></div>   
-    <div id="loading" class="center" >
-                                        <img id="loader"  class="loader " src="img/loader.gif">
-                                    </div>
+ 
 </div>
   
      <!--sidebar-->

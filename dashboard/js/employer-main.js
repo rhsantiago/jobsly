@@ -3,10 +3,16 @@ $(document).ready(function ($) {
     $("a[href='#ajposts']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
- 
+        $('#loader').hide();
         $.ajax({
             url: 'employer-activejobposts.php',
             dataType: 'html',
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                  },
             success: function (html) {
                     // console.log(html);
                     $('#resume-main-body').html(html);
@@ -26,11 +32,16 @@ $(document).ready(function ($) {
     $("a[href='#short']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
-        
+        $('#loader').hide();
         $.ajax({
             url: 'employer-shortlist.php',
             dataType: 'html',
-
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                  },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);               
@@ -49,11 +60,16 @@ $(document).ready(function ($) {
     $("a[href='#napp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
- 
+        $('#loader').hide();
         $.ajax({
             url: 'employer-newapps.php',
             dataType: 'html',
-
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                  },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);               
@@ -72,11 +88,16 @@ $(document).ready(function ($) {
     $("a[href='#search']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
- 
+        $('#loader').hide();
         $.ajax({
             url: 'searchresumes.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);               
@@ -94,11 +115,16 @@ $(document).ready(function ($) {
      $("a[href='#cinfo']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
-        
+        $('#loader').hide();
         $.ajax({
             url: 'employer-companyinfo.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+             },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);
@@ -258,7 +284,7 @@ $(document).ready(function ($) {
     
     $(document).on('submit','#invite-form',function(event) {
             event.preventDefault();           
-        
+            $('#loader').hide();
             var jobid = $("#invite-form #jobid").val(); 
             var applicantid = $("#invite-form #applicantid").val();
             var mode = $("#invite-form #mode").val();
@@ -268,6 +294,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'invite-submit.php',
                 data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + '&view=' + view,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     $('#invite-modal').modal('toggle');
                     if(view=='search'){
@@ -286,7 +318,8 @@ $(document).ready(function ($) {
      });
     
     $("#resume-main-body").on('click','#jobdetails',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             var page =  $(this).data('page');
             $.ajax({
@@ -294,6 +327,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-jobdetails.php',
                 data: 'jobid=' + jobid + '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                    // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -310,7 +349,8 @@ $(document).ready(function ($) {
     
     
     $("#resume-main-body").on('click','#activeapps',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             var page =  $(this).data('page');
             $.ajax({
@@ -318,6 +358,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-loadaapps.php',
                 data: 'jobid=' + jobid+ '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -333,7 +379,8 @@ $(document).ready(function ($) {
      });
     
     $("#resume-main-body").on('click','#newapps',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             var page =  $(this).data('page');
             $.ajax({
@@ -341,6 +388,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-loadnapps.php',
                 data: 'jobid=' + jobid+ '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -356,7 +409,8 @@ $(document).ready(function ($) {
      });
     
     $("#resume-main-body").on('click','#shortlisted',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             var page =  $(this).data('page');
             $.ajax({
@@ -364,6 +418,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-loadshortlist.php',
                 data: 'jobid=' + jobid+ '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -379,7 +439,8 @@ $(document).ready(function ($) {
      });
     
     $("#resume-main-body").on('click','#matched',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             var page =  $(this).data('page');
             $.ajax({
@@ -387,6 +448,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-matchedres.php',
                 data: 'jobid=' + jobid+ '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     //console.log(html);
                     $('#showjobdetail').html(html); 
@@ -415,7 +482,7 @@ $(document).ready(function ($) {
     
     $(document).on('submit','#shortlist-form',function(event) {
             event.preventDefault();           
-        
+            $('#loader').hide();
             var jobid = $("#shortlist-form #jobid").val(); 
             var applicantid = $("#shortlist-form #applicantid").val();
             var mode = $("#shortlist-form #mode").val();
@@ -425,6 +492,12 @@ $(document).ready(function ($) {
                 type: 'POST',
                 url: 'employer-shortlistsubmit.php',
                 data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + '&page=' + page,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                     //console.log(html);
                     $('#shortlistdiv').html(html);
@@ -532,6 +605,7 @@ $(document).ready(function ($) {
     
     $(document).on('click','#aappsloadmore',function(event) {
            // var next = $("#jobseekersloadmore-form #next").val();
+            $('#loader').hide();
             var next =  $(this).data('next');
             var search =  $(this).data('search');
             var jobid =  $(this).data('jobid');
@@ -541,6 +615,12 @@ $(document).ready(function ($) {
             url: 'employer-loadmoreaapps.php',
             data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
             dataType: 'text',
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
             success: function(html) {               
                 if(html=='end'){
                    $('#resume-main-body #endofsearch').hide();    
@@ -561,6 +641,7 @@ $(document).ready(function ($) {
     
     $(document).on('click','#nappsloadmore',function(event) {
            // var next = $("#jobseekersloadmore-form #next").val();
+            $('#loader').hide();
             var next =  $(this).data('next');
             var search =  $(this).data('search');
             var jobid =  $(this).data('jobid');
@@ -570,6 +651,12 @@ $(document).ready(function ($) {
             url: 'employer-loadmorenapps.php',
             data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
             dataType: 'text',
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
             success: function(html) {             
                 if(html=='end'){
                    $('#resume-main-body #endofsearch').hide();    
@@ -590,6 +677,7 @@ $(document).ready(function ($) {
     
     $(document).on('click','#shortlistloadmore',function(event) {
            // var next = $("#jobseekersloadmore-form #next").val();
+            $('#loader').hide();
             var next =  $(this).data('next');
             var search =  $(this).data('search');
             var jobid =  $(this).data('jobid');
@@ -599,6 +687,12 @@ $(document).ready(function ($) {
             url: 'employer-loadmoreshortlist.php',
             data: 'next=' + next + '&search=' + search + '&jobid=' + jobid,
             dataType: 'text',
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
             success: function(html) {         
                 if(html=='end'){
                    $('#resume-main-body #endofsearch').hide();    
@@ -619,7 +713,7 @@ $(document).ready(function ($) {
     
      $(document).on('submit','#rejectapp-form',function(event) {
             event.preventDefault();           
-        
+            $('#loader').hide();
             var jobid = $("#rejectapp-form #jobid").val(); 
             var applicantid = $("#rejectapp-form #applicantid").val();
             var mode = $("#rejectapp-form #mode").val();
@@ -630,6 +724,12 @@ $(document).ready(function ($) {
                 url: 'employer-rejectformsubmit.php',
                 data: 'jobid=' + jobid + '&applicantid=' + applicantid + '&mode=' + mode + "&page=" + page,
                // dataType: 'application/json; charset=utf-8',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(data) {
                     console.log(data);
                     $('#rejectapp-modal').modal('toggle');
@@ -671,7 +771,8 @@ $(document).ready(function ($) {
     });
     
     $(document).on('submit','#companyregistration-form',function(event) {
-            event.preventDefault();           
+            event.preventDefault();
+            $('#loader').hide();
             var mode = $("#companyregistration-form #mode").val();
             var userid = $("#companyregistration-form #userid").val();
             var companyname = $("#companyregistration-form #companyname").val(); 
@@ -693,6 +794,12 @@ $(document).ready(function ($) {
                 url: 'employer-registrationsubmit.php',
                 data: 'mode=' + mode + '&companyname=' + companyname + '&companyaddress=' + companyaddress + '&mode=' + mode +'&userid=' + userid +'&companywebsite=' + companywebsite +'&telno=' + telno +'&companytin=' + companytin +'&cperson=' + cperson +'&designation=' + designation +'&cpersonemail=' + cpersonemail +'&cpersontelno=' + cpersontelno +'&industry=' + industry +'&numemp=' + numemp +'&ctype=' + ctype +'&cdesc=' + cdesc,
                 dataType: 'text',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(data) {
                     //console.log(html);
                    
