@@ -22,7 +22,7 @@ if($ok == 1 ){
     include 'specialization.php';
     
     
-    $database->query('select fname,lname,mnumber,myemail,photo,esalary,specialization from  personalinformation,useraccounts,additionalinformation where personalinformation.userid=:userid and useraccounts.id=:userid and additionalinformation.userid=:userid');
+    $database->query('select fname,lname,mnumber,myemail, esalary,specialization from  personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
             $database->bind(':userid', $userid);   
             try{
             $row = $database->single();
@@ -38,7 +38,7 @@ if($ok == 1 ){
             $myemail = $row['myemail'];
             $esalary = $row['esalary'];
             $specialization = $row['specialization'];
-            $photo = $row['photo'];
+      
     
             $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
             $database->bind(':userid', $userid);   
@@ -50,6 +50,20 @@ if($ok == 1 ){
                 die("");
             }     
              $maxposition = $row2['maxposition'];
+    
+            $database->query('SELECT photo from useraccounts where id = :userid');
+            $database->bind(':userid', $userid);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            } 
+            $photo = $row['photo'];
+            if(empty($photo)){
+                $photo='img/unknown.png';
+            }
 ?>
 <!doctype html>
 <html lang="en">
@@ -232,10 +246,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     <div id="resume-main-body">                       
       <div class="row">
-            <div class="col-md-12 center">            
+            <div class="col-md-12 center">    
+                <!--
                <div class="adstop"><img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
                                          alt="user">  
-                </div>    
+                </div>
+                -->
              </div>
             <div class="col-md-12">
                   <h2 class="title">Home</h2>

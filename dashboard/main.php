@@ -148,7 +148,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     <!--sidebar-->
    <?php
-            $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+            $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
             $database->bind(':userid', $userid);   
             try{
                 $row = $database->single();
@@ -160,6 +160,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             $maxposition = $row['maxposition'];
             $fname = $row['fname'];
             $lname = $row['lname'];
+            
+            $database->query('SELECT photo from useraccounts where id = :userid');
+            $database->bind(':userid', $userid);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            } 
             $photo = $row['photo'];
             if(empty($photo)){
                 $photo='img/unknown.png';

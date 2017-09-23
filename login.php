@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+<script>
+    window.dataLayer = window.dataLayer || [];   
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKMGLRW');</script>
+<!-- End Google Tag Manager -->
+    
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
 	<link rel="icon" href="img/favicon.ico">
@@ -30,6 +40,10 @@ a:hover {
 </head>
 
 <body class="signup-page">
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMGLRW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 	<nav class="navbar navbar-transparent navbar-absolute">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
