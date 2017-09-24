@@ -22,7 +22,7 @@ if($ok == 1 ){
     include 'specialization.php';
     
     
-    $database->query('select fname,lname,mnumber,myemail, esalary,specialization from  personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+    $database->query('select fname,lname,mnumber,myemail from  personalinformation where personalinformation.userid=:userid');
             $database->bind(':userid', $userid);   
             try{
             $row = $database->single();
@@ -35,7 +35,18 @@ if($ok == 1 ){
             $fname = $row['fname'];
             $lname = $row['lname'];
             $mnumber = $row['mnumber'];
-            $myemail = $row['myemail'];
+            $myemail = $row['myemail'];         
+    
+     $database->query('select esalary,specialization from  additionalinformation where additionalinformation.userid=:userid');
+            $database->bind(':userid', $userid);   
+            try{
+            $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+       
             $esalary = $row['esalary'];
             $specialization = $row['specialization'];
       

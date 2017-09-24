@@ -194,18 +194,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     <!--sidebar-->
    <?php
-            $database->query('select position as maxposition,fname,lname from workexperience, personalinformation where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+            $database->query('select fname,lname from  personalinformation where personalinformation.userid=:userid');
             $database->bind(':userid', $userid);   
             try{
-                $row = $database->single();
+            $row = $database->single();
             }catch (PDOException $e) {
                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             }     
-            $maxposition = $row['maxposition'];
+           
             $fname = $row['fname'];
-            $lname = $row['lname'];           
+            $lname = $row['lname'];
+    
+            $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+            $database->bind(':userid', $userid);   
+            try{
+            $row2 = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+             $maxposition = $row2['maxposition'];
     
             $database->query('SELECT photo from useraccounts where id = :userid');
             $database->bind(':userid', $userid);   
