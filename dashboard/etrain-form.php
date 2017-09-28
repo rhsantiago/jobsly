@@ -460,7 +460,7 @@ if(isset($_SESSION['user'])){
 		       </div> 
 </div>
 <script>
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#etrain-hs-form #hsschool').parsley().on('field:error', function() {
            $('#etrain-hs-form #hsschooldiv').addClass('has-error');

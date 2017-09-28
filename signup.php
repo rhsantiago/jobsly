@@ -215,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</button>
 			</form>
             <div><a href="login.php"> I already have an account</a></div>
-             <div><p>* For Employers, please use your work email address for faster verification.</p></div>
+             <div><p>* Please use your work email address for faster verification.</p></div>
                 <?php
                 }
                 ?>    

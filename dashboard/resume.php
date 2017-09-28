@@ -56,24 +56,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="css/custom.css" rel="stylesheet"/>
     <link href="css/media.css" rel="stylesheet"/>
     <link href="css/summernote.css" rel="stylesheet"/>
-
-    
     <script src="js/jquery.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="js/material.min.js"></script>
-
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
-
-	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-	<script src="js/material-kit.js" type="text/javascript"></script>
-    <script src="js/resume.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script>
-   <!-- <script src="js/summernote-cleaner.js"></script> -->
-    <script src="js/parsley.js"></script>
+    
+    
 </head>
 
 <body class="landing-page">
@@ -284,7 +269,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a target="_blank" href="previewresume.php" id=""><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
-  
+    <div id="loading" class="center" >
+           <img id="loader"  class="loader " src="img/loader.gif">
+    </div>
 </div>
     
      <!--sidebar-->
@@ -483,7 +470,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                             </li>
                             <li>
-                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square" aria-hidden="true"></i> </a>
+                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i> </a>
                             </li>	                   
                         </ul>
                     </nav>
@@ -504,6 +491,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
   
      
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script> 
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="js/material-kit.js" type="text/javascript"></script>
+    <script src="js/resume.js" type="text/javascript"></script>
+    <script src="js/summernote.min.js" type="text/javascript"></script>
+   <!-- <script src="js/summernote-cleaner.js"></script> -->
+    <script src="js/parsley.js"></script>
     <script>
     var isClosed = true;
 function openNav() {
@@ -532,6 +534,7 @@ function ChangeUrl(title, url) {
 }        
 $(document).ready(function() {
     // Optimalisation: Store the references outside the event handler:
+    $('#loader').hide();
     var $window = $(window);
 
     function checkWidth() {

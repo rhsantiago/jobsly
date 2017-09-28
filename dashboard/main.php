@@ -217,7 +217,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a target="_blank" href="previewresume.php"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
- 
+    <div id="loading" class="center" >
+           <img id="loader"  class="loader " src="img/loader.gif">
+    </div>
 </div>
     
      <!--sidebar-->
@@ -386,7 +388,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                             </li>
                             <li>
-                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square" aria-hidden="true"></i> </a>
+                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i> </a>
                             </li>	                   
                         </ul>
                     </nav>
@@ -448,6 +450,7 @@ function ChangeUrl(title, url) {
         
  $(document).ready(function() {
     // Optimalisation: Store the references outside the event handler:
+    $('#loader').hide();
     var $window = $(window);
 
     function checkWidth() {

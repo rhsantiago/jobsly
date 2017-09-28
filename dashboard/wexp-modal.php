@@ -252,7 +252,7 @@ if($mode=='del'){
 }
 ?>
 <script>
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
     $('#summernote').summernote({
                                                                                       toolbar: [
                                                                                         // [groupName, [list of button]]

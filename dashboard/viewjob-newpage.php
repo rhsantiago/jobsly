@@ -863,7 +863,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 
                             </li>
                             <li>
-                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square" aria-hidden="true"></i> </a>
+                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i> </a>
                             </li>	                   
                         </ul>
                     </nav>

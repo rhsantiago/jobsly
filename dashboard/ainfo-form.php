@@ -328,8 +328,19 @@ include "serverlogconfig.php";
                     -->
 		       </div>
 <script>
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
+    $('#ainfo-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+
+                        });
     $('#resume-main-body #successdivainfo').hide();
     
     $('#ainfo-form #dposition').parsley().on('field:error', function() {

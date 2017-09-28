@@ -3,10 +3,16 @@ jQuery(document).ready(function ($) {
      $("a[href='#aapp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide(); 
         $.ajax({
             url: 'jobseeker-activeapp.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -29,10 +35,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#jinv']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'jobseeker-invites.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);    
@@ -51,10 +63,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#sapp']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'jobseeker-savedapp.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -77,10 +95,16 @@ jQuery(document).ready(function ($) {
     $("a[href='#ljob']").on('click', function (event){  
         event.preventDefault()
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'jobseeker-latestjobs.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -110,6 +134,7 @@ jQuery(document).ready(function ($) {
      $(document).on('submit','#loadmorejobs-form',function(event){
              
             event.preventDefault();
+            $('#loader').hide();
             var next = $("#loadmorejobs-form #next").val();
             var inext = $("#loadmorejobs-form #inext").val();
             var search = $("#loadmorejobs-form #search").val();
@@ -121,7 +146,12 @@ jQuery(document).ready(function ($) {
                     url: 'loadmorejobs.php',
                     data: "next=" +next+ "&search=" +search+ "&esalary=" +esalary+ "&specialization=" +specialization+"&inext="+inext,
                     dataType: 'html',
-
+                    beforeSend: function() {
+                     $('#loader').show();
+                          },
+                     complete: function(){
+                          $('#loader').hide();
+                    },
                     success: function (html) {
                         console.log(specialization);
                         $(".loadmoreform").remove();
@@ -133,7 +163,7 @@ jQuery(document).ready(function ($) {
     }); 
      
     $('#showjob-modal').on('show.bs.modal', function(e) {
-             
+               $('#loader').hide(); 
                var $modal = $(this);
               // $modal.find('#quickapply-form-modal #successdivquickapply').hide();
                
@@ -146,7 +176,12 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: 'showjob-modal.php',
             data: 'jobid=' + jobid + "&mode=" + mode + "&isjobseeker=" + isjobseeker,
-                  
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },      
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
                 $modal.find('#successdivquickapply').hide();
@@ -166,6 +201,7 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#quickapply-form-modal',function(event){
             event.preventDefault();
+            $('#loader').hide();
             $('#successdivquickapply').hide();
             $('#warningdivquickapply').hide();
             var esalary = $("#quickapply-form-modal #esalary").val();
@@ -182,6 +218,12 @@ jQuery(document).ready(function ($) {
                 data: "jobid=" + jobid + "&userid=" + userid + "&esalary=" + esalary + "&essay=" + essay,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     console.log(data);
                     if(data=='applied'){
@@ -202,6 +244,7 @@ jQuery(document).ready(function ($) {
    $('#savejob-modal').on('show.bs.modal', function(e) {
         event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         var $modal = $(this);
         var jobid =  $(e.relatedTarget).data('jobid');
         var userid =  $(e.relatedTarget).data('userid');
@@ -211,7 +254,12 @@ jQuery(document).ready(function ($) {
              data: "jobid=" + jobid + "&userid=" + userid,
             url: 'savedapplications-submit.php',
             dataType: 'html',
-
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
             success: function (html) {
                      $modal.find('.modalcontent').html(html);
                    
@@ -229,13 +277,19 @@ jQuery(document).ready(function ($) {
     
      $(document).on('click','#removesaved',function(e) {
             event.preventDefault();           
-        
+            $('#loader').hide();
             var jobid =  $(this).data('jobid');
             $.ajax({
                 cache: false,
                 type: 'POST',
                 url: 'jobseeker-removesaved.php',
                 data: 'jobid=' + jobid,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success: function(html) {
                      $('#section'+ jobid).delay(700).fadeOut(300, function(){
                         $(this).remove();

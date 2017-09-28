@@ -94,12 +94,18 @@ jQuery(document).ready(function ($) {
       */
    // $('#pinfo').click(function() {   
     $("a[href='#pinfo'], a[href='resume.php?ajax=pinfo']").on('click', function (event){  
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
             url: 'pinfo-form.php',
             dataType: 'html',
-
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
             success: function (html) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
@@ -132,13 +138,18 @@ jQuery(document).ready(function ($) {
      });    
     
      $(document).on('submit','#pinfonext-form',function(event){
-            event.preventDefault()
-           event.stopPropagation();
-           
+            event.preventDefault();
+            event.stopPropagation();
+            $('#loader').hide();
                     $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                     $('#loader').show();
+                          },
+                     complete: function(){
+                          $('#loader').hide();
+                    },    
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html);                   
@@ -187,13 +198,19 @@ jQuery(document).ready(function ($) {
     
     //$('#workexp').on('click',function() {  
       $("a[href='#workexp'], a[href='resume.php?ajax=workexp']").on('click',function (event) {  
-           event.preventDefault()
+           event.preventDefault();
            event.stopPropagation();
-           
+           $('#loader').hide();
+           $('#successdivworkexp').hide();
                     $.ajax({
                     url: 'wexp-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },    
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html);                   
@@ -240,10 +257,16 @@ jQuery(document).ready(function ($) {
     });
     
     $(document).on('submit','#wexpnext-form',function(event){
+        $('#loader').hide();
         $.ajax({
                     url: 'etrain-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                     $('#loader').show();
+                          },
+                     complete: function(){
+                          $('#loader').hide();
+                    },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html);
@@ -300,12 +323,18 @@ jQuery(document).ready(function ($) {
     });
     
     $("a[href='#etrain'], a[href='resume.php?ajax=etrain']").on('click', function(event) {  
-        event.preventDefault()
+           event.preventDefault();
            event.stopPropagation();
+           $('#loader').hide();
         $.ajax({
                     url: 'etrain-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html);
@@ -362,12 +391,18 @@ jQuery(document).ready(function ($) {
     });
     
     $(document).on('submit','#etrainnext-form',function(event){
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
                     url: 'skills-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body #successdivskillstag').hide();
@@ -401,12 +436,18 @@ jQuery(document).ready(function ($) {
       }); 
     
     $("a[href='#skills'], a[href='resume.php?ajax=skills']").on('click', function(event) {  
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
                     url: 'skills-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body #successdivskillstag').hide();
@@ -440,12 +481,18 @@ jQuery(document).ready(function ($) {
     });
     
     $(document).on('submit','#skillsnext-form',function(event){
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
                     url: 'ainfo-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                         $('#resume-main-body #successdivainfo').hide();
                         $('#resume-main-body').html(html);  
@@ -473,12 +520,18 @@ jQuery(document).ready(function ($) {
     });    
     
     $("a[href='#ainfo'],a[href='resume.php?ajax=ainfo']").on('click',function(event) {  
-        event.preventDefault()
+        event.preventDefault();
         event.stopPropagation();
+        $('#loader').hide();
         $.ajax({
                     url: 'ainfo-form.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                         $('#resume-main-body #successdivainfo').hide();
                         $('#resume-main-body').html(html);  
@@ -531,10 +584,16 @@ jQuery(document).ready(function ($) {
      });  
     
     $(document).on('submit','#ainfonext-form',function(event){
+        $('#loader').hide();
         $.ajax({
                     url: 'previewresume.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html); 
@@ -550,11 +609,17 @@ jQuery(document).ready(function ($) {
         return false;
     });    
     
-    $("a[href='#pres']").on('click',function(event) {  
+    $("a[href='#pres']").on('click',function(event) { 
+        $('#loader').hide();
         $.ajax({
                     url: 'previewresume.php',
                     dataType: 'html',
-
+                     beforeSend: function() {
+                         $('#loader').show();
+                              },
+                         complete: function(){
+                              $('#loader').hide();
+                        },
                     success: function (html) {
                        // console.log(html);
                         $('#resume-main-body').html(html); 
@@ -574,6 +639,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#pinfo-form',function(event){
              
             event.preventDefault();
+            $('#loader').hide();
             $('#successdivpinfo').hide();
             var id = $("#pinfo-form #id").val();
             var mode = $("#pinfo-form #mode").val();
@@ -605,6 +671,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" + mode + "&id=" + id + "&userid=" + userid + "&fname=" + fname + "&lname=" + lname + "&mname=" + mname + "&street=" + street + "&city=" + city + "&province=" + province + "&country=" + country + "&mnumber=" + mnumber + "&myemail=" + myemail + "&landline=" + landline + "&age=" + age + "&birthday=" + birthday + "&gender=" + gender + "&nationality=" + nationality,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                  // console.log(data);
                     $('#successdivpinfo').fadeIn(1500);
@@ -621,6 +693,7 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#wexp-form-modal',function(event){
             event.preventDefault();
+            $('#loader').hide();
             $('#wexp-form #workexpcardsdiv').hide();
             $('#wexp-form-modal #successdivworkexp').hide();
             var id = $("#wexp-form-modal #id").val();
@@ -650,6 +723,12 @@ jQuery(document).ready(function ($) {
                 data: "id=" + id + "&mode=" + mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     if(mode=='del'){
                         $('#workexp-modal').modal('toggle');
@@ -693,6 +772,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#wexp-form',function(event){
              
             event.preventDefault();
+            $('#loader').hide();
             $('#wexp-form #workexpcardsdiv').hide();
             $('#successdivworkexp').hide();
             var mode = $("#wexp-form #mode").val();
@@ -721,6 +801,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&company=" + company + "&position=" + position + "&startdate=" + startdate + "&msalary=" + msalary + "&industry=" + industry + "&plevel=" + plevel + "&enddate=" + enddate + "&currentempcb=" + currentempcb + "&jobdesc=" + jobdesc,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'html',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     $('#workexpcardsdiv').html(data).fadeIn(1500);
                     $('#successdivworkexp').fadeIn(1500);
@@ -767,6 +853,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#etrain-hs-form',function(event){
              
             event.preventDefault();      
+            $('#loader').hide();
             $('.features #successdivetrain').hide();
             var id = $("#etrain-hs-form #id").val();
             var etrain = $("#etrain-hs-form #etrain").val();
@@ -783,6 +870,12 @@ jQuery(document).ready(function ($) {
                 url: "etrain-submit.php",
                 data: "mode=" + mode + "&etrain=" + etrain + "&userid=" + userid + "&hsschool=" + hsschool + "&hsadd=" + hsadd + "&hsgraddate=" + hsgraddate + "&smhs=" + smhs, 
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     console.log(data);
                    // $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
@@ -836,6 +929,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#etrain-col-form',function(event){
              
             event.preventDefault();      
+            $('#loader').hide();
             $('.features #successdivetrain').hide();
             var id = $("#etrain-col-form #id").val();
             var etrain = $("#etrain-col-form #etrain").val();
@@ -857,8 +951,14 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&etrain=" + etrain + "&userid=" + userid + "&coluni=" + coluni + "&coladd=" + coladd + "&colgpa=" + colgpa + "&colgraddate=" + colgraddate + "&colmajor=" + colmajor + "&smcol=" + smcol,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
-                    console.log(data);
+                   
                    // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
                     $('.features #successdivetrain').fadeIn(1500);  
                     $('#resume-main-body #hsgraddate').datepicker();
@@ -897,7 +997,7 @@ jQuery(document).ready(function ($) {
                     $('#etrain-col-form').parsley().reset();
                 },
                 error: function(data) {
-                    console.log(data);                  
+                                    
                    
                 }
             });
@@ -906,7 +1006,8 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#etrain-pgrad1-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();    
+            $('#loader').hide();
             $('.features #successdivetrain').hide();
             var id = $("#etrain-pgrad1-form #id").val();
             var etrain = $("#etrain-pgrad1-form #etrain").val();
@@ -928,6 +1029,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&etrain=" + etrain + "&userid=" + userid + "&pgrad1uni=" + pgrad1uni + "&pgrad1add=" + pgrad1add + "&pgrad1gpa=" + pgrad1gpa + "&pgrad1graddate=" + pgrad1graddate + "&pgrad1course=" + pgrad1course + "&smpgrad1=" + smpgrad1,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     console.log(data);
                    // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
@@ -978,7 +1085,8 @@ jQuery(document).ready(function ($) {
     
      $(document).on('submit','#etrain-others-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault(); 
+            $('#loader').hide();
             $('.features #successdivetrain').hide();
             var id = $("#etrain-others-form #id").val();
             var etrain = $("#etrain-others-form #etrain").val();
@@ -995,6 +1103,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&etrain=" + etrain + "&userid=" + userid + "&smothers=" + smothers,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     console.log(data);
                    // $('#etrain-form #workexpcardsdiv').html(data).fadeIn(1500);
@@ -1043,6 +1157,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#skills-skilltag-form',function(event){
              
             event.preventDefault();      
+            $('#loader').hide();
             $('.features #successdivskillstag').hide();
             var id = $("#skills-skilltag-form #id").val();
             var skills = $("#skills-skilltag-form #skills").val();
@@ -1061,6 +1176,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&skills=" + skills + "&userid=" + userid + "&skill=" + skill + "&skilltag=" + skilltag,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     
                     $('.features #skilltagsdiv').html(data).fadeIn(1500);
@@ -1080,6 +1201,7 @@ jQuery(document).ready(function ($) {
     $(document).on('submit','#ainfo-form',function(event){
              
             event.preventDefault();
+            $('#loader').hide();
             $('#ainfo-form #successdivainfo').hide();
             var mode = $("#ainfo-form #mode").val();
             var userid = $("#ainfo-form #userid").val();  
@@ -1112,6 +1234,12 @@ jQuery(document).ready(function ($) {
                 data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages + "&profsum=" + profsum,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){              
                     $('#successdivainfo').fadeIn(1500);
                     $('#ainfo-form #mode').val('update');
@@ -1131,7 +1259,7 @@ jQuery(document).ready(function ($) {
     
     
     $('#workexp-modal').on('shown.bs.modal', function(e) {
-
+        $('#successdivworkexp').hide();
         var $modal = $(this),
                mode =  $(e.relatedTarget).data('mode');
                workexpid =  $(e.relatedTarget).data('workexpid');
@@ -1198,6 +1326,7 @@ jQuery(document).ready(function ($) {
     
     $('#skills-modal-del').on('show.bs.modal', function(e) {
                $('.features #successdivskillstag').hide();
+               $('#loader').hide();
                var $modal = $(this);
                var skilltag =  $(e.relatedTarget).data('skilltag');
                var skillid =  $(e.relatedTarget).data('skillid');
@@ -1210,6 +1339,12 @@ jQuery(document).ready(function ($) {
             data: 'skillid=' + skillid +
                   '&userid=' + userid +
                   '&skilltag=' + skilltag,
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
             success: function(data) {
                 $modal.find('.modalcontent').html(data);
                 $(function() {
@@ -1221,7 +1356,8 @@ jQuery(document).ready(function ($) {
     
     $(document).on('submit','#delskill-form',function(event){
              
-            event.preventDefault();      
+            event.preventDefault();     
+            $('#loader').hide();
             $('#resume-main-body #successdivdeljob').hide();   
             var userid = $("#delskill-form #userid").val();          
             var skillid = $("#delskill-form #skillid").val();         
@@ -1234,6 +1370,12 @@ jQuery(document).ready(function ($) {
                 data: "userid=" + userid + "&skillid=" + skillid,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
                 success : function(data){
                     
                     $('#skills-modal-del').modal('toggle');

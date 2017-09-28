@@ -337,7 +337,7 @@ if(isset($_SESSION['user'])){
                             
 
 <script>
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
   /*  
      $("#enddate").datepicker({

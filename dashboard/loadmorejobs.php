@@ -6,6 +6,8 @@
         include 'Database.php';
     }
 include 'specialization.php';
+$months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+$positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 if(isset($_SESSION['user'])){
    $user = $_SESSION['user'];
    $password = $_SESSION['password'];
@@ -111,8 +113,7 @@ if(!empty($rows)){
    
    }
     unset($jobad);
-    $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
-    $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
+    
     $search = str_replace('%','',$search); 
 }
 }else{
