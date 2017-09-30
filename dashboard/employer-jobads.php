@@ -257,28 +257,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         
     <?php
     if($ajax=='ajads'){
-         include 'alljobads.php';
-    ?>
-    <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #a1').addClass('active');});</script>
-    <?php
+         include 'alljobads.php';  
     }
     if($ajax=='pjobad'){
-         include 'selecttemplate-form.php';
-    ?>    
-        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #p2').addClass('active');});</script>
-    <?php        
+         include 'selecttemplate-form.php';     
     }
     if($ajax=='jtemp'){
-         include 'templates.php'; 
-    ?>    
-        <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #j3').addClass('active');});</script>
-    <?php                    
+         include 'templates.php';                  
     }
     if($ajax=='essays'){
-         include 'jobessays-form.php';
-    ?>
-          <script>jQuery(document).ready(function ($) {$('#resumesb li').removeClass('active');$('#resumesb #e4').addClass('active');});</script>   
-    <?php
+         include 'jobessays-form.php';   
     }   
     ?>
    

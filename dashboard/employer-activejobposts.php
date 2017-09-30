@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/employer-main.php?ajax=ajposts';
+   } 
+}    
+</script> 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -87,7 +94,7 @@ if(isset($_SESSION['user'])){
                                     $dadd = explode("-", $dateadded);
                                     $dateadded = $dadd[1] .'/'.$dadd[2].'/'.$dadd[0];
                                     $logo = $row['logo'];
-
+                            /*
                               $database->query('select (select count(jobapplications.id) from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isreject=0 and isverified=1) as aapps,(select count(jobapplications.id) from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isverified=1 and (isnew=1 or dateapplied=:today)) as napps,(select count(jobapplications.id) from jobapplications, useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isshortlisted=1 and isreject=0 and isverified=1) as shortlisted from jobapplications limit 0,1');
                               $database->bind(':jobid', $id);   
                               $database->bind(':today', $today);        
@@ -100,7 +107,43 @@ if(isset($_SESSION['user'])){
                                }    
                                $aapps = $row['aapps'];
                                $napps = $row['napps'];        
-                               $shortlisted = $row['shortlisted']; 
+                               $shortlisted = $row['shortlisted'];
+                              */ 
+                                    
+                                $database->query('select count(jobapplications.id) as aapps from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isreject=0 and isverified=1 limit 0,1');
+                              $database->bind(':jobid', $id);                                   
+                               try{             
+                                    $row = $database->single();  
+                               }catch (PDOException $e) {
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
+                               }    
+                               $aapps = $row['aapps'];
+                                    
+                               $database->query('select count(jobapplications.id) as napps from jobapplications,useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isverified=1 and (isnew=1 or dateapplied=:today) limit 0,1');
+                              $database->bind(':jobid', $id);   
+                              $database->bind(':today', $today);        
+                               try{             
+                                    $row = $database->single();  
+                               }catch (PDOException $e) {
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
+                               }                        
+                               $napps = $row['napps'];        
+                             
+                                $database->query('select count(jobapplications.id)  as shortlisted  from jobapplications, useraccounts where jobapplications.userid = useraccounts.id and jobid=:jobid and isshortlisted=1 and isreject=0 and isverified=1 limit 0,1');
+                              $database->bind(':jobid', $id);                           
+                               try{             
+                                    $row = $database->single();  
+                               }catch (PDOException $e) {
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
+                               }                                  
+                               $shortlisted = $row['shortlisted'];
+                                    
                                     
                                $database->query('SELECT count(distinct personalinformation.userid) as matched from personalinformation,additionalinformation, jobapplications where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
                                             $database->bind(':specialization', $specialization);  

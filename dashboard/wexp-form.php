@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/resume.php?ajax=workexp';
+   } 
+}    
+</script> 
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -71,9 +78,7 @@ if(isset($_SESSION['user'])){
                                                             $enddate='present';
                                                         }
                                                         $jobdesc = $row['jobdescription'];
-                                                        $teaser = strip_tags($jobdesc, '<p>');
-                                                        $teaser = substr($teaser, 0, 200);
-                                                        $teaser = strip_tags($teaser, '<p>');
+                                                 
                                              ?>           
                                            
                                             <section class="blog-post">
@@ -125,9 +130,7 @@ if(isset($_SESSION['user'])){
                                                 
                                             </div>
                                             <div class="row-fluid">
-                                                 <div class="col-md-12">
-                                                      <?=$teaser?>...<br>
-                                                 </div>
+                                                 
                                                 <div class="col-md-12">
                                                
                                                     <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">

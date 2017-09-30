@@ -122,6 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     <?php
+    /*
             $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
             $database->bind(':userid', $userid);   
             try{
@@ -136,7 +137,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             $mname = $row['mname'];
             $lname = $row['lname'];
             $photo = $row['photo'];
-      
+      */
     ?>
   
     <div id="main" class="wrapper ">
@@ -154,7 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 if(isset($_SESSION['user'])){
 
-    $database->query('select position as maxposition,fname,lname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid) and useraccounts.id=:userid');
+    $database->query('select fname,lname from personalinformation where personalinformation.userid=:userid');
     $database->bind(':userid', $userid);   
     try{
         $row = $database->single();
@@ -166,7 +167,33 @@ if(isset($_SESSION['user'])){
     $maxposition = $row['maxposition'];
     $fname = $row['fname'];
     $lname = $row['lname'];
-    $photo = $row['photo'];
+    $mname = $row['mname'];
+    
+    $database->query('select position as maxposition from workexperience where startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
+            $database->bind(':userid', $userid);   
+            try{
+            $row2 = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            }     
+             $maxposition = $row2['maxposition'];
+  
+    
+    $database->query('SELECT photo from useraccounts where id = :userid');
+            $database->bind(':userid', $userid);   
+            try{
+                $row = $database->single();
+            }catch (PDOException $e) {
+                $msg = $e->getTraceAsString()." ".$e->getMessage();
+                $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                die("");
+            } 
+            $photo = $row['photo'];
+            if(empty($photo)){
+                $photo='img/unknown.png';
+            }
     
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $bday = array('0000','00','00');
@@ -202,7 +229,7 @@ jQuery(document).ready(function ($) {
                                     </div>
           
               <?php
-              $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+              $database->query('select * from personalinformation where personalinformation.userid=:userid');
               $database->bind(':userid', $userid);   
                       try{                              
                           $row = $database->single();   
@@ -225,6 +252,17 @@ jQuery(document).ready(function ($) {
                         $bday = explode("-", $birthday);
                       }
                       $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
+                       
+                 $database->query('select * from additionalinformation where additionalinformation.userid=:userid');
+                 $database->bind(':userid', $userid);   
+                      try{                              
+                          $row = $database->single();   
+                      }catch (PDOException $e) {
+                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                            die("");
+                      }                        
+                     
                       
                       $dposition = $row['dposition'];
                       $plevel = $row['plevel'];                      
@@ -233,7 +271,7 @@ jQuery(document).ready(function ($) {
                       $profsum = $row['profsum'];
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
-                      $pholder = $row['pholder'];                        
+                      $pholder = $row['pholder'];
                                             
                      if(!empty($profsum) && strlen($profsum)>50){                           
               ?>
@@ -279,7 +317,7 @@ jQuery(document).ready(function ($) {
                                                                         <li> Email: <b><?=$myemail?></b></li>
                                                                         <li> Landline: <b><?=$landline?></b></li>
                                                                         <li> Street Address: <b><?=$street?></b></li>
-                                                                        <li> City: <?=$city?>, <b><?=$province?></b></li>
+                                                                        <li> City: <b><?=$city?>,</b> <b><?=$province?></b></li>
                                                                         <li> Nationality: <b><?=$nationality?></b></li>
                                                                         <li> Age: <b><?=$age?></b></li>
                                                                         <li> Birthdate: <b><?=$months[$bday[1]-1]?> &nbsp;<?=$bday[2]?>,&nbsp;<?=$bday[0]?></b></li>

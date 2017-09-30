@@ -1,3 +1,11 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/resume.php?ajax=pinfo';
+   } 
+}    
+</script>    
+
 <?php
 
 
@@ -229,7 +237,7 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                             <div id="myemaildiv" class="form-group label-floating">
                                                                 <label class="control-label">Email</label>
-                                                                <input type="email" id="myemail" class="form-control" value="<?=$myemail ?>" data-parsley-required data-parsley-type="email">
+                                                                <input type="email" id="myemail" class="form-control" value="<?=$user ?>" data-parsley-required data-parsley-type="email">
                                                             </div>
                                                              <div id="landlinediv" class="form-group label-floating">
                                                                 <label class="control-label">Landline</label>

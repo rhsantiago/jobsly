@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/employer-main.php?ajax=napp';
+   } 
+}    
+</script> 
 <?php
 
 

@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/main.php?ajax=jinv';
+   } 
+}    
+</script> 
 <?php
 
 

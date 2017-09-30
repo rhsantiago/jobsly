@@ -92,9 +92,7 @@ if($mode!='del'){
                                                             $enddate='present';
                                                         }
                                                         $jobdesc = $row['jobdescription'];
-                                                        $teaser = strip_tags($jobdesc, '<p>');
-                                                        $teaser = substr($teaser, 0, 200);
-                                                        $teaser = strip_tags($teaser, '<p>');
+                                                    
 ?> 
                                <section class="blog-post">
                                     <div class="panel panel-default">
@@ -143,9 +141,7 @@ if($mode!='del'){
                                                 
                                             </div>
                                             <div class="row-fluid">
-                                                 <div class="col-md-12">  
-                                                      <?=$teaser?>...<br>
-                                                 </div>
+                                               
                                                 <div class="col-md-12">   
                                                
                                                     <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">
@@ -155,7 +151,7 @@ if($mode!='del'){
                                             </div>
                                             <div class="row-fluid">
                                                <div class="col-md-6">
-                                                        <a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">Read more</a>
+                                                        <a class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#viewdetails<?=$row['id']?>">Read more</a>
                                                 </div>
                                                 <div class="col-md-6 actionicon">                                                   
                                                         <span class="jobcardbuttons"><a href='#workexpmodal' id="editworkexp" title="Edit" data-mode="update" data-workexpid="<?=$row['id']?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">edit</i></a></span>
