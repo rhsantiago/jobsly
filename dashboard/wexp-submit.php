@@ -30,7 +30,7 @@ if($mode!='del'){
         $edate = explode("/", $enddate);
         $enddate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
     }else{
-        $enddate = '0000-00-00';
+        $enddate = '1000-01-01';
     }
     
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }

@@ -21,8 +21,8 @@ if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
  $database = new Database();
  $sdate= array();
  $signupdate='';
- $email='';array(
-    $database->query('SELECT * from useraccounts, companyinfo where useraccounts.id=:employerid and useraccounts.id=companyinfo.userid');
+ $email='';
+    $database->query('SELECT * from useraccounts left join companyinfo on useraccounts.id=companyinfo.userid where useraccounts.id=:employerid');
     $database->bind(':employerid', $employerid);
     try{
         $row = $database->single();

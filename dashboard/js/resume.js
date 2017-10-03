@@ -850,6 +850,98 @@ jQuery(document).ready(function ($) {
             return false;
     });
     
+    $(document).on('submit','#etrain-form',function(event){
+             
+            event.preventDefault();      
+            $('#loader').hide();
+            $('.features #successdivetrain').hide();
+           
+            var id = $("#etrain-form #id").val();
+            var mode = $("#etrain-form #mode").val();
+            var userid = $("#etrain-form #userid").val();
+        
+            var hsschool = $("#etrain-form #hsschool").val();
+            var hsadd = $("#etrain-form #hsadd").val();  
+            var hsgraddate = $("#etrain-form #hsgraddate").val();
+            var smhs = $("#etrain-form #smhs").summernote('code');            
+        
+            var coluni = $("#etrain-form #coluni").val();
+            var coladd = $("#etrain-form #coladd").val();
+            var colgpa = $("#etrain-form #colgpa").val();
+            var colgraddate = $("#etrain-form #colgraddate").val();
+            var colmajor = $("#etrain-form #colmajor").val();
+            var smcol = $("#etrain-form #smcol").summernote('code');
+        
+            var pgrad1uni = $("#etrain-form #pgrad1uni").val();
+            var pgrad1add = $("#etrain-form #pgrad1add").val();
+            var pgrad1gpa = $("#etrain-form #pgrad1gpa").val();
+            var pgrad1graddate = $("#etrain-form #pgrad1graddate").val();
+            var pgrad1course = $("#etrain-form #pgrad1course").val();
+            var smpgrad1 = $("#etrain-form #smpgrad1").summernote('code');
+        
+            var smothers = $("#etrain-form #smothers").summernote('code');
+        
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "etrain-submit.php",
+                data: "mode=" + mode + "&etrain=" + etrain + "&userid=" + userid + "&hsschool=" + hsschool + "&hsadd=" + hsadd + "&hsgraddate=" + hsgraddate + "&smhs=" + smhs + "&coluni=" + coluni + "&coladd=" + coladd + "&colgpa=" + colgpa + "&colgraddate=" + colgraddate + "&colmajor=" + colmajor + "&smcol=" + smcol + "&pgrad1uni=" + pgrad1uni + "&pgrad1add=" + pgrad1add + "&pgrad1gpa=" + pgrad1gpa + "&pgrad1graddate=" + pgrad1graddate + "&pgrad1course=" + pgrad1course + "&smpgrad1=" + smpgrad1 + "&smothers=" + smothers,
+                dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
+                success : function(data){
+                    console.log(data);
+                   // $('#wexp-form #workexpcardsdiv').html(data).fadeIn(1500);
+                    $('.features #successdivetrain').fadeIn(1500);
+                    $('#resume-main-body #hsgraddate').datepicker();
+                    $('#resume-main-body #colgraddate').datepicker();
+                    $('#resume-main-body #pgrad1graddate').datepicker();
+                    $('#resume-main-body #smhs').summernote({
+                                   toolbar: [
+                                     // [groupName, [list of button]]
+                                      ['style', ['bold', 'italic', 'underline', 'clear']],                       
+                                      ['fontsize', ['fontsize']],
+                                      ['color', ['color']],
+                                       ['para', ['ul', 'ol', 'paragraph']],
+                                       ['height', ['height']]
+                                    ],
+                                    callbacks: {
+                                      onPaste: function (e) {
+                                          var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                                          e.preventDefault();
+
+                                          // Firefox fix
+                                          setTimeout(function () {
+                                              document.execCommand('insertText', false, bufferText);
+                                          }, 10);
+                                      }
+                                    }
+                          });
+                 
+                    $('#etrain-hs-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                     });
+                    $('#etrain-hs-form #mode').val('update');
+                    $('#etrain-col-form #mode').val('update');
+                    $('#etrain-pgrad1-form #mode').val('update');
+                    $('#etrain-others-form #mode').val('update'); 
+                    $('#etrain-hs-form').parsley().reset();
+                },
+                error: function(data) {
+                    console.log(data);
+                   // $('#wexp-form #successdivetrain').fadeIn(1500);
+                   
+                }
+            });
+            return false;
+    });
+    /*
     $(document).on('submit','#etrain-hs-form',function(event){
              
             event.preventDefault();      
@@ -1152,7 +1244,7 @@ jQuery(document).ready(function ($) {
             });
             return false;
     });
-    
+    */
     
     $(document).on('submit','#skills-skilltag-form',function(event){
              

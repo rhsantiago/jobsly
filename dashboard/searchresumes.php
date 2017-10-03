@@ -391,16 +391,17 @@ if($esalarypost > 0){
                                                                     <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
                                                                     <input type="hidden" id="applicantid" name="applicantid" value="<?=$applicantid?>">
                                                                 </form>
-                                                                 <a href="#applicantview" target="_blank" rel="tooltip" id="applicantview" data-applicantid="<?=$applicantid?>" title="View Profile" >
+                                                                 <a href="#applicantview" target="_blank" rel="tooltip" id="applicantview" data-applicantid="<?=$applicantid?>" title="View &amp; Invite" >
                                                                     <i class="fa fa-user fa-2x text-info"></i>
                                                                 </a>
                                                             </li>
-                                                        
+                                                       <!-- 
                                                         <li id='invited<?=$applicantid?>'>
                                                          <a href="#invitemodal" data-applicantid="<?=$applicantid?>" data-mode="insert" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="matched" data-toggle="modal" data-target="#invite-modal" rel="tooltip" id="inviteview" title="Invite to Apply" >
                                                             <i class="fa fa-envelope fa-2x text-warning"></i>
                                                           </a>
                                                         </li>
+                                                           --> 
                                                         </ul>
                                                     </td>
                                                 </tr>

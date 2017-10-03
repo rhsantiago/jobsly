@@ -17,6 +17,9 @@ if(isset($_POST['cpersonemail'])){ $cpersonemail = $_POST['cpersonemail']; }
 if(isset($_POST['cpersontelno'])){ $cpersontelno = $_POST['cpersontelno']; }
 if(isset($_POST['industry'])){ $industry = $_POST['industry']; }
 if(isset($_POST['numemp'])){ $numemp = $_POST['numemp']; }
+if(empty($numemp)){
+    $numemp = 0;
+}    
 if(isset($_POST['ctype'])){ $ctype = $_POST['ctype']; }
 if(isset($_POST['cdesc'])){ $cdesc = $_POST['cdesc']; }
 date_default_timezone_set('Asia/Manila');
