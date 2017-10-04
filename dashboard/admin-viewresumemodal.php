@@ -19,7 +19,7 @@ if(isset($_SESSION['user'])){
     $database = new Database();
     
    // $database->query('select position as maxposition,fname,lname,mname,photo from workexperience, personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid and startdate = (select max(startdate) from workexperience where workexperience.userid=:userid)');
-    $database->query('select fname,lname,mname,photo from personalinformation,useraccounts where personalinformation.userid=:userid and useraccounts.id=:userid');
+    $database->query('select fname,lname,mname,photo from useraccounts left join personalinformation on useraccounts.id = personalinformation.userid where useraccounts.id=:userid');
     $database->bind(':userid', $applicantid);   
     try{
         $row = $database->single();
@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
                                     </div>
                                   
               <?php
-              $database->query('select * from personalinformation,additionalinformation where personalinformation.userid=:userid and additionalinformation.userid=:userid');
+              $database->query('select * from personalinformation left join additionalinformation on personalinformation.userid = additionalinformation.userid where personalinformation.userid=:userid');
               $database->bind(':userid', $applicantid);   
                       try{                       
                           $row = $database->single();  

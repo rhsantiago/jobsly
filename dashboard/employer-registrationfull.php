@@ -92,8 +92,8 @@ if($ok == 1 ){
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/favicon.ico">
+	<link rel="icon" type="image/png" href="img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>jobsly - find your next adventure</title>
@@ -165,21 +165,7 @@ if($ok == 1 ){
     				<ul class="nav navbar-nav navbar-right">
                         <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-facebook-square"></i>
-						</a>
-		            </li>
-					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-instagram"></i>
-						</a>
-		            </li>
+		           
         		</ul>
         	</div>
     	</div>

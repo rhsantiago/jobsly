@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
         session_start();   
 }
 if(isset($_SESSION['user'])){
-
+$cinfo = '';
 $target_dir = "logo/";
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $myfile = pathinfo($_FILES["fileToUpload"]["name"]);
@@ -50,6 +50,7 @@ if ($uploadOk == 0) {
         include 'Database.php';
         $database = new Database();
         if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
+        if(isset($_POST['cinfo'])){ $cinfo = $_POST['cinfo']; }
                // echo "The file ". basename( $_FILES["fileToUpload"][date("YmdHms")]). " has been uploaded.";
             $database->query(' update companyinfo set logo=:logo where userid=:userid');
           
@@ -64,7 +65,12 @@ if ($uploadOk == 0) {
                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
                 die("");
             } 
-        header('Location: employer-registrationfull.php');
+        if($cinfo != 'cinfo'){
+            header('Location: employer-registrationfull.php');
+        }else{
+             header('Location: employer-home.php#cinfo');
+        }
+        
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

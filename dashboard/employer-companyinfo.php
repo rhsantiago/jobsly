@@ -277,7 +277,6 @@ if(isset($_SESSION['user'])){
                                                                 Company Description
                                                             <div id="cdesc"><?=$cdesc?></div>
                                                                     
-                                                             
                                                             </div>
                                                             
                                                         </div>
