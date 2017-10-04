@@ -58,16 +58,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="js/material.min.js"></script>
 
-	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-	<script src="js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
-	<script src="js/bootstrap-datepicker.js" type="text/javascript"></script>
-
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
-    <script src="js/summernote.min.js" type="text/javascript"></script> 
+    <script src="js/summernote.min.js" type="text/javascript"></script>
+   <!-- <script src="js/summernote-cleaner.js"></script> -->
     <script src="js/parsley.js"></script>
 </head>
 
@@ -108,6 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="modal fullscreen-modal fade" id="logoupload-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <form role="form"  action="uploadlogo-submit.php" method="post" enctype="multipart/form-data">         
             <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
+            <input type="hidden" id="from" name="cinfo" value="cinfo">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content modalcontent">
 	        <div class="modal-header">
@@ -312,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="features">
 						<div class="row">
                                                      
-                            <div class="col-md-6">
+                            <div class="col-md-7">
                        
                                 
                                 <section class="blog-post">
@@ -323,19 +319,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <div class="blog-post-content">
                                             
                                             <div class="row-fluid">
-                                                <div class="col-md-6 jobad-titletopmargin">                                                    
+                                                <div class="col-md-8 jobad-titletopmargin">                                                    
                                                     <h2 class="title jobad-title "><span class="text-info"><?=$companyname?></span></h2>
                                                         <div>
                                                             <h6 class="text-muted"><i><?=$companyaddress?></i></h6>
                                                         </div> 
                                                 </div>                                                
-                                                <div class="col-md-6 ">
+                                                <div class="col-md-4 ">
                                                     <div class="companylogo pull-right"> 
                                                         <img src="<?=$logo?>" width="70" height="70" class="img-responsive">
                                                     </div>
                                                 </div>
                                                 
                                             </div>
+                                            <?php
+                                            if(!empty($companywebsite)){
+                                            ?>    
                                             <div class="row-fluid">
                                                 <div class="col-md-12" >
                                                 <br>
@@ -343,7 +342,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                        <i class="material-icons text-info jobadheadericon">cloud_queue</i> &nbsp;<?=$companywebsite?>
                                                         </h6>                                                                                          
                                           </div> 
-                                        </div>                                  
+                                        </div>
+                                            <?php
+                                            }
+                                            ?>
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-6 actionicon pull-right">
@@ -358,7 +360,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     </div>
                                 </section>
                             </div>  
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                        
                                 
                                 <section class="blog-post">
