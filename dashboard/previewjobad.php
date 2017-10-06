@@ -217,7 +217,7 @@ if(isset($_SESSION['user'])){
                                                  </div>
                                                 <div class="col-md-12">   
                                                
-                                                    <div class="collapse-group collapse" id="viewdetails">
+                                                    <div class="collapse-group" id="viewdetails">
                                                   <?=$jobdesc?>
                                                     <?php
                                                 if(($yrsexp > 0) || (!empty($mineduc)) || (!empty($languages)) || (!empty($licenses)) || ($wtravel == 'on') || ($wrelocate == 'on')){

@@ -304,7 +304,7 @@ $(document).ready(function ($) {
            $('#wexp-form-modal #positiondiv').addClass('has-error');
            $('#wexp-form-modal #positiondiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
-    $('#wexp-form #position').parsley().on('field:success', function() {
+    $('#wexp-form-modal #position').parsley().on('field:success', function() {
             $('#wexp-form-modal #positiondiv').addClass('has-success');
             $('#wexp-form-modal #positiondiv').find('span').remove();
             $('#wexp-form-modal #positiondiv').append("<span class='material-icons form-control-feedback'>done</span>");   
@@ -322,7 +322,7 @@ $(document).ready(function ($) {
             $('#wexp-form-modal #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
-    $('#wexp-form #startdate').parsley().on('field:success', function() {
+    $('#wexp-form-modal #startdate').parsley().on('field:success', function() {
             $('#wexp-form-modal #startdiv').addClass('has-success');
             $('#wexp-form-modal #startdiv').find('span').remove();
             $('#wexp-form-modal #startdiv').append("<span class='material-icons form-control-feedback'>done</span>");   

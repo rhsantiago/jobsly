@@ -263,9 +263,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a target="_blank" href="previewresume.php"><i class="material-icons">pageview</i>&nbsp;Preview Resume</a></li>
                         </ul>
     </div>
-    <div id="loading" class="center" >
-           <img id="loader"  class="loader " src="img/loader.gif">
-    </div>   
+    
 </div>
     
      <!--sidebar-->
@@ -1121,6 +1119,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
              </form>
         </div>
     </div>
+    <div class="col-md-12 center">                    
+        <div id="loading" >
+             <img id="loader" src="img/loader.gif">
+         </div>
+    </div>                    
 <script>
 jQuery(document).ready(function ($) {
   /*

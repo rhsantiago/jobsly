@@ -250,8 +250,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         
                        
 <?php
-     $database->query("SELECT sum(impressions) as totalimpressions, sum(views) as totalviews from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
-     $database->bind(':userid', $userid);                                             
+     $currentdate = date("Y-m-d");
+     $database->query("SELECT sum(impressions) as totalimpressions, sum(views) as totalviews from jobads WHERE userid=:userid and dateadded BETWEEN (:currentdate - INTERVAL 30 DAY) AND :currentdate");
+     $database->bind(':userid', $userid);
+     $database->bind(':currentdate', $currentdate);
      try{
           $row = $database->single();
      }catch (PDOException $e) {
@@ -468,8 +470,9 @@ CanvasJS.addColorSet("jobslycolorset",
     ]);
     
 <?php
-     $database->query("SELECT dateadded, sum(impressions) as totimp from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE() group BY dateadded");
-     $database->bind(':userid', $userid);                                             
+     $database->query("SELECT dateadded, sum(impressions) as totimp from jobads WHERE userid=:userid and dateadded BETWEEN (:currentdate - INTERVAL 30 DAY) AND :currentdate group BY dateadded");
+     $database->bind(':userid', $userid);
+     $database->bind(':currentdate', $currentdate);
      try{
           $rows = $database->resultset();
      }catch (PDOException $e) {
@@ -535,8 +538,10 @@ CanvasJS.addColorSet("jobslycolorset",
 
     
     <?php
-     $database->query("SELECT jobtitle, views from jobads WHERE userid=:userid and dateadded BETWEEN (CURDATE() - INTERVAL 30 DAY) AND CURDATE()");
-     $database->bind(':userid', $userid);                                             
+     
+     $database->query("SELECT jobtitle, views from jobads WHERE userid=:userid and dateadded BETWEEN (:currentdate - INTERVAL 30 DAY) AND :currentdate");
+     $database->bind(':userid', $userid);
+     $database->bind(':currentdate', $currentdate);
      try{
           $rows = $database->resultset();
      }catch (PDOException $e) {

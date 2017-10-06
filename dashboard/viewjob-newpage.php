@@ -696,10 +696,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                         </div>
                                     </div>
                                   </section>
-               <section class="otherjobs">
-                          <div class="panel panel-default">
-                               <div class="panel-body">    
-                                   <div class="blog-post-content">
+               
                                          <div class="row-fluid">
                                                <div class="col-md-12">
                                                    <div class="center">
@@ -707,10 +704,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                    </div>
                                                 </div>
                                           </div>  
-                                    </div>
-                               </div>
-                            </div>
-                  </section>               
+                                  
 <?php
   $jobtitlearray = array();
   $jobidarray = array();    

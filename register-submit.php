@@ -42,28 +42,13 @@ if(!empty($verify)){
     $database->execute();
     
     
-    require 'dashboard/phpmailer/PHPMailerAutoload.php';
-
-$mail = new PHPMailer;
-
-$mail->isSMTP();
-
-$mail->SMTPDebug = 0;
-$mail->Debugoutput = 'html';
-$mail->Host = 'smtp.gmail.com';
-
-$mail->Port = 587;
-
-$mail->SMTPAuth = true;
-$mail->Username = "info@jobsly.net";
-//$mail->Password = "r33c3*fr3y";
-$mail->Password = "freya*0209";
-
+require 'dashboard/phpmailer/PHPMailerAutoload.php';
+require 'dashboard/emailconfig.php';
 $mail->isHTML(true);  
 $mail->setFrom('info@jobsly.net', 'jobsly');
 $mail->Subject = 'Welcome to jobsly!';
 $mail->addAddress($email);
-$mail->Body    = "Thank you for registering! <a href='https://www.jobsly.net/verified.php?email=".$email."&verify=".$verifyhash."'>Click here to complete your jobsly registration</a>";
+$mail->Body    = "Thank you for registering! <a href='https://www.jobsly.net/verified.php?email=".$email."&verify=".$verifyhash."'>Click here to complete your jobsly registration</a> <br><br>jobsly team";
 
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;

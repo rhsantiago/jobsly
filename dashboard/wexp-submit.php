@@ -29,8 +29,10 @@ if($mode!='del'){
     if($currentempcb=='off'){
         $edate = explode("/", $enddate);
         $enddate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
+        $log->info("wexp off". $currentempcb); 
     }else{
         $enddate = '1000-01-01';
+        $log->info("wexp on". $currentempcb); 
     }
     
     if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }

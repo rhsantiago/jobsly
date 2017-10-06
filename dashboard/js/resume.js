@@ -272,7 +272,7 @@ jQuery(document).ready(function ($) {
                         $('#resume-main-body').html(html);
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #e3').addClass('active');
-                        $('#etrain-hs-form #hsgraddate').datepicker();                    
+                        $('#resume-main-body #hsgraddate').datepicker();                    
                         $('#resume-main-body #colgraddate').datepicker();
                         $('#resume-main-body #pgrad1graddate').datepicker();
                         $('#resume-main-body #successdivetrain').hide();
@@ -301,20 +301,11 @@ jQuery(document).ready(function ($) {
                          $(function() {
                             $.material.init();
                         });
-                        $('#etrain-hs-form').parsley({
+                        $('#etrain-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
-                        });
-                        
-                        $('#etrain-col-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
-                        
-                        $('#etrain-pgrad1-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
+                        });                        
+                     
                         ChangeUrl('Education | jobsly', 'etrain-form.php');
                         $('title').html('Education | jobsly');
                     }
@@ -340,7 +331,7 @@ jQuery(document).ready(function ($) {
                         $('#resume-main-body').html(html);
                         $('#resumesb li').removeClass('active');
                         $('#resumesb #e3').addClass('active');
-                        $('#etrain-hs-form #hsgraddate').datepicker();                    
+                        $('#resume-main-body #hsgraddate').datepicker();                    
                         $('#resume-main-body #colgraddate').datepicker();
                         $('#resume-main-body #pgrad1graddate').datepicker();
                         $('#resume-main-body #successdivetrain').hide();
@@ -369,20 +360,11 @@ jQuery(document).ready(function ($) {
                          $(function() {
                             $.material.init();
                         });
-                        $('#etrain-hs-form').parsley({
+                        $('#etrain-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
                         });
-                        
-                        $('#etrain-col-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
-                        
-                        $('#etrain-pgrad1-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
+                       
                         ChangeUrl('Education | jobsly', 'etrain-form.php');
                         $('title').html('Education | jobsly');
                     }
@@ -709,7 +691,7 @@ jQuery(document).ready(function ($) {
             var enddate = $("#wexp-form-modal #enddate").val();
         
             var currentempcb = 'off';
-            if($("#wexp-form #currentempcb").prop('checked')==true){
+            if($("#wexp-form-modal #currentempcb").prop('checked')==true){
                currentempcb = 'on';
             }
              var jobdesc = $('#wexp-form-modal #summernote').summernote('code');

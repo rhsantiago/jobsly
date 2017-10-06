@@ -341,21 +341,27 @@ if(isset($_SESSION['user'])){
 
 <script>
 $(document).ready(function ($) {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-  /*  
-     $("#enddate").datepicker({
+     $('html, body').animate({ scrollTop: 0 }, 'fast');
+     /* 
+     $('#wexp-form-modal #successdivworkexp').hide();
+     $(function() {
+          $.material.init();
+     });
+     $('#wexp-form-modal #startdate').datepicker();                    
+     $('#wexp-form-modal #enddate').datepicker();
+     $("#wexp-form-modal #enddate").datepicker({
       onSelect: function() {
         $("#wexp-form").validate();
       }
-    });
+     });
     
-    $("#enddate").datepicker()
-    .on("input change", function (e) {
-        $("#wexp-form").validate();
-    });
+     $("#wexp-form-modal #enddate").datepicker()
+     .on("input change", function (e) {
+        $("#wexp-form-modal").validate();
+     });
+     
+    
    
-    
-    
     $('#wexp-form #company').parsley().on('field:error', function() {
            $('#wexp-form #companydiv').addClass('has-error');
            $('#wexp-form #companydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   

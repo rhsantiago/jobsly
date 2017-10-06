@@ -304,9 +304,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<img  class="img-responsive img-rounded" src="dashboard/email/img/latest.png" alt="">
 							</div>
 						</a>
-						<a href="img/iphone.png" class="image-link">
+						<a href="dashboard/email/img/beautiful3.png" class="image-link">
 							<div class="item">
-								<img  class="img-responsive img-rounded" src="img/iphone.png" alt="">
+								<img  class="img-responsive img-rounded" src="dashboard/email/img/beautiful3.png" alt="">
 							</div>
 						</a>
 					</div>       

@@ -566,7 +566,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             </tbody>
                                         </table>
                                      <div class="pull-right">
-                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='#' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
+                                            <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='employer-stats.php' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
                                      </div>
                                       </div>  
                                 </div>

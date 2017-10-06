@@ -229,7 +229,7 @@ jQuery(document).ready(function ($) {
                                     </div>
           
               <?php
-              $database->query('select * from personalinformation where personalinformation.userid=:userid');
+              $database->query('select * from personalinformation left join additionalinformation on personalinformation.userid= additionalinformation.userid  where personalinformation.userid=:userid');
               $database->bind(':userid', $userid);   
                       try{                              
                           $row = $database->single();   
@@ -252,8 +252,17 @@ jQuery(document).ready(function ($) {
                         $bday = explode("-", $birthday);
                       }
                       $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
+    
+                       $dposition = $row['dposition'];
+                      $plevel = $row['plevel'];                      
+                      $esalary = $row['esalary'];                      
+                      $languages = $row['languages'];
+                      $profsum = $row['profsum'];
+                      $wtravel = $row['wtravel'];
+                      $wrelocate = $row['wrelocate'];
+                      $pholder = $row['pholder']; 
                        
-                 $database->query('select * from additionalinformation where additionalinformation.userid=:userid');
+              /*   $database->query('select * from additionalinformation where additionalinformation.userid=:userid');
                  $database->bind(':userid', $userid);   
                       try{                              
                           $row = $database->single();   
@@ -272,7 +281,7 @@ jQuery(document).ready(function ($) {
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];
-                                            
+                */                            
                      if(!empty($profsum) && strlen($profsum)>50){                           
               ?>
                  <section class="blog-post">
