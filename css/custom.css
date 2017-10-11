@@ -27,6 +27,14 @@
   
 }
 
+.h4weight {
+    font-weight: 400 !important;
+}
+
+.latestjobs5 {
+  color: #3C4858 !important;
+}
+
 .findusonfb {   
     list-style-image: url("../img/findusonfb.png");
 }

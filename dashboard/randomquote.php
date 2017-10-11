@@ -13,7 +13,7 @@
         $log->info($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
     }catch (PDOException $e) {
          $msg = $e->getTraceAsString()." ".$e->getMessage();
-         $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+         $log->error($logtimestamp." - " .$msg); 
          die("");
     }
     $quote = $row['quote'];

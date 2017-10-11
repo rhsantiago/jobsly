@@ -305,7 +305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="col-md-4">
                              <div class="toptotals" >  
                                 <div class="toptitles" >  
-                                    Click Through Rate (last 30 days) <a data-toggle="tooltip" title="Click-through Rate - the ratio of the number of times your job post was clicked to the number of timed it was shown"><i class="tooltips material-icons">help_outline</i></a>
+                                    Click Through Rate (last 30 days) <a data-toggle="tooltip" title="Click-through Rate - the ratio of the number of times your job post was clicked to the number of times it was shown"><i class="tooltips material-icons">help_outline</i></a>
                                 </div>
                                 <div class="topvalues" >  
                                     <?=$ctrrate?>%
@@ -634,10 +634,10 @@ CanvasJS.addColorSet("jobslycolorset",
          echo $msg;
           die("");
      }
-      if(($totimpuser > 0) && ($totviewsuser > 0)){
-          $totimpuser = $row['totimpuser'];
-          $totviewsuser = $row['totviewsuser'];
-          $userctr =   ($totviewsuser / $totimpuser) * 100;
+      $totimpuser = $row['totimpuser'];
+      $totviewsuser = $row['totviewsuser'];
+      if(($totimpuser > 0) && ($totviewsuser > 0)){  
+          $userctr = ($totviewsuser / $totimpuser) * 100;
           $userctr = number_format((float)$userctr, 2, '.', '');
       }else{
           $totimpuser = 1;

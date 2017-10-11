@@ -306,7 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                          <div class="row-fluid">
                                                
                                                 <div class="col-md-12 actionicon pull-right">
-                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="<?=$id?>" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
+                                                        <a class="blog-post-share " href="#cinfo" id="cinfo" data-jobid="" data-toggle="tooltip" data-placement="top" title="Edit"><i class="material-icons" >edit</i> Edit</a>
                                                        
                                                 </div>
                                           </div> 
@@ -673,8 +673,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     }
                                                     ?>
                                                     
-                                                    
+                                                    <!--
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
+                                                    -->
                                                 </div>
                                           </div>      
                                           

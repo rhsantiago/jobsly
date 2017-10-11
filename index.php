@@ -117,7 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<h1 class="h1_home wow fadeIn logo" data-wow-delay="0.4s">jobsly</h1>
 			<h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">find your next adventure.</h3>
 			<ul class="list-inline intro-social-buttons">
-                <li><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50">
+                <li><a target="_blank" href='https://www.facebook.com/jobsly.net'><img src="img/fb.png" class="img-rounded" alt="find us on facebook" width="50" height="50"></a>
 				</li>
 				<li id="download" >
                     <button type="button" id="loginbtn" onclick="location.href='login.php';" href="login.php" class="btn btn-info btn-lg getstarted">Login</button>
@@ -193,12 +193,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="row ">
                 <div class="col-sm-6 wow fadeInLeftBig "  data-animation-delay="200">   
                     <h3 class="section-heading">Latest Jobs</h3>
+                    <?php
+                        include 'dashboard/Database.php';
+                        $database = new Database();
+                        date_default_timezone_set('Asia/Manila');
+                        $logtimestamp = date("Y-m-d H:i:s");
+                        $page='public';
+                        include "dashboard/serverlogconfig.php";
+                        $database->query('SELECT jobtitle, id from jobads order by id desc limit 0,5');
+                      
+                                try{
+                                    $rows = $database->resultset();
+                                }catch (PDOException $e) {
+                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                    $log->error($logtimestamp." - " .$msg); 
+                                    die("");
+                                }     
+                                foreach($rows as $row){
+                                    $id = $row['id'];                            
+                                    $jobtitle = $row['jobtitle'];
+                    ?>
+                    <div class="sub-title lead3 h4weight latestjobs5"><a class="" target="_blank" href="viewjob-newpage.php?jobid=<?=$id?>&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a></div>
+                                
+                    <?php                
+                                }
+                     ?>
+                    <!--
 					<div class="sub-title lead3">Senior Web Developer, Bootstrap - PHP</div>
                     <div class="sub-title lead3">Technical Support Specialists - Level 3</div>
                     <div class="sub-title lead3">Marketing Manager, Six Sigma Certified</div>
                     <div class="sub-title lead3">Junior Finance Analyst 1 yr. experience</div>
                     <div class="sub-title lead3">Sales Specialists BPO, Australian account</div>
                     <div class="sub-title lead3">Java Technical Lead, J2EE Spring hibernate</div>
+                    -->
                     <div class="sub-title lead3"></div>
                     <div class="sub-title lead3"><button type="button" id="loginbtn" onclick="location.href='latestjobs.php';" href="latestjobs.php" class="btn btn-info btn-lg getstarted">View All</button></div>
 				</div>  

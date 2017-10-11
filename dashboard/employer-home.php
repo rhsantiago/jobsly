@@ -492,11 +492,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                    </div>
                             </div>
                             <div class="col-md-12">
-                                <section class="blog-post">
-                                    <div class="panel panel-default">                                    
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info h4weight">Job Ad Performance</h4></div>
-                                 <div class="table-responsive">      
+                                <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-info">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">fingerprint</i>
+                                                                   Job Ad Performance
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                             <div class="table-responsive">      
                                      <table class="table table-hover table-condensed">
                                             <thead>
                                                 <tr align="left">
@@ -528,7 +543,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 $isactive= $row['isactive'];
                                                 $ctr=0;
                                                 if($views > 0 && $impressions > 0){
-                                                    $ctr = $views/$impressions;
+                                                    $ctr = ($views/$impressions) * 100;
                                                     $ctr = number_format((float)$ctr, 2, '.', '');
                                                 }
                                                 
@@ -549,7 +564,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     <td><?=$jobtitle?></td>       
                                                     <td><?=$impressions?></td> 
                                                     <td><?=$views?></td>
-                                                    <td><?=$ctr?></td>
+                                                    <td><?=$ctr?>%</td>
                                                     <td><?=$resumes?></td>
                                                     <td>
                                                     <?php
@@ -568,10 +583,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                      <div class="pull-right">
                                             <span class="jobcardbuttons h4weight"><a class="blog-post-share " href='employer-stats.php' data-employer="employer"  title="View Job"><i class="material-icons" >visibility</i> View All</a></span>
                                      </div>
-                                      </div>  
-                                </div>
+                                      </div> 
+                                                        </div>
+
+                                                    </div>
+                                             </div>
                                     </div>
-                                  </section>
                                 
                                 </div>
                           

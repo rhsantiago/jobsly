@@ -637,8 +637,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     }
                                                     ?>
                                                     
-                                                    
+                                                    <!--
                                                     <span class="jobcardbuttons"><a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a></span>
+                                                    -->
                                                 </div>
                                           </div>      
                                           

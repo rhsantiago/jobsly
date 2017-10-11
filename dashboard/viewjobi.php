@@ -212,7 +212,7 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                  </div>
                                                 <div class="col-md-12">   
                                                
-                                                    <div class="collapse-group collapse" id="viewdetails">
+                                                    <div class="collapse-group" id="viewdetails">
                                                   <?=$jobdesc?>
                                                         <br>
                                                         <a href='<?=$link?>'>View on Indeed</a>

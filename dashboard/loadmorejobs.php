@@ -818,7 +818,7 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
                                                         <!--
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
-                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -896,7 +896,7 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
                                                          <!--
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
-                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 
@@ -975,7 +975,7 @@ $database->query("SELECT * from indeedjobs order by dateadded desc limit ".$inex
                                                          <!--
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$jobad->getjobid()?>" data-mode="" data-isjobseeker="jobseeker">
                                                     -->    
-                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&mode=<?=$datamode?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
+                                                    <a class="nodecor" target="_blank" href="viewjobi.php?jobid=<?=$jobad->getjobid()?>&isjobseeker=jobseeker" id="viewjobi"><h2 class="text-info jobcardtitle"><?=$jobad->getjobtitle()?></h2></a>
                                                         <div class="companypos jobad-bottomborder">
                                                             <h6 class="text-muted jobcardcompany"><i><?=$jobad->getcompany()?></i></h6>
                                                         </div> 

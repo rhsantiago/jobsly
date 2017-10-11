@@ -154,7 +154,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 if(isset($_SESSION['user'])){
-
+    $maxposition="";
+    $mname=""
     $database->query('select fname,lname from personalinformation where personalinformation.userid=:userid');
     $database->bind(':userid', $userid);   
     try{
