@@ -143,17 +143,17 @@ if(isset($_SESSION['user'])){
                                                                   <div class="col-md-6 col-xs-6">
                                                                     <div id="hsschooldiv" class="form-group label-floating">
                                                                         <label class="control-label">School</label>
-                                                                        <input type="text" id="hsschool" class="form-control" value="<?=$hsschool?>" data-parsley-hsallornone>
+                                                                        <input type="text" id="hsschool" class="form-control" value="<?=$hsschool?>"  data-parsley-hsallornone>
                                                                     </div>
                                                                     <div id="hsadddiv" class="form-group label-floating">
                                                                         <label class="control-label">School Address</label>
-                                                                        <input type="text" id="hsadd" class="form-control" value="<?=$hsadd?>" data-parsley-hsallornone>
+                                                                        <input type="text" id="hsadd" class="form-control" value="<?=$hsadd?>"  data-parsley-hsallornone>
                                                                     </div>                                                                  
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="hsgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='hsgraddate' class='datepicker form-control' value="<?=$hsgraddate?>" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$" data-parsley-hsallornone>
+                                                                        <input type='text' id='hsgraddate' class='datepicker form-control' value="<?=$hsgraddate?>"  data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-hsallornone>
                                                                     </div>                                                                    
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
@@ -240,7 +240,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="colgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='colgraddate' value="<?=$colgraddate?>" class='datepicker form-control' data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$" data-parsley-colallornone>
+                                                                        <input type='text' id='colgraddate' value="<?=$colgraddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-colallornone>
                                                                     </div>   
                                                                     <div id="colmajordiv" class="form-group label-floating">
                                                                         <label class="control-label">Major/Course</label>
@@ -331,7 +331,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="pgrad1graddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='pgrad1graddate' value="<?=$pgrad1graddate?>" class='datepicker form-control' data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$" data-parsley-pgradallornone>
+                                                                        <input type='text' id='pgrad1graddate' value="<?=$pgrad1graddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-pgradallornone>
                                                                     </div>   
                                                                     <div id="pgrad1coursediv" class="form-group label-floating">
                                                                         <label class="control-label">Masters/Doctorate Course</label>
@@ -511,6 +511,7 @@ if(isset($_SESSION['user'])){
     
 $(document).ready(function ($) {
     window.Parsley.addValidator('hsallornone', {
+        requirementType: 'regexp',
   validate: function(value) {
     var result = false;
     var hsschool = $("#etrain-form #hsschool").val();
@@ -518,8 +519,14 @@ $(document).ready(function ($) {
     var hsgraddate = $("#etrain-form #hsgraddate").val();
        $('#etrain-form #hsschooldiv').find('span').remove(); 
        $('#etrain-form #hsadddiv').find('span').remove(); 
-       $('#etrain-form #hsgraddatediv').find('span').remove();   
-    if((hsschool && (!hsadd || !hsgraddate)) || (hsadd && (!hsschool || !hsgraddate))|| (hsgraddate && (!hsschool || !hsadd))){
+       $('#etrain-form #hsgraddatediv').find('span').remove();
+       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regexpeval = regex.test(hsgraddate);
+      
+ 
+    if( ((hsschool && (!hsadd || !hsgraddate)) || (hsadd && (!hsschool || !hsgraddate))|| (hsgraddate && (!hsschool || !hsadd)))
+      || !regexpeval){
+        
        $('#etrain-form #hsschooldiv').addClass('has-error');
        $('#etrain-form #hsschooldiv').find('label').addClass('redcolor'); 
        $('#etrain-form #hsschooldiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");        
@@ -529,8 +536,12 @@ $(document).ready(function ($) {
        $('#etrain-form #hsgraddatediv').addClass('has-error');
        $('#etrain-form #hsgraddatediv').find('label').addClass('redcolor');    
        $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");   
+     
         result = false;
-    }else{
+    }
+  
+    else{
+      
        $('#etrain-form #hsschooldiv').addClass('has-success');
        $('#etrain-form #hsschooldiv').find('label').addClass('greencolor'); 
        $('#etrain-form #hsschooldiv').append("<span class='material-icons form-control-feedback greencolor'>done</span>");
@@ -540,7 +551,7 @@ $(document).ready(function ($) {
        $('#etrain-form #hsgraddatediv').addClass('has-success');
        $('#etrain-form #hsgraddatediv').find('label').addClass('greencolor');  
        $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback greencolor'>done</span>"); 
-         
+       
         result = true;
     }
 
@@ -548,10 +559,21 @@ $(document).ready(function ($) {
      return result; 
   },
   messages: {
-   // en: 'This string is not the reverse of itself',
+    en: 'All fields required',
 
   }
 });
+ /*   
+$('#etrain-form #hsgraddate').parsley().on('field:error', function() {
+           $('#etrain-form #hsgraddatediv').addClass('has-error');
+           $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#etrain-form #hsgraddate').parsley().on('field:success', function() {
+            $('#etrain-form #hsgraddatediv').addClass('has-success');
+            $('#etrain-form #hsgraddatediv').find('span').remove();
+            $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });    
+   */ 
     
 window.Parsley.addValidator('colallornone', {
   validate: function(value) {
@@ -564,7 +586,9 @@ window.Parsley.addValidator('colallornone', {
        $('#etrain-form #coladddiv').find('span').remove(); 
        $('#etrain-form #colgraddatediv').find('span').remove();   
        $('#etrain-form #colmajordiv').find('span').remove();
-    if((coluni && (!coladd || !colgraddate || !colmajor)) || (coladd && (!coluni || !colgraddate || !colmajor))|| (colgraddate && (!coluni || !coladd || !colmajor)) || (colmajor && (!coluni || !coladd || !colgraddate))){
+       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regexpeval = regex.test(colgraddate);
+    if( ((coluni && (!coladd || !colgraddate || !colmajor)) || (coladd && (!coluni || !colgraddate || !colmajor))|| (colgraddate && (!coluni || !coladd || !colmajor)) || (colmajor && (!coluni || !coladd || !colgraddate))) || !regexpeval){
        $('#etrain-form #colunidiv').addClass('has-error');
        $('#etrain-form #colunidiv').find('label').addClass('redcolor'); 
        $('#etrain-form #colunidiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");        
@@ -599,7 +623,7 @@ window.Parsley.addValidator('colallornone', {
      return result; 
   },
   messages: {
-   // en: 'This string is not the reverse of itself',
+   en: 'All fields required.',
 
   }
 });
@@ -615,7 +639,9 @@ window.Parsley.addValidator('pgradallornone', {
        $('#etrain-form #pgrad1adddiv').find('span').remove(); 
        $('#etrain-form #pgrad1graddate').find('span').remove();   
        $('#etrain-form #pgrad1course').find('span').remove();
-    if((pgrad1uni && (!pgrad1add || !pgrad1graddate || !pgrad1course)) || (pgrad1add && (!pgrad1uni || !pgrad1graddate || !pgrad1course))|| (pgrad1graddate && (!pgrad1uni || !pgrad1add || !pgrad1course)) || (pgrad1course && (!pgrad1uni || !pgrad1add || !pgrad1graddate))){
+       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regexpeval = regex.test(pgrad1graddate);
+    if( ((pgrad1uni && (!pgrad1add || !pgrad1graddate || !pgrad1course)) || (pgrad1add && (!pgrad1uni || !pgrad1graddate || !pgrad1course))|| (pgrad1graddate && (!pgrad1uni || !pgrad1add || !pgrad1course)) || (pgrad1course && (!pgrad1uni || !pgrad1add || !pgrad1graddate))) || !regexpeval){
        $('#etrain-form #pgrad1unidiv').addClass('has-error');
        $('#etrain-form #pgrad1unidiv').find('label').addClass('redcolor'); 
        $('#etrain-form #pgrad1unidiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");        
@@ -650,7 +676,7 @@ window.Parsley.addValidator('pgradallornone', {
      return result; 
   },
   messages: {
-   // en: 'This string is not the reverse of itself',
+   en: 'All fields required.',
 
   }
 });   
