@@ -19,18 +19,28 @@ if(!empty($startappdate)){
     $sdate = explode("/", $startappdate);
     $startappdate = $sdate[2] .'-'.$sdate[0].'-'.$sdate[1];
 }else{
-    $startappdate='0000-00-00';
+    $startappdate='1000-01-01';
 }
 if(isset($_POST['endappdate'])){ $endappdate = $_POST['endappdate']; }
-$edate = explode("/", $endappdate);
-$endappdate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
+if(!empty($endappdate)){    
+    $edate = explode("/", $endappdate);
+    $endappdate = $edate[2] .'-'.$edate[0].'-'.$edate[1];
+}else{
+    $endappdate='1000-01-01';
+}    
 if(isset($_POST['nvacancies'])){ $nvacancies = $_POST['nvacancies']; }
+if(empty($nvacancies)){
+    $nvacancies=0;
+}
 if(isset($_POST['teaser'])){ $teaser = $_POST['teaser']; }
 if(isset($_POST['jobdesc'])){ $jobdesc = $_POST['jobdesc']; }
 if(isset($_POST['city'])){ $city = $_POST['city']; }
 if(isset($_POST['province'])){ $province = $_POST['province']; }
 if(isset($_POST['country'])){ $country = $_POST['country']; }
 if(isset($_POST['yrsexp'])){ $yrsexp = $_POST['yrsexp']; }
+if(empty($yrsexp)){
+    $yrsexp=0;
+}    
 if(isset($_POST['mineduc'])){ $mineduc = $_POST['mineduc']; }
 if(isset($_POST['prefcourse'])){ $prefcourse = $_POST['prefcourse']; }
 if(isset($_POST['languages'])){ $languages = $_POST['languages']; }

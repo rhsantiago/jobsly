@@ -200,9 +200,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
+                    <!--
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                
                 </div>
+                    -->
             </div>
             </div>
         </div>
@@ -259,13 +261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     <div id="resume-main-body">                       
       <div class="row">
-            <div class="col-md-12 center">    
-                <!--
-               <div class="adstop"><img  src="https://lh5.ggpht.com/NFYFP2H9CCP50vAQNLa7AtCj_mbbYmOzY978fZqd31oL5qOdvXgxU3KW8ek2VgvIOvTqWY0=w728" 
-                                         alt="user">  
-                </div>
-                -->
-             </div>
+         
             <div class="col-md-12">
                   <h2 class="title">Home</h2>
             </div>

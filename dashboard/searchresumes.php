@@ -130,16 +130,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
+                    <!--
 					<div class="col-md-11 margin-top-title col-md-offset-1">
-                        <div class="row-fluid">
-                            
-                            <div id="resumesb" class="">  
-                               
+                        <div class="row-fluid">                            
+                            <div id="resumesb" class="">                                 
                             </div>
-                            
-                          
 	                 </div>
                 </div>
+                    -->
             </div>
             </div>
         </div>
@@ -304,11 +302,26 @@ if($esalarypost > 0){
 						<div class="row">
                             
                             <div class="col-md-12">
-                                    <section class="blog-post">
-                                    <div class="panel panel-default">
-                                      <div class="panel-body jobad-bottomborder">
-                                          <div><h4 class="text-info h4weight">Resume Bank</h4></div>
-                                    <div class="table-responsive">
+                                <div class="card card-nav-tabs cardtopmargin">
+                                            <div id="tabtitle" class="header  header-info">
+                                                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                                                <div class="nav-tabs-navigation">
+                                                    <div class="nav-tabs-wrapper">
+                                                        <ul class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active">
+                                                                <a href="#profile" data-toggle="tab">
+                                                                    <i class="material-icons">folder</i>
+                                                                   Resume Bank
+                                                                </a>
+                                                            </li>										
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                             <div class="content">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="profile">
+                                                      <div class="table-responsive">
                                      <table class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
@@ -412,9 +425,12 @@ if($esalarypost > 0){
                                             </tbody>
                                         </table>
                                       </div>
-                                        </div>
+                                                        </div>
+
+                                                    </div>
+                                             </div>
                                     </div>
-                                  </section>
+                                
                             </div>
                         </div>
                     </div>

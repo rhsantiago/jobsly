@@ -67,7 +67,7 @@ $database->bind(':templateid', $templateid);
 	      </div>
 	      <div class="modal-footer blog-post">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">I'm sure</button>
+	        <button type="submit" class="btn btn-danger">I'm sure</button>
 	      </div>
 </form>
     

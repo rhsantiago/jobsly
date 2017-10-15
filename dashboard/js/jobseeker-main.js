@@ -241,9 +241,13 @@ jQuery(document).ready(function ($) {
             return false;
     });
     
+    $('#savejob').on('click',function() {  
+        $('#savejob-modal').modal('show');
+     });
+    
    $('#savejob-modal').on('show.bs.modal', function(e) {
-        event.preventDefault();
-        event.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
         $('#loader').hide();
         var $modal = $(this);
         var jobid =  $(e.relatedTarget).data('jobid');
@@ -262,7 +266,7 @@ jQuery(document).ready(function ($) {
                 },
             success: function (html) {
                      $modal.find('.modalcontent').html(html);
-                   
+                    $("#savejob"+jobid).addClass("text-success");
                     $('[data-toggle="tooltip"]').tooltip(); 
                             $(function() {
                                 $.material.init();
@@ -276,7 +280,7 @@ jQuery(document).ready(function ($) {
     
     
      $(document).on('click','#removesaved',function(e) {
-            event.preventDefault();           
+            e.preventDefault();           
             $('#loader').hide();
             var jobid =  $(this).data('jobid');
             $.ajax({

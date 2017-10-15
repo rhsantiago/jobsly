@@ -123,16 +123,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
+                    <!--
 					<div class="col-md-11 margin-top-title col-md-offset-1">
-                        <div class="row-fluid">
-                            
-                            <div id="resumesb" class="">  
-                               
+                        <div class="row-fluid">                            
+                            <div id="resumesb" class="">                                 
                             </div>
-                            
-                          
 	                 </div>
                 </div>
+                    -->
             </div>
             </div>
         </div>
@@ -242,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      </div>
    
     <div class="col-md-12">
-                             <h2 class="title">Statistics</h2>
+                             <h2 class="title">Statistics</h2><br>
        </div>
      </div>
     

@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/employer-jobads.php?ajax=jtemp';
+   } 
+}    
+</script>
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -320,7 +327,7 @@ if(isset($_SESSION['user'])){
                             
                             <div class="col-md-6">
                                  
-                                <button class="btn btn-primary" name="deltemp" id="deltemp" data-templateid="<?=$templateid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#templates-modal-del" type="button">
+                                <button class="btn btn-danger" name="deltemp" id="deltemp" data-templateid="<?=$templateid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#templates-modal-del" type="button">
                                                         Delete Job Template
                                                        </button>
                            

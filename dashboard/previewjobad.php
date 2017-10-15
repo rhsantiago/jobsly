@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/employer-jobads.php?ajax=pjobad';
+   } 
+}
+</script>
 <?php
 if (session_status() == PHP_SESSION_NONE) {
         session_start();

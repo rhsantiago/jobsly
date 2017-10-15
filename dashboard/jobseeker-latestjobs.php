@@ -186,9 +186,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
-					<div class="col-md-11 margin-top-title col-md-offset-1">
-               
+                    <!--
+					<div class="col-md-11 margin-top-title col-md-offset-1">               
                 </div>
+                    -->
             </div>
             </div>
         </div>
@@ -628,11 +629,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     
                                                     if(empty($savedrow)){
                                                     ?>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i id="savejob<?=$jobad->getjobid()?>" class="material-icons">favorite</i></a></span>
                                                     <?php
                                                     }else{
                                                     ?>
-                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" data-placement="top" title="You already saved this job ad"><i class="material-icons text-success">favorite</i></a></span>
+                                                    <span class="jobcardbuttons text-success"><a class="blog-post-share" data-toggle="tooltip" data-placement="top" title="You already saved this job ad"><i  class="material-icons text-success">favorite</i></a></span>
                                                     <?php
                                                     }
                                                     ?>
@@ -838,7 +839,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     }
                                                     if(empty($savedrow)){
                                                     ?>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i id="savejob<?=$jobad->getjobid()?>" class="material-icons">favorite</i></a></span>
                                                     <?php
                                                     }else{
                                                     ?>
@@ -1052,7 +1053,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                     }
                                                    if(empty($savedrow)){
                                                     ?>
-                                                    <span class="jobcardbuttons"><a class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i class="material-icons">favorite</i></a></span>
+                                                    <span class="jobcardbuttons"><a  class="blog-post-share" href="#savejob"  data-toggle="modal" data-target="#savejob-modal" data-placement="top" data-jobid="<?=$jobad->getjobid()?>" data-userid="<?=$userid?>" title="Save and Apply later"><i id="savejob<?=$jobad->getjobid()?>" class="material-icons">favorite</i></a></span>
                                                     <?php
                                                     }else{
                                                     ?>

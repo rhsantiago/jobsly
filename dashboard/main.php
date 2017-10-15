@@ -140,9 +140,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
             <div class="container">
                 <div class="row-fluid">
-					<div class="col-md-11 margin-top-title col-md-offset-1">
-               
+                    <!--
+					<div class="col-md-11 margin-top-title col-md-offset-1">               
                 </div>
+                    -->
             </div>
             </div>
         </div>

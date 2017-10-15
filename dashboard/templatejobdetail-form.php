@@ -1,3 +1,10 @@
+<script>
+window.onload = function() {
+   if (!window.jQuery) {  
+      window.location.href = 'https://jobsly.net/dashboard/employer-jobads.php?ajax=jtemp';
+   } 
+}    
+</script>
 <?php
 
 
@@ -76,18 +83,24 @@ if(isset($_SESSION['user'])){
              $msalary = $row['msalary'];
              $maxsalary = $row['maxsalary'];
              $startappdate = $row['startappdate'];
+             if($startappdate=='01/01/1000'){
+                    $startappdate = "";
+             }
              if($templateid > 0 || $template > 0){
                  $sdate = explode("-", $startappdate);
                  $startappdate = $sdate[1] .'/'.$sdate[2].'/'.$sdate[0];
-                 if($sdate[0]<1){
+                 if($sdate[0]<1 || $startappdate=='01/01/1000'){
                      $startappdate='';
                  }
              }
              $endappdate = $row['endappdate'];
+             if($endappdate=='01/01/1000'){
+                    $endappdate = "";
+             }
              if($templateid > 0 || $template > 0){
                  $edate = explode("-", $endappdate);
                  $endappdate = $edate[1] .'/'.$edate[2].'/'.$edate[0];
-                 if($edate[0]<1){
+                 if($edate[0]<1 || $endappdate=='01/01/1000'){
                      $endappdate='';
                  }
              }
@@ -259,7 +272,7 @@ if($mode==''){
                                                                     </div> 
                                                             <div id="msalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Min Salary</label>
-                                                                <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-type="number">
+                                                                <input type="text" id="msalary" class="form-control" value="<?=$msalary?>" data-parsley-type="number" data-parsley-required>
                                                             </div>        
                                                             
                                                            <div id="startappdatediv" class="form-group label-static">
@@ -294,7 +307,7 @@ if($mode==''){
                                                             </div>
                                                             <div id="maxsalarydiv" class="form-group label-floating">
                                                                 <label class="control-label">Max Salary</label>
-                                                                <input type="text" id="maxsalary" class="form-control" value="<?=$maxsalary?>" data-parsley-type="number">
+                                                                <input type="text" id="maxsalary" class="form-control" value="<?=$maxsalary?>" data-parsley-type="number" data-parsley-required>
                                                             </div>
                                                             <div id="endappdatediv" class="form-group label-static">
                                                                 <label class="control-label">Application Deadline (MM/DD/YYYY)</label>

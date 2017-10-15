@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
         session_start();
         if (!isset($database)){
-           // include 'Database.php';
+          //  include 'Database.php';
          }
 }
 
@@ -21,7 +21,7 @@ if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s"); 
     include "serverlogconfig.php";
-    
+   
     $database = new Database();
     
 ?>
@@ -111,13 +111,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      <div class="header header-filter purple-header">
            <div class="container">
                 <div class="row-fluid">
+                    <!--
 					<div class="col-md-11 margin-top-title col-md-offset-1">
                         <div class="row-fluid">
-                    
-                          
-                        </div>
-                        
+                        </div>                        
                 </div>
+                    -->
             </div>
             </div>
         </div>
@@ -155,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 if(isset($_SESSION['user'])){
     $maxposition="";
-    $mname=""
+    $mname="";
     $database->query('select fname,lname from personalinformation where personalinformation.userid=:userid');
     $database->bind(':userid', $userid);   
     try{
