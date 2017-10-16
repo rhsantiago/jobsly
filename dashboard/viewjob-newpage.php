@@ -459,8 +459,10 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
                                                     <?php
                                                         if(strcmp($isjobseeker,'jobseeker')==0){
                                                      ?>     
-                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Save and Apply later"><i class="material-icons">favorite</i></a>
-                                                        <a class="blog-post-share " href="#" datah4-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
+                                                        <a class="blog-post-share " href="#savejob" data-jobid="<?=$jobid?>" data-userid="<?=$userid?>" data-toggle="modal" data-target="#savejob-modal" data-placement="top" title="Save and Apply later"><i class="material-icons"id="savejob<?=$jobid?>" >favorite</i></a>
+                                                    <!--
+                                                        <a class="blog-post-share " href="#" data-toggle="tooltip" data-placement="top" title="Share"><i class="material-icons">share</i></a>
+                                                    -->
                                                     <?php
                                                         }
                                                     ?> 

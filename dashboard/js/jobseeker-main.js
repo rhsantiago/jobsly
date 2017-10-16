@@ -308,6 +308,35 @@ jQuery(document).ready(function ($) {
         return false;
      });
     
+    $(document).on('click','#removeinvite',function(e) {
+            e.preventDefault();           
+            $('#loader').hide();
+            var jobid =  $(this).data('jobid');
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: 'jobseeker-removeinvite.php',
+                data: 'jobid=' + jobid,
+                beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
+                success: function(html) {
+                     $('#section'+ jobid).delay(700).fadeOut(300, function(){
+                        $(this).remove();
+                     });
+                   // $("#section" + jobid).remove().delay(1000);
+                    $(function() {
+                               $.material.init();
+                    });
+
+                }
+            });
+        return false;
+     });
+    
     /*
      $(document).on('submit','#search-form',function(event){
         e.preventDefault();

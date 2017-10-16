@@ -1281,6 +1281,7 @@ jQuery(document).ready(function ($) {
             var userid = $("#ainfo-form #userid").val();  
             var dposition = $("#ainfo-form #dposition").val();
             var specialization = $("#ainfo-form #specialization").val();
+            var otherspec = $("#ainfo-form #otherspec").val();
             var plevel = $("#ainfo-form #plevel").val();
         
             var esalary = $("#ainfo-form #esalary").val();       
@@ -1305,7 +1306,7 @@ jQuery(document).ready(function ($) {
                 cache: false,
                 type: "POST",              
                 url: "ainfo-submit.php",
-                data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages + "&profsum=" + profsum,
+                data: "mode=" +mode + "&userid=" + userid + "&dposition=" + dposition + "&specialization=" + specialization + "&otherspec=" + otherspec +"&plevel=" + plevel + "&esalary=" + esalary + "&pworkloc=" + pworkloc + "&yexp=" + yexp + "&wtravel=" + wtravel + "&wrelocate=" + wrelocate + "&pholder=" + pholder + "&languages=" + languages + "&profsum=" + profsum,
                // data: {password:password,email:email,usertype:usertype},
                 dataType: 'text',
                  beforeSend: function() {

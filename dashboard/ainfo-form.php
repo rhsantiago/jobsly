@@ -37,6 +37,7 @@ include "serverlogconfig.php";
         $mode = 'update';
         $dposition = $row['dposition'];
         $specialization = $row['specialization'];
+        $otherspec = $row['otherspec'];
         $plevel = $row['plevel'];
         $esalary = $row['esalary'];
         $pworkloc = $row['pworkloc'];
@@ -151,7 +152,16 @@ include "serverlogconfig.php";
                                                                     </div> 
                                                                     <div id="otherspecdiv" class="form-group label-floating">
                                                                         <label class="control-label">Other Specialization</label>
-                                                                        <input type="text" id="otherspec" class="form-control" value="<?=$specialization?>">
+                                                                       <select class="form-control" id="otherspec" name="otherspec"  placeholder="Specialization" data-parsley-required>
+                                                                            <option disabled></option>
+                                                                            <?php
+                                                                                    $i=0;
+                                                                                    foreach($specarray as $spec){
+                                                                                        echo "<option value='$i' "; if($otherspec==$i){echo'selected';} echo">$specarray[$i]</option>";
+                                                                                        $i++;
+                                                                                    }
+                                                                            ?>
+                                                                        </select>
                                                                     </div>                                                     
                                                                 </div>
                                                             </div>

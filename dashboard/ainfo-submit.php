@@ -8,6 +8,7 @@ if(isset($_POST['id'])){ $id = $_POST['id']; }
 if(isset($_POST['mode'])){ $mode = $_POST['mode']; }
 if(isset($_POST['dposition'])){ $dposition = $_POST['dposition']; } 
 if(isset($_POST['specialization'])){ $specialization = $_POST['specialization']; }
+if(isset($_POST['otherspec'])){ $otherspec = $_POST['otherspec']; }    
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['plevel'])){ $plevel = $_POST['plevel']; }
 if(isset($_POST['esalary'])){ $esalary = $_POST['esalary']; }
@@ -23,14 +24,30 @@ $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
 include 'Database.php';
 $database = new Database();
+$database->query('SELECT * from additionalinformation where userid = :userid');
+    $database->bind(':userid', $userid);   
+    
+    try{
+    $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }    
+    $checkid = $row['id'];
+    if(!empty($checkid)){
+        $mode = 'update';               
+    }else{
+        $mode = 'insert';
+    }   
     
     if($mode=='insert'){
-         $database->query(' INSERT INTO additionalinformation (id, userid, dposition,specialization,plevel,esalary,pworkloc,yexp,wtravel,wrelocate,pholder,languages,profsum) VALUES (NULL, :userid, :dposition, :specialization,:plevel,:esalary,:pworkloc,:yexp,:wtravel,:wrelocate,:pholder,:languages,:profsum)');
+         $database->query(' INSERT INTO additionalinformation (id, userid, dposition,specialization, otherspec, plevel,esalary,pworkloc,yexp, wtravel, wrelocate, pholder,languages, profsum) VALUES (NULL, :userid, :dposition, :specialization, :otherspec, :plevel, :esalary, :pworkloc,:yexp,:wtravel,:wrelocate,:pholder,:languages,:profsum)');
          
     }
 
     if($mode=='update'){
-       $database->query(' UPDATE additionalinformation SET userid = :userid, dposition = :dposition, specialization = :specialization, plevel = :plevel, esalary = :esalary, pworkloc = :pworkloc, yexp = :yexp, wtravel = :wtravel, wrelocate = :wrelocate, pholder = :pholder, languages = :languages, profsum=:profsum WHERE additionalinformation.id = :pid or userid = :userid'); 
+       $database->query(' UPDATE additionalinformation SET userid = :userid, dposition = :dposition, specialization = :specialization, otherspec=:otherspec, plevel = :plevel, esalary = :esalary, pworkloc = :pworkloc, yexp = :yexp, wtravel = :wtravel, wrelocate = :wrelocate, pholder = :pholder, languages = :languages, profsum=:profsum WHERE additionalinformation.id = :pid or userid = :userid'); 
         $database->bind(':pid', $id);
         
     }
@@ -39,7 +56,8 @@ $database = new Database();
     
     $database->bind(':userid', $userid);
     $database->bind(':dposition', $dposition);
-    $database->bind(':specialization', $specialization);  
+    $database->bind(':specialization', $specialization);
+    $database->bind(':otherspec', $otherspec);  
     $database->bind(':plevel', $plevel);
     $database->bind(':esalary', $esalary); 
     $database->bind(':pworkloc', $pworkloc); 
