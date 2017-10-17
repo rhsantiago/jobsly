@@ -103,8 +103,8 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">Personal Information</h2>
        </div>
 </div>    
-                    <div class="col-md-offset-1 col-md-8">
-                        
+                  <!--  <div class="col-md-offset-1 col-md-8"> -->
+                    <div class="col-md-9">
                        
                 <div class="section  section-landing">
 	                

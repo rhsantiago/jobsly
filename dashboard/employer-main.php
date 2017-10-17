@@ -160,16 +160,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
                     -->
-                    <li><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
-                    <li><a href="searchresumes.php" id="home"><i class="material-icons">find_in_page</i>Resume&nbsp;Search</a></li>
-                    <li class="dropdown active"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
+                    <li class="visible-xs"><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li class="visible-xs"><a href="searchresumes.php" id="home"><i class="material-icons">find_in_page</i>Resume&nbsp;Search</a></li>
+                    <li class="dropdown active visible-xs"><a href="employer-main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="#ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;By Job Ad</a></li>
                                     <li><a href="#short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>  
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
+                    <li class="dropdown active visible-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="employer-jobads.php?ajax=ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
                             <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
@@ -177,7 +177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="employer-jobads.php?ajax=essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
                         </ul>    
                     </li>
-                    <li><a href="employer-stats.php" id="home"><i class="material-icons">assessment</i>Statistics</a></li>
+                    <li class="visible-xs"><a href="employer-stats.php" id="home"><i class="material-icons">assessment</i>Statistics</a></li>
                     <li class="divider"></li>
 		            <li><a href="logout.php" id="logout"><i class="material-icons">do_not_disturb</i>Sign Out</a></li>
 		                				
@@ -248,7 +248,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><a href="#napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>     
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
+   <div class="sidebar-item dropup"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="employer-jobads.php?ajax=ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
                             <li><a href="employer-jobads.php?ajax=pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>

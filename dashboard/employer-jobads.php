@@ -147,19 +147,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		            </li> -->
         		</ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <!--
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
-                    <li><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
-                    <li><a href="searchresumes.php" id="home"><i class="material-icons">find_in_page</i>Resume&nbsp;Search</a></li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
+                    -->
+                    <li class="visible-xs"><a href="employer-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li class="visible-xs"><a href="searchresumes.php" id="home"><i class="material-icons">find_in_page</i>Resume&nbsp;Search</a></li>
+                    <li class="dropdown active visible-xs"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">people</i>Applicants<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="employer-main.php?ajax=ajposts" id="ajposts"><i class="material-icons">flag</i>&nbsp;By Job Ad</a></li>
                                     <li><a href="employer-main.php?ajax=short" id="short"><i class="material-icons">sort</i>&nbsp;Shortlist</a></li>  
                                     <li><a href="employer-main.php?ajax=napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
+                    <li class="dropdown active visible-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">work</i>Job Ads<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
                             <li><a href="#pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>
@@ -167,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="#essays" id="essays"><i class="material-icons">mode_edit</i>&nbsp;Essays</a></li>
                         </ul>    
                     </li>
-    				<li><a href="employer-stats.php" id="home"><i class="material-icons">assessment</i>Statistics</a></li>
+    				<li class="visible-xs"><a href="employer-stats.php" id="home"><i class="material-icons">assessment</i>Statistics</a></li>
                 </ul>
         	</div>
     	</div>
@@ -231,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><a href="employer-main.php?ajax=napp" id="napp"><i class="material-icons">new_releases</i>&nbsp;New Applicants</a></li>                                    
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
+   <div class="sidebar-item dropup"><a class="dropdown-toggle" data-toggle="dropdown" href="employer-jobads.php"><i class="material-icons">work</i>&nbsp;Job Ads<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="#ajads" id="ajads"><i class="material-icons">list</i>&nbsp;My Job Ads</a></li>
                             <li><a href="#pjobad" id="pjobad"><i class="material-icons">note_add</i>&nbsp;Post a Job Ad</a></li>

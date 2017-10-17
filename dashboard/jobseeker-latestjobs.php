@@ -152,19 +152,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		         
         		</ul>
         		<ul class="nav navbar-nav navbar-right">
+                    <!--
                      <li>
                             <a onclick="openNav()"><i class="material-icons">dashboard</i></a>
                     </li>
-                    <li><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
-                    <li><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
-                    <li class="dropdown active"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
+                    -->
+                    <li class="visible-xs"><a href="jobseeker-home.php" id="home"><i class="material-icons">home</i>Home</a></li>
+                    <li class="visible-xs"><a href="jobseeker-latestjobs.php"><i class="material-icons">whatshot</i>&nbsp;Latest Job Matches</a></li>
+                    <li class="dropdown active visible-xs"><a href="main.php" class="dropdown-toggle" data-toggle="dropdown" id="pinfo"><i class="material-icons">next_week</i>&nbsp;Applications<b class="caret"></b></a>
                          <ul class="dropdown-menu">
                                     <li><a href="#aapp" id="aapp"><i class="material-icons">star</i>&nbsp;Active Applications</a></li>
                                     <li><a href="#jinv" id="jinv"><i class="material-icons">drafts</i>&nbsp;Job Invitations</a></li> 
                                     <li><a href="#sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>
                          </ul> 
                     </li>
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
+                    <li class="dropdown active visible-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                            <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Information</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
@@ -254,7 +256,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <li><a href="main.php?ajax=sapp" id="sapp"><i class="material-icons">favorite</i>&nbsp;Saved Applications</a></li>                                    
                          </ul> 
     </div>
-   <div class="sidebar-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
+   <div class="sidebar-item dropup"><a class="dropdown-toggle" data-toggle="dropdown" href="resume.php"><i class="material-icons">description</i> Resume<b class="caret"></b></a>
     <ul class="dropdown-menu">
                             <li><a href="resume.php?ajax=pinfo" id="pinfo"><i class="material-icons">fingerprint</i>&nbsp;Personal Info</a></li>
                             <li><a href="resume.php?ajax=workexp" id="workexp"><i class="material-icons">work</i>&nbsp;Work Experience</a></li>
