@@ -145,7 +145,7 @@ if(isset($_SESSION['user'])){
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
                                                                     
-                                                                    <button class="btn btn-primary " name="addskill" id="addskill" type="submit">
+                                                                    <button class="btn btn-primary btn-sm" name="addskill" id="addskill" type="submit">
                                                         Save Skill
                                                        </button>
                                                                     <hr>
@@ -163,7 +163,10 @@ if(isset($_SESSION['user'])){
                                                                                 die("");
                                                                             } 
                                                                             foreach($rows as $row){
-                                                                                echo $row['jobskilltag'];
+                                                                                $skillid = $row['id'];
+                                                        $skilltag = $row['jobskilltag'];
+                                                       // echo $row['jobskilltag'];
+                                                        echo "<span id='$skillid'><a href='#skills-modal-del' class='text-info' data-userid='$userid' data-skillid='$skillid' data-skilltag='$skilltag' data-from='template' data-toggle='modal' data-target='#skills-modal-del'>$skilltag</a></span> ";
                                                                                 echo ' ';
                                                                             }
 

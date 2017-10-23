@@ -1211,6 +1211,76 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+    
+    $('#skills-modal-del').on('show.bs.modal', function(e) {
+               $('.features #successdivskillstag').hide();
+               $('#loader').hide();
+               var $modal = $(this);
+               var skilltag =  $(e.relatedTarget).data('skilltag');
+               var skillid =  $(e.relatedTarget).data('skillid');
+               var userid = $(e.relatedTarget).data('userid');
+               var from = $(e.relatedTarget).data('from');    
+     
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'skillspostjob-modal-del.php',
+            data: 'skillid=' + skillid +
+                  '&userid=' + userid +
+                  '&skilltag=' + skilltag +
+                  '&from=' + from,
+             beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
+            success: function(data) {
+                $modal.find('.modalcontent').html(data);
+                $(function() {
+                           $.material.init();
+                    });          
+            }
+        });
+    });
+    
+    $(document).on('submit','#delskill-form',function(event){
+             
+            event.preventDefault();     
+            $('#loader').hide();
+            $('#resume-main-body #successdivdeljob').hide();   
+            var userid = $("#delskill-form #userid").val();          
+            var skillid = $("#delskill-form #skillid").val();
+            var from = $("#delskill-form #from").val();
+            $.ajax({
+                cache: false,
+                type: "POST",              
+                url: "delskillpostjob-submit.php",
+                data: "userid=" + userid + "&skillid=" + skillid + '&from=' + from,
+               // data: {password:password,email:email,usertype:usertype},
+                dataType: 'text',
+                 beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },
+                success : function(data){
+                    
+                    $('#skills-modal-del').modal('toggle');
+                    $("#jobskilltagsdiv #"+data).remove();
+                    $(function() {
+                         $.material.init();
+                    });
+                 
+                },
+                error: function(data) {
+                    console.log(data);                  
+                   
+                }
+            });
+            return false;
+    });
 
 
 });  

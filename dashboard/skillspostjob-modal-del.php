@@ -6,12 +6,14 @@ if (session_status() == PHP_SESSION_NONE) {
 if(isset($_POST['userid'])){ $userid = $_POST['userid']; }
 if(isset($_POST['skillid'])){ $skillid= $_POST['skillid']; }
 if(isset($_POST['skilltag'])){ $skilltag = $_POST['skilltag']; }
+if(isset($_POST['from'])){ $from = $_POST['from']; }
 
 ?>    
     
    <form method="post" id="delskill-form" name="delskill-form"> 
              <input type="hidden" id="userid" name="userid" value="<?=$userid?>">
-             <input type="hidden" id="skillid" name="skillid" value="<?=$skillid?>">             
+             <input type="hidden" id="skillid" name="skillid" value="<?=$skillid?>">
+             <input type="hidden" id="from" name="from" value="<?=$from?>"> 
 <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title text-danger h4weight" id="myModalLabel">Delete Skill</h4>

@@ -173,7 +173,10 @@ if(isset($_SESSION['user'])){
                                                         die("");
                                                     } 
                                                     foreach($rows as $row){
-                                                        echo $row['jobskilltag'];
+                                                        $skillid = $row['id'];
+                                                        $skilltag = $row['jobskilltag'];
+                                                       // echo $row['jobskilltag'];
+                                                        echo "<span id='$skillid'><a href='#skills-modal-del' class='text-info' data-userid='$userid' data-skillid='$skillid' data-skilltag='$skilltag' data-from='postjob' data-toggle='modal' data-target='#skills-modal-del'>$skilltag</a></span> ";
                                                         echo ' ';
                                                     }
                                                        

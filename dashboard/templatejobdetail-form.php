@@ -360,6 +360,7 @@ if($mode==''){
                                                                                         ['color', ['color']],
                                                                                         ['para', ['ul', 'ol', 'paragraph']]
                                                                                       ],
+                                                                                      height: 200,
                                                                                       callbacks: {
                                                                                         onPaste: function (e) {
                                                                                             var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
