@@ -100,8 +100,8 @@ if(isset($_SESSION['user'])){
      </div>     
                    
 
-<div class="col-md-offset-1 col-md-7">
-                       
+<!--   <div class="col-md-offset-1 col-md-7">  -->
+        <div class="col-md-9">                         
                 <div class="section  section-landing">
 	         
 					<div class="features">

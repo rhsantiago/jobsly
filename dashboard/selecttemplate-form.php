@@ -61,8 +61,8 @@ if(isset($_SESSION['user'])){
                              <h2 class="title">Post a Job Ad</h2>
        </div>
      </div>
-    <div class="col-md-offset-1 col-md-7">
-                       
+<!--   <div class="col-md-offset-1 col-md-7">  -->
+        <div class="col-md-9">                  
                 <div class="section  section-landing">
 	                 
 
@@ -160,7 +160,7 @@ if(isset($_SESSION['user'])){
 		                     <div class="col-md-12">
                                 
                                             <div class="savebutton">
-                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save and Go to Next Step</button>
+                                                <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Go to Next Step</button>
                                             </div>       
                                              <div id="successdivpinfo" class="alert alert-success">
                                                

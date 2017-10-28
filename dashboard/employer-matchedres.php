@@ -82,7 +82,7 @@ if(isset($_SESSION['user'])){
                                                     <th>Name</th>
                                                     <th class="col-md-2">Specialization</th>
                                                     <th class="col-md-2">Job Position</th>                                                   
-                                                    <th>Salary</th>
+                                                    <th>Salary(Php)</th>
                                                     <th class="text-left">Actions</th>
                                                 </tr>
                                             </thead>
@@ -122,10 +122,10 @@ if(isset($_SESSION['user'])){
                                        ?>
                                    
                                                 <tr id="line<?=$applicantid?>">
-                                                    <td><?=$fname?> <?=$lname?></td>
+                                                    <td>***** *****</td>
                                                     <td><?=$specarray[$specialization2]?></td>       
                                                     <td><?=$position?></td>                                                   
-                                                    <td>Php <?=$esalary?></td>
+                                                    <td><?=$esalary?></td>
                                                     <td class="td-actions ">                                               
                                                         <ul class="list-inline">
                                                             <li>

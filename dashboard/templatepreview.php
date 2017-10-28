@@ -88,8 +88,8 @@ if(isset($_SESSION['user'])){
                </div>
      </div>     
 
-<div class="col-md-offset-1 col-md-7">
-                       
+<!--   <div class="col-md-offset-1 col-md-7">  -->
+        <div class="col-md-9">       
                 <div class="section  section-landing">
 	         
 					<div class="features">
@@ -146,7 +146,7 @@ if(isset($_SESSION['user'])){
                               
                                   <section class="blog-post">
                                     <div class="panel panel-default">
-                                        <div align="center"> Add your own image header. Ask us how! 
+                                        <div align="center"> <span class="text-primary">Add your own image header. Ask us how!</span>
                                      <img src="img/fjord.jpg" class="img-responsive">
                                         </div>    
                                       <div class="panel-body jobad-bottomborder">

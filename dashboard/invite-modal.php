@@ -58,7 +58,7 @@ $database = new Database();
                                                             <div class="row">
                                                                   <div class="col-md-12 col-xs-12 text-center">
                                                                 
-                                                                    <h3><label class="h4weight text-success">Invite this Applicant to Apply? <span class='text-info'></span></label></h3>
+                                                                    <h3><label class="h4weight">Invite this Applicant to Apply? <span class='text-info'></span></label></h3>
                                                                     
                                                                         
                                                                 </div>
@@ -79,8 +79,8 @@ $database = new Database();
                                         <img src="<?=$photo?>" alt="Circle Image" class="img-circle im-responsive img-raised center" style="width: 120px; height: 120px;">
                                     </div>
                                     <div class="name center">
-                                        <h4 class="homename text-info"><?=$fname?>&nbsp;<?=$lname?></h4>
-                                        <h5 class="homepos text-info"><?=$maxposition?></h5>
+                                        <h4 class="homename ">*****&nbsp;*****</h4>
+                                        <h5 class="homepos "><?=$maxposition?></h5>
                                     </div>  
                                  </div>
                             </div>  

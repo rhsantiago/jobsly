@@ -241,7 +241,19 @@ jQuery(document).ready(function ($) {
                                         <img src="<?=$photo?>" alt="Circle Image" class="img-circle img-responsive img-raised">
                                     </div>
                                     <div class="name">
-                                        <h3 class="title"><?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?></h3>
+                                        <h3 class="title">
+                                        <?php
+                                        if($appcount==0 && $invitecount>=0){
+                                        ?>    
+                                            *****&nbsp;*****
+                                        <?php
+                                        }else{
+                                        ?>
+                                            <?=$fname?>&nbsp;<?=$mname?>&nbsp;<?=$lname?>
+                                        <?php    
+                                        }
+                                        ?>
+                                        </h3>
                                         <h5><?=$maxposition?></h5>
                                         <br>
                                          <form method="post" action="printableresume.php" id="printable-form" name="printable-form" target="_blank">

@@ -221,8 +221,8 @@ if($mode==''){
                              <h2 class="title">Post a Job Ad / Job Details</h2>
        </div>
     
-    <div class="col-md-offset-1 col-md-7">
-                       
+<!--   <div class="col-md-offset-1 col-md-7">  -->
+        <div class="col-md-9">                      
                 <div class="section  section-landing">
 	                 
 

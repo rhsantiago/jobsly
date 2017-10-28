@@ -470,17 +470,18 @@ if(isset($_SESSION['user'])){
                                                
                                             </div>
                                   <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
-                                                        Save Education &amp; Training Details
+                                                        Save Education Details
+                                                       </button>
+                                </form>
+                                <form method="post" id="etrainnext-form" name="etrainnext-form"> 
+                             <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
+                                                        Go to Next Step
                                                        </button>
                                 </form>
 		                    </div>
                             
                             <div class="col-md-6">
-                             <form method="post" id="etrainnext-form" name="etrainnext-form"> 
-                             <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
-                                                        Go to Next Step
-                                                       </button>
-                                </form>
+                             
 		                    </div>
 		                    
 		                </div>
