@@ -19,6 +19,7 @@ if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
+$jobid='';    
 ?>
 <!doctype html>
 <html lang="en">
@@ -212,18 +213,26 @@ $isjobseeker = '';
 $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee/Fresh Grad');
 include 'specialization.php';   
-
+    
+$and=" and ";
 $specializationsearch="";
 $search = "";
+$wildcard = "%";    
 $esalarypost=0;
-$esalarysearch='';    
+$esalarysearch='';
+$searchstring='';    
 if(isset($_POST['search'])){ $search = $_POST['search']; }
 if(isset($_POST['esalary'])){ $esalarypost = $_POST['esalary']; }
 if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
 
+
 if($esalarypost > 0){
-    $esalarysearch = ' and esalary >= :esalary ';
-}    
+    $esalarysearch = $and . ' esalary <= :esalary ';   
+}
+$searchsql=  $wildcard.$search.$wildcard;    
+$searchstring = $and . " (skill like :search or skilltag like :search) " ;
+    
+  
 
 ?>
 <div class="row">
@@ -259,7 +268,7 @@ if($esalarypost > 0){
                                          " id="options" >
                                  <div class="col-md-6">
                                       <div id="esalarydiv" class="form-group label-floating">
-                                      <label class="control-label">Min. Salary</label>
+                                      <label class="control-label">Max Salary</label>
                                       <input type="text" id="esalary" name="esalary" 
                                              <?php
                                                  if($esalarypost>0){
@@ -335,15 +344,23 @@ if($esalarypost > 0){
                                             <tbody>
                               
                                         <?php
+                                        /*
                                             $database->query('Select distinct useraccounts.id, additionalinformation.esalary,yexp,colmajor from  useraccounts,additionalinformation, educationandtraining where 
                                             additionalinformation.userid=useraccounts.id 
                                             and educationandtraining.userid=useraccounts.id 
-                                            and usertype=2 '.
-                                            $esalarysearch
-                                            .' order by esalary desc limit 0,10');
+                                            and usertype=2 '.$esalarysearch.' order by esalary desc limit 0,10');
+                                        */
+    
+                             $database->query('Select distinct useraccounts.id, additionalinformation.esalary, yexp, colmajor from useraccounts 
+                                            left join additionalinformation on additionalinformation.userid=useraccounts.id
+                                            left join educationandtraining on educationandtraining.userid=useraccounts.id
+                                            left join skilltags on skilltags.userid=useraccounts.id
+                                            where usertype=2 '.$esalarysearch. $searchstring . ' order by esalary desc limit 0,10');
+    
                                             if($esalarypost > 0){
                                                $database->bind(':esalary', $esalarypost); 
                                             }
+                                            $database->bind(':search', $searchsql);
                                             try{
                                                 $rows2 = $database->resultset();
                                             }catch (PDOException $e) {
@@ -421,7 +438,7 @@ if($esalarypost > 0){
                                             <?php
                                             }
                                             ?>
-                                                
+                                                                                          
                                             </tbody>
                                         </table>
                                       </div>
