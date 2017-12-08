@@ -711,6 +711,44 @@ $(document).ready(function ($) {
         });
     });
     
+    
+    $(document).on('click','#resumeloadmore',function(event) {
+           // var next = $("#jobseekersloadmore-form #next").val();
+            $('#loader').hide();
+            var next =  $(this).data('next');
+            var search =  $(this).data('search');
+            var esalary =  $(this).data('esalary');
+            var specialization =  $(this).data('specialization');
+            $.ajax({
+            cache: false,
+            type: 'POST',
+            url: 'employer-loadmoreresume.php',
+            data: 'next=' + next + '&search=' + search + '&esalary=' + esalary + '&specialization=' + specialization,
+            dataType: 'text',
+            beforeSend: function() {
+                 $('#loader').show();
+                      },
+                 complete: function(){
+                      $('#loader').hide();
+                },    
+            success: function(html) {               
+                if(html=='end'){
+                   $('#resume-main-body #endofsearch').hide();    
+                   $('#resume-main-body #endofsearch').fadeIn(1500);
+                }else{
+                    next = next + 10;
+                    $("#resumeloadmore").data("next", next);
+                    $("#resumeloadmore").attr("data-next", $("#resumeloadmore").data("next"));      
+                    $('#resumetablebody').append(html).fadeIn('slow').delay(1000);
+                }
+                $(function() {
+                           $.material.init();
+                });
+                // ChangeUrl('Job Applications | jobsly', 'employer-loadaapps.php?next='+next);
+            }
+        });
+    });
+    
      $(document).on('submit','#rejectapp-form',function(event) {
             event.preventDefault();           
             $('#loader').hide();

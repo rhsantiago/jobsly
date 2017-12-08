@@ -191,7 +191,7 @@ if($mode=='forgot') {
 								</div>
 								<div class="footer text-center">
                                     <ul class="list-inline">
-                                        <li>    
+                                        <li id="resetbuttondiv">    
                                             <button class="btn btn-info " name="signin" id="signin" type="submit">Reset Password</button>
                                         </li>                                         
                                     </ul>    

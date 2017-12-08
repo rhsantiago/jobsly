@@ -19,7 +19,8 @@ if($ok == 1 ){
     date_default_timezone_set('Asia/Manila');
     $logtimestamp = date("Y-m-d H:i:s");
     include "serverlogconfig.php";
-$jobid='';    
+$jobid='';
+$next=10;    
 ?>
 <!doctype html>
 <html lang="en">
@@ -69,7 +70,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="js/material-kit.js" type="text/javascript"></script>
     <script src="js/employer-main.js" type="text/javascript"></script>
-    
+    <script src="js/parsley.js"></script>
 </head>
 
 <body class="landing-page">
@@ -275,13 +276,13 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                                     echo " value='$esalarypost' ";
                                                  }
                                              ?>
-                                             class="form-control searchform" >
+                                             class="form-control searchform" data-parsley-type="number">
                                      </div>
                                  </div>
                                  <div class="col-md-6"> 
                                         <div id="specializationdiv" class="form-group label-floating">
                                          <label class="control-label">Specialization</label>
-                                         <select class="form-control searchform" id="specialization" name="specialization"  placeholder="Specialization" data-parsley-required>
+                                         <select class="form-control searchform" id="specialization" name="specialization"  placeholder="Specialization">
                                              <option value='' selected ></option>
                                                <?php
                                                $i=0;
@@ -294,6 +295,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                                 }
                                                 ?>
                                           </select>
+                                            <br>
                                           </div>
                                  </div>
                              </div>
@@ -331,7 +333,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="profile">
                                                       <div class="table-responsive">
-                                     <table class="table table-hover table-condensed">
+                                     <table id="resumetable" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
                                                     <th>Latest Position</th>
@@ -341,7 +343,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                                     <th class="text-left">Actions</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="resumetablebody">
                               
                                         <?php
                                         /*
@@ -441,6 +443,21 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                                                                           
                                             </tbody>
                                         </table>
+                                        <div class="col-md-12">                                
+                                             <div id="endofsearch" name="endofsearch" class="alert alert-warning">
+                                               
+                                                  <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                  </div>
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                                  </button>
+                                                  <b>Alert: </b> There doesn't seem to be anything here ¯\_(ツ)_/¯                                                       
+                                            </div>                                   
+                                        </div>
+                                        <div class="col-md-12 center">                                           
+                                                <a id="resumeloadmore" name="resumeloadmore" class="btn btn-primary" data-search="<?=$search?>" data-next="<?=$next?>" data-esalary="<?=$esalarypost?>" data-specialization="<?=$specializationsearch?>">Load More</a>
+                                        </div>                  
                                       </div>
                                                         </div>
 
@@ -540,6 +557,27 @@ $(document).ready(function() {
     checkWidth();
     // Bind event listener
     $(window).resize(checkWidth);
+    
+    $('#resume-search-form').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error",
+                            classHandler: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                            errorsContainer: function (el) {
+                                return el.$element.closest(".form-group");
+                            },
+                     });
+    $('#resume-search-form #esalary').parsley().on('field:error', function() {
+           $('#resume-search-form #esalarydiv').addClass('has-error');
+           $('#resume-search-form #esalarydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
+    });    
+    $('#resume-search-form #esalary').parsley().on('field:success', function() {
+            $('#resume-search-form #esalarydiv').addClass('has-success');
+            $('#resume-search-form #esalarydiv').find('span').remove()
+            $('#resume-search-form #esalarydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
+    });
+    
 });        
 </script>
 
