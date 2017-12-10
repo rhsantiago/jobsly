@@ -59,14 +59,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
         		<ul class="nav navbar-nav navbar-right">
-					
-    				
-		            <li>
-		                <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-							<i class="fa fa-twitter"></i>
-						</a>
-		            </li>
-		            <li>
+					<li>
 		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
 							<i class="fa fa-facebook-square"></i>
 						</a>

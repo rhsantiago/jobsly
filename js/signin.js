@@ -112,7 +112,7 @@ $(document).ready(function($) {
                     $( "#pwsuccess" ).addClass('hidden');
                            if(data == 'pwsuccess'){
                                $( "#pwsuccess" ).removeClass('hidden');
-                               $("#resetbuttondiv").remove("#signin");
+                               $("#resetbuttondiv #signin").remove();
                                $("#resetbuttondiv").append("<a href='login.php' id='login' name='login' class='btn btn-primary'>Login</a>");
                            }else if(data == 'notfound'){
                                $( "#notfound" ).removeClass('hidden');
