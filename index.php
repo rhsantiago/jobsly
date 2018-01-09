@@ -135,7 +135,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       </ul>
                     </div>
                 </li>
+                
 			</ul>
+            <ul class="list-inline intro-social-buttons">
+                <li id="download" >
+                   <button type="button" id="loginbtn" onclick="location.href='latestjobs.php';" href="latestjobs.php" class="btn btn-info btn-lg getstarted">Search for Jobs</button>
+                </li>
+            </ul>    
 		</div>    
         <!-- /.container -->
 		<div class="col-xs-12 text-center abcen wow fadeIn">
@@ -290,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="col-sm-4 wow fadeInDown text-center">
 				  <img  class="rotate" src="img/icon/pencil.svg" alt="Generic placeholder image">
 				   <h3>Analytics and Reporting</h3>
-				   <p class="lead">Use our data analytics tools to engage more jobseekers. Compare your offers to industry standards and job post statistics. Finished with the data? Our built-in reporting tools lets you customize and print great looking reports.  </p>
+				   <p class="lead">Use our data analytics tools to engage more jobseekers. Compare your offers to industry standards and job post statistics.</p>
 				   <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
 				</div><!-- /.col-lg-4 -->
 				

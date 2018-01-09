@@ -269,7 +269,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                          " id="options" >
                                  <div class="col-md-6">
                                       <div id="esalarydiv" class="form-group label-floating">
-                                      <label class="control-label">Max Salary</label>
+                                      <label class="control-label">Min Salary</label>
                                       <input type="text" id="esalary" name="esalary" 
                                              <?php
                                                  if($esalarypost>0){

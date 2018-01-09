@@ -267,7 +267,10 @@ include 'dashboard/specialization.php';
     $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
     $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','5 Years+ Experienced Employee','1-4 Years Experienced Employee','1 Year Experienced Employee / Fresh Grad');
 $search = str_replace('%','',$search);
-
+$collapse = 'collapse';
+if(!empty($esalary) || ($esalary > 0)){
+    $collapse = '';
+}
 ?>
 <style>
 body {
@@ -346,11 +349,11 @@ body {
                              </div>
                             </div>
                             
-                             <div class="collapse-group collapse" id="options" >
+                             <div class="collapse-group <?=$collapse?>" id="options" >
                                  <div class="col-md-6">
                                       <div id="esalarydiv" class="form-group label-floating">
                                       <label class="control-label">Min. Salary</label>
-                                      <input type="text" id="esalary" class="form-control searchform" >  
+                                      <input type="text" id="esalary" class="form-control searchform" value="<?=$esalary?>">  
                                      </div>
                                  </div>
                                  <div class="col-md-6"> 

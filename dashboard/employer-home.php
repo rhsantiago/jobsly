@@ -638,7 +638,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </nav>
                 </div>
                 <div class="col-md-6">
-                    <div class="copyright pull-right">
+                    <div class="copyright">
                         &copy; jobsly 2016
                     </div>
                 </div>
