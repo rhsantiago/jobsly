@@ -130,7 +130,7 @@ window.dataLayer.push({
                                                 $specialization = $row2['specialization'];
                                                 $isshortlisted = $row2['isshortlisted'];
                                                 
-                                                 $database->query('select position from workexperience,jobapplications where workexperience.userid = :userid order by startdate desc limit 0,1');
+                                                 $database->query('select position from workexperience where workexperience.userid = :userid order by startdate desc limit 0,1');
                                                  $database->bind(':userid', $applicantid);
                                                  try{
                                                     $row3 = $database->single();

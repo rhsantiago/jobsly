@@ -542,6 +542,7 @@ function closeNav() {
 $(document).ready(function() {
     // Optimalisation: Store the references outside the event handler:
     $('#loader').hide();
+    $('#resume-main-body #endofsearch').hide();
     var $window = $(window);
 
     function checkWidth() {

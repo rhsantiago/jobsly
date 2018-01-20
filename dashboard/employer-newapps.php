@@ -101,13 +101,13 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, jobapplications.dateapplied, jobapplications.isnew, additionalinformation.specialization, (select  position from workexperience,jobapplications where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position from workexperience, personalinformation, jobapplications,additionalinformation,jobads where 
-                                            jobads.id=:jobid                                          
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary, jobapplications.dateapplied, jobapplications.isnew, additionalinformation.specialization
+                                            from workexperience, personalinformation, jobapplications,additionalinformation,jobads 
+                                            where jobads.id=:jobid                                          
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
-                                            and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid 
+                                            and jobapplications.userid=additionalinformation.userid                                        
                                             and jobapplications.isnew=1');
                                             $database->bind(':jobid', $jobid);
                                             try{
@@ -121,13 +121,25 @@ if(isset($_SESSION['user'])){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
                                                 $lname = $row2['lname'];
-                                                $esalary = $row2['esalary'];
-                                                $position = $row2['position'];
+                                                $esalary = $row2['esalary'];                                       
                                                 $specialization = $row2['specialization'];
                                                 $isnew = $row2['isnew'];
                                                 $dateapplied = $row2['dateapplied'];
                                                 $dapp = explode("-", $dateapplied);
                                                 $dateapplied = $dapp[1] .'/'.$dapp[2].'/'.$dapp[0];
+                                                
+                                                $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                $database->bind(':userid', $applicantid);
+                                       
+                                                try{
+                                                    $row3 = $database->single(); 
+                                                }catch (PDOException $e) {
+                                                    $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                    $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                    die("");
+                                                }
+                                                    $position = $row3['position'];
+                                                
                                        ?>
                                    
                                                 <tr>

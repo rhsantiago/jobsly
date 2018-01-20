@@ -20,14 +20,13 @@ $logtimestamp = date("Y-m-d H:i:s");
 include "serverlogconfig.php";
  $database = new Database();   
 }
-                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, (select position from workexperience where workexperience.userid=jobapplications.userid order by startdate desc limit 0,1) as position,jobapplications.dateapplied from workexperience, personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
+                                            $database->query('SELECT distinct jobapplications.userid,fname,lname,jobapplications.esalary,jobapplications.isnew, jobapplications.isshortlisted, additionalinformation.specialization, jobapplications.dateapplied from personalinformation, jobapplications,additionalinformation,jobads, useraccounts where 
                                             jobads.id=:jobid
                                             and jobads.userid=:userid
                                             and jobapplications.isreject=0
                                             and jobapplications.jobid=jobads.id  
                                             and jobapplications.userid=personalinformation.userid 
-                                            and jobapplications.userid=additionalinformation.userid
-                                            and jobapplications.userid=workexperience.userid
+                                            and jobapplications.userid=additionalinformation.userid                                         
                                             and jobapplications.userid=useraccounts.id
                                             and useraccounts.isverified = 1
                                             and (jobapplications.isnew=1 or dateapplied=:today) order by dateapplied limit '.$next.',10');
@@ -47,11 +46,22 @@ include "serverlogconfig.php";
                                                         $applicantid = $row2['userid'];
                                                         $fname = $row2['fname'];
                                                         $lname = $row2['lname'];
-                                                        $esalary = $row2['esalary'];
-                                                        $position = $row2['position'];
+                                                        $esalary = $row2['esalary'];                                                  
                                                         $specialization = $row2['specialization'];
                                                         $isnew = $row2['isnew'];
                                                         $isshortlisted = $row2['isshortlisted'];
+                                                        
+                                                        $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                        $database->bind(':userid', $applicantid);
+
+                                                        try{
+                                                            $row3 = $database->single(); 
+                                                        }catch (PDOException $e) {
+                                                            $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                            die("");
+                                                        }
+                                                            $position = $row3['position'];
                                                ?>
 
                                                         <tr id="line<?=$applicantid?>">

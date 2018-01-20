@@ -89,7 +89,7 @@ if(isset($_SESSION['user'])){
                                             <tbody>
                               
                                         <?php
-                                            $database->query('SELECT distinct personalinformation.userid, personalinformation.fname, personalinformation.lname, additionalinformation.specialization, additionalinformation.esalary, (select  position from workexperience where workexperience.userid=personalinformation.userid order by startdate desc limit 0,1) as position from personalinformation,additionalinformation where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
+                                            $database->query('SELECT distinct personalinformation.userid, personalinformation.fname, personalinformation.lname, additionalinformation.specialization, additionalinformation.esalary from personalinformation,additionalinformation where personalinformation.userid = additionalinformation.userid and  additionalinformation.specialization=:specialization and personalinformation.userid not in (select jobapplications.userid from jobapplications where jobapplications.jobid=:jobid)');
                                             $database->bind(':specialization', $specialization); 
                                             $database->bind(':jobid', $jobid);    
                                             try{    
@@ -103,8 +103,7 @@ if(isset($_SESSION['user'])){
                                                 $applicantid = $row2['userid'];
                                                 $fname = $row2['fname'];
                                                 $lname = $row2['lname'];
-                                                $esalary = $row2['esalary'];
-                                                $position = $row2['position'];
+                                                $esalary = $row2['esalary'];                                           
                                                 $specialization2 = $row2['specialization'];
                                                 
                                                 $database->query('Select count(id) as invitecheck from jobinvitations where jobid=:jobid and userid=:applicantid');
@@ -119,6 +118,17 @@ if(isset($_SESSION['user'])){
                                                 }                                                
                                                 $row3 = $database->single(); 
                                                 $invitecheck = $row3['invitecheck'];
+                                                
+                                                $database->query('select position from workexperience where workexperience.userid=:userid order by startdate desc limit 0,1');
+                                                $database->bind(':userid', $applicantid);
+                                                try{
+                                                    $row4 = $database->single(); 
+                                                }catch (PDOException $e) {
+                                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                                      $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                                     die("");
+                                                }
+                                                $position = $row4['position'];
                                        ?>
                                    
                                                 <tr id="line<?=$applicantid?>">
@@ -130,7 +140,7 @@ if(isset($_SESSION['user'])){
                                                         <ul class="list-inline">
                                                             <li>
                                                          <!-- ajax enabled       
-                                                        <a href="#viewresumemodal" data-applicantid="<?=$applicantid?>" data-userid="<?=$userid?>" data-jobid="<?=$jobid?>" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
+                                                        <a href="#viewresumemodal" data-applicantid="" data-userid="" data-jobid="" data-view="shortlist" data-toggle="modal" data-target="#viewresume-modal" rel="tooltip" id="applicantview" title="View Profile" >
                                                             <i class="fa fa-user fa-2x text-info"></i>
                                                         </a>
                                                         -->
