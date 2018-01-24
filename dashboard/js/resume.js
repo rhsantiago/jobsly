@@ -110,6 +110,9 @@ jQuery(document).ready(function ($) {
                        // console.log(html);
                     $('#resume-main-body').html(html);                    
                     $('#resume-main-body #birthday').datepicker();
+                    $("#resume-main-body #birthday").datepicker({
+                        endDate  : 'now'
+                    });
                     $('#resumesb li').removeClass('active');
                     $('#resumesb #p1').addClass('active');
                             $(function() {

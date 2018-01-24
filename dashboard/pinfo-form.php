@@ -28,6 +28,7 @@ window.onload = function() {
     $myemail = "";
     $landline = "";
     $age = "";
+    $gender = "";
     $birthday ="";
     $nationality ="";
     $mode = "";
@@ -274,7 +275,12 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                             <div id="birthdaydiv" class="form-group label-static">
                                                                 <label class="control-label">Birthday (MM/DD/YYYY)</label>
-                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur" data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
+                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur"  data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$"
+                                                                  ;
+                                                                       >
+                                                                 <!--    
+data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ "
+                                                                -->
                                                             </div>
                                                              <div id="genderdiv" class="form-group label-floating">
                                                                 <label class="control-label">Gender</label>
@@ -366,6 +372,7 @@ if(isset($_SESSION['user'])){
 
 <script>
 jQuery(document).ready(function ($) {
+
     $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#pinfo-form #fname').parsley().on('field:error', function() {
            $('#pinfo-form #fnamediv').addClass('has-error');
@@ -373,7 +380,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #fname').parsley().on('field:success', function() {
             $('#pinfo-form #fnamediv').addClass('has-success');
-            $('#pinfo-form #fnamediv').find('span').remove()
+            $('#pinfo-form #fnamediv').find('span').remove();
             $('#pinfo-form #fnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -383,7 +390,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #lname').parsley().on('field:success', function() {
             $('#pinfo-form #lnamediv').addClass('has-success');
-            $('#pinfo-form #lnamediv').find('span').remove()
+            $('#pinfo-form #lnamediv').find('span').remove();
             $('#pinfo-form #lnamediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -393,7 +400,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #street').parsley().on('field:success', function() {
             $('#pinfo-form #streetdiv').addClass('has-success');
-            $('#pinfo-form #streetdiv').find('span').remove()
+            $('#pinfo-form #streetdiv').find('span').remove();
             $('#pinfo-form #streetdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -403,7 +410,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #city').parsley().on('field:success', function() {
             $('#pinfo-form #citydiv').addClass('has-success');
-            $('#pinfo-form #citydiv').find('span').remove()
+            $('#pinfo-form #citydiv').find('span').remove();
             $('#pinfo-form #citydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -413,7 +420,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #province').parsley().on('field:success', function() {
             $('#pinfo-form #provincediv').addClass('has-success');
-            $('#pinfo-form #provincediv').find('span').remove()
+            $('#pinfo-form #provincediv').find('span').remove();
             $('#pinfo-form #provincediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -423,7 +430,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #country').parsley().on('field:success', function() {
             $('#pinfo-form #countrydiv').addClass('has-success');
-            $('#pinfo-form #countrydiv').find('span').remove()
+            $('#pinfo-form #countrydiv').find('span').remove();
             $('#pinfo-form #countrydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -433,7 +440,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #mnumber').parsley().on('field:success', function() {
             $('#pinfo-form #mnumberdiv').addClass('has-success');
-            $('#pinfo-form #mnumberdiv').find('span').remove()
+            $('#pinfo-form #mnumberdiv').find('span').remove();
             $('#pinfo-form #mnumberdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -443,7 +450,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #myemail').parsley().on('field:success', function() {
             $('#pinfo-form #myemaildiv').addClass('has-success');
-            $('#pinfo-form #myemaildiv').find('span').remove()
+            $('#pinfo-form #myemaildiv').find('span').remove();
             $('#pinfo-form #myemaildiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -453,7 +460,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #landline').parsley().on('field:success', function() {
             $('#pinfo-form #landlinediv').addClass('has-success');
-            $('#pinfo-form #landlinediv').find('span').remove()
+            $('#pinfo-form #landlinediv').find('span').remove();
             $('#pinfo-form #landlinediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -463,17 +470,18 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #age').parsley().on('field:success', function() {
             $('#pinfo-form #agediv').addClass('has-success');
-            $('#pinfo-form #agediv').find('span').remove()
+            $('#pinfo-form #agediv').find('span').remove();
             $('#pinfo-form #agediv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
     $('#pinfo-form #birthday').parsley().on('field:error', function() {
+           $('#pinfo-form #birthdaydiv').find('span').remove();
            $('#pinfo-form #birthdaydiv').addClass('has-error');
            $('#pinfo-form #birthdaydiv').append("<span class='material-icons form-control-feedback'>clear</span>");   
     });    
     $('#pinfo-form #birthday').parsley().on('field:success', function() {
             $('#pinfo-form #birthdaydiv').addClass('has-success');
-            $('#pinfo-form #birthdaydiv').find('span').remove()
+            $('#pinfo-form #birthdaydiv').find('span').remove();
             $('#pinfo-form #birthdaydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -483,7 +491,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #gender').parsley().on('field:success', function() {
             $('#pinfo-form #genderdiv').addClass('has-success');
-            $('#pinfo-form #genderdiv').find('span').remove()
+            $('#pinfo-form #genderdiv').find('span').remove();
             $('#pinfo-form #genderdiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     
@@ -493,7 +501,7 @@ jQuery(document).ready(function ($) {
     });    
     $('#pinfo-form #nationality').parsley().on('field:success', function() {
             $('#pinfo-form #nationalitydiv').addClass('has-success');
-            $('#pinfo-form #nationalitydiv').find('span').remove()
+            $('#pinfo-form #nationalitydiv').find('span').remove();
             $('#pinfo-form #nationalitydiv').append("<span class='material-icons form-control-feedback'>done</span>");   
     });
     

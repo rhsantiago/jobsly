@@ -147,7 +147,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="hsadddiv" class="form-group label-floating">
                                                                         <label class="control-label">School Address</label>
-                                                                        <input type="text" id="hsadd" class="form-control" value="<?=$hsadd?>"  data-parsley-hsallornone>
+                                                                        <input type="text" id="hsadd" class="form-control" value="<?=$hsadd?>" data-trigger="blur" data-parsley-hsallornone>
                                                                     </div>                                                                  
                                                                 </div>
                                                                 <div class="col-md-6 col-xs-6">                                                                   
@@ -231,7 +231,7 @@ if(isset($_SESSION['user'])){
                                                                     </div>
                                                                     <div id="coladddiv" class="form-group label-floating">
                                                                         <label class="control-label">College/University Address</label>
-                                                                        <input type="text" id="coladd" class="form-control" value="<?=$coladd?>" data-parsley-colallornone>
+                                                                        <input type="text" id="coladd" class="form-control" value="<?=$coladd?>"  data-parsley-colallornone>
                                                                     </div>
                                                                       <div id="colgpadiv" class="form-group label-floating">
                                                                         <label class="control-label">GPA</label>
@@ -525,19 +525,22 @@ $(document).ready(function ($) {
        $('#etrain-form #hsschooldiv').find('span').remove(); 
        $('#etrain-form #hsadddiv').find('span').remove(); 
        $('#etrain-form #hsgraddatediv').find('span').remove();
-       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+      // var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
        var regexpeval = regex.test(hsgraddate);
       
  
     if( ((hsschool && (!hsadd || !hsgraddate)) || (hsadd && (!hsschool || !hsgraddate))|| (hsgraddate && (!hsschool || !hsadd)))
       || !regexpeval){
-        
+       $('#etrain-form #hsschooldiv').find('span').remove(); 
        $('#etrain-form #hsschooldiv').addClass('has-error');
        $('#etrain-form #hsschooldiv').find('label').addClass('redcolor'); 
-       $('#etrain-form #hsschooldiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");        
+       $('#etrain-form #hsschooldiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");   
+       $('#etrain-form #hsadddiv').find('span').remove();  
        $('#etrain-form #hsadddiv').addClass('has-error');
        $('#etrain-form #hsadddiv').find('label').addClass('redcolor');
        $('#etrain-form #hsadddiv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");
+       $('#etrain-form #hsgraddatediv').find('span').remove();   
        $('#etrain-form #hsgraddatediv').addClass('has-error');
        $('#etrain-form #hsgraddatediv').find('label').addClass('redcolor');    
        $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback redcolor'>clear</span>");   
@@ -546,13 +549,15 @@ $(document).ready(function ($) {
     }
   
     else{
-      
+       $('#etrain-form #hsschooldiv').find('span', '.has-error').remove(); 
        $('#etrain-form #hsschooldiv').addClass('has-success');
        $('#etrain-form #hsschooldiv').find('label').addClass('greencolor'); 
        $('#etrain-form #hsschooldiv').append("<span class='material-icons form-control-feedback greencolor'>done</span>");
+       $('#etrain-form #hsadddiv').find('span').remove();   
        $('#etrain-form #hsadddiv').addClass('has-success');
        $('#etrain-form #hsadddiv').find('label').addClass('greencolor');  
        $('#etrain-form #hsadddiv').append("<span class='material-icons form-control-feedback greencolor'>done</span>"); 
+       $('#etrain-form #hsgraddatediv').find('span').remove();    
        $('#etrain-form #hsgraddatediv').addClass('has-success');
        $('#etrain-form #hsgraddatediv').find('label').addClass('greencolor');  
        $('#etrain-form #hsgraddatediv').append("<span class='material-icons form-control-feedback greencolor'>done</span>"); 
@@ -591,7 +596,7 @@ window.Parsley.addValidator('colallornone', {
        $('#etrain-form #coladddiv').find('span').remove(); 
        $('#etrain-form #colgraddatediv').find('span').remove();   
        $('#etrain-form #colmajordiv').find('span').remove();
-       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
        var regexpeval = regex.test(colgraddate);
     if( ((coluni && (!coladd || !colgraddate || !colmajor)) || (coladd && (!coluni || !colgraddate || !colmajor))|| (colgraddate && (!coluni || !coladd || !colmajor)) || (colmajor && (!coluni || !coladd || !colgraddate))) || !regexpeval){
        $('#etrain-form #colunidiv').addClass('has-error');
@@ -644,7 +649,7 @@ window.Parsley.addValidator('pgradallornone', {
        $('#etrain-form #pgrad1adddiv').find('span').remove(); 
        $('#etrain-form #pgrad1graddate').find('span').remove();   
        $('#etrain-form #pgrad1course').find('span').remove();
-       var regex = /^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$/;
+       var regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
        var regexpeval = regex.test(pgrad1graddate);
     if( ((pgrad1uni && (!pgrad1add || !pgrad1graddate || !pgrad1course)) || (pgrad1add && (!pgrad1uni || !pgrad1graddate || !pgrad1course))|| (pgrad1graddate && (!pgrad1uni || !pgrad1add || !pgrad1course)) || (pgrad1course && (!pgrad1uni || !pgrad1add || !pgrad1graddate))) || !regexpeval){
        $('#etrain-form #pgrad1unidiv').addClass('has-error');
