@@ -710,8 +710,9 @@ if(isset($_GET['isjobseeker'])){ $isjobseeker = $_GET['isjobseeker']; }
 <?php
   $jobtitlearray = array();
   $jobidarray = array();    
-  $database->query("SELECT id, jobtitle from jobads where userid=:userid order by dateadded desc limit 0,12"); 
-  $database->bind(':userid', $companyid);    
+  $database->query("SELECT id, jobtitle from jobads where userid=:userid and id not in (:jobid) order by dateadded desc limit 0,12"); 
+  $database->bind(':userid', $companyid);
+  $database->bind(':jobid', $jobid);    
   try{  
         $rows = $database->resultset();
    }catch (PDOException $e) {

@@ -231,7 +231,7 @@ if($esalarypost > 0){
     $esalarysearch = $and . ' esalary <= :esalary ';   
 }
 $searchsql=  $wildcard.$search.$wildcard;    
-$searchstring = $and . " (skill like :search or skilltag like :search) " ;
+$searchstring = $and . " (skill like :search or skilltag like :search or workexperience.position like :search or workexperience.jobdescription like :search ) " ;
     
   
 
@@ -357,6 +357,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                             left join additionalinformation on additionalinformation.userid=useraccounts.id
                                             left join educationandtraining on educationandtraining.userid=useraccounts.id
                                             left join skilltags on skilltags.userid=useraccounts.id
+                                            left join workexperience on workexperience.userid=useraccounts.id
                                             where usertype=2 '.$esalarysearch. $searchstring . ' order by esalary desc limit 0,10');
     
                                             if($esalarypost > 0){
@@ -365,6 +366,7 @@ $searchstring = $and . " (skill like :search or skilltag like :search) " ;
                                             $database->bind(':search', $searchsql);
                                             try{
                                                 $rows2 = $database->resultset();
+                                               // $log->info($esalarysearch. $searchstring );
                                             }catch (PDOException $e) {
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
