@@ -153,7 +153,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="hsgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='hsgraddate' class='datepicker form-control' value="<?=$hsgraddate?>"  data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-hsallornone>
+                                                                        <input type='text' id='hsgraddate' name='hsgraddate' class='datepicker form-control' value="<?=$hsgraddate?>"  data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-hsallornone>
                                                                     </div>                                                                    
                                                                 </div>
                                                                 <div class="col-md-12 col-xs-12">
@@ -241,7 +241,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="colgraddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='colgraddate' value="<?=$colgraddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-colallornone>
+                                                                        <input type='text' id='colgraddate' name='colgraddate' value="<?=$colgraddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-colallornone>
                                                                     </div>   
                                                                     <div id="colmajordiv" class="form-group label-floating">
                                                                         <label class="control-label">Major/Course</label>
@@ -333,7 +333,7 @@ if(isset($_SESSION['user'])){
                                                                 <div class="col-md-6 col-xs-6">                                                                   
                                                                     <div id="pgrad1graddatediv" class="form-group label-static">
                                                                         <label class="control-label">Graduation Date</label>
-                                                                        <input type='text' id='pgrad1graddate' value="<?=$pgrad1graddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-pgradallornone>
+                                                                        <input type='text' id='pgrad1graddate' name='pgrad1graddate' value="<?=$pgrad1graddate?>" class='datepicker form-control' data-parsley-error-message="'Date must have mm/dd/yyy format" data-parsley-pgradallornone>
                                                                     </div>   
                                                                     <div id="pgrad1coursediv" class="form-group label-floating">
                                                                         <label class="control-label">Masters/Doctorate Course</label>
@@ -515,6 +515,11 @@ if(isset($_SESSION['user'])){
     
     
 $(document).ready(function ($) {
+    $('#etrain-form').parsley().reset();
+    $('#etrain-form').parsley({
+            successClass: "has-success",
+            errorClass: "has-error"
+    });
     window.Parsley.addValidator('hsallornone', {
         requirementType: 'regexp',
   validate: function(value) {

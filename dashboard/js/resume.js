@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    
+    /*
     $('#pinfo-form, #wexp-form, #etrain-hs-form, #etrain-col-form, #etrain-pgrad1-form, #skills-skilltag-form, #ainfo-form').parsley({
         successClass: "has-success",
         errorClass: "has-error",
@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
         },
        
     });
-    
+    */
     $("#add").on('click', function (event){  
     $('html, body').animate({
         scrollTop: $("#tabtitle").offset().top
@@ -186,10 +186,7 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
-                        $('#wexp-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
+                      
                         ChangeUrl('Work Experience | jobsly', 'wexp-form.php');
                         $('title').html('Work Experience | jobsly');
                         
@@ -246,10 +243,12 @@ jQuery(document).ready(function ($) {
                         $(function() {
                             $.material.init();
                         });
+                        /*
                         $('#wexp-form').parsley({
                             successClass: "has-success",
                             errorClass: "has-error"
                         });
+                        */
                         ChangeUrl('Work Experience | jobsly', 'wexp-form.php');
                         $('title').html('Work Experience | jobsly');
                         
@@ -363,10 +362,7 @@ jQuery(document).ready(function ($) {
                          $(function() {
                             $.material.init();
                         });
-                        $('#etrain-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                        });
+                        
                        
                         ChangeUrl('Education | jobsly', 'etrain-form.php');
                         $('title').html('Education | jobsly');
@@ -665,7 +661,7 @@ jQuery(document).ready(function ($) {
                 success : function(data){
                  // console.log(data);
                     $('#successdivpinfo').fadeIn(1500);
-                    $('#pinfo-form').parsley().reset();
+                  //  $('#pinfo-form').parsley().reset();
                     $('#mode').val('update');
                     //$("a[href='#workexp']").trigger('click');
                 },
@@ -908,15 +904,16 @@ jQuery(document).ready(function ($) {
                                     }
                           });
                  
-                    $('#etrain-hs-form').parsley({
-                            successClass: "has-success",
-                            errorClass: "has-error"
-                     });
+               //     $('#etrain-hs-form, #etrain-col-form, #etrain-pgrad1-form, #etrain-others-form').parsley({
+                //           successClass: "has-success",
+                //            errorClass: "has-error"
+                //     });
                     $('#etrain-hs-form #mode').val('update');
                     $('#etrain-col-form #mode').val('update');
                     $('#etrain-pgrad1-form #mode').val('update');
                     $('#etrain-others-form #mode').val('update'); 
-                    $('#etrain-hs-form').parsley().reset();
+                    //$('#etrain-hs-form, #etrain-col-form, #etrain-pgrad1-form, #etrain-others-form').parsley().reset();
+                    $('#loader').hide();
                 },
                 error: function(data) {
                     console.log(data);

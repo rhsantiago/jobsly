@@ -195,7 +195,7 @@ if($mode=='del'){
                                                                     <div id="currentemp" class="form-group">
                                                                          <div class="">
                                                                             <label>
-                                                                                <input type="checkbox" id="currentempcb" name="optionsCheckboxes" <?=$cecb?>>
+                                                                                <input type="checkbox" id="currentempcb" name="currentempcb" <?=$cecb?>>
                                                                                 Current Employer
                                                                             </label>
                                                                         </div>
@@ -253,6 +253,10 @@ if($mode=='del'){
 ?>
 <script>
 $(document).ready(function ($) {
+     $('#wexp-form-modal').parsley({
+                            successClass: "has-success",
+                            errorClass: "has-error"
+                        });
     $('#summernote').summernote({
                                                                                       toolbar: [
                                                                                         // [groupName, [list of button]]

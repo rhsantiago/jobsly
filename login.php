@@ -58,18 +58,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         	</div>
 
         	<div class="collapse navbar-collapse" id="navigation-example">
+                <!--
         		<ul class="nav navbar-nav navbar-right">
 					<li>
-		                <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+		                <a href="" target="_blank" class="btn btn-simple btn-white btn-just-icon">
 							<i class="fa fa-facebook-square"></i>
 						</a>
 		            </li>
 					<li>
-		                <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+		                <a href="" target="_blank" class="btn btn-simple btn-white btn-just-icon">
 							<i class="fa fa-instagram"></i>
 						</a>
 		            </li>
         		</ul>
+                -->
         	</div>
     	</div>
     </nav>

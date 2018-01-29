@@ -275,9 +275,7 @@ if(isset($_SESSION['user'])){
                                                             </div>
                                                             <div id="birthdaydiv" class="form-group label-static">
                                                                 <label class="control-label">Birthday (MM/DD/YYYY)</label>
-                                                                <input type='text' id='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur"  data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$"
-                                                                  ;
-                                                                       >
+                                                                <input type='text' id='birthday' name='birthday' class='datepicker form-control' value="<?=$birthday ?>"  data-parsley-required data-trigger="blur"  data-parsley-pattern="^((((0[13578])|(1[02]))[\/]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\/]?(([0-2][0-9])|(30)))|(02[\/]?[0-2][0-9]))[\/]?\d{4}$">
                                                                  <!--    
 data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ "
                                                                 -->
@@ -315,7 +313,9 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
                                                     </div>
                                              </div>
                                     </div>
-                                   
+                                   <div class="savebutton leftmargin10">
+                                                    <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
+                                                </div>  
                                 
 		                    </div>
                              </form>
@@ -324,9 +324,7 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
                         <div class="col-md-12 leftmargin10">  
                                  <div class="col-md-6">
 
-                                                <div class="savebutton leftmargin10">
-                                                    <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
-                                                </div>      
+                                                    
 
                                 </div>
                                 
@@ -372,6 +370,8 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
 
 <script>
 jQuery(document).ready(function ($) {
+    if ($('#pinfo-form').length > 0 )
+        $('#pinfo-form').parsley();
 
     $('html, body').animate({ scrollTop: 0 }, 'fast');
     $('#pinfo-form #fname').parsley().on('field:error', function() {

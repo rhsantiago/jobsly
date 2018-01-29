@@ -642,7 +642,7 @@ jQuery(document).ready(function ($) {
                                                             }else{
                                                         ?>
                                                         <li id='invited<?=$id?>'>                                    
-                                                            <i class="fa fa-check text-success"> Invite sent</i>
+                                                            <i class="fa fa-check text-success"> Already Applied or Invited</i>
                                                         </li>
                                                         <?php
                                                             }

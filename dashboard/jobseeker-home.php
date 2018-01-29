@@ -477,8 +477,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                     <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                                                   </button>
-                                                                  <b>Alert: </b> Please complete your Personal Information and Additional Information to start applying for jobs.
-
+                                                                  <b>Alert: </b> Please complete the Personal Information and Additional Information portions of your resume to start applying for jobs.
                                                             </div>
                                                 </div>
                                         
