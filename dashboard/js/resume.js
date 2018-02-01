@@ -136,9 +136,10 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
-    $('#savepinfo').on('click',function() {  
-        $('#pinfo-form').submit();
-     });    
+  //   $('#resume-main-body #savepinfo').on('click',function() {  
+ ////     $('#resume-main-body #pinfo-form').submit();
+//     });    
+ 
     
      $(document).on('submit','#pinfonext-form',function(event){
             event.preventDefault();

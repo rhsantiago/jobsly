@@ -313,27 +313,28 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
                                                     </div>
                                              </div>
                                     </div>
-                                   <div class="savebutton leftmargin10">
-                                                    <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
-                                                </div>  
+                                    
                                 
 		                    </div>
-                             </form>
                              
-                            </div>
-                        <div class="col-md-12 leftmargin10">  
-                                 <div class="col-md-6">
-
-                                                    
-
+                             
+                            
+                       <!-- <div class="col-md-12 leftmargin10">  -->
+                                <div class="row savebutton leftmargin20">
+                                 <div class="col-md-12 ">
+                                 
+                                            <button class="btn btn-primary " name="savepinfo" id="savepinfo" type="submit">Save Personal Information</button>
+                                                </div>
                                 </div>
-                                
+                                 </form>
                                 <div class="col-md-6">                                
                                      <form method="post" id="pinfonext-form" name="pinfonext-form"> 
                                  <button class="btn btn-primary " name="pinfonext" id="pinfonext" type="submit">Go to Next Step</button>
                                     </form>
                                 </div>                                            
-                            </div>
+                        <!--    </div> -->
+                                
+                           
                             <div class="col-md-12">                                    
                                              <div id="successdivpinfo" class="alert alert-success">
                                                
@@ -347,7 +348,7 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
                                                
                                             </div>                                   
                             </div>
-                  
+                            </div>
 		                </div>
 					</div>
 	            </div>

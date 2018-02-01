@@ -491,6 +491,10 @@ div .parsley-errors-list {
     margin-left: -15px !important;
 }
 
+.leftmargin20 {
+    margin-left: 5px !important;
+}
+
 .rightmargin15 {
     margin-left: 15px !important;
 }
