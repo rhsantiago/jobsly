@@ -216,6 +216,7 @@ $positionlevels = array('Executive','Manager','Assistant Manager','Supervisor','
 include 'specialization.php';   
     
 $and=" and ";
+$or =" or ";
 $specializationsearch="";
 $search = "";
 $wildcard = "%";    
@@ -230,8 +231,13 @@ if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specializat
 if($esalarypost > 0){
     $esalarysearch = $and . ' esalary <= :esalary ';   
 }
-$searchsql=  $wildcard.$search.$wildcard;    
-$searchstring = $and . " (skill like :search or skilltag like :search or workexperience.position like :search or workexperience.jobdescription like :search ) " ;
+if(!empty($search)){    
+    $searchsql=  $wildcard.$search.$wildcard;    
+    $searchstring = $and . " (skill like :search or skilltag like :search or workexperience.position like :search or workexperience.jobdescription like :search ) " ;
+}
+if($specializationsearch > 0){
+    $searchstring = $searchstring." and specialization=:specialization";
+}    
     
   
 
@@ -363,10 +369,16 @@ $searchstring = $and . " (skill like :search or skilltag like :search or workexp
                                             if($esalarypost > 0){
                                                $database->bind(':esalary', $esalarypost); 
                                             }
-                                            $database->bind(':search', $searchsql);
+                                            if(!empty($search)){   
+                                               $database->bind(':search', $searchsql);
+                                            }
+                                            if($specializationsearch > 0){
+                                                $database->bind(':specialization', $specializationsearch);                                          
+                                            }  
+                                           
                                             try{
                                                 $rows2 = $database->resultset();
-                                               // $log->info($esalarysearch. $searchstring );
+                                                $log->info($esalarysearch. $searchstring );
                                             }catch (PDOException $e) {
                                                 $msg = $e->getTraceAsString()." ".$e->getMessage();
                                                 $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);

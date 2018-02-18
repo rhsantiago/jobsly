@@ -202,7 +202,7 @@ jQuery(document).ready(function ($) {
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
                       $pholder = $row['pholder'];                        
-                                            
+                      $specialization = $row['specialization'];                        
                                             
               ?>
                                         
@@ -223,7 +223,14 @@ jQuery(document).ready(function ($) {
                                      
                                                                  <div class="col-md-offset-1 col-md-5 resumetextalign">
                                                                     <ul style="list-style: none;" class="">
-                                                                        <li> Desired Position: <b><?=$dposition?></b></li>     
+                                                                        <li> Desired Position: <b><?=$dposition?></b></li>
+                                                                        <li> Specialization: <b>
+                                                                            <?php
+                                                                                 if(!empty($specialization)){
+                                                                                    echo $specarray[$specialization];
+                                                                                 }
+                                                                            ?>
+                                                                            </b></li>   
                                                                         <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
                                                                         <li> Languages: <b><?=$languages?></b></li> 

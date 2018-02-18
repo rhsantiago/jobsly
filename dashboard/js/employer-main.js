@@ -873,4 +873,11 @@ $(document).ready(function ($) {
          $("#newbadgediv" + applicantid).html('');
     });
     
+    $(document).on('click','#viewresumenewapps',function(event){
+         event.preventDefault();
+         var applicantid =  $(this).data('applicantid');
+         $('#viewresume-form'+applicantid).submit();
+        
+    });
+    
 });       

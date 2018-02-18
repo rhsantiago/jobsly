@@ -140,7 +140,7 @@ if(isset($_SESSION['user'])){
                             
                               <form method="post" id="skillsnext-form" name="skillsnext-form"> 
                              <button class="btn btn-primary " name="skillsnext" id="skillsnext" type="submit">
-                                                        Go to Next Step
+                                                        Go to Next Step <i class="material-icons">arrow_forward</i>
                                                        </button>
                                 </form>
                                   <div id="successdivskillstag" class="alert alert-success">

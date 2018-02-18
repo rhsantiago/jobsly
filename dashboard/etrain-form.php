@@ -458,7 +458,18 @@ if(isset($_SESSION['user'])){
                                                         Save Education &amp; Training
                                                        </button>
                                 -->
-                                  <div id="successdivetrain" class="alert alert-success">
+                                 
+                                  <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
+                                                        Save Education Details
+                                                       </button>
+                                </form>
+                                <form method="post" id="etrainnext-form" name="etrainnext-form"> 
+                             <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
+                                                        Go to Next Step <i class="material-icons">arrow_forward</i>
+                                                       </button>
+                                </form>
+		                    </div>
+                             <div id="successdivetrain" class="alert alert-success">
                                                
                                                   <div class="alert-icon">
                                                     <i class="material-icons">check</i>
@@ -469,17 +480,6 @@ if(isset($_SESSION['user'])){
                                                   <b>Alert: </b> Your education &amp; training has been saved.
                                                
                                             </div>
-                                  <button class="btn btn-primary " name="addetrain" id="addetrain" type="submit">
-                                                        Save Education Details
-                                                       </button>
-                                </form>
-                                <form method="post" id="etrainnext-form" name="etrainnext-form"> 
-                             <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
-                                                        Go to Next Step
-                                                       </button>
-                                </form>
-		                    </div>
-                            
                             <div class="col-md-6">
                              
 		                    </div>
