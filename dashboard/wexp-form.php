@@ -54,7 +54,41 @@ if(isset($_SESSION['user'])){
 	         
 					<div class="features">
 						<div class="row">
-		                    <span class="jobcardbuttons"><a href='#workexpmodal' class='btn btn-primary btn-sm' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"> Add </a></span>
+		                    
+                            
+                            <?php
+                               $database->query('SELECT count(id) as wexpcount FROM workexperience where userid = :userid');
+                               $database->bind(':userid', $userid);         
+                               try{             
+                                    $row = $database->single();  
+                               }catch (PDOException $e) {
+                                     $msg = $e->getTraceAsString()." ".$e->getMessage();
+                                     $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+                                     die("");
+                               }                        
+                               $wexpcount = $row['wexpcount'];
+                                                     
+                            ?>
+                            
+                         
+                              
+                          
+                            <?php
+                             if($wexpcount < 1){      
+                             ?>
+                              <div id="nowexp" class="jumbotron">
+                               
+                                <p>Start adding your Work Experiences here! <span class="jobcardbuttons"><a href='#workexpmodal' class='btn btn-primary btn-sm' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"><i class="material-icons">add</i> Add </a></span></p> 
+                              </div>
+                            <?php
+                               }
+                            
+                               if($wexpcount > 0){       
+                            ?>                                
+                                <span class="jobcardbuttons"><a href='#workexpmodal' class='btn btn-primary btn-sm' id="addworkexp" title="Add" data-mode="insert" data-workexpid="0" data-userid="<?=$userid?>" data-toggle="modal" data-target="#workexp-modal"> Add </a></span>
+                            <?php
+                               }
+                            ?>
                                         <div id="workexpcardsdiv">
                                             <?php
                                                     $database->query('SELECT * FROM workexperience where userid = :userid order by startdate desc');
@@ -80,7 +114,11 @@ if(isset($_SESSION['user'])){
                                                         $jobdesc = $row['jobdescription'];
                                                  
                                              ?>           
-                                           
+                                         
+                                            <div class="row">
+  
+                                            
+                                            
                                             <section class="blog-post">
                                     <div class="panel panel-default">
                                     
@@ -160,6 +198,7 @@ if(isset($_SESSION['user'])){
                                         
                                              <?php          
                                                     }
+                               
                                              ?>
                                             
                                          
@@ -319,6 +358,7 @@ if(isset($_SESSION['user'])){
                             
 		                    
 		                </div>
+                        </div>
 					</div>
 	            </div>
                                              

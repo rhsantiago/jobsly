@@ -715,6 +715,7 @@ jQuery(document).ready(function ($) {
                     if(mode=='del'){
                         $('#workexp-modal').modal('toggle');
                     }
+                    $('#nowexp').hide();
                     $('#workexpcardsdiv').html(data).fadeIn(1500);               
                     $('#wexp-form-modal #successdivworkexp').fadeIn(1500);
                     $(function() {

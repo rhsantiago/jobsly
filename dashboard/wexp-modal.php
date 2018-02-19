@@ -56,7 +56,7 @@ if($mode=='del'){
 	      </div>
 	      <div class="modal-footer blog-post">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="submit" class="btn btn-primary">I'm sure</button>
+	        <button type="submit" class="btn btn-primary"><i class="material-icons">done</i> I'm sure</button>
 	      </div>
 </form>
     
@@ -238,9 +238,9 @@ if($mode=='del'){
 	        <button type="submit" class="btn btn-primary" >
                 <?php
                     if($mode=='insert'){
-                        echo "Add Work Experience";
+                        echo "<i class='material-icons'>add</i> Add Work Experience";
                     }else{
-                        echo "Save changes";
+                        echo "<i class='material-icons'>save</i> Save changes";
                     }
                         
                 ?>
