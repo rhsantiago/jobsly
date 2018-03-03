@@ -15,6 +15,24 @@ include 'Database.php';
 $database = new Database();
 
     
+    $database->query('SELECT * from educationandtraining where userid = :userid');
+    $database->bind(':userid', $userid);   
+    try{
+        $row = $database->single();
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        die("");
+    }    
+    $id = $row['id'];
+    
+    if(!empty($id)){
+        $mode = 'update';
+    }else{
+        $mode = 'insert';
+    }
+    
+    
   $hssdate = "";
     if(isset($_POST['hsschool'])){ $hsschool = $_POST['hsschool']; } 
     if(isset($_POST['hsadd'])){ $hsadd = $_POST['hsadd']; }
