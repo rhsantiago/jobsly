@@ -475,7 +475,7 @@ if(isset($_SESSION['user'])){
                                 </form>
                                 <form method="post" id="etrainnext-form" name="etrainnext-form"> 
                              <button class="btn btn-primary " name="etrainnext" id="etrainnext" type="submit">
-                                                        Go to Next Step <i class="material-icons">arrow_forward</i>
+                                                        Skip to Next Step <i class="material-icons">arrow_forward</i>
                                                        </button>
                                 </form>
 		                    </div>

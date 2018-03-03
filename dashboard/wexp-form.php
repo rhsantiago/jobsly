@@ -350,7 +350,7 @@ if(isset($_SESSION['user'])){
 		                      <div>
                                      <form method="post" id="wexpnext-form" name="wexpnext-form"> 
                                             <button class="btn btn-primary " name="wexpnext" id="wexpnext" type="submit">
-                                                            Go to Next Step <i class="material-icons">arrow_forward</i>
+                                                            Skip to Next Step <i class="material-icons">arrow_forward</i>
                                                            </button>
                                     </form>
 		                    </div>

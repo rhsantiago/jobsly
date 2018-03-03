@@ -96,7 +96,7 @@ if($mode!='del'){
                                                         $jobdesc = $row['jobdescription'];
                                                     
 ?> 
-                               <section class="blog-post">
+                                <section class="blog-post">
                                     <div class="panel panel-default">
                                     
                                       <div class="panel-body jobad-bottomborder">
@@ -111,7 +111,8 @@ if($mode!='del'){
                                                                                             </li>
                                                                                             <li>
                                                                                                 <h6 id="vertical-align" class="text-muted jobadheader">
-                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;<?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?> -
+                                                                                                <i class="material-icons text-info jobadheadericon">date_range</i>&nbsp;
+                                                                                                    <?=$months[$sdate[1]-1]?>&nbsp;<?=$sdate[0]?> -
                                                                                                     <?php
                                                                                                         if($enddate != 'present'){
                                                                                                             echo $months[$edate[1]-1].'&nbsp;'.$edate[0];
@@ -119,6 +120,7 @@ if($mode!='del'){
                                                                                                             echo "present";
                                                                                                         }
                                                                                                     ?>
+                                                                                           
                                                                                                 </h6>
                                                                                             </li>
                                                                                             <li>
@@ -138,17 +140,18 @@ if($mode!='del'){
                                                          <a class="nodecor" href='#showjobmodal' data-toggle="modal" data-target="#showjob-modal" data-jobid="<?=$id?>"><h2 class="text-info jobad-title"><?=$row['position']?></h2></a>
                                                         <div class="companypos">
                                                             <h6 class="text-muted"><i><?=$row['company']?></i></h6>
-                                                        </div> 
+                                                        </div>
                                                 </div>
                                                 
                                             </div>
                                             <div class="row-fluid">
-                                               
-                                                <div class="col-md-12">   
+                                                 
+                                                <div class="col-md-12">
                                                
                                                     <div class="collapse-group collapse" id="viewdetails<?=$row['id']?>">
-                                                  <?=$jobdesc?>                                                 
-                                                    </div>    
+                                                  <?=$jobdesc?>
+                                                 
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row-fluid">

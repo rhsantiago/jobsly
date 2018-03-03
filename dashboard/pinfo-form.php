@@ -330,7 +330,7 @@ data-parsley-pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ 
                             <div class="row savebutton leftmargin20">
                                 <div class="col-md-6">                                
                                      <form method="post" id="pinfonext-form" name="pinfonext-form"> 
-                                 <button class="btn btn-primary " name="pinfonext" id="pinfonext" type="submit">Go to Next Step <i class="material-icons">arrow_forward</i></button>
+                                 <button class="btn btn-primary " name="pinfonext" id="pinfonext" type="submit">Skip to Next Step <i class="material-icons">arrow_forward</i></button>
                                     </form>
                                 </div>                                            
                             </div> 
