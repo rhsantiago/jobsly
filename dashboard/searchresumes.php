@@ -219,18 +219,23 @@ $and=" and ";
 $or =" or ";
 $specializationsearch="";
 $search = "";
+$plevel = 0;    
 $wildcard = "%";    
 $esalarypost=0;
 $esalarysearch='';
 $searchstring='';    
 if(isset($_POST['search'])){ $search = $_POST['search']; }
 if(isset($_POST['esalary'])){ $esalarypost = $_POST['esalary']; }
-if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }    
+if(isset($_POST['specialization'])){ $specializationsearch = $_POST['specialization']; }
+if(isset($_POST['plevel'])){ $plevel = $_POST['plevel']; }    
 
 
 if($esalarypost > 0){
     $esalarysearch = $and . ' esalary <= :esalary ';   
 }
+if($plevel > 0){
+    $plevelsearch = $and . ' additionalinformation.plevel = :plevel ';   
+}    
 if(!empty($search)){    
     $searchsql=  $wildcard.$search.$wildcard;    
     $searchstring = $and . " (skill like :search or skilltag like :search or workexperience.position like :search or workexperience.jobdescription like :search ) " ;
@@ -268,7 +273,7 @@ if($specializationsearch > 0){
                             
                              <div class="collapse-group 
                                          <?php
-                                            if($esalarypost<1 && empty($_POST['specialization'])){
+                                            if($esalarypost<1 && $plevel < 1 && empty($_POST['specialization'])){
                                                 echo " collapse";
                                             }
                                          ?>
@@ -304,12 +309,31 @@ if($specializationsearch > 0){
                                             <br>
                                           </div>
                                  </div>
+                                 <div class="col-md-6"> 
+                                            <div id="pleveldiv" class="form-group label-floating">
+                                                                        <label class="control-label">Position Level</label>
+                                                                    <select class="form-control" id="plevel" name="plevel"  placeholder="Position Level">
+                                                                        <option value='' selected ></option>
+                                                                        <?php                                                                        
+                                                                            echo"<option value='1' "; if($plevel==1){echo'selected';} echo">Executive</option>";
+                                                                            echo"<option value='2' "; if($plevel==2){echo'selected';} echo">Manager</option>";
+                                                                            echo"<option value='3' "; if($plevel==3){echo'selected';} echo">Assistant Manager</option>";
+                                                                            echo"<option value='4' "; if($plevel==4){echo'selected';} echo">Supervisor</option>";
+                                                                            echo"<option value='5' "; if($plevel==5){echo'selected';} echo"> 5 Years+ Experienced Employee</option>";
+                                                                            echo"<option value='6' "; if($plevel==6){echo'selected';} echo">1-4 Years Experienced Employee</option>";
+                                                                            echo"<option value='7' "; if($plevel==7){echo'selected';} echo"><1 Year Experienced Employee/Fresh Grad</option>";
+        
+                                                                        ?>
+                                                                    </select>                                                                        
+                                                                    </div>
+                                 </div>
                              </div>
-                           
+                           <div class="col-md-12">
                                 <p style="z-index: 1; position: relative;">
                                      <a class="btn btn-default btn-sm" data-toggle="collapse" data-target="#options">Search Options</a>
                                      <button class="btn btn-primary btn-sm" type="submit">Search</button>
                              </p>
+                           </div>
                              </div>
                             </form>
                   </div>
@@ -364,11 +388,14 @@ if($specializationsearch > 0){
                                             left join educationandtraining on educationandtraining.userid=useraccounts.id
                                             left join skilltags on skilltags.userid=useraccounts.id
                                             left join workexperience on workexperience.userid=useraccounts.id
-                                            where usertype=2 '.$esalarysearch. $searchstring . ' order by esalary desc limit 0,10');
+                                            where usertype=2 '.$esalarysearch. $plevelsearch . $searchstring . ' order by esalary desc limit 0,10');
     
                                             if($esalarypost > 0){
                                                $database->bind(':esalary', $esalarypost); 
                                             }
+                                            if($plevel > 0){
+                                                $database->bind(':plevel', $plevel);    
+                                            }  
                                             if(!empty($search)){   
                                                $database->bind(':search', $searchsql);
                                             }
