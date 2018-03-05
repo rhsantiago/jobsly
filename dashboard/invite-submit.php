@@ -29,7 +29,31 @@ include "serverlogconfig.php";
              die("");
         }
     
-    echo "invited";
+    $database->query('SELECT email from useraccounts  where id = :applicantid');
+    $database->bind(':applicantid', $applicantid);
+   
+    try{
+        $row = $database->single();
+        $applicantemail = $row['email'];
+    }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+    }
+    
+    if(!empty($applicantemail)){
+        require 'phpmailer/PHPMailerAutoload.php';
+        require 'emailconfig.php';
+        $mail->isHTML(true);  
+        $mail->setFrom('info@jobsly.net', 'jobsly');
+        $mail->Subject = 'Invitation to apply - jobsly';
+        $mail->addAddress($applicantemail);
+        $mail->Body    = "You have been invited to a apply for a new job!. Log in to jobsly and view under Applications. <a href='https://www.jobsly.net'>Click Here</a>";
+
+        if (!$mail->send()) {
+            $msg = "Mailer Error: ".$mail->ErrorInfo;
+            $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg); 
+        } 
+    }
 }else{
     header("Location: logout.php");
 }                                      
