@@ -152,16 +152,7 @@ include "serverlogconfig.php";
                                                                     </div> 
                                                                     <div id="otherspecdiv" class="form-group label-floating">
                                                                         <label class="control-label">Other Specialization</label>
-                                                                       <select class="form-control" id="otherspec" name="otherspec"  placeholder="Specialization" data-parsley-required>
-                                                                            <option disabled></option>
-                                                                            <?php
-                                                                                    $i=0;
-                                                                                    foreach($specarray as $spec){
-                                                                                        echo "<option value='$i' "; if($otherspec==$i){echo'selected';} echo">$specarray[$i]</option>";
-                                                                                        $i++;
-                                                                                    }
-                                                                            ?>
-                                                                        </select>
+                                                                        <input type="text" id="otherspec" class="form-control" value="<?=$otherspec?>">                                                                       
                                                                     </div>                                                     
                                                                 </div>
                                                             </div>

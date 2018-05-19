@@ -516,6 +516,136 @@ if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
                                
                                
                                
+                               <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="h4weight text-primary">Other Job Ads from <?=$companyname?></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                  
+<?php
+  $jobtitlearray = array();
+  $jobidarray = array();    
+  $database->query("SELECT id, jobtitle from jobads where userid=:userid and id not in (:jobid) order by dateadded desc limit 0,12"); 
+  $database->bind(':userid', $companyid);
+  $database->bind(':jobid', $jobid);    
+  try{  
+        $rows = $database->resultset();
+   }catch (PDOException $e) {
+        $msg = $e->getTraceAsString()." ".$e->getMessage();
+        $log->error($logtimestamp." - ".$_SESSION['user'] . " " .$msg);
+        die("");
+   } 
+
+   foreach($rows as $row){
+      $jobid = $row['id'];
+      $jobtitle = $row['jobtitle'];
+      $jobidarray[] = $jobid; 
+      $jobtitlearray[] = $jobtitle;
+   }
+?>
+                  <div class="row">
+                                               
+           <div class="col-md-4">
+               <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 0; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                    <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="text-info">
+                                                       <a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a>
+                                                       </span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                <?php
+                    $index = $index+3;
+                }
+                ?>
+            
+            </div>
+            <div class="col-md-4">
+                <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 1; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                  <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                   <span class="text-info"><a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                 <?php
+                    $index = $index+3;
+                }
+                ?>
+          </div>                       
+            <div class="col-md-4">
+                <?php
+                $arrlength = count($jobtitlearray);
+                for($index = 2; $index < $arrlength;) {
+                      $jobid = $jobidarray[$index];    
+                      $jobtitle = $jobtitlearray[$index];
+              
+                ?>
+                  <section class="otherjobs">
+                          <div class="panel panel-default">
+                               <div class="panel-body">    
+                                   <div class="blog-post-content">
+                                         <div class="row-fluid">
+                                               <div class="col-md-12">
+                                                   <div class="center">
+                                                       <span class="text-info"><a class="text-info" href="viewjob-newpage.php?jobid=<?=$jobid?>&mode=view&isjobseeker=jobseeker" id="viewjobnewpage"><?=$jobtitle?></a></span>
+                                                   </div>
+                                                </div>
+                                          </div>  
+                                    </div>
+                               </div>
+                            </div>
+                  </section>
+                <?php
+                    $index = $index+3;
+                }
+                ?>
+             </div>   
+             
+                                     
+                                          </div>
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
                                 </div>
                             </div>
                         </div>
@@ -536,35 +666,26 @@ if(isset($_GET['mode'])){ $mode = $_GET['mode']; }
       
 	    <footer class="footer">
 	        <div class="container">
-	            <nav class="pull-left">
-	                <ul>
-	                    <li>
-	                        <a href="http://www.creative-tim.com">
-	                            Creative Tim
-	                        </a>
-	                    </li>
-						<li>
-	                        <a href="http://presentation.creative-tim.com">
-	                           About Us
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="http://blog.creative-tim.com">
-	                           Blog
-	                        </a>
-	                    </li>
-	                    <li>
-	                        <a href="http://www.creative-tim.com/license">
-	                            Licenses
-	                        </a>
-	                    </li>
-	                </ul>
-	            </nav>
-	            <div class="copyright pull-right">
-	                &copy; 2016, made with <i class="fa fa-heart heart"></i> by Creative Tim
-	            </div>
+                <div class="col-md-6">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                jobsly on 	                           
+
+                            </li>
+                            <li>
+                                <a target="_blank" href='https://www.facebook.com/jobsly.net'><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i> </a>
+                            </li>	                   
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright pull-right">
+                        &copy; jobsly 2016
+                    </div>
+                </div>
 	        </div>
-	    </footer>
+        </footer>
 
 	</div>
     

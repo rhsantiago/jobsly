@@ -295,7 +295,9 @@ jQuery(document).ready(function ($) {
                       $profsum = $row['profsum'];
                       $wtravel = $row['wtravel'];
                       $wrelocate = $row['wrelocate'];
-                      $pholder = $row['pholder'];                        
+                      $pholder = $row['pholder']; 
+                      $specialization = $row['specialization'];
+                      $otherspec = $row['otherspec'];
                                             
                      if(!empty($profsum) && strlen($profsum)>50){              
               ?>
@@ -378,6 +380,14 @@ jQuery(document).ready(function ($) {
                                                                     <ul align="left" style="list-style: none;" class="">
                                                                         <li> Desired Position: <b><?=$dposition?></b></li>     
                                                                         <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
+                                                                        <li> Specialization: <b>
+                                                                            <?php
+                                                                                 if(!empty($specialization)){
+                                                                                    echo $specarray[$specialization];
+                                                                                 }
+                                                                            ?>
+                                                                            </b></li>
+                                                                        <li> Other Specialization: <b><?=$otherspec?></b></li>
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
                                                                         <li> Languages: <b><?=$languages?></b></li> 
                                                                         <?php

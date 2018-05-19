@@ -23,7 +23,7 @@ if($ok == 1 ){
     include "serverlogconfig.php";
    
     $database = new Database();
-    
+    include 'specialization.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -253,7 +253,9 @@ jQuery(document).ready(function ($) {
                       }
                       $birthday = $bday[1] .'/'.$bday[2].'/'.$bday[0];
     
-                       $dposition = $row['dposition'];
+                      $dposition = $row['dposition'];
+                      $specialization = $row['specialization'];
+                      $otherspec = $row['otherspec'];
                       $plevel = $row['plevel'];                      
                       $esalary = $row['esalary'];                      
                       $languages = $row['languages'];
@@ -335,8 +337,21 @@ jQuery(document).ready(function ($) {
                                                                 </div>
                                                                  <div class="col-md-offset-1 col-md-5">
                                                                     <ul align="left" style="list-style: none;" class="">
-                                                                        <li> Desired Position: <b><?=$dposition?></b></li>     
+                                                                        <li> Desired Position: <b><?=$dposition?></b></li>       
                                                                         <li> Position Level: <b><?=$positionlevels[$plevel-1]?></b></li>
+                                                                        <li> Specialization: 
+                                                                            <b>
+                                                                            <?php
+                                                                                    $i=0;
+                                                                                    foreach($specarray as $spec){
+                                                                                       if($specialization==$i){
+                                                                                          echo $specarray[$i];
+                                                                                       }
+                                                                                       $i++;
+                                                                                    }
+                                                                            ?>    
+                                                                            </b></li>
+                                                                        <li> Other Specialization: <b><?=$otherspec?></b></li>
                                                                         <li> Expected Salary: <b><?=$esalary?></b></li> 
                                                                         <li> Languages: <b><?=$languages?></b></li> 
                                                                         <?php
